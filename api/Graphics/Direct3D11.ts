@@ -21080,10 +21080,12 @@ try {
     D3D11CreateDevice: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3D11CreateDeviceAndSwapChain: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -21093,6 +21095,7 @@ try {
     D3DDisassemble11Trace: {
       parameters: ["pointer", "usize", "pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -21102,38 +21105,47 @@ try {
     D3DX11CreateScan: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateSegmentedScan: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT1DReal: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT1DComplex: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT2DReal: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT2DComplex: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT3DReal: {
       parameters: ["pointer", "u32", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DX11CreateFFT3DComplex: {
       parameters: ["pointer", "u32", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -21152,7 +21164,7 @@ export function D3D11CreateDevice(
   pFeatureLevel: Deno.PointerValue | Uint8Array /* ptr */,
   ppImmediateContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3d11_dll.D3D11CreateDevice(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext));
+  return libd3d11_dll.D3D11CreateDevice!(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext));
 }
 
 export function D3D11CreateDeviceAndSwapChain(
@@ -21169,7 +21181,7 @@ export function D3D11CreateDeviceAndSwapChain(
   pFeatureLevel: Deno.PointerValue | Uint8Array /* ptr */,
   ppImmediateContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3d11_dll.D3D11CreateDeviceAndSwapChain(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext));
+  return libd3d11_dll.D3D11CreateDeviceAndSwapChain!(util.toPointer(pAdapter), DriverType, util.toPointer(Software), Flags, util.toPointer(pFeatureLevels), FeatureLevels, SDKVersion, util.toPointer(pSwapChainDesc), util.toPointer(ppSwapChain), util.toPointer(ppDevice), util.toPointer(pFeatureLevel), util.toPointer(ppImmediateContext));
 }
 
 export function D3DDisassemble11Trace(
@@ -21181,7 +21193,7 @@ export function D3DDisassemble11Trace(
   Flags: number /* u32 */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DDisassemble11Trace(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pTrace), StartStep, NumSteps, Flags, util.toPointer(ppDisassembly));
+  return libD3DCOMPILER_47_dll.D3DDisassemble11Trace!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pTrace), StartStep, NumSteps, Flags, util.toPointer(ppDisassembly));
 }
 
 export function D3DX11CreateScan(
@@ -21190,7 +21202,7 @@ export function D3DX11CreateScan(
   MaxScanCount: number /* u32 */,
   ppScan: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateScan(util.toPointer(pDeviceContext), MaxElementScanSize, MaxScanCount, util.toPointer(ppScan));
+  return libd3dcsx_dll.D3DX11CreateScan!(util.toPointer(pDeviceContext), MaxElementScanSize, MaxScanCount, util.toPointer(ppScan));
 }
 
 export function D3DX11CreateSegmentedScan(
@@ -21198,7 +21210,7 @@ export function D3DX11CreateSegmentedScan(
   MaxElementScanSize: number /* u32 */,
   ppScan: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateSegmentedScan(util.toPointer(pDeviceContext), MaxElementScanSize, util.toPointer(ppScan));
+  return libd3dcsx_dll.D3DX11CreateSegmentedScan!(util.toPointer(pDeviceContext), MaxElementScanSize, util.toPointer(ppScan));
 }
 
 export function D3DX11CreateFFT(
@@ -21208,7 +21220,7 @@ export function D3DX11CreateFFT(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT(util.toPointer(pDeviceContext), util.toPointer(pDesc), Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT!(util.toPointer(pDeviceContext), util.toPointer(pDesc), Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT1DReal(
@@ -21218,7 +21230,7 @@ export function D3DX11CreateFFT1DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT1DReal(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT1DReal!(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT1DComplex(
@@ -21228,7 +21240,7 @@ export function D3DX11CreateFFT1DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT1DComplex(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT1DComplex!(util.toPointer(pDeviceContext), X, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT2DReal(
@@ -21239,7 +21251,7 @@ export function D3DX11CreateFFT2DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT2DReal(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT2DReal!(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT2DComplex(
@@ -21250,7 +21262,7 @@ export function D3DX11CreateFFT2DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT2DComplex(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT2DComplex!(util.toPointer(pDeviceContext), X, Y, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT3DReal(
@@ -21262,7 +21274,7 @@ export function D3DX11CreateFFT3DReal(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT3DReal(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT3DReal!(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 
 export function D3DX11CreateFFT3DComplex(
@@ -21274,6 +21286,6 @@ export function D3DX11CreateFFT3DComplex(
   pBufferInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppFFT: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3dcsx_dll.D3DX11CreateFFT3DComplex(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
+  return libd3dcsx_dll.D3DX11CreateFFT3DComplex!(util.toPointer(pDeviceContext), X, Y, Z, Flags, util.toPointer(pBufferInfo), util.toPointer(ppFFT));
 }
 

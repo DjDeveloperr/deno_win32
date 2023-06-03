@@ -8752,134 +8752,167 @@ try {
     AuthzAccessCheck: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzCachedAccessCheck: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzOpenObjectAudit: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzFreeHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeResourceManager: {
       parameters: ["u32", "pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeResourceManagerEx: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeRemoteResourceManager: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzFreeResourceManager: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeContextFromToken: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeContextFromSid: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeContextFromAuthzContext: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeCompoundContext: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzAddSidsToContext: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzModifySecurityAttributes: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzModifyClaims: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzModifySids: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzSetAppContainerInformation: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzGetInformationFromContext: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzFreeContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeObjectAccessAuditEvent: {
       parameters: ["u32", "pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AuthzInitializeObjectAccessAuditEvent2: {
       parameters: ["u32", "pointer", "buffer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AuthzFreeAuditEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzEvaluateSacl: {
       parameters: ["pointer", "pointer", "pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzInstallSecurityEventSource: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzUninstallSecurityEventSource: {
       parameters: ["u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     AuthzEnumerateSecurityEventSources: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzRegisterSecurityEventSource: {
       parameters: ["u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzUnregisterSecurityEventSource: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzReportSecurityEvent: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AuthzReportSecurityEventFromParams: {
       parameters: ["u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzRegisterCapChangeNotification: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzUnregisterCapChangeNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AuthzFreeCentralAccessPolicyCache: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -8889,230 +8922,287 @@ try {
     SetEntriesInAclA: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetEntriesInAclW: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetExplicitEntriesFromAclA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetExplicitEntriesFromAclW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetEffectiveRightsFromAclA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetEffectiveRightsFromAclW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetAuditedPermissionsFromAclA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetAuditedPermissionsFromAclW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetNamedSecurityInfoA: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetNamedSecurityInfoW: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetSecurityInfo: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetNamedSecurityInfoA: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetNamedSecurityInfoW: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetSecurityInfo: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetInheritanceSourceA: {
       parameters: ["buffer", "i32", "u32", "i32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetInheritanceSourceW: {
       parameters: ["buffer", "i32", "u32", "i32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FreeInheritedFromArray: {
       parameters: ["pointer", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     TreeResetNamedSecurityInfoA: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "i32", "pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TreeResetNamedSecurityInfoW: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "i32", "pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TreeSetNamedSecurityInfoA: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TreeSetNamedSecurityInfoW: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     BuildSecurityDescriptorA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BuildSecurityDescriptorW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LookupSecurityDescriptorPartsA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LookupSecurityDescriptorPartsW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BuildExplicitAccessWithNameA: {
       parameters: ["pointer", "buffer", "u32", "i32", "u32"],
       result: "void",
+      optional: true,
     },
     BuildExplicitAccessWithNameW: {
       parameters: ["pointer", "buffer", "u32", "i32", "u32"],
       result: "void",
+      optional: true,
     },
     BuildImpersonateExplicitAccessWithNameA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "i32", "u32"],
       result: "void",
+      optional: true,
     },
     BuildImpersonateExplicitAccessWithNameW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "i32", "u32"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithNameA: {
       parameters: ["pointer", "buffer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithNameW: {
       parameters: ["pointer", "buffer"],
       result: "void",
+      optional: true,
     },
     BuildImpersonateTrusteeA: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildImpersonateTrusteeW: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithSidA: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithSidW: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithObjectsAndSidA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithObjectsAndSidW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithObjectsAndNameA: {
       parameters: ["pointer", "pointer", "i32", "buffer", "buffer", "buffer"],
       result: "void",
+      optional: true,
     },
     BuildTrusteeWithObjectsAndNameW: {
       parameters: ["pointer", "pointer", "i32", "buffer", "buffer", "buffer"],
       result: "void",
+      optional: true,
     },
     GetTrusteeNameA: {
       parameters: ["pointer"],
       result: "buffer",
+      optional: true,
     },
     GetTrusteeNameW: {
       parameters: ["pointer"],
       result: "buffer",
+      optional: true,
     },
     GetTrusteeTypeA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetTrusteeTypeW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetTrusteeFormA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetTrusteeFormW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetMultipleTrusteeOperationA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetMultipleTrusteeOperationW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetMultipleTrusteeA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMultipleTrusteeW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertSidToStringSidA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertSidToStringSidW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertStringSidToSidA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertStringSidToSidW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertStringSecurityDescriptorToSecurityDescriptorA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertStringSecurityDescriptorToSecurityDescriptorW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertSecurityDescriptorToStringSecurityDescriptorA: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertSecurityDescriptorToStringSecurityDescriptorW: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9130,7 +9220,7 @@ export function AuthzAccessCheck(
   pReply: Deno.PointerValue | Uint8Array /* ptr */,
   phAccessCheckResults: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzAccessCheck(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pSecurityDescriptor), util.toPointer(OptionalSecurityDescriptorArray), OptionalSecurityDescriptorCount, util.toPointer(pReply), util.toPointer(phAccessCheckResults)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzAccessCheck!(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pSecurityDescriptor), util.toPointer(OptionalSecurityDescriptorArray), OptionalSecurityDescriptorCount, util.toPointer(pReply), util.toPointer(phAccessCheckResults)));
 }
 
 export function AuthzCachedAccessCheck(
@@ -9140,7 +9230,7 @@ export function AuthzCachedAccessCheck(
   hAuditEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_AUDIT_EVENT_HANDLE */,
   pReply: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzCachedAccessCheck(Flags, util.toPointer(hAccessCheckResults), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pReply)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzCachedAccessCheck!(Flags, util.toPointer(hAccessCheckResults), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pReply)));
 }
 
 export function AuthzOpenObjectAudit(
@@ -9153,13 +9243,13 @@ export function AuthzOpenObjectAudit(
   OptionalSecurityDescriptorCount: number /* u32 */,
   pReply: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzOpenObjectAudit(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pSecurityDescriptor), util.toPointer(OptionalSecurityDescriptorArray), OptionalSecurityDescriptorCount, util.toPointer(pReply)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzOpenObjectAudit!(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pRequest), util.toPointer(hAuditEvent), util.toPointer(pSecurityDescriptor), util.toPointer(OptionalSecurityDescriptorArray), OptionalSecurityDescriptorCount, util.toPointer(pReply)));
 }
 
 export function AuthzFreeHandle(
   hAccessCheckResults: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_ACCESS_CHECK_RESULTS_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeHandle(util.toPointer(hAccessCheckResults)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeHandle!(util.toPointer(hAccessCheckResults)));
 }
 
 export function AuthzInitializeResourceManager(
@@ -9170,7 +9260,7 @@ export function AuthzInitializeResourceManager(
   szResourceManagerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phAuthzResourceManager: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeResourceManager(Flags, util.toPointer(pfnDynamicAccessCheck), util.toPointer(pfnComputeDynamicGroups), util.toPointer(pfnFreeDynamicGroups), util.pwstrToFfi(szResourceManagerName), util.toPointer(phAuthzResourceManager)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeResourceManager!(Flags, util.toPointer(pfnDynamicAccessCheck), util.toPointer(pfnComputeDynamicGroups), util.toPointer(pfnFreeDynamicGroups), util.pwstrToFfi(szResourceManagerName), util.toPointer(phAuthzResourceManager)));
 }
 
 export function AuthzInitializeResourceManagerEx(
@@ -9178,20 +9268,20 @@ export function AuthzInitializeResourceManagerEx(
   pAuthzInitInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phAuthzResourceManager: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeResourceManagerEx(Flags, util.toPointer(pAuthzInitInfo), util.toPointer(phAuthzResourceManager)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeResourceManagerEx!(Flags, util.toPointer(pAuthzInitInfo), util.toPointer(phAuthzResourceManager)));
 }
 
 export function AuthzInitializeRemoteResourceManager(
   pRpcInitInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phAuthzResourceManager: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeRemoteResourceManager(util.toPointer(pRpcInitInfo), util.toPointer(phAuthzResourceManager)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeRemoteResourceManager!(util.toPointer(pRpcInitInfo), util.toPointer(phAuthzResourceManager)));
 }
 
 export function AuthzFreeResourceManager(
   hAuthzResourceManager: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_RESOURCE_MANAGER_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeResourceManager(util.toPointer(hAuthzResourceManager)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeResourceManager!(util.toPointer(hAuthzResourceManager)));
 }
 
 export function AuthzInitializeContextFromToken(
@@ -9203,7 +9293,7 @@ export function AuthzInitializeContextFromToken(
   DynamicGroupArgs: Deno.PointerValue | Uint8Array /* ptr */,
   phAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromToken(Flags, util.toPointer(TokenHandle), util.toPointer(hAuthzResourceManager), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phAuthzClientContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromToken!(Flags, util.toPointer(TokenHandle), util.toPointer(hAuthzResourceManager), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phAuthzClientContext)));
 }
 
 export function AuthzInitializeContextFromSid(
@@ -9215,7 +9305,7 @@ export function AuthzInitializeContextFromSid(
   DynamicGroupArgs: Deno.PointerValue | Uint8Array /* ptr */,
   phAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromSid(Flags, util.toPointer(UserSid), util.toPointer(hAuthzResourceManager), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phAuthzClientContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromSid!(Flags, util.toPointer(UserSid), util.toPointer(hAuthzResourceManager), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phAuthzClientContext)));
 }
 
 export function AuthzInitializeContextFromAuthzContext(
@@ -9226,7 +9316,7 @@ export function AuthzInitializeContextFromAuthzContext(
   DynamicGroupArgs: Deno.PointerValue | Uint8Array /* ptr */,
   phNewAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromAuthzContext(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phNewAuthzClientContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeContextFromAuthzContext!(Flags, util.toPointer(hAuthzClientContext), util.toPointer(pExpirationTime), util.toPointer(Identifier), util.toPointer(DynamicGroupArgs), util.toPointer(phNewAuthzClientContext)));
 }
 
 export function AuthzInitializeCompoundContext(
@@ -9234,7 +9324,7 @@ export function AuthzInitializeCompoundContext(
   DeviceContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_CLIENT_CONTEXT_HANDLE */,
   phCompoundContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeCompoundContext(util.toPointer(UserContext), util.toPointer(DeviceContext), util.toPointer(phCompoundContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeCompoundContext!(util.toPointer(UserContext), util.toPointer(DeviceContext), util.toPointer(phCompoundContext)));
 }
 
 export function AuthzAddSidsToContext(
@@ -9245,7 +9335,7 @@ export function AuthzAddSidsToContext(
   RestrictedSidCount: number /* u32 */,
   phNewAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzAddSidsToContext(util.toPointer(hAuthzClientContext), util.toPointer(Sids), SidCount, util.toPointer(RestrictedSids), RestrictedSidCount, util.toPointer(phNewAuthzClientContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzAddSidsToContext!(util.toPointer(hAuthzClientContext), util.toPointer(Sids), SidCount, util.toPointer(RestrictedSids), RestrictedSidCount, util.toPointer(phNewAuthzClientContext)));
 }
 
 export function AuthzModifySecurityAttributes(
@@ -9253,7 +9343,7 @@ export function AuthzModifySecurityAttributes(
   pOperations: Deno.PointerValue | Uint8Array /* ptr */,
   pAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzModifySecurityAttributes(util.toPointer(hAuthzClientContext), util.toPointer(pOperations), util.toPointer(pAttributes)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzModifySecurityAttributes!(util.toPointer(hAuthzClientContext), util.toPointer(pOperations), util.toPointer(pAttributes)));
 }
 
 export function AuthzModifyClaims(
@@ -9262,7 +9352,7 @@ export function AuthzModifyClaims(
   pClaimOperations: Deno.PointerValue | Uint8Array /* ptr */,
   pClaims: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzModifyClaims(util.toPointer(hAuthzClientContext), ClaimClass, util.toPointer(pClaimOperations), util.toPointer(pClaims)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzModifyClaims!(util.toPointer(hAuthzClientContext), ClaimClass, util.toPointer(pClaimOperations), util.toPointer(pClaims)));
 }
 
 export function AuthzModifySids(
@@ -9271,7 +9361,7 @@ export function AuthzModifySids(
   pSidOperations: Deno.PointerValue | Uint8Array /* ptr */,
   pSids: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzModifySids(util.toPointer(hAuthzClientContext), SidClass, util.toPointer(pSidOperations), util.toPointer(pSids)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzModifySids!(util.toPointer(hAuthzClientContext), SidClass, util.toPointer(pSidOperations), util.toPointer(pSids)));
 }
 
 export function AuthzSetAppContainerInformation(
@@ -9280,7 +9370,7 @@ export function AuthzSetAppContainerInformation(
   CapabilityCount: number /* u32 */,
   pCapabilitySids: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzSetAppContainerInformation(util.toPointer(hAuthzClientContext), util.toPointer(pAppContainerSid), CapabilityCount, util.toPointer(pCapabilitySids)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzSetAppContainerInformation!(util.toPointer(hAuthzClientContext), util.toPointer(pAppContainerSid), CapabilityCount, util.toPointer(pCapabilitySids)));
 }
 
 export function AuthzGetInformationFromContext(
@@ -9290,13 +9380,13 @@ export function AuthzGetInformationFromContext(
   pSizeRequired: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzGetInformationFromContext(util.toPointer(hAuthzClientContext), InfoClass, BufferSize, util.toPointer(pSizeRequired), util.toPointer(Buffer)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzGetInformationFromContext!(util.toPointer(hAuthzClientContext), InfoClass, BufferSize, util.toPointer(pSizeRequired), util.toPointer(Buffer)));
 }
 
 export function AuthzFreeContext(
   hAuthzClientContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_CLIENT_CONTEXT_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeContext(util.toPointer(hAuthzClientContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeContext!(util.toPointer(hAuthzClientContext)));
 }
 
 export function AuthzInitializeObjectAccessAuditEvent(
@@ -9309,7 +9399,7 @@ export function AuthzInitializeObjectAccessAuditEvent(
   phAuditEvent: Deno.PointerValue | Uint8Array /* ptr */,
   dwAdditionalParameterCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeObjectAccessAuditEvent(Flags, util.toPointer(hAuditEventType), util.pwstrToFfi(szOperationType), util.pwstrToFfi(szObjectType), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szAdditionalInfo), util.toPointer(phAuditEvent), dwAdditionalParameterCount));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeObjectAccessAuditEvent!(Flags, util.toPointer(hAuditEventType), util.pwstrToFfi(szOperationType), util.pwstrToFfi(szObjectType), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szAdditionalInfo), util.toPointer(phAuditEvent), dwAdditionalParameterCount));
 }
 
 export function AuthzInitializeObjectAccessAuditEvent2(
@@ -9323,13 +9413,13 @@ export function AuthzInitializeObjectAccessAuditEvent2(
   phAuditEvent: Deno.PointerValue | Uint8Array /* ptr */,
   dwAdditionalParameterCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeObjectAccessAuditEvent2(Flags, util.toPointer(hAuditEventType), util.pwstrToFfi(szOperationType), util.pwstrToFfi(szObjectType), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szAdditionalInfo), util.pwstrToFfi(szAdditionalInfo2), util.toPointer(phAuditEvent), dwAdditionalParameterCount));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInitializeObjectAccessAuditEvent2!(Flags, util.toPointer(hAuditEventType), util.pwstrToFfi(szOperationType), util.pwstrToFfi(szObjectType), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szAdditionalInfo), util.pwstrToFfi(szAdditionalInfo2), util.toPointer(phAuditEvent), dwAdditionalParameterCount));
 }
 
 export function AuthzFreeAuditEvent(
   hAuditEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.AUTHZ_AUDIT_EVENT_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeAuditEvent(util.toPointer(hAuditEvent)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeAuditEvent!(util.toPointer(hAuditEvent)));
 }
 
 export function AuthzEvaluateSacl(
@@ -9340,21 +9430,21 @@ export function AuthzEvaluateSacl(
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
   pbGenerateAudit: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzEvaluateSacl(util.toPointer(AuthzClientContext), util.toPointer(pRequest), util.toPointer(Sacl), GrantedAccess, util.boolToFfi(AccessGranted), util.toPointer(pbGenerateAudit)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzEvaluateSacl!(util.toPointer(AuthzClientContext), util.toPointer(pRequest), util.toPointer(Sacl), GrantedAccess, util.boolToFfi(AccessGranted), util.toPointer(pbGenerateAudit)));
 }
 
 export function AuthzInstallSecurityEventSource(
   dwFlags: number /* u32 */,
   pRegistration: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzInstallSecurityEventSource(dwFlags, util.toPointer(pRegistration)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzInstallSecurityEventSource!(dwFlags, util.toPointer(pRegistration)));
 }
 
 export function AuthzUninstallSecurityEventSource(
   dwFlags: number /* u32 */,
   szEventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzUninstallSecurityEventSource(dwFlags, util.pwstrToFfi(szEventSourceName)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzUninstallSecurityEventSource!(dwFlags, util.pwstrToFfi(szEventSourceName)));
 }
 
 export function AuthzEnumerateSecurityEventSources(
@@ -9363,7 +9453,7 @@ export function AuthzEnumerateSecurityEventSources(
   pdwCount: Deno.PointerValue | Uint8Array /* ptr */,
   pdwLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzEnumerateSecurityEventSources(dwFlags, util.toPointer(Buffer), util.toPointer(pdwCount), util.toPointer(pdwLength)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzEnumerateSecurityEventSources!(dwFlags, util.toPointer(Buffer), util.toPointer(pdwCount), util.toPointer(pdwLength)));
 }
 
 export function AuthzRegisterSecurityEventSource(
@@ -9371,14 +9461,14 @@ export function AuthzRegisterSecurityEventSource(
   szEventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phEventProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzRegisterSecurityEventSource(dwFlags, util.pwstrToFfi(szEventSourceName), util.toPointer(phEventProvider)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzRegisterSecurityEventSource!(dwFlags, util.pwstrToFfi(szEventSourceName), util.toPointer(phEventProvider)));
 }
 
 export function AuthzUnregisterSecurityEventSource(
   dwFlags: number /* u32 */,
   phEventProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzUnregisterSecurityEventSource(dwFlags, util.toPointer(phEventProvider)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzUnregisterSecurityEventSource!(dwFlags, util.toPointer(phEventProvider)));
 }
 
 export function AuthzReportSecurityEvent(
@@ -9388,7 +9478,7 @@ export function AuthzReportSecurityEvent(
   pUserSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzReportSecurityEvent(dwFlags, util.toPointer(hEventProvider), dwAuditId, util.toPointer(pUserSid), dwCount));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzReportSecurityEvent!(dwFlags, util.toPointer(hEventProvider), dwAuditId, util.toPointer(pUserSid), dwCount));
 }
 
 export function AuthzReportSecurityEventFromParams(
@@ -9398,7 +9488,7 @@ export function AuthzReportSecurityEventFromParams(
   pUserSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   pParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzReportSecurityEventFromParams(dwFlags, util.toPointer(hEventProvider), dwAuditId, util.toPointer(pUserSid), util.toPointer(pParams)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzReportSecurityEventFromParams!(dwFlags, util.toPointer(hEventProvider), dwAuditId, util.toPointer(pUserSid), util.toPointer(pParams)));
 }
 
 export function AuthzRegisterCapChangeNotification(
@@ -9406,17 +9496,17 @@ export function AuthzRegisterCapChangeNotification(
   pfnCapChangeCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   pCallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzRegisterCapChangeNotification(util.toPointer(phCapChangeSubscription), util.toPointer(pfnCapChangeCallback), util.toPointer(pCallbackContext)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzRegisterCapChangeNotification!(util.toPointer(phCapChangeSubscription), util.toPointer(pfnCapChangeCallback), util.toPointer(pCallbackContext)));
 }
 
 export function AuthzUnregisterCapChangeNotification(
   hCapChangeSubscription: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzUnregisterCapChangeNotification(util.toPointer(hCapChangeSubscription)));
+  return util.boolFromFfi(libAUTHZ_dll.AuthzUnregisterCapChangeNotification!(util.toPointer(hCapChangeSubscription)));
 }
 
 export function AuthzFreeCentralAccessPolicyCache(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeCentralAccessPolicyCache());
+  return util.boolFromFfi(libAUTHZ_dll.AuthzFreeCentralAccessPolicyCache!());
 }
 
 export function SetEntriesInAclA(
@@ -9425,7 +9515,7 @@ export function SetEntriesInAclA(
   OldAcl: Deno.PointerValue | Uint8Array /* ptr */,
   NewAcl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetEntriesInAclA(cCountOfExplicitEntries, util.toPointer(pListOfExplicitEntries), util.toPointer(OldAcl), util.toPointer(NewAcl));
+  return libADVAPI32_dll.SetEntriesInAclA!(cCountOfExplicitEntries, util.toPointer(pListOfExplicitEntries), util.toPointer(OldAcl), util.toPointer(NewAcl));
 }
 
 export function SetEntriesInAclW(
@@ -9434,7 +9524,7 @@ export function SetEntriesInAclW(
   OldAcl: Deno.PointerValue | Uint8Array /* ptr */,
   NewAcl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetEntriesInAclW(cCountOfExplicitEntries, util.toPointer(pListOfExplicitEntries), util.toPointer(OldAcl), util.toPointer(NewAcl));
+  return libADVAPI32_dll.SetEntriesInAclW!(cCountOfExplicitEntries, util.toPointer(pListOfExplicitEntries), util.toPointer(OldAcl), util.toPointer(NewAcl));
 }
 
 export function GetExplicitEntriesFromAclA(
@@ -9442,7 +9532,7 @@ export function GetExplicitEntriesFromAclA(
   pcCountOfExplicitEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pListOfExplicitEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetExplicitEntriesFromAclA(util.toPointer(pacl), util.toPointer(pcCountOfExplicitEntries), util.toPointer(pListOfExplicitEntries));
+  return libADVAPI32_dll.GetExplicitEntriesFromAclA!(util.toPointer(pacl), util.toPointer(pcCountOfExplicitEntries), util.toPointer(pListOfExplicitEntries));
 }
 
 export function GetExplicitEntriesFromAclW(
@@ -9450,7 +9540,7 @@ export function GetExplicitEntriesFromAclW(
   pcCountOfExplicitEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pListOfExplicitEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetExplicitEntriesFromAclW(util.toPointer(pacl), util.toPointer(pcCountOfExplicitEntries), util.toPointer(pListOfExplicitEntries));
+  return libADVAPI32_dll.GetExplicitEntriesFromAclW!(util.toPointer(pacl), util.toPointer(pcCountOfExplicitEntries), util.toPointer(pListOfExplicitEntries));
 }
 
 export function GetEffectiveRightsFromAclA(
@@ -9458,7 +9548,7 @@ export function GetEffectiveRightsFromAclA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pAccessRights: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetEffectiveRightsFromAclA(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pAccessRights));
+  return libADVAPI32_dll.GetEffectiveRightsFromAclA!(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pAccessRights));
 }
 
 export function GetEffectiveRightsFromAclW(
@@ -9466,7 +9556,7 @@ export function GetEffectiveRightsFromAclW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pAccessRights: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetEffectiveRightsFromAclW(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pAccessRights));
+  return libADVAPI32_dll.GetEffectiveRightsFromAclW!(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pAccessRights));
 }
 
 export function GetAuditedPermissionsFromAclA(
@@ -9475,7 +9565,7 @@ export function GetAuditedPermissionsFromAclA(
   pSuccessfulAuditedRights: Deno.PointerValue | Uint8Array /* ptr */,
   pFailedAuditRights: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetAuditedPermissionsFromAclA(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pSuccessfulAuditedRights), util.toPointer(pFailedAuditRights));
+  return libADVAPI32_dll.GetAuditedPermissionsFromAclA!(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pSuccessfulAuditedRights), util.toPointer(pFailedAuditRights));
 }
 
 export function GetAuditedPermissionsFromAclW(
@@ -9484,7 +9574,7 @@ export function GetAuditedPermissionsFromAclW(
   pSuccessfulAuditedRights: Deno.PointerValue | Uint8Array /* ptr */,
   pFailedAuditRights: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetAuditedPermissionsFromAclW(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pSuccessfulAuditedRights), util.toPointer(pFailedAuditRights));
+  return libADVAPI32_dll.GetAuditedPermissionsFromAclW!(util.toPointer(pacl), util.toPointer(pTrustee), util.toPointer(pSuccessfulAuditedRights), util.toPointer(pFailedAuditRights));
 }
 
 export function GetNamedSecurityInfoA(
@@ -9497,7 +9587,7 @@ export function GetNamedSecurityInfoA(
   ppSacl: Deno.PointerValue | Uint8Array /* ptr */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.GetNamedSecurityInfoA(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
+  return libADVAPI32_dll.GetNamedSecurityInfoA!(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
 }
 
 export function GetNamedSecurityInfoW(
@@ -9510,7 +9600,7 @@ export function GetNamedSecurityInfoW(
   ppSacl: Deno.PointerValue | Uint8Array /* ptr */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.GetNamedSecurityInfoW(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
+  return libADVAPI32_dll.GetNamedSecurityInfoW!(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
 }
 
 export function GetSecurityInfo(
@@ -9523,7 +9613,7 @@ export function GetSecurityInfo(
   ppSacl: Deno.PointerValue | Uint8Array /* ptr */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.GetSecurityInfo(util.toPointer(handle), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
+  return libADVAPI32_dll.GetSecurityInfo!(util.toPointer(handle), ObjectType, SecurityInfo, util.toPointer(ppsidOwner), util.toPointer(ppsidGroup), util.toPointer(ppDacl), util.toPointer(ppSacl), util.toPointer(ppSecurityDescriptor));
 }
 
 export function SetNamedSecurityInfoA(
@@ -9535,7 +9625,7 @@ export function SetNamedSecurityInfoA(
   pDacl: Deno.PointerValue | Uint8Array /* ptr */,
   pSacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetNamedSecurityInfoA(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
+  return libADVAPI32_dll.SetNamedSecurityInfoA!(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
 }
 
 export function SetNamedSecurityInfoW(
@@ -9547,7 +9637,7 @@ export function SetNamedSecurityInfoW(
   pDacl: Deno.PointerValue | Uint8Array /* ptr */,
   pSacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetNamedSecurityInfoW(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
+  return libADVAPI32_dll.SetNamedSecurityInfoW!(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
 }
 
 export function SetSecurityInfo(
@@ -9559,7 +9649,7 @@ export function SetSecurityInfo(
   pDacl: Deno.PointerValue | Uint8Array /* ptr */,
   pSacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetSecurityInfo(util.toPointer(handle), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
+  return libADVAPI32_dll.SetSecurityInfo!(util.toPointer(handle), ObjectType, SecurityInfo, util.toPointer(psidOwner), util.toPointer(psidGroup), util.toPointer(pDacl), util.toPointer(pSacl));
 }
 
 export function GetInheritanceSourceA(
@@ -9574,7 +9664,7 @@ export function GetInheritanceSourceA(
   pGenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
   pInheritArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetInheritanceSourceA(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.boolToFfi(Container), util.toPointer(pObjectClassGuids), GuidCount, util.toPointer(pAcl), util.toPointer(pfnArray), util.toPointer(pGenericMapping), util.toPointer(pInheritArray));
+  return libADVAPI32_dll.GetInheritanceSourceA!(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.boolToFfi(Container), util.toPointer(pObjectClassGuids), GuidCount, util.toPointer(pAcl), util.toPointer(pfnArray), util.toPointer(pGenericMapping), util.toPointer(pInheritArray));
 }
 
 export function GetInheritanceSourceW(
@@ -9589,7 +9679,7 @@ export function GetInheritanceSourceW(
   pGenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
   pInheritArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetInheritanceSourceW(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.boolToFfi(Container), util.toPointer(pObjectClassGuids), GuidCount, util.toPointer(pAcl), util.toPointer(pfnArray), util.toPointer(pGenericMapping), util.toPointer(pInheritArray));
+  return libADVAPI32_dll.GetInheritanceSourceW!(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.boolToFfi(Container), util.toPointer(pObjectClassGuids), GuidCount, util.toPointer(pAcl), util.toPointer(pfnArray), util.toPointer(pGenericMapping), util.toPointer(pInheritArray));
 }
 
 export function FreeInheritedFromArray(
@@ -9597,7 +9687,7 @@ export function FreeInheritedFromArray(
   AceCnt: number /* u16 */,
   pfnArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.FreeInheritedFromArray(util.toPointer(pInheritArray), AceCnt, util.toPointer(pfnArray));
+  return libADVAPI32_dll.FreeInheritedFromArray!(util.toPointer(pInheritArray), AceCnt, util.toPointer(pfnArray));
 }
 
 export function TreeResetNamedSecurityInfoA(
@@ -9613,7 +9703,7 @@ export function TreeResetNamedSecurityInfoA(
   ProgressInvokeSetting: PROG_INVOKE_SETTING /* Windows.Win32.Security.Authorization.PROG_INVOKE_SETTING */,
   Args: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.TreeResetNamedSecurityInfoA(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), util.boolToFfi(KeepExplicit), util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
+  return libADVAPI32_dll.TreeResetNamedSecurityInfoA!(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), util.boolToFfi(KeepExplicit), util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
 }
 
 export function TreeResetNamedSecurityInfoW(
@@ -9629,7 +9719,7 @@ export function TreeResetNamedSecurityInfoW(
   ProgressInvokeSetting: PROG_INVOKE_SETTING /* Windows.Win32.Security.Authorization.PROG_INVOKE_SETTING */,
   Args: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.TreeResetNamedSecurityInfoW(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), util.boolToFfi(KeepExplicit), util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
+  return libADVAPI32_dll.TreeResetNamedSecurityInfoW!(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), util.boolToFfi(KeepExplicit), util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
 }
 
 export function TreeSetNamedSecurityInfoA(
@@ -9645,7 +9735,7 @@ export function TreeSetNamedSecurityInfoA(
   ProgressInvokeSetting: PROG_INVOKE_SETTING /* Windows.Win32.Security.Authorization.PROG_INVOKE_SETTING */,
   Args: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.TreeSetNamedSecurityInfoA(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), dwAction, util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
+  return libADVAPI32_dll.TreeSetNamedSecurityInfoA!(util.pstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), dwAction, util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
 }
 
 export function TreeSetNamedSecurityInfoW(
@@ -9661,7 +9751,7 @@ export function TreeSetNamedSecurityInfoW(
   ProgressInvokeSetting: PROG_INVOKE_SETTING /* Windows.Win32.Security.Authorization.PROG_INVOKE_SETTING */,
   Args: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.TreeSetNamedSecurityInfoW(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), dwAction, util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
+  return libADVAPI32_dll.TreeSetNamedSecurityInfoW!(util.pwstrToFfi(pObjectName), ObjectType, SecurityInfo, util.toPointer(pOwner), util.toPointer(pGroup), util.toPointer(pDacl), util.toPointer(pSacl), dwAction, util.toPointer(fnProgress), ProgressInvokeSetting, util.toPointer(Args));
 }
 
 export function BuildSecurityDescriptorA(
@@ -9675,7 +9765,7 @@ export function BuildSecurityDescriptorA(
   pSizeNewSD: Deno.PointerValue | Uint8Array /* ptr */,
   pNewSD: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.BuildSecurityDescriptorA(util.toPointer(pOwner), util.toPointer(pGroup), cCountOfAccessEntries, util.toPointer(pListOfAccessEntries), cCountOfAuditEntries, util.toPointer(pListOfAuditEntries), util.toPointer(pOldSD), util.toPointer(pSizeNewSD), util.toPointer(pNewSD));
+  return libADVAPI32_dll.BuildSecurityDescriptorA!(util.toPointer(pOwner), util.toPointer(pGroup), cCountOfAccessEntries, util.toPointer(pListOfAccessEntries), cCountOfAuditEntries, util.toPointer(pListOfAuditEntries), util.toPointer(pOldSD), util.toPointer(pSizeNewSD), util.toPointer(pNewSD));
 }
 
 export function BuildSecurityDescriptorW(
@@ -9689,7 +9779,7 @@ export function BuildSecurityDescriptorW(
   pSizeNewSD: Deno.PointerValue | Uint8Array /* ptr */,
   pNewSD: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.BuildSecurityDescriptorW(util.toPointer(pOwner), util.toPointer(pGroup), cCountOfAccessEntries, util.toPointer(pListOfAccessEntries), cCountOfAuditEntries, util.toPointer(pListOfAuditEntries), util.toPointer(pOldSD), util.toPointer(pSizeNewSD), util.toPointer(pNewSD));
+  return libADVAPI32_dll.BuildSecurityDescriptorW!(util.toPointer(pOwner), util.toPointer(pGroup), cCountOfAccessEntries, util.toPointer(pListOfAccessEntries), cCountOfAuditEntries, util.toPointer(pListOfAuditEntries), util.toPointer(pOldSD), util.toPointer(pSizeNewSD), util.toPointer(pNewSD));
 }
 
 export function LookupSecurityDescriptorPartsA(
@@ -9701,7 +9791,7 @@ export function LookupSecurityDescriptorPartsA(
   ppListOfAuditEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.LookupSecurityDescriptorPartsA(util.toPointer(ppOwner), util.toPointer(ppGroup), util.toPointer(pcCountOfAccessEntries), util.toPointer(ppListOfAccessEntries), util.toPointer(pcCountOfAuditEntries), util.toPointer(ppListOfAuditEntries), util.toPointer(pSD));
+  return libADVAPI32_dll.LookupSecurityDescriptorPartsA!(util.toPointer(ppOwner), util.toPointer(ppGroup), util.toPointer(pcCountOfAccessEntries), util.toPointer(ppListOfAccessEntries), util.toPointer(pcCountOfAuditEntries), util.toPointer(ppListOfAuditEntries), util.toPointer(pSD));
 }
 
 export function LookupSecurityDescriptorPartsW(
@@ -9713,7 +9803,7 @@ export function LookupSecurityDescriptorPartsW(
   ppListOfAuditEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.LookupSecurityDescriptorPartsW(util.toPointer(ppOwner), util.toPointer(ppGroup), util.toPointer(pcCountOfAccessEntries), util.toPointer(ppListOfAccessEntries), util.toPointer(pcCountOfAuditEntries), util.toPointer(ppListOfAuditEntries), util.toPointer(pSD));
+  return libADVAPI32_dll.LookupSecurityDescriptorPartsW!(util.toPointer(ppOwner), util.toPointer(ppGroup), util.toPointer(pcCountOfAccessEntries), util.toPointer(ppListOfAccessEntries), util.toPointer(pcCountOfAuditEntries), util.toPointer(ppListOfAuditEntries), util.toPointer(pSD));
 }
 
 export function BuildExplicitAccessWithNameA(
@@ -9723,7 +9813,7 @@ export function BuildExplicitAccessWithNameA(
   AccessMode: ACCESS_MODE /* Windows.Win32.Security.Authorization.ACCESS_MODE */,
   Inheritance: ACE_FLAGS /* Windows.Win32.Security.ACE_FLAGS */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildExplicitAccessWithNameA(util.toPointer(pExplicitAccess), util.pstrToFfi(pTrusteeName), AccessPermissions, AccessMode, Inheritance);
+  return libADVAPI32_dll.BuildExplicitAccessWithNameA!(util.toPointer(pExplicitAccess), util.pstrToFfi(pTrusteeName), AccessPermissions, AccessMode, Inheritance);
 }
 
 export function BuildExplicitAccessWithNameW(
@@ -9733,7 +9823,7 @@ export function BuildExplicitAccessWithNameW(
   AccessMode: ACCESS_MODE /* Windows.Win32.Security.Authorization.ACCESS_MODE */,
   Inheritance: ACE_FLAGS /* Windows.Win32.Security.ACE_FLAGS */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildExplicitAccessWithNameW(util.toPointer(pExplicitAccess), util.pwstrToFfi(pTrusteeName), AccessPermissions, AccessMode, Inheritance);
+  return libADVAPI32_dll.BuildExplicitAccessWithNameW!(util.toPointer(pExplicitAccess), util.pwstrToFfi(pTrusteeName), AccessPermissions, AccessMode, Inheritance);
 }
 
 export function BuildImpersonateExplicitAccessWithNameA(
@@ -9744,7 +9834,7 @@ export function BuildImpersonateExplicitAccessWithNameA(
   AccessMode: ACCESS_MODE /* Windows.Win32.Security.Authorization.ACCESS_MODE */,
   Inheritance: number /* u32 */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildImpersonateExplicitAccessWithNameA(util.toPointer(pExplicitAccess), util.pstrToFfi(pTrusteeName), util.toPointer(pTrustee), AccessPermissions, AccessMode, Inheritance);
+  return libADVAPI32_dll.BuildImpersonateExplicitAccessWithNameA!(util.toPointer(pExplicitAccess), util.pstrToFfi(pTrusteeName), util.toPointer(pTrustee), AccessPermissions, AccessMode, Inheritance);
 }
 
 export function BuildImpersonateExplicitAccessWithNameW(
@@ -9755,49 +9845,49 @@ export function BuildImpersonateExplicitAccessWithNameW(
   AccessMode: ACCESS_MODE /* Windows.Win32.Security.Authorization.ACCESS_MODE */,
   Inheritance: number /* u32 */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildImpersonateExplicitAccessWithNameW(util.toPointer(pExplicitAccess), util.pwstrToFfi(pTrusteeName), util.toPointer(pTrustee), AccessPermissions, AccessMode, Inheritance);
+  return libADVAPI32_dll.BuildImpersonateExplicitAccessWithNameW!(util.toPointer(pExplicitAccess), util.pwstrToFfi(pTrusteeName), util.toPointer(pTrustee), AccessPermissions, AccessMode, Inheritance);
 }
 
 export function BuildTrusteeWithNameA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithNameA(util.toPointer(pTrustee), util.pstrToFfi(pName));
+  return libADVAPI32_dll.BuildTrusteeWithNameA!(util.toPointer(pTrustee), util.pstrToFfi(pName));
 }
 
 export function BuildTrusteeWithNameW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithNameW(util.toPointer(pTrustee), util.pwstrToFfi(pName));
+  return libADVAPI32_dll.BuildTrusteeWithNameW!(util.toPointer(pTrustee), util.pwstrToFfi(pName));
 }
 
 export function BuildImpersonateTrusteeA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pImpersonateTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildImpersonateTrusteeA(util.toPointer(pTrustee), util.toPointer(pImpersonateTrustee));
+  return libADVAPI32_dll.BuildImpersonateTrusteeA!(util.toPointer(pTrustee), util.toPointer(pImpersonateTrustee));
 }
 
 export function BuildImpersonateTrusteeW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pImpersonateTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildImpersonateTrusteeW(util.toPointer(pTrustee), util.toPointer(pImpersonateTrustee));
+  return libADVAPI32_dll.BuildImpersonateTrusteeW!(util.toPointer(pTrustee), util.toPointer(pImpersonateTrustee));
 }
 
 export function BuildTrusteeWithSidA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithSidA(util.toPointer(pTrustee), util.toPointer(pSid));
+  return libADVAPI32_dll.BuildTrusteeWithSidA!(util.toPointer(pTrustee), util.toPointer(pSid));
 }
 
 export function BuildTrusteeWithSidW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithSidW(util.toPointer(pTrustee), util.toPointer(pSid));
+  return libADVAPI32_dll.BuildTrusteeWithSidW!(util.toPointer(pTrustee), util.toPointer(pSid));
 }
 
 export function BuildTrusteeWithObjectsAndSidA(
@@ -9807,7 +9897,7 @@ export function BuildTrusteeWithObjectsAndSidA(
   pInheritedObjectGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithObjectsAndSidA(util.toPointer(pTrustee), util.toPointer(pObjSid), util.toPointer(pObjectGuid), util.toPointer(pInheritedObjectGuid), util.toPointer(pSid));
+  return libADVAPI32_dll.BuildTrusteeWithObjectsAndSidA!(util.toPointer(pTrustee), util.toPointer(pObjSid), util.toPointer(pObjectGuid), util.toPointer(pInheritedObjectGuid), util.toPointer(pSid));
 }
 
 export function BuildTrusteeWithObjectsAndSidW(
@@ -9817,7 +9907,7 @@ export function BuildTrusteeWithObjectsAndSidW(
   pInheritedObjectGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithObjectsAndSidW(util.toPointer(pTrustee), util.toPointer(pObjSid), util.toPointer(pObjectGuid), util.toPointer(pInheritedObjectGuid), util.toPointer(pSid));
+  return libADVAPI32_dll.BuildTrusteeWithObjectsAndSidW!(util.toPointer(pTrustee), util.toPointer(pObjSid), util.toPointer(pObjectGuid), util.toPointer(pInheritedObjectGuid), util.toPointer(pSid));
 }
 
 export function BuildTrusteeWithObjectsAndNameA(
@@ -9828,7 +9918,7 @@ export function BuildTrusteeWithObjectsAndNameA(
   InheritedObjectTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithObjectsAndNameA(util.toPointer(pTrustee), util.toPointer(pObjName), ObjectType, util.pstrToFfi(ObjectTypeName), util.pstrToFfi(InheritedObjectTypeName), util.pstrToFfi(Name));
+  return libADVAPI32_dll.BuildTrusteeWithObjectsAndNameA!(util.toPointer(pTrustee), util.toPointer(pObjName), ObjectType, util.pstrToFfi(ObjectTypeName), util.pstrToFfi(InheritedObjectTypeName), util.pstrToFfi(Name));
 }
 
 export function BuildTrusteeWithObjectsAndNameW(
@@ -9839,95 +9929,95 @@ export function BuildTrusteeWithObjectsAndNameW(
   InheritedObjectTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libADVAPI32_dll.BuildTrusteeWithObjectsAndNameW(util.toPointer(pTrustee), util.toPointer(pObjName), ObjectType, util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(InheritedObjectTypeName), util.pwstrToFfi(Name));
+  return libADVAPI32_dll.BuildTrusteeWithObjectsAndNameW!(util.toPointer(pTrustee), util.toPointer(pObjName), ObjectType, util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(InheritedObjectTypeName), util.pwstrToFfi(Name));
 }
 
 export function GetTrusteeNameA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libADVAPI32_dll.GetTrusteeNameA(util.toPointer(pTrustee)));
+  return util.pstrFromFfi(libADVAPI32_dll.GetTrusteeNameA!(util.toPointer(pTrustee)));
 }
 
 export function GetTrusteeNameW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libADVAPI32_dll.GetTrusteeNameW(util.toPointer(pTrustee)));
+  return util.pwstrFromFfi(libADVAPI32_dll.GetTrusteeNameW!(util.toPointer(pTrustee)));
 }
 
 export function GetTrusteeTypeA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): TRUSTEE_TYPE /* Windows.Win32.Security.Authorization.TRUSTEE_TYPE */ {
-  return libADVAPI32_dll.GetTrusteeTypeA(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetTrusteeTypeA!(util.toPointer(pTrustee));
 }
 
 export function GetTrusteeTypeW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): TRUSTEE_TYPE /* Windows.Win32.Security.Authorization.TRUSTEE_TYPE */ {
-  return libADVAPI32_dll.GetTrusteeTypeW(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetTrusteeTypeW!(util.toPointer(pTrustee));
 }
 
 export function GetTrusteeFormA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): TRUSTEE_FORM /* Windows.Win32.Security.Authorization.TRUSTEE_FORM */ {
-  return libADVAPI32_dll.GetTrusteeFormA(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetTrusteeFormA!(util.toPointer(pTrustee));
 }
 
 export function GetTrusteeFormW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): TRUSTEE_FORM /* Windows.Win32.Security.Authorization.TRUSTEE_FORM */ {
-  return libADVAPI32_dll.GetTrusteeFormW(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetTrusteeFormW!(util.toPointer(pTrustee));
 }
 
 export function GetMultipleTrusteeOperationA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): MULTIPLE_TRUSTEE_OPERATION /* Windows.Win32.Security.Authorization.MULTIPLE_TRUSTEE_OPERATION */ {
-  return libADVAPI32_dll.GetMultipleTrusteeOperationA(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetMultipleTrusteeOperationA!(util.toPointer(pTrustee));
 }
 
 export function GetMultipleTrusteeOperationW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): MULTIPLE_TRUSTEE_OPERATION /* Windows.Win32.Security.Authorization.MULTIPLE_TRUSTEE_OPERATION */ {
-  return libADVAPI32_dll.GetMultipleTrusteeOperationW(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetMultipleTrusteeOperationW!(util.toPointer(pTrustee));
 }
 
 export function GetMultipleTrusteeA(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.GetMultipleTrusteeA(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetMultipleTrusteeA!(util.toPointer(pTrustee));
 }
 
 export function GetMultipleTrusteeW(
   pTrustee: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.GetMultipleTrusteeW(util.toPointer(pTrustee));
+  return libADVAPI32_dll.GetMultipleTrusteeW!(util.toPointer(pTrustee));
 }
 
 export function ConvertSidToStringSidA(
   Sid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   StringSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertSidToStringSidA(util.toPointer(Sid), util.toPointer(StringSid)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertSidToStringSidA!(util.toPointer(Sid), util.toPointer(StringSid)));
 }
 
 export function ConvertSidToStringSidW(
   Sid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   StringSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertSidToStringSidW(util.toPointer(Sid), util.toPointer(StringSid)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertSidToStringSidW!(util.toPointer(Sid), util.toPointer(StringSid)));
 }
 
 export function ConvertStringSidToSidA(
   StringSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Sid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSidToSidA(util.pstrToFfi(StringSid), util.toPointer(Sid)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSidToSidA!(util.pstrToFfi(StringSid), util.toPointer(Sid)));
 }
 
 export function ConvertStringSidToSidW(
   StringSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Sid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSidToSidW(util.pwstrToFfi(StringSid), util.toPointer(Sid)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSidToSidW!(util.pwstrToFfi(StringSid), util.toPointer(Sid)));
 }
 
 export function ConvertStringSecurityDescriptorToSecurityDescriptorA(
@@ -9936,7 +10026,7 @@ export function ConvertStringSecurityDescriptorToSecurityDescriptorA(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptorSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSecurityDescriptorToSecurityDescriptorA(util.pstrToFfi(StringSecurityDescriptor), StringSDRevision, util.toPointer(SecurityDescriptor), util.toPointer(SecurityDescriptorSize)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSecurityDescriptorToSecurityDescriptorA!(util.pstrToFfi(StringSecurityDescriptor), StringSDRevision, util.toPointer(SecurityDescriptor), util.toPointer(SecurityDescriptorSize)));
 }
 
 export function ConvertStringSecurityDescriptorToSecurityDescriptorW(
@@ -9945,7 +10035,7 @@ export function ConvertStringSecurityDescriptorToSecurityDescriptorW(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptorSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSecurityDescriptorToSecurityDescriptorW(util.pwstrToFfi(StringSecurityDescriptor), StringSDRevision, util.toPointer(SecurityDescriptor), util.toPointer(SecurityDescriptorSize)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertStringSecurityDescriptorToSecurityDescriptorW!(util.pwstrToFfi(StringSecurityDescriptor), StringSDRevision, util.toPointer(SecurityDescriptor), util.toPointer(SecurityDescriptorSize)));
 }
 
 export function ConvertSecurityDescriptorToStringSecurityDescriptorA(
@@ -9955,7 +10045,7 @@ export function ConvertSecurityDescriptorToStringSecurityDescriptorA(
   StringSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   StringSecurityDescriptorLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertSecurityDescriptorToStringSecurityDescriptorA(util.toPointer(SecurityDescriptor), RequestedStringSDRevision, SecurityInformation, util.toPointer(StringSecurityDescriptor), util.toPointer(StringSecurityDescriptorLen)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertSecurityDescriptorToStringSecurityDescriptorA!(util.toPointer(SecurityDescriptor), RequestedStringSDRevision, SecurityInformation, util.toPointer(StringSecurityDescriptor), util.toPointer(StringSecurityDescriptorLen)));
 }
 
 export function ConvertSecurityDescriptorToStringSecurityDescriptorW(
@@ -9965,6 +10055,6 @@ export function ConvertSecurityDescriptorToStringSecurityDescriptorW(
   StringSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   StringSecurityDescriptorLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertSecurityDescriptorToStringSecurityDescriptorW(util.toPointer(SecurityDescriptor), RequestedStringSDRevision, SecurityInformation, util.toPointer(StringSecurityDescriptor), util.toPointer(StringSecurityDescriptorLen)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertSecurityDescriptorToStringSecurityDescriptorW!(util.toPointer(SecurityDescriptor), RequestedStringSDRevision, SecurityInformation, util.toPointer(StringSecurityDescriptor), util.toPointer(StringSecurityDescriptorLen)));
 }
 

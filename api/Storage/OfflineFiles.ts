@@ -287,18 +287,22 @@ try {
     OfflineFilesEnable: {
       parameters: ["i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     OfflineFilesStart: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     OfflineFilesQueryStatus: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OfflineFilesQueryStatusEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -309,18 +313,18 @@ export function OfflineFilesEnable(
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
   pbRebootRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI_dll.OfflineFilesEnable(util.boolToFfi(bEnable), util.toPointer(pbRebootRequired));
+  return libCSCAPI_dll.OfflineFilesEnable!(util.boolToFfi(bEnable), util.toPointer(pbRebootRequired));
 }
 
 export function OfflineFilesStart(): number /* u32 */ {
-  return libCSCAPI_dll.OfflineFilesStart();
+  return libCSCAPI_dll.OfflineFilesStart!();
 }
 
 export function OfflineFilesQueryStatus(
   pbActive: Deno.PointerValue | Uint8Array /* ptr */,
   pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI_dll.OfflineFilesQueryStatus(util.toPointer(pbActive), util.toPointer(pbEnabled));
+  return libCSCAPI_dll.OfflineFilesQueryStatus!(util.toPointer(pbActive), util.toPointer(pbEnabled));
 }
 
 export function OfflineFilesQueryStatusEx(
@@ -328,6 +332,6 @@ export function OfflineFilesQueryStatusEx(
   pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
   pbAvailable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCSCAPI_dll.OfflineFilesQueryStatusEx(util.toPointer(pbActive), util.toPointer(pbEnabled), util.toPointer(pbAvailable));
+  return libCSCAPI_dll.OfflineFilesQueryStatusEx!(util.toPointer(pbActive), util.toPointer(pbEnabled), util.toPointer(pbAvailable));
 }
 

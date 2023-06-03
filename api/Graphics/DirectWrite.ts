@@ -5113,6 +5113,7 @@ try {
     DWriteCreateFactory: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5124,6 +5125,6 @@ export function DWriteCreateFactory(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   factory: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDWrite_dll.DWriteCreateFactory(factoryType, util.toPointer(iid), util.toPointer(factory));
+  return libDWrite_dll.DWriteCreateFactory!(factoryType, util.toPointer(iid), util.toPointer(factory));
 }
 

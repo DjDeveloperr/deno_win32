@@ -1343,66 +1343,82 @@ try {
     NdfCreateIncident: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateWinSockIncident: {
       parameters: ["pointer", "buffer", "u16", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateWebIncident: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateWebIncidentEx: {
       parameters: ["buffer", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateSharingIncident: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateDNSIncident: {
       parameters: ["buffer", "u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateConnectivityIncident: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateNetConnectionIncident: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreatePnrpIncident: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCreateGroupingIncident: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfExecuteDiagnosis: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfCloseIncident: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfDiagnoseIncident: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NdfRepairIncident: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NdfCancelIncident: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NdfGetTraceFile: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1415,7 +1431,7 @@ export function NdfCreateIncident(
   attributes: Deno.PointerValue | Uint8Array /* ptr */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateIncident(util.pwstrToFfi(helperClassName), celt, util.toPointer(attributes), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateIncident!(util.pwstrToFfi(helperClassName), celt, util.toPointer(attributes), util.toPointer(handle));
 }
 
 export function NdfCreateWinSockIncident(
@@ -1426,14 +1442,14 @@ export function NdfCreateWinSockIncident(
   userId: Deno.PointerValue | Uint8Array /* ptr */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateWinSockIncident(util.toPointer(sock), util.pwstrToFfi(host), port, util.pwstrToFfi(appId), util.toPointer(userId), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateWinSockIncident!(util.toPointer(sock), util.pwstrToFfi(host), port, util.pwstrToFfi(appId), util.toPointer(userId), util.toPointer(handle));
 }
 
 export function NdfCreateWebIncident(
   url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateWebIncident(util.pwstrToFfi(url), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateWebIncident!(util.pwstrToFfi(url), util.toPointer(handle));
 }
 
 export function NdfCreateWebIncidentEx(
@@ -1442,14 +1458,14 @@ export function NdfCreateWebIncidentEx(
   moduleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateWebIncidentEx(util.pwstrToFfi(url), util.boolToFfi(useWinHTTP), util.pwstrToFfi(moduleName), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateWebIncidentEx!(util.pwstrToFfi(url), util.boolToFfi(useWinHTTP), util.pwstrToFfi(moduleName), util.toPointer(handle));
 }
 
 export function NdfCreateSharingIncident(
   UNCPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateSharingIncident(util.pwstrToFfi(UNCPath), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateSharingIncident!(util.pwstrToFfi(UNCPath), util.toPointer(handle));
 }
 
 export function NdfCreateDNSIncident(
@@ -1457,20 +1473,20 @@ export function NdfCreateDNSIncident(
   queryType: number /* u16 */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateDNSIncident(util.pwstrToFfi(hostname), queryType, util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateDNSIncident!(util.pwstrToFfi(hostname), queryType, util.toPointer(handle));
 }
 
 export function NdfCreateConnectivityIncident(
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateConnectivityIncident(util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateConnectivityIncident!(util.toPointer(handle));
 }
 
 export function NdfCreateNetConnectionIncident(
   handle: Deno.PointerValue | Uint8Array /* ptr */,
   id: Uint8Array | Deno.PointerValue /* System.Guid */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateNetConnectionIncident(util.toPointer(handle), util.toPointer(id));
+  return libNDFAPI_dll.NdfCreateNetConnectionIncident!(util.toPointer(handle), util.toPointer(id));
 }
 
 export function NdfCreatePnrpIncident(
@@ -1480,7 +1496,7 @@ export function NdfCreatePnrpIncident(
   appId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreatePnrpIncident(util.pwstrToFfi(cloudname), util.pwstrToFfi(peername), util.boolToFfi(diagnosePublish), util.pwstrToFfi(appId), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreatePnrpIncident!(util.pwstrToFfi(cloudname), util.pwstrToFfi(peername), util.boolToFfi(diagnosePublish), util.pwstrToFfi(appId), util.toPointer(handle));
 }
 
 export function NdfCreateGroupingIncident(
@@ -1492,20 +1508,20 @@ export function NdfCreateGroupingIncident(
   appId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCreateGroupingIncident(util.pwstrToFfi(CloudName), util.pwstrToFfi(GroupName), util.pwstrToFfi(Identity), util.pwstrToFfi(Invitation), util.toPointer(Addresses), util.pwstrToFfi(appId), util.toPointer(handle));
+  return libNDFAPI_dll.NdfCreateGroupingIncident!(util.pwstrToFfi(CloudName), util.pwstrToFfi(GroupName), util.pwstrToFfi(Identity), util.pwstrToFfi(Invitation), util.toPointer(Addresses), util.pwstrToFfi(appId), util.toPointer(handle));
 }
 
 export function NdfExecuteDiagnosis(
   handle: Deno.PointerValue | Uint8Array /* ptr */,
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfExecuteDiagnosis(util.toPointer(handle), (hwnd));
+  return libNDFAPI_dll.NdfExecuteDiagnosis!(util.toPointer(handle), (hwnd));
 }
 
 export function NdfCloseIncident(
   handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCloseIncident(util.toPointer(handle));
+  return libNDFAPI_dll.NdfCloseIncident!(util.toPointer(handle));
 }
 
 export function NdfDiagnoseIncident(
@@ -1515,7 +1531,7 @@ export function NdfDiagnoseIncident(
   dwWait: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfDiagnoseIncident(util.toPointer(Handle), util.toPointer(RootCauseCount), util.toPointer(RootCauses), dwWait, dwFlags);
+  return libNDFAPI_dll.NdfDiagnoseIncident!(util.toPointer(Handle), util.toPointer(RootCauseCount), util.toPointer(RootCauses), dwWait, dwFlags);
 }
 
 export function NdfRepairIncident(
@@ -1523,19 +1539,19 @@ export function NdfRepairIncident(
   RepairEx: Deno.PointerValue | Uint8Array /* ptr */,
   dwWait: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfRepairIncident(util.toPointer(Handle), util.toPointer(RepairEx), dwWait);
+  return libNDFAPI_dll.NdfRepairIncident!(util.toPointer(Handle), util.toPointer(RepairEx), dwWait);
 }
 
 export function NdfCancelIncident(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfCancelIncident(util.toPointer(Handle));
+  return libNDFAPI_dll.NdfCancelIncident!(util.toPointer(Handle));
 }
 
 export function NdfGetTraceFile(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
   TraceFileLocation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNDFAPI_dll.NdfGetTraceFile(util.toPointer(Handle), util.toPointer(TraceFileLocation));
+  return libNDFAPI_dll.NdfGetTraceFile!(util.toPointer(Handle), util.toPointer(TraceFileLocation));
 }
 

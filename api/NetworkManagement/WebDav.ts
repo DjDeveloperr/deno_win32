@@ -284,26 +284,32 @@ try {
     DavAddConnection: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DavDeleteConnection: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DavGetUNCFromHTTPPath: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DavGetHTTPFromUNCPath: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DavGetExtendedError: {
       parameters: ["pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DavFlushFile: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -313,22 +319,27 @@ try {
     DavGetTheLockOwnerOfTheFile: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DavInvalidateCache: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     DavCancelConnectionsToServer: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     DavRegisterAuthCallback: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DavUnregisterAuthCallback: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -343,13 +354,13 @@ export function DavAddConnection(
   ClientCert: Deno.PointerValue | Uint8Array /* ptr */,
   CertSize: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavAddConnection(util.toPointer(ConnectionHandle), util.pwstrToFfi(RemoteName), util.pwstrToFfi(UserName), util.pwstrToFfi(Password), util.toPointer(ClientCert), CertSize);
+  return libNETAPI32_dll.DavAddConnection!(util.toPointer(ConnectionHandle), util.pwstrToFfi(RemoteName), util.pwstrToFfi(UserName), util.pwstrToFfi(Password), util.toPointer(ClientCert), CertSize);
 }
 
 export function DavDeleteConnection(
   ConnectionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavDeleteConnection(util.toPointer(ConnectionHandle));
+  return libNETAPI32_dll.DavDeleteConnection!(util.toPointer(ConnectionHandle));
 }
 
 export function DavGetUNCFromHTTPPath(
@@ -357,7 +368,7 @@ export function DavGetUNCFromHTTPPath(
   UncPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavGetUNCFromHTTPPath(util.pwstrToFfi(Url), util.pwstrToFfi(UncPath), util.toPointer(lpSize));
+  return libNETAPI32_dll.DavGetUNCFromHTTPPath!(util.pwstrToFfi(Url), util.pwstrToFfi(UncPath), util.toPointer(lpSize));
 }
 
 export function DavGetHTTPFromUNCPath(
@@ -365,7 +376,7 @@ export function DavGetHTTPFromUNCPath(
   Url: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavGetHTTPFromUNCPath(util.pwstrToFfi(UncPath), util.pwstrToFfi(Url), util.toPointer(lpSize));
+  return libNETAPI32_dll.DavGetHTTPFromUNCPath!(util.pwstrToFfi(UncPath), util.pwstrToFfi(Url), util.toPointer(lpSize));
 }
 
 export function DavGetTheLockOwnerOfTheFile(
@@ -373,7 +384,7 @@ export function DavGetTheLockOwnerOfTheFile(
   LockOwnerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   LockOwnerNameLengthInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdavclnt_dll.DavGetTheLockOwnerOfTheFile(util.pwstrToFfi(FileName), util.pwstrToFfi(LockOwnerName), util.toPointer(LockOwnerNameLengthInBytes));
+  return libdavclnt_dll.DavGetTheLockOwnerOfTheFile!(util.pwstrToFfi(FileName), util.pwstrToFfi(LockOwnerName), util.toPointer(LockOwnerNameLengthInBytes));
 }
 
 export function DavGetExtendedError(
@@ -382,38 +393,38 @@ export function DavGetExtendedError(
   ExtErrorString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cChSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavGetExtendedError(util.toPointer(hFile), util.toPointer(ExtError), util.pwstrToFfi(ExtErrorString), util.toPointer(cChSize));
+  return libNETAPI32_dll.DavGetExtendedError!(util.toPointer(hFile), util.toPointer(ExtError), util.pwstrToFfi(ExtErrorString), util.toPointer(cChSize));
 }
 
 export function DavFlushFile(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DavFlushFile(util.toPointer(hFile));
+  return libNETAPI32_dll.DavFlushFile!(util.toPointer(hFile));
 }
 
 export function DavInvalidateCache(
   URLName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libdavclnt_dll.DavInvalidateCache(util.pwstrToFfi(URLName));
+  return libdavclnt_dll.DavInvalidateCache!(util.pwstrToFfi(URLName));
 }
 
 export function DavCancelConnectionsToServer(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libdavclnt_dll.DavCancelConnectionsToServer(util.pwstrToFfi(lpName), util.boolToFfi(fForce));
+  return libdavclnt_dll.DavCancelConnectionsToServer!(util.pwstrToFfi(lpName), util.boolToFfi(fForce));
 }
 
 export function DavRegisterAuthCallback(
   CallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.WebDav.PFNDAVAUTHCALLBACK */,
   Version: number /* u32 */,
 ): number /* u32 */ {
-  return libdavclnt_dll.DavRegisterAuthCallback(util.toPointer(CallBack), Version);
+  return libdavclnt_dll.DavRegisterAuthCallback!(util.toPointer(CallBack), Version);
 }
 
 export function DavUnregisterAuthCallback(
   hCallback: number /* u32 */,
 ): void /* void */ {
-  return libdavclnt_dll.DavUnregisterAuthCallback(hCallback);
+  return libdavclnt_dll.DavUnregisterAuthCallback!(hCallback);
 }
 

@@ -115,38 +115,47 @@ try {
     InitiateSystemShutdownA: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     InitiateSystemShutdownW: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     AbortSystemShutdownA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     AbortSystemShutdownW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     InitiateSystemShutdownExA: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     InitiateSystemShutdownExW: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     InitiateShutdownA: {
       parameters: ["buffer", "buffer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     InitiateShutdownW: {
       parameters: ["buffer", "buffer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     CheckForHiberboot: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -156,22 +165,27 @@ try {
     ExitWindowsEx: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     LockWorkStation: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     ShutdownBlockReasonCreate: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ShutdownBlockReasonQuery: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ShutdownBlockReasonDestroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -185,7 +199,7 @@ export function InitiateSystemShutdownA(
   bForceAppsClosed: boolean /* Windows.Win32.Foundation.BOOL */,
   bRebootAfterShutdown: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownA(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown)));
+  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownA!(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown)));
 }
 
 export function InitiateSystemShutdownW(
@@ -195,19 +209,19 @@ export function InitiateSystemShutdownW(
   bForceAppsClosed: boolean /* Windows.Win32.Foundation.BOOL */,
   bRebootAfterShutdown: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownW(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown)));
+  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownW!(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown)));
 }
 
 export function AbortSystemShutdownA(
   lpMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AbortSystemShutdownA(util.pstrToFfi(lpMachineName)));
+  return util.boolFromFfi(libADVAPI32_dll.AbortSystemShutdownA!(util.pstrToFfi(lpMachineName)));
 }
 
 export function AbortSystemShutdownW(
   lpMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AbortSystemShutdownW(util.pwstrToFfi(lpMachineName)));
+  return util.boolFromFfi(libADVAPI32_dll.AbortSystemShutdownW!(util.pwstrToFfi(lpMachineName)));
 }
 
 export function InitiateSystemShutdownExA(
@@ -218,7 +232,7 @@ export function InitiateSystemShutdownExA(
   bRebootAfterShutdown: boolean /* Windows.Win32.Foundation.BOOL */,
   dwReason: SHUTDOWN_REASON /* Windows.Win32.System.Shutdown.SHUTDOWN_REASON */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownExA(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown), dwReason));
+  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownExA!(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown), dwReason));
 }
 
 export function InitiateSystemShutdownExW(
@@ -229,7 +243,7 @@ export function InitiateSystemShutdownExW(
   bRebootAfterShutdown: boolean /* Windows.Win32.Foundation.BOOL */,
   dwReason: SHUTDOWN_REASON /* Windows.Win32.System.Shutdown.SHUTDOWN_REASON */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownExW(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown), dwReason));
+  return util.boolFromFfi(libADVAPI32_dll.InitiateSystemShutdownExW!(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwTimeout, util.boolToFfi(bForceAppsClosed), util.boolToFfi(bRebootAfterShutdown), dwReason));
 }
 
 export function InitiateShutdownA(
@@ -239,7 +253,7 @@ export function InitiateShutdownA(
   dwShutdownFlags: SHUTDOWN_FLAGS /* Windows.Win32.System.Shutdown.SHUTDOWN_FLAGS */,
   dwReason: SHUTDOWN_REASON /* Windows.Win32.System.Shutdown.SHUTDOWN_REASON */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.InitiateShutdownA(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwGracePeriod, dwShutdownFlags, dwReason);
+  return libADVAPI32_dll.InitiateShutdownA!(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpMessage), dwGracePeriod, dwShutdownFlags, dwReason);
 }
 
 export function InitiateShutdownW(
@@ -249,32 +263,32 @@ export function InitiateShutdownW(
   dwShutdownFlags: SHUTDOWN_FLAGS /* Windows.Win32.System.Shutdown.SHUTDOWN_FLAGS */,
   dwReason: SHUTDOWN_REASON /* Windows.Win32.System.Shutdown.SHUTDOWN_REASON */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.InitiateShutdownW(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwGracePeriod, dwShutdownFlags, dwReason);
+  return libADVAPI32_dll.InitiateShutdownW!(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMessage), dwGracePeriod, dwShutdownFlags, dwReason);
 }
 
 export function CheckForHiberboot(
   pHiberboot: Deno.PointerValue | Uint8Array /* ptr */,
   bClearFlag: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.CheckForHiberboot(util.toPointer(pHiberboot), util.toPointer(bClearFlag));
+  return libADVAPI32_dll.CheckForHiberboot!(util.toPointer(pHiberboot), util.toPointer(bClearFlag));
 }
 
 export function ExitWindowsEx(
   uFlags: EXIT_WINDOWS_FLAGS /* Windows.Win32.System.Shutdown.EXIT_WINDOWS_FLAGS */,
   dwReason: SHUTDOWN_REASON /* Windows.Win32.System.Shutdown.SHUTDOWN_REASON */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ExitWindowsEx(uFlags, dwReason));
+  return util.boolFromFfi(libUSER32_dll.ExitWindowsEx!(uFlags, dwReason));
 }
 
 export function LockWorkStation(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.LockWorkStation());
+  return util.boolFromFfi(libUSER32_dll.LockWorkStation!());
 }
 
 export function ShutdownBlockReasonCreate(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pwszReason: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonCreate((hWnd), util.pwstrToFfi(pwszReason)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonCreate!((hWnd), util.pwstrToFfi(pwszReason)));
 }
 
 export function ShutdownBlockReasonQuery(
@@ -282,12 +296,12 @@ export function ShutdownBlockReasonQuery(
   pwszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuff: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonQuery((hWnd), util.pwstrToFfi(pwszBuff), util.toPointer(pcchBuff)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonQuery!((hWnd), util.pwstrToFfi(pwszBuff), util.toPointer(pcchBuff)));
 }
 
 export function ShutdownBlockReasonDestroy(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonDestroy((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.ShutdownBlockReasonDestroy!((hWnd)));
 }
 

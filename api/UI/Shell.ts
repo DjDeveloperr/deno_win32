@@ -24442,62 +24442,77 @@ try {
     LoadUserProfileA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LoadUserProfileW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UnloadUserProfile: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProfilesDirectoryA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProfilesDirectoryW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProfileType: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteProfileA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeleteProfileW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CreateProfile: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetDefaultUserProfileDirectoryA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDefaultUserProfileDirectoryW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAllUsersProfileDirectoryA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAllUsersProfileDirectoryW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUserProfileDirectoryA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUserProfileDirectoryW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -24507,18 +24522,22 @@ try {
     SetWindowSubclass: {
       parameters: ["pointer", "pointer", "usize", "usize"],
       result: "i32",
+      optional: true,
     },
     GetWindowSubclass: {
       parameters: ["pointer", "pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     RemoveWindowSubclass: {
       parameters: ["pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     DefSubclassProc: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -24528,26 +24547,32 @@ try {
     SetWindowContextHelpId: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetWindowContextHelpId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetMenuContextHelpId: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuContextHelpId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WinHelpA: {
       parameters: ["pointer", "buffer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     WinHelpW: {
       parameters: ["pointer", "buffer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -24557,930 +24582,1162 @@ try {
     SHSimpleIDListFromPath: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateItemFromIDList: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateItemFromParsingName: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateItemWithParent: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateItemFromRelativeName: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateItemInKnownFolder: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetIDListFromObject: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetItemFromObject: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetNameFromIDList: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetItemFromDataObject: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellItemArray: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellItemArrayFromDataObject: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellItemArrayFromIDLists: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellItemArrayFromShellItem: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateAssociationRegistration: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateDefaultExtractIcon: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetCurrentProcessExplicitAppUserModelID: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentProcessExplicitAppUserModelID: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetTemporaryPropertyForItem: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetTemporaryPropertyForItem: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHShowManageLibraryUI: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHResolveLibrary: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHAssocEnumHandlers: {
       parameters: ["buffer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHAssocEnumHandlersForProtocolByApplication: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateDefaultPropertiesOp: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetDefaultProperties: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetMalloc: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHAlloc: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     SHFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SHGetIconOverlayIndexA: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHGetIconOverlayIndexW: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     ILClone: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ILCloneFirst: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ILCombine: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ILFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ILGetNext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ILGetSize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ILFindChild: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ILFindLastID: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ILRemoveLastID: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ILIsEqual: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ILIsParent: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ILSaveToStream: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ILLoadFromStreamEx: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ILCreateFromPathA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     ILCreateFromPathW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     SHILCreateFromPath: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ILAppendID: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHGetPathFromIDListEx: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SHGetPathFromIDListA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHGetPathFromIDListW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHCreateDirectory: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHCreateDirectoryExA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHCreateDirectoryExW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHOpenFolderAndSelectItems: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellItem: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetSpecialFolderLocation: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCloneSpecialIDList: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHGetSpecialFolderPathA: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SHGetSpecialFolderPathW: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SHFlushSFCache: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     SHGetFolderPathA: {
       parameters: ["pointer", "i32", "pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetFolderPathW: {
       parameters: ["pointer", "i32", "pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetFolderLocation: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetFolderPathA: {
       parameters: ["i32", "pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHSetFolderPathW: {
       parameters: ["i32", "pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetFolderPathAndSubDirA: {
       parameters: ["pointer", "i32", "pointer", "u32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetFolderPathAndSubDirW: {
       parameters: ["pointer", "i32", "pointer", "u32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetKnownFolderIDList: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetKnownFolderPath: {
       parameters: ["pointer", "u32", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetKnownFolderPath: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetKnownFolderItem: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetSetFolderCustomSettings: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHBrowseForFolderA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHBrowseForFolderW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHLoadInProc: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetDesktopFolder: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHChangeNotify: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     SHAddToRecentDocs: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     SHHandleUpdateImage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHUpdateImageA: {
       parameters: ["buffer", "i32", "u32", "i32"],
       result: "void",
+      optional: true,
     },
     SHUpdateImageW: {
       parameters: ["buffer", "i32", "u32", "i32"],
       result: "void",
+      optional: true,
     },
     SHChangeNotifyRegister: {
       parameters: ["pointer", "i32", "i32", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHChangeNotifyDeregister: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     SHChangeNotification_Lock: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHChangeNotification_Unlock: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHGetRealIDL: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetInstanceExplorer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetDataFromIDListA: {
       parameters: ["pointer", "pointer", "i32", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHGetDataFromIDListW: {
       parameters: ["pointer", "pointer", "i32", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RestartDialog: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     RestartDialogEx: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SHCoCreateInstance: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateDataObject: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CIDLData_CreateFromIDArray: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateStdEnumFmtEtc: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHDoDragDrop: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DAD_SetDragImage: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DAD_DragEnterEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DAD_DragEnterEx2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DAD_ShowDragImage: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     DAD_DragMove: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DAD_DragLeave: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     DAD_AutoScroll: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReadCabinetState: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     WriteCabinetState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PathMakeUniqueName: {
       parameters: ["buffer", "u32", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsExe: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathCleanupSpec: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     PathResolve: {
       parameters: ["buffer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetFileNameFromBrowse: {
       parameters: ["pointer", "buffer", "u32", "buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DriveType: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     RealDriveType: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     IsNetDrive: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     Shell_MergeMenus: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SHObjectProperties: {
       parameters: ["pointer", "i32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHFormatDrive: {
       parameters: ["pointer", "u32", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     SHDestroyPropSheetExtArray: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SHAddFromPropSheetExtArray: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHReplaceFromPropSheetExtArray: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenRegStream: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHFindFiles: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PathGetShortPath: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathYetAnotherMakeUniqueName: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     Win32DeleteFile: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SHRestricted: {
       parameters: ["i32"],
       result: "u32",
+      optional: true,
     },
     SignalFileOpen: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AssocGetDetailsOfPropKey: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHStartNetConnectionDialogW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHDefExtractIconA: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHDefExtractIconW: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHOpenWithDialog: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Shell_GetImageLists: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     Shell_GetCachedImageIndex: {
       parameters: ["buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     Shell_GetCachedImageIndexA: {
       parameters: ["buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     Shell_GetCachedImageIndexW: {
       parameters: ["buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     SHValidateUNC: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHSetInstanceExplorer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     IsUserAnAdmin: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SHShellFolderView_Message: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellFolderView: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CDefFolderMenu_Create2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateDefaultContextMenu: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHFind_InitMenuPopup: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellFolderViewEx: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetSetSettings: {
       parameters: ["pointer", "u32", "i32"],
       result: "void",
+      optional: true,
     },
     SHGetSettings: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     SHBindToParent: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHBindToFolderIDListParent: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHBindToFolderIDListParentEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHBindToObject: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHParseDisplayName: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHPathPrepareForWriteA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHPathPrepareForWriteW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateFileExtractIconW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHLimitInputEdit: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetAttributesFromDataObject: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHMapPIDLToSystemImageListIndex: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHCLSIDFromString: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PickIconDlg: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StgMakeUniqueName: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHChangeNotifyRegisterThread: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
     PathQualify: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathIsSlowA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathIsSlowW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHCreatePropSheetExtArray: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHOpenPropSheetW: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHMultiFileProperties: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateQueryCancelAutoPlayMoniker: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CommandLineToArgvW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DragQueryFileA: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DragQueryFileW: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DragQueryPoint: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DragFinish: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DragAcceptFiles: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     ShellExecuteA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ShellExecuteW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FindExecutableA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindExecutableW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ShellAboutA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ShellAboutW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DuplicateIcon: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractAssociatedIconA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractAssociatedIconW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractAssociatedIconExA: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractAssociatedIconExW: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractIconA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ExtractIconW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHAppBarMessage: {
       parameters: ["u32", "pointer"],
       result: "usize",
+      optional: true,
     },
     DoEnvironmentSubstA: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DoEnvironmentSubstW: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ExtractIconExA: {
       parameters: ["buffer", "i32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ExtractIconExW: {
       parameters: ["buffer", "i32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHFileOperationA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHFileOperationW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHFreeNameMappings: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ShellExecuteExA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ShellExecuteExW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHCreateProcessAsUserW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SHEvaluateSystemCommandTemplate: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocCreateForClasses: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHQueryRecycleBinA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHQueryRecycleBinW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHEmptyRecycleBinA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHEmptyRecycleBinW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHQueryUserNotificationState: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     Shell_NotifyIconA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     Shell_NotifyIconW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     Shell_NotifyIconGetRect: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetFileInfoA: {
       parameters: ["buffer", "u32", "pointer", "u32", "i32"],
       result: "usize",
+      optional: true,
     },
     SHGetFileInfoW: {
       parameters: ["buffer", "u32", "pointer", "u32", "i32"],
       result: "usize",
+      optional: true,
     },
     SHGetStockIconInfo: {
       parameters: ["i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetDiskFreeSpaceExA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHGetDiskFreeSpaceExW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHGetNewLinkInfoA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHGetNewLinkInfoW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHInvokePrinterCommandA: {
       parameters: ["pointer", "u32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHInvokePrinterCommandW: {
       parameters: ["pointer", "u32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHLoadNonloadedIconOverlayIdentifiers: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     SHIsFileAvailableOffline: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetLocalizedName: {
       parameters: ["buffer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHRemoveLocalizedName: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     SHGetLocalizedName: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsLFNDriveA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     IsLFNDriveW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SHEnumerateUnreadMailAccountsW: {
       parameters: ["pointer", "u32", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHGetUnreadMailCountW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SHSetUnreadMailCountW: {
       parameters: ["buffer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SHTestTokenMembership: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHGetImageList: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitNetworkAddressControl: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SHGetDriveMedia: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25490,34 +25747,42 @@ try {
     HMONITOR_UserSize: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HMONITOR_UserMarshal: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HMONITOR_UserUnmarshal: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HMONITOR_UserFree: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     HMONITOR_UserSize64: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HMONITOR_UserMarshal64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HMONITOR_UserUnmarshal64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HMONITOR_UserFree64: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25527,10 +25792,12 @@ try {
     SoftwareUpdateMessageBox: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImportPrivacySettings: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25540,14 +25807,17 @@ try {
     GetScaleFactorForDevice: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     RegisterScaleChangeNotifications: {
       parameters: ["i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RevokeScaleChangeNotifications: {
       parameters: ["i32", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25557,14 +25827,17 @@ try {
     GetScaleFactorForMonitor: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterScaleChangeEvent: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UnregisterScaleChangeEvent: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25574,6 +25847,7 @@ try {
     GetDpiForShellUIComponent: {
       parameters: ["i32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -25583,1442 +25857,1802 @@ try {
     ShellMessageBoxA: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ShellMessageBoxW: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     StrChrA: {
       parameters: ["buffer", "u16"],
       result: "buffer",
+      optional: true,
     },
     StrChrW: {
       parameters: ["buffer", "pointer"],
       result: "buffer",
+      optional: true,
     },
     StrChrIA: {
       parameters: ["buffer", "u16"],
       result: "buffer",
+      optional: true,
     },
     StrChrIW: {
       parameters: ["buffer", "pointer"],
       result: "buffer",
+      optional: true,
     },
     StrChrNW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrChrNIW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrCmpNA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNIA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNIW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCSpnA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCSpnW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCSpnIA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCSpnIW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrDupA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     StrDupW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     StrFormatByteSizeEx: {
       parameters: ["u64", "i32", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     StrFormatByteSizeA: {
       parameters: ["u32", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrFormatByteSize64A: {
       parameters: ["i64", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrFormatByteSizeW: {
       parameters: ["i64", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrFormatKBSizeW: {
       parameters: ["i64", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrFormatKBSizeA: {
       parameters: ["i64", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrFromTimeIntervalA: {
       parameters: ["buffer", "u32", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     StrFromTimeIntervalW: {
       parameters: ["buffer", "u32", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     StrIsIntlEqualA: {
       parameters: ["i32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrIsIntlEqualW: {
       parameters: ["i32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrNCatA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     StrNCatW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     StrPBrkA: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrPBrkW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrRChrA: {
       parameters: ["buffer", "buffer", "u16"],
       result: "buffer",
+      optional: true,
     },
     StrRChrW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "buffer",
+      optional: true,
     },
     StrRChrIA: {
       parameters: ["buffer", "buffer", "u16"],
       result: "buffer",
+      optional: true,
     },
     StrRChrIW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "buffer",
+      optional: true,
     },
     StrRStrIA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrRStrIW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrSpnA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrSpnW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrStrA: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrStrW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrStrIA: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrStrIW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrStrNW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrStrNIW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     StrToIntA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     StrToIntW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     StrToIntExA: {
       parameters: ["buffer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StrToIntExW: {
       parameters: ["buffer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StrToInt64ExA: {
       parameters: ["buffer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StrToInt64ExW: {
       parameters: ["buffer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StrTrimA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrTrimW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCatW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrCmpW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCmpIW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCpyW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     StrCpyNW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     StrCatBuffW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     StrCatBuffA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     ChrCmpIA: {
       parameters: ["u16", "u16"],
       result: "i32",
+      optional: true,
     },
     ChrCmpIW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     wvnsprintfA: {
       parameters: ["buffer", "i32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     wvnsprintfW: {
       parameters: ["buffer", "i32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     wnsprintfA: {
       parameters: ["buffer", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     wnsprintfW: {
       parameters: ["buffer", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrRetToStrA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StrRetToStrW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StrRetToBufA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     StrRetToBufW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHStrDupA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHStrDupW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StrCmpLogicalW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCatChainW: {
       parameters: ["buffer", "u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     StrRetToBSTR: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHLoadIndirectString: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsCharSpaceA: {
       parameters: ["u8"],
       result: "i32",
+      optional: true,
     },
     IsCharSpaceW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     StrCmpCA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCmpCW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCmpICA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCmpICW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StrCmpNCA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNCW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNICA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     StrCmpNICW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     IntlStrEqWorkerA: {
       parameters: ["i32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     IntlStrEqWorkerW: {
       parameters: ["i32", "buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     PathAddBackslashA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathAddBackslashW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathAddExtensionA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathAddExtensionW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathAppendA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathAppendW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathBuildRootA: {
       parameters: ["buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     PathBuildRootW: {
       parameters: ["buffer", "i32"],
       result: "buffer",
+      optional: true,
     },
     PathCanonicalizeA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathCanonicalizeW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathCombineA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     PathCombineW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     PathCompactPathA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathCompactPathW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathCompactPathExA: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PathCompactPathExW: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PathCommonPrefixA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathCommonPrefixW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathFileExistsA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathFileExistsW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathFindExtensionA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindExtensionW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindFileNameA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindFileNameW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindNextComponentA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindNextComponentW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathFindOnPathA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PathFindOnPathW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PathFindSuffixArrayA: {
       parameters: ["buffer", "pointer", "i32"],
       result: "buffer",
+      optional: true,
     },
     PathFindSuffixArrayW: {
       parameters: ["buffer", "pointer", "i32"],
       result: "buffer",
+      optional: true,
     },
     PathGetArgsA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathGetArgsW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathIsLFNFileSpecA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsLFNFileSpecW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathGetCharTypeA: {
       parameters: ["u8"],
       result: "u32",
+      optional: true,
     },
     PathGetCharTypeW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PathGetDriveNumberA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathGetDriveNumberW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsDirectoryA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsDirectoryW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsDirectoryEmptyA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsDirectoryEmptyW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsFileSpecA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsFileSpecW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsPrefixA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsPrefixW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsRelativeA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsRelativeW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsRootA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsRootW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsSameRootA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsSameRootW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsNetworkPathA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsNetworkPathW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCServerA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCServerW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCServerShareA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsUNCServerShareW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsContentTypeA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsContentTypeW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsURLA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsURLW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathMakePrettyA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathMakePrettyW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathMatchSpecA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathMatchSpecW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathMatchSpecExA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathMatchSpecExW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathParseIconLocationA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathParseIconLocationW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathQuoteSpacesA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathQuoteSpacesW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathRelativePathToA: {
       parameters: ["buffer", "buffer", "u32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathRelativePathToW: {
       parameters: ["buffer", "buffer", "u32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathRemoveArgsA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveArgsW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveBackslashA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathRemoveBackslashW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathRemoveBlanksA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveBlanksW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveExtensionA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveExtensionW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathRemoveFileSpecA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathRemoveFileSpecW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathRenameExtensionA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathRenameExtensionW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PathSearchAndQualifyA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathSearchAndQualifyW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathSetDlgItemPathA: {
       parameters: ["pointer", "i32", "buffer"],
       result: "void",
+      optional: true,
     },
     PathSetDlgItemPathW: {
       parameters: ["pointer", "i32", "buffer"],
       result: "void",
+      optional: true,
     },
     PathSkipRootA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathSkipRootW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     PathStripPathA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathStripPathW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathStripToRootA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathStripToRootW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathUnquoteSpacesA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathUnquoteSpacesW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathMakeSystemFolderA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathMakeSystemFolderW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathUnmakeSystemFolderA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathUnmakeSystemFolderW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathIsSystemFolderA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathIsSystemFolderW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathUndecorateA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathUndecorateW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     PathUnExpandEnvStringsA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PathUnExpandEnvStringsW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     UrlCompareA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UrlCompareW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UrlCombineA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlCombineW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlCanonicalizeA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlCanonicalizeW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlIsOpaqueA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     UrlIsOpaqueW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     UrlIsNoHistoryA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     UrlIsNoHistoryW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     UrlIsA: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UrlIsW: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UrlGetLocationA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     UrlGetLocationW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     UrlUnescapeA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlUnescapeW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlEscapeA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlEscapeW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlCreateFromPathA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlCreateFromPathW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCreateFromUrlA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCreateFromUrlW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCreateFromUrlAlloc: {
       parameters: ["buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlHashA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlHashW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlGetPartW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlGetPartA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlApplySchemeA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlApplySchemeW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     HashData: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UrlFixupW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ParseURLA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ParseURLW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHDeleteEmptyKeyA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHDeleteEmptyKeyW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHDeleteKeyA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHDeleteKeyW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHRegDuplicateHKey: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHDeleteValueA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHDeleteValueW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SHGetValueA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHGetValueW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHSetValueA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHSetValueW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHRegGetValueA: {
       parameters: ["pointer", "buffer", "buffer", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHRegGetValueW: {
       parameters: ["pointer", "buffer", "buffer", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHRegGetValueFromHKCUHKLM: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHQueryValueExA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHQueryValueExW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHEnumKeyExA: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHEnumKeyExW: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHEnumValueA: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHEnumValueW: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHQueryInfoKeyA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHQueryInfoKeyW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SHCopyKeyA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHCopyKeyW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegGetPathA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegGetPathW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegSetPathA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegSetPathW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegCreateUSKeyA: {
       parameters: ["buffer", "u32", "isize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegCreateUSKeyW: {
       parameters: ["buffer", "u32", "isize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegOpenUSKeyA: {
       parameters: ["buffer", "u32", "isize", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegOpenUSKeyW: {
       parameters: ["buffer", "u32", "isize", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegQueryUSValueA: {
       parameters: ["isize", "buffer", "pointer", "pointer", "pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegQueryUSValueW: {
       parameters: ["isize", "buffer", "pointer", "pointer", "pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegWriteUSValueA: {
       parameters: ["isize", "buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegWriteUSValueW: {
       parameters: ["isize", "buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegDeleteUSValueA: {
       parameters: ["isize", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegDeleteUSValueW: {
       parameters: ["isize", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegDeleteEmptyUSKeyW: {
       parameters: ["isize", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegDeleteEmptyUSKeyA: {
       parameters: ["isize", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegEnumUSKeyA: {
       parameters: ["isize", "u32", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegEnumUSKeyW: {
       parameters: ["isize", "u32", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegEnumUSValueA: {
       parameters: ["isize", "u32", "buffer", "pointer", "pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegEnumUSValueW: {
       parameters: ["isize", "u32", "buffer", "pointer", "pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegQueryInfoUSKeyA: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegQueryInfoUSKeyW: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegCloseUSKey: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SHRegGetUSValueA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegGetUSValueW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegSetUSValueA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegSetUSValueW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SHRegGetIntW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SHRegGetBoolUSValueA: {
       parameters: ["buffer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SHRegGetBoolUSValueW: {
       parameters: ["buffer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     AssocCreate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryStringA: {
       parameters: ["u32", "i32", "buffer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryStringW: {
       parameters: ["u32", "i32", "buffer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryStringByKeyA: {
       parameters: ["u32", "i32", "pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryStringByKeyW: {
       parameters: ["u32", "i32", "pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryKeyA: {
       parameters: ["u32", "i32", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocQueryKeyW: {
       parameters: ["u32", "i32", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AssocIsDangerous: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     AssocGetPerceivedType: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHOpenRegStreamA: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHOpenRegStreamW: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHOpenRegStream2A: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHOpenRegStream2W: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateStreamOnFileA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateStreamOnFileW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateStreamOnFileEx: {
       parameters: ["buffer", "u32", "u32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHCreateMemStream: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetAcceptLanguagesA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAcceptLanguagesW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IUnknown_Set: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     IUnknown_AtomicRelease: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     IUnknown_GetWindow: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IUnknown_SetSite: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IUnknown_GetSite: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IUnknown_QueryService: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_Read: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     IStream_Write: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     IStream_Reset: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_Size: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConnectToConnectionPoint: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_ReadPidl: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_WritePidl: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_ReadStr: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IStream_WriteStr: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     IStream_Copy: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHGetViewStatePropertyBag: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHFormatDateTimeA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHFormatDateTimeW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHAnsiToUnicode: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHAnsiToAnsi: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHUnicodeToAnsi: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHUnicodeToUnicode: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SHMessageBoxCheckA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHMessageBoxCheckW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     SHSendMessageBroadcastA: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSendMessageBroadcastW: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHStripMneumonicA: {
       parameters: ["buffer"],
       result: "u8",
+      optional: true,
     },
     SHStripMneumonicW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     IsOS: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     SHGlobalCounterGetValue: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     SHGlobalCounterIncrement: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     SHGlobalCounterDecrement: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     SHAllocShared: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHFreeShared: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHLockShared: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHUnlockShared: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WhichPlatform: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     QISearch: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHIsLowMemoryMachine: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuPosFromID: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SHGetInverseCMAP: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHAutoComplete: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SHCreateThreadRef: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSetThreadRef: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHGetThreadRef: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SHSkipJunction: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHCreateThread: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHCreateThreadWithHandle: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SHReleaseThreadRef: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     SHCreateShellPalette: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ColorRGBToHLS: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     ColorHLSToRGB: {
       parameters: ["u16", "u16", "u16"],
       result: "pointer",
+      optional: true,
     },
     ColorAdjustLuma: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     IsInternetESCEnabled: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27028,114 +27662,142 @@ try {
     HlinkCreateFromMoniker: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateFromString: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateFromData: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkQueryCreateFromData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkClone: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateBrowseContext: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkNavigateToStringReference: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkNavigate: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkOnNavigate: {
       parameters: ["pointer", "pointer", "u32", "pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkUpdateStackItem: {
       parameters: ["pointer", "pointer", "u32", "pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     HlinkOnRenameDocument: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkResolveMonikerForData: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkResolveStringForData: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkParseDisplayName: {
       parameters: ["pointer", "buffer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateExtensionServices: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkPreprocessMoniker: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSaveToStreamEx: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     HlinkSetSpecialReference: {
       parameters: ["u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     HlinkGetSpecialReference: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateShortcut: {
       parameters: ["u32", "pointer", "buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateShortcutFromMoniker: {
       parameters: ["u32", "pointer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     HlinkCreateShortcutFromString: {
       parameters: ["u32", "buffer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     HlinkResolveShortcut: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkResolveShortcutToMoniker: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkResolveShortcutToString: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkIsShortcut: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     HlinkGetValueFromParams: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HlinkTranslateURL: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27145,90 +27807,112 @@ try {
     PathIsUNCEx: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PathCchIsRoot: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PathCchAddBackslashEx: {
       parameters: ["buffer", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PathCchAddBackslash: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathCchRemoveBackslashEx: {
       parameters: ["buffer", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PathCchRemoveBackslash: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathCchSkipRoot: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PathCchStripToRoot: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathCchRemoveFileSpec: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathCchFindExtension: {
       parameters: ["buffer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PathCchAddExtension: {
       parameters: ["buffer", "usize", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PathCchRenameExtension: {
       parameters: ["buffer", "usize", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PathCchRemoveExtension: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathCchCanonicalizeEx: {
       parameters: ["buffer", "usize", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCchCanonicalize: {
       parameters: ["buffer", "usize", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PathCchCombineEx: {
       parameters: ["buffer", "usize", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCchCombine: {
       parameters: ["buffer", "usize", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PathCchAppendEx: {
       parameters: ["buffer", "usize", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PathCchAppend: {
       parameters: ["buffer", "usize", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PathCchStripPrefix: {
       parameters: ["buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PathAllocCombine: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PathAllocCanonicalize: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27238,10 +27922,12 @@ try {
     RegisterAppStateChangeNotification: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UnregisterAppStateChangeNotification: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27251,10 +27937,12 @@ try {
     RegisterAppConstrainedChangeNotification: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UnregisterAppConstrainedChangeNotification: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27265,41 +27953,41 @@ export function LoadUserProfileA(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.LoadUserProfileA(util.toPointer(hToken), util.toPointer(lpProfileInfo)));
+  return util.boolFromFfi(libUSERENV_dll.LoadUserProfileA!(util.toPointer(hToken), util.toPointer(lpProfileInfo)));
 }
 
 export function LoadUserProfileW(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.LoadUserProfileW(util.toPointer(hToken), util.toPointer(lpProfileInfo)));
+  return util.boolFromFfi(libUSERENV_dll.LoadUserProfileW!(util.toPointer(hToken), util.toPointer(lpProfileInfo)));
 }
 
 export function UnloadUserProfile(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hProfile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.UnloadUserProfile(util.toPointer(hToken), util.toPointer(hProfile)));
+  return util.boolFromFfi(libUSERENV_dll.UnloadUserProfile!(util.toPointer(hToken), util.toPointer(hProfile)));
 }
 
 export function GetProfilesDirectoryA(
   lpProfileDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetProfilesDirectoryA(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetProfilesDirectoryA!(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetProfilesDirectoryW(
   lpProfileDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetProfilesDirectoryW(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetProfilesDirectoryW!(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetProfileType(
   dwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetProfileType(util.toPointer(dwFlags)));
+  return util.boolFromFfi(libUSERENV_dll.GetProfileType!(util.toPointer(dwFlags)));
 }
 
 export function DeleteProfileA(
@@ -27307,7 +27995,7 @@ export function DeleteProfileA(
   lpProfilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.DeleteProfileA(util.pstrToFfi(lpSidString), util.pstrToFfi(lpProfilePath), util.pstrToFfi(lpComputerName)));
+  return util.boolFromFfi(libUSERENV_dll.DeleteProfileA!(util.pstrToFfi(lpSidString), util.pstrToFfi(lpProfilePath), util.pstrToFfi(lpComputerName)));
 }
 
 export function DeleteProfileW(
@@ -27315,7 +28003,7 @@ export function DeleteProfileW(
   lpProfilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.DeleteProfileW(util.pwstrToFfi(lpSidString), util.pwstrToFfi(lpProfilePath), util.pwstrToFfi(lpComputerName)));
+  return util.boolFromFfi(libUSERENV_dll.DeleteProfileW!(util.pwstrToFfi(lpSidString), util.pwstrToFfi(lpProfilePath), util.pwstrToFfi(lpComputerName)));
 }
 
 export function CreateProfile(
@@ -27324,35 +28012,35 @@ export function CreateProfile(
   pszProfilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchProfilePath: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUSERENV_dll.CreateProfile(util.pwstrToFfi(pszUserSid), util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszProfilePath), cchProfilePath);
+  return libUSERENV_dll.CreateProfile!(util.pwstrToFfi(pszUserSid), util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszProfilePath), cchProfilePath);
 }
 
 export function GetDefaultUserProfileDirectoryA(
   lpProfileDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetDefaultUserProfileDirectoryA(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetDefaultUserProfileDirectoryA!(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetDefaultUserProfileDirectoryW(
   lpProfileDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetDefaultUserProfileDirectoryW(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetDefaultUserProfileDirectoryW!(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetAllUsersProfileDirectoryA(
   lpProfileDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetAllUsersProfileDirectoryA(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetAllUsersProfileDirectoryA!(util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetAllUsersProfileDirectoryW(
   lpProfileDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetAllUsersProfileDirectoryW(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetAllUsersProfileDirectoryW!(util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetUserProfileDirectoryA(
@@ -27360,7 +28048,7 @@ export function GetUserProfileDirectoryA(
   lpProfileDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetUserProfileDirectoryA(util.toPointer(hToken), util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetUserProfileDirectoryA!(util.toPointer(hToken), util.pstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function GetUserProfileDirectoryW(
@@ -27368,7 +28056,7 @@ export function GetUserProfileDirectoryW(
   lpProfileDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSERENV_dll.GetUserProfileDirectoryW(util.toPointer(hToken), util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
+  return util.boolFromFfi(libUSERENV_dll.GetUserProfileDirectoryW!(util.toPointer(hToken), util.pwstrToFfi(lpProfileDir), util.toPointer(lpcchSize)));
 }
 
 export function SetWindowSubclass(
@@ -27377,7 +28065,7 @@ export function SetWindowSubclass(
   uIdSubclass: bigint | number /* usize */,
   dwRefData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.SetWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass, dwRefData));
+  return util.boolFromFfi(libCOMCTL32_dll.SetWindowSubclass!((hWnd), util.toPointer(pfnSubclass), uIdSubclass, dwRefData));
 }
 
 export function GetWindowSubclass(
@@ -27386,7 +28074,7 @@ export function GetWindowSubclass(
   uIdSubclass: bigint | number /* usize */,
   pdwRefData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.GetWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass, util.toPointer(pdwRefData)));
+  return util.boolFromFfi(libCOMCTL32_dll.GetWindowSubclass!((hWnd), util.toPointer(pfnSubclass), uIdSubclass, util.toPointer(pdwRefData)));
 }
 
 export function RemoveWindowSubclass(
@@ -27394,7 +28082,7 @@ export function RemoveWindowSubclass(
   pfnSubclass: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.SUBCLASSPROC */,
   uIdSubclass: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.RemoveWindowSubclass((hWnd), util.toPointer(pfnSubclass), uIdSubclass));
+  return util.boolFromFfi(libCOMCTL32_dll.RemoveWindowSubclass!((hWnd), util.toPointer(pfnSubclass), uIdSubclass));
 }
 
 export function DefSubclassProc(
@@ -27403,33 +28091,33 @@ export function DefSubclassProc(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libCOMCTL32_dll.DefSubclassProc((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libCOMCTL32_dll.DefSubclassProc!((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SetWindowContextHelpId(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowContextHelpId((param0), param1));
+  return util.boolFromFfi(libUSER32_dll.SetWindowContextHelpId!((param0), param1));
 }
 
 export function GetWindowContextHelpId(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetWindowContextHelpId((param0));
+  return libUSER32_dll.GetWindowContextHelpId!((param0));
 }
 
 export function SetMenuContextHelpId(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   param1: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuContextHelpId(util.toPointer(param0), param1));
+  return util.boolFromFfi(libUSER32_dll.SetMenuContextHelpId!(util.toPointer(param0), param1));
 }
 
 export function GetMenuContextHelpId(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetMenuContextHelpId(util.toPointer(param0));
+  return libUSER32_dll.GetMenuContextHelpId!(util.toPointer(param0));
 }
 
 export function WinHelpA(
@@ -27438,7 +28126,7 @@ export function WinHelpA(
   uCommand: number /* u32 */,
   dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.WinHelpA((hWndMain), util.pstrToFfi(lpszHelp), uCommand, dwData));
+  return util.boolFromFfi(libUSER32_dll.WinHelpA!((hWndMain), util.pstrToFfi(lpszHelp), uCommand, dwData));
 }
 
 export function WinHelpW(
@@ -27447,13 +28135,13 @@ export function WinHelpW(
   uCommand: number /* u32 */,
   dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.WinHelpW((hWndMain), util.pwstrToFfi(lpszHelp), uCommand, dwData));
+  return util.boolFromFfi(libUSER32_dll.WinHelpW!((hWndMain), util.pwstrToFfi(lpszHelp), uCommand, dwData));
 }
 
 export function SHSimpleIDListFromPath(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.SHSimpleIDListFromPath(util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHSimpleIDListFromPath!(util.pwstrToFfi(pszPath));
 }
 
 export function SHCreateItemFromIDList(
@@ -27461,7 +28149,7 @@ export function SHCreateItemFromIDList(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateItemFromIDList(util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateItemFromIDList!(util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateItemFromParsingName(
@@ -27470,7 +28158,7 @@ export function SHCreateItemFromParsingName(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateItemFromParsingName(util.pwstrToFfi(pszPath), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateItemFromParsingName!(util.pwstrToFfi(pszPath), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateItemWithParent(
@@ -27480,7 +28168,7 @@ export function SHCreateItemWithParent(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateItemWithParent(util.toPointer(pidlParent), util.toPointer(psfParent), util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppvItem));
+  return libSHELL32_dll.SHCreateItemWithParent!(util.toPointer(pidlParent), util.toPointer(psfParent), util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppvItem));
 }
 
 export function SHCreateItemFromRelativeName(
@@ -27490,7 +28178,7 @@ export function SHCreateItemFromRelativeName(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateItemFromRelativeName(util.toPointer(psiParent), util.pwstrToFfi(pszName), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateItemFromRelativeName!(util.toPointer(psiParent), util.pwstrToFfi(pszName), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateItemInKnownFolder(
@@ -27500,14 +28188,14 @@ export function SHCreateItemInKnownFolder(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateItemInKnownFolder(util.toPointer(kfid), dwKFFlags, util.pwstrToFfi(pszItem), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateItemInKnownFolder!(util.toPointer(kfid), dwKFFlags, util.pwstrToFfi(pszItem), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHGetIDListFromObject(
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetIDListFromObject(util.toPointer(punk), util.toPointer(ppidl));
+  return libSHELL32_dll.SHGetIDListFromObject!(util.toPointer(punk), util.toPointer(ppidl));
 }
 
 export function SHGetItemFromObject(
@@ -27515,7 +28203,7 @@ export function SHGetItemFromObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetItemFromObject(util.toPointer(punk), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHGetItemFromObject!(util.toPointer(punk), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHGetNameFromIDList(
@@ -27523,7 +28211,7 @@ export function SHGetNameFromIDList(
   sigdnName: SIGDN /* Windows.Win32.UI.Shell.SIGDN */,
   ppszName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetNameFromIDList(util.toPointer(pidl), sigdnName, util.toPointer(ppszName));
+  return libSHELL32_dll.SHGetNameFromIDList!(util.toPointer(pidl), sigdnName, util.toPointer(ppszName));
 }
 
 export function SHGetItemFromDataObject(
@@ -27532,7 +28220,7 @@ export function SHGetItemFromDataObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetItemFromDataObject(util.toPointer(pdtobj), dwFlags, util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHGetItemFromDataObject!(util.toPointer(pdtobj), dwFlags, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateShellItemArray(
@@ -27542,7 +28230,7 @@ export function SHCreateShellItemArray(
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppsiItemArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellItemArray(util.toPointer(pidlParent), util.toPointer(psf), cidl, util.toPointer(ppidl), util.toPointer(ppsiItemArray));
+  return libSHELL32_dll.SHCreateShellItemArray!(util.toPointer(pidlParent), util.toPointer(psf), cidl, util.toPointer(ppidl), util.toPointer(ppsiItemArray));
 }
 
 export function SHCreateShellItemArrayFromDataObject(
@@ -27550,7 +28238,7 @@ export function SHCreateShellItemArrayFromDataObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellItemArrayFromDataObject(util.toPointer(pdo), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateShellItemArrayFromDataObject!(util.toPointer(pdo), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateShellItemArrayFromIDLists(
@@ -27558,7 +28246,7 @@ export function SHCreateShellItemArrayFromIDLists(
   rgpidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppsiItemArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellItemArrayFromIDLists(cidl, util.toPointer(rgpidl), util.toPointer(ppsiItemArray));
+  return libSHELL32_dll.SHCreateShellItemArrayFromIDLists!(cidl, util.toPointer(rgpidl), util.toPointer(ppsiItemArray));
 }
 
 export function SHCreateShellItemArrayFromShellItem(
@@ -27566,33 +28254,33 @@ export function SHCreateShellItemArrayFromShellItem(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellItemArrayFromShellItem(util.toPointer(psi), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateShellItemArrayFromShellItem!(util.toPointer(psi), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateAssociationRegistration(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateAssociationRegistration(util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateAssociationRegistration!(util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateDefaultExtractIcon(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateDefaultExtractIcon(util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateDefaultExtractIcon!(util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SetCurrentProcessExplicitAppUserModelID(
   AppID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SetCurrentProcessExplicitAppUserModelID(util.pwstrToFfi(AppID));
+  return libSHELL32_dll.SetCurrentProcessExplicitAppUserModelID!(util.pwstrToFfi(AppID));
 }
 
 export function GetCurrentProcessExplicitAppUserModelID(
   AppID: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.GetCurrentProcessExplicitAppUserModelID(util.toPointer(AppID));
+  return libSHELL32_dll.GetCurrentProcessExplicitAppUserModelID!(util.toPointer(AppID));
 }
 
 export function SHGetTemporaryPropertyForItem(
@@ -27600,7 +28288,7 @@ export function SHGetTemporaryPropertyForItem(
   propkey: Deno.PointerValue | Uint8Array /* ptr */,
   ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetTemporaryPropertyForItem(util.toPointer(psi), util.toPointer(propkey), util.toPointer(ppropvar));
+  return libSHELL32_dll.SHGetTemporaryPropertyForItem!(util.toPointer(psi), util.toPointer(propkey), util.toPointer(ppropvar));
 }
 
 export function SHSetTemporaryPropertyForItem(
@@ -27608,7 +28296,7 @@ export function SHSetTemporaryPropertyForItem(
   propkey: Deno.PointerValue | Uint8Array /* ptr */,
   propvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetTemporaryPropertyForItem(util.toPointer(psi), util.toPointer(propkey), util.toPointer(propvar));
+  return libSHELL32_dll.SHSetTemporaryPropertyForItem!(util.toPointer(psi), util.toPointer(propkey), util.toPointer(propvar));
 }
 
 export function SHShowManageLibraryUI(
@@ -27618,13 +28306,13 @@ export function SHShowManageLibraryUI(
   pszInstruction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lmdOptions: LIBRARYMANAGEDIALOGOPTIONS /* Windows.Win32.UI.Shell.LIBRARYMANAGEDIALOGOPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHShowManageLibraryUI(util.toPointer(psiLibrary), (hwndOwner), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszInstruction), lmdOptions);
+  return libSHELL32_dll.SHShowManageLibraryUI!(util.toPointer(psiLibrary), (hwndOwner), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszInstruction), lmdOptions);
 }
 
 export function SHResolveLibrary(
   psiLibrary: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IShellItem */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHResolveLibrary(util.toPointer(psiLibrary));
+  return libSHELL32_dll.SHResolveLibrary!(util.toPointer(psiLibrary));
 }
 
 export function SHAssocEnumHandlers(
@@ -27632,7 +28320,7 @@ export function SHAssocEnumHandlers(
   afFilter: ASSOC_FILTER /* Windows.Win32.UI.Shell.ASSOC_FILTER */,
   ppEnumHandler: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHAssocEnumHandlers(util.pwstrToFfi(pszExtra), afFilter, util.toPointer(ppEnumHandler));
+  return libSHELL32_dll.SHAssocEnumHandlers!(util.pwstrToFfi(pszExtra), afFilter, util.toPointer(ppEnumHandler));
 }
 
 export function SHAssocEnumHandlersForProtocolByApplication(
@@ -27640,7 +28328,7 @@ export function SHAssocEnumHandlersForProtocolByApplication(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandlers: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHAssocEnumHandlersForProtocolByApplication(util.pwstrToFfi(protocol), util.toPointer(riid), util.toPointer(enumHandlers));
+  return libSHELL32_dll.SHAssocEnumHandlersForProtocolByApplication!(util.pwstrToFfi(protocol), util.toPointer(riid), util.toPointer(enumHandlers));
 }
 
 export function HMONITOR_UserSize(
@@ -27648,7 +28336,7 @@ export function HMONITOR_UserSize(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libOLE32_dll.HMONITOR_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserSize!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HMONITOR_UserMarshal(
@@ -27656,7 +28344,7 @@ export function HMONITOR_UserMarshal(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HMONITOR_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserMarshal!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMONITOR_UserUnmarshal(
@@ -27664,14 +28352,14 @@ export function HMONITOR_UserUnmarshal(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HMONITOR_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserUnmarshal!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMONITOR_UserFree(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLE32_dll.HMONITOR_UserFree(util.toPointer(param0), util.toPointer(param1));
+  return libOLE32_dll.HMONITOR_UserFree!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HMONITOR_UserSize64(
@@ -27679,7 +28367,7 @@ export function HMONITOR_UserSize64(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libOLE32_dll.HMONITOR_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserSize64!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HMONITOR_UserMarshal64(
@@ -27687,7 +28375,7 @@ export function HMONITOR_UserMarshal64(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HMONITOR_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserMarshal64!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMONITOR_UserUnmarshal64(
@@ -27695,21 +28383,21 @@ export function HMONITOR_UserUnmarshal64(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HMONITOR_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HMONITOR_UserUnmarshal64!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HMONITOR_UserFree64(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLE32_dll.HMONITOR_UserFree64(util.toPointer(param0), util.toPointer(param1));
+  return libOLE32_dll.HMONITOR_UserFree64!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function SHCreateDefaultPropertiesOp(
   psi: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IShellItem */,
   ppFileOp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateDefaultPropertiesOp(util.toPointer(psi), util.toPointer(ppFileOp));
+  return libSHELL32_dll.SHCreateDefaultPropertiesOp!(util.toPointer(psi), util.toPointer(ppFileOp));
 }
 
 export function SHSetDefaultProperties(
@@ -27718,102 +28406,102 @@ export function SHSetDefaultProperties(
   dwFileOpFlags: number /* u32 */,
   pfops: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IFileOperationProgressSink */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetDefaultProperties((hwnd), util.toPointer(psi), dwFileOpFlags, util.toPointer(pfops));
+  return libSHELL32_dll.SHSetDefaultProperties!((hwnd), util.toPointer(psi), dwFileOpFlags, util.toPointer(pfops));
 }
 
 export function SHGetMalloc(
   ppMalloc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetMalloc(util.toPointer(ppMalloc));
+  return libSHELL32_dll.SHGetMalloc!(util.toPointer(ppMalloc));
 }
 
 export function SHAlloc(
   cb: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.SHAlloc(cb);
+  return libSHELL32_dll.SHAlloc!(cb);
 }
 
 export function SHFree(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHELL32_dll.SHFree(util.toPointer(pv));
+  return libSHELL32_dll.SHFree!(util.toPointer(pv));
 }
 
 export function SHGetIconOverlayIndexA(
   pszIconPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iIconIndex: number /* i32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHGetIconOverlayIndexA(util.pstrToFfi(pszIconPath), iIconIndex);
+  return libSHELL32_dll.SHGetIconOverlayIndexA!(util.pstrToFfi(pszIconPath), iIconIndex);
 }
 
 export function SHGetIconOverlayIndexW(
   pszIconPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIconIndex: number /* i32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHGetIconOverlayIndexW(util.pwstrToFfi(pszIconPath), iIconIndex);
+  return libSHELL32_dll.SHGetIconOverlayIndexW!(util.pwstrToFfi(pszIconPath), iIconIndex);
 }
 
 export function ILClone(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILClone(util.toPointer(pidl));
+  return libSHELL32_dll.ILClone!(util.toPointer(pidl));
 }
 
 export function ILCloneFirst(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILCloneFirst(util.toPointer(pidl));
+  return libSHELL32_dll.ILCloneFirst!(util.toPointer(pidl));
 }
 
 export function ILCombine(
   pidl1: Deno.PointerValue | Uint8Array /* ptr */,
   pidl2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILCombine(util.toPointer(pidl1), util.toPointer(pidl2));
+  return libSHELL32_dll.ILCombine!(util.toPointer(pidl1), util.toPointer(pidl2));
 }
 
 export function ILFree(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHELL32_dll.ILFree(util.toPointer(pidl));
+  return libSHELL32_dll.ILFree!(util.toPointer(pidl));
 }
 
 export function ILGetNext(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILGetNext(util.toPointer(pidl));
+  return libSHELL32_dll.ILGetNext!(util.toPointer(pidl));
 }
 
 export function ILGetSize(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSHELL32_dll.ILGetSize(util.toPointer(pidl));
+  return libSHELL32_dll.ILGetSize!(util.toPointer(pidl));
 }
 
 export function ILFindChild(
   pidlParent: Deno.PointerValue | Uint8Array /* ptr */,
   pidlChild: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILFindChild(util.toPointer(pidlParent), util.toPointer(pidlChild));
+  return libSHELL32_dll.ILFindChild!(util.toPointer(pidlParent), util.toPointer(pidlChild));
 }
 
 export function ILFindLastID(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILFindLastID(util.toPointer(pidl));
+  return libSHELL32_dll.ILFindLastID!(util.toPointer(pidl));
 }
 
 export function ILRemoveLastID(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ILRemoveLastID(util.toPointer(pidl)));
+  return util.boolFromFfi(libSHELL32_dll.ILRemoveLastID!(util.toPointer(pidl)));
 }
 
 export function ILIsEqual(
   pidl1: Deno.PointerValue | Uint8Array /* ptr */,
   pidl2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ILIsEqual(util.toPointer(pidl1), util.toPointer(pidl2)));
+  return util.boolFromFfi(libSHELL32_dll.ILIsEqual!(util.toPointer(pidl1), util.toPointer(pidl2)));
 }
 
 export function ILIsParent(
@@ -27821,33 +28509,33 @@ export function ILIsParent(
   pidl2: Deno.PointerValue | Uint8Array /* ptr */,
   fImmediate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ILIsParent(util.toPointer(pidl1), util.toPointer(pidl2), util.boolToFfi(fImmediate)));
+  return util.boolFromFfi(libSHELL32_dll.ILIsParent!(util.toPointer(pidl1), util.toPointer(pidl2), util.boolToFfi(fImmediate)));
 }
 
 export function ILSaveToStream(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.ILSaveToStream(util.toPointer(pstm), util.toPointer(pidl));
+  return libSHELL32_dll.ILSaveToStream!(util.toPointer(pstm), util.toPointer(pidl));
 }
 
 export function ILLoadFromStreamEx(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.ILLoadFromStreamEx(util.toPointer(pstm), util.toPointer(pidl));
+  return libSHELL32_dll.ILLoadFromStreamEx!(util.toPointer(pstm), util.toPointer(pidl));
 }
 
 export function ILCreateFromPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILCreateFromPathA(util.pstrToFfi(pszPath));
+  return libSHELL32_dll.ILCreateFromPathA!(util.pstrToFfi(pszPath));
 }
 
 export function ILCreateFromPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILCreateFromPathW(util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.ILCreateFromPathW!(util.pwstrToFfi(pszPath));
 }
 
 export function SHILCreateFromPath(
@@ -27855,7 +28543,7 @@ export function SHILCreateFromPath(
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
   rgfInOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHILCreateFromPath(util.pwstrToFfi(pszPath), util.toPointer(ppidl), util.toPointer(rgfInOut));
+  return libSHELL32_dll.SHILCreateFromPath!(util.pwstrToFfi(pszPath), util.toPointer(ppidl), util.toPointer(rgfInOut));
 }
 
 export function ILAppendID(
@@ -27863,7 +28551,7 @@ export function ILAppendID(
   pmkid: Deno.PointerValue | Uint8Array /* ptr */,
   fAppend: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.ILAppendID(util.toPointer(pidl), util.toPointer(pmkid), util.boolToFfi(fAppend));
+  return libSHELL32_dll.ILAppendID!(util.toPointer(pidl), util.toPointer(pmkid), util.boolToFfi(fAppend));
 }
 
 export function SHGetPathFromIDListEx(
@@ -27872,28 +28560,28 @@ export function SHGetPathFromIDListEx(
   cchPath: number /* u32 */,
   uOpts: GPFIDL_FLAGS /* Windows.Win32.UI.Shell.GPFIDL_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListEx(util.toPointer(pidl), util.pwstrToFfi(pszPath), cchPath, uOpts));
+  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListEx!(util.toPointer(pidl), util.pwstrToFfi(pszPath), cchPath, uOpts));
 }
 
 export function SHGetPathFromIDListA(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListA(util.toPointer(pidl), util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListA!(util.toPointer(pidl), util.pstrToFfi(pszPath)));
 }
 
 export function SHGetPathFromIDListW(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListW(util.toPointer(pidl), util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetPathFromIDListW!(util.toPointer(pidl), util.pwstrToFfi(pszPath)));
 }
 
 export function SHCreateDirectory(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHCreateDirectory((hwnd), util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHCreateDirectory!((hwnd), util.pwstrToFfi(pszPath));
 }
 
 export function SHCreateDirectoryExA(
@@ -27901,7 +28589,7 @@ export function SHCreateDirectoryExA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHCreateDirectoryExA((hwnd), util.pstrToFfi(pszPath), util.toPointer(psa));
+  return libSHELL32_dll.SHCreateDirectoryExA!((hwnd), util.pstrToFfi(pszPath), util.toPointer(psa));
 }
 
 export function SHCreateDirectoryExW(
@@ -27909,7 +28597,7 @@ export function SHCreateDirectoryExW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHCreateDirectoryExW((hwnd), util.pwstrToFfi(pszPath), util.toPointer(psa));
+  return libSHELL32_dll.SHCreateDirectoryExW!((hwnd), util.pwstrToFfi(pszPath), util.toPointer(psa));
 }
 
 export function SHOpenFolderAndSelectItems(
@@ -27918,7 +28606,7 @@ export function SHOpenFolderAndSelectItems(
   apidl: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHOpenFolderAndSelectItems(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), dwFlags);
+  return libSHELL32_dll.SHOpenFolderAndSelectItems!(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), dwFlags);
 }
 
 export function SHCreateShellItem(
@@ -27927,7 +28615,7 @@ export function SHCreateShellItem(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppsi: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellItem(util.toPointer(pidlParent), util.toPointer(psfParent), util.toPointer(pidl), util.toPointer(ppsi));
+  return libSHELL32_dll.SHCreateShellItem!(util.toPointer(pidlParent), util.toPointer(psfParent), util.toPointer(pidl), util.toPointer(ppsi));
 }
 
 export function SHGetSpecialFolderLocation(
@@ -27935,7 +28623,7 @@ export function SHGetSpecialFolderLocation(
   csidl: number /* i32 */,
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetSpecialFolderLocation((hwnd), csidl, util.toPointer(ppidl));
+  return libSHELL32_dll.SHGetSpecialFolderLocation!((hwnd), csidl, util.toPointer(ppidl));
 }
 
 export function SHCloneSpecialIDList(
@@ -27943,7 +28631,7 @@ export function SHCloneSpecialIDList(
   csidl: number /* i32 */,
   fCreate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.SHCloneSpecialIDList((hwnd), csidl, util.boolToFfi(fCreate));
+  return libSHELL32_dll.SHCloneSpecialIDList!((hwnd), csidl, util.boolToFfi(fCreate));
 }
 
 export function SHGetSpecialFolderPathA(
@@ -27952,7 +28640,7 @@ export function SHGetSpecialFolderPathA(
   csidl: number /* i32 */,
   fCreate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetSpecialFolderPathA((hwnd), util.pstrToFfi(pszPath), csidl, util.boolToFfi(fCreate)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetSpecialFolderPathA!((hwnd), util.pstrToFfi(pszPath), csidl, util.boolToFfi(fCreate)));
 }
 
 export function SHGetSpecialFolderPathW(
@@ -27961,11 +28649,11 @@ export function SHGetSpecialFolderPathW(
   csidl: number /* i32 */,
   fCreate: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetSpecialFolderPathW((hwnd), util.pwstrToFfi(pszPath), csidl, util.boolToFfi(fCreate)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetSpecialFolderPathW!((hwnd), util.pwstrToFfi(pszPath), csidl, util.boolToFfi(fCreate)));
 }
 
 export function SHFlushSFCache(): void /* void */ {
-  return libSHELL32_dll.SHFlushSFCache();
+  return libSHELL32_dll.SHFlushSFCache!();
 }
 
 export function SHGetFolderPathA(
@@ -27975,7 +28663,7 @@ export function SHGetFolderPathA(
   dwFlags: number /* u32 */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetFolderPathA((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszPath));
+  return libSHELL32_dll.SHGetFolderPathA!((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszPath));
 }
 
 export function SHGetFolderPathW(
@@ -27985,7 +28673,7 @@ export function SHGetFolderPathW(
   dwFlags: number /* u32 */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetFolderPathW((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHGetFolderPathW!((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszPath));
 }
 
 export function SHGetFolderLocation(
@@ -27995,7 +28683,7 @@ export function SHGetFolderLocation(
   dwFlags: number /* u32 */,
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetFolderLocation((hwnd), csidl, util.toPointer(hToken), dwFlags, util.toPointer(ppidl));
+  return libSHELL32_dll.SHGetFolderLocation!((hwnd), csidl, util.toPointer(hToken), dwFlags, util.toPointer(ppidl));
 }
 
 export function SHSetFolderPathA(
@@ -28004,7 +28692,7 @@ export function SHSetFolderPathA(
   dwFlags: number /* u32 */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetFolderPathA(csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszPath));
+  return libSHELL32_dll.SHSetFolderPathA!(csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszPath));
 }
 
 export function SHSetFolderPathW(
@@ -28013,7 +28701,7 @@ export function SHSetFolderPathW(
   dwFlags: number /* u32 */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetFolderPathW(csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHSetFolderPathW!(csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszPath));
 }
 
 export function SHGetFolderPathAndSubDirA(
@@ -28024,7 +28712,7 @@ export function SHGetFolderPathAndSubDirA(
   pszSubDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetFolderPathAndSubDirA((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszSubDir), util.pstrToFfi(pszPath));
+  return libSHELL32_dll.SHGetFolderPathAndSubDirA!((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pstrToFfi(pszSubDir), util.pstrToFfi(pszPath));
 }
 
 export function SHGetFolderPathAndSubDirW(
@@ -28035,7 +28723,7 @@ export function SHGetFolderPathAndSubDirW(
   pszSubDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetFolderPathAndSubDirW((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszSubDir), util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHGetFolderPathAndSubDirW!((hwnd), csidl, util.toPointer(hToken), dwFlags, util.pwstrToFfi(pszSubDir), util.pwstrToFfi(pszPath));
 }
 
 export function SHGetKnownFolderIDList(
@@ -28044,7 +28732,7 @@ export function SHGetKnownFolderIDList(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetKnownFolderIDList(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.toPointer(ppidl));
+  return libSHELL32_dll.SHGetKnownFolderIDList!(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.toPointer(ppidl));
 }
 
 export function SHSetKnownFolderPath(
@@ -28053,7 +28741,7 @@ export function SHSetKnownFolderPath(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetKnownFolderPath(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHSetKnownFolderPath!(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.pwstrToFfi(pszPath));
 }
 
 export function SHGetKnownFolderPath(
@@ -28062,7 +28750,7 @@ export function SHGetKnownFolderPath(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppszPath: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetKnownFolderPath(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.toPointer(ppszPath));
+  return libSHELL32_dll.SHGetKnownFolderPath!(util.toPointer(rfid), dwFlags, util.toPointer(hToken), util.toPointer(ppszPath));
 }
 
 export function SHGetKnownFolderItem(
@@ -28072,7 +28760,7 @@ export function SHGetKnownFolderItem(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetKnownFolderItem(util.toPointer(rfid), flags, util.toPointer(hToken), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHGetKnownFolderItem!(util.toPointer(rfid), flags, util.toPointer(hToken), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHGetSetFolderCustomSettings(
@@ -28080,31 +28768,31 @@ export function SHGetSetFolderCustomSettings(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReadWrite: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetSetFolderCustomSettings(util.toPointer(pfcs), util.pwstrToFfi(pszPath), dwReadWrite);
+  return libSHELL32_dll.SHGetSetFolderCustomSettings!(util.toPointer(pfcs), util.pwstrToFfi(pszPath), dwReadWrite);
 }
 
 export function SHBrowseForFolderA(
   lpbi: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.SHBrowseForFolderA(util.toPointer(lpbi));
+  return libSHELL32_dll.SHBrowseForFolderA!(util.toPointer(lpbi));
 }
 
 export function SHBrowseForFolderW(
   lpbi: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.SHBrowseForFolderW(util.toPointer(lpbi));
+  return libSHELL32_dll.SHBrowseForFolderW!(util.toPointer(lpbi));
 }
 
 export function SHLoadInProc(
   rclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHLoadInProc(util.toPointer(rclsid));
+  return libSHELL32_dll.SHLoadInProc!(util.toPointer(rclsid));
 }
 
 export function SHGetDesktopFolder(
   ppshf: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetDesktopFolder(util.toPointer(ppshf));
+  return libSHELL32_dll.SHGetDesktopFolder!(util.toPointer(ppshf));
 }
 
 export function SHChangeNotify(
@@ -28113,20 +28801,20 @@ export function SHChangeNotify(
   dwItem1: Deno.PointerValue | Uint8Array /* ptr */,
   dwItem2: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHELL32_dll.SHChangeNotify(wEventId, uFlags, util.toPointer(dwItem1), util.toPointer(dwItem2));
+  return libSHELL32_dll.SHChangeNotify!(wEventId, uFlags, util.toPointer(dwItem1), util.toPointer(dwItem2));
 }
 
 export function SHAddToRecentDocs(
   uFlags: number /* u32 */,
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHELL32_dll.SHAddToRecentDocs(uFlags, util.toPointer(pv));
+  return libSHELL32_dll.SHAddToRecentDocs!(uFlags, util.toPointer(pv));
 }
 
 export function SHHandleUpdateImage(
   pidlExtra: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHHandleUpdateImage(util.toPointer(pidlExtra));
+  return libSHELL32_dll.SHHandleUpdateImage!(util.toPointer(pidlExtra));
 }
 
 export function SHUpdateImageA(
@@ -28135,7 +28823,7 @@ export function SHUpdateImageA(
   uFlags: number /* u32 */,
   iImageIndex: number /* i32 */,
 ): void /* void */ {
-  return libSHELL32_dll.SHUpdateImageA(util.pstrToFfi(pszHashItem), iIndex, uFlags, iImageIndex);
+  return libSHELL32_dll.SHUpdateImageA!(util.pstrToFfi(pszHashItem), iIndex, uFlags, iImageIndex);
 }
 
 export function SHUpdateImageW(
@@ -28144,7 +28832,7 @@ export function SHUpdateImageW(
   uFlags: number /* u32 */,
   iImageIndex: number /* i32 */,
 ): void /* void */ {
-  return libSHELL32_dll.SHUpdateImageW(util.pwstrToFfi(pszHashItem), iIndex, uFlags, iImageIndex);
+  return libSHELL32_dll.SHUpdateImageW!(util.pwstrToFfi(pszHashItem), iIndex, uFlags, iImageIndex);
 }
 
 export function SHChangeNotifyRegister(
@@ -28155,13 +28843,13 @@ export function SHChangeNotifyRegister(
   cEntries: number /* i32 */,
   pshcne: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSHELL32_dll.SHChangeNotifyRegister((hwnd), fSources, fEvents, wMsg, cEntries, util.toPointer(pshcne));
+  return libSHELL32_dll.SHChangeNotifyRegister!((hwnd), fSources, fEvents, wMsg, cEntries, util.toPointer(pshcne));
 }
 
 export function SHChangeNotifyDeregister(
   ulID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHChangeNotifyDeregister(ulID));
+  return util.boolFromFfi(libSHELL32_dll.SHChangeNotifyDeregister!(ulID));
 }
 
 export function SHChangeNotification_Lock(
@@ -28170,13 +28858,13 @@ export function SHChangeNotification_Lock(
   pppidl: Deno.PointerValue | Uint8Array /* ptr */,
   plEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.Shell.ShFindChangeNotificationHandle */ {
-  return libSHELL32_dll.SHChangeNotification_Lock(util.toPointer(hChange), dwProcId, util.toPointer(pppidl), util.toPointer(plEvent));
+  return libSHELL32_dll.SHChangeNotification_Lock!(util.toPointer(hChange), dwProcId, util.toPointer(pppidl), util.toPointer(plEvent));
 }
 
 export function SHChangeNotification_Unlock(
   hLock: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHChangeNotification_Unlock(util.toPointer(hLock)));
+  return util.boolFromFfi(libSHELL32_dll.SHChangeNotification_Unlock!(util.toPointer(hLock)));
 }
 
 export function SHGetRealIDL(
@@ -28184,13 +28872,13 @@ export function SHGetRealIDL(
   pidlSimple: Deno.PointerValue | Uint8Array /* ptr */,
   ppidlReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetRealIDL(util.toPointer(psf), util.toPointer(pidlSimple), util.toPointer(ppidlReal));
+  return libSHELL32_dll.SHGetRealIDL!(util.toPointer(psf), util.toPointer(pidlSimple), util.toPointer(ppidlReal));
 }
 
 export function SHGetInstanceExplorer(
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetInstanceExplorer(util.toPointer(ppunk));
+  return libSHELL32_dll.SHGetInstanceExplorer!(util.toPointer(ppunk));
 }
 
 export function SHGetDataFromIDListA(
@@ -28200,7 +28888,7 @@ export function SHGetDataFromIDListA(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetDataFromIDListA(util.toPointer(psf), util.toPointer(pidl), nFormat, util.toPointer(pv), cb);
+  return libSHELL32_dll.SHGetDataFromIDListA!(util.toPointer(psf), util.toPointer(pidl), nFormat, util.toPointer(pv), cb);
 }
 
 export function SHGetDataFromIDListW(
@@ -28210,7 +28898,7 @@ export function SHGetDataFromIDListW(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetDataFromIDListW(util.toPointer(psf), util.toPointer(pidl), nFormat, util.toPointer(pv), cb);
+  return libSHELL32_dll.SHGetDataFromIDListW!(util.toPointer(psf), util.toPointer(pidl), nFormat, util.toPointer(pv), cb);
 }
 
 export function RestartDialog(
@@ -28218,7 +28906,7 @@ export function RestartDialog(
   pszPrompt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReturn: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.RestartDialog((hwnd), util.pwstrToFfi(pszPrompt), dwReturn);
+  return libSHELL32_dll.RestartDialog!((hwnd), util.pwstrToFfi(pszPrompt), dwReturn);
 }
 
 export function RestartDialogEx(
@@ -28227,7 +28915,7 @@ export function RestartDialogEx(
   dwReturn: number /* u32 */,
   dwReasonCode: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.RestartDialogEx((hwnd), util.pwstrToFfi(pszPrompt), dwReturn, dwReasonCode);
+  return libSHELL32_dll.RestartDialogEx!((hwnd), util.pwstrToFfi(pszPrompt), dwReturn, dwReasonCode);
 }
 
 export function SHCoCreateInstance(
@@ -28237,7 +28925,7 @@ export function SHCoCreateInstance(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCoCreateInstance(util.pwstrToFfi(pszCLSID), util.toPointer(pclsid), util.toPointer(pUnkOuter), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCoCreateInstance!(util.pwstrToFfi(pszCLSID), util.toPointer(pclsid), util.toPointer(pUnkOuter), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHCreateDataObject(
@@ -28248,7 +28936,7 @@ export function SHCreateDataObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateDataObject(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), util.toPointer(pdtInner), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateDataObject!(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), util.toPointer(pdtInner), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CIDLData_CreateFromIDArray(
@@ -28257,7 +28945,7 @@ export function CIDLData_CreateFromIDArray(
   apidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppdtobj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.CIDLData_CreateFromIDArray(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), util.toPointer(ppdtobj));
+  return libSHELL32_dll.CIDLData_CreateFromIDArray!(util.toPointer(pidlFolder), cidl, util.toPointer(apidl), util.toPointer(ppdtobj));
 }
 
 export function SHCreateStdEnumFmtEtc(
@@ -28265,7 +28953,7 @@ export function SHCreateStdEnumFmtEtc(
   afmt: Deno.PointerValue | Uint8Array /* ptr */,
   ppenumFormatEtc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateStdEnumFmtEtc(cfmt, util.toPointer(afmt), util.toPointer(ppenumFormatEtc));
+  return libSHELL32_dll.SHCreateStdEnumFmtEtc!(cfmt, util.toPointer(afmt), util.toPointer(ppenumFormatEtc));
 }
 
 export function SHDoDragDrop(
@@ -28275,21 +28963,21 @@ export function SHDoDragDrop(
   dwEffect: DROPEFFECT /* Windows.Win32.System.Ole.DROPEFFECT */,
   pdwEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHDoDragDrop((hwnd), util.toPointer(pdata), util.toPointer(pdsrc), dwEffect, util.toPointer(pdwEffect));
+  return libSHELL32_dll.SHDoDragDrop!((hwnd), util.toPointer(pdata), util.toPointer(pdsrc), dwEffect, util.toPointer(pdwEffect));
 }
 
 export function DAD_SetDragImage(
   him: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   pptOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_SetDragImage(util.toPointer(him), util.toPointer(pptOffset)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_SetDragImage!(util.toPointer(him), util.toPointer(pptOffset)));
 }
 
 export function DAD_DragEnterEx(
   hwndTarget: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ptStart: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_DragEnterEx((hwndTarget), util.toPointer(ptStart)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_DragEnterEx!((hwndTarget), util.toPointer(ptStart)));
 }
 
 export function DAD_DragEnterEx2(
@@ -28297,23 +28985,23 @@ export function DAD_DragEnterEx2(
   ptStart: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
   pdtObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_DragEnterEx2((hwndTarget), util.toPointer(ptStart), util.toPointer(pdtObject)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_DragEnterEx2!((hwndTarget), util.toPointer(ptStart), util.toPointer(pdtObject)));
 }
 
 export function DAD_ShowDragImage(
   fShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_ShowDragImage(util.boolToFfi(fShow)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_ShowDragImage!(util.boolToFfi(fShow)));
 }
 
 export function DAD_DragMove(
   pt: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_DragMove(util.toPointer(pt)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_DragMove!(util.toPointer(pt)));
 }
 
 export function DAD_DragLeave(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_DragLeave());
+  return util.boolFromFfi(libSHELL32_dll.DAD_DragLeave!());
 }
 
 export function DAD_AutoScroll(
@@ -28321,20 +29009,20 @@ export function DAD_AutoScroll(
   pad: Deno.PointerValue | Uint8Array /* ptr */,
   pptNow: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DAD_AutoScroll((hwnd), util.toPointer(pad), util.toPointer(pptNow)));
+  return util.boolFromFfi(libSHELL32_dll.DAD_AutoScroll!((hwnd), util.toPointer(pad), util.toPointer(pptNow)));
 }
 
 export function ReadCabinetState(
   pcs: Deno.PointerValue | Uint8Array /* ptr */,
   cLength: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ReadCabinetState(util.toPointer(pcs), cLength));
+  return util.boolFromFfi(libSHELL32_dll.ReadCabinetState!(util.toPointer(pcs), cLength));
 }
 
 export function WriteCabinetState(
   pcs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.WriteCabinetState(util.toPointer(pcs)));
+  return util.boolFromFfi(libSHELL32_dll.WriteCabinetState!(util.toPointer(pcs)));
 }
 
 export function PathMakeUniqueName(
@@ -28344,20 +29032,20 @@ export function PathMakeUniqueName(
   pszLongPlate: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.PathMakeUniqueName(util.pwstrToFfi(pszUniqueName), cchMax, util.pwstrToFfi(pszTemplate), util.pwstrToFfi(pszLongPlate), util.pwstrToFfi(pszDir)));
+  return util.boolFromFfi(libSHELL32_dll.PathMakeUniqueName!(util.pwstrToFfi(pszUniqueName), cchMax, util.pwstrToFfi(pszTemplate), util.pwstrToFfi(pszLongPlate), util.pwstrToFfi(pszDir)));
 }
 
 export function PathIsExe(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.PathIsExe(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.PathIsExe!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathCleanupSpec(
   pszDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): PCS_RET /* Windows.Win32.UI.Shell.PCS_RET */ {
-  return libSHELL32_dll.PathCleanupSpec(util.pwstrToFfi(pszDir), util.pwstrToFfi(pszSpec));
+  return libSHELL32_dll.PathCleanupSpec!(util.pwstrToFfi(pszDir), util.pwstrToFfi(pszSpec));
 }
 
 export function PathResolve(
@@ -28365,7 +29053,7 @@ export function PathResolve(
   dirs: Deno.PointerValue | Uint8Array /* ptr */,
   fFlags: PRF_FLAGS /* Windows.Win32.UI.Shell.PRF_FLAGS */,
 ): number /* i32 */ {
-  return libSHELL32_dll.PathResolve(util.pwstrToFfi(pszPath), util.toPointer(dirs), fFlags);
+  return libSHELL32_dll.PathResolve!(util.pwstrToFfi(pszPath), util.toPointer(dirs), fFlags);
 }
 
 export function GetFileNameFromBrowse(
@@ -28377,26 +29065,26 @@ export function GetFileNameFromBrowse(
   pszFilters: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.GetFileNameFromBrowse((hwnd), util.pwstrToFfi(pszFilePath), cchFilePath, util.pwstrToFfi(pszWorkingDir), util.pwstrToFfi(pszDefExt), util.pwstrToFfi(pszFilters), util.pwstrToFfi(pszTitle)));
+  return util.boolFromFfi(libSHELL32_dll.GetFileNameFromBrowse!((hwnd), util.pwstrToFfi(pszFilePath), cchFilePath, util.pwstrToFfi(pszWorkingDir), util.pwstrToFfi(pszDefExt), util.pwstrToFfi(pszFilters), util.pwstrToFfi(pszTitle)));
 }
 
 export function DriveType(
   iDrive: number /* i32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.DriveType(iDrive);
+  return libSHELL32_dll.DriveType!(iDrive);
 }
 
 export function RealDriveType(
   iDrive: number /* i32 */,
   fOKToHitNet: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libSHELL32_dll.RealDriveType(iDrive, util.boolToFfi(fOKToHitNet));
+  return libSHELL32_dll.RealDriveType!(iDrive, util.boolToFfi(fOKToHitNet));
 }
 
 export function IsNetDrive(
   iDrive: number /* i32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.IsNetDrive(iDrive);
+  return libSHELL32_dll.IsNetDrive!(iDrive);
 }
 
 export function Shell_MergeMenus(
@@ -28407,7 +29095,7 @@ export function Shell_MergeMenus(
   uIDAdjustMax: number /* u32 */,
   uFlags: MM_FLAGS /* Windows.Win32.UI.Shell.MM_FLAGS */,
 ): number /* u32 */ {
-  return libSHELL32_dll.Shell_MergeMenus(util.toPointer(hmDst), util.toPointer(hmSrc), uInsert, uIDAdjust, uIDAdjustMax, uFlags);
+  return libSHELL32_dll.Shell_MergeMenus!(util.toPointer(hmDst), util.toPointer(hmSrc), uInsert, uIDAdjust, uIDAdjustMax, uFlags);
 }
 
 export function SHObjectProperties(
@@ -28416,7 +29104,7 @@ export function SHObjectProperties(
   pszObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyPage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHObjectProperties((hwnd), shopObjectType, util.pwstrToFfi(pszObjectName), util.pwstrToFfi(pszPropertyPage)));
+  return util.boolFromFfi(libSHELL32_dll.SHObjectProperties!((hwnd), shopObjectType, util.pwstrToFfi(pszObjectName), util.pwstrToFfi(pszPropertyPage)));
 }
 
 export function SHFormatDrive(
@@ -28425,13 +29113,13 @@ export function SHFormatDrive(
   fmtID: SHFMT_ID /* Windows.Win32.UI.Shell.SHFMT_ID */,
   options: SHFMT_OPT /* Windows.Win32.UI.Shell.SHFMT_OPT */,
 ): number /* u32 */ {
-  return libSHELL32_dll.SHFormatDrive((hwnd), drive, fmtID, options);
+  return libSHELL32_dll.SHFormatDrive!((hwnd), drive, fmtID, options);
 }
 
 export function SHDestroyPropSheetExtArray(
   hpsxa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.HPSXA */,
 ): void /* void */ {
-  return libSHELL32_dll.SHDestroyPropSheetExtArray(util.toPointer(hpsxa));
+  return libSHELL32_dll.SHDestroyPropSheetExtArray!(util.toPointer(hpsxa));
 }
 
 export function SHAddFromPropSheetExtArray(
@@ -28439,7 +29127,7 @@ export function SHAddFromPropSheetExtArray(
   lpfnAddPage: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.LPFNSVADDPROPSHEETPAGE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* u32 */ {
-  return libSHELL32_dll.SHAddFromPropSheetExtArray(util.toPointer(hpsxa), util.toPointer(lpfnAddPage), util.toPointer(lParam));
+  return libSHELL32_dll.SHAddFromPropSheetExtArray!(util.toPointer(hpsxa), util.toPointer(lpfnAddPage), util.toPointer(lParam));
 }
 
 export function SHReplaceFromPropSheetExtArray(
@@ -28448,7 +29136,7 @@ export function SHReplaceFromPropSheetExtArray(
   lpfnReplaceWith: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.LPFNSVADDPROPSHEETPAGE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* u32 */ {
-  return libSHELL32_dll.SHReplaceFromPropSheetExtArray(util.toPointer(hpsxa), uPageID, util.toPointer(lpfnReplaceWith), util.toPointer(lParam));
+  return libSHELL32_dll.SHReplaceFromPropSheetExtArray!(util.toPointer(hpsxa), uPageID, util.toPointer(lpfnReplaceWith), util.toPointer(lParam));
 }
 
 export function OpenRegStream(
@@ -28457,20 +29145,20 @@ export function OpenRegStream(
   pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHELL32_dll.OpenRegStream(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
+  return libSHELL32_dll.OpenRegStream!(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
 }
 
 export function SHFindFiles(
   pidlFolder: Deno.PointerValue | Uint8Array /* ptr */,
   pidlSaveFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHFindFiles(util.toPointer(pidlFolder), util.toPointer(pidlSaveFile)));
+  return util.boolFromFfi(libSHELL32_dll.SHFindFiles!(util.toPointer(pidlFolder), util.toPointer(pidlSaveFile)));
 }
 
 export function PathGetShortPath(
   pszLongPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHELL32_dll.PathGetShortPath(util.pwstrToFfi(pszLongPath));
+  return libSHELL32_dll.PathGetShortPath!(util.pwstrToFfi(pszLongPath));
 }
 
 export function PathYetAnotherMakeUniqueName(
@@ -28479,25 +29167,25 @@ export function PathYetAnotherMakeUniqueName(
   pszShort: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszFileSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.PathYetAnotherMakeUniqueName(util.pwstrToFfi(pszUniqueName), util.pwstrToFfi(pszPath), util.pwstrToFfi(pszShort), util.pwstrToFfi(pszFileSpec)));
+  return util.boolFromFfi(libSHELL32_dll.PathYetAnotherMakeUniqueName!(util.pwstrToFfi(pszUniqueName), util.pwstrToFfi(pszPath), util.pwstrToFfi(pszShort), util.pwstrToFfi(pszFileSpec)));
 }
 
 export function Win32DeleteFile(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.Win32DeleteFile(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.Win32DeleteFile!(util.pwstrToFfi(pszPath)));
 }
 
 export function SHRestricted(
   rest: RESTRICTIONS /* Windows.Win32.UI.Shell.RESTRICTIONS */,
 ): number /* u32 */ {
-  return libSHELL32_dll.SHRestricted(rest);
+  return libSHELL32_dll.SHRestricted!(rest);
 }
 
 export function SignalFileOpen(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SignalFileOpen(util.toPointer(pidl)));
+  return util.boolFromFfi(libSHELL32_dll.SignalFileOpen!(util.toPointer(pidl)));
 }
 
 export function AssocGetDetailsOfPropKey(
@@ -28507,7 +29195,7 @@ export function AssocGetDetailsOfPropKey(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pfFoundPropKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.AssocGetDetailsOfPropKey(util.toPointer(psf), util.toPointer(pidl), util.toPointer(pkey), util.toPointer(pv), util.toPointer(pfFoundPropKey));
+  return libSHELL32_dll.AssocGetDetailsOfPropKey!(util.toPointer(psf), util.toPointer(pidl), util.toPointer(pkey), util.toPointer(pv), util.toPointer(pfFoundPropKey));
 }
 
 export function SHStartNetConnectionDialogW(
@@ -28515,7 +29203,7 @@ export function SHStartNetConnectionDialogW(
   pszRemoteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHStartNetConnectionDialogW((hwnd), util.pwstrToFfi(pszRemoteName), dwType);
+  return libSHELL32_dll.SHStartNetConnectionDialogW!((hwnd), util.pwstrToFfi(pszRemoteName), dwType);
 }
 
 export function SHDefExtractIconA(
@@ -28526,7 +29214,7 @@ export function SHDefExtractIconA(
   phiconSmall: Deno.PointerValue | Uint8Array /* ptr */,
   nIconSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHDefExtractIconA(util.pstrToFfi(pszIconFile), iIndex, uFlags, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIconSize);
+  return libSHELL32_dll.SHDefExtractIconA!(util.pstrToFfi(pszIconFile), iIndex, uFlags, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIconSize);
 }
 
 export function SHDefExtractIconW(
@@ -28537,21 +29225,21 @@ export function SHDefExtractIconW(
   phiconSmall: Deno.PointerValue | Uint8Array /* ptr */,
   nIconSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHDefExtractIconW(util.pwstrToFfi(pszIconFile), iIndex, uFlags, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIconSize);
+  return libSHELL32_dll.SHDefExtractIconW!(util.pwstrToFfi(pszIconFile), iIndex, uFlags, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIconSize);
 }
 
 export function SHOpenWithDialog(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   poainfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHOpenWithDialog((hwndParent), util.toPointer(poainfo));
+  return libSHELL32_dll.SHOpenWithDialog!((hwndParent), util.toPointer(poainfo));
 }
 
 export function Shell_GetImageLists(
   phiml: Deno.PointerValue | Uint8Array /* ptr */,
   phimlSmall: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.Shell_GetImageLists(util.toPointer(phiml), util.toPointer(phimlSmall)));
+  return util.boolFromFfi(libSHELL32_dll.Shell_GetImageLists!(util.toPointer(phiml), util.toPointer(phimlSmall)));
 }
 
 export function Shell_GetCachedImageIndex(
@@ -28559,7 +29247,7 @@ export function Shell_GetCachedImageIndex(
   iIconIndex: number /* i32 */,
   uIconFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.Shell_GetCachedImageIndex(util.pwstrToFfi(pwszIconPath), iIconIndex, uIconFlags);
+  return libSHELL32_dll.Shell_GetCachedImageIndex!(util.pwstrToFfi(pwszIconPath), iIconIndex, uIconFlags);
 }
 
 export function Shell_GetCachedImageIndexA(
@@ -28567,7 +29255,7 @@ export function Shell_GetCachedImageIndexA(
   iIconIndex: number /* i32 */,
   uIconFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.Shell_GetCachedImageIndexA(util.pstrToFfi(pszIconPath), iIconIndex, uIconFlags);
+  return libSHELL32_dll.Shell_GetCachedImageIndexA!(util.pstrToFfi(pszIconPath), iIconIndex, uIconFlags);
 }
 
 export function Shell_GetCachedImageIndexW(
@@ -28575,7 +29263,7 @@ export function Shell_GetCachedImageIndexW(
   iIconIndex: number /* i32 */,
   uIconFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libSHELL32_dll.Shell_GetCachedImageIndexW(util.pwstrToFfi(pszIconPath), iIconIndex, uIconFlags);
+  return libSHELL32_dll.Shell_GetCachedImageIndexW!(util.pwstrToFfi(pszIconPath), iIconIndex, uIconFlags);
 }
 
 export function SHValidateUNC(
@@ -28583,17 +29271,17 @@ export function SHValidateUNC(
   pszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fConnect: VALIDATEUNC_OPTION /* Windows.Win32.UI.Shell.VALIDATEUNC_OPTION */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHValidateUNC((hwndOwner), util.pwstrToFfi(pszFile), fConnect));
+  return util.boolFromFfi(libSHELL32_dll.SHValidateUNC!((hwndOwner), util.pwstrToFfi(pszFile), fConnect));
 }
 
 export function SHSetInstanceExplorer(
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): void /* void */ {
-  return libSHELL32_dll.SHSetInstanceExplorer(util.toPointer(punk));
+  return libSHELL32_dll.SHSetInstanceExplorer!(util.toPointer(punk));
 }
 
 export function IsUserAnAdmin(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.IsUserAnAdmin());
+  return util.boolFromFfi(libSHELL32_dll.IsUserAnAdmin!());
 }
 
 export function SHShellFolderView_Message(
@@ -28601,14 +29289,14 @@ export function SHShellFolderView_Message(
   uMsg: number /* u32 */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libSHELL32_dll.SHShellFolderView_Message((hwndMain), uMsg, util.toPointer(lParam));
+  return libSHELL32_dll.SHShellFolderView_Message!((hwndMain), uMsg, util.toPointer(lParam));
 }
 
 export function SHCreateShellFolderView(
   pcsfv: Deno.PointerValue | Uint8Array /* ptr */,
   ppsv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellFolderView(util.toPointer(pcsfv), util.toPointer(ppsv));
+  return libSHELL32_dll.SHCreateShellFolderView!(util.toPointer(pcsfv), util.toPointer(ppsv));
 }
 
 export function CDefFolderMenu_Create2(
@@ -28622,7 +29310,7 @@ export function CDefFolderMenu_Create2(
   ahkeys: Deno.PointerValue | Uint8Array /* ptr */,
   ppcm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.CDefFolderMenu_Create2(util.toPointer(pidlFolder), (hwnd), cidl, util.toPointer(apidl), util.toPointer(psf), util.toPointer(pfn), nKeys, util.toPointer(ahkeys), util.toPointer(ppcm));
+  return libSHELL32_dll.CDefFolderMenu_Create2!(util.toPointer(pidlFolder), (hwnd), cidl, util.toPointer(apidl), util.toPointer(psf), util.toPointer(pfn), nKeys, util.toPointer(ahkeys), util.toPointer(ppcm));
 }
 
 export function SHCreateDefaultContextMenu(
@@ -28630,7 +29318,7 @@ export function SHCreateDefaultContextMenu(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateDefaultContextMenu(util.toPointer(pdcm), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateDefaultContextMenu!(util.toPointer(pdcm), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHFind_InitMenuPopup(
@@ -28639,14 +29327,14 @@ export function SHFind_InitMenuPopup(
   idCmdFirst: number /* u32 */,
   idCmdLast: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Shell.IContextMenu */ {
-  return libSHELL32_dll.SHFind_InitMenuPopup(util.toPointer(hmenu), (hwndOwner), idCmdFirst, idCmdLast);
+  return libSHELL32_dll.SHFind_InitMenuPopup!(util.toPointer(hmenu), (hwndOwner), idCmdFirst, idCmdLast);
 }
 
 export function SHCreateShellFolderViewEx(
   pcsfv: Deno.PointerValue | Uint8Array /* ptr */,
   ppsv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateShellFolderViewEx(util.toPointer(pcsfv), util.toPointer(ppsv));
+  return libSHELL32_dll.SHCreateShellFolderViewEx!(util.toPointer(pcsfv), util.toPointer(ppsv));
 }
 
 export function SHGetSetSettings(
@@ -28654,14 +29342,14 @@ export function SHGetSetSettings(
   dwMask: SSF_MASK /* Windows.Win32.UI.Shell.SSF_MASK */,
   bSet: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libSHELL32_dll.SHGetSetSettings(util.toPointer(lpss), dwMask, util.boolToFfi(bSet));
+  return libSHELL32_dll.SHGetSetSettings!(util.toPointer(lpss), dwMask, util.boolToFfi(bSet));
 }
 
 export function SHGetSettings(
   psfs: Deno.PointerValue | Uint8Array /* ptr */,
   dwMask: number /* u32 */,
 ): void /* void */ {
-  return libSHELL32_dll.SHGetSettings(util.toPointer(psfs), dwMask);
+  return libSHELL32_dll.SHGetSettings!(util.toPointer(psfs), dwMask);
 }
 
 export function SHBindToParent(
@@ -28670,7 +29358,7 @@ export function SHBindToParent(
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
   ppidlLast: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHBindToParent(util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
+  return libSHELL32_dll.SHBindToParent!(util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
 }
 
 export function SHBindToFolderIDListParent(
@@ -28680,7 +29368,7 @@ export function SHBindToFolderIDListParent(
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
   ppidlLast: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHBindToFolderIDListParent(util.toPointer(psfRoot), util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
+  return libSHELL32_dll.SHBindToFolderIDListParent!(util.toPointer(psfRoot), util.toPointer(pidl), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
 }
 
 export function SHBindToFolderIDListParentEx(
@@ -28691,7 +29379,7 @@ export function SHBindToFolderIDListParentEx(
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
   ppidlLast: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHBindToFolderIDListParentEx(util.toPointer(psfRoot), util.toPointer(pidl), util.toPointer(ppbc), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
+  return libSHELL32_dll.SHBindToFolderIDListParentEx!(util.toPointer(psfRoot), util.toPointer(pidl), util.toPointer(ppbc), util.toPointer(riid), util.toPointer(ppv), util.toPointer(ppidlLast));
 }
 
 export function SHBindToObject(
@@ -28701,7 +29389,7 @@ export function SHBindToObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHBindToObject(util.toPointer(psf), util.toPointer(pidl), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHBindToObject!(util.toPointer(psf), util.toPointer(pidl), util.toPointer(pbc), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHParseDisplayName(
@@ -28711,7 +29399,7 @@ export function SHParseDisplayName(
   sfgaoIn: number /* u32 */,
   psfgaoOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHParseDisplayName(util.pwstrToFfi(pszName), util.toPointer(pbc), util.toPointer(ppidl), sfgaoIn, util.toPointer(psfgaoOut));
+  return libSHELL32_dll.SHParseDisplayName!(util.pwstrToFfi(pszName), util.toPointer(pbc), util.toPointer(ppidl), sfgaoIn, util.toPointer(psfgaoOut));
 }
 
 export function SHPathPrepareForWriteA(
@@ -28720,7 +29408,7 @@ export function SHPathPrepareForWriteA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHPathPrepareForWriteA((hwnd), util.toPointer(punkEnableModless), util.pstrToFfi(pszPath), dwFlags);
+  return libSHELL32_dll.SHPathPrepareForWriteA!((hwnd), util.toPointer(punkEnableModless), util.pstrToFfi(pszPath), dwFlags);
 }
 
 export function SHPathPrepareForWriteW(
@@ -28729,7 +29417,7 @@ export function SHPathPrepareForWriteW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHPathPrepareForWriteW((hwnd), util.toPointer(punkEnableModless), util.pwstrToFfi(pszPath), dwFlags);
+  return libSHELL32_dll.SHPathPrepareForWriteW!((hwnd), util.toPointer(punkEnableModless), util.pwstrToFfi(pszPath), dwFlags);
 }
 
 export function SHCreateFileExtractIconW(
@@ -28738,14 +29426,14 @@ export function SHCreateFileExtractIconW(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateFileExtractIconW(util.pwstrToFfi(pszFile), dwFileAttributes, util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.SHCreateFileExtractIconW!(util.pwstrToFfi(pszFile), dwFileAttributes, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHLimitInputEdit(
   hwndEdit: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   psf: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IShellFolder */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHLimitInputEdit((hwndEdit), util.toPointer(psf));
+  return libSHELL32_dll.SHLimitInputEdit!((hwndEdit), util.toPointer(psf));
 }
 
 export function SHGetAttributesFromDataObject(
@@ -28754,7 +29442,7 @@ export function SHGetAttributesFromDataObject(
   pdwAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   pcItems: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetAttributesFromDataObject(util.toPointer(pdo), dwAttributeMask, util.toPointer(pdwAttributes), util.toPointer(pcItems));
+  return libSHELL32_dll.SHGetAttributesFromDataObject!(util.toPointer(pdo), dwAttributeMask, util.toPointer(pdwAttributes), util.toPointer(pcItems));
 }
 
 export function SHMapPIDLToSystemImageListIndex(
@@ -28762,14 +29450,14 @@ export function SHMapPIDLToSystemImageListIndex(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   piIndexSel: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHMapPIDLToSystemImageListIndex(util.toPointer(pshf), util.toPointer(pidl), util.toPointer(piIndexSel));
+  return libSHELL32_dll.SHMapPIDLToSystemImageListIndex!(util.toPointer(pshf), util.toPointer(pidl), util.toPointer(piIndexSel));
 }
 
 export function SHCLSIDFromString(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCLSIDFromString(util.pwstrToFfi(psz), util.toPointer(pclsid));
+  return libSHELL32_dll.SHCLSIDFromString!(util.pwstrToFfi(psz), util.toPointer(pclsid));
 }
 
 export function PickIconDlg(
@@ -28778,7 +29466,7 @@ export function PickIconDlg(
   cchIconPath: number /* u32 */,
   piIconIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.PickIconDlg((hwnd), util.pwstrToFfi(pszIconPath), cchIconPath, util.toPointer(piIconIndex));
+  return libSHELL32_dll.PickIconDlg!((hwnd), util.pwstrToFfi(pszIconPath), cchIconPath, util.toPointer(piIconIndex));
 }
 
 export function StgMakeUniqueName(
@@ -28788,33 +29476,33 @@ export function StgMakeUniqueName(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.StgMakeUniqueName(util.toPointer(pstgParent), util.pwstrToFfi(pszFileSpec), grfMode, util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.StgMakeUniqueName!(util.toPointer(pstgParent), util.pwstrToFfi(pszFileSpec), grfMode, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHChangeNotifyRegisterThread(
   status: SCNRT_STATUS /* Windows.Win32.UI.Shell.SCNRT_STATUS */,
 ): void /* void */ {
-  return libSHELL32_dll.SHChangeNotifyRegisterThread(status);
+  return libSHELL32_dll.SHChangeNotifyRegisterThread!(status);
 }
 
 export function PathQualify(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHELL32_dll.PathQualify(util.pwstrToFfi(psz));
+  return libSHELL32_dll.PathQualify!(util.pwstrToFfi(psz));
 }
 
 export function PathIsSlowA(
   pszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAttr: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.PathIsSlowA(util.pstrToFfi(pszFile), dwAttr));
+  return util.boolFromFfi(libSHELL32_dll.PathIsSlowA!(util.pstrToFfi(pszFile), dwAttr));
 }
 
 export function PathIsSlowW(
   pszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAttr: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.PathIsSlowW(util.pwstrToFfi(pszFile), dwAttr));
+  return util.boolFromFfi(libSHELL32_dll.PathIsSlowW!(util.pwstrToFfi(pszFile), dwAttr));
 }
 
 export function SHCreatePropSheetExtArray(
@@ -28822,7 +29510,7 @@ export function SHCreatePropSheetExtArray(
   pszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   max_iface: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Shell.HPSXA */ {
-  return libSHELL32_dll.SHCreatePropSheetExtArray(util.toPointer(hKey), util.pwstrToFfi(pszSubKey), max_iface);
+  return libSHELL32_dll.SHCreatePropSheetExtArray!(util.toPointer(hKey), util.pwstrToFfi(pszSubKey), max_iface);
 }
 
 export function SHOpenPropSheetW(
@@ -28834,7 +29522,7 @@ export function SHOpenPropSheetW(
   psb: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IShellBrowser */,
   pStartPage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHOpenPropSheetW(util.pwstrToFfi(pszCaption), util.toPointer(ahkeys), ckeys, util.toPointer(pclsidDefault), util.toPointer(pdtobj), util.toPointer(psb), util.pwstrToFfi(pStartPage)));
+  return util.boolFromFfi(libSHELL32_dll.SHOpenPropSheetW!(util.pwstrToFfi(pszCaption), util.toPointer(ahkeys), ckeys, util.toPointer(pclsidDefault), util.toPointer(pdtobj), util.toPointer(psb), util.pwstrToFfi(pStartPage)));
 }
 
 export function SoftwareUpdateMessageBox(
@@ -28843,20 +29531,20 @@ export function SoftwareUpdateMessageBox(
   dwFlags: number /* u32 */,
   psdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSHDOCVW_dll.SoftwareUpdateMessageBox((hWnd), util.pwstrToFfi(pszDistUnit), dwFlags, util.toPointer(psdi));
+  return libSHDOCVW_dll.SoftwareUpdateMessageBox!((hWnd), util.pwstrToFfi(pszDistUnit), dwFlags, util.toPointer(psdi));
 }
 
 export function SHMultiFileProperties(
   pdtobj: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHMultiFileProperties(util.toPointer(pdtobj), dwFlags);
+  return libSHELL32_dll.SHMultiFileProperties!(util.toPointer(pdtobj), dwFlags);
 }
 
 export function SHCreateQueryCancelAutoPlayMoniker(
   ppmoniker: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHCreateQueryCancelAutoPlayMoniker(util.toPointer(ppmoniker));
+  return libSHELL32_dll.SHCreateQueryCancelAutoPlayMoniker!(util.toPointer(ppmoniker));
 }
 
 export function ImportPrivacySettings(
@@ -28864,13 +29552,13 @@ export function ImportPrivacySettings(
   pfParsePrivacyPreferences: Deno.PointerValue | Uint8Array /* ptr */,
   pfParsePerSiteRules: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHDOCVW_dll.ImportPrivacySettings(util.pwstrToFfi(pszFilename), util.toPointer(pfParsePrivacyPreferences), util.toPointer(pfParsePerSiteRules)));
+  return util.boolFromFfi(libSHDOCVW_dll.ImportPrivacySettings!(util.pwstrToFfi(pszFilename), util.toPointer(pfParsePrivacyPreferences), util.toPointer(pfParsePerSiteRules)));
 }
 
 export function GetScaleFactorForDevice(
   deviceType: DISPLAY_DEVICE_TYPE /* Windows.Win32.UI.Shell.DISPLAY_DEVICE_TYPE */,
 ): DEVICE_SCALE_FACTOR /* Windows.Win32.UI.Shell.Common.DEVICE_SCALE_FACTOR */ {
-  return libapi_ms_win_shcore_scaling_l1_1_0_dll.GetScaleFactorForDevice(deviceType);
+  return libapi_ms_win_shcore_scaling_l1_1_0_dll.GetScaleFactorForDevice!(deviceType);
 }
 
 export function RegisterScaleChangeNotifications(
@@ -28879,47 +29567,47 @@ export function RegisterScaleChangeNotifications(
   uMsgNotify: number /* u32 */,
   pdwCookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_0_dll.RegisterScaleChangeNotifications(displayDevice, (hwndNotify), uMsgNotify, util.toPointer(pdwCookie));
+  return libapi_ms_win_shcore_scaling_l1_1_0_dll.RegisterScaleChangeNotifications!(displayDevice, (hwndNotify), uMsgNotify, util.toPointer(pdwCookie));
 }
 
 export function RevokeScaleChangeNotifications(
   displayDevice: DISPLAY_DEVICE_TYPE /* Windows.Win32.UI.Shell.DISPLAY_DEVICE_TYPE */,
   dwCookie: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_0_dll.RevokeScaleChangeNotifications(displayDevice, dwCookie);
+  return libapi_ms_win_shcore_scaling_l1_1_0_dll.RevokeScaleChangeNotifications!(displayDevice, dwCookie);
 }
 
 export function GetScaleFactorForMonitor(
   hMon: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HMONITOR */,
   pScale: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetScaleFactorForMonitor(util.toPointer(hMon), util.toPointer(pScale));
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetScaleFactorForMonitor!(util.toPointer(hMon), util.toPointer(pScale));
 }
 
 export function RegisterScaleChangeEvent(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwCookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.RegisterScaleChangeEvent(util.toPointer(hEvent), util.toPointer(pdwCookie));
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.RegisterScaleChangeEvent!(util.toPointer(hEvent), util.toPointer(pdwCookie));
 }
 
 export function UnregisterScaleChangeEvent(
   dwCookie: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.UnregisterScaleChangeEvent(dwCookie);
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.UnregisterScaleChangeEvent!(dwCookie);
 }
 
 export function GetDpiForShellUIComponent(
   param0: SHELL_UI_COMPONENT /* Windows.Win32.UI.Shell.SHELL_UI_COMPONENT */,
 ): number /* u32 */ {
-  return libapi_ms_win_shcore_scaling_l1_1_2_dll.GetDpiForShellUIComponent(param0);
+  return libapi_ms_win_shcore_scaling_l1_1_2_dll.GetDpiForShellUIComponent!(param0);
 }
 
 export function CommandLineToArgvW(
   lpCmdLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pNumArgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHELL32_dll.CommandLineToArgvW(util.pwstrToFfi(lpCmdLine), util.toPointer(pNumArgs));
+  return libSHELL32_dll.CommandLineToArgvW!(util.pwstrToFfi(lpCmdLine), util.toPointer(pNumArgs));
 }
 
 export function DragQueryFileA(
@@ -28928,7 +29616,7 @@ export function DragQueryFileA(
   lpszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cch: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.DragQueryFileA(util.toPointer(hDrop), iFile, util.pstrToFfi(lpszFile), cch);
+  return libSHELL32_dll.DragQueryFileA!(util.toPointer(hDrop), iFile, util.pstrToFfi(lpszFile), cch);
 }
 
 export function DragQueryFileW(
@@ -28937,27 +29625,27 @@ export function DragQueryFileW(
   lpszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cch: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.DragQueryFileW(util.toPointer(hDrop), iFile, util.pwstrToFfi(lpszFile), cch);
+  return libSHELL32_dll.DragQueryFileW!(util.toPointer(hDrop), iFile, util.pwstrToFfi(lpszFile), cch);
 }
 
 export function DragQueryPoint(
   hDrop: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.HDROP */,
   ppt: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.DragQueryPoint(util.toPointer(hDrop), util.toPointer(ppt)));
+  return util.boolFromFfi(libSHELL32_dll.DragQueryPoint!(util.toPointer(hDrop), util.toPointer(ppt)));
 }
 
 export function DragFinish(
   hDrop: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.HDROP */,
 ): void /* void */ {
-  return libSHELL32_dll.DragFinish(util.toPointer(hDrop));
+  return libSHELL32_dll.DragFinish!(util.toPointer(hDrop));
 }
 
 export function DragAcceptFiles(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   fAccept: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libSHELL32_dll.DragAcceptFiles((hWnd), util.boolToFfi(fAccept));
+  return libSHELL32_dll.DragAcceptFiles!((hWnd), util.boolToFfi(fAccept));
 }
 
 export function ShellExecuteA(
@@ -28968,7 +29656,7 @@ export function ShellExecuteA(
   lpDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShowCmd: SHOW_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libSHELL32_dll.ShellExecuteA((hwnd), util.pstrToFfi(lpOperation), util.pstrToFfi(lpFile), util.pstrToFfi(lpParameters), util.pstrToFfi(lpDirectory), nShowCmd);
+  return libSHELL32_dll.ShellExecuteA!((hwnd), util.pstrToFfi(lpOperation), util.pstrToFfi(lpFile), util.pstrToFfi(lpParameters), util.pstrToFfi(lpDirectory), nShowCmd);
 }
 
 export function ShellExecuteW(
@@ -28979,7 +29667,7 @@ export function ShellExecuteW(
   lpDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShowCmd: SHOW_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libSHELL32_dll.ShellExecuteW((hwnd), util.pwstrToFfi(lpOperation), util.pwstrToFfi(lpFile), util.pwstrToFfi(lpParameters), util.pwstrToFfi(lpDirectory), nShowCmd);
+  return libSHELL32_dll.ShellExecuteW!((hwnd), util.pwstrToFfi(lpOperation), util.pwstrToFfi(lpFile), util.pwstrToFfi(lpParameters), util.pwstrToFfi(lpDirectory), nShowCmd);
 }
 
 export function FindExecutableA(
@@ -28987,7 +29675,7 @@ export function FindExecutableA(
   lpDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpResult: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libSHELL32_dll.FindExecutableA(util.pstrToFfi(lpFile), util.pstrToFfi(lpDirectory), util.pstrToFfi(lpResult));
+  return libSHELL32_dll.FindExecutableA!(util.pstrToFfi(lpFile), util.pstrToFfi(lpDirectory), util.pstrToFfi(lpResult));
 }
 
 export function FindExecutableW(
@@ -28995,7 +29683,7 @@ export function FindExecutableW(
   lpDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpResult: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libSHELL32_dll.FindExecutableW(util.pwstrToFfi(lpFile), util.pwstrToFfi(lpDirectory), util.pwstrToFfi(lpResult));
+  return libSHELL32_dll.FindExecutableW!(util.pwstrToFfi(lpFile), util.pwstrToFfi(lpDirectory), util.pwstrToFfi(lpResult));
 }
 
 export function ShellAboutA(
@@ -29004,7 +29692,7 @@ export function ShellAboutA(
   szOtherStuff: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): number /* i32 */ {
-  return libSHELL32_dll.ShellAboutA((hWnd), util.pstrToFfi(szApp), util.pstrToFfi(szOtherStuff), util.toPointer(hIcon));
+  return libSHELL32_dll.ShellAboutA!((hWnd), util.pstrToFfi(szApp), util.pstrToFfi(szOtherStuff), util.toPointer(hIcon));
 }
 
 export function ShellAboutW(
@@ -29013,14 +29701,14 @@ export function ShellAboutW(
   szOtherStuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): number /* i32 */ {
-  return libSHELL32_dll.ShellAboutW((hWnd), util.pwstrToFfi(szApp), util.pwstrToFfi(szOtherStuff), util.toPointer(hIcon));
+  return libSHELL32_dll.ShellAboutW!((hWnd), util.pwstrToFfi(szApp), util.pwstrToFfi(szOtherStuff), util.toPointer(hIcon));
 }
 
 export function DuplicateIcon(
   hInst: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.DuplicateIcon(util.toPointer(hInst), util.toPointer(hIcon));
+  return libSHELL32_dll.DuplicateIcon!(util.toPointer(hInst), util.toPointer(hIcon));
 }
 
 export function ExtractAssociatedIconA(
@@ -29028,7 +29716,7 @@ export function ExtractAssociatedIconA(
   pszIconPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   piIcon: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractAssociatedIconA(util.toPointer(hInst), util.pstrToFfi(pszIconPath), util.toPointer(piIcon));
+  return libSHELL32_dll.ExtractAssociatedIconA!(util.toPointer(hInst), util.pstrToFfi(pszIconPath), util.toPointer(piIcon));
 }
 
 export function ExtractAssociatedIconW(
@@ -29036,7 +29724,7 @@ export function ExtractAssociatedIconW(
   pszIconPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   piIcon: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractAssociatedIconW(util.toPointer(hInst), util.pwstrToFfi(pszIconPath), util.toPointer(piIcon));
+  return libSHELL32_dll.ExtractAssociatedIconW!(util.toPointer(hInst), util.pwstrToFfi(pszIconPath), util.toPointer(piIcon));
 }
 
 export function ExtractAssociatedIconExA(
@@ -29045,7 +29733,7 @@ export function ExtractAssociatedIconExA(
   piIconIndex: Deno.PointerValue | Uint8Array /* ptr */,
   piIconId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractAssociatedIconExA(util.toPointer(hInst), util.pstrToFfi(pszIconPath), util.toPointer(piIconIndex), util.toPointer(piIconId));
+  return libSHELL32_dll.ExtractAssociatedIconExA!(util.toPointer(hInst), util.pstrToFfi(pszIconPath), util.toPointer(piIconIndex), util.toPointer(piIconId));
 }
 
 export function ExtractAssociatedIconExW(
@@ -29054,7 +29742,7 @@ export function ExtractAssociatedIconExW(
   piIconIndex: Deno.PointerValue | Uint8Array /* ptr */,
   piIconId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractAssociatedIconExW(util.toPointer(hInst), util.pwstrToFfi(pszIconPath), util.toPointer(piIconIndex), util.toPointer(piIconId));
+  return libSHELL32_dll.ExtractAssociatedIconExW!(util.toPointer(hInst), util.pwstrToFfi(pszIconPath), util.toPointer(piIconIndex), util.toPointer(piIconId));
 }
 
 export function ExtractIconA(
@@ -29062,7 +29750,7 @@ export function ExtractIconA(
   pszExeFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nIconIndex: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractIconA(util.toPointer(hInst), util.pstrToFfi(pszExeFileName), nIconIndex);
+  return libSHELL32_dll.ExtractIconA!(util.toPointer(hInst), util.pstrToFfi(pszExeFileName), nIconIndex);
 }
 
 export function ExtractIconW(
@@ -29070,28 +29758,28 @@ export function ExtractIconW(
   pszExeFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nIconIndex: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libSHELL32_dll.ExtractIconW(util.toPointer(hInst), util.pwstrToFfi(pszExeFileName), nIconIndex);
+  return libSHELL32_dll.ExtractIconW!(util.toPointer(hInst), util.pwstrToFfi(pszExeFileName), nIconIndex);
 }
 
 export function SHAppBarMessage(
   dwMessage: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libSHELL32_dll.SHAppBarMessage(dwMessage, util.toPointer(pData));
+  return libSHELL32_dll.SHAppBarMessage!(dwMessage, util.toPointer(pData));
 }
 
 export function DoEnvironmentSubstA(
   pszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSrc: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.DoEnvironmentSubstA(util.pstrToFfi(pszSrc), cchSrc);
+  return libSHELL32_dll.DoEnvironmentSubstA!(util.pstrToFfi(pszSrc), cchSrc);
 }
 
 export function DoEnvironmentSubstW(
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSrc: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.DoEnvironmentSubstW(util.pwstrToFfi(pszSrc), cchSrc);
+  return libSHELL32_dll.DoEnvironmentSubstW!(util.pwstrToFfi(pszSrc), cchSrc);
 }
 
 export function ExtractIconExA(
@@ -29101,7 +29789,7 @@ export function ExtractIconExA(
   phiconSmall: Deno.PointerValue | Uint8Array /* ptr */,
   nIcons: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.ExtractIconExA(util.pstrToFfi(lpszFile), nIconIndex, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIcons);
+  return libSHELL32_dll.ExtractIconExA!(util.pstrToFfi(lpszFile), nIconIndex, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIcons);
 }
 
 export function ExtractIconExW(
@@ -29111,43 +29799,43 @@ export function ExtractIconExW(
   phiconSmall: Deno.PointerValue | Uint8Array /* ptr */,
   nIcons: number /* u32 */,
 ): number /* u32 */ {
-  return libSHELL32_dll.ExtractIconExW(util.pwstrToFfi(lpszFile), nIconIndex, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIcons);
+  return libSHELL32_dll.ExtractIconExW!(util.pwstrToFfi(lpszFile), nIconIndex, util.toPointer(phiconLarge), util.toPointer(phiconSmall), nIcons);
 }
 
 export function SHFileOperationA(
   lpFileOp: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHFileOperationA(util.toPointer(lpFileOp));
+  return libSHELL32_dll.SHFileOperationA!(util.toPointer(lpFileOp));
 }
 
 export function SHFileOperationW(
   lpFileOp: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHELL32_dll.SHFileOperationW(util.toPointer(lpFileOp));
+  return libSHELL32_dll.SHFileOperationW!(util.toPointer(lpFileOp));
 }
 
 export function SHFreeNameMappings(
   hNameMappings: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libSHELL32_dll.SHFreeNameMappings(util.toPointer(hNameMappings));
+  return libSHELL32_dll.SHFreeNameMappings!(util.toPointer(hNameMappings));
 }
 
 export function ShellExecuteExA(
   pExecInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ShellExecuteExA(util.toPointer(pExecInfo)));
+  return util.boolFromFfi(libSHELL32_dll.ShellExecuteExA!(util.toPointer(pExecInfo)));
 }
 
 export function ShellExecuteExW(
   pExecInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.ShellExecuteExW(util.toPointer(pExecInfo)));
+  return util.boolFromFfi(libSHELL32_dll.ShellExecuteExW!(util.toPointer(pExecInfo)));
 }
 
 export function SHCreateProcessAsUserW(
   pscpi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHCreateProcessAsUserW(util.toPointer(pscpi)));
+  return util.boolFromFfi(libSHELL32_dll.SHCreateProcessAsUserW!(util.toPointer(pscpi)));
 }
 
 export function SHEvaluateSystemCommandTemplate(
@@ -29156,7 +29844,7 @@ export function SHEvaluateSystemCommandTemplate(
   ppszCommandLine: Deno.PointerValue | Uint8Array /* ptr */,
   ppszParameters: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHEvaluateSystemCommandTemplate(util.pwstrToFfi(pszCmdTemplate), util.toPointer(ppszApplication), util.toPointer(ppszCommandLine), util.toPointer(ppszParameters));
+  return libSHELL32_dll.SHEvaluateSystemCommandTemplate!(util.pwstrToFfi(pszCmdTemplate), util.toPointer(ppszApplication), util.toPointer(ppszCommandLine), util.toPointer(ppszParameters));
 }
 
 export function AssocCreateForClasses(
@@ -29165,21 +29853,21 @@ export function AssocCreateForClasses(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.AssocCreateForClasses(util.toPointer(rgClasses), cClasses, util.toPointer(riid), util.toPointer(ppv));
+  return libSHELL32_dll.AssocCreateForClasses!(util.toPointer(rgClasses), cClasses, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHQueryRecycleBinA(
   pszRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pSHQueryRBInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHQueryRecycleBinA(util.pstrToFfi(pszRootPath), util.toPointer(pSHQueryRBInfo));
+  return libSHELL32_dll.SHQueryRecycleBinA!(util.pstrToFfi(pszRootPath), util.toPointer(pSHQueryRBInfo));
 }
 
 export function SHQueryRecycleBinW(
   pszRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSHQueryRBInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHQueryRecycleBinW(util.pwstrToFfi(pszRootPath), util.toPointer(pSHQueryRBInfo));
+  return libSHELL32_dll.SHQueryRecycleBinW!(util.pwstrToFfi(pszRootPath), util.toPointer(pSHQueryRBInfo));
 }
 
 export function SHEmptyRecycleBinA(
@@ -29187,7 +29875,7 @@ export function SHEmptyRecycleBinA(
   pszRootPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHEmptyRecycleBinA((hwnd), util.pstrToFfi(pszRootPath), dwFlags);
+  return libSHELL32_dll.SHEmptyRecycleBinA!((hwnd), util.pstrToFfi(pszRootPath), dwFlags);
 }
 
 export function SHEmptyRecycleBinW(
@@ -29195,34 +29883,34 @@ export function SHEmptyRecycleBinW(
   pszRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHEmptyRecycleBinW((hwnd), util.pwstrToFfi(pszRootPath), dwFlags);
+  return libSHELL32_dll.SHEmptyRecycleBinW!((hwnd), util.pwstrToFfi(pszRootPath), dwFlags);
 }
 
 export function SHQueryUserNotificationState(
   pquns: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHQueryUserNotificationState(util.toPointer(pquns));
+  return libSHELL32_dll.SHQueryUserNotificationState!(util.toPointer(pquns));
 }
 
 export function Shell_NotifyIconA(
   dwMessage: NOTIFY_ICON_MESSAGE /* Windows.Win32.UI.Shell.NOTIFY_ICON_MESSAGE */,
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.Shell_NotifyIconA(dwMessage, util.toPointer(lpData)));
+  return util.boolFromFfi(libSHELL32_dll.Shell_NotifyIconA!(dwMessage, util.toPointer(lpData)));
 }
 
 export function Shell_NotifyIconW(
   dwMessage: NOTIFY_ICON_MESSAGE /* Windows.Win32.UI.Shell.NOTIFY_ICON_MESSAGE */,
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.Shell_NotifyIconW(dwMessage, util.toPointer(lpData)));
+  return util.boolFromFfi(libSHELL32_dll.Shell_NotifyIconW!(dwMessage, util.toPointer(lpData)));
 }
 
 export function Shell_NotifyIconGetRect(
   identifier: Deno.PointerValue | Uint8Array /* ptr */,
   iconLocation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.Shell_NotifyIconGetRect(util.toPointer(identifier), util.toPointer(iconLocation));
+  return libSHELL32_dll.Shell_NotifyIconGetRect!(util.toPointer(identifier), util.toPointer(iconLocation));
 }
 
 export function SHGetFileInfoA(
@@ -29232,7 +29920,7 @@ export function SHGetFileInfoA(
   cbFileInfo: number /* u32 */,
   uFlags: SHGFI_FLAGS /* Windows.Win32.UI.Shell.SHGFI_FLAGS */,
 ): bigint | number /* usize */ {
-  return libSHELL32_dll.SHGetFileInfoA(util.pstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
+  return libSHELL32_dll.SHGetFileInfoA!(util.pstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
 }
 
 export function SHGetFileInfoW(
@@ -29242,7 +29930,7 @@ export function SHGetFileInfoW(
   cbFileInfo: number /* u32 */,
   uFlags: SHGFI_FLAGS /* Windows.Win32.UI.Shell.SHGFI_FLAGS */,
 ): bigint | number /* usize */ {
-  return libSHELL32_dll.SHGetFileInfoW(util.pwstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
+  return libSHELL32_dll.SHGetFileInfoW!(util.pwstrToFfi(pszPath), dwFileAttributes, util.toPointer(psfi), cbFileInfo, uFlags);
 }
 
 export function SHGetStockIconInfo(
@@ -29250,7 +29938,7 @@ export function SHGetStockIconInfo(
   uFlags: number /* u32 */,
   psii: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetStockIconInfo(siid, uFlags, util.toPointer(psii));
+  return libSHELL32_dll.SHGetStockIconInfo!(siid, uFlags, util.toPointer(psii));
 }
 
 export function SHGetDiskFreeSpaceExA(
@@ -29259,7 +29947,7 @@ export function SHGetDiskFreeSpaceExA(
   pulTotalNumberOfBytes: Deno.PointerValue | Uint8Array /* ptr */,
   pulTotalNumberOfFreeBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetDiskFreeSpaceExA(util.pstrToFfi(pszDirectoryName), util.toPointer(pulFreeBytesAvailableToCaller), util.toPointer(pulTotalNumberOfBytes), util.toPointer(pulTotalNumberOfFreeBytes)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetDiskFreeSpaceExA!(util.pstrToFfi(pszDirectoryName), util.toPointer(pulFreeBytesAvailableToCaller), util.toPointer(pulTotalNumberOfBytes), util.toPointer(pulTotalNumberOfFreeBytes)));
 }
 
 export function SHGetDiskFreeSpaceExW(
@@ -29268,7 +29956,7 @@ export function SHGetDiskFreeSpaceExW(
   pulTotalNumberOfBytes: Deno.PointerValue | Uint8Array /* ptr */,
   pulTotalNumberOfFreeBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetDiskFreeSpaceExW(util.pwstrToFfi(pszDirectoryName), util.toPointer(pulFreeBytesAvailableToCaller), util.toPointer(pulTotalNumberOfBytes), util.toPointer(pulTotalNumberOfFreeBytes)));
+  return util.boolFromFfi(libSHELL32_dll.SHGetDiskFreeSpaceExW!(util.pwstrToFfi(pszDirectoryName), util.toPointer(pulFreeBytesAvailableToCaller), util.toPointer(pulTotalNumberOfBytes), util.toPointer(pulTotalNumberOfFreeBytes)));
 }
 
 export function SHGetNewLinkInfoA(
@@ -29278,7 +29966,7 @@ export function SHGetNewLinkInfoA(
   pfMustCopy: Deno.PointerValue | Uint8Array /* ptr */,
   uFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetNewLinkInfoA(util.pstrToFfi(pszLinkTo), util.pstrToFfi(pszDir), util.pstrToFfi(pszName), util.toPointer(pfMustCopy), uFlags));
+  return util.boolFromFfi(libSHELL32_dll.SHGetNewLinkInfoA!(util.pstrToFfi(pszLinkTo), util.pstrToFfi(pszDir), util.pstrToFfi(pszName), util.toPointer(pfMustCopy), uFlags));
 }
 
 export function SHGetNewLinkInfoW(
@@ -29288,7 +29976,7 @@ export function SHGetNewLinkInfoW(
   pfMustCopy: Deno.PointerValue | Uint8Array /* ptr */,
   uFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHGetNewLinkInfoW(util.pwstrToFfi(pszLinkTo), util.pwstrToFfi(pszDir), util.pwstrToFfi(pszName), util.toPointer(pfMustCopy), uFlags));
+  return util.boolFromFfi(libSHELL32_dll.SHGetNewLinkInfoW!(util.pwstrToFfi(pszLinkTo), util.pwstrToFfi(pszDir), util.pwstrToFfi(pszName), util.toPointer(pfMustCopy), uFlags));
 }
 
 export function SHInvokePrinterCommandA(
@@ -29298,7 +29986,7 @@ export function SHInvokePrinterCommandA(
   lpBuf2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fModal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHInvokePrinterCommandA((hwnd), uAction, util.pstrToFfi(lpBuf1), util.pstrToFfi(lpBuf2), util.boolToFfi(fModal)));
+  return util.boolFromFfi(libSHELL32_dll.SHInvokePrinterCommandA!((hwnd), uAction, util.pstrToFfi(lpBuf1), util.pstrToFfi(lpBuf2), util.boolToFfi(fModal)));
 }
 
 export function SHInvokePrinterCommandW(
@@ -29308,18 +29996,18 @@ export function SHInvokePrinterCommandW(
   lpBuf2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fModal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHInvokePrinterCommandW((hwnd), uAction, util.pwstrToFfi(lpBuf1), util.pwstrToFfi(lpBuf2), util.boolToFfi(fModal)));
+  return util.boolFromFfi(libSHELL32_dll.SHInvokePrinterCommandW!((hwnd), uAction, util.pwstrToFfi(lpBuf1), util.pwstrToFfi(lpBuf2), util.boolToFfi(fModal)));
 }
 
 export function SHLoadNonloadedIconOverlayIdentifiers(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHLoadNonloadedIconOverlayIdentifiers();
+  return libSHELL32_dll.SHLoadNonloadedIconOverlayIdentifiers!();
 }
 
 export function SHIsFileAvailableOffline(
   pwszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHIsFileAvailableOffline(util.pwstrToFfi(pwszPath), util.toPointer(pdwStatus));
+  return libSHELL32_dll.SHIsFileAvailableOffline!(util.pwstrToFfi(pwszPath), util.toPointer(pdwStatus));
 }
 
 export function SHSetLocalizedName(
@@ -29327,13 +30015,13 @@ export function SHSetLocalizedName(
   pszResModule: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   idsRes: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetLocalizedName(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszResModule), idsRes);
+  return libSHELL32_dll.SHSetLocalizedName!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszResModule), idsRes);
 }
 
 export function SHRemoveLocalizedName(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHRemoveLocalizedName(util.pwstrToFfi(pszPath));
+  return libSHELL32_dll.SHRemoveLocalizedName!(util.pwstrToFfi(pszPath));
 }
 
 export function SHGetLocalizedName(
@@ -29342,7 +30030,7 @@ export function SHGetLocalizedName(
   cch: number /* u32 */,
   pidsRes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetLocalizedName(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszResModule), cch, util.toPointer(pidsRes));
+  return libSHELL32_dll.SHGetLocalizedName!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszResModule), cch, util.toPointer(pidsRes));
 }
 
 export function ShellMessageBoxA(
@@ -29352,7 +30040,7 @@ export function ShellMessageBoxA(
   lpcTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fuStyle: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.ShellMessageBoxA(util.toPointer(hAppInst), (hWnd), util.pstrToFfi(lpcText), util.pstrToFfi(lpcTitle), fuStyle);
+  return libSHLWAPI_dll.ShellMessageBoxA!(util.toPointer(hAppInst), (hWnd), util.pstrToFfi(lpcText), util.pstrToFfi(lpcTitle), fuStyle);
 }
 
 export function ShellMessageBoxW(
@@ -29362,19 +30050,19 @@ export function ShellMessageBoxW(
   lpcTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fuStyle: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.ShellMessageBoxW(util.toPointer(hAppInst), (hWnd), util.pwstrToFfi(lpcText), util.pwstrToFfi(lpcTitle), fuStyle);
+  return libSHLWAPI_dll.ShellMessageBoxW!(util.toPointer(hAppInst), (hWnd), util.pwstrToFfi(lpcText), util.pwstrToFfi(lpcTitle), fuStyle);
 }
 
 export function IsLFNDriveA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.IsLFNDriveA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.IsLFNDriveA!(util.pstrToFfi(pszPath)));
 }
 
 export function IsLFNDriveW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.IsLFNDriveW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHELL32_dll.IsLFNDriveW!(util.pwstrToFfi(pszPath)));
 }
 
 export function SHEnumerateUnreadMailAccountsW(
@@ -29383,7 +30071,7 @@ export function SHEnumerateUnreadMailAccountsW(
   pszMailAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMailAddress: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHEnumerateUnreadMailAccountsW(util.toPointer(hKeyUser), dwIndex, util.pwstrToFfi(pszMailAddress), cchMailAddress);
+  return libSHELL32_dll.SHEnumerateUnreadMailAccountsW!(util.toPointer(hKeyUser), dwIndex, util.pwstrToFfi(pszMailAddress), cchMailAddress);
 }
 
 export function SHGetUnreadMailCountW(
@@ -29394,7 +30082,7 @@ export function SHGetUnreadMailCountW(
   pszShellExecuteCommand: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchShellExecuteCommand: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetUnreadMailCountW(util.toPointer(hKeyUser), util.pwstrToFfi(pszMailAddress), util.toPointer(pdwCount), util.toPointer(pFileTime), util.pwstrToFfi(pszShellExecuteCommand), cchShellExecuteCommand);
+  return libSHELL32_dll.SHGetUnreadMailCountW!(util.toPointer(hKeyUser), util.pwstrToFfi(pszMailAddress), util.toPointer(pdwCount), util.toPointer(pFileTime), util.pwstrToFfi(pszShellExecuteCommand), cchShellExecuteCommand);
 }
 
 export function SHSetUnreadMailCountW(
@@ -29402,14 +30090,14 @@ export function SHSetUnreadMailCountW(
   dwCount: number /* u32 */,
   pszShellExecuteCommand: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHSetUnreadMailCountW(util.pwstrToFfi(pszMailAddress), dwCount, util.pwstrToFfi(pszShellExecuteCommand));
+  return libSHELL32_dll.SHSetUnreadMailCountW!(util.pwstrToFfi(pszMailAddress), dwCount, util.pwstrToFfi(pszShellExecuteCommand));
 }
 
 export function SHTestTokenMembership(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulRID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.SHTestTokenMembership(util.toPointer(hToken), ulRID));
+  return util.boolFromFfi(libSHELL32_dll.SHTestTokenMembership!(util.toPointer(hToken), ulRID));
 }
 
 export function SHGetImageList(
@@ -29417,46 +30105,46 @@ export function SHGetImageList(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetImageList(iImageList, util.toPointer(riid), util.toPointer(ppvObj));
+  return libSHELL32_dll.SHGetImageList!(iImageList, util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function InitNetworkAddressControl(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHELL32_dll.InitNetworkAddressControl());
+  return util.boolFromFfi(libSHELL32_dll.InitNetworkAddressControl!());
 }
 
 export function SHGetDriveMedia(
   pszDrive: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwMediaContent: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHELL32_dll.SHGetDriveMedia(util.pwstrToFfi(pszDrive), util.toPointer(pdwMediaContent));
+  return libSHELL32_dll.SHGetDriveMedia!(util.pwstrToFfi(pszDrive), util.toPointer(pdwMediaContent));
 }
 
 export function StrChrA(
   pszStart: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wMatch: number /* u16 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrChrA(util.pstrToFfi(pszStart), wMatch));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrChrA!(util.pstrToFfi(pszStart), wMatch));
 }
 
 export function StrChrW(
   pszStart: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wMatch: Uint8Array | Deno.PointerValue /* char */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrW(util.pwstrToFfi(pszStart), util.toPointer(wMatch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrW!(util.pwstrToFfi(pszStart), util.toPointer(wMatch)));
 }
 
 export function StrChrIA(
   pszStart: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wMatch: number /* u16 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrChrIA(util.pstrToFfi(pszStart), wMatch));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrChrIA!(util.pstrToFfi(pszStart), wMatch));
 }
 
 export function StrChrIW(
   pszStart: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wMatch: Uint8Array | Deno.PointerValue /* char */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrIW(util.pwstrToFfi(pszStart), util.toPointer(wMatch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrIW!(util.pwstrToFfi(pszStart), util.toPointer(wMatch)));
 }
 
 export function StrChrNW(
@@ -29464,7 +30152,7 @@ export function StrChrNW(
   wMatch: Uint8Array | Deno.PointerValue /* char */,
   cchMax: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrNW(util.pwstrToFfi(pszStart), util.toPointer(wMatch), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrNW!(util.pwstrToFfi(pszStart), util.toPointer(wMatch), cchMax));
 }
 
 export function StrChrNIW(
@@ -29472,7 +30160,7 @@ export function StrChrNIW(
   wMatch: Uint8Array | Deno.PointerValue /* char */,
   cchMax: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrNIW(util.pwstrToFfi(pszStart), util.toPointer(wMatch), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrChrNIW!(util.pwstrToFfi(pszStart), util.toPointer(wMatch), cchMax));
 }
 
 export function StrCmpNA(
@@ -29480,7 +30168,7 @@ export function StrCmpNA(
   psz2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNA(util.pstrToFfi(psz1), util.pstrToFfi(psz2), nChar);
+  return libSHLWAPI_dll.StrCmpNA!(util.pstrToFfi(psz1), util.pstrToFfi(psz2), nChar);
 }
 
 export function StrCmpNW(
@@ -29488,7 +30176,7 @@ export function StrCmpNW(
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), nChar);
+  return libSHLWAPI_dll.StrCmpNW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), nChar);
 }
 
 export function StrCmpNIA(
@@ -29496,7 +30184,7 @@ export function StrCmpNIA(
   psz2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNIA(util.pstrToFfi(psz1), util.pstrToFfi(psz2), nChar);
+  return libSHLWAPI_dll.StrCmpNIA!(util.pstrToFfi(psz1), util.pstrToFfi(psz2), nChar);
 }
 
 export function StrCmpNIW(
@@ -29504,47 +30192,47 @@ export function StrCmpNIW(
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNIW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), nChar);
+  return libSHLWAPI_dll.StrCmpNIW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), nChar);
 }
 
 export function StrCSpnA(
   pszStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSet: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCSpnA(util.pstrToFfi(pszStr), util.pstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrCSpnA!(util.pstrToFfi(pszStr), util.pstrToFfi(pszSet));
 }
 
 export function StrCSpnW(
   pszStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSet: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCSpnW(util.pwstrToFfi(pszStr), util.pwstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrCSpnW!(util.pwstrToFfi(pszStr), util.pwstrToFfi(pszSet));
 }
 
 export function StrCSpnIA(
   pszStr: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSet: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCSpnIA(util.pstrToFfi(pszStr), util.pstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrCSpnIA!(util.pstrToFfi(pszStr), util.pstrToFfi(pszSet));
 }
 
 export function StrCSpnIW(
   pszStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSet: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCSpnIW(util.pwstrToFfi(pszStr), util.pwstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrCSpnIW!(util.pwstrToFfi(pszStr), util.pwstrToFfi(pszSet));
 }
 
 export function StrDupA(
   pszSrch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrDupA(util.pstrToFfi(pszSrch)));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrDupA!(util.pstrToFfi(pszSrch)));
 }
 
 export function StrDupW(
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrDupW(util.pwstrToFfi(pszSrch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrDupW!(util.pwstrToFfi(pszSrch)));
 }
 
 export function StrFormatByteSizeEx(
@@ -29553,7 +30241,7 @@ export function StrFormatByteSizeEx(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrFormatByteSizeEx(ull, flags, util.pwstrToFfi(pszBuf), cchBuf);
+  return libSHLWAPI_dll.StrFormatByteSizeEx!(ull, flags, util.pwstrToFfi(pszBuf), cchBuf);
 }
 
 export function StrFormatByteSizeA(
@@ -29561,7 +30249,7 @@ export function StrFormatByteSizeA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatByteSizeA(dw, util.pstrToFfi(pszBuf), cchBuf));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatByteSizeA!(dw, util.pstrToFfi(pszBuf), cchBuf));
 }
 
 export function StrFormatByteSize64A(
@@ -29569,7 +30257,7 @@ export function StrFormatByteSize64A(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatByteSize64A(qdw, util.pstrToFfi(pszBuf), cchBuf));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatByteSize64A!(qdw, util.pstrToFfi(pszBuf), cchBuf));
 }
 
 export function StrFormatByteSizeW(
@@ -29577,7 +30265,7 @@ export function StrFormatByteSizeW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrFormatByteSizeW(qdw, util.pwstrToFfi(pszBuf), cchBuf));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrFormatByteSizeW!(qdw, util.pwstrToFfi(pszBuf), cchBuf));
 }
 
 export function StrFormatKBSizeW(
@@ -29585,7 +30273,7 @@ export function StrFormatKBSizeW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrFormatKBSizeW(qdw, util.pwstrToFfi(pszBuf), cchBuf));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrFormatKBSizeW!(qdw, util.pwstrToFfi(pszBuf), cchBuf));
 }
 
 export function StrFormatKBSizeA(
@@ -29593,7 +30281,7 @@ export function StrFormatKBSizeA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatKBSizeA(qdw, util.pstrToFfi(pszBuf), cchBuf));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrFormatKBSizeA!(qdw, util.pstrToFfi(pszBuf), cchBuf));
 }
 
 export function StrFromTimeIntervalA(
@@ -29602,7 +30290,7 @@ export function StrFromTimeIntervalA(
   dwTimeMS: number /* u32 */,
   digits: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrFromTimeIntervalA(util.pstrToFfi(pszOut), cchMax, dwTimeMS, digits);
+  return libSHLWAPI_dll.StrFromTimeIntervalA!(util.pstrToFfi(pszOut), cchMax, dwTimeMS, digits);
 }
 
 export function StrFromTimeIntervalW(
@@ -29611,7 +30299,7 @@ export function StrFromTimeIntervalW(
   dwTimeMS: number /* u32 */,
   digits: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrFromTimeIntervalW(util.pwstrToFfi(pszOut), cchMax, dwTimeMS, digits);
+  return libSHLWAPI_dll.StrFromTimeIntervalW!(util.pwstrToFfi(pszOut), cchMax, dwTimeMS, digits);
 }
 
 export function StrIsIntlEqualA(
@@ -29620,7 +30308,7 @@ export function StrIsIntlEqualA(
   pszString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrIsIntlEqualA(util.boolToFfi(fCaseSens), util.pstrToFfi(pszString1), util.pstrToFfi(pszString2), nChar));
+  return util.boolFromFfi(libSHLWAPI_dll.StrIsIntlEqualA!(util.boolToFfi(fCaseSens), util.pstrToFfi(pszString1), util.pstrToFfi(pszString2), nChar));
 }
 
 export function StrIsIntlEqualW(
@@ -29629,7 +30317,7 @@ export function StrIsIntlEqualW(
   pszString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrIsIntlEqualW(util.boolToFfi(fCaseSens), util.pwstrToFfi(pszString1), util.pwstrToFfi(pszString2), nChar));
+  return util.boolFromFfi(libSHLWAPI_dll.StrIsIntlEqualW!(util.boolToFfi(fCaseSens), util.pwstrToFfi(pszString1), util.pwstrToFfi(pszString2), nChar));
 }
 
 export function StrNCatA(
@@ -29637,7 +30325,7 @@ export function StrNCatA(
   psz2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMax: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrNCatA(util.pstrToFfi(psz1), util.pstrToFfi(psz2), cchMax));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrNCatA!(util.pstrToFfi(psz1), util.pstrToFfi(psz2), cchMax));
 }
 
 export function StrNCatW(
@@ -29645,21 +30333,21 @@ export function StrNCatW(
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrNCatW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrNCatW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), cchMax));
 }
 
 export function StrPBrkA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSet: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrPBrkA(util.pstrToFfi(psz), util.pstrToFfi(pszSet)));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrPBrkA!(util.pstrToFfi(psz), util.pstrToFfi(pszSet)));
 }
 
 export function StrPBrkW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSet: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrPBrkW(util.pwstrToFfi(psz), util.pwstrToFfi(pszSet)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrPBrkW!(util.pwstrToFfi(psz), util.pwstrToFfi(pszSet)));
 }
 
 export function StrRChrA(
@@ -29667,7 +30355,7 @@ export function StrRChrA(
   pszEnd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wMatch: number /* u16 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrRChrA(util.pstrToFfi(pszStart), util.pstrToFfi(pszEnd), wMatch));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrRChrA!(util.pstrToFfi(pszStart), util.pstrToFfi(pszEnd), wMatch));
 }
 
 export function StrRChrW(
@@ -29675,7 +30363,7 @@ export function StrRChrW(
   pszEnd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wMatch: Uint8Array | Deno.PointerValue /* char */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrRChrW(util.pwstrToFfi(pszStart), util.pwstrToFfi(pszEnd), util.toPointer(wMatch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrRChrW!(util.pwstrToFfi(pszStart), util.pwstrToFfi(pszEnd), util.toPointer(wMatch)));
 }
 
 export function StrRChrIA(
@@ -29683,7 +30371,7 @@ export function StrRChrIA(
   pszEnd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wMatch: number /* u16 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrRChrIA(util.pstrToFfi(pszStart), util.pstrToFfi(pszEnd), wMatch));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrRChrIA!(util.pstrToFfi(pszStart), util.pstrToFfi(pszEnd), wMatch));
 }
 
 export function StrRChrIW(
@@ -29691,7 +30379,7 @@ export function StrRChrIW(
   pszEnd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wMatch: Uint8Array | Deno.PointerValue /* char */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrRChrIW(util.pwstrToFfi(pszStart), util.pwstrToFfi(pszEnd), util.toPointer(wMatch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrRChrIW!(util.pwstrToFfi(pszStart), util.pwstrToFfi(pszEnd), util.toPointer(wMatch)));
 }
 
 export function StrRStrIA(
@@ -29699,7 +30387,7 @@ export function StrRStrIA(
   pszLast: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSrch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrRStrIA(util.pstrToFfi(pszSource), util.pstrToFfi(pszLast), util.pstrToFfi(pszSrch)));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrRStrIA!(util.pstrToFfi(pszSource), util.pstrToFfi(pszLast), util.pstrToFfi(pszSrch)));
 }
 
 export function StrRStrIW(
@@ -29707,49 +30395,49 @@ export function StrRStrIW(
   pszLast: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrRStrIW(util.pwstrToFfi(pszSource), util.pwstrToFfi(pszLast), util.pwstrToFfi(pszSrch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrRStrIW!(util.pwstrToFfi(pszSource), util.pwstrToFfi(pszLast), util.pwstrToFfi(pszSrch)));
 }
 
 export function StrSpnA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSet: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrSpnA(util.pstrToFfi(psz), util.pstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrSpnA!(util.pstrToFfi(psz), util.pstrToFfi(pszSet));
 }
 
 export function StrSpnW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSet: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrSpnW(util.pwstrToFfi(psz), util.pwstrToFfi(pszSet));
+  return libSHLWAPI_dll.StrSpnW!(util.pwstrToFfi(psz), util.pwstrToFfi(pszSet));
 }
 
 export function StrStrA(
   pszFirst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSrch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrStrA(util.pstrToFfi(pszFirst), util.pstrToFfi(pszSrch)));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrStrA!(util.pstrToFfi(pszFirst), util.pstrToFfi(pszSrch)));
 }
 
 export function StrStrW(
   pszFirst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrW(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrW!(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch)));
 }
 
 export function StrStrIA(
   pszFirst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSrch: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrStrIA(util.pstrToFfi(pszFirst), util.pstrToFfi(pszSrch)));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrStrIA!(util.pstrToFfi(pszFirst), util.pstrToFfi(pszSrch)));
 }
 
 export function StrStrIW(
   pszFirst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrIW(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrIW!(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch)));
 }
 
 export function StrStrNW(
@@ -29757,7 +30445,7 @@ export function StrStrNW(
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrNW(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrNW!(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch), cchMax));
 }
 
 export function StrStrNIW(
@@ -29765,19 +30453,19 @@ export function StrStrNIW(
   pszSrch: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrNIW(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrStrNIW!(util.pwstrToFfi(pszFirst), util.pwstrToFfi(pszSrch), cchMax));
 }
 
 export function StrToIntA(
   pszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrToIntA(util.pstrToFfi(pszSrc));
+  return libSHLWAPI_dll.StrToIntA!(util.pstrToFfi(pszSrc));
 }
 
 export function StrToIntW(
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrToIntW(util.pwstrToFfi(pszSrc));
+  return libSHLWAPI_dll.StrToIntW!(util.pwstrToFfi(pszSrc));
 }
 
 export function StrToIntExA(
@@ -29785,7 +30473,7 @@ export function StrToIntExA(
   dwFlags: number /* i32 */,
   piRet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrToIntExA(util.pstrToFfi(pszString), dwFlags, util.toPointer(piRet)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrToIntExA!(util.pstrToFfi(pszString), dwFlags, util.toPointer(piRet)));
 }
 
 export function StrToIntExW(
@@ -29793,7 +30481,7 @@ export function StrToIntExW(
   dwFlags: number /* i32 */,
   piRet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrToIntExW(util.pwstrToFfi(pszString), dwFlags, util.toPointer(piRet)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrToIntExW!(util.pwstrToFfi(pszString), dwFlags, util.toPointer(piRet)));
 }
 
 export function StrToInt64ExA(
@@ -29801,7 +30489,7 @@ export function StrToInt64ExA(
   dwFlags: number /* i32 */,
   pllRet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrToInt64ExA(util.pstrToFfi(pszString), dwFlags, util.toPointer(pllRet)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrToInt64ExA!(util.pstrToFfi(pszString), dwFlags, util.toPointer(pllRet)));
 }
 
 export function StrToInt64ExW(
@@ -29809,49 +30497,49 @@ export function StrToInt64ExW(
   dwFlags: number /* i32 */,
   pllRet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrToInt64ExW(util.pwstrToFfi(pszString), dwFlags, util.toPointer(pllRet)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrToInt64ExW!(util.pwstrToFfi(pszString), dwFlags, util.toPointer(pllRet)));
 }
 
 export function StrTrimA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszTrimChars: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrTrimA(util.pstrToFfi(psz), util.pstrToFfi(pszTrimChars)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrTrimA!(util.pstrToFfi(psz), util.pstrToFfi(pszTrimChars)));
 }
 
 export function StrTrimW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszTrimChars: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.StrTrimW(util.pwstrToFfi(psz), util.pwstrToFfi(pszTrimChars)));
+  return util.boolFromFfi(libSHLWAPI_dll.StrTrimW!(util.pwstrToFfi(psz), util.pwstrToFfi(pszTrimChars)));
 }
 
 export function StrCatW(
   psz1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrCatW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrCatW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2)));
 }
 
 export function StrCmpW(
   psz1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
+  return libSHLWAPI_dll.StrCmpW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
 }
 
 export function StrCmpIW(
   psz1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpIW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
+  return libSHLWAPI_dll.StrCmpIW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
 }
 
 export function StrCpyW(
   psz1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrCpyW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrCpyW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2)));
 }
 
 export function StrCpyNW(
@@ -29859,7 +30547,7 @@ export function StrCpyNW(
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrCpyNW(util.pwstrToFfi(pszDst), util.pwstrToFfi(pszSrc), cchMax));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrCpyNW!(util.pwstrToFfi(pszDst), util.pwstrToFfi(pszSrc), cchMax));
 }
 
 export function StrCatBuffW(
@@ -29867,7 +30555,7 @@ export function StrCatBuffW(
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDestBuffSize: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.StrCatBuffW(util.pwstrToFfi(pszDest), util.pwstrToFfi(pszSrc), cchDestBuffSize));
+  return util.pwstrFromFfi(libSHLWAPI_dll.StrCatBuffW!(util.pwstrToFfi(pszDest), util.pwstrToFfi(pszSrc), cchDestBuffSize));
 }
 
 export function StrCatBuffA(
@@ -29875,21 +30563,21 @@ export function StrCatBuffA(
   pszSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDestBuffSize: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.StrCatBuffA(util.pstrToFfi(pszDest), util.pstrToFfi(pszSrc), cchDestBuffSize));
+  return util.pstrFromFfi(libSHLWAPI_dll.StrCatBuffA!(util.pstrToFfi(pszDest), util.pstrToFfi(pszSrc), cchDestBuffSize));
 }
 
 export function ChrCmpIA(
   w1: number /* u16 */,
   w2: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.ChrCmpIA(w1, w2));
+  return util.boolFromFfi(libSHLWAPI_dll.ChrCmpIA!(w1, w2));
 }
 
 export function ChrCmpIW(
   w1: Uint8Array | Deno.PointerValue /* char */,
   w2: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.ChrCmpIW(util.toPointer(w1), util.toPointer(w2)));
+  return util.boolFromFfi(libSHLWAPI_dll.ChrCmpIW!(util.toPointer(w1), util.toPointer(w2)));
 }
 
 export function wvnsprintfA(
@@ -29898,7 +30586,7 @@ export function wvnsprintfA(
   pszFmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.wvnsprintfA(util.pstrToFfi(pszDest), cchDest, util.pstrToFfi(pszFmt), util.toPointer(arglist));
+  return libSHLWAPI_dll.wvnsprintfA!(util.pstrToFfi(pszDest), cchDest, util.pstrToFfi(pszFmt), util.toPointer(arglist));
 }
 
 export function wvnsprintfW(
@@ -29907,7 +30595,7 @@ export function wvnsprintfW(
   pszFmt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.wvnsprintfW(util.pwstrToFfi(pszDest), cchDest, util.pwstrToFfi(pszFmt), util.toPointer(arglist));
+  return libSHLWAPI_dll.wvnsprintfW!(util.pwstrToFfi(pszDest), cchDest, util.pwstrToFfi(pszFmt), util.toPointer(arglist));
 }
 
 export function wnsprintfA(
@@ -29915,7 +30603,7 @@ export function wnsprintfA(
   cchDest: number /* i32 */,
   pszFmt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.wnsprintfA(util.pstrToFfi(pszDest), cchDest, util.pstrToFfi(pszFmt));
+  return libSHLWAPI_dll.wnsprintfA!(util.pstrToFfi(pszDest), cchDest, util.pstrToFfi(pszFmt));
 }
 
 export function wnsprintfW(
@@ -29923,7 +30611,7 @@ export function wnsprintfW(
   cchDest: number /* i32 */,
   pszFmt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.wnsprintfW(util.pwstrToFfi(pszDest), cchDest, util.pwstrToFfi(pszFmt));
+  return libSHLWAPI_dll.wnsprintfW!(util.pwstrToFfi(pszDest), cchDest, util.pwstrToFfi(pszFmt));
 }
 
 export function StrRetToStrA(
@@ -29931,7 +30619,7 @@ export function StrRetToStrA(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrRetToStrA(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(ppsz));
+  return libSHLWAPI_dll.StrRetToStrA!(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(ppsz));
 }
 
 export function StrRetToStrW(
@@ -29939,7 +30627,7 @@ export function StrRetToStrW(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   ppsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrRetToStrW(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(ppsz));
+  return libSHLWAPI_dll.StrRetToStrW!(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(ppsz));
 }
 
 export function StrRetToBufA(
@@ -29948,7 +30636,7 @@ export function StrRetToBufA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrRetToBufA(util.toPointer(pstr), util.toPointer(pidl), util.pstrToFfi(pszBuf), cchBuf);
+  return libSHLWAPI_dll.StrRetToBufA!(util.toPointer(pstr), util.toPointer(pidl), util.pstrToFfi(pszBuf), cchBuf);
 }
 
 export function StrRetToBufW(
@@ -29957,28 +30645,28 @@ export function StrRetToBufW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrRetToBufW(util.toPointer(pstr), util.toPointer(pidl), util.pwstrToFfi(pszBuf), cchBuf);
+  return libSHLWAPI_dll.StrRetToBufW!(util.toPointer(pstr), util.toPointer(pidl), util.pwstrToFfi(pszBuf), cchBuf);
 }
 
 export function SHStrDupA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppwsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHStrDupA(util.pstrToFfi(psz), util.toPointer(ppwsz));
+  return libSHLWAPI_dll.SHStrDupA!(util.pstrToFfi(psz), util.toPointer(ppwsz));
 }
 
 export function SHStrDupW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHStrDupW(util.pwstrToFfi(psz), util.toPointer(ppwsz));
+  return libSHLWAPI_dll.SHStrDupW!(util.pwstrToFfi(psz), util.toPointer(ppwsz));
 }
 
 export function StrCmpLogicalW(
   psz1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpLogicalW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
+  return libSHLWAPI_dll.StrCmpLogicalW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2));
 }
 
 export function StrCatChainW(
@@ -29987,7 +30675,7 @@ export function StrCatChainW(
   ichAt: number /* u32 */,
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libSHLWAPI_dll.StrCatChainW(util.pwstrToFfi(pszDst), cchDst, ichAt, util.pwstrToFfi(pszSrc));
+  return libSHLWAPI_dll.StrCatChainW!(util.pwstrToFfi(pszDst), cchDst, ichAt, util.pwstrToFfi(pszSrc));
 }
 
 export function StrRetToBSTR(
@@ -29995,7 +30683,7 @@ export function StrRetToBSTR(
   pidl: Deno.PointerValue | Uint8Array /* ptr */,
   pbstr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.StrRetToBSTR(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(pbstr));
+  return libSHLWAPI_dll.StrRetToBSTR!(util.toPointer(pstr), util.toPointer(pidl), util.toPointer(pbstr));
 }
 
 export function SHLoadIndirectString(
@@ -30004,47 +30692,47 @@ export function SHLoadIndirectString(
   cchOutBuf: number /* u32 */,
   ppvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHLoadIndirectString(util.pwstrToFfi(pszSource), util.pwstrToFfi(pszOutBuf), cchOutBuf, util.toPointer(ppvReserved));
+  return libSHLWAPI_dll.SHLoadIndirectString!(util.pwstrToFfi(pszSource), util.pwstrToFfi(pszOutBuf), cchOutBuf, util.toPointer(ppvReserved));
 }
 
 export function IsCharSpaceA(
   wch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IsCharSpaceA(util.charToFfi(wch)));
+  return util.boolFromFfi(libSHLWAPI_dll.IsCharSpaceA!(util.charToFfi(wch)));
 }
 
 export function IsCharSpaceW(
   wch: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IsCharSpaceW(util.toPointer(wch)));
+  return util.boolFromFfi(libSHLWAPI_dll.IsCharSpaceW!(util.toPointer(wch)));
 }
 
 export function StrCmpCA(
   pszStr1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszStr2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpCA(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2));
+  return libSHLWAPI_dll.StrCmpCA!(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2));
 }
 
 export function StrCmpCW(
   pszStr1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszStr2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpCW(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2));
+  return libSHLWAPI_dll.StrCmpCW!(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2));
 }
 
 export function StrCmpICA(
   pszStr1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszStr2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpICA(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2));
+  return libSHLWAPI_dll.StrCmpICA!(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2));
 }
 
 export function StrCmpICW(
   pszStr1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszStr2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpICW(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2));
+  return libSHLWAPI_dll.StrCmpICW!(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2));
 }
 
 export function StrCmpNCA(
@@ -30052,7 +30740,7 @@ export function StrCmpNCA(
   pszStr2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNCA(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2), nChar);
+  return libSHLWAPI_dll.StrCmpNCA!(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2), nChar);
 }
 
 export function StrCmpNCW(
@@ -30060,7 +30748,7 @@ export function StrCmpNCW(
   pszStr2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNCW(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2), nChar);
+  return libSHLWAPI_dll.StrCmpNCW!(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2), nChar);
 }
 
 export function StrCmpNICA(
@@ -30068,7 +30756,7 @@ export function StrCmpNICA(
   pszStr2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNICA(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2), nChar);
+  return libSHLWAPI_dll.StrCmpNICA!(util.pstrToFfi(pszStr1), util.pstrToFfi(pszStr2), nChar);
 }
 
 export function StrCmpNICW(
@@ -30076,7 +30764,7 @@ export function StrCmpNICW(
   pszStr2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.StrCmpNICW(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2), nChar);
+  return libSHLWAPI_dll.StrCmpNICW!(util.pwstrToFfi(pszStr1), util.pwstrToFfi(pszStr2), nChar);
 }
 
 export function IntlStrEqWorkerA(
@@ -30085,7 +30773,7 @@ export function IntlStrEqWorkerA(
   lpString2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nChar: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IntlStrEqWorkerA(util.boolToFfi(fCaseSens), util.pstrToFfi(lpString1), util.pstrToFfi(lpString2), nChar));
+  return util.boolFromFfi(libSHLWAPI_dll.IntlStrEqWorkerA!(util.boolToFfi(fCaseSens), util.pstrToFfi(lpString1), util.pstrToFfi(lpString2), nChar));
 }
 
 export function IntlStrEqWorkerW(
@@ -30094,75 +30782,75 @@ export function IntlStrEqWorkerW(
   lpString2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nChar: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IntlStrEqWorkerW(util.boolToFfi(fCaseSens), util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2), nChar));
+  return util.boolFromFfi(libSHLWAPI_dll.IntlStrEqWorkerW!(util.boolToFfi(fCaseSens), util.pwstrToFfi(lpString1), util.pwstrToFfi(lpString2), nChar));
 }
 
 export function PathAddBackslashA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathAddBackslashA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathAddBackslashA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathAddBackslashW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathAddBackslashW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathAddBackslashW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathAddExtensionA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszExt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathAddExtensionA(util.pstrToFfi(pszPath), util.pstrToFfi(pszExt)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathAddExtensionA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszExt)));
 }
 
 export function PathAddExtensionW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathAddExtensionW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszExt)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathAddExtensionW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszExt)));
 }
 
 export function PathAppendA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszMore: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathAppendA(util.pstrToFfi(pszPath), util.pstrToFfi(pszMore)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathAppendA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszMore)));
 }
 
 export function PathAppendW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathAppendW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszMore)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathAppendW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszMore)));
 }
 
 export function PathBuildRootA(
   pszRoot: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iDrive: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathBuildRootA(util.pstrToFfi(pszRoot), iDrive));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathBuildRootA!(util.pstrToFfi(pszRoot), iDrive));
 }
 
 export function PathBuildRootW(
   pszRoot: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iDrive: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathBuildRootW(util.pwstrToFfi(pszRoot), iDrive));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathBuildRootW!(util.pwstrToFfi(pszRoot), iDrive));
 }
 
 export function PathCanonicalizeA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCanonicalizeA(util.pstrToFfi(pszBuf), util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCanonicalizeA!(util.pstrToFfi(pszBuf), util.pstrToFfi(pszPath)));
 }
 
 export function PathCanonicalizeW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCanonicalizeW(util.pwstrToFfi(pszBuf), util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCanonicalizeW!(util.pwstrToFfi(pszBuf), util.pwstrToFfi(pszPath)));
 }
 
 export function PathCombineA(
@@ -30170,7 +30858,7 @@ export function PathCombineA(
   pszDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathCombineA(util.pstrToFfi(pszDest), util.pstrToFfi(pszDir), util.pstrToFfi(pszFile)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathCombineA!(util.pstrToFfi(pszDest), util.pstrToFfi(pszDir), util.pstrToFfi(pszFile)));
 }
 
 export function PathCombineW(
@@ -30178,7 +30866,7 @@ export function PathCombineW(
   pszDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathCombineW(util.pwstrToFfi(pszDest), util.pwstrToFfi(pszDir), util.pwstrToFfi(pszFile)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathCombineW!(util.pwstrToFfi(pszDest), util.pwstrToFfi(pszDir), util.pwstrToFfi(pszFile)));
 }
 
 export function PathCompactPathA(
@@ -30186,7 +30874,7 @@ export function PathCompactPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dx: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathA(util.toPointer(hDC), util.pstrToFfi(pszPath), dx));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathA!(util.toPointer(hDC), util.pstrToFfi(pszPath), dx));
 }
 
 export function PathCompactPathW(
@@ -30194,7 +30882,7 @@ export function PathCompactPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dx: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathW(util.toPointer(hDC), util.pwstrToFfi(pszPath), dx));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathW!(util.toPointer(hDC), util.pwstrToFfi(pszPath), dx));
 }
 
 export function PathCompactPathExA(
@@ -30203,7 +30891,7 @@ export function PathCompactPathExA(
   cchMax: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathExA(util.pstrToFfi(pszOut), util.pstrToFfi(pszSrc), cchMax, dwFlags));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathExA!(util.pstrToFfi(pszOut), util.pstrToFfi(pszSrc), cchMax, dwFlags));
 }
 
 export function PathCompactPathExW(
@@ -30212,7 +30900,7 @@ export function PathCompactPathExW(
   cchMax: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathExW(util.pwstrToFfi(pszOut), util.pwstrToFfi(pszSrc), cchMax, dwFlags));
+  return util.boolFromFfi(libSHLWAPI_dll.PathCompactPathExW!(util.pwstrToFfi(pszOut), util.pwstrToFfi(pszSrc), cchMax, dwFlags));
 }
 
 export function PathCommonPrefixA(
@@ -30220,7 +30908,7 @@ export function PathCommonPrefixA(
   pszFile2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   achPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathCommonPrefixA(util.pstrToFfi(pszFile1), util.pstrToFfi(pszFile2), util.pstrToFfi(achPath));
+  return libSHLWAPI_dll.PathCommonPrefixA!(util.pstrToFfi(pszFile1), util.pstrToFfi(pszFile2), util.pstrToFfi(achPath));
 }
 
 export function PathCommonPrefixW(
@@ -30228,69 +30916,69 @@ export function PathCommonPrefixW(
   pszFile2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   achPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathCommonPrefixW(util.pwstrToFfi(pszFile1), util.pwstrToFfi(pszFile2), util.pwstrToFfi(achPath));
+  return libSHLWAPI_dll.PathCommonPrefixW!(util.pwstrToFfi(pszFile1), util.pwstrToFfi(pszFile2), util.pwstrToFfi(achPath));
 }
 
 export function PathFileExistsA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathFileExistsA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathFileExistsA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathFileExistsW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathFileExistsW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathFileExistsW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathFindExtensionA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathFindExtensionA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathFindExtensionA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathFindExtensionW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindExtensionW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindExtensionW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathFindFileNameA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathFindFileNameA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathFindFileNameA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathFindFileNameW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindFileNameW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindFileNameW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathFindNextComponentA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathFindNextComponentA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathFindNextComponentA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathFindNextComponentW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindNextComponentW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindNextComponentW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathFindOnPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppszOtherDirs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathFindOnPathA(util.pstrToFfi(pszPath), util.toPointer(ppszOtherDirs)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathFindOnPathA!(util.pstrToFfi(pszPath), util.toPointer(ppszOtherDirs)));
 }
 
 export function PathFindOnPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszOtherDirs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathFindOnPathW(util.pwstrToFfi(pszPath), util.toPointer(ppszOtherDirs)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathFindOnPathW!(util.pwstrToFfi(pszPath), util.toPointer(ppszOtherDirs)));
 }
 
 export function PathFindSuffixArrayA(
@@ -30298,7 +30986,7 @@ export function PathFindSuffixArrayA(
   apszSuffix: Deno.PointerValue | Uint8Array /* ptr */,
   iArraySize: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathFindSuffixArrayA(util.pstrToFfi(pszPath), util.toPointer(apszSuffix), iArraySize));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathFindSuffixArrayA!(util.pstrToFfi(pszPath), util.toPointer(apszSuffix), iArraySize));
 }
 
 export function PathFindSuffixArrayW(
@@ -30306,243 +30994,243 @@ export function PathFindSuffixArrayW(
   apszSuffix: Deno.PointerValue | Uint8Array /* ptr */,
   iArraySize: number /* i32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindSuffixArrayW(util.pwstrToFfi(pszPath), util.toPointer(apszSuffix), iArraySize));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathFindSuffixArrayW!(util.pwstrToFfi(pszPath), util.toPointer(apszSuffix), iArraySize));
 }
 
 export function PathGetArgsA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathGetArgsA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathGetArgsA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathGetArgsW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathGetArgsW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathGetArgsW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsLFNFileSpecA(
   pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsLFNFileSpecA(util.pstrToFfi(pszName)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsLFNFileSpecA!(util.pstrToFfi(pszName)));
 }
 
 export function PathIsLFNFileSpecW(
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsLFNFileSpecW(util.pwstrToFfi(pszName)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsLFNFileSpecW!(util.pwstrToFfi(pszName)));
 }
 
 export function PathGetCharTypeA(
   ch: number /* u8 */,
 ): number /* u32 */ {
-  return libSHLWAPI_dll.PathGetCharTypeA(ch);
+  return libSHLWAPI_dll.PathGetCharTypeA!(ch);
 }
 
 export function PathGetCharTypeW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): number /* u32 */ {
-  return libSHLWAPI_dll.PathGetCharTypeW(util.toPointer(ch));
+  return libSHLWAPI_dll.PathGetCharTypeW!(util.toPointer(ch));
 }
 
 export function PathGetDriveNumberA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathGetDriveNumberA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathGetDriveNumberA!(util.pstrToFfi(pszPath));
 }
 
 export function PathGetDriveNumberW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathGetDriveNumberW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathGetDriveNumberW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathIsDirectoryA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsDirectoryW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsDirectoryEmptyA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryEmptyA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryEmptyA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsDirectoryEmptyW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryEmptyW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsDirectoryEmptyW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsFileSpecA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsFileSpecA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsFileSpecA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsFileSpecW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsFileSpecW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsFileSpecW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsPrefixA(
   pszPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsPrefixA(util.pstrToFfi(pszPrefix), util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsPrefixA!(util.pstrToFfi(pszPrefix), util.pstrToFfi(pszPath)));
 }
 
 export function PathIsPrefixW(
   pszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsPrefixW(util.pwstrToFfi(pszPrefix), util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsPrefixW!(util.pwstrToFfi(pszPrefix), util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsRelativeA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsRelativeA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsRelativeA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsRelativeW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsRelativeW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsRelativeW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsRootA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsRootA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsRootA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsRootW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsRootW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsRootW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsSameRootA(
   pszPath1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszPath2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsSameRootA(util.pstrToFfi(pszPath1), util.pstrToFfi(pszPath2)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsSameRootA!(util.pstrToFfi(pszPath1), util.pstrToFfi(pszPath2)));
 }
 
 export function PathIsSameRootW(
   pszPath1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPath2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsSameRootW(util.pwstrToFfi(pszPath1), util.pwstrToFfi(pszPath2)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsSameRootW!(util.pwstrToFfi(pszPath1), util.pwstrToFfi(pszPath2)));
 }
 
 export function PathIsUNCA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsUNCW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsNetworkPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsNetworkPathA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsNetworkPathA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsNetworkPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsNetworkPathW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsNetworkPathW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsUNCServerA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsUNCServerW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsUNCServerShareA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerShareA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerShareA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsUNCServerShareW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerShareW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsUNCServerShareW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsContentTypeA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszContentType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsContentTypeA(util.pstrToFfi(pszPath), util.pstrToFfi(pszContentType)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsContentTypeA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszContentType)));
 }
 
 export function PathIsContentTypeW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszContentType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsContentTypeW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszContentType)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsContentTypeW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszContentType)));
 }
 
 export function PathIsURLA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsURLA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsURLA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathIsURLW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsURLW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsURLW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathMakePrettyA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMakePrettyA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMakePrettyA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathMakePrettyW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMakePrettyW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMakePrettyW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathMatchSpecA(
   pszFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMatchSpecA(util.pstrToFfi(pszFile), util.pstrToFfi(pszSpec)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMatchSpecA!(util.pstrToFfi(pszFile), util.pstrToFfi(pszSpec)));
 }
 
 export function PathMatchSpecW(
   pszFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMatchSpecW(util.pwstrToFfi(pszFile), util.pwstrToFfi(pszSpec)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMatchSpecW!(util.pwstrToFfi(pszFile), util.pwstrToFfi(pszSpec)));
 }
 
 export function PathMatchSpecExA(
@@ -30550,7 +31238,7 @@ export function PathMatchSpecExA(
   pszSpec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.PathMatchSpecExA(util.pstrToFfi(pszFile), util.pstrToFfi(pszSpec), dwFlags);
+  return libSHLWAPI_dll.PathMatchSpecExA!(util.pstrToFfi(pszFile), util.pstrToFfi(pszSpec), dwFlags);
 }
 
 export function PathMatchSpecExW(
@@ -30558,31 +31246,31 @@ export function PathMatchSpecExW(
   pszSpec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.PathMatchSpecExW(util.pwstrToFfi(pszFile), util.pwstrToFfi(pszSpec), dwFlags);
+  return libSHLWAPI_dll.PathMatchSpecExW!(util.pwstrToFfi(pszFile), util.pwstrToFfi(pszSpec), dwFlags);
 }
 
 export function PathParseIconLocationA(
   pszIconFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathParseIconLocationA(util.pstrToFfi(pszIconFile));
+  return libSHLWAPI_dll.PathParseIconLocationA!(util.pstrToFfi(pszIconFile));
 }
 
 export function PathParseIconLocationW(
   pszIconFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.PathParseIconLocationW(util.pwstrToFfi(pszIconFile));
+  return libSHLWAPI_dll.PathParseIconLocationW!(util.pwstrToFfi(pszIconFile));
 }
 
 export function PathQuoteSpacesA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathQuoteSpacesA(util.pstrToFfi(lpsz)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathQuoteSpacesA!(util.pstrToFfi(lpsz)));
 }
 
 export function PathQuoteSpacesW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathQuoteSpacesW(util.pwstrToFfi(lpsz)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathQuoteSpacesW!(util.pwstrToFfi(lpsz)));
 }
 
 export function PathRelativePathToA(
@@ -30592,7 +31280,7 @@ export function PathRelativePathToA(
   pszTo: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAttrTo: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRelativePathToA(util.pstrToFfi(pszPath), util.pstrToFfi(pszFrom), dwAttrFrom, util.pstrToFfi(pszTo), dwAttrTo));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRelativePathToA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszFrom), dwAttrFrom, util.pstrToFfi(pszTo), dwAttrTo));
 }
 
 export function PathRelativePathToW(
@@ -30602,81 +31290,81 @@ export function PathRelativePathToW(
   pszTo: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAttrTo: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRelativePathToW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszFrom), dwAttrFrom, util.pwstrToFfi(pszTo), dwAttrTo));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRelativePathToW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszFrom), dwAttrFrom, util.pwstrToFfi(pszTo), dwAttrTo));
 }
 
 export function PathRemoveArgsA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveArgsA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveArgsA!(util.pstrToFfi(pszPath));
 }
 
 export function PathRemoveArgsW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveArgsW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveArgsW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathRemoveBackslashA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathRemoveBackslashA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathRemoveBackslashA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathRemoveBackslashW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathRemoveBackslashW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathRemoveBackslashW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathRemoveBlanksA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveBlanksA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveBlanksA!(util.pstrToFfi(pszPath));
 }
 
 export function PathRemoveBlanksW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveBlanksW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveBlanksW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathRemoveExtensionA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveExtensionA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveExtensionA!(util.pstrToFfi(pszPath));
 }
 
 export function PathRemoveExtensionW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathRemoveExtensionW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathRemoveExtensionW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathRemoveFileSpecA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRemoveFileSpecA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRemoveFileSpecA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathRemoveFileSpecW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRemoveFileSpecW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRemoveFileSpecW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathRenameExtensionA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszExt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRenameExtensionA(util.pstrToFfi(pszPath), util.pstrToFfi(pszExt)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRenameExtensionA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszExt)));
 }
 
 export function PathRenameExtensionW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathRenameExtensionW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszExt)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathRenameExtensionW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszExt)));
 }
 
 export function PathSearchAndQualifyA(
@@ -30684,7 +31372,7 @@ export function PathSearchAndQualifyA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathSearchAndQualifyA(util.pstrToFfi(pszPath), util.pstrToFfi(pszBuf), cchBuf));
+  return util.boolFromFfi(libSHLWAPI_dll.PathSearchAndQualifyA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszBuf), cchBuf));
 }
 
 export function PathSearchAndQualifyW(
@@ -30692,7 +31380,7 @@ export function PathSearchAndQualifyW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathSearchAndQualifyW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszBuf), cchBuf));
+  return util.boolFromFfi(libSHLWAPI_dll.PathSearchAndQualifyW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszBuf), cchBuf));
 }
 
 export function PathSetDlgItemPathA(
@@ -30700,7 +31388,7 @@ export function PathSetDlgItemPathA(
   id: number /* i32 */,
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathSetDlgItemPathA((hDlg), id, util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathSetDlgItemPathA!((hDlg), id, util.pstrToFfi(pszPath));
 }
 
 export function PathSetDlgItemPathW(
@@ -30708,105 +31396,105 @@ export function PathSetDlgItemPathW(
   id: number /* i32 */,
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathSetDlgItemPathW((hDlg), id, util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathSetDlgItemPathW!((hDlg), id, util.pwstrToFfi(pszPath));
 }
 
 export function PathSkipRootA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.PathSkipRootA(util.pstrToFfi(pszPath)));
+  return util.pstrFromFfi(libSHLWAPI_dll.PathSkipRootA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathSkipRootW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.PathSkipRootW(util.pwstrToFfi(pszPath)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.PathSkipRootW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathStripPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathStripPathA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathStripPathA!(util.pstrToFfi(pszPath));
 }
 
 export function PathStripPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathStripPathW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathStripPathW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathStripToRootA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathStripToRootA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathStripToRootA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathStripToRootW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathStripToRootW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathStripToRootW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathUnquoteSpacesA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnquoteSpacesA(util.pstrToFfi(lpsz)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnquoteSpacesA!(util.pstrToFfi(lpsz)));
 }
 
 export function PathUnquoteSpacesW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnquoteSpacesW(util.pwstrToFfi(lpsz)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnquoteSpacesW!(util.pwstrToFfi(lpsz)));
 }
 
 export function PathMakeSystemFolderA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMakeSystemFolderA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMakeSystemFolderA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathMakeSystemFolderW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathMakeSystemFolderW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathMakeSystemFolderW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathUnmakeSystemFolderA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnmakeSystemFolderA(util.pstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnmakeSystemFolderA!(util.pstrToFfi(pszPath)));
 }
 
 export function PathUnmakeSystemFolderW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnmakeSystemFolderW(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnmakeSystemFolderW!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathIsSystemFolderA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAttrb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsSystemFolderA(util.pstrToFfi(pszPath), dwAttrb));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsSystemFolderA!(util.pstrToFfi(pszPath), dwAttrb));
 }
 
 export function PathIsSystemFolderW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAttrb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathIsSystemFolderW(util.pwstrToFfi(pszPath), dwAttrb));
+  return util.boolFromFfi(libSHLWAPI_dll.PathIsSystemFolderW!(util.pwstrToFfi(pszPath), dwAttrb));
 }
 
 export function PathUndecorateA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathUndecorateA(util.pstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathUndecorateA!(util.pstrToFfi(pszPath));
 }
 
 export function PathUndecorateW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libSHLWAPI_dll.PathUndecorateW(util.pwstrToFfi(pszPath));
+  return libSHLWAPI_dll.PathUndecorateW!(util.pwstrToFfi(pszPath));
 }
 
 export function PathUnExpandEnvStringsA(
@@ -30814,7 +31502,7 @@ export function PathUnExpandEnvStringsA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnExpandEnvStringsA(util.pstrToFfi(pszPath), util.pstrToFfi(pszBuf), cchBuf));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnExpandEnvStringsA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszBuf), cchBuf));
 }
 
 export function PathUnExpandEnvStringsW(
@@ -30822,7 +31510,7 @@ export function PathUnExpandEnvStringsW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.PathUnExpandEnvStringsW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszBuf), cchBuf));
+  return util.boolFromFfi(libSHLWAPI_dll.PathUnExpandEnvStringsW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszBuf), cchBuf));
 }
 
 export function UrlCompareA(
@@ -30830,7 +31518,7 @@ export function UrlCompareA(
   psz2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fIgnoreSlash: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.UrlCompareA(util.pstrToFfi(psz1), util.pstrToFfi(psz2), util.boolToFfi(fIgnoreSlash));
+  return libSHLWAPI_dll.UrlCompareA!(util.pstrToFfi(psz1), util.pstrToFfi(psz2), util.boolToFfi(fIgnoreSlash));
 }
 
 export function UrlCompareW(
@@ -30838,7 +31526,7 @@ export function UrlCompareW(
   psz2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fIgnoreSlash: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.UrlCompareW(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), util.boolToFfi(fIgnoreSlash));
+  return libSHLWAPI_dll.UrlCompareW!(util.pwstrToFfi(psz1), util.pwstrToFfi(psz2), util.boolToFfi(fIgnoreSlash));
 }
 
 export function UrlCombineA(
@@ -30848,7 +31536,7 @@ export function UrlCombineA(
   pcchCombined: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCombineA(util.pstrToFfi(pszBase), util.pstrToFfi(pszRelative), util.pstrToFfi(pszCombined), util.toPointer(pcchCombined), dwFlags);
+  return libSHLWAPI_dll.UrlCombineA!(util.pstrToFfi(pszBase), util.pstrToFfi(pszRelative), util.pstrToFfi(pszCombined), util.toPointer(pcchCombined), dwFlags);
 }
 
 export function UrlCombineW(
@@ -30858,7 +31546,7 @@ export function UrlCombineW(
   pcchCombined: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCombineW(util.pwstrToFfi(pszBase), util.pwstrToFfi(pszRelative), util.pwstrToFfi(pszCombined), util.toPointer(pcchCombined), dwFlags);
+  return libSHLWAPI_dll.UrlCombineW!(util.pwstrToFfi(pszBase), util.pwstrToFfi(pszRelative), util.pwstrToFfi(pszCombined), util.toPointer(pcchCombined), dwFlags);
 }
 
 export function UrlCanonicalizeA(
@@ -30867,7 +31555,7 @@ export function UrlCanonicalizeA(
   pcchCanonicalized: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCanonicalizeA(util.pstrToFfi(pszUrl), util.pstrToFfi(pszCanonicalized), util.toPointer(pcchCanonicalized), dwFlags);
+  return libSHLWAPI_dll.UrlCanonicalizeA!(util.pstrToFfi(pszUrl), util.pstrToFfi(pszCanonicalized), util.toPointer(pcchCanonicalized), dwFlags);
 }
 
 export function UrlCanonicalizeW(
@@ -30876,57 +31564,57 @@ export function UrlCanonicalizeW(
   pcchCanonicalized: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCanonicalizeW(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszCanonicalized), util.toPointer(pcchCanonicalized), dwFlags);
+  return libSHLWAPI_dll.UrlCanonicalizeW!(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszCanonicalized), util.toPointer(pcchCanonicalized), dwFlags);
 }
 
 export function UrlIsOpaqueA(
   pszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsOpaqueA(util.pstrToFfi(pszURL)));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsOpaqueA!(util.pstrToFfi(pszURL)));
 }
 
 export function UrlIsOpaqueW(
   pszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsOpaqueW(util.pwstrToFfi(pszURL)));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsOpaqueW!(util.pwstrToFfi(pszURL)));
 }
 
 export function UrlIsNoHistoryA(
   pszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsNoHistoryA(util.pstrToFfi(pszURL)));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsNoHistoryA!(util.pstrToFfi(pszURL)));
 }
 
 export function UrlIsNoHistoryW(
   pszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsNoHistoryW(util.pwstrToFfi(pszURL)));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsNoHistoryW!(util.pwstrToFfi(pszURL)));
 }
 
 export function UrlIsA(
   pszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UrlIs: URLIS /* Windows.Win32.UI.Shell.URLIS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsA(util.pstrToFfi(pszUrl), UrlIs));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsA!(util.pstrToFfi(pszUrl), UrlIs));
 }
 
 export function UrlIsW(
   pszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UrlIs: URLIS /* Windows.Win32.UI.Shell.URLIS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.UrlIsW(util.pwstrToFfi(pszUrl), UrlIs));
+  return util.boolFromFfi(libSHLWAPI_dll.UrlIsW!(util.pwstrToFfi(pszUrl), UrlIs));
 }
 
 export function UrlGetLocationA(
   pszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libSHLWAPI_dll.UrlGetLocationA(util.pstrToFfi(pszURL)));
+  return util.pstrFromFfi(libSHLWAPI_dll.UrlGetLocationA!(util.pstrToFfi(pszURL)));
 }
 
 export function UrlGetLocationW(
   pszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libSHLWAPI_dll.UrlGetLocationW(util.pwstrToFfi(pszURL)));
+  return util.pwstrFromFfi(libSHLWAPI_dll.UrlGetLocationW!(util.pwstrToFfi(pszURL)));
 }
 
 export function UrlUnescapeA(
@@ -30935,7 +31623,7 @@ export function UrlUnescapeA(
   pcchUnescaped: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlUnescapeA(util.pstrToFfi(pszUrl), util.pstrToFfi(pszUnescaped), util.toPointer(pcchUnescaped), dwFlags);
+  return libSHLWAPI_dll.UrlUnescapeA!(util.pstrToFfi(pszUrl), util.pstrToFfi(pszUnescaped), util.toPointer(pcchUnescaped), dwFlags);
 }
 
 export function UrlUnescapeW(
@@ -30944,7 +31632,7 @@ export function UrlUnescapeW(
   pcchUnescaped: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlUnescapeW(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszUnescaped), util.toPointer(pcchUnescaped), dwFlags);
+  return libSHLWAPI_dll.UrlUnescapeW!(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszUnescaped), util.toPointer(pcchUnescaped), dwFlags);
 }
 
 export function UrlEscapeA(
@@ -30953,7 +31641,7 @@ export function UrlEscapeA(
   pcchEscaped: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlEscapeA(util.pstrToFfi(pszUrl), util.pstrToFfi(pszEscaped), util.toPointer(pcchEscaped), dwFlags);
+  return libSHLWAPI_dll.UrlEscapeA!(util.pstrToFfi(pszUrl), util.pstrToFfi(pszEscaped), util.toPointer(pcchEscaped), dwFlags);
 }
 
 export function UrlEscapeW(
@@ -30962,7 +31650,7 @@ export function UrlEscapeW(
   pcchEscaped: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlEscapeW(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszEscaped), util.toPointer(pcchEscaped), dwFlags);
+  return libSHLWAPI_dll.UrlEscapeW!(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszEscaped), util.toPointer(pcchEscaped), dwFlags);
 }
 
 export function UrlCreateFromPathA(
@@ -30971,7 +31659,7 @@ export function UrlCreateFromPathA(
   pcchUrl: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCreateFromPathA(util.pstrToFfi(pszPath), util.pstrToFfi(pszUrl), util.toPointer(pcchUrl), dwFlags);
+  return libSHLWAPI_dll.UrlCreateFromPathA!(util.pstrToFfi(pszPath), util.pstrToFfi(pszUrl), util.toPointer(pcchUrl), dwFlags);
 }
 
 export function UrlCreateFromPathW(
@@ -30980,7 +31668,7 @@ export function UrlCreateFromPathW(
   pcchUrl: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlCreateFromPathW(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszUrl), util.toPointer(pcchUrl), dwFlags);
+  return libSHLWAPI_dll.UrlCreateFromPathW!(util.pwstrToFfi(pszPath), util.pwstrToFfi(pszUrl), util.toPointer(pcchUrl), dwFlags);
 }
 
 export function PathCreateFromUrlA(
@@ -30989,7 +31677,7 @@ export function PathCreateFromUrlA(
   pcchPath: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.PathCreateFromUrlA(util.pstrToFfi(pszUrl), util.pstrToFfi(pszPath), util.toPointer(pcchPath), dwFlags);
+  return libSHLWAPI_dll.PathCreateFromUrlA!(util.pstrToFfi(pszUrl), util.pstrToFfi(pszPath), util.toPointer(pcchPath), dwFlags);
 }
 
 export function PathCreateFromUrlW(
@@ -30998,7 +31686,7 @@ export function PathCreateFromUrlW(
   pcchPath: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.PathCreateFromUrlW(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszPath), util.toPointer(pcchPath), dwFlags);
+  return libSHLWAPI_dll.PathCreateFromUrlW!(util.pwstrToFfi(pszUrl), util.pwstrToFfi(pszPath), util.toPointer(pcchPath), dwFlags);
 }
 
 export function PathCreateFromUrlAlloc(
@@ -31006,7 +31694,7 @@ export function PathCreateFromUrlAlloc(
   ppszOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.PathCreateFromUrlAlloc(util.pwstrToFfi(pszIn), util.toPointer(ppszOut), dwFlags);
+  return libSHLWAPI_dll.PathCreateFromUrlAlloc!(util.pwstrToFfi(pszIn), util.toPointer(ppszOut), dwFlags);
 }
 
 export function UrlHashA(
@@ -31014,7 +31702,7 @@ export function UrlHashA(
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
   cbHash: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlHashA(util.pstrToFfi(pszUrl), util.toPointer(pbHash), cbHash);
+  return libSHLWAPI_dll.UrlHashA!(util.pstrToFfi(pszUrl), util.toPointer(pbHash), cbHash);
 }
 
 export function UrlHashW(
@@ -31022,7 +31710,7 @@ export function UrlHashW(
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
   cbHash: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlHashW(util.pwstrToFfi(pszUrl), util.toPointer(pbHash), cbHash);
+  return libSHLWAPI_dll.UrlHashW!(util.pwstrToFfi(pszUrl), util.toPointer(pbHash), cbHash);
 }
 
 export function UrlGetPartW(
@@ -31032,7 +31720,7 @@ export function UrlGetPartW(
   dwPart: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlGetPartW(util.pwstrToFfi(pszIn), util.pwstrToFfi(pszOut), util.toPointer(pcchOut), dwPart, dwFlags);
+  return libSHLWAPI_dll.UrlGetPartW!(util.pwstrToFfi(pszIn), util.pwstrToFfi(pszOut), util.toPointer(pcchOut), dwPart, dwFlags);
 }
 
 export function UrlGetPartA(
@@ -31042,7 +31730,7 @@ export function UrlGetPartA(
   dwPart: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlGetPartA(util.pstrToFfi(pszIn), util.pstrToFfi(pszOut), util.toPointer(pcchOut), dwPart, dwFlags);
+  return libSHLWAPI_dll.UrlGetPartA!(util.pstrToFfi(pszIn), util.pstrToFfi(pszOut), util.toPointer(pcchOut), dwPart, dwFlags);
 }
 
 export function UrlApplySchemeA(
@@ -31051,7 +31739,7 @@ export function UrlApplySchemeA(
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlApplySchemeA(util.pstrToFfi(pszIn), util.pstrToFfi(pszOut), util.toPointer(pcchOut), dwFlags);
+  return libSHLWAPI_dll.UrlApplySchemeA!(util.pstrToFfi(pszIn), util.pstrToFfi(pszOut), util.toPointer(pcchOut), dwFlags);
 }
 
 export function UrlApplySchemeW(
@@ -31060,7 +31748,7 @@ export function UrlApplySchemeW(
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlApplySchemeW(util.pwstrToFfi(pszIn), util.pwstrToFfi(pszOut), util.toPointer(pcchOut), dwFlags);
+  return libSHLWAPI_dll.UrlApplySchemeW!(util.pwstrToFfi(pszIn), util.pwstrToFfi(pszOut), util.toPointer(pcchOut), dwFlags);
 }
 
 export function HashData(
@@ -31069,7 +31757,7 @@ export function HashData(
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
   cbHash: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.HashData(util.toPointer(pbData), cbData, util.toPointer(pbHash), cbHash);
+  return libSHLWAPI_dll.HashData!(util.toPointer(pbData), cbData, util.toPointer(pbHash), cbHash);
 }
 
 export function UrlFixupW(
@@ -31077,55 +31765,55 @@ export function UrlFixupW(
   pszTranslatedUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.UrlFixupW(util.pwstrToFfi(pcszUrl), util.pwstrToFfi(pszTranslatedUrl), cchMax);
+  return libSHLWAPI_dll.UrlFixupW!(util.pwstrToFfi(pcszUrl), util.pwstrToFfi(pszTranslatedUrl), cchMax);
 }
 
 export function ParseURLA(
   pcszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppu: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.ParseURLA(util.pstrToFfi(pcszURL), util.toPointer(ppu));
+  return libSHLWAPI_dll.ParseURLA!(util.pstrToFfi(pcszURL), util.toPointer(ppu));
 }
 
 export function ParseURLW(
   pcszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppu: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.ParseURLW(util.pwstrToFfi(pcszURL), util.toPointer(ppu));
+  return libSHLWAPI_dll.ParseURLW!(util.pwstrToFfi(pcszURL), util.toPointer(ppu));
 }
 
 export function SHDeleteEmptyKeyA(
   hkey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteEmptyKeyA(util.toPointer(hkey), util.pstrToFfi(pszSubKey));
+  return libSHLWAPI_dll.SHDeleteEmptyKeyA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey));
 }
 
 export function SHDeleteEmptyKeyW(
   hkey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteEmptyKeyW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey));
+  return libSHLWAPI_dll.SHDeleteEmptyKeyW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey));
 }
 
 export function SHDeleteKeyA(
   hkey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteKeyA(util.toPointer(hkey), util.pstrToFfi(pszSubKey));
+  return libSHLWAPI_dll.SHDeleteKeyA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey));
 }
 
 export function SHDeleteKeyW(
   hkey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteKeyW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey));
+  return libSHLWAPI_dll.SHDeleteKeyW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey));
 }
 
 export function SHRegDuplicateHKey(
   hkey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libSHLWAPI_dll.SHRegDuplicateHKey(util.toPointer(hkey));
+  return libSHLWAPI_dll.SHRegDuplicateHKey!(util.toPointer(hkey));
 }
 
 export function SHDeleteValueA(
@@ -31133,7 +31821,7 @@ export function SHDeleteValueA(
   pszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteValueA(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue));
+  return libSHLWAPI_dll.SHDeleteValueA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue));
 }
 
 export function SHDeleteValueW(
@@ -31141,7 +31829,7 @@ export function SHDeleteValueW(
   pszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHDeleteValueW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue));
+  return libSHLWAPI_dll.SHDeleteValueW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue));
 }
 
 export function SHGetValueA(
@@ -31152,7 +31840,7 @@ export function SHGetValueA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHGetValueA(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHGetValueA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHGetValueW(
@@ -31163,7 +31851,7 @@ export function SHGetValueW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHGetValueW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHGetValueW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHSetValueA(
@@ -31174,7 +31862,7 @@ export function SHSetValueA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHSetValueA(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData);
+  return libSHLWAPI_dll.SHSetValueA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData);
 }
 
 export function SHSetValueW(
@@ -31185,7 +31873,7 @@ export function SHSetValueW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHSetValueW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData);
+  return libSHLWAPI_dll.SHSetValueW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData);
 }
 
 export function SHRegGetValueA(
@@ -31197,7 +31885,7 @@ export function SHRegGetValueA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetValueA(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHRegGetValueA!(util.toPointer(hkey), util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHRegGetValueW(
@@ -31209,7 +31897,7 @@ export function SHRegGetValueW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetValueW(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHRegGetValueW!(util.toPointer(hkey), util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHRegGetValueFromHKCUHKLM(
@@ -31220,7 +31908,7 @@ export function SHRegGetValueFromHKCUHKLM(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetValueFromHKCUHKLM(util.pwstrToFfi(pwszKey), util.pwstrToFfi(pwszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHRegGetValueFromHKCUHKLM!(util.pwstrToFfi(pwszKey), util.pwstrToFfi(pwszValue), srrfFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHQueryValueExA(
@@ -31231,7 +31919,7 @@ export function SHQueryValueExA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHQueryValueExA(util.toPointer(hkey), util.pstrToFfi(pszValue), util.toPointer(pdwReserved), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHQueryValueExA!(util.toPointer(hkey), util.pstrToFfi(pszValue), util.toPointer(pdwReserved), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHQueryValueExW(
@@ -31242,7 +31930,7 @@ export function SHQueryValueExW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHQueryValueExW(util.toPointer(hkey), util.pwstrToFfi(pszValue), util.toPointer(pdwReserved), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHQueryValueExW!(util.toPointer(hkey), util.pwstrToFfi(pszValue), util.toPointer(pdwReserved), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHEnumKeyExA(
@@ -31251,7 +31939,7 @@ export function SHEnumKeyExA(
   pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHEnumKeyExA(util.toPointer(hkey), dwIndex, util.pstrToFfi(pszName), util.toPointer(pcchName));
+  return libSHLWAPI_dll.SHEnumKeyExA!(util.toPointer(hkey), dwIndex, util.pstrToFfi(pszName), util.toPointer(pcchName));
 }
 
 export function SHEnumKeyExW(
@@ -31260,7 +31948,7 @@ export function SHEnumKeyExW(
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHEnumKeyExW(util.toPointer(hkey), dwIndex, util.pwstrToFfi(pszName), util.toPointer(pcchName));
+  return libSHLWAPI_dll.SHEnumKeyExW!(util.toPointer(hkey), dwIndex, util.pwstrToFfi(pszName), util.toPointer(pcchName));
 }
 
 export function SHEnumValueA(
@@ -31272,7 +31960,7 @@ export function SHEnumValueA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHEnumValueA(util.toPointer(hkey), dwIndex, util.pstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHEnumValueA!(util.toPointer(hkey), dwIndex, util.pstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHEnumValueW(
@@ -31284,7 +31972,7 @@ export function SHEnumValueW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHEnumValueW(util.toPointer(hkey), dwIndex, util.pwstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libSHLWAPI_dll.SHEnumValueW!(util.toPointer(hkey), dwIndex, util.pwstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function SHQueryInfoKeyA(
@@ -31294,7 +31982,7 @@ export function SHQueryInfoKeyA(
   pcValues: Deno.PointerValue | Uint8Array /* ptr */,
   pcchMaxValueNameLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHQueryInfoKeyA(util.toPointer(hkey), util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen));
+  return libSHLWAPI_dll.SHQueryInfoKeyA!(util.toPointer(hkey), util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen));
 }
 
 export function SHQueryInfoKeyW(
@@ -31304,7 +31992,7 @@ export function SHQueryInfoKeyW(
   pcValues: Deno.PointerValue | Uint8Array /* ptr */,
   pcchMaxValueNameLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHQueryInfoKeyW(util.toPointer(hkey), util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen));
+  return libSHLWAPI_dll.SHQueryInfoKeyW!(util.toPointer(hkey), util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen));
 }
 
 export function SHCopyKeyA(
@@ -31313,7 +32001,7 @@ export function SHCopyKeyA(
   hkeyDest: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   fReserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHCopyKeyA(util.toPointer(hkeySrc), util.pstrToFfi(pszSrcSubKey), util.toPointer(hkeyDest), fReserved);
+  return libSHLWAPI_dll.SHCopyKeyA!(util.toPointer(hkeySrc), util.pstrToFfi(pszSrcSubKey), util.toPointer(hkeyDest), fReserved);
 }
 
 export function SHCopyKeyW(
@@ -31322,7 +32010,7 @@ export function SHCopyKeyW(
   hkeyDest: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   fReserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHCopyKeyW(util.toPointer(hkeySrc), util.pwstrToFfi(pszSrcSubKey), util.toPointer(hkeyDest), fReserved);
+  return libSHLWAPI_dll.SHCopyKeyW!(util.toPointer(hkeySrc), util.pwstrToFfi(pszSrcSubKey), util.toPointer(hkeyDest), fReserved);
 }
 
 export function SHRegGetPathA(
@@ -31332,7 +32020,7 @@ export function SHRegGetPathA(
   pszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetPathA(util.toPointer(hKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValue), util.pstrToFfi(pszPath), dwFlags);
+  return libSHLWAPI_dll.SHRegGetPathA!(util.toPointer(hKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValue), util.pstrToFfi(pszPath), dwFlags);
 }
 
 export function SHRegGetPathW(
@@ -31342,7 +32030,7 @@ export function SHRegGetPathW(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetPathW(util.toPointer(hKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValue), util.pwstrToFfi(pszPath), dwFlags);
+  return libSHLWAPI_dll.SHRegGetPathW!(util.toPointer(hKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValue), util.pwstrToFfi(pszPath), dwFlags);
 }
 
 export function SHRegSetPathA(
@@ -31352,7 +32040,7 @@ export function SHRegSetPathA(
   pcszPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegSetPathA(util.toPointer(hKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValue), util.pstrToFfi(pcszPath), dwFlags);
+  return libSHLWAPI_dll.SHRegSetPathA!(util.toPointer(hKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValue), util.pstrToFfi(pcszPath), dwFlags);
 }
 
 export function SHRegSetPathW(
@@ -31362,7 +32050,7 @@ export function SHRegSetPathW(
   pcszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegSetPathW(util.toPointer(hKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValue), util.pwstrToFfi(pcszPath), dwFlags);
+  return libSHLWAPI_dll.SHRegSetPathW!(util.toPointer(hKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValue), util.pwstrToFfi(pcszPath), dwFlags);
 }
 
 export function SHRegCreateUSKeyA(
@@ -31372,7 +32060,7 @@ export function SHRegCreateUSKeyA(
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegCreateUSKeyA(util.pstrToFfi(pszPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), dwFlags);
+  return libSHLWAPI_dll.SHRegCreateUSKeyA!(util.pstrToFfi(pszPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), dwFlags);
 }
 
 export function SHRegCreateUSKeyW(
@@ -31382,7 +32070,7 @@ export function SHRegCreateUSKeyW(
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegCreateUSKeyW(util.pwstrToFfi(pwzPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), dwFlags);
+  return libSHLWAPI_dll.SHRegCreateUSKeyW!(util.pwstrToFfi(pwzPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), dwFlags);
 }
 
 export function SHRegOpenUSKeyA(
@@ -31392,7 +32080,7 @@ export function SHRegOpenUSKeyA(
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegOpenUSKeyA(util.pstrToFfi(pszPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), util.boolToFfi(fIgnoreHKCU));
+  return libSHLWAPI_dll.SHRegOpenUSKeyA!(util.pstrToFfi(pszPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), util.boolToFfi(fIgnoreHKCU));
 }
 
 export function SHRegOpenUSKeyW(
@@ -31402,7 +32090,7 @@ export function SHRegOpenUSKeyW(
   phNewUSKey: Deno.PointerValue | Uint8Array /* ptr */,
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegOpenUSKeyW(util.pwstrToFfi(pwzPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), util.boolToFfi(fIgnoreHKCU));
+  return libSHLWAPI_dll.SHRegOpenUSKeyW!(util.pwstrToFfi(pwzPath), samDesired, hRelativeUSKey, util.toPointer(phNewUSKey), util.boolToFfi(fIgnoreHKCU));
 }
 
 export function SHRegQueryUSValueA(
@@ -31415,7 +32103,7 @@ export function SHRegQueryUSValueA(
   pvDefaultData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDefaultDataSize: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegQueryUSValueA(hUSKey, util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
+  return libSHLWAPI_dll.SHRegQueryUSValueA!(hUSKey, util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
 }
 
 export function SHRegQueryUSValueW(
@@ -31428,7 +32116,7 @@ export function SHRegQueryUSValueW(
   pvDefaultData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDefaultDataSize: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegQueryUSValueW(hUSKey, util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
+  return libSHLWAPI_dll.SHRegQueryUSValueW!(hUSKey, util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
 }
 
 export function SHRegWriteUSValueA(
@@ -31439,7 +32127,7 @@ export function SHRegWriteUSValueA(
   cbData: number /* u32 */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegWriteUSValueA(hUSKey, util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData, dwFlags);
+  return libSHLWAPI_dll.SHRegWriteUSValueA!(hUSKey, util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData, dwFlags);
 }
 
 export function SHRegWriteUSValueW(
@@ -31450,7 +32138,7 @@ export function SHRegWriteUSValueW(
   cbData: number /* u32 */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegWriteUSValueW(hUSKey, util.pwstrToFfi(pwzValue), dwType, util.toPointer(pvData), cbData, dwFlags);
+  return libSHLWAPI_dll.SHRegWriteUSValueW!(hUSKey, util.pwstrToFfi(pwzValue), dwType, util.toPointer(pvData), cbData, dwFlags);
 }
 
 export function SHRegDeleteUSValueA(
@@ -31458,7 +32146,7 @@ export function SHRegDeleteUSValueA(
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegDeleteUSValueA(hUSKey, util.pstrToFfi(pszValue), delRegFlags);
+  return libSHLWAPI_dll.SHRegDeleteUSValueA!(hUSKey, util.pstrToFfi(pszValue), delRegFlags);
 }
 
 export function SHRegDeleteUSValueW(
@@ -31466,7 +32154,7 @@ export function SHRegDeleteUSValueW(
   pwzValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegDeleteUSValueW(hUSKey, util.pwstrToFfi(pwzValue), delRegFlags);
+  return libSHLWAPI_dll.SHRegDeleteUSValueW!(hUSKey, util.pwstrToFfi(pwzValue), delRegFlags);
 }
 
 export function SHRegDeleteEmptyUSKeyW(
@@ -31474,7 +32162,7 @@ export function SHRegDeleteEmptyUSKeyW(
   pwzSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegDeleteEmptyUSKeyW(hUSKey, util.pwstrToFfi(pwzSubKey), delRegFlags);
+  return libSHLWAPI_dll.SHRegDeleteEmptyUSKeyW!(hUSKey, util.pwstrToFfi(pwzSubKey), delRegFlags);
 }
 
 export function SHRegDeleteEmptyUSKeyA(
@@ -31482,7 +32170,7 @@ export function SHRegDeleteEmptyUSKeyA(
   pszSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   delRegFlags: SHREGDEL_FLAGS /* Windows.Win32.UI.Shell.SHREGDEL_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegDeleteEmptyUSKeyA(hUSKey, util.pstrToFfi(pszSubKey), delRegFlags);
+  return libSHLWAPI_dll.SHRegDeleteEmptyUSKeyA!(hUSKey, util.pstrToFfi(pszSubKey), delRegFlags);
 }
 
 export function SHRegEnumUSKeyA(
@@ -31492,7 +32180,7 @@ export function SHRegEnumUSKeyA(
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegEnumUSKeyA(hUSKey, dwIndex, util.pstrToFfi(pszName), util.toPointer(pcchName), enumRegFlags);
+  return libSHLWAPI_dll.SHRegEnumUSKeyA!(hUSKey, dwIndex, util.pstrToFfi(pszName), util.toPointer(pcchName), enumRegFlags);
 }
 
 export function SHRegEnumUSKeyW(
@@ -31502,7 +32190,7 @@ export function SHRegEnumUSKeyW(
   pcchName: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegEnumUSKeyW(hUSKey, dwIndex, util.pwstrToFfi(pwzName), util.toPointer(pcchName), enumRegFlags);
+  return libSHLWAPI_dll.SHRegEnumUSKeyW!(hUSKey, dwIndex, util.pwstrToFfi(pwzName), util.toPointer(pcchName), enumRegFlags);
 }
 
 export function SHRegEnumUSValueA(
@@ -31515,7 +32203,7 @@ export function SHRegEnumUSValueA(
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegEnumUSValueA(hUSkey, dwIndex, util.pstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), enumRegFlags);
+  return libSHLWAPI_dll.SHRegEnumUSValueA!(hUSkey, dwIndex, util.pstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), enumRegFlags);
 }
 
 export function SHRegEnumUSValueW(
@@ -31528,7 +32216,7 @@ export function SHRegEnumUSValueW(
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegEnumUSValueW(hUSkey, dwIndex, util.pwstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), enumRegFlags);
+  return libSHLWAPI_dll.SHRegEnumUSValueW!(hUSkey, dwIndex, util.pwstrToFfi(pszValueName), util.toPointer(pcchValueName), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), enumRegFlags);
 }
 
 export function SHRegQueryInfoUSKeyA(
@@ -31539,7 +32227,7 @@ export function SHRegQueryInfoUSKeyA(
   pcchMaxValueNameLen: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegQueryInfoUSKeyA(hUSKey, util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen), enumRegFlags);
+  return libSHLWAPI_dll.SHRegQueryInfoUSKeyA!(hUSKey, util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen), enumRegFlags);
 }
 
 export function SHRegQueryInfoUSKeyW(
@@ -31550,13 +32238,13 @@ export function SHRegQueryInfoUSKeyW(
   pcchMaxValueNameLen: Deno.PointerValue | Uint8Array /* ptr */,
   enumRegFlags: SHREGENUM_FLAGS /* Windows.Win32.UI.Shell.SHREGENUM_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegQueryInfoUSKeyW(hUSKey, util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen), enumRegFlags);
+  return libSHLWAPI_dll.SHRegQueryInfoUSKeyW!(hUSKey, util.toPointer(pcSubKeys), util.toPointer(pcchMaxSubKeyLen), util.toPointer(pcValues), util.toPointer(pcchMaxValueNameLen), enumRegFlags);
 }
 
 export function SHRegCloseUSKey(
   hUSKey: bigint | number /* isize */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegCloseUSKey(hUSKey);
+  return libSHLWAPI_dll.SHRegCloseUSKey!(hUSKey);
 }
 
 export function SHRegGetUSValueA(
@@ -31569,7 +32257,7 @@ export function SHRegGetUSValueA(
   pvDefaultData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDefaultDataSize: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetUSValueA(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
+  return libSHLWAPI_dll.SHRegGetUSValueA!(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
 }
 
 export function SHRegGetUSValueW(
@@ -31582,7 +32270,7 @@ export function SHRegGetUSValueW(
   pvDefaultData: Deno.PointerValue | Uint8Array /* ptr */,
   dwDefaultDataSize: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetUSValueW(util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
+  return libSHLWAPI_dll.SHRegGetUSValueW!(util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData), util.boolToFfi(fIgnoreHKCU), util.toPointer(pvDefaultData), dwDefaultDataSize);
 }
 
 export function SHRegSetUSValueA(
@@ -31593,7 +32281,7 @@ export function SHRegSetUSValueA(
   cbData: number /* u32 */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegSetUSValueA(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData, dwFlags);
+  return libSHLWAPI_dll.SHRegSetUSValueA!(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), dwType, util.toPointer(pvData), cbData, dwFlags);
 }
 
 export function SHRegSetUSValueW(
@@ -31604,7 +32292,7 @@ export function SHRegSetUSValueW(
   cbData: number /* u32 */,
   dwFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegSetUSValueW(util.pwstrToFfi(pwzSubKey), util.pwstrToFfi(pwzValue), dwType, util.toPointer(pvData), cbData, dwFlags);
+  return libSHLWAPI_dll.SHRegSetUSValueW!(util.pwstrToFfi(pwzSubKey), util.pwstrToFfi(pwzValue), dwType, util.toPointer(pvData), cbData, dwFlags);
 }
 
 export function SHRegGetIntW(
@@ -31612,7 +32300,7 @@ export function SHRegGetIntW(
   pwzKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iDefault: number /* i32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libSHLWAPI_dll.SHRegGetIntW(util.toPointer(hk), util.pwstrToFfi(pwzKey), iDefault);
+  return libSHLWAPI_dll.SHRegGetIntW!(util.toPointer(hk), util.pwstrToFfi(pwzKey), iDefault);
 }
 
 export function SHRegGetBoolUSValueA(
@@ -31621,7 +32309,7 @@ export function SHRegGetBoolUSValueA(
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
   fDefault: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHRegGetBoolUSValueA(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.boolToFfi(fIgnoreHKCU), util.boolToFfi(fDefault)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHRegGetBoolUSValueA!(util.pstrToFfi(pszSubKey), util.pstrToFfi(pszValue), util.boolToFfi(fIgnoreHKCU), util.boolToFfi(fDefault)));
 }
 
 export function SHRegGetBoolUSValueW(
@@ -31630,7 +32318,7 @@ export function SHRegGetBoolUSValueW(
   fIgnoreHKCU: boolean /* Windows.Win32.Foundation.BOOL */,
   fDefault: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHRegGetBoolUSValueW(util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.boolToFfi(fIgnoreHKCU), util.boolToFfi(fDefault)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHRegGetBoolUSValueW!(util.pwstrToFfi(pszSubKey), util.pwstrToFfi(pszValue), util.boolToFfi(fIgnoreHKCU), util.boolToFfi(fDefault)));
 }
 
 export function AssocCreate(
@@ -31638,7 +32326,7 @@ export function AssocCreate(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocCreate(util.toPointer(clsid), util.toPointer(riid), util.toPointer(ppv));
+  return libSHLWAPI_dll.AssocCreate!(util.toPointer(clsid), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function AssocQueryStringA(
@@ -31649,7 +32337,7 @@ export function AssocQueryStringA(
   pszOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryStringA(flags, str, util.pstrToFfi(pszAssoc), util.pstrToFfi(pszExtra), util.pstrToFfi(pszOut), util.toPointer(pcchOut));
+  return libSHLWAPI_dll.AssocQueryStringA!(flags, str, util.pstrToFfi(pszAssoc), util.pstrToFfi(pszExtra), util.pstrToFfi(pszOut), util.toPointer(pcchOut));
 }
 
 export function AssocQueryStringW(
@@ -31660,7 +32348,7 @@ export function AssocQueryStringW(
   pszOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryStringW(flags, str, util.pwstrToFfi(pszAssoc), util.pwstrToFfi(pszExtra), util.pwstrToFfi(pszOut), util.toPointer(pcchOut));
+  return libSHLWAPI_dll.AssocQueryStringW!(flags, str, util.pwstrToFfi(pszAssoc), util.pwstrToFfi(pszExtra), util.pwstrToFfi(pszOut), util.toPointer(pcchOut));
 }
 
 export function AssocQueryStringByKeyA(
@@ -31671,7 +32359,7 @@ export function AssocQueryStringByKeyA(
   pszOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryStringByKeyA(flags, str, util.toPointer(hkAssoc), util.pstrToFfi(pszExtra), util.pstrToFfi(pszOut), util.toPointer(pcchOut));
+  return libSHLWAPI_dll.AssocQueryStringByKeyA!(flags, str, util.toPointer(hkAssoc), util.pstrToFfi(pszExtra), util.pstrToFfi(pszOut), util.toPointer(pcchOut));
 }
 
 export function AssocQueryStringByKeyW(
@@ -31682,7 +32370,7 @@ export function AssocQueryStringByKeyW(
   pszOut: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryStringByKeyW(flags, str, util.toPointer(hkAssoc), util.pwstrToFfi(pszExtra), util.pwstrToFfi(pszOut), util.toPointer(pcchOut));
+  return libSHLWAPI_dll.AssocQueryStringByKeyW!(flags, str, util.toPointer(hkAssoc), util.pwstrToFfi(pszExtra), util.pwstrToFfi(pszOut), util.toPointer(pcchOut));
 }
 
 export function AssocQueryKeyA(
@@ -31692,7 +32380,7 @@ export function AssocQueryKeyA(
   pszExtra: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phkeyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryKeyA(flags, key, util.pstrToFfi(pszAssoc), util.pstrToFfi(pszExtra), util.toPointer(phkeyOut));
+  return libSHLWAPI_dll.AssocQueryKeyA!(flags, key, util.pstrToFfi(pszAssoc), util.pstrToFfi(pszExtra), util.toPointer(phkeyOut));
 }
 
 export function AssocQueryKeyW(
@@ -31702,13 +32390,13 @@ export function AssocQueryKeyW(
   pszExtra: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phkeyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocQueryKeyW(flags, key, util.pwstrToFfi(pszAssoc), util.pwstrToFfi(pszExtra), util.toPointer(phkeyOut));
+  return libSHLWAPI_dll.AssocQueryKeyW!(flags, key, util.pwstrToFfi(pszAssoc), util.pwstrToFfi(pszExtra), util.toPointer(phkeyOut));
 }
 
 export function AssocIsDangerous(
   pszAssoc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.AssocIsDangerous(util.pwstrToFfi(pszAssoc)));
+  return util.boolFromFfi(libSHLWAPI_dll.AssocIsDangerous!(util.pwstrToFfi(pszAssoc)));
 }
 
 export function AssocGetPerceivedType(
@@ -31717,7 +32405,7 @@ export function AssocGetPerceivedType(
   pflag: Deno.PointerValue | Uint8Array /* ptr */,
   ppszType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.AssocGetPerceivedType(util.pwstrToFfi(pszExt), util.toPointer(ptype), util.toPointer(pflag), util.toPointer(ppszType));
+  return libSHLWAPI_dll.AssocGetPerceivedType!(util.pwstrToFfi(pszExt), util.toPointer(ptype), util.toPointer(pflag), util.toPointer(ppszType));
 }
 
 export function SHOpenRegStreamA(
@@ -31726,7 +32414,7 @@ export function SHOpenRegStreamA(
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   grfMode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHLWAPI_dll.SHOpenRegStreamA(util.toPointer(hkey), util.pstrToFfi(pszSubkey), util.pstrToFfi(pszValue), grfMode);
+  return libSHLWAPI_dll.SHOpenRegStreamA!(util.toPointer(hkey), util.pstrToFfi(pszSubkey), util.pstrToFfi(pszValue), grfMode);
 }
 
 export function SHOpenRegStreamW(
@@ -31735,7 +32423,7 @@ export function SHOpenRegStreamW(
   pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHLWAPI_dll.SHOpenRegStreamW(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
+  return libSHLWAPI_dll.SHOpenRegStreamW!(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
 }
 
 export function SHOpenRegStream2A(
@@ -31744,7 +32432,7 @@ export function SHOpenRegStream2A(
   pszValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   grfMode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHLWAPI_dll.SHOpenRegStream2A(util.toPointer(hkey), util.pstrToFfi(pszSubkey), util.pstrToFfi(pszValue), grfMode);
+  return libSHLWAPI_dll.SHOpenRegStream2A!(util.toPointer(hkey), util.pstrToFfi(pszSubkey), util.pstrToFfi(pszValue), grfMode);
 }
 
 export function SHOpenRegStream2W(
@@ -31753,7 +32441,7 @@ export function SHOpenRegStream2W(
   pszValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   grfMode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHLWAPI_dll.SHOpenRegStream2W(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
+  return libSHLWAPI_dll.SHOpenRegStream2W!(util.toPointer(hkey), util.pwstrToFfi(pszSubkey), util.pwstrToFfi(pszValue), grfMode);
 }
 
 export function SHCreateStreamOnFileA(
@@ -31761,7 +32449,7 @@ export function SHCreateStreamOnFileA(
   grfMode: number /* u32 */,
   ppstm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHCreateStreamOnFileA(util.pstrToFfi(pszFile), grfMode, util.toPointer(ppstm));
+  return libSHLWAPI_dll.SHCreateStreamOnFileA!(util.pstrToFfi(pszFile), grfMode, util.toPointer(ppstm));
 }
 
 export function SHCreateStreamOnFileW(
@@ -31769,7 +32457,7 @@ export function SHCreateStreamOnFileW(
   grfMode: number /* u32 */,
   ppstm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHCreateStreamOnFileW(util.pwstrToFfi(pszFile), grfMode, util.toPointer(ppstm));
+  return libSHLWAPI_dll.SHCreateStreamOnFileW!(util.pwstrToFfi(pszFile), grfMode, util.toPointer(ppstm));
 }
 
 export function SHCreateStreamOnFileEx(
@@ -31780,55 +32468,55 @@ export function SHCreateStreamOnFileEx(
   pstmTemplate: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   ppstm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHCreateStreamOnFileEx(util.pwstrToFfi(pszFile), grfMode, dwAttributes, util.boolToFfi(fCreate), util.toPointer(pstmTemplate), util.toPointer(ppstm));
+  return libSHLWAPI_dll.SHCreateStreamOnFileEx!(util.pwstrToFfi(pszFile), grfMode, dwAttributes, util.boolToFfi(fCreate), util.toPointer(pstmTemplate), util.toPointer(ppstm));
 }
 
 export function SHCreateMemStream(
   pInit: Deno.PointerValue | Uint8Array /* ptr */,
   cbInit: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Com.IStream */ {
-  return libSHLWAPI_dll.SHCreateMemStream(util.toPointer(pInit), cbInit);
+  return libSHLWAPI_dll.SHCreateMemStream!(util.toPointer(pInit), cbInit);
 }
 
 export function GetAcceptLanguagesA(
   pszLanguages: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchLanguages: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.GetAcceptLanguagesA(util.pstrToFfi(pszLanguages), util.toPointer(pcchLanguages));
+  return libSHLWAPI_dll.GetAcceptLanguagesA!(util.pstrToFfi(pszLanguages), util.toPointer(pcchLanguages));
 }
 
 export function GetAcceptLanguagesW(
   pszLanguages: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLanguages: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.GetAcceptLanguagesW(util.pwstrToFfi(pszLanguages), util.toPointer(pcchLanguages));
+  return libSHLWAPI_dll.GetAcceptLanguagesW!(util.pwstrToFfi(pszLanguages), util.toPointer(pcchLanguages));
 }
 
 export function IUnknown_Set(
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): void /* void */ {
-  return libSHLWAPI_dll.IUnknown_Set(util.toPointer(ppunk), util.toPointer(punk));
+  return libSHLWAPI_dll.IUnknown_Set!(util.toPointer(ppunk), util.toPointer(punk));
 }
 
 export function IUnknown_AtomicRelease(
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHLWAPI_dll.IUnknown_AtomicRelease(util.toPointer(ppunk));
+  return libSHLWAPI_dll.IUnknown_AtomicRelease!(util.toPointer(ppunk));
 }
 
 export function IUnknown_GetWindow(
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   phwnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IUnknown_GetWindow(util.toPointer(punk), util.toPointer(phwnd));
+  return libSHLWAPI_dll.IUnknown_GetWindow!(util.toPointer(punk), util.toPointer(phwnd));
 }
 
 export function IUnknown_SetSite(
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   punkSite: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IUnknown_SetSite(util.toPointer(punk), util.toPointer(punkSite));
+  return libSHLWAPI_dll.IUnknown_SetSite!(util.toPointer(punk), util.toPointer(punkSite));
 }
 
 export function IUnknown_GetSite(
@@ -31836,7 +32524,7 @@ export function IUnknown_GetSite(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IUnknown_GetSite(util.toPointer(punk), util.toPointer(riid), util.toPointer(ppv));
+  return libSHLWAPI_dll.IUnknown_GetSite!(util.toPointer(punk), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function IUnknown_QueryService(
@@ -31845,7 +32533,7 @@ export function IUnknown_QueryService(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IUnknown_QueryService(util.toPointer(punk), util.toPointer(guidService), util.toPointer(riid), util.toPointer(ppvOut));
+  return libSHLWAPI_dll.IUnknown_QueryService!(util.toPointer(punk), util.toPointer(guidService), util.toPointer(riid), util.toPointer(ppvOut));
 }
 
 export function IStream_Read(
@@ -31853,7 +32541,7 @@ export function IStream_Read(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_Read(util.toPointer(pstm), util.toPointer(pv), cb);
+  return libSHLWAPI_dll.IStream_Read!(util.toPointer(pstm), util.toPointer(pv), cb);
 }
 
 export function IStream_Write(
@@ -31861,20 +32549,20 @@ export function IStream_Write(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_Write(util.toPointer(pstm), util.toPointer(pv), cb);
+  return libSHLWAPI_dll.IStream_Write!(util.toPointer(pstm), util.toPointer(pv), cb);
 }
 
 export function IStream_Reset(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_Reset(util.toPointer(pstm));
+  return libSHLWAPI_dll.IStream_Reset!(util.toPointer(pstm));
 }
 
 export function IStream_Size(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pui: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_Size(util.toPointer(pstm), util.toPointer(pui));
+  return libSHLWAPI_dll.IStream_Size!(util.toPointer(pstm), util.toPointer(pui));
 }
 
 export function ConnectToConnectionPoint(
@@ -31885,35 +32573,35 @@ export function ConnectToConnectionPoint(
   pdwCookie: Deno.PointerValue | Uint8Array /* ptr */,
   ppcpOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.ConnectToConnectionPoint(util.toPointer(punk), util.toPointer(riidEvent), util.boolToFfi(fConnect), util.toPointer(punkTarget), util.toPointer(pdwCookie), util.toPointer(ppcpOut));
+  return libSHLWAPI_dll.ConnectToConnectionPoint!(util.toPointer(punk), util.toPointer(riidEvent), util.boolToFfi(fConnect), util.toPointer(punkTarget), util.toPointer(pdwCookie), util.toPointer(ppcpOut));
 }
 
 export function IStream_ReadPidl(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   ppidlOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_ReadPidl(util.toPointer(pstm), util.toPointer(ppidlOut));
+  return libSHLWAPI_dll.IStream_ReadPidl!(util.toPointer(pstm), util.toPointer(ppidlOut));
 }
 
 export function IStream_WritePidl(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pidlWrite: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_WritePidl(util.toPointer(pstm), util.toPointer(pidlWrite));
+  return libSHLWAPI_dll.IStream_WritePidl!(util.toPointer(pstm), util.toPointer(pidlWrite));
 }
 
 export function IStream_ReadStr(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   ppsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_ReadStr(util.toPointer(pstm), util.toPointer(ppsz));
+  return libSHLWAPI_dll.IStream_ReadStr!(util.toPointer(pstm), util.toPointer(ppsz));
 }
 
 export function IStream_WriteStr(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_WriteStr(util.toPointer(pstm), util.pwstrToFfi(psz));
+  return libSHLWAPI_dll.IStream_WriteStr!(util.toPointer(pstm), util.pwstrToFfi(psz));
 }
 
 export function IStream_Copy(
@@ -31921,7 +32609,7 @@ export function IStream_Copy(
   pstmTo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   cb: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.IStream_Copy(util.toPointer(pstmFrom), util.toPointer(pstmTo), cb);
+  return libSHLWAPI_dll.IStream_Copy!(util.toPointer(pstmFrom), util.toPointer(pstmTo), cb);
 }
 
 export function SHGetViewStatePropertyBag(
@@ -31931,7 +32619,7 @@ export function SHGetViewStatePropertyBag(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHGetViewStatePropertyBag(util.toPointer(pidl), util.pwstrToFfi(pszBagName), dwFlags, util.toPointer(riid), util.toPointer(ppv));
+  return libSHLWAPI_dll.SHGetViewStatePropertyBag!(util.toPointer(pidl), util.pwstrToFfi(pszBagName), dwFlags, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHFormatDateTimeA(
@@ -31940,7 +32628,7 @@ export function SHFormatDateTimeA(
   pszBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHFormatDateTimeA(util.toPointer(pft), util.toPointer(pdwFlags), util.pstrToFfi(pszBuf), cchBuf);
+  return libSHLWAPI_dll.SHFormatDateTimeA!(util.toPointer(pft), util.toPointer(pdwFlags), util.pstrToFfi(pszBuf), cchBuf);
 }
 
 export function SHFormatDateTimeW(
@@ -31949,7 +32637,7 @@ export function SHFormatDateTimeW(
   pszBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuf: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHFormatDateTimeW(util.toPointer(pft), util.toPointer(pdwFlags), util.pwstrToFfi(pszBuf), cchBuf);
+  return libSHLWAPI_dll.SHFormatDateTimeW!(util.toPointer(pft), util.toPointer(pdwFlags), util.pwstrToFfi(pszBuf), cchBuf);
 }
 
 export function SHAnsiToUnicode(
@@ -31957,7 +32645,7 @@ export function SHAnsiToUnicode(
   pwszDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwchBuf: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHAnsiToUnicode(util.pstrToFfi(pszSrc), util.pwstrToFfi(pwszDst), cwchBuf);
+  return libSHLWAPI_dll.SHAnsiToUnicode!(util.pstrToFfi(pszSrc), util.pwstrToFfi(pwszDst), cwchBuf);
 }
 
 export function SHAnsiToAnsi(
@@ -31965,7 +32653,7 @@ export function SHAnsiToAnsi(
   pszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHAnsiToAnsi(util.pstrToFfi(pszSrc), util.pstrToFfi(pszDst), cchBuf);
+  return libSHLWAPI_dll.SHAnsiToAnsi!(util.pstrToFfi(pszSrc), util.pstrToFfi(pszDst), cchBuf);
 }
 
 export function SHUnicodeToAnsi(
@@ -31973,7 +32661,7 @@ export function SHUnicodeToAnsi(
   pszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBuf: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHUnicodeToAnsi(util.pwstrToFfi(pwszSrc), util.pstrToFfi(pszDst), cchBuf);
+  return libSHLWAPI_dll.SHUnicodeToAnsi!(util.pwstrToFfi(pwszSrc), util.pstrToFfi(pszDst), cchBuf);
 }
 
 export function SHUnicodeToUnicode(
@@ -31981,7 +32669,7 @@ export function SHUnicodeToUnicode(
   pwzDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cwchBuf: number /* i32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHUnicodeToUnicode(util.pwstrToFfi(pwzSrc), util.pwstrToFfi(pwzDst), cwchBuf);
+  return libSHLWAPI_dll.SHUnicodeToUnicode!(util.pwstrToFfi(pwzSrc), util.pwstrToFfi(pwzDst), cwchBuf);
 }
 
 export function SHMessageBoxCheckA(
@@ -31992,7 +32680,7 @@ export function SHMessageBoxCheckA(
   iDefault: number /* i32 */,
   pszRegVal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHMessageBoxCheckA((hwnd), util.pstrToFfi(pszText), util.pstrToFfi(pszCaption), uType, iDefault, util.pstrToFfi(pszRegVal));
+  return libSHLWAPI_dll.SHMessageBoxCheckA!((hwnd), util.pstrToFfi(pszText), util.pstrToFfi(pszCaption), uType, iDefault, util.pstrToFfi(pszRegVal));
 }
 
 export function SHMessageBoxCheckW(
@@ -32003,7 +32691,7 @@ export function SHMessageBoxCheckW(
   iDefault: number /* i32 */,
   pszRegVal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHMessageBoxCheckW((hwnd), util.pwstrToFfi(pszText), util.pwstrToFfi(pszCaption), uType, iDefault, util.pwstrToFfi(pszRegVal));
+  return libSHLWAPI_dll.SHMessageBoxCheckW!((hwnd), util.pwstrToFfi(pszText), util.pwstrToFfi(pszCaption), uType, iDefault, util.pwstrToFfi(pszRegVal));
 }
 
 export function SHSendMessageBroadcastA(
@@ -32011,7 +32699,7 @@ export function SHSendMessageBroadcastA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libSHLWAPI_dll.SHSendMessageBroadcastA(uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libSHLWAPI_dll.SHSendMessageBroadcastA!(uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SHSendMessageBroadcastW(
@@ -32019,43 +32707,43 @@ export function SHSendMessageBroadcastW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libSHLWAPI_dll.SHSendMessageBroadcastW(uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libSHLWAPI_dll.SHSendMessageBroadcastW!(uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SHStripMneumonicA(
   pszMenu: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string /* Windows.Win32.Foundation.CHAR */ {
-  return util.charFromFfi(libSHLWAPI_dll.SHStripMneumonicA(util.pstrToFfi(pszMenu)));
+  return util.charFromFfi(libSHLWAPI_dll.SHStripMneumonicA!(util.pstrToFfi(pszMenu)));
 }
 
 export function SHStripMneumonicW(
   pszMenu: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* char */ {
-  return libSHLWAPI_dll.SHStripMneumonicW(util.pwstrToFfi(pszMenu));
+  return libSHLWAPI_dll.SHStripMneumonicW!(util.pwstrToFfi(pszMenu));
 }
 
 export function IsOS(
   dwOS: OS /* Windows.Win32.UI.Shell.OS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IsOS(dwOS));
+  return util.boolFromFfi(libSHLWAPI_dll.IsOS!(dwOS));
 }
 
 export function SHGlobalCounterGetValue(
   id: SHGLOBALCOUNTER /* Windows.Win32.UI.Shell.SHGLOBALCOUNTER */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHGlobalCounterGetValue(id);
+  return libSHLWAPI_dll.SHGlobalCounterGetValue!(id);
 }
 
 export function SHGlobalCounterIncrement(
   id: SHGLOBALCOUNTER /* Windows.Win32.UI.Shell.SHGLOBALCOUNTER */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHGlobalCounterIncrement(id);
+  return libSHLWAPI_dll.SHGlobalCounterIncrement!(id);
 }
 
 export function SHGlobalCounterDecrement(
   id: SHGLOBALCOUNTER /* Windows.Win32.UI.Shell.SHGLOBALCOUNTER */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.SHGlobalCounterDecrement(id);
+  return libSHLWAPI_dll.SHGlobalCounterDecrement!(id);
 }
 
 export function SHAllocShared(
@@ -32063,31 +32751,31 @@ export function SHAllocShared(
   dwSize: number /* u32 */,
   dwProcessId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libSHLWAPI_dll.SHAllocShared(util.toPointer(pvData), dwSize, dwProcessId);
+  return libSHLWAPI_dll.SHAllocShared!(util.toPointer(pvData), dwSize, dwProcessId);
 }
 
 export function SHFreeShared(
   hData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwProcessId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHFreeShared(util.toPointer(hData), dwProcessId));
+  return util.boolFromFfi(libSHLWAPI_dll.SHFreeShared!(util.toPointer(hData), dwProcessId));
 }
 
 export function SHLockShared(
   hData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwProcessId: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libSHLWAPI_dll.SHLockShared(util.toPointer(hData), dwProcessId);
+  return libSHLWAPI_dll.SHLockShared!(util.toPointer(hData), dwProcessId);
 }
 
 export function SHUnlockShared(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHUnlockShared(util.toPointer(pvData)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHUnlockShared!(util.toPointer(pvData)));
 }
 
 export function WhichPlatform(): number /* u32 */ {
-  return libSHLWAPI_dll.WhichPlatform();
+  return libSHLWAPI_dll.WhichPlatform!();
 }
 
 export function QISearch(
@@ -32096,60 +32784,60 @@ export function QISearch(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.QISearch(util.toPointer(that), util.toPointer(pqit), util.toPointer(riid), util.toPointer(ppv));
+  return libSHLWAPI_dll.QISearch!(util.toPointer(that), util.toPointer(pqit), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function SHIsLowMemoryMachine(
   dwType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHIsLowMemoryMachine(dwType));
+  return util.boolFromFfi(libSHLWAPI_dll.SHIsLowMemoryMachine!(dwType));
 }
 
 export function GetMenuPosFromID(
   hmenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   id: number /* u32 */,
 ): number /* i32 */ {
-  return libSHLWAPI_dll.GetMenuPosFromID(util.toPointer(hmenu), id);
+  return libSHLWAPI_dll.GetMenuPosFromID!(util.toPointer(hmenu), id);
 }
 
 export function SHGetInverseCMAP(
   pbMap: Deno.PointerValue | Uint8Array /* ptr */,
   cbMap: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHGetInverseCMAP(util.toPointer(pbMap), cbMap);
+  return libSHLWAPI_dll.SHGetInverseCMAP!(util.toPointer(pbMap), cbMap);
 }
 
 export function SHAutoComplete(
   hwndEdit: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: SHELL_AUTOCOMPLETE_FLAGS /* Windows.Win32.UI.Shell.SHELL_AUTOCOMPLETE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHAutoComplete((hwndEdit), dwFlags);
+  return libSHLWAPI_dll.SHAutoComplete!((hwndEdit), dwFlags);
 }
 
 export function SHCreateThreadRef(
   pcRef: Deno.PointerValue | Uint8Array /* ptr */,
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHCreateThreadRef(util.toPointer(pcRef), util.toPointer(ppunk));
+  return libSHLWAPI_dll.SHCreateThreadRef!(util.toPointer(pcRef), util.toPointer(ppunk));
 }
 
 export function SHSetThreadRef(
   punk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHSetThreadRef(util.toPointer(punk));
+  return libSHLWAPI_dll.SHSetThreadRef!(util.toPointer(punk));
 }
 
 export function SHGetThreadRef(
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHGetThreadRef(util.toPointer(ppunk));
+  return libSHLWAPI_dll.SHGetThreadRef!(util.toPointer(ppunk));
 }
 
 export function SHSkipJunction(
   pbc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindCtx */,
   pclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHSkipJunction(util.toPointer(pbc), util.toPointer(pclsid)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHSkipJunction!(util.toPointer(pbc), util.toPointer(pclsid)));
 }
 
 export function SHCreateThread(
@@ -32158,7 +32846,7 @@ export function SHCreateThread(
   flags: number /* u32 */,
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHCreateThread(util.toPointer(pfnThreadProc), util.toPointer(pData), flags, util.toPointer(pfnCallback)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHCreateThread!(util.toPointer(pfnThreadProc), util.toPointer(pData), flags, util.toPointer(pfnCallback)));
 }
 
 export function SHCreateThreadWithHandle(
@@ -32168,17 +32856,17 @@ export function SHCreateThreadWithHandle(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.SHCreateThreadWithHandle(util.toPointer(pfnThreadProc), util.toPointer(pData), flags, util.toPointer(pfnCallback), util.toPointer(pHandle)));
+  return util.boolFromFfi(libSHLWAPI_dll.SHCreateThreadWithHandle!(util.toPointer(pfnThreadProc), util.toPointer(pData), flags, util.toPointer(pfnCallback), util.toPointer(pHandle)));
 }
 
 export function SHReleaseThreadRef(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHLWAPI_dll.SHReleaseThreadRef();
+  return libSHLWAPI_dll.SHReleaseThreadRef!();
 }
 
 export function SHCreateShellPalette(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */ {
-  return libSHLWAPI_dll.SHCreateShellPalette(util.toPointer(hdc));
+  return libSHLWAPI_dll.SHCreateShellPalette!(util.toPointer(hdc));
 }
 
 export function ColorRGBToHLS(
@@ -32187,7 +32875,7 @@ export function ColorRGBToHLS(
   pwLuminance: Deno.PointerValue | Uint8Array /* ptr */,
   pwSaturation: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSHLWAPI_dll.ColorRGBToHLS(util.toPointer(clrRGB), util.toPointer(pwHue), util.toPointer(pwLuminance), util.toPointer(pwSaturation));
+  return libSHLWAPI_dll.ColorRGBToHLS!(util.toPointer(clrRGB), util.toPointer(pwHue), util.toPointer(pwLuminance), util.toPointer(pwSaturation));
 }
 
 export function ColorHLSToRGB(
@@ -32195,7 +32883,7 @@ export function ColorHLSToRGB(
   wLuminance: number /* u16 */,
   wSaturation: number /* u16 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
-  return libSHLWAPI_dll.ColorHLSToRGB(wHue, wLuminance, wSaturation);
+  return libSHLWAPI_dll.ColorHLSToRGB!(wHue, wLuminance, wSaturation);
 }
 
 export function ColorAdjustLuma(
@@ -32203,11 +32891,11 @@ export function ColorAdjustLuma(
   n: number /* i32 */,
   fScale: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
-  return libSHLWAPI_dll.ColorAdjustLuma(util.toPointer(clrRGB), n, util.boolToFfi(fScale));
+  return libSHLWAPI_dll.ColorAdjustLuma!(util.toPointer(clrRGB), n, util.boolToFfi(fScale));
 }
 
 export function IsInternetESCEnabled(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSHLWAPI_dll.IsInternetESCEnabled());
+  return util.boolFromFfi(libSHLWAPI_dll.IsInternetESCEnabled!());
 }
 
 export function HlinkCreateFromMoniker(
@@ -32220,7 +32908,7 @@ export function HlinkCreateFromMoniker(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateFromMoniker(util.toPointer(pimkTrgt), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkCreateFromMoniker!(util.toPointer(pimkTrgt), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkCreateFromString(
@@ -32233,7 +32921,7 @@ export function HlinkCreateFromString(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateFromString(util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkCreateFromString!(util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkCreateFromData(
@@ -32244,13 +32932,13 @@ export function HlinkCreateFromData(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateFromData(util.toPointer(piDataObj), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkCreateFromData!(util.toPointer(piDataObj), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkQueryCreateFromData(
   piDataObj: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkQueryCreateFromData(util.toPointer(piDataObj));
+  return libhlink_dll.HlinkQueryCreateFromData!(util.toPointer(piDataObj));
 }
 
 export function HlinkClone(
@@ -32260,7 +32948,7 @@ export function HlinkClone(
   dwSiteData: number /* u32 */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkClone(util.toPointer(pihl), util.toPointer(riid), util.toPointer(pihlsiteForClone), dwSiteData, util.toPointer(ppvObj));
+  return libhlink_dll.HlinkClone!(util.toPointer(pihl), util.toPointer(riid), util.toPointer(pihlsiteForClone), dwSiteData, util.toPointer(ppvObj));
 }
 
 export function HlinkCreateBrowseContext(
@@ -32268,7 +32956,7 @@ export function HlinkCreateBrowseContext(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateBrowseContext(util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkCreateBrowseContext!(util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkNavigateToStringReference(
@@ -32282,7 +32970,7 @@ export function HlinkNavigateToStringReference(
   pibsc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   pihlbc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IHlinkBrowseContext */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkNavigateToStringReference(util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.toPointer(pihlsite), dwSiteData, util.toPointer(pihlframe), grfHLNF, util.toPointer(pibc), util.toPointer(pibsc), util.toPointer(pihlbc));
+  return libhlink_dll.HlinkNavigateToStringReference!(util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.toPointer(pihlsite), dwSiteData, util.toPointer(pihlframe), grfHLNF, util.toPointer(pibc), util.toPointer(pibsc), util.toPointer(pihlbc));
 }
 
 export function HlinkNavigate(
@@ -32293,7 +32981,7 @@ export function HlinkNavigate(
   pibsc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   pihlbc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Shell.IHlinkBrowseContext */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkNavigate(util.toPointer(pihl), util.toPointer(pihlframe), grfHLNF, util.toPointer(pbc), util.toPointer(pibsc), util.toPointer(pihlbc));
+  return libhlink_dll.HlinkNavigate!(util.toPointer(pihl), util.toPointer(pihlframe), grfHLNF, util.toPointer(pbc), util.toPointer(pibsc), util.toPointer(pihlbc));
 }
 
 export function HlinkOnNavigate(
@@ -32305,7 +32993,7 @@ export function HlinkOnNavigate(
   pwzFriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   puHLID: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkOnNavigate(util.toPointer(pihlframe), util.toPointer(pihlbc), grfHLNF, util.toPointer(pimkTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(puHLID));
+  return libhlink_dll.HlinkOnNavigate!(util.toPointer(pihlframe), util.toPointer(pihlbc), grfHLNF, util.toPointer(pimkTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName), util.toPointer(puHLID));
 }
 
 export function HlinkUpdateStackItem(
@@ -32316,7 +33004,7 @@ export function HlinkUpdateStackItem(
   pwzLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwzFriendlyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkUpdateStackItem(util.toPointer(pihlframe), util.toPointer(pihlbc), uHLID, util.toPointer(pimkTrgt), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName));
+  return libhlink_dll.HlinkUpdateStackItem!(util.toPointer(pihlframe), util.toPointer(pihlbc), uHLID, util.toPointer(pimkTrgt), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzFriendlyName));
 }
 
 export function HlinkOnRenameDocument(
@@ -32325,7 +33013,7 @@ export function HlinkOnRenameDocument(
   pimkOld: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
   pimkNew: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkOnRenameDocument(dwReserved, util.toPointer(pihlbc), util.toPointer(pimkOld), util.toPointer(pimkNew));
+  return libhlink_dll.HlinkOnRenameDocument!(dwReserved, util.toPointer(pihlbc), util.toPointer(pimkOld), util.toPointer(pimkNew));
 }
 
 export function HlinkResolveMonikerForData(
@@ -32337,7 +33025,7 @@ export function HlinkResolveMonikerForData(
   pibsc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   pimkBase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkResolveMonikerForData(util.toPointer(pimkReference), reserved, util.toPointer(pibc), cFmtetc, util.toPointer(rgFmtetc), util.toPointer(pibsc), util.toPointer(pimkBase));
+  return libhlink_dll.HlinkResolveMonikerForData!(util.toPointer(pimkReference), reserved, util.toPointer(pibc), cFmtetc, util.toPointer(rgFmtetc), util.toPointer(pibsc), util.toPointer(pimkBase));
 }
 
 export function HlinkResolveStringForData(
@@ -32349,7 +33037,7 @@ export function HlinkResolveStringForData(
   pibsc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IBindStatusCallback */,
   pimkBase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkResolveStringForData(util.pwstrToFfi(pwzReference), reserved, util.toPointer(pibc), cFmtetc, util.toPointer(rgFmtetc), util.toPointer(pibsc), util.toPointer(pimkBase));
+  return libhlink_dll.HlinkResolveStringForData!(util.pwstrToFfi(pwzReference), reserved, util.toPointer(pibc), cFmtetc, util.toPointer(rgFmtetc), util.toPointer(pibsc), util.toPointer(pimkBase));
 }
 
 export function HlinkParseDisplayName(
@@ -32359,7 +33047,7 @@ export function HlinkParseDisplayName(
   pcchEaten: Deno.PointerValue | Uint8Array /* ptr */,
   ppimk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkParseDisplayName(util.toPointer(pibc), util.pwstrToFfi(pwzDisplayName), util.boolToFfi(fNoForceAbs), util.toPointer(pcchEaten), util.toPointer(ppimk));
+  return libhlink_dll.HlinkParseDisplayName!(util.toPointer(pibc), util.pwstrToFfi(pwzDisplayName), util.boolToFfi(fNoForceAbs), util.toPointer(pcchEaten), util.toPointer(ppimk));
 }
 
 export function HlinkCreateExtensionServices(
@@ -32371,7 +33059,7 @@ export function HlinkCreateExtensionServices(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateExtensionServices(util.pwstrToFfi(pwzAdditionalHeaders), (phwnd), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszPassword), util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkCreateExtensionServices!(util.pwstrToFfi(pwzAdditionalHeaders), (phwnd), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszPassword), util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkPreprocessMoniker(
@@ -32379,7 +33067,7 @@ export function HlinkPreprocessMoniker(
   pimkIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IMoniker */,
   ppimkOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkPreprocessMoniker(util.toPointer(pibc), util.toPointer(pimkIn), util.toPointer(ppimkOut));
+  return libhlink_dll.HlinkPreprocessMoniker!(util.toPointer(pibc), util.toPointer(pimkIn), util.toPointer(ppimkOut));
 }
 
 export function OleSaveToStreamEx(
@@ -32387,21 +33075,21 @@ export function OleSaveToStreamEx(
   pistm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   fClearDirty: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.OleSaveToStreamEx(util.toPointer(piunk), util.toPointer(pistm), util.boolToFfi(fClearDirty));
+  return libhlink_dll.OleSaveToStreamEx!(util.toPointer(piunk), util.toPointer(pistm), util.boolToFfi(fClearDirty));
 }
 
 export function HlinkSetSpecialReference(
   uReference: number /* u32 */,
   pwzReference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkSetSpecialReference(uReference, util.pwstrToFfi(pwzReference));
+  return libhlink_dll.HlinkSetSpecialReference!(uReference, util.pwstrToFfi(pwzReference));
 }
 
 export function HlinkGetSpecialReference(
   uReference: number /* u32 */,
   ppwzReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkGetSpecialReference(uReference, util.toPointer(ppwzReference));
+  return libhlink_dll.HlinkGetSpecialReference!(uReference, util.toPointer(ppwzReference));
 }
 
 export function HlinkCreateShortcut(
@@ -32412,7 +33100,7 @@ export function HlinkCreateShortcut(
   ppwzShortcutFile: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateShortcut(grfHLSHORTCUTF, util.toPointer(pihl), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
+  return libhlink_dll.HlinkCreateShortcut!(grfHLSHORTCUTF, util.toPointer(pihl), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
 }
 
 export function HlinkCreateShortcutFromMoniker(
@@ -32424,7 +33112,7 @@ export function HlinkCreateShortcutFromMoniker(
   ppwzShortcutFile: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateShortcutFromMoniker(grfHLSHORTCUTF, util.toPointer(pimkTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
+  return libhlink_dll.HlinkCreateShortcutFromMoniker!(grfHLSHORTCUTF, util.toPointer(pimkTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
 }
 
 export function HlinkCreateShortcutFromString(
@@ -32436,7 +33124,7 @@ export function HlinkCreateShortcutFromString(
   ppwzShortcutFile: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkCreateShortcutFromString(grfHLSHORTCUTF, util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
+  return libhlink_dll.HlinkCreateShortcutFromString!(grfHLSHORTCUTF, util.pwstrToFfi(pwzTarget), util.pwstrToFfi(pwzLocation), util.pwstrToFfi(pwzDir), util.pwstrToFfi(pwzFileName), util.toPointer(ppwzShortcutFile), dwReserved);
 }
 
 export function HlinkResolveShortcut(
@@ -32447,7 +33135,7 @@ export function HlinkResolveShortcut(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkResolveShortcut(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
+  return libhlink_dll.HlinkResolveShortcut!(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(pihlsite), dwSiteData, util.toPointer(piunkOuter), util.toPointer(riid), util.toPointer(ppvObj));
 }
 
 export function HlinkResolveShortcutToMoniker(
@@ -32455,7 +33143,7 @@ export function HlinkResolveShortcutToMoniker(
   ppimkTarget: Deno.PointerValue | Uint8Array /* ptr */,
   ppwzLocation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkResolveShortcutToMoniker(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(ppimkTarget), util.toPointer(ppwzLocation));
+  return libhlink_dll.HlinkResolveShortcutToMoniker!(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(ppimkTarget), util.toPointer(ppwzLocation));
 }
 
 export function HlinkResolveShortcutToString(
@@ -32463,13 +33151,13 @@ export function HlinkResolveShortcutToString(
   ppwzTarget: Deno.PointerValue | Uint8Array /* ptr */,
   ppwzLocation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkResolveShortcutToString(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(ppwzTarget), util.toPointer(ppwzLocation));
+  return libhlink_dll.HlinkResolveShortcutToString!(util.pwstrToFfi(pwzShortcutFileName), util.toPointer(ppwzTarget), util.toPointer(ppwzLocation));
 }
 
 export function HlinkIsShortcut(
   pwzFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkIsShortcut(util.pwstrToFfi(pwzFileName));
+  return libhlink_dll.HlinkIsShortcut!(util.pwstrToFfi(pwzFileName));
 }
 
 export function HlinkGetValueFromParams(
@@ -32477,7 +33165,7 @@ export function HlinkGetValueFromParams(
   pwzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwzValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkGetValueFromParams(util.pwstrToFfi(pwzParams), util.pwstrToFfi(pwzName), util.toPointer(ppwzValue));
+  return libhlink_dll.HlinkGetValueFromParams!(util.pwstrToFfi(pwzParams), util.pwstrToFfi(pwzName), util.toPointer(ppwzValue));
 }
 
 export function HlinkTranslateURL(
@@ -32485,20 +33173,20 @@ export function HlinkTranslateURL(
   grfFlags: number /* u32 */,
   ppwzTranslatedURL: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libhlink_dll.HlinkTranslateURL(util.pwstrToFfi(pwzURL), grfFlags, util.toPointer(ppwzTranslatedURL));
+  return libhlink_dll.HlinkTranslateURL!(util.pwstrToFfi(pwzURL), grfFlags, util.toPointer(ppwzTranslatedURL));
 }
 
 export function PathIsUNCEx(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszServer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_path_l1_1_0_dll.PathIsUNCEx(util.pwstrToFfi(pszPath), util.toPointer(ppszServer)));
+  return util.boolFromFfi(libapi_ms_win_core_path_l1_1_0_dll.PathIsUNCEx!(util.pwstrToFfi(pszPath), util.toPointer(ppszServer)));
 }
 
 export function PathCchIsRoot(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_path_l1_1_0_dll.PathCchIsRoot(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libapi_ms_win_core_path_l1_1_0_dll.PathCchIsRoot!(util.pwstrToFfi(pszPath)));
 }
 
 export function PathCchAddBackslashEx(
@@ -32507,14 +33195,14 @@ export function PathCchAddBackslashEx(
   ppszEnd: Deno.PointerValue | Uint8Array /* ptr */,
   pcchRemaining: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddBackslashEx(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszEnd), util.toPointer(pcchRemaining));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddBackslashEx!(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszEnd), util.toPointer(pcchRemaining));
 }
 
 export function PathCchAddBackslash(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddBackslash(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddBackslash!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchRemoveBackslashEx(
@@ -32523,35 +33211,35 @@ export function PathCchRemoveBackslashEx(
   ppszEnd: Deno.PointerValue | Uint8Array /* ptr */,
   pcchRemaining: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveBackslashEx(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszEnd), util.toPointer(pcchRemaining));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveBackslashEx!(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszEnd), util.toPointer(pcchRemaining));
 }
 
 export function PathCchRemoveBackslash(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveBackslash(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveBackslash!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchSkipRoot(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszRootEnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchSkipRoot(util.pwstrToFfi(pszPath), util.toPointer(ppszRootEnd));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchSkipRoot!(util.pwstrToFfi(pszPath), util.toPointer(ppszRootEnd));
 }
 
 export function PathCchStripToRoot(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripToRoot(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripToRoot!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchRemoveFileSpec(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveFileSpec(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveFileSpec!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchFindExtension(
@@ -32559,7 +33247,7 @@ export function PathCchFindExtension(
   cchPath: bigint | number /* usize */,
   ppszExt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchFindExtension(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszExt));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchFindExtension!(util.pwstrToFfi(pszPath), cchPath, util.toPointer(ppszExt));
 }
 
 export function PathCchAddExtension(
@@ -32567,7 +33255,7 @@ export function PathCchAddExtension(
   cchPath: bigint | number /* usize */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddExtension(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAddExtension!(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
 }
 
 export function PathCchRenameExtension(
@@ -32575,14 +33263,14 @@ export function PathCchRenameExtension(
   cchPath: bigint | number /* usize */,
   pszExt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRenameExtension(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRenameExtension!(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszExt));
 }
 
 export function PathCchRemoveExtension(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveExtension(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchRemoveExtension!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathCchCanonicalizeEx(
@@ -32591,7 +33279,7 @@ export function PathCchCanonicalizeEx(
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCanonicalizeEx(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), dwFlags);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCanonicalizeEx!(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), dwFlags);
 }
 
 export function PathCchCanonicalize(
@@ -32599,7 +33287,7 @@ export function PathCchCanonicalize(
   cchPathOut: bigint | number /* usize */,
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCanonicalize(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCanonicalize!(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn));
 }
 
 export function PathCchCombineEx(
@@ -32609,7 +33297,7 @@ export function PathCchCombineEx(
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCombineEx(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore), dwFlags);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCombineEx!(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore), dwFlags);
 }
 
 export function PathCchCombine(
@@ -32618,7 +33306,7 @@ export function PathCchCombine(
   pszPathIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCombine(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchCombine!(util.pwstrToFfi(pszPathOut), cchPathOut, util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore));
 }
 
 export function PathCchAppendEx(
@@ -32627,7 +33315,7 @@ export function PathCchAppendEx(
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAppendEx(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszMore), dwFlags);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAppendEx!(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszMore), dwFlags);
 }
 
 export function PathCchAppend(
@@ -32635,14 +33323,14 @@ export function PathCchAppend(
   cchPath: bigint | number /* usize */,
   pszMore: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAppend(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszMore));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchAppend!(util.pwstrToFfi(pszPath), cchPath, util.pwstrToFfi(pszMore));
 }
 
 export function PathCchStripPrefix(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchPath: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripPrefix(util.pwstrToFfi(pszPath), cchPath);
+  return libapi_ms_win_core_path_l1_1_0_dll.PathCchStripPrefix!(util.pwstrToFfi(pszPath), cchPath);
 }
 
 export function PathAllocCombine(
@@ -32651,7 +33339,7 @@ export function PathAllocCombine(
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
   ppszPathOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathAllocCombine(util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore), dwFlags, util.toPointer(ppszPathOut));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathAllocCombine!(util.pwstrToFfi(pszPathIn), util.pwstrToFfi(pszMore), dwFlags, util.toPointer(ppszPathOut));
 }
 
 export function PathAllocCanonicalize(
@@ -32659,7 +33347,7 @@ export function PathAllocCanonicalize(
   dwFlags: PATHCCH_OPTIONS /* Windows.Win32.UI.Shell.PATHCCH_OPTIONS */,
   ppszPathOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_path_l1_1_0_dll.PathAllocCanonicalize(util.pwstrToFfi(pszPathIn), dwFlags, util.toPointer(ppszPathOut));
+  return libapi_ms_win_core_path_l1_1_0_dll.PathAllocCanonicalize!(util.pwstrToFfi(pszPathIn), dwFlags, util.toPointer(ppszPathOut));
 }
 
 export function RegisterAppStateChangeNotification(
@@ -32667,13 +33355,13 @@ export function RegisterAppStateChangeNotification(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Registration: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_psm_appnotify_l1_1_0_dll.RegisterAppStateChangeNotification(util.toPointer(Routine), util.toPointer(Context), util.toPointer(Registration));
+  return libapi_ms_win_core_psm_appnotify_l1_1_0_dll.RegisterAppStateChangeNotification!(util.toPointer(Routine), util.toPointer(Context), util.toPointer(Registration));
 }
 
 export function UnregisterAppStateChangeNotification(
   Registration: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_psm_appnotify_l1_1_0_dll.UnregisterAppStateChangeNotification(util.toPointer(Registration));
+  return libapi_ms_win_core_psm_appnotify_l1_1_0_dll.UnregisterAppStateChangeNotification!(util.toPointer(Registration));
 }
 
 export function RegisterAppConstrainedChangeNotification(
@@ -32681,12 +33369,12 @@ export function RegisterAppConstrainedChangeNotification(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Registration: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_psm_appnotify_l1_1_1_dll.RegisterAppConstrainedChangeNotification(util.toPointer(Routine), util.toPointer(Context), util.toPointer(Registration));
+  return libapi_ms_win_core_psm_appnotify_l1_1_1_dll.RegisterAppConstrainedChangeNotification!(util.toPointer(Routine), util.toPointer(Context), util.toPointer(Registration));
 }
 
 export function UnregisterAppConstrainedChangeNotification(
   Registration: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_psm_appnotify_l1_1_1_dll.UnregisterAppConstrainedChangeNotification(util.toPointer(Registration));
+  return libapi_ms_win_core_psm_appnotify_l1_1_1_dll.UnregisterAppConstrainedChangeNotification!(util.toPointer(Registration));
 }
 

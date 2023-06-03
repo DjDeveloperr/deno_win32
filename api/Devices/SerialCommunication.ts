@@ -21,30 +21,37 @@ try {
     ComDBOpen: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ComDBClose: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ComDBGetCurrentPortUsage: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ComDBClaimNextFreePort: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ComDBClaimPort: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ComDBReleasePort: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ComDBResizeDatabase: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -54,13 +61,13 @@ try {
 export function ComDBOpen(
   PHComDB: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBOpen(util.toPointer(PHComDB));
+  return libMSPORTS_dll.ComDBOpen!(util.toPointer(PHComDB));
 }
 
 export function ComDBClose(
   HComDB: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.SerialCommunication.HCOMDB */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBClose(util.toPointer(HComDB));
+  return libMSPORTS_dll.ComDBClose!(util.toPointer(HComDB));
 }
 
 export function ComDBGetCurrentPortUsage(
@@ -70,14 +77,14 @@ export function ComDBGetCurrentPortUsage(
   ReportType: number /* u32 */,
   MaxPortsReported: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBGetCurrentPortUsage(util.toPointer(HComDB), util.toPointer(Buffer), BufferSize, ReportType, util.toPointer(MaxPortsReported));
+  return libMSPORTS_dll.ComDBGetCurrentPortUsage!(util.toPointer(HComDB), util.toPointer(Buffer), BufferSize, ReportType, util.toPointer(MaxPortsReported));
 }
 
 export function ComDBClaimNextFreePort(
   HComDB: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.SerialCommunication.HCOMDB */,
   ComNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBClaimNextFreePort(util.toPointer(HComDB), util.toPointer(ComNumber));
+  return libMSPORTS_dll.ComDBClaimNextFreePort!(util.toPointer(HComDB), util.toPointer(ComNumber));
 }
 
 export function ComDBClaimPort(
@@ -86,20 +93,20 @@ export function ComDBClaimPort(
   ForceClaim: boolean /* Windows.Win32.Foundation.BOOL */,
   Forced: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBClaimPort(util.toPointer(HComDB), ComNumber, util.boolToFfi(ForceClaim), util.toPointer(Forced));
+  return libMSPORTS_dll.ComDBClaimPort!(util.toPointer(HComDB), ComNumber, util.boolToFfi(ForceClaim), util.toPointer(Forced));
 }
 
 export function ComDBReleasePort(
   HComDB: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.SerialCommunication.HCOMDB */,
   ComNumber: number /* u32 */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBReleasePort(util.toPointer(HComDB), ComNumber);
+  return libMSPORTS_dll.ComDBReleasePort!(util.toPointer(HComDB), ComNumber);
 }
 
 export function ComDBResizeDatabase(
   HComDB: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.SerialCommunication.HCOMDB */,
   NewSize: number /* u32 */,
 ): number /* i32 */ {
-  return libMSPORTS_dll.ComDBResizeDatabase(util.toPointer(HComDB), NewSize);
+  return libMSPORTS_dll.ComDBResizeDatabase!(util.toPointer(HComDB), NewSize);
 }
 

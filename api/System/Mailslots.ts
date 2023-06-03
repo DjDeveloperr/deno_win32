@@ -19,18 +19,22 @@ try {
     CreateMailslotA: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateMailslotW: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMailslotInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMailslotInfo: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -43,7 +47,7 @@ export function CreateMailslotA(
   lReadTimeout: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMailslotA(util.pstrToFfi(lpName), nMaxMessageSize, lReadTimeout, util.toPointer(lpSecurityAttributes));
+  return libKERNEL32_dll.CreateMailslotA!(util.pstrToFfi(lpName), nMaxMessageSize, lReadTimeout, util.toPointer(lpSecurityAttributes));
 }
 
 export function CreateMailslotW(
@@ -52,7 +56,7 @@ export function CreateMailslotW(
   lReadTimeout: number /* u32 */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMailslotW(util.pwstrToFfi(lpName), nMaxMessageSize, lReadTimeout, util.toPointer(lpSecurityAttributes));
+  return libKERNEL32_dll.CreateMailslotW!(util.pwstrToFfi(lpName), nMaxMessageSize, lReadTimeout, util.toPointer(lpSecurityAttributes));
 }
 
 export function GetMailslotInfo(
@@ -62,13 +66,13 @@ export function GetMailslotInfo(
   lpMessageCount: Deno.PointerValue | Uint8Array /* ptr */,
   lpReadTimeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetMailslotInfo(util.toPointer(hMailslot), util.toPointer(lpMaxMessageSize), util.toPointer(lpNextSize), util.toPointer(lpMessageCount), util.toPointer(lpReadTimeout)));
+  return util.boolFromFfi(libKERNEL32_dll.GetMailslotInfo!(util.toPointer(hMailslot), util.toPointer(lpMaxMessageSize), util.toPointer(lpNextSize), util.toPointer(lpMessageCount), util.toPointer(lpReadTimeout)));
 }
 
 export function SetMailslotInfo(
   hMailslot: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lReadTimeout: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetMailslotInfo(util.toPointer(hMailslot), lReadTimeout));
+  return util.boolFromFfi(libKERNEL32_dll.SetMailslotInfo!(util.toPointer(hMailslot), lReadTimeout));
 }
 

@@ -5031,118 +5031,147 @@ try {
     OpenVirtualDisk: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreateVirtualDisk: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AttachVirtualDisk: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DetachVirtualDisk: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     GetVirtualDiskPhysicalPath: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetAllAttachedVirtualDiskPhysicalPaths: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetStorageDependencyInformation: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetVirtualDiskInformation: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetVirtualDiskInformation: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumerateVirtualDiskMetadata: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetVirtualDiskMetadata: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetVirtualDiskMetadata: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteVirtualDiskMetadata: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetVirtualDiskOperationProgress: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CompactVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MergeVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ExpandVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResizeVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MirrorVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BreakMirrorVirtualDisk: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AddVirtualDiskParent: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     QueryChangesVirtualDisk: {
       parameters: ["pointer", "buffer", "u64", "u64", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TakeSnapshotVhdSet: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DeleteSnapshotVhdSet: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ModifyVhdSet: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ApplySnapshotVhdSet: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RawSCSIVirtualDisk: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ForkVirtualDisk: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CompleteForkVirtualDisk: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5157,7 +5186,7 @@ export function OpenVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.OpenVirtualDisk(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, Flags, util.toPointer(Parameters), util.toPointer(Handle));
+  return libVirtDisk_dll.OpenVirtualDisk!(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, Flags, util.toPointer(Parameters), util.toPointer(Handle));
 }
 
 export function CreateVirtualDisk(
@@ -5171,7 +5200,7 @@ export function CreateVirtualDisk(
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.CreateVirtualDisk(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped), util.toPointer(Handle));
+  return libVirtDisk_dll.CreateVirtualDisk!(util.toPointer(VirtualStorageType), util.pwstrToFfi(Path), VirtualDiskAccessMask, util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped), util.toPointer(Handle));
 }
 
 export function AttachVirtualDisk(
@@ -5182,7 +5211,7 @@ export function AttachVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.AttachVirtualDisk(util.toPointer(VirtualDiskHandle), util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.AttachVirtualDisk!(util.toPointer(VirtualDiskHandle), util.toPointer(SecurityDescriptor), Flags, ProviderSpecificFlags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function DetachVirtualDisk(
@@ -5190,7 +5219,7 @@ export function DetachVirtualDisk(
   Flags: DETACH_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.DETACH_VIRTUAL_DISK_FLAG */,
   ProviderSpecificFlags: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.DetachVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, ProviderSpecificFlags);
+  return libVirtDisk_dll.DetachVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, ProviderSpecificFlags);
 }
 
 export function GetVirtualDiskPhysicalPath(
@@ -5198,14 +5227,14 @@ export function GetVirtualDiskPhysicalPath(
   DiskPathSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
   DiskPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetVirtualDiskPhysicalPath(util.toPointer(VirtualDiskHandle), util.toPointer(DiskPathSizeInBytes), util.pwstrToFfi(DiskPath));
+  return libVirtDisk_dll.GetVirtualDiskPhysicalPath!(util.toPointer(VirtualDiskHandle), util.toPointer(DiskPathSizeInBytes), util.pwstrToFfi(DiskPath));
 }
 
 export function GetAllAttachedVirtualDiskPhysicalPaths(
   PathsBufferSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
   PathsBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetAllAttachedVirtualDiskPhysicalPaths(util.toPointer(PathsBufferSizeInBytes), util.pwstrToFfi(PathsBuffer));
+  return libVirtDisk_dll.GetAllAttachedVirtualDiskPhysicalPaths!(util.toPointer(PathsBufferSizeInBytes), util.pwstrToFfi(PathsBuffer));
 }
 
 export function GetStorageDependencyInformation(
@@ -5215,7 +5244,7 @@ export function GetStorageDependencyInformation(
   StorageDependencyInfo: Deno.PointerValue | Uint8Array /* ptr */,
   SizeUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetStorageDependencyInformation(util.toPointer(ObjectHandle), Flags, StorageDependencyInfoSize, util.toPointer(StorageDependencyInfo), util.toPointer(SizeUsed));
+  return libVirtDisk_dll.GetStorageDependencyInformation!(util.toPointer(ObjectHandle), Flags, StorageDependencyInfoSize, util.toPointer(StorageDependencyInfo), util.toPointer(SizeUsed));
 }
 
 export function GetVirtualDiskInformation(
@@ -5224,14 +5253,14 @@ export function GetVirtualDiskInformation(
   VirtualDiskInfo: Deno.PointerValue | Uint8Array /* ptr */,
   SizeUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetVirtualDiskInformation(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfoSize), util.toPointer(VirtualDiskInfo), util.toPointer(SizeUsed));
+  return libVirtDisk_dll.GetVirtualDiskInformation!(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfoSize), util.toPointer(VirtualDiskInfo), util.toPointer(SizeUsed));
 }
 
 export function SetVirtualDiskInformation(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   VirtualDiskInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.SetVirtualDiskInformation(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfo));
+  return libVirtDisk_dll.SetVirtualDiskInformation!(util.toPointer(VirtualDiskHandle), util.toPointer(VirtualDiskInfo));
 }
 
 export function EnumerateVirtualDiskMetadata(
@@ -5239,7 +5268,7 @@ export function EnumerateVirtualDiskMetadata(
   NumberOfItems: Deno.PointerValue | Uint8Array /* ptr */,
   Items: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.EnumerateVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(NumberOfItems), util.toPointer(Items));
+  return libVirtDisk_dll.EnumerateVirtualDiskMetadata!(util.toPointer(VirtualDiskHandle), util.toPointer(NumberOfItems), util.toPointer(Items));
 }
 
 export function GetVirtualDiskMetadata(
@@ -5248,7 +5277,7 @@ export function GetVirtualDiskMetadata(
   MetaDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   MetaData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item), util.toPointer(MetaDataSize), util.toPointer(MetaData));
+  return libVirtDisk_dll.GetVirtualDiskMetadata!(util.toPointer(VirtualDiskHandle), util.toPointer(Item), util.toPointer(MetaDataSize), util.toPointer(MetaData));
 }
 
 export function SetVirtualDiskMetadata(
@@ -5257,14 +5286,14 @@ export function SetVirtualDiskMetadata(
   MetaDataSize: number /* u32 */,
   MetaData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.SetVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item), MetaDataSize, util.toPointer(MetaData));
+  return libVirtDisk_dll.SetVirtualDiskMetadata!(util.toPointer(VirtualDiskHandle), util.toPointer(Item), MetaDataSize, util.toPointer(MetaData));
 }
 
 export function DeleteVirtualDiskMetadata(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Item: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.DeleteVirtualDiskMetadata(util.toPointer(VirtualDiskHandle), util.toPointer(Item));
+  return libVirtDisk_dll.DeleteVirtualDiskMetadata!(util.toPointer(VirtualDiskHandle), util.toPointer(Item));
 }
 
 export function GetVirtualDiskOperationProgress(
@@ -5272,7 +5301,7 @@ export function GetVirtualDiskOperationProgress(
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
   Progress: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.GetVirtualDiskOperationProgress(util.toPointer(VirtualDiskHandle), util.toPointer(Overlapped), util.toPointer(Progress));
+  return libVirtDisk_dll.GetVirtualDiskOperationProgress!(util.toPointer(VirtualDiskHandle), util.toPointer(Overlapped), util.toPointer(Progress));
 }
 
 export function CompactVirtualDisk(
@@ -5281,7 +5310,7 @@ export function CompactVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.CompactVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.CompactVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function MergeVirtualDisk(
@@ -5290,7 +5319,7 @@ export function MergeVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.MergeVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.MergeVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function ExpandVirtualDisk(
@@ -5299,7 +5328,7 @@ export function ExpandVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.ExpandVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.ExpandVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function ResizeVirtualDisk(
@@ -5308,7 +5337,7 @@ export function ResizeVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.ResizeVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.ResizeVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function MirrorVirtualDisk(
@@ -5317,20 +5346,20 @@ export function MirrorVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.MirrorVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.MirrorVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function BreakMirrorVirtualDisk(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.BreakMirrorVirtualDisk(util.toPointer(VirtualDiskHandle));
+  return libVirtDisk_dll.BreakMirrorVirtualDisk!(util.toPointer(VirtualDiskHandle));
 }
 
 export function AddVirtualDiskParent(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ParentPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.AddVirtualDiskParent(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ParentPath));
+  return libVirtDisk_dll.AddVirtualDiskParent!(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ParentPath));
 }
 
 export function QueryChangesVirtualDisk(
@@ -5343,7 +5372,7 @@ export function QueryChangesVirtualDisk(
   RangeCount: Deno.PointerValue | Uint8Array /* ptr */,
   ProcessedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.QueryChangesVirtualDisk(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ChangeTrackingId), ByteOffset, ByteLength, Flags, util.toPointer(Ranges), util.toPointer(RangeCount), util.toPointer(ProcessedLength));
+  return libVirtDisk_dll.QueryChangesVirtualDisk!(util.toPointer(VirtualDiskHandle), util.pwstrToFfi(ChangeTrackingId), ByteOffset, ByteLength, Flags, util.toPointer(Ranges), util.toPointer(RangeCount), util.toPointer(ProcessedLength));
 }
 
 export function TakeSnapshotVhdSet(
@@ -5351,7 +5380,7 @@ export function TakeSnapshotVhdSet(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: TAKE_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.TAKE_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.TakeSnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
+  return libVirtDisk_dll.TakeSnapshotVhdSet!(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function DeleteSnapshotVhdSet(
@@ -5359,7 +5388,7 @@ export function DeleteSnapshotVhdSet(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: DELETE_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.DELETE_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.DeleteSnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
+  return libVirtDisk_dll.DeleteSnapshotVhdSet!(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function ModifyVhdSet(
@@ -5367,7 +5396,7 @@ export function ModifyVhdSet(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: MODIFY_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.MODIFY_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.ModifyVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
+  return libVirtDisk_dll.ModifyVhdSet!(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function ApplySnapshotVhdSet(
@@ -5375,7 +5404,7 @@ export function ApplySnapshotVhdSet(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: APPLY_SNAPSHOT_VHDSET_FLAG /* Windows.Win32.Storage.Vhd.APPLY_SNAPSHOT_VHDSET_FLAG */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.ApplySnapshotVhdSet(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
+  return libVirtDisk_dll.ApplySnapshotVhdSet!(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags);
 }
 
 export function RawSCSIVirtualDisk(
@@ -5384,7 +5413,7 @@ export function RawSCSIVirtualDisk(
   Flags: RAW_SCSI_VIRTUAL_DISK_FLAG /* Windows.Win32.Storage.Vhd.RAW_SCSI_VIRTUAL_DISK_FLAG */,
   Response: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.RawSCSIVirtualDisk(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags, util.toPointer(Response));
+  return libVirtDisk_dll.RawSCSIVirtualDisk!(util.toPointer(VirtualDiskHandle), util.toPointer(Parameters), Flags, util.toPointer(Response));
 }
 
 export function ForkVirtualDisk(
@@ -5393,12 +5422,12 @@ export function ForkVirtualDisk(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.ForkVirtualDisk(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
+  return libVirtDisk_dll.ForkVirtualDisk!(util.toPointer(VirtualDiskHandle), Flags, util.toPointer(Parameters), util.toPointer(Overlapped));
 }
 
 export function CompleteForkVirtualDisk(
   VirtualDiskHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libVirtDisk_dll.CompleteForkVirtualDisk(util.toPointer(VirtualDiskHandle));
+  return libVirtDisk_dll.CompleteForkVirtualDisk!(util.toPointer(VirtualDiskHandle));
 }
 

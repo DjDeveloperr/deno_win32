@@ -4,19 +4,15 @@
     "check": "deno check --unstable api/UI/mod.ts"
   },
   "fmt": {
-    "files": {
-      "exclude": [
-        "api",
-        "win32_apis.json"
-      ]
-    }
+    "exclude": [
+      "api",
+      "win32_apis.json"
+    ]
   },
   "lint": {
-    "files": {
-      "exclude": [
-        "api"
-      ]
-    },
+    "exclude": [
+      "api"
+    ],
     "rules": {
       "exclude": [
         "no-inner-declarations",

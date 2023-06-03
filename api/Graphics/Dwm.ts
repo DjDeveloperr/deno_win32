@@ -1392,126 +1392,157 @@ try {
     DwmDefWindowProc: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DwmEnableBlurBehindWindow: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmEnableComposition: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     DwmEnableMMCSS: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     DwmExtendFrameIntoClientArea: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmGetColorizationColor: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmGetCompositionTimingInfo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmGetWindowAttribute: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DwmIsCompositionEnabled: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmModifyPreviousDxFrameDuration: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DwmQueryThumbnailSourceSize: {
       parameters: ["isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmRegisterThumbnail: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmSetDxFrameDuration: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DwmSetPresentParameters: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmSetWindowAttribute: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DwmUnregisterThumbnail: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     DwmUpdateThumbnailProperties: {
       parameters: ["isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmSetIconicThumbnail: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DwmSetIconicLivePreviewBitmap: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DwmInvalidateIconicBitmaps: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmAttachMilContent: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmDetachMilContent: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmFlush: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     DwmGetGraphicsStreamTransformHint: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmGetGraphicsStreamClient: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmGetTransportAttributes: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmTransitionOwnedWindow: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DwmRenderGesture: {
       parameters: ["i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmTetherContact: {
       parameters: ["u32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DwmShowContact: {
       parameters: ["u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     DwmGetUnmetTabRequirements: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1525,47 +1556,47 @@ export function DwmDefWindowProc(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   plResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdwmapi_dll.DwmDefWindowProc((hWnd), msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(plResult)));
+  return util.boolFromFfi(libdwmapi_dll.DwmDefWindowProc!((hWnd), msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(plResult)));
 }
 
 export function DwmEnableBlurBehindWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pBlurBehind: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmEnableBlurBehindWindow((hWnd), util.toPointer(pBlurBehind));
+  return libdwmapi_dll.DwmEnableBlurBehindWindow!((hWnd), util.toPointer(pBlurBehind));
 }
 
 export function DwmEnableComposition(
   uCompositionAction: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmEnableComposition(uCompositionAction);
+  return libdwmapi_dll.DwmEnableComposition!(uCompositionAction);
 }
 
 export function DwmEnableMMCSS(
   fEnableMMCSS: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmEnableMMCSS(util.boolToFfi(fEnableMMCSS));
+  return libdwmapi_dll.DwmEnableMMCSS!(util.boolToFfi(fEnableMMCSS));
 }
 
 export function DwmExtendFrameIntoClientArea(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pMarInset: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmExtendFrameIntoClientArea((hWnd), util.toPointer(pMarInset));
+  return libdwmapi_dll.DwmExtendFrameIntoClientArea!((hWnd), util.toPointer(pMarInset));
 }
 
 export function DwmGetColorizationColor(
   pcrColorization: Deno.PointerValue | Uint8Array /* ptr */,
   pfOpaqueBlend: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetColorizationColor(util.toPointer(pcrColorization), util.toPointer(pfOpaqueBlend));
+  return libdwmapi_dll.DwmGetColorizationColor!(util.toPointer(pcrColorization), util.toPointer(pfOpaqueBlend));
 }
 
 export function DwmGetCompositionTimingInfo(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pTimingInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetCompositionTimingInfo((hwnd), util.toPointer(pTimingInfo));
+  return libdwmapi_dll.DwmGetCompositionTimingInfo!((hwnd), util.toPointer(pTimingInfo));
 }
 
 export function DwmGetWindowAttribute(
@@ -1574,13 +1605,13 @@ export function DwmGetWindowAttribute(
   pvAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   cbAttribute: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetWindowAttribute((hwnd), dwAttribute, util.toPointer(pvAttribute), cbAttribute);
+  return libdwmapi_dll.DwmGetWindowAttribute!((hwnd), dwAttribute, util.toPointer(pvAttribute), cbAttribute);
 }
 
 export function DwmIsCompositionEnabled(
   pfEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmIsCompositionEnabled(util.toPointer(pfEnabled));
+  return libdwmapi_dll.DwmIsCompositionEnabled!(util.toPointer(pfEnabled));
 }
 
 export function DwmModifyPreviousDxFrameDuration(
@@ -1588,14 +1619,14 @@ export function DwmModifyPreviousDxFrameDuration(
   cRefreshes: number /* i32 */,
   fRelative: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmModifyPreviousDxFrameDuration((hwnd), cRefreshes, util.boolToFfi(fRelative));
+  return libdwmapi_dll.DwmModifyPreviousDxFrameDuration!((hwnd), cRefreshes, util.boolToFfi(fRelative));
 }
 
 export function DwmQueryThumbnailSourceSize(
   hThumbnail: bigint | number /* isize */,
   pSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmQueryThumbnailSourceSize(hThumbnail, util.toPointer(pSize));
+  return libdwmapi_dll.DwmQueryThumbnailSourceSize!(hThumbnail, util.toPointer(pSize));
 }
 
 export function DwmRegisterThumbnail(
@@ -1603,21 +1634,21 @@ export function DwmRegisterThumbnail(
   hwndSource: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   phThumbnailId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmRegisterThumbnail((hwndDestination), (hwndSource), util.toPointer(phThumbnailId));
+  return libdwmapi_dll.DwmRegisterThumbnail!((hwndDestination), (hwndSource), util.toPointer(phThumbnailId));
 }
 
 export function DwmSetDxFrameDuration(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   cRefreshes: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmSetDxFrameDuration((hwnd), cRefreshes);
+  return libdwmapi_dll.DwmSetDxFrameDuration!((hwnd), cRefreshes);
 }
 
 export function DwmSetPresentParameters(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pPresentParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmSetPresentParameters((hwnd), util.toPointer(pPresentParams));
+  return libdwmapi_dll.DwmSetPresentParameters!((hwnd), util.toPointer(pPresentParams));
 }
 
 export function DwmSetWindowAttribute(
@@ -1626,20 +1657,20 @@ export function DwmSetWindowAttribute(
   pvAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   cbAttribute: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmSetWindowAttribute((hwnd), dwAttribute, util.toPointer(pvAttribute), cbAttribute);
+  return libdwmapi_dll.DwmSetWindowAttribute!((hwnd), dwAttribute, util.toPointer(pvAttribute), cbAttribute);
 }
 
 export function DwmUnregisterThumbnail(
   hThumbnailId: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmUnregisterThumbnail(hThumbnailId);
+  return libdwmapi_dll.DwmUnregisterThumbnail!(hThumbnailId);
 }
 
 export function DwmUpdateThumbnailProperties(
   hThumbnailId: bigint | number /* isize */,
   ptnProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmUpdateThumbnailProperties(hThumbnailId, util.toPointer(ptnProperties));
+  return libdwmapi_dll.DwmUpdateThumbnailProperties!(hThumbnailId, util.toPointer(ptnProperties));
 }
 
 export function DwmSetIconicThumbnail(
@@ -1647,7 +1678,7 @@ export function DwmSetIconicThumbnail(
   hbmp: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   dwSITFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmSetIconicThumbnail((hwnd), util.toPointer(hbmp), dwSITFlags);
+  return libdwmapi_dll.DwmSetIconicThumbnail!((hwnd), util.toPointer(hbmp), dwSITFlags);
 }
 
 export function DwmSetIconicLivePreviewBitmap(
@@ -1656,43 +1687,43 @@ export function DwmSetIconicLivePreviewBitmap(
   pptClient: Deno.PointerValue | Uint8Array /* ptr */,
   dwSITFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmSetIconicLivePreviewBitmap((hwnd), util.toPointer(hbmp), util.toPointer(pptClient), dwSITFlags);
+  return libdwmapi_dll.DwmSetIconicLivePreviewBitmap!((hwnd), util.toPointer(hbmp), util.toPointer(pptClient), dwSITFlags);
 }
 
 export function DwmInvalidateIconicBitmaps(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmInvalidateIconicBitmaps((hwnd));
+  return libdwmapi_dll.DwmInvalidateIconicBitmaps!((hwnd));
 }
 
 export function DwmAttachMilContent(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmAttachMilContent((hwnd));
+  return libdwmapi_dll.DwmAttachMilContent!((hwnd));
 }
 
 export function DwmDetachMilContent(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmDetachMilContent((hwnd));
+  return libdwmapi_dll.DwmDetachMilContent!((hwnd));
 }
 
 export function DwmFlush(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmFlush();
+  return libdwmapi_dll.DwmFlush!();
 }
 
 export function DwmGetGraphicsStreamTransformHint(
   uIndex: number /* u32 */,
   pTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetGraphicsStreamTransformHint(uIndex, util.toPointer(pTransform));
+  return libdwmapi_dll.DwmGetGraphicsStreamTransformHint!(uIndex, util.toPointer(pTransform));
 }
 
 export function DwmGetGraphicsStreamClient(
   uIndex: number /* u32 */,
   pClientUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetGraphicsStreamClient(uIndex, util.toPointer(pClientUuid));
+  return libdwmapi_dll.DwmGetGraphicsStreamClient!(uIndex, util.toPointer(pClientUuid));
 }
 
 export function DwmGetTransportAttributes(
@@ -1700,14 +1731,14 @@ export function DwmGetTransportAttributes(
   pfIsConnected: Deno.PointerValue | Uint8Array /* ptr */,
   pDwGeneration: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetTransportAttributes(util.toPointer(pfIsRemoting), util.toPointer(pfIsConnected), util.toPointer(pDwGeneration));
+  return libdwmapi_dll.DwmGetTransportAttributes!(util.toPointer(pfIsRemoting), util.toPointer(pfIsConnected), util.toPointer(pDwGeneration));
 }
 
 export function DwmTransitionOwnedWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   target: DWMTRANSITION_OWNEDWINDOW_TARGET /* Windows.Win32.Graphics.Dwm.DWMTRANSITION_OWNEDWINDOW_TARGET */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmTransitionOwnedWindow((hwnd), target);
+  return libdwmapi_dll.DwmTransitionOwnedWindow!((hwnd), target);
 }
 
 export function DwmRenderGesture(
@@ -1716,7 +1747,7 @@ export function DwmRenderGesture(
   pdwPointerID: Deno.PointerValue | Uint8Array /* ptr */,
   pPoints: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmRenderGesture(gt, cContacts, util.toPointer(pdwPointerID), util.toPointer(pPoints));
+  return libdwmapi_dll.DwmRenderGesture!(gt, cContacts, util.toPointer(pdwPointerID), util.toPointer(pPoints));
 }
 
 export function DwmTetherContact(
@@ -1724,20 +1755,20 @@ export function DwmTetherContact(
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
   ptTether: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmTetherContact(dwPointerID, util.boolToFfi(fEnable), util.toPointer(ptTether));
+  return libdwmapi_dll.DwmTetherContact!(dwPointerID, util.boolToFfi(fEnable), util.toPointer(ptTether));
 }
 
 export function DwmShowContact(
   dwPointerID: number /* u32 */,
   eShowContact: DWM_SHOWCONTACT /* Windows.Win32.Graphics.Dwm.DWM_SHOWCONTACT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmShowContact(dwPointerID, eShowContact);
+  return libdwmapi_dll.DwmShowContact!(dwPointerID, eShowContact);
 }
 
 export function DwmGetUnmetTabRequirements(
   appWindow: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdwmapi_dll.DwmGetUnmetTabRequirements((appWindow), util.toPointer(value));
+  return libdwmapi_dll.DwmGetUnmetTabRequirements!((appWindow), util.toPointer(value));
 }
 

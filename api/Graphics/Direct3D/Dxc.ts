@@ -324,10 +324,12 @@ try {
     DxcCreateInstance: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DxcCreateInstance2: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -339,7 +341,7 @@ export function DxcCreateInstance(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdxcompiler_dll.DxcCreateInstance(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
+  return libdxcompiler_dll.DxcCreateInstance!(util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function DxcCreateInstance2(
@@ -348,6 +350,6 @@ export function DxcCreateInstance2(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdxcompiler_dll.DxcCreateInstance2(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
+  return libdxcompiler_dll.DxcCreateInstance2!(util.toPointer(pMalloc), util.toPointer(rclsid), util.toPointer(riid), util.toPointer(ppv));
 }
 

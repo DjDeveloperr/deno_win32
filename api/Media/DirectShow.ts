@@ -33261,10 +33261,12 @@ try {
     AMGetErrorTextA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     AMGetErrorTextW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -33276,7 +33278,7 @@ export function AMGetErrorTextA(
   pbuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
-  return libQUARTZ_dll.AMGetErrorTextA(util.toPointer(hr), util.pstrToFfi(pbuffer), MaxLen);
+  return libQUARTZ_dll.AMGetErrorTextA!(util.toPointer(hr), util.pstrToFfi(pbuffer), MaxLen);
 }
 
 export function AMGetErrorTextW(
@@ -33284,6 +33286,6 @@ export function AMGetErrorTextW(
   pbuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MaxLen: number /* u32 */,
 ): number /* u32 */ {
-  return libQUARTZ_dll.AMGetErrorTextW(util.toPointer(hr), util.pwstrToFfi(pbuffer), MaxLen);
+  return libQUARTZ_dll.AMGetErrorTextW!(util.toPointer(hr), util.pwstrToFfi(pbuffer), MaxLen);
 }
 

@@ -15548,138 +15548,172 @@ try {
     WinUsb_Initialize: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_Free: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetAssociatedInterface: {
       parameters: ["pointer", "u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetDescriptor: {
       parameters: ["pointer", "u8", "u8", "u16", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_QueryInterfaceSettings: {
       parameters: ["pointer", "u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_QueryDeviceInformation: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_SetCurrentAlternateSetting: {
       parameters: ["pointer", "u8"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetCurrentAlternateSetting: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_QueryPipe: {
       parameters: ["pointer", "u8", "u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_QueryPipeEx: {
       parameters: ["pointer", "u8", "u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_SetPipePolicy: {
       parameters: ["pointer", "u8", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetPipePolicy: {
       parameters: ["pointer", "u8", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ReadPipe: {
       parameters: ["pointer", "u8", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_WritePipe: {
       parameters: ["pointer", "u8", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ControlTransfer: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ResetPipe: {
       parameters: ["pointer", "u8"],
       result: "i32",
+      optional: true,
     },
     WinUsb_AbortPipe: {
       parameters: ["pointer", "u8"],
       result: "i32",
+      optional: true,
     },
     WinUsb_FlushPipe: {
       parameters: ["pointer", "u8"],
       result: "i32",
+      optional: true,
     },
     WinUsb_SetPowerPolicy: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetPowerPolicy: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetOverlappedResult: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ParseConfigurationDescriptor: {
       parameters: ["pointer", "pointer", "i32", "i32", "i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     WinUsb_ParseDescriptors: {
       parameters: ["pointer", "u32", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     WinUsb_GetCurrentFrameNumber: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetAdjustedFrameNumber: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_RegisterIsochBuffer: {
       parameters: ["pointer", "u8", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_UnregisterIsochBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_WriteIsochPipe: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ReadIsochPipe: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_WriteIsochPipeAsap: {
       parameters: ["pointer", "u32", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_ReadIsochPipeAsap: {
       parameters: ["pointer", "u32", "u32", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_StartTrackingForTimeSync: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_GetCurrentFrameNumberAndQpc: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinUsb_StopTrackingForTimeSync: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -15690,13 +15724,13 @@ export function WinUsb_Initialize(
   DeviceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_Initialize(util.toPointer(DeviceHandle), util.toPointer(InterfaceHandle)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_Initialize!(util.toPointer(DeviceHandle), util.toPointer(InterfaceHandle)));
 }
 
 export function WinUsb_Free(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_Free(util.toPointer(InterfaceHandle)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_Free!(util.toPointer(InterfaceHandle)));
 }
 
 export function WinUsb_GetAssociatedInterface(
@@ -15704,7 +15738,7 @@ export function WinUsb_GetAssociatedInterface(
   AssociatedInterfaceIndex: number /* u8 */,
   AssociatedInterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetAssociatedInterface(util.toPointer(InterfaceHandle), AssociatedInterfaceIndex, util.toPointer(AssociatedInterfaceHandle)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetAssociatedInterface!(util.toPointer(InterfaceHandle), AssociatedInterfaceIndex, util.toPointer(AssociatedInterfaceHandle)));
 }
 
 export function WinUsb_GetDescriptor(
@@ -15716,7 +15750,7 @@ export function WinUsb_GetDescriptor(
   BufferLength: number /* u32 */,
   LengthTransferred: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetDescriptor(util.toPointer(InterfaceHandle), DescriptorType, Index, LanguageID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetDescriptor!(util.toPointer(InterfaceHandle), DescriptorType, Index, LanguageID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred)));
 }
 
 export function WinUsb_QueryInterfaceSettings(
@@ -15724,7 +15758,7 @@ export function WinUsb_QueryInterfaceSettings(
   AlternateInterfaceNumber: number /* u8 */,
   UsbAltInterfaceDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryInterfaceSettings(util.toPointer(InterfaceHandle), AlternateInterfaceNumber, util.toPointer(UsbAltInterfaceDescriptor)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryInterfaceSettings!(util.toPointer(InterfaceHandle), AlternateInterfaceNumber, util.toPointer(UsbAltInterfaceDescriptor)));
 }
 
 export function WinUsb_QueryDeviceInformation(
@@ -15733,21 +15767,21 @@ export function WinUsb_QueryDeviceInformation(
   BufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryDeviceInformation(util.toPointer(InterfaceHandle), InformationType, util.toPointer(BufferLength), util.toPointer(Buffer)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryDeviceInformation!(util.toPointer(InterfaceHandle), InformationType, util.toPointer(BufferLength), util.toPointer(Buffer)));
 }
 
 export function WinUsb_SetCurrentAlternateSetting(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   SettingNumber: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetCurrentAlternateSetting(util.toPointer(InterfaceHandle), SettingNumber));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetCurrentAlternateSetting!(util.toPointer(InterfaceHandle), SettingNumber));
 }
 
 export function WinUsb_GetCurrentAlternateSetting(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   SettingNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentAlternateSetting(util.toPointer(InterfaceHandle), util.toPointer(SettingNumber)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentAlternateSetting!(util.toPointer(InterfaceHandle), util.toPointer(SettingNumber)));
 }
 
 export function WinUsb_QueryPipe(
@@ -15756,7 +15790,7 @@ export function WinUsb_QueryPipe(
   PipeIndex: number /* u8 */,
   PipeInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryPipe(util.toPointer(InterfaceHandle), AlternateInterfaceNumber, PipeIndex, util.toPointer(PipeInformation)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryPipe!(util.toPointer(InterfaceHandle), AlternateInterfaceNumber, PipeIndex, util.toPointer(PipeInformation)));
 }
 
 export function WinUsb_QueryPipeEx(
@@ -15765,7 +15799,7 @@ export function WinUsb_QueryPipeEx(
   PipeIndex: number /* u8 */,
   PipeInformationEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryPipeEx(util.toPointer(InterfaceHandle), AlternateSettingNumber, PipeIndex, util.toPointer(PipeInformationEx)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_QueryPipeEx!(util.toPointer(InterfaceHandle), AlternateSettingNumber, PipeIndex, util.toPointer(PipeInformationEx)));
 }
 
 export function WinUsb_SetPipePolicy(
@@ -15775,7 +15809,7 @@ export function WinUsb_SetPipePolicy(
   ValueLength: number /* u32 */,
   Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetPipePolicy(util.toPointer(InterfaceHandle), PipeID, PolicyType, ValueLength, util.toPointer(Value)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetPipePolicy!(util.toPointer(InterfaceHandle), PipeID, PolicyType, ValueLength, util.toPointer(Value)));
 }
 
 export function WinUsb_GetPipePolicy(
@@ -15785,7 +15819,7 @@ export function WinUsb_GetPipePolicy(
   ValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetPipePolicy(util.toPointer(InterfaceHandle), PipeID, PolicyType, util.toPointer(ValueLength), util.toPointer(Value)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetPipePolicy!(util.toPointer(InterfaceHandle), PipeID, PolicyType, util.toPointer(ValueLength), util.toPointer(Value)));
 }
 
 export function WinUsb_ReadPipe(
@@ -15796,7 +15830,7 @@ export function WinUsb_ReadPipe(
   LengthTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadPipe(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadPipe!(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_WritePipe(
@@ -15807,7 +15841,7 @@ export function WinUsb_WritePipe(
   LengthTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_WritePipe(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_WritePipe!(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_ControlTransfer(
@@ -15818,28 +15852,28 @@ export function WinUsb_ControlTransfer(
   LengthTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_ControlTransfer(util.toPointer(InterfaceHandle), util.toPointer(SetupPacket), util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_ControlTransfer!(util.toPointer(InterfaceHandle), util.toPointer(SetupPacket), util.toPointer(Buffer), BufferLength, util.toPointer(LengthTransferred), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_ResetPipe(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PipeID: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_ResetPipe(util.toPointer(InterfaceHandle), PipeID));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_ResetPipe!(util.toPointer(InterfaceHandle), PipeID));
 }
 
 export function WinUsb_AbortPipe(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PipeID: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_AbortPipe(util.toPointer(InterfaceHandle), PipeID));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_AbortPipe!(util.toPointer(InterfaceHandle), PipeID));
 }
 
 export function WinUsb_FlushPipe(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   PipeID: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_FlushPipe(util.toPointer(InterfaceHandle), PipeID));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_FlushPipe!(util.toPointer(InterfaceHandle), PipeID));
 }
 
 export function WinUsb_SetPowerPolicy(
@@ -15848,7 +15882,7 @@ export function WinUsb_SetPowerPolicy(
   ValueLength: number /* u32 */,
   Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetPowerPolicy(util.toPointer(InterfaceHandle), PolicyType, ValueLength, util.toPointer(Value)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_SetPowerPolicy!(util.toPointer(InterfaceHandle), PolicyType, ValueLength, util.toPointer(Value)));
 }
 
 export function WinUsb_GetPowerPolicy(
@@ -15857,7 +15891,7 @@ export function WinUsb_GetPowerPolicy(
   ValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetPowerPolicy(util.toPointer(InterfaceHandle), PolicyType, util.toPointer(ValueLength), util.toPointer(Value)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetPowerPolicy!(util.toPointer(InterfaceHandle), PolicyType, util.toPointer(ValueLength), util.toPointer(Value)));
 }
 
 export function WinUsb_GetOverlappedResult(
@@ -15866,7 +15900,7 @@ export function WinUsb_GetOverlappedResult(
   lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetOverlappedResult(util.toPointer(InterfaceHandle), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetOverlappedResult!(util.toPointer(InterfaceHandle), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export function WinUsb_ParseConfigurationDescriptor(
@@ -15878,7 +15912,7 @@ export function WinUsb_ParseConfigurationDescriptor(
   InterfaceSubClass: number /* i32 */,
   InterfaceProtocol: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINUSB_dll.WinUsb_ParseConfigurationDescriptor(util.toPointer(ConfigurationDescriptor), util.toPointer(StartPosition), InterfaceNumber, AlternateSetting, InterfaceClass, InterfaceSubClass, InterfaceProtocol);
+  return libWINUSB_dll.WinUsb_ParseConfigurationDescriptor!(util.toPointer(ConfigurationDescriptor), util.toPointer(StartPosition), InterfaceNumber, AlternateSetting, InterfaceClass, InterfaceSubClass, InterfaceProtocol);
 }
 
 export function WinUsb_ParseDescriptors(
@@ -15887,7 +15921,7 @@ export function WinUsb_ParseDescriptors(
   StartPosition: Deno.PointerValue | Uint8Array /* ptr */,
   DescriptorType: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINUSB_dll.WinUsb_ParseDescriptors(util.toPointer(DescriptorBuffer), TotalLength, util.toPointer(StartPosition), DescriptorType);
+  return libWINUSB_dll.WinUsb_ParseDescriptors!(util.toPointer(DescriptorBuffer), TotalLength, util.toPointer(StartPosition), DescriptorType);
 }
 
 export function WinUsb_GetCurrentFrameNumber(
@@ -15895,14 +15929,14 @@ export function WinUsb_GetCurrentFrameNumber(
   CurrentFrameNumber: Deno.PointerValue | Uint8Array /* ptr */,
   TimeStamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentFrameNumber(util.toPointer(InterfaceHandle), util.toPointer(CurrentFrameNumber), util.toPointer(TimeStamp)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentFrameNumber!(util.toPointer(InterfaceHandle), util.toPointer(CurrentFrameNumber), util.toPointer(TimeStamp)));
 }
 
 export function WinUsb_GetAdjustedFrameNumber(
   CurrentFrameNumber: Deno.PointerValue | Uint8Array /* ptr */,
   TimeStamp: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LARGE_INTEGER */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetAdjustedFrameNumber(util.toPointer(CurrentFrameNumber), util.toPointer(TimeStamp)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetAdjustedFrameNumber!(util.toPointer(CurrentFrameNumber), util.toPointer(TimeStamp)));
 }
 
 export function WinUsb_RegisterIsochBuffer(
@@ -15912,13 +15946,13 @@ export function WinUsb_RegisterIsochBuffer(
   BufferLength: number /* u32 */,
   IsochBufferHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_RegisterIsochBuffer(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(IsochBufferHandle)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_RegisterIsochBuffer!(util.toPointer(InterfaceHandle), PipeID, util.toPointer(Buffer), BufferLength, util.toPointer(IsochBufferHandle)));
 }
 
 export function WinUsb_UnregisterIsochBuffer(
   IsochBufferHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_UnregisterIsochBuffer(util.toPointer(IsochBufferHandle)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_UnregisterIsochBuffer!(util.toPointer(IsochBufferHandle)));
 }
 
 export function WinUsb_WriteIsochPipe(
@@ -15928,7 +15962,7 @@ export function WinUsb_WriteIsochPipe(
   FrameNumber: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_WriteIsochPipe(util.toPointer(BufferHandle), Offset, Length, util.toPointer(FrameNumber), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_WriteIsochPipe!(util.toPointer(BufferHandle), Offset, Length, util.toPointer(FrameNumber), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_ReadIsochPipe(
@@ -15940,7 +15974,7 @@ export function WinUsb_ReadIsochPipe(
   IsoPacketDescriptors: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadIsochPipe(util.toPointer(BufferHandle), Offset, Length, util.toPointer(FrameNumber), NumberOfPackets, util.toPointer(IsoPacketDescriptors), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadIsochPipe!(util.toPointer(BufferHandle), Offset, Length, util.toPointer(FrameNumber), NumberOfPackets, util.toPointer(IsoPacketDescriptors), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_WriteIsochPipeAsap(
@@ -15950,7 +15984,7 @@ export function WinUsb_WriteIsochPipeAsap(
   ContinueStream: boolean /* Windows.Win32.Foundation.BOOL */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_WriteIsochPipeAsap(util.toPointer(BufferHandle), Offset, Length, util.boolToFfi(ContinueStream), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_WriteIsochPipeAsap!(util.toPointer(BufferHandle), Offset, Length, util.boolToFfi(ContinueStream), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_ReadIsochPipeAsap(
@@ -15962,27 +15996,27 @@ export function WinUsb_ReadIsochPipeAsap(
   IsoPacketDescriptors: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadIsochPipeAsap(util.toPointer(BufferHandle), Offset, Length, util.boolToFfi(ContinueStream), NumberOfPackets, util.toPointer(IsoPacketDescriptors), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_ReadIsochPipeAsap!(util.toPointer(BufferHandle), Offset, Length, util.boolToFfi(ContinueStream), NumberOfPackets, util.toPointer(IsoPacketDescriptors), util.toPointer(Overlapped)));
 }
 
 export function WinUsb_StartTrackingForTimeSync(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   StartTrackingInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_StartTrackingForTimeSync(util.toPointer(InterfaceHandle), util.toPointer(StartTrackingInfo)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_StartTrackingForTimeSync!(util.toPointer(InterfaceHandle), util.toPointer(StartTrackingInfo)));
 }
 
 export function WinUsb_GetCurrentFrameNumberAndQpc(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   FrameQpcInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentFrameNumberAndQpc(util.toPointer(InterfaceHandle), util.toPointer(FrameQpcInfo)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_GetCurrentFrameNumberAndQpc!(util.toPointer(InterfaceHandle), util.toPointer(FrameQpcInfo)));
 }
 
 export function WinUsb_StopTrackingForTimeSync(
   InterfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
   StopTrackingInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINUSB_dll.WinUsb_StopTrackingForTimeSync(util.toPointer(InterfaceHandle), util.toPointer(StopTrackingInfo)));
+  return util.boolFromFfi(libWINUSB_dll.WinUsb_StopTrackingForTimeSync!(util.toPointer(InterfaceHandle), util.toPointer(StopTrackingInfo)));
 }
 

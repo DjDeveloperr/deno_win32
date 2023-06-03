@@ -5888,10 +5888,12 @@ try {
     QueryPerformanceCounter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     QueryPerformanceFrequency: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5901,50 +5903,62 @@ try {
     InstallPerfDllW: {
       parameters: ["buffer", "buffer", "usize"],
       result: "u32",
+      optional: true,
     },
     InstallPerfDllA: {
       parameters: ["buffer", "buffer", "usize"],
       result: "u32",
+      optional: true,
     },
     LoadPerfCounterTextStringsA: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     LoadPerfCounterTextStringsW: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     UnloadPerfCounterTextStringsW: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     UnloadPerfCounterTextStringsA: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     UpdatePerfNameFilesA: {
       parameters: ["buffer", "buffer", "buffer", "usize"],
       result: "u32",
+      optional: true,
     },
     UpdatePerfNameFilesW: {
       parameters: ["buffer", "buffer", "buffer", "usize"],
       result: "u32",
+      optional: true,
     },
     SetServiceAsTrustedA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SetServiceAsTrustedW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     BackupPerfRegistryToFileW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RestorePerfRegistryFromFileW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5954,94 +5968,117 @@ try {
     PerfStartProvider: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfStartProviderEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfStopProvider: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PerfSetCounterSetInfo: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PerfCreateInstance: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PerfDeleteInstance: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfQueryInstance: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PerfSetCounterRefValue: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfSetULongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     PerfSetULongLongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u64"],
       result: "u32",
+      optional: true,
     },
     PerfIncrementULongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     PerfIncrementULongLongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u64"],
       result: "u32",
+      optional: true,
     },
     PerfDecrementULongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     PerfDecrementULongLongCounterValue: {
       parameters: ["pointer", "pointer", "u32", "u64"],
       result: "u32",
+      optional: true,
     },
     PerfEnumerateCounterSet: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfEnumerateCounterSetInstances: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfQueryCounterSetRegistrationInfo: {
       parameters: ["buffer", "pointer", "i32", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfOpenQueryHandle: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfCloseQueryHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PerfQueryCounterInfo: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfQueryCounterData: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PerfAddCounters: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PerfDeleteCounters: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6051,394 +6088,492 @@ try {
     PdhGetDllVersion: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PdhOpenQueryW: {
       parameters: ["buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhOpenQueryA: {
       parameters: ["buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhAddCounterW: {
       parameters: ["isize", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhAddCounterA: {
       parameters: ["isize", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhAddEnglishCounterW: {
       parameters: ["isize", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhAddEnglishCounterA: {
       parameters: ["isize", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhCollectQueryDataWithTime: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhValidatePathExW: {
       parameters: ["isize", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhValidatePathExA: {
       parameters: ["isize", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhRemoveCounter: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     PdhCollectQueryData: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     PdhCloseQuery: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     PdhGetFormattedCounterValue: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetFormattedCounterArrayA: {
       parameters: ["isize", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetFormattedCounterArrayW: {
       parameters: ["isize", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetRawCounterValue: {
       parameters: ["isize", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetRawCounterArrayA: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetRawCounterArrayW: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhCalculateCounterFromRawValue: {
       parameters: ["isize", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhComputeCounterStatistics: {
       parameters: ["isize", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetCounterInfoW: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetCounterInfoA: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhSetCounterScaleFactor: {
       parameters: ["isize", "i32"],
       result: "i32",
+      optional: true,
     },
     PdhConnectMachineW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhConnectMachineA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumMachinesW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumMachinesA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectsW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectsA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectItemsW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectItemsA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhMakeCounterPathW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhMakeCounterPathA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhParseCounterPathW: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhParseCounterPathA: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhParseInstanceNameW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhParseInstanceNameA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhValidatePathW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhValidatePathA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfObjectW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfObjectA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfCounterW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfCounterA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhBrowseCountersW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PdhBrowseCountersA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PdhExpandCounterPathW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhExpandCounterPathA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhLookupPerfNameByIndexW: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhLookupPerfNameByIndexA: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhLookupPerfIndexByNameW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhLookupPerfIndexByNameA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhExpandWildCardPathA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhExpandWildCardPathW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhOpenLogW: {
       parameters: ["buffer", "u32", "pointer", "isize", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhOpenLogA: {
       parameters: ["buffer", "u32", "pointer", "isize", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhUpdateLogW: {
       parameters: ["isize", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhUpdateLogA: {
       parameters: ["isize", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhUpdateLogFileCatalog: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     PdhGetLogFileSize: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhCloseLog: {
       parameters: ["isize", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhSelectDataSourceW: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhSelectDataSourceA: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhIsRealTimeQuery: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     PdhSetQueryTimeRange: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDataSourceTimeRangeW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDataSourceTimeRangeA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhCollectQueryDataEx: {
       parameters: ["isize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhFormatFromRawValue: {
       parameters: ["u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetCounterTimeBase: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhReadRawLogRecord: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhSetDefaultRealTimeDataSource: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     PdhBindInputDataSourceW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhBindInputDataSourceA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PdhOpenQueryH: {
       parameters: ["isize", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumMachinesHW: {
       parameters: ["isize", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumMachinesHA: {
       parameters: ["isize", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectsHW: {
       parameters: ["isize", "buffer", "buffer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectsHA: {
       parameters: ["isize", "buffer", "buffer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectItemsHW: {
       parameters: ["isize", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhEnumObjectItemsHA: {
       parameters: ["isize", "buffer", "buffer", "buffer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhExpandWildCardPathHW: {
       parameters: ["isize", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhExpandWildCardPathHA: {
       parameters: ["isize", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PdhGetDataSourceTimeRangeH: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfObjectHW: {
       parameters: ["isize", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfObjectHA: {
       parameters: ["isize", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfCounterHW: {
       parameters: ["isize", "buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetDefaultPerfCounterHA: {
       parameters: ["isize", "buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhBrowseCountersHW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PdhBrowseCountersHA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PdhVerifySQLDBW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhVerifySQLDBA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhCreateSQLTablesW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhCreateSQLTablesA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumLogSetNamesW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhEnumLogSetNamesA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhGetLogSetGUID: {
       parameters: ["isize", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PdhSetLogSetRunID: {
       parameters: ["isize", "i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6448,13 +6583,13 @@ try {
 export function QueryPerformanceCounter(
   lpPerformanceCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryPerformanceCounter(util.toPointer(lpPerformanceCount)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryPerformanceCounter!(util.toPointer(lpPerformanceCount)));
 }
 
 export function QueryPerformanceFrequency(
   lpFrequency: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryPerformanceFrequency(util.toPointer(lpFrequency)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryPerformanceFrequency!(util.toPointer(lpFrequency)));
 }
 
 export function InstallPerfDllW(
@@ -6462,7 +6597,7 @@ export function InstallPerfDllW(
   lpIniFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libloadperf_dll.InstallPerfDllW(util.pwstrToFfi(szComputerName), util.pwstrToFfi(lpIniFile), dwFlags);
+  return libloadperf_dll.InstallPerfDllW!(util.pwstrToFfi(szComputerName), util.pwstrToFfi(lpIniFile), dwFlags);
 }
 
 export function InstallPerfDllA(
@@ -6470,35 +6605,35 @@ export function InstallPerfDllA(
   lpIniFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libloadperf_dll.InstallPerfDllA(util.pstrToFfi(szComputerName), util.pstrToFfi(lpIniFile), dwFlags);
+  return libloadperf_dll.InstallPerfDllA!(util.pstrToFfi(szComputerName), util.pstrToFfi(lpIniFile), dwFlags);
 }
 
 export function LoadPerfCounterTextStringsA(
   lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libloadperf_dll.LoadPerfCounterTextStringsA(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
+  return libloadperf_dll.LoadPerfCounterTextStringsA!(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function LoadPerfCounterTextStringsW(
   lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libloadperf_dll.LoadPerfCounterTextStringsW(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
+  return libloadperf_dll.LoadPerfCounterTextStringsW!(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UnloadPerfCounterTextStringsW(
   lpCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libloadperf_dll.UnloadPerfCounterTextStringsW(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
+  return libloadperf_dll.UnloadPerfCounterTextStringsW!(util.pwstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UnloadPerfCounterTextStringsA(
   lpCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bQuietModeArg: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libloadperf_dll.UnloadPerfCounterTextStringsA(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
+  return libloadperf_dll.UnloadPerfCounterTextStringsA!(util.pstrToFfi(lpCommandLine), util.boolToFfi(bQuietModeArg));
 }
 
 export function UpdatePerfNameFilesA(
@@ -6507,7 +6642,7 @@ export function UpdatePerfNameFilesA(
   szLanguageID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libloadperf_dll.UpdatePerfNameFilesA(util.pstrToFfi(szNewCtrFilePath), util.pstrToFfi(szNewHlpFilePath), util.pstrToFfi(szLanguageID), dwFlags);
+  return libloadperf_dll.UpdatePerfNameFilesA!(util.pstrToFfi(szNewCtrFilePath), util.pstrToFfi(szNewHlpFilePath), util.pstrToFfi(szLanguageID), dwFlags);
 }
 
 export function UpdatePerfNameFilesW(
@@ -6516,35 +6651,35 @@ export function UpdatePerfNameFilesW(
   szLanguageID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libloadperf_dll.UpdatePerfNameFilesW(util.pwstrToFfi(szNewCtrFilePath), util.pwstrToFfi(szNewHlpFilePath), util.pwstrToFfi(szLanguageID), dwFlags);
+  return libloadperf_dll.UpdatePerfNameFilesW!(util.pwstrToFfi(szNewCtrFilePath), util.pwstrToFfi(szNewHlpFilePath), util.pwstrToFfi(szLanguageID), dwFlags);
 }
 
 export function SetServiceAsTrustedA(
   szReserved: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libloadperf_dll.SetServiceAsTrustedA(util.pstrToFfi(szReserved), util.pstrToFfi(szServiceName));
+  return libloadperf_dll.SetServiceAsTrustedA!(util.pstrToFfi(szReserved), util.pstrToFfi(szServiceName));
 }
 
 export function SetServiceAsTrustedW(
   szReserved: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libloadperf_dll.SetServiceAsTrustedW(util.pwstrToFfi(szReserved), util.pwstrToFfi(szServiceName));
+  return libloadperf_dll.SetServiceAsTrustedW!(util.pwstrToFfi(szReserved), util.pwstrToFfi(szServiceName));
 }
 
 export function BackupPerfRegistryToFileW(
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szCommentString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libloadperf_dll.BackupPerfRegistryToFileW(util.pwstrToFfi(szFileName), util.pwstrToFfi(szCommentString));
+  return libloadperf_dll.BackupPerfRegistryToFileW!(util.pwstrToFfi(szFileName), util.pwstrToFfi(szCommentString));
 }
 
 export function RestorePerfRegistryFromFileW(
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szLangId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libloadperf_dll.RestorePerfRegistryFromFileW(util.pwstrToFfi(szFileName), util.pwstrToFfi(szLangId));
+  return libloadperf_dll.RestorePerfRegistryFromFileW!(util.pwstrToFfi(szFileName), util.pwstrToFfi(szLangId));
 }
 
 export function PerfStartProvider(
@@ -6552,7 +6687,7 @@ export function PerfStartProvider(
   ControlCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Performance.PERFLIBREQUEST */,
   phProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfStartProvider(util.toPointer(ProviderGuid), util.toPointer(ControlCallback), util.toPointer(phProvider));
+  return libADVAPI32_dll.PerfStartProvider!(util.toPointer(ProviderGuid), util.toPointer(ControlCallback), util.toPointer(phProvider));
 }
 
 export function PerfStartProviderEx(
@@ -6560,13 +6695,13 @@ export function PerfStartProviderEx(
   ProviderContext: Deno.PointerValue | Uint8Array /* ptr */,
   Provider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfStartProviderEx(util.toPointer(ProviderGuid), util.toPointer(ProviderContext), util.toPointer(Provider));
+  return libADVAPI32_dll.PerfStartProviderEx!(util.toPointer(ProviderGuid), util.toPointer(ProviderContext), util.toPointer(Provider));
 }
 
 export function PerfStopProvider(
   ProviderHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Performance.PerfProviderHandle */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfStopProvider(util.toPointer(ProviderHandle));
+  return libADVAPI32_dll.PerfStopProvider!(util.toPointer(ProviderHandle));
 }
 
 export function PerfSetCounterSetInfo(
@@ -6574,7 +6709,7 @@ export function PerfSetCounterSetInfo(
   Template: Deno.PointerValue | Uint8Array /* ptr */,
   TemplateSize: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfSetCounterSetInfo(util.toPointer(ProviderHandle), util.toPointer(Template), TemplateSize);
+  return libADVAPI32_dll.PerfSetCounterSetInfo!(util.toPointer(ProviderHandle), util.toPointer(Template), TemplateSize);
 }
 
 export function PerfCreateInstance(
@@ -6583,14 +6718,14 @@ export function PerfCreateInstance(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Id: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.PerfCreateInstance(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id);
+  return libADVAPI32_dll.PerfCreateInstance!(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id);
 }
 
 export function PerfDeleteInstance(
   Provider: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Performance.PerfProviderHandle */,
   InstanceBlock: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfDeleteInstance(util.toPointer(Provider), util.toPointer(InstanceBlock));
+  return libADVAPI32_dll.PerfDeleteInstance!(util.toPointer(Provider), util.toPointer(InstanceBlock));
 }
 
 export function PerfQueryInstance(
@@ -6599,7 +6734,7 @@ export function PerfQueryInstance(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Id: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.PerfQueryInstance(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id);
+  return libADVAPI32_dll.PerfQueryInstance!(util.toPointer(ProviderHandle), util.toPointer(CounterSetGuid), util.pwstrToFfi(Name), Id);
 }
 
 export function PerfSetCounterRefValue(
@@ -6608,7 +6743,7 @@ export function PerfSetCounterRefValue(
   CounterId: number /* u32 */,
   Address: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfSetCounterRefValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, util.toPointer(Address));
+  return libADVAPI32_dll.PerfSetCounterRefValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, util.toPointer(Address));
 }
 
 export function PerfSetULongCounterValue(
@@ -6617,7 +6752,7 @@ export function PerfSetULongCounterValue(
   CounterId: number /* u32 */,
   Value: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfSetULongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfSetULongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfSetULongLongCounterValue(
@@ -6626,7 +6761,7 @@ export function PerfSetULongLongCounterValue(
   CounterId: number /* u32 */,
   Value: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfSetULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfSetULongLongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfIncrementULongCounterValue(
@@ -6635,7 +6770,7 @@ export function PerfIncrementULongCounterValue(
   CounterId: number /* u32 */,
   Value: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfIncrementULongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfIncrementULongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfIncrementULongLongCounterValue(
@@ -6644,7 +6779,7 @@ export function PerfIncrementULongLongCounterValue(
   CounterId: number /* u32 */,
   Value: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfIncrementULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfIncrementULongLongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfDecrementULongCounterValue(
@@ -6653,7 +6788,7 @@ export function PerfDecrementULongCounterValue(
   CounterId: number /* u32 */,
   Value: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfDecrementULongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfDecrementULongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfDecrementULongLongCounterValue(
@@ -6662,7 +6797,7 @@ export function PerfDecrementULongLongCounterValue(
   CounterId: number /* u32 */,
   Value: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfDecrementULongLongCounterValue(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
+  return libADVAPI32_dll.PerfDecrementULongLongCounterValue!(util.toPointer(Provider), util.toPointer(Instance), CounterId, Value);
 }
 
 export function PerfEnumerateCounterSet(
@@ -6671,7 +6806,7 @@ export function PerfEnumerateCounterSet(
   cCounterSetIds: number /* u32 */,
   pcCounterSetIdsActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfEnumerateCounterSet(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetIds), cCounterSetIds, util.toPointer(pcCounterSetIdsActual));
+  return libADVAPI32_dll.PerfEnumerateCounterSet!(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetIds), cCounterSetIds, util.toPointer(pcCounterSetIdsActual));
 }
 
 export function PerfEnumerateCounterSetInstances(
@@ -6681,7 +6816,7 @@ export function PerfEnumerateCounterSetInstances(
   cbInstances: number /* u32 */,
   pcbInstancesActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfEnumerateCounterSetInstances(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetId), util.toPointer(pInstances), cbInstances, util.toPointer(pcbInstancesActual));
+  return libADVAPI32_dll.PerfEnumerateCounterSetInstances!(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetId), util.toPointer(pInstances), cbInstances, util.toPointer(pcbInstancesActual));
 }
 
 export function PerfQueryCounterSetRegistrationInfo(
@@ -6693,20 +6828,20 @@ export function PerfQueryCounterSetRegistrationInfo(
   cbRegInfo: number /* u32 */,
   pcbRegInfoActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfQueryCounterSetRegistrationInfo(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetId), requestCode, requestLangId, util.toPointer(pbRegInfo), cbRegInfo, util.toPointer(pcbRegInfoActual));
+  return libADVAPI32_dll.PerfQueryCounterSetRegistrationInfo!(util.pwstrToFfi(szMachine), util.toPointer(pCounterSetId), requestCode, requestLangId, util.toPointer(pbRegInfo), cbRegInfo, util.toPointer(pcbRegInfoActual));
 }
 
 export function PerfOpenQueryHandle(
   szMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfOpenQueryHandle(util.pwstrToFfi(szMachine), util.toPointer(phQuery));
+  return libADVAPI32_dll.PerfOpenQueryHandle!(util.pwstrToFfi(szMachine), util.toPointer(phQuery));
 }
 
 export function PerfCloseQueryHandle(
   hQuery: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfCloseQueryHandle(util.toPointer(hQuery));
+  return libADVAPI32_dll.PerfCloseQueryHandle!(util.toPointer(hQuery));
 }
 
 export function PerfQueryCounterInfo(
@@ -6715,7 +6850,7 @@ export function PerfQueryCounterInfo(
   cbCounters: number /* u32 */,
   pcbCountersActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfQueryCounterInfo(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters, util.toPointer(pcbCountersActual));
+  return libADVAPI32_dll.PerfQueryCounterInfo!(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters, util.toPointer(pcbCountersActual));
 }
 
 export function PerfQueryCounterData(
@@ -6724,7 +6859,7 @@ export function PerfQueryCounterData(
   cbCounterBlock: number /* u32 */,
   pcbCounterBlockActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfQueryCounterData(util.toPointer(hQuery), util.toPointer(pCounterBlock), cbCounterBlock, util.toPointer(pcbCounterBlockActual));
+  return libADVAPI32_dll.PerfQueryCounterData!(util.toPointer(hQuery), util.toPointer(pCounterBlock), cbCounterBlock, util.toPointer(pcbCounterBlockActual));
 }
 
 export function PerfAddCounters(
@@ -6732,7 +6867,7 @@ export function PerfAddCounters(
   pCounters: Deno.PointerValue | Uint8Array /* ptr */,
   cbCounters: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfAddCounters(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters);
+  return libADVAPI32_dll.PerfAddCounters!(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters);
 }
 
 export function PerfDeleteCounters(
@@ -6740,13 +6875,13 @@ export function PerfDeleteCounters(
   pCounters: Deno.PointerValue | Uint8Array /* ptr */,
   cbCounters: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.PerfDeleteCounters(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters);
+  return libADVAPI32_dll.PerfDeleteCounters!(util.toPointer(hQuery), util.toPointer(pCounters), cbCounters);
 }
 
 export function PdhGetDllVersion(
   lpdwVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDllVersion(util.toPointer(lpdwVersion));
+  return libpdh_dll.PdhGetDllVersion!(util.toPointer(lpdwVersion));
 }
 
 export function PdhOpenQueryW(
@@ -6754,7 +6889,7 @@ export function PdhOpenQueryW(
   dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhOpenQueryW(util.pwstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
+  return libpdh_dll.PdhOpenQueryW!(util.pwstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
 }
 
 export function PdhOpenQueryA(
@@ -6762,7 +6897,7 @@ export function PdhOpenQueryA(
   dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhOpenQueryA(util.pstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
+  return libpdh_dll.PdhOpenQueryA!(util.pstrToFfi(szDataSource), dwUserData, util.toPointer(phQuery));
 }
 
 export function PdhAddCounterW(
@@ -6771,7 +6906,7 @@ export function PdhAddCounterW(
   dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhAddCounterW(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
+  return libpdh_dll.PdhAddCounterW!(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddCounterA(
@@ -6780,7 +6915,7 @@ export function PdhAddCounterA(
   dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhAddCounterA(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
+  return libpdh_dll.PdhAddCounterA!(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddEnglishCounterW(
@@ -6789,7 +6924,7 @@ export function PdhAddEnglishCounterW(
   dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhAddEnglishCounterW(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
+  return libpdh_dll.PdhAddEnglishCounterW!(hQuery, util.pwstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhAddEnglishCounterA(
@@ -6798,46 +6933,46 @@ export function PdhAddEnglishCounterA(
   dwUserData: bigint | number /* usize */,
   phCounter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhAddEnglishCounterA(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
+  return libpdh_dll.PdhAddEnglishCounterA!(hQuery, util.pstrToFfi(szFullCounterPath), dwUserData, util.toPointer(phCounter));
 }
 
 export function PdhCollectQueryDataWithTime(
   hQuery: bigint | number /* isize */,
   pllTimeStamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCollectQueryDataWithTime(hQuery, util.toPointer(pllTimeStamp));
+  return libpdh_dll.PdhCollectQueryDataWithTime!(hQuery, util.toPointer(pllTimeStamp));
 }
 
 export function PdhValidatePathExW(
   hDataSource: bigint | number /* isize */,
   szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhValidatePathExW(hDataSource, util.pwstrToFfi(szFullPathBuffer));
+  return libpdh_dll.PdhValidatePathExW!(hDataSource, util.pwstrToFfi(szFullPathBuffer));
 }
 
 export function PdhValidatePathExA(
   hDataSource: bigint | number /* isize */,
   szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhValidatePathExA(hDataSource, util.pstrToFfi(szFullPathBuffer));
+  return libpdh_dll.PdhValidatePathExA!(hDataSource, util.pstrToFfi(szFullPathBuffer));
 }
 
 export function PdhRemoveCounter(
   hCounter: bigint | number /* isize */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhRemoveCounter(hCounter);
+  return libpdh_dll.PdhRemoveCounter!(hCounter);
 }
 
 export function PdhCollectQueryData(
   hQuery: bigint | number /* isize */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCollectQueryData(hQuery);
+  return libpdh_dll.PdhCollectQueryData!(hQuery);
 }
 
 export function PdhCloseQuery(
   hQuery: bigint | number /* isize */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCloseQuery(hQuery);
+  return libpdh_dll.PdhCloseQuery!(hQuery);
 }
 
 export function PdhGetFormattedCounterValue(
@@ -6846,7 +6981,7 @@ export function PdhGetFormattedCounterValue(
   lpdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetFormattedCounterValue(hCounter, dwFormat, util.toPointer(lpdwType), util.toPointer(pValue));
+  return libpdh_dll.PdhGetFormattedCounterValue!(hCounter, dwFormat, util.toPointer(lpdwType), util.toPointer(pValue));
 }
 
 export function PdhGetFormattedCounterArrayA(
@@ -6856,7 +6991,7 @@ export function PdhGetFormattedCounterArrayA(
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetFormattedCounterArrayA(hCounter, dwFormat, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
+  return libpdh_dll.PdhGetFormattedCounterArrayA!(hCounter, dwFormat, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
 }
 
 export function PdhGetFormattedCounterArrayW(
@@ -6866,7 +7001,7 @@ export function PdhGetFormattedCounterArrayW(
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetFormattedCounterArrayW(hCounter, dwFormat, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
+  return libpdh_dll.PdhGetFormattedCounterArrayW!(hCounter, dwFormat, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
 }
 
 export function PdhGetRawCounterValue(
@@ -6874,7 +7009,7 @@ export function PdhGetRawCounterValue(
   lpdwType: Deno.PointerValue | Uint8Array /* ptr */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetRawCounterValue(hCounter, util.toPointer(lpdwType), util.toPointer(pValue));
+  return libpdh_dll.PdhGetRawCounterValue!(hCounter, util.toPointer(lpdwType), util.toPointer(pValue));
 }
 
 export function PdhGetRawCounterArrayA(
@@ -6883,7 +7018,7 @@ export function PdhGetRawCounterArrayA(
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetRawCounterArrayA(hCounter, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
+  return libpdh_dll.PdhGetRawCounterArrayA!(hCounter, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
 }
 
 export function PdhGetRawCounterArrayW(
@@ -6892,7 +7027,7 @@ export function PdhGetRawCounterArrayW(
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   ItemBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetRawCounterArrayW(hCounter, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
+  return libpdh_dll.PdhGetRawCounterArrayW!(hCounter, util.toPointer(lpdwBufferSize), util.toPointer(lpdwItemCount), util.toPointer(ItemBuffer));
 }
 
 export function PdhCalculateCounterFromRawValue(
@@ -6902,7 +7037,7 @@ export function PdhCalculateCounterFromRawValue(
   rawValue2: Deno.PointerValue | Uint8Array /* ptr */,
   fmtValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCalculateCounterFromRawValue(hCounter, dwFormat, util.toPointer(rawValue1), util.toPointer(rawValue2), util.toPointer(fmtValue));
+  return libpdh_dll.PdhCalculateCounterFromRawValue!(hCounter, dwFormat, util.toPointer(rawValue1), util.toPointer(rawValue2), util.toPointer(fmtValue));
 }
 
 export function PdhComputeCounterStatistics(
@@ -6913,7 +7048,7 @@ export function PdhComputeCounterStatistics(
   lpRawValueArray: Deno.PointerValue | Uint8Array /* ptr */,
   data: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhComputeCounterStatistics(hCounter, dwFormat, dwFirstEntry, dwNumEntries, util.toPointer(lpRawValueArray), util.toPointer(data));
+  return libpdh_dll.PdhComputeCounterStatistics!(hCounter, dwFormat, dwFirstEntry, dwNumEntries, util.toPointer(lpRawValueArray), util.toPointer(data));
 }
 
 export function PdhGetCounterInfoW(
@@ -6922,7 +7057,7 @@ export function PdhGetCounterInfoW(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetCounterInfoW(hCounter, util.toPointer(bRetrieveExplainText), util.toPointer(pdwBufferSize), util.toPointer(lpBuffer));
+  return libpdh_dll.PdhGetCounterInfoW!(hCounter, util.toPointer(bRetrieveExplainText), util.toPointer(pdwBufferSize), util.toPointer(lpBuffer));
 }
 
 export function PdhGetCounterInfoA(
@@ -6931,26 +7066,26 @@ export function PdhGetCounterInfoA(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetCounterInfoA(hCounter, util.toPointer(bRetrieveExplainText), util.toPointer(pdwBufferSize), util.toPointer(lpBuffer));
+  return libpdh_dll.PdhGetCounterInfoA!(hCounter, util.toPointer(bRetrieveExplainText), util.toPointer(pdwBufferSize), util.toPointer(lpBuffer));
 }
 
 export function PdhSetCounterScaleFactor(
   hCounter: bigint | number /* isize */,
   lFactor: number /* i32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSetCounterScaleFactor(hCounter, lFactor);
+  return libpdh_dll.PdhSetCounterScaleFactor!(hCounter, lFactor);
 }
 
 export function PdhConnectMachineW(
   szMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhConnectMachineW(util.pwstrToFfi(szMachineName));
+  return libpdh_dll.PdhConnectMachineW!(util.pwstrToFfi(szMachineName));
 }
 
 export function PdhConnectMachineA(
   szMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhConnectMachineA(util.pstrToFfi(szMachineName));
+  return libpdh_dll.PdhConnectMachineA!(util.pstrToFfi(szMachineName));
 }
 
 export function PdhEnumMachinesW(
@@ -6958,7 +7093,7 @@ export function PdhEnumMachinesW(
   mszMachineList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumMachinesW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhEnumMachinesW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumMachinesA(
@@ -6966,7 +7101,7 @@ export function PdhEnumMachinesA(
   mszMachineList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumMachinesA(util.pstrToFfi(szDataSource), util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhEnumMachinesA!(util.pstrToFfi(szDataSource), util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumObjectsW(
@@ -6977,7 +7112,7 @@ export function PdhEnumObjectsW(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectsW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
+  return libpdh_dll.PdhEnumObjectsW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
 }
 
 export function PdhEnumObjectsA(
@@ -6988,7 +7123,7 @@ export function PdhEnumObjectsA(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectsA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
+  return libpdh_dll.PdhEnumObjectsA!(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
 }
 
 export function PdhEnumObjectItemsW(
@@ -7002,7 +7137,7 @@ export function PdhEnumObjectItemsW(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectItemsW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pwstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
+  return libpdh_dll.PdhEnumObjectItemsW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pwstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
 }
 
 export function PdhEnumObjectItemsA(
@@ -7016,7 +7151,7 @@ export function PdhEnumObjectItemsA(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectItemsA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
+  return libpdh_dll.PdhEnumObjectItemsA!(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
 }
 
 export function PdhMakeCounterPathW(
@@ -7025,7 +7160,7 @@ export function PdhMakeCounterPathW(
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: PDH_PATH_FLAGS /* Windows.Win32.System.Performance.PDH_PATH_FLAGS */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhMakeCounterPathW(util.toPointer(pCounterPathElements), util.pwstrToFfi(szFullPathBuffer), util.toPointer(pcchBufferSize), dwFlags);
+  return libpdh_dll.PdhMakeCounterPathW!(util.toPointer(pCounterPathElements), util.pwstrToFfi(szFullPathBuffer), util.toPointer(pcchBufferSize), dwFlags);
 }
 
 export function PdhMakeCounterPathA(
@@ -7034,7 +7169,7 @@ export function PdhMakeCounterPathA(
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: PDH_PATH_FLAGS /* Windows.Win32.System.Performance.PDH_PATH_FLAGS */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhMakeCounterPathA(util.toPointer(pCounterPathElements), util.pstrToFfi(szFullPathBuffer), util.toPointer(pcchBufferSize), dwFlags);
+  return libpdh_dll.PdhMakeCounterPathA!(util.toPointer(pCounterPathElements), util.pstrToFfi(szFullPathBuffer), util.toPointer(pcchBufferSize), dwFlags);
 }
 
 export function PdhParseCounterPathW(
@@ -7043,7 +7178,7 @@ export function PdhParseCounterPathW(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhParseCounterPathW(util.pwstrToFfi(szFullPathBuffer), util.toPointer(pCounterPathElements), util.toPointer(pdwBufferSize), dwFlags);
+  return libpdh_dll.PdhParseCounterPathW!(util.pwstrToFfi(szFullPathBuffer), util.toPointer(pCounterPathElements), util.toPointer(pdwBufferSize), dwFlags);
 }
 
 export function PdhParseCounterPathA(
@@ -7052,7 +7187,7 @@ export function PdhParseCounterPathA(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhParseCounterPathA(util.pstrToFfi(szFullPathBuffer), util.toPointer(pCounterPathElements), util.toPointer(pdwBufferSize), dwFlags);
+  return libpdh_dll.PdhParseCounterPathA!(util.pstrToFfi(szFullPathBuffer), util.toPointer(pCounterPathElements), util.toPointer(pdwBufferSize), dwFlags);
 }
 
 export function PdhParseInstanceNameW(
@@ -7063,7 +7198,7 @@ export function PdhParseInstanceNameW(
   pcchParentNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   lpIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhParseInstanceNameW(util.pwstrToFfi(szInstanceString), util.pwstrToFfi(szInstanceName), util.toPointer(pcchInstanceNameLength), util.pwstrToFfi(szParentName), util.toPointer(pcchParentNameLength), util.toPointer(lpIndex));
+  return libpdh_dll.PdhParseInstanceNameW!(util.pwstrToFfi(szInstanceString), util.pwstrToFfi(szInstanceName), util.toPointer(pcchInstanceNameLength), util.pwstrToFfi(szParentName), util.toPointer(pcchParentNameLength), util.toPointer(lpIndex));
 }
 
 export function PdhParseInstanceNameA(
@@ -7074,19 +7209,19 @@ export function PdhParseInstanceNameA(
   pcchParentNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   lpIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhParseInstanceNameA(util.pstrToFfi(szInstanceString), util.pstrToFfi(szInstanceName), util.toPointer(pcchInstanceNameLength), util.pstrToFfi(szParentName), util.toPointer(pcchParentNameLength), util.toPointer(lpIndex));
+  return libpdh_dll.PdhParseInstanceNameA!(util.pstrToFfi(szInstanceString), util.pstrToFfi(szInstanceName), util.toPointer(pcchInstanceNameLength), util.pstrToFfi(szParentName), util.toPointer(pcchParentNameLength), util.toPointer(lpIndex));
 }
 
 export function PdhValidatePathW(
   szFullPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhValidatePathW(util.pwstrToFfi(szFullPathBuffer));
+  return libpdh_dll.PdhValidatePathW!(util.pwstrToFfi(szFullPathBuffer));
 }
 
 export function PdhValidatePathA(
   szFullPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhValidatePathA(util.pstrToFfi(szFullPathBuffer));
+  return libpdh_dll.PdhValidatePathA!(util.pstrToFfi(szFullPathBuffer));
 }
 
 export function PdhGetDefaultPerfObjectW(
@@ -7095,7 +7230,7 @@ export function PdhGetDefaultPerfObjectW(
   szDefaultObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfObjectW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfObjectW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfObjectA(
@@ -7104,7 +7239,7 @@ export function PdhGetDefaultPerfObjectA(
   szDefaultObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfObjectA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfObjectA!(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterW(
@@ -7114,7 +7249,7 @@ export function PdhGetDefaultPerfCounterW(
   szDefaultCounterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfCounterW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfCounterW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterA(
@@ -7124,19 +7259,19 @@ export function PdhGetDefaultPerfCounterA(
   szDefaultCounterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfCounterA(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfCounterA!(util.pstrToFfi(szDataSource), util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhBrowseCountersW(
   pBrowseDlgData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBrowseCountersW(util.toPointer(pBrowseDlgData));
+  return libpdh_dll.PdhBrowseCountersW!(util.toPointer(pBrowseDlgData));
 }
 
 export function PdhBrowseCountersA(
   pBrowseDlgData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBrowseCountersA(util.toPointer(pBrowseDlgData));
+  return libpdh_dll.PdhBrowseCountersA!(util.toPointer(pBrowseDlgData));
 }
 
 export function PdhExpandCounterPathW(
@@ -7144,7 +7279,7 @@ export function PdhExpandCounterPathW(
   mszExpandedPathList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandCounterPathW(util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
+  return libpdh_dll.PdhExpandCounterPathW!(util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
 }
 
 export function PdhExpandCounterPathA(
@@ -7152,7 +7287,7 @@ export function PdhExpandCounterPathA(
   mszExpandedPathList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandCounterPathA(util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
+  return libpdh_dll.PdhExpandCounterPathA!(util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength));
 }
 
 export function PdhLookupPerfNameByIndexW(
@@ -7161,7 +7296,7 @@ export function PdhLookupPerfNameByIndexW(
   szNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchNameBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhLookupPerfNameByIndexW(util.pwstrToFfi(szMachineName), dwNameIndex, util.pwstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
+  return libpdh_dll.PdhLookupPerfNameByIndexW!(util.pwstrToFfi(szMachineName), dwNameIndex, util.pwstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
 }
 
 export function PdhLookupPerfNameByIndexA(
@@ -7170,7 +7305,7 @@ export function PdhLookupPerfNameByIndexA(
   szNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchNameBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhLookupPerfNameByIndexA(util.pstrToFfi(szMachineName), dwNameIndex, util.pstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
+  return libpdh_dll.PdhLookupPerfNameByIndexA!(util.pstrToFfi(szMachineName), dwNameIndex, util.pstrToFfi(szNameBuffer), util.toPointer(pcchNameBufferSize));
 }
 
 export function PdhLookupPerfIndexByNameW(
@@ -7178,7 +7313,7 @@ export function PdhLookupPerfIndexByNameW(
   szNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhLookupPerfIndexByNameW(util.pwstrToFfi(szMachineName), util.pwstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
+  return libpdh_dll.PdhLookupPerfIndexByNameW!(util.pwstrToFfi(szMachineName), util.pwstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
 }
 
 export function PdhLookupPerfIndexByNameA(
@@ -7186,7 +7321,7 @@ export function PdhLookupPerfIndexByNameA(
   szNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhLookupPerfIndexByNameA(util.pstrToFfi(szMachineName), util.pstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
+  return libpdh_dll.PdhLookupPerfIndexByNameA!(util.pstrToFfi(szMachineName), util.pstrToFfi(szNameBuffer), util.toPointer(pdwIndex));
 }
 
 export function PdhExpandWildCardPathA(
@@ -7196,7 +7331,7 @@ export function PdhExpandWildCardPathA(
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandWildCardPathA(util.pstrToFfi(szDataSource), util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
+  return libpdh_dll.PdhExpandWildCardPathA!(util.pstrToFfi(szDataSource), util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
 }
 
 export function PdhExpandWildCardPathW(
@@ -7206,7 +7341,7 @@ export function PdhExpandWildCardPathW(
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandWildCardPathW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
+  return libpdh_dll.PdhExpandWildCardPathW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
 }
 
 export function PdhOpenLogW(
@@ -7218,7 +7353,7 @@ export function PdhOpenLogW(
   szUserCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phLog: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhOpenLogW(util.pwstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pwstrToFfi(szUserCaption), util.toPointer(phLog));
+  return libpdh_dll.PdhOpenLogW!(util.pwstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pwstrToFfi(szUserCaption), util.toPointer(phLog));
 }
 
 export function PdhOpenLogA(
@@ -7230,41 +7365,41 @@ export function PdhOpenLogA(
   szUserCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phLog: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhOpenLogA(util.pstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pstrToFfi(szUserCaption), util.toPointer(phLog));
+  return libpdh_dll.PdhOpenLogA!(util.pstrToFfi(szLogFileName), dwAccessFlags, util.toPointer(lpdwLogType), hQuery, dwMaxSize, util.pstrToFfi(szUserCaption), util.toPointer(phLog));
 }
 
 export function PdhUpdateLogW(
   hLog: bigint | number /* isize */,
   szUserString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhUpdateLogW(hLog, util.pwstrToFfi(szUserString));
+  return libpdh_dll.PdhUpdateLogW!(hLog, util.pwstrToFfi(szUserString));
 }
 
 export function PdhUpdateLogA(
   hLog: bigint | number /* isize */,
   szUserString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhUpdateLogA(hLog, util.pstrToFfi(szUserString));
+  return libpdh_dll.PdhUpdateLogA!(hLog, util.pstrToFfi(szUserString));
 }
 
 export function PdhUpdateLogFileCatalog(
   hLog: bigint | number /* isize */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhUpdateLogFileCatalog(hLog);
+  return libpdh_dll.PdhUpdateLogFileCatalog!(hLog);
 }
 
 export function PdhGetLogFileSize(
   hLog: bigint | number /* isize */,
   llSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetLogFileSize(hLog, util.toPointer(llSize));
+  return libpdh_dll.PdhGetLogFileSize!(hLog, util.toPointer(llSize));
 }
 
 export function PdhCloseLog(
   hLog: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCloseLog(hLog, dwFlags);
+  return libpdh_dll.PdhCloseLog!(hLog, dwFlags);
 }
 
 export function PdhSelectDataSourceW(
@@ -7273,7 +7408,7 @@ export function PdhSelectDataSourceW(
   szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSelectDataSourceW((hWndOwner), dwFlags, util.pwstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
+  return libpdh_dll.PdhSelectDataSourceW!((hWndOwner), dwFlags, util.pwstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
 }
 
 export function PdhSelectDataSourceA(
@@ -7282,20 +7417,20 @@ export function PdhSelectDataSourceA(
   szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSelectDataSourceA((hWndOwner), dwFlags, util.pstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
+  return libpdh_dll.PdhSelectDataSourceA!((hWndOwner), dwFlags, util.pstrToFfi(szDataSource), util.toPointer(pcchBufferLength));
 }
 
 export function PdhIsRealTimeQuery(
   hQuery: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libpdh_dll.PdhIsRealTimeQuery(hQuery));
+  return util.boolFromFfi(libpdh_dll.PdhIsRealTimeQuery!(hQuery));
 }
 
 export function PdhSetQueryTimeRange(
   hQuery: bigint | number /* isize */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSetQueryTimeRange(hQuery, util.toPointer(pInfo));
+  return libpdh_dll.PdhSetQueryTimeRange!(hQuery, util.toPointer(pInfo));
 }
 
 export function PdhGetDataSourceTimeRangeW(
@@ -7304,7 +7439,7 @@ export function PdhGetDataSourceTimeRangeW(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDataSourceTimeRangeW(util.pwstrToFfi(szDataSource), util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
+  return libpdh_dll.PdhGetDataSourceTimeRangeW!(util.pwstrToFfi(szDataSource), util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
 }
 
 export function PdhGetDataSourceTimeRangeA(
@@ -7313,7 +7448,7 @@ export function PdhGetDataSourceTimeRangeA(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDataSourceTimeRangeA(util.pstrToFfi(szDataSource), util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
+  return libpdh_dll.PdhGetDataSourceTimeRangeA!(util.pstrToFfi(szDataSource), util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
 }
 
 export function PdhCollectQueryDataEx(
@@ -7321,7 +7456,7 @@ export function PdhCollectQueryDataEx(
   dwIntervalTime: number /* u32 */,
   hNewDataEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCollectQueryDataEx(hQuery, dwIntervalTime, util.toPointer(hNewDataEvent));
+  return libpdh_dll.PdhCollectQueryDataEx!(hQuery, dwIntervalTime, util.toPointer(hNewDataEvent));
 }
 
 export function PdhFormatFromRawValue(
@@ -7332,14 +7467,14 @@ export function PdhFormatFromRawValue(
   pRawValue2: Deno.PointerValue | Uint8Array /* ptr */,
   pFmtValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhFormatFromRawValue(dwCounterType, dwFormat, util.toPointer(pTimeBase), util.toPointer(pRawValue1), util.toPointer(pRawValue2), util.toPointer(pFmtValue));
+  return libpdh_dll.PdhFormatFromRawValue!(dwCounterType, dwFormat, util.toPointer(pTimeBase), util.toPointer(pRawValue1), util.toPointer(pRawValue2), util.toPointer(pFmtValue));
 }
 
 export function PdhGetCounterTimeBase(
   hCounter: bigint | number /* isize */,
   pTimeBase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetCounterTimeBase(hCounter, util.toPointer(pTimeBase));
+  return libpdh_dll.PdhGetCounterTimeBase!(hCounter, util.toPointer(pTimeBase));
 }
 
 export function PdhReadRawLogRecord(
@@ -7348,27 +7483,27 @@ export function PdhReadRawLogRecord(
   pRawLogRecord: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhReadRawLogRecord(hLog, util.toPointer(ftRecord), util.toPointer(pRawLogRecord), util.toPointer(pdwBufferLength));
+  return libpdh_dll.PdhReadRawLogRecord!(hLog, util.toPointer(ftRecord), util.toPointer(pRawLogRecord), util.toPointer(pdwBufferLength));
 }
 
 export function PdhSetDefaultRealTimeDataSource(
   dwDataSourceId: REAL_TIME_DATA_SOURCE_ID_FLAGS /* Windows.Win32.System.Performance.REAL_TIME_DATA_SOURCE_ID_FLAGS */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSetDefaultRealTimeDataSource(dwDataSourceId);
+  return libpdh_dll.PdhSetDefaultRealTimeDataSource!(dwDataSourceId);
 }
 
 export function PdhBindInputDataSourceW(
   phDataSource: Deno.PointerValue | Uint8Array /* ptr */,
   LogFileNameList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBindInputDataSourceW(util.toPointer(phDataSource), util.pwstrToFfi(LogFileNameList));
+  return libpdh_dll.PdhBindInputDataSourceW!(util.toPointer(phDataSource), util.pwstrToFfi(LogFileNameList));
 }
 
 export function PdhBindInputDataSourceA(
   phDataSource: Deno.PointerValue | Uint8Array /* ptr */,
   LogFileNameList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBindInputDataSourceA(util.toPointer(phDataSource), util.pstrToFfi(LogFileNameList));
+  return libpdh_dll.PdhBindInputDataSourceA!(util.toPointer(phDataSource), util.pstrToFfi(LogFileNameList));
 }
 
 export function PdhOpenQueryH(
@@ -7376,7 +7511,7 @@ export function PdhOpenQueryH(
   dwUserData: bigint | number /* usize */,
   phQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhOpenQueryH(hDataSource, dwUserData, util.toPointer(phQuery));
+  return libpdh_dll.PdhOpenQueryH!(hDataSource, dwUserData, util.toPointer(phQuery));
 }
 
 export function PdhEnumMachinesHW(
@@ -7384,7 +7519,7 @@ export function PdhEnumMachinesHW(
   mszMachineList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumMachinesHW(hDataSource, util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhEnumMachinesHW!(hDataSource, util.pwstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumMachinesHA(
@@ -7392,7 +7527,7 @@ export function PdhEnumMachinesHA(
   mszMachineList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumMachinesHA(hDataSource, util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhEnumMachinesHA!(hDataSource, util.pstrToFfi(mszMachineList), util.toPointer(pcchBufferSize));
 }
 
 export function PdhEnumObjectsHW(
@@ -7403,7 +7538,7 @@ export function PdhEnumObjectsHW(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectsHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
+  return libpdh_dll.PdhEnumObjectsHW!(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
 }
 
 export function PdhEnumObjectsHA(
@@ -7414,7 +7549,7 @@ export function PdhEnumObjectsHA(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   bRefresh: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectsHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
+  return libpdh_dll.PdhEnumObjectsHA!(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(mszObjectList), util.toPointer(pcchBufferSize), dwDetailLevel, util.boolToFfi(bRefresh));
 }
 
 export function PdhEnumObjectItemsHW(
@@ -7428,7 +7563,7 @@ export function PdhEnumObjectItemsHW(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectItemsHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pwstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
+  return libpdh_dll.PdhEnumObjectItemsHW!(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pwstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
 }
 
 export function PdhEnumObjectItemsHA(
@@ -7442,7 +7577,7 @@ export function PdhEnumObjectItemsHA(
   dwDetailLevel: PERF_DETAIL /* Windows.Win32.System.Performance.PERF_DETAIL */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumObjectItemsHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
+  return libpdh_dll.PdhEnumObjectItemsHA!(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(mszCounterList), util.toPointer(pcchCounterListLength), util.pstrToFfi(mszInstanceList), util.toPointer(pcchInstanceListLength), dwDetailLevel, dwFlags);
 }
 
 export function PdhExpandWildCardPathHW(
@@ -7452,7 +7587,7 @@ export function PdhExpandWildCardPathHW(
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandWildCardPathHW(hDataSource, util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
+  return libpdh_dll.PdhExpandWildCardPathHW!(hDataSource, util.pwstrToFfi(szWildCardPath), util.pwstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
 }
 
 export function PdhExpandWildCardPathHA(
@@ -7462,7 +7597,7 @@ export function PdhExpandWildCardPathHA(
   pcchPathListLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhExpandWildCardPathHA(hDataSource, util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
+  return libpdh_dll.PdhExpandWildCardPathHA!(hDataSource, util.pstrToFfi(szWildCardPath), util.pstrToFfi(mszExpandedPathList), util.toPointer(pcchPathListLength), dwFlags);
 }
 
 export function PdhGetDataSourceTimeRangeH(
@@ -7471,7 +7606,7 @@ export function PdhGetDataSourceTimeRangeH(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDataSourceTimeRangeH(hDataSource, util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
+  return libpdh_dll.PdhGetDataSourceTimeRangeH!(hDataSource, util.toPointer(pdwNumEntries), util.toPointer(pInfo), util.toPointer(pdwBufferSize));
 }
 
 export function PdhGetDefaultPerfObjectHW(
@@ -7480,7 +7615,7 @@ export function PdhGetDefaultPerfObjectHW(
   szDefaultObjectName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfObjectHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfObjectHW!(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfObjectHA(
@@ -7489,7 +7624,7 @@ export function PdhGetDefaultPerfObjectHA(
   szDefaultObjectName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfObjectHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfObjectHA!(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szDefaultObjectName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterHW(
@@ -7499,7 +7634,7 @@ export function PdhGetDefaultPerfCounterHW(
   szDefaultCounterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfCounterHW(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfCounterHW!(hDataSource, util.pwstrToFfi(szMachineName), util.pwstrToFfi(szObjectName), util.pwstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhGetDefaultPerfCounterHA(
@@ -7509,43 +7644,43 @@ export function PdhGetDefaultPerfCounterHA(
   szDefaultCounterName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetDefaultPerfCounterHA(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
+  return libpdh_dll.PdhGetDefaultPerfCounterHA!(hDataSource, util.pstrToFfi(szMachineName), util.pstrToFfi(szObjectName), util.pstrToFfi(szDefaultCounterName), util.toPointer(pcchBufferSize));
 }
 
 export function PdhBrowseCountersHW(
   pBrowseDlgData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBrowseCountersHW(util.toPointer(pBrowseDlgData));
+  return libpdh_dll.PdhBrowseCountersHW!(util.toPointer(pBrowseDlgData));
 }
 
 export function PdhBrowseCountersHA(
   pBrowseDlgData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhBrowseCountersHA(util.toPointer(pBrowseDlgData));
+  return libpdh_dll.PdhBrowseCountersHA!(util.toPointer(pBrowseDlgData));
 }
 
 export function PdhVerifySQLDBW(
   szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhVerifySQLDBW(util.pwstrToFfi(szDataSource));
+  return libpdh_dll.PdhVerifySQLDBW!(util.pwstrToFfi(szDataSource));
 }
 
 export function PdhVerifySQLDBA(
   szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhVerifySQLDBA(util.pstrToFfi(szDataSource));
+  return libpdh_dll.PdhVerifySQLDBA!(util.pstrToFfi(szDataSource));
 }
 
 export function PdhCreateSQLTablesW(
   szDataSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCreateSQLTablesW(util.pwstrToFfi(szDataSource));
+  return libpdh_dll.PdhCreateSQLTablesW!(util.pwstrToFfi(szDataSource));
 }
 
 export function PdhCreateSQLTablesA(
   szDataSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhCreateSQLTablesA(util.pstrToFfi(szDataSource));
+  return libpdh_dll.PdhCreateSQLTablesA!(util.pstrToFfi(szDataSource));
 }
 
 export function PdhEnumLogSetNamesW(
@@ -7553,7 +7688,7 @@ export function PdhEnumLogSetNamesW(
   mszDataSetNameList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumLogSetNamesW(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));
+  return libpdh_dll.PdhEnumLogSetNamesW!(util.pwstrToFfi(szDataSource), util.pwstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));
 }
 
 export function PdhEnumLogSetNamesA(
@@ -7561,7 +7696,7 @@ export function PdhEnumLogSetNamesA(
   mszDataSetNameList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhEnumLogSetNamesA(util.pstrToFfi(szDataSource), util.pstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));
+  return libpdh_dll.PdhEnumLogSetNamesA!(util.pstrToFfi(szDataSource), util.pstrToFfi(mszDataSetNameList), util.toPointer(pcchBufferLength));
 }
 
 export function PdhGetLogSetGUID(
@@ -7569,13 +7704,13 @@ export function PdhGetLogSetGUID(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pRunId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhGetLogSetGUID(hLog, util.toPointer(pGuid), util.toPointer(pRunId));
+  return libpdh_dll.PdhGetLogSetGUID!(hLog, util.toPointer(pGuid), util.toPointer(pRunId));
 }
 
 export function PdhSetLogSetRunID(
   hLog: bigint | number /* isize */,
   RunId: number /* i32 */,
 ): number /* i32 */ {
-  return libpdh_dll.PdhSetLogSetRunID(hLog, RunId);
+  return libpdh_dll.PdhSetLogSetRunID!(hLog, RunId);
 }
 

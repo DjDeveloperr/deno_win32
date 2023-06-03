@@ -18951,1790 +18951,2237 @@ try {
     IUnknown_QueryInterface_Proxy: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IUnknown_AddRef_Proxy: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     IUnknown_Release_Proxy: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RpcBindingCopy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetOption: {
       parameters: ["pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqOption: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingFromStringBindingA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingFromStringBindingW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSsGetContextBinding: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqMaxCalls: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqObject: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingReset: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetObject: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqDefaultProtectLevel: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingToStringBindingA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingToStringBindingW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingVectorFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringBindingComposeA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringBindingComposeW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringBindingParseA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringBindingParseW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringFreeA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcStringFreeW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcIfInqId: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNetworkIsProtseqValidA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNetworkIsProtseqValidW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqComTimeout: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtSetComTimeout: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtSetCancelTimeout: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     RpcNetworkInqProtseqsA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNetworkInqProtseqsW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcObjectInqType: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcObjectSetInqFn: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcObjectSetType: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcProtseqVectorFreeA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcProtseqVectorFreeW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqBindings: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqBindingsEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqIf: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerListen: {
       parameters: ["u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterIf: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterIfEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterIf2: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterIf3: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUnregisterIf: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcServerUnregisterIfEx: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseAllProtseqs: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseAllProtseqsEx: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseAllProtseqsIf: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseAllProtseqsIfEx: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqExA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqExW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqEpA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqEpExA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqEpW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqEpExW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqIfA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqIfExA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqIfW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUseProtseqIfExW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerYield: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RpcMgmtStatsVectorFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqStats: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtIsServerListening: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtStopServerListening: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtWaitServerListen: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcMgmtSetServerStackSize: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     RpcSsDontSerializeContext: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RpcMgmtEnableIdleCleanup: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqIfIds: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqServerPrincNameA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtInqServerPrincNameW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqDefaultPrincNameA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqDefaultPrincNameW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpResolveBinding: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingInqEntryNameA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingInqEntryNameW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingCreateA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingCreateW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqBindingHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcImpersonateClient: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcImpersonateClient2: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcRevertToSelfEx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcRevertToSelf: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcImpersonateClientContainer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcRevertContainerImpersonation: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthClientA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthClientW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthClientExA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthClientExW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthInfoA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthInfoW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetAuthInfoA: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetAuthInfoExA: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetAuthInfoW: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcBindingSetAuthInfoExW: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthInfoExA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingInqAuthInfoExW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerCompleteSecurityCallback: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterAuthInfoA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerRegisterAuthInfoW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingServerFromClient: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcRaiseException: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
     RpcTestCancel: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcServerTestCancel: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcCancelThread: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcCancelThreadEx: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     UuidCreate: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UuidCreateSequential: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UuidToStringA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidFromStringA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidToStringW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidFromStringW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidCompare: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidCreateNil: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UuidEqual: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UuidHash: {
       parameters: ["pointer", "pointer"],
       result: "u16",
+      optional: true,
     },
     UuidIsNil: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpRegisterNoReplaceA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpRegisterNoReplaceW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpRegisterA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpRegisterW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcEpUnregister: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DceErrorInqTextA: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DceErrorInqTextW: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtEpEltInqBegin: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtEpEltInqDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtEpEltInqNextA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtEpEltInqNextW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtEpUnregister: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcMgmtSetAuthorizationFn: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcExceptionFilter: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupCreateW: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupCreateA: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupClose: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupActivate: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupDeactivate: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcServerInterfaceGroupInqBindings: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNegotiateTransferSyntax: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcGetBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcGetBufferWithObject: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcSendReceive: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcFreeBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcSend: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcReceive: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     I_RpcFreePipeBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcReallocPipeBuffer: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     I_RpcRequestMutex: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     I_RpcClearMutex: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     I_RpcDeleteMutex: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     I_RpcAllocate: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     I_RpcFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     I_RpcPauseExecution: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     I_RpcGetExtendedError: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     I_RpcSystemHandleTypeSpecificWork: {
       parameters: ["pointer", "u8", "u8", "i32"],
       result: "i32",
+      optional: true,
     },
     I_RpcGetCurrentCallHandle: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     I_RpcNsInterfaceExported: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsInterfaceUnexported: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingToStaticStringBindingW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqSecurityContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqSecurityContextKeyInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqWireIdForSnego: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqMarshalledTargetInfo: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqLocalClientPID: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingHandleToAsyncHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsBindingSetEntryNameW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsBindingSetEntryNameA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerUseProtseqEp2A: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerUseProtseqEp2W: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerUseProtseq2W: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerUseProtseq2A: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerStartService: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqDynamicEndpointW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqDynamicEndpointA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerCheckClientRestriction: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqTransportType: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcIfInqTransferSyntaxes: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_UuidCreate: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingCopy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingIsClientLocal: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingCreateNP: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcSsDontSerializeContext: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     I_RpcServerRegisterForwardFunction: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerInqAddressChangeFn: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     I_RpcServerSetAddressChangeFn: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerInqLocalConnAddress: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerInqRemoteConnAddress: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcSessionStrictContextHandle: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     I_RpcTurnOnEEInfoPropagation: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     I_RpcServerInqTransportType: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcMapWin32Status: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     I_RpcRecordCalloutFailure: {
       parameters: ["i32", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     I_RpcMgmtEnableDedicatedThreadPool: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     I_RpcGetDefaultSD: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcOpenClientProcess: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingIsServerLocal: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingSetPrivateOption: {
       parameters: ["pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerSubscribeForDisconnectNotification: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerGetAssociationID: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerDisableExceptionFilter: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     I_RpcServerSubscribeForDisconnectNotification2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcServerUnsubscribeForDisconnectNotification: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncRegisterInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncInitializeHandle: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncGetCallStatus: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncCompleteCall: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncAbortCall: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcAsyncCancelCall: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     RpcErrorStartEnumeration: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorGetNextRecord: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorEndEnumeration: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorResetEnumeration: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorGetNumberOfRecords: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorSaveErrorInfo: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorLoadErrorInfo: {
       parameters: ["pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorAddRecord: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcErrorClearInformation: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RpcGetAuthorizationContextForClient: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcFreeAuthorizationContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSsContextLockExclusive: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSsContextLockShared: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqCallAttributesW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerInqCallAttributesA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerSubscribeForNotification: {
       parameters: ["pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcServerUnsubscribeForNotification: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingBind: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcBindingUnbind: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcAsyncSetHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcAsyncAbortCall: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     I_RpcExceptionFilter: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     I_RpcBindingInqClientTokenAttributes: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NDRCContextBinding: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     NDRCContextMarshall: {
       parameters: ["isize", "pointer"],
       result: "void",
+      optional: true,
     },
     NDRCContextUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     NDRSContextMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NDRSContextUnmarshall: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NDRSContextMarshallEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NDRSContextMarshall2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     NDRSContextUnmarshallEx: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NDRSContextUnmarshall2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RpcSsDestroyClientContext: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrSimpleTypeMarshall: {
       parameters: ["pointer", "pointer", "u8"],
       result: "void",
+      optional: true,
     },
     NdrPointerMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrSimpleStructMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantStructMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantVaryingStructMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrComplexStructMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrFixedArrayMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantArrayMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantVaryingArrayMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrVaryingArrayMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrComplexArrayMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrNonConformantStringMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantStringMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrEncapsulatedUnionMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrNonEncapsulatedUnionMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrByteCountPointerMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrXmitOrRepAsMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrUserMarshalMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrInterfacePointerMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrClientContextMarshall: {
       parameters: ["pointer", "isize", "i32"],
       result: "void",
+      optional: true,
     },
     NdrServerContextMarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrServerContextNewMarshall: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrSimpleTypeUnmarshall: {
       parameters: ["pointer", "pointer", "u8"],
       result: "void",
+      optional: true,
     },
     NdrRangeUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrCorrelationInitialize: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "void",
+      optional: true,
     },
     NdrCorrelationPass: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrCorrelationFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrPointerUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrSimpleStructUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantStructUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantVaryingStructUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrComplexStructUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrFixedArrayUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantArrayUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantVaryingArrayUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrVaryingArrayUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrComplexArrayUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrNonConformantStringUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrConformantStringUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrEncapsulatedUnionUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrNonEncapsulatedUnionUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrByteCountPointerUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrXmitOrRepAsUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrUserMarshalUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrInterfacePointerUnmarshall: {
       parameters: ["pointer", "pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrClientContextUnmarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrServerContextUnmarshall: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrContextHandleInitialize: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrServerContextNewUnmarshall: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrPointerBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrSimpleStructBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantStructBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantVaryingStructBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrComplexStructBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrFixedArrayBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantArrayBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantVaryingArrayBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrVaryingArrayBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrComplexArrayBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantStringBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrNonConformantStringBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrEncapsulatedUnionBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrNonEncapsulatedUnionBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrByteCountPointerBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrXmitOrRepAsBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrUserMarshalBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrInterfacePointerBufferSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrContextHandleSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrPointerMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrSimpleStructMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrConformantStructMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrConformantVaryingStructMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrComplexStructMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrFixedArrayMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrConformantArrayMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrConformantVaryingArrayMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrVaryingArrayMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrComplexArrayMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrConformantStringMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrNonConformantStringMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrEncapsulatedUnionMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrNonEncapsulatedUnionMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrXmitOrRepAsMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrUserMarshalMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrInterfacePointerMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NdrPointerFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrSimpleStructFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantStructFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantVaryingStructFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrComplexStructFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrFixedArrayFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantArrayFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConformantVaryingArrayFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrVaryingArrayFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrComplexArrayFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrEncapsulatedUnionFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrNonEncapsulatedUnionFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrByteCountPointerFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrXmitOrRepAsFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrUserMarshalFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrInterfacePointerFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrConvert2: {
       parameters: ["pointer", "pointer", "i32"],
       result: "void",
+      optional: true,
     },
     NdrConvert: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrUserMarshalSimpleTypeConvert: {
       parameters: ["pointer", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     NdrClientInitializeNew: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     NdrServerInitializeNew: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrServerInitializePartial: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     NdrClientInitialize: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     NdrServerInitialize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrServerInitializeUnmarshall: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrServerInitializeMarshall: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrGetBuffer: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrNsGetBuffer: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrSendReceive: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrNsSendReceive: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrFreeBuffer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrGetDcomProtocolVersion: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrClientCall2: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrAsyncClientCall: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrDcomAsyncClientCall: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrAsyncServerCall: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrDcomAsyncStubCall: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrStubCall2: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrServerCall2: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrMapCommAndFaultStatus: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     RpcSsAllocate: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     RpcSsDisableAllocate: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RpcSsEnableAllocate: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RpcSsFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RpcSsGetThreadHandle: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     RpcSsSetClientAllocFree: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RpcSsSetThreadHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RpcSsSwapClientAllocFree: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RpcSmAllocate: {
       parameters: ["usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RpcSmClientFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSmDestroyClientContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSmDisableAllocate: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcSmEnableAllocate: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     RpcSmFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSmGetThreadHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RpcSmSetClientAllocFree: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSmSetThreadHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcSmSwapClientAllocFree: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrRpcSsEnableAllocate: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrRpcSsDisableAllocate: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrRpcSmSetClientToOsf: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrRpcSmClientAllocate: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     NdrRpcSmClientFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrRpcSsDefaultAllocate: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     NdrRpcSsDefaultFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrFullPointerXlatInit: {
       parameters: ["u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     NdrFullPointerXlatFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrAllocate: {
       parameters: ["pointer", "usize"],
       result: "pointer",
+      optional: true,
     },
     NdrClearOutParameters: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrOleAllocate: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     NdrOleFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrGetUserMarshalInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrCreateServerInterfaceFromStub: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrClientCall3: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Ndr64AsyncClientCall: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Ndr64DcomAsyncClientCall: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Ndr64AsyncServerCall64: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     Ndr64AsyncServerCallAll: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     Ndr64DcomAsyncStubCall: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrStubCall3: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrServerCallAll: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrServerCallNdr64: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NdrPartialIgnoreClientMarshall: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrPartialIgnoreServerUnmarshall: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrPartialIgnoreClientBufferSize: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrPartialIgnoreServerInitialize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RpcUserFree: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     MesEncodeIncrementalHandleCreate: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesDecodeIncrementalHandleCreate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesIncrementalHandleReset: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     MesEncodeFixedBufferHandleCreate: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesEncodeDynBufferHandleCreate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesDecodeBufferHandleCreate: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesBufferHandleReset: {
       parameters: ["pointer", "u32", "i32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MesHandleFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MesInqProcEncodingId: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     NdrMesSimpleTypeAlignSize: {
       parameters: ["pointer"],
       result: "usize",
+      optional: true,
     },
     NdrMesSimpleTypeDecode: {
       parameters: ["pointer", "pointer", "i16"],
       result: "void",
+      optional: true,
     },
     NdrMesSimpleTypeEncode: {
       parameters: ["pointer", "pointer", "pointer", "i16"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeAlignSize: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "usize",
+      optional: true,
     },
     NdrMesTypeEncode: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeDecode: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeAlignSize2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "usize",
+      optional: true,
     },
     NdrMesTypeEncode2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeDecode2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeFree2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesProcEncodeDecode: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesProcEncodeDecode2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrMesTypeAlignSize3: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "usize",
+      optional: true,
     },
     NdrMesTypeEncode3: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeDecode3: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesTypeFree3: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     NdrMesProcEncodeDecode3: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NdrMesSimpleTypeDecodeAll: {
       parameters: ["pointer", "pointer", "pointer", "i16"],
       result: "void",
+      optional: true,
     },
     NdrMesSimpleTypeEncodeAll: {
       parameters: ["pointer", "pointer", "pointer", "i16"],
       result: "void",
+      optional: true,
     },
     NdrMesSimpleTypeAlignSizeAll: {
       parameters: ["pointer", "pointer"],
       result: "usize",
+      optional: true,
     },
     RpcCertGeneratePrincipalNameW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcCertGeneratePrincipalNameA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20744,246 +21191,307 @@ try {
     RpcIfIdVectorFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingExportA: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingUnexportA: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingExportW: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingUnexportW: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingExportPnPA: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingUnexportPnPA: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingExportPnPW: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingUnexportPnPW: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingLookupBeginA: {
       parameters: ["u32", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingLookupBeginW: {
       parameters: ["u32", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingLookupNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingLookupDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupDeleteA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrAddA: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrRemoveA: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrInqBeginA: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrInqNextA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupDeleteW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrAddW: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrRemoveW: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrInqBeginW: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrInqNextW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsGroupMbrInqDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileDeleteA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltAddA: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltRemoveA: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltInqBeginA: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltInqNextA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileDeleteW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltAddW: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltRemoveW: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltInqBeginW: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltInqNextW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsProfileEltInqDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryObjectInqBeginA: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryObjectInqBeginW: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryObjectInqNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryObjectInqDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryExpandNameA: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtBindingUnexportA: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryCreateA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryDeleteA: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryInqIfIdsA: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtHandleSetExpAge: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtInqExpAge: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtSetExpAge: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     RpcNsEntryExpandNameW: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtBindingUnexportW: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryCreateW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryDeleteW: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsMgmtEntryInqIfIdsW: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingImportBeginA: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingImportBeginW: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingImportNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingImportDone: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RpcNsBindingSelect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsGetBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsSendReceive: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     I_RpcNsRaiseException: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     I_RpcReBindBuffer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20995,32 +21503,32 @@ export function IUnknown_QueryInterface_Proxy(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libRPCRT4_dll.IUnknown_QueryInterface_Proxy(util.toPointer(This), util.toPointer(riid), util.toPointer(ppvObject));
+  return libRPCRT4_dll.IUnknown_QueryInterface_Proxy!(util.toPointer(This), util.toPointer(riid), util.toPointer(ppvObject));
 }
 
 export function IUnknown_AddRef_Proxy(
   This: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.IUnknown_AddRef_Proxy(util.toPointer(This));
+  return libRPCRT4_dll.IUnknown_AddRef_Proxy!(util.toPointer(This));
 }
 
 export function IUnknown_Release_Proxy(
   This: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.IUnknown_Release_Proxy(util.toPointer(This));
+  return libRPCRT4_dll.IUnknown_Release_Proxy!(util.toPointer(This));
 }
 
 export function RpcBindingCopy(
   SourceBinding: Deno.PointerValue | Uint8Array /* ptr */,
   DestinationBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingCopy(util.toPointer(SourceBinding), util.toPointer(DestinationBinding));
+  return libRPCRT4_dll.RpcBindingCopy!(util.toPointer(SourceBinding), util.toPointer(DestinationBinding));
 }
 
 export function RpcBindingFree(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingFree(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingFree!(util.toPointer(Binding));
 }
 
 export function RpcBindingSetOption(
@@ -21028,7 +21536,7 @@ export function RpcBindingSetOption(
   option: number /* u32 */,
   optionValue: bigint | number /* usize */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetOption(util.toPointer(hBinding), option, optionValue);
+  return libRPCRT4_dll.RpcBindingSetOption!(util.toPointer(hBinding), option, optionValue);
 }
 
 export function RpcBindingInqOption(
@@ -21036,82 +21544,82 @@ export function RpcBindingInqOption(
   option: number /* u32 */,
   pOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqOption(util.toPointer(hBinding), option, util.toPointer(pOptionValue));
+  return libRPCRT4_dll.RpcBindingInqOption!(util.toPointer(hBinding), option, util.toPointer(pOptionValue));
 }
 
 export function RpcBindingFromStringBindingA(
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingFromStringBindingA(util.toPointer(StringBinding), util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingFromStringBindingA!(util.toPointer(StringBinding), util.toPointer(Binding));
 }
 
 export function RpcBindingFromStringBindingW(
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingFromStringBindingW(util.toPointer(StringBinding), util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingFromStringBindingW!(util.toPointer(StringBinding), util.toPointer(Binding));
 }
 
 export function RpcSsGetContextBinding(
   ContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSsGetContextBinding(util.toPointer(ContextHandle), util.toPointer(Binding));
+  return libRPCRT4_dll.RpcSsGetContextBinding!(util.toPointer(ContextHandle), util.toPointer(Binding));
 }
 
 export function RpcBindingInqMaxCalls(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   MaxCalls: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqMaxCalls(util.toPointer(Binding), util.toPointer(MaxCalls));
+  return libRPCRT4_dll.RpcBindingInqMaxCalls!(util.toPointer(Binding), util.toPointer(MaxCalls));
 }
 
 export function RpcBindingInqObject(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqObject(util.toPointer(Binding), util.toPointer(ObjectUuid));
+  return libRPCRT4_dll.RpcBindingInqObject!(util.toPointer(Binding), util.toPointer(ObjectUuid));
 }
 
 export function RpcBindingReset(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingReset(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingReset!(util.toPointer(Binding));
 }
 
 export function RpcBindingSetObject(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetObject(util.toPointer(Binding), util.toPointer(ObjectUuid));
+  return libRPCRT4_dll.RpcBindingSetObject!(util.toPointer(Binding), util.toPointer(ObjectUuid));
 }
 
 export function RpcMgmtInqDefaultProtectLevel(
   AuthnSvc: number /* u32 */,
   AuthnLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqDefaultProtectLevel(AuthnSvc, util.toPointer(AuthnLevel));
+  return libRPCRT4_dll.RpcMgmtInqDefaultProtectLevel!(AuthnSvc, util.toPointer(AuthnLevel));
 }
 
 export function RpcBindingToStringBindingA(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingToStringBindingA(util.toPointer(Binding), util.toPointer(StringBinding));
+  return libRPCRT4_dll.RpcBindingToStringBindingA!(util.toPointer(Binding), util.toPointer(StringBinding));
 }
 
 export function RpcBindingToStringBindingW(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingToStringBindingW(util.toPointer(Binding), util.toPointer(StringBinding));
+  return libRPCRT4_dll.RpcBindingToStringBindingW!(util.toPointer(Binding), util.toPointer(StringBinding));
 }
 
 export function RpcBindingVectorFree(
   BindingVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingVectorFree(util.toPointer(BindingVector));
+  return libRPCRT4_dll.RpcBindingVectorFree!(util.toPointer(BindingVector));
 }
 
 export function RpcStringBindingComposeA(
@@ -21122,7 +21630,7 @@ export function RpcStringBindingComposeA(
   Options: Deno.PointerValue | Uint8Array /* ptr */,
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringBindingComposeA(util.toPointer(ObjUuid), util.toPointer(ProtSeq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(Options), util.toPointer(StringBinding));
+  return libRPCRT4_dll.RpcStringBindingComposeA!(util.toPointer(ObjUuid), util.toPointer(ProtSeq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(Options), util.toPointer(StringBinding));
 }
 
 export function RpcStringBindingComposeW(
@@ -21133,7 +21641,7 @@ export function RpcStringBindingComposeW(
   Options: Deno.PointerValue | Uint8Array /* ptr */,
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringBindingComposeW(util.toPointer(ObjUuid), util.toPointer(ProtSeq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(Options), util.toPointer(StringBinding));
+  return libRPCRT4_dll.RpcStringBindingComposeW!(util.toPointer(ObjUuid), util.toPointer(ProtSeq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(Options), util.toPointer(StringBinding));
 }
 
 export function RpcStringBindingParseA(
@@ -21144,7 +21652,7 @@ export function RpcStringBindingParseA(
   Endpoint: Deno.PointerValue | Uint8Array /* ptr */,
   NetworkOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringBindingParseA(util.toPointer(StringBinding), util.toPointer(ObjUuid), util.toPointer(Protseq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(NetworkOptions));
+  return libRPCRT4_dll.RpcStringBindingParseA!(util.toPointer(StringBinding), util.toPointer(ObjUuid), util.toPointer(Protseq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(NetworkOptions));
 }
 
 export function RpcStringBindingParseW(
@@ -21155,115 +21663,115 @@ export function RpcStringBindingParseW(
   Endpoint: Deno.PointerValue | Uint8Array /* ptr */,
   NetworkOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringBindingParseW(util.toPointer(StringBinding), util.toPointer(ObjUuid), util.toPointer(Protseq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(NetworkOptions));
+  return libRPCRT4_dll.RpcStringBindingParseW!(util.toPointer(StringBinding), util.toPointer(ObjUuid), util.toPointer(Protseq), util.toPointer(NetworkAddr), util.toPointer(Endpoint), util.toPointer(NetworkOptions));
 }
 
 export function RpcStringFreeA(
   String: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringFreeA(util.toPointer(String));
+  return libRPCRT4_dll.RpcStringFreeA!(util.toPointer(String));
 }
 
 export function RpcStringFreeW(
   String: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcStringFreeW(util.toPointer(String));
+  return libRPCRT4_dll.RpcStringFreeW!(util.toPointer(String));
 }
 
 export function RpcIfInqId(
   RpcIfHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RpcIfId: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcIfInqId(util.toPointer(RpcIfHandle), util.toPointer(RpcIfId));
+  return libRPCRT4_dll.RpcIfInqId!(util.toPointer(RpcIfHandle), util.toPointer(RpcIfId));
 }
 
 export function RpcNetworkIsProtseqValidA(
   Protseq: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNetworkIsProtseqValidA(util.toPointer(Protseq));
+  return libRPCRT4_dll.RpcNetworkIsProtseqValidA!(util.toPointer(Protseq));
 }
 
 export function RpcNetworkIsProtseqValidW(
   Protseq: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNetworkIsProtseqValidW(util.toPointer(Protseq));
+  return libRPCRT4_dll.RpcNetworkIsProtseqValidW!(util.toPointer(Protseq));
 }
 
 export function RpcMgmtInqComTimeout(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqComTimeout(util.toPointer(Binding), util.toPointer(Timeout));
+  return libRPCRT4_dll.RpcMgmtInqComTimeout!(util.toPointer(Binding), util.toPointer(Timeout));
 }
 
 export function RpcMgmtSetComTimeout(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtSetComTimeout(util.toPointer(Binding), Timeout);
+  return libRPCRT4_dll.RpcMgmtSetComTimeout!(util.toPointer(Binding), Timeout);
 }
 
 export function RpcMgmtSetCancelTimeout(
   Timeout: number /* i32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtSetCancelTimeout(Timeout);
+  return libRPCRT4_dll.RpcMgmtSetCancelTimeout!(Timeout);
 }
 
 export function RpcNetworkInqProtseqsA(
   ProtseqVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNetworkInqProtseqsA(util.toPointer(ProtseqVector));
+  return libRPCRT4_dll.RpcNetworkInqProtseqsA!(util.toPointer(ProtseqVector));
 }
 
 export function RpcNetworkInqProtseqsW(
   ProtseqVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNetworkInqProtseqsW(util.toPointer(ProtseqVector));
+  return libRPCRT4_dll.RpcNetworkInqProtseqsW!(util.toPointer(ProtseqVector));
 }
 
 export function RpcObjectInqType(
   ObjUuid: Deno.PointerValue | Uint8Array /* ptr */,
   TypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcObjectInqType(util.toPointer(ObjUuid), util.toPointer(TypeUuid));
+  return libRPCRT4_dll.RpcObjectInqType!(util.toPointer(ObjUuid), util.toPointer(TypeUuid));
 }
 
 export function RpcObjectSetInqFn(
   InquiryFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_OBJECT_INQ_FN */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcObjectSetInqFn(util.toPointer(InquiryFn));
+  return libRPCRT4_dll.RpcObjectSetInqFn!(util.toPointer(InquiryFn));
 }
 
 export function RpcObjectSetType(
   ObjUuid: Deno.PointerValue | Uint8Array /* ptr */,
   TypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcObjectSetType(util.toPointer(ObjUuid), util.toPointer(TypeUuid));
+  return libRPCRT4_dll.RpcObjectSetType!(util.toPointer(ObjUuid), util.toPointer(TypeUuid));
 }
 
 export function RpcProtseqVectorFreeA(
   ProtseqVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcProtseqVectorFreeA(util.toPointer(ProtseqVector));
+  return libRPCRT4_dll.RpcProtseqVectorFreeA!(util.toPointer(ProtseqVector));
 }
 
 export function RpcProtseqVectorFreeW(
   ProtseqVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcProtseqVectorFreeW(util.toPointer(ProtseqVector));
+  return libRPCRT4_dll.RpcProtseqVectorFreeW!(util.toPointer(ProtseqVector));
 }
 
 export function RpcServerInqBindings(
   BindingVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqBindings(util.toPointer(BindingVector));
+  return libRPCRT4_dll.RpcServerInqBindings!(util.toPointer(BindingVector));
 }
 
 export function RpcServerInqBindingsEx(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   BindingVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqBindingsEx(util.toPointer(SecurityDescriptor), util.toPointer(BindingVector));
+  return libRPCRT4_dll.RpcServerInqBindingsEx!(util.toPointer(SecurityDescriptor), util.toPointer(BindingVector));
 }
 
 export function RpcServerInqIf(
@@ -21271,7 +21779,7 @@ export function RpcServerInqIf(
   MgrTypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
   MgrEpv: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqIf(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv));
+  return libRPCRT4_dll.RpcServerInqIf!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv));
 }
 
 export function RpcServerListen(
@@ -21279,7 +21787,7 @@ export function RpcServerListen(
   MaxCalls: number /* u32 */,
   DontWait: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerListen(MinimumCallThreads, MaxCalls, DontWait);
+  return libRPCRT4_dll.RpcServerListen!(MinimumCallThreads, MaxCalls, DontWait);
 }
 
 export function RpcServerRegisterIf(
@@ -21287,7 +21795,7 @@ export function RpcServerRegisterIf(
   MgrTypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
   MgrEpv: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterIf(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv));
+  return libRPCRT4_dll.RpcServerRegisterIf!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv));
 }
 
 export function RpcServerRegisterIfEx(
@@ -21298,7 +21806,7 @@ export function RpcServerRegisterIfEx(
   MaxCalls: number /* u32 */,
   IfCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_IF_CALLBACK_FN */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterIfEx(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, util.toPointer(IfCallback));
+  return libRPCRT4_dll.RpcServerRegisterIfEx!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, util.toPointer(IfCallback));
 }
 
 export function RpcServerRegisterIf2(
@@ -21310,7 +21818,7 @@ export function RpcServerRegisterIf2(
   MaxRpcSize: number /* u32 */,
   IfCallbackFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_IF_CALLBACK_FN */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterIf2(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, MaxRpcSize, util.toPointer(IfCallbackFn));
+  return libRPCRT4_dll.RpcServerRegisterIf2!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, MaxRpcSize, util.toPointer(IfCallbackFn));
 }
 
 export function RpcServerRegisterIf3(
@@ -21323,7 +21831,7 @@ export function RpcServerRegisterIf3(
   IfCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_IF_CALLBACK_FN */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterIf3(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, MaxRpcSize, util.toPointer(IfCallback), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerRegisterIf3!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), util.toPointer(MgrEpv), Flags, MaxCalls, MaxRpcSize, util.toPointer(IfCallback), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUnregisterIf(
@@ -21331,7 +21839,7 @@ export function RpcServerUnregisterIf(
   MgrTypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
   WaitForCallsToComplete: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUnregisterIf(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), WaitForCallsToComplete);
+  return libRPCRT4_dll.RpcServerUnregisterIf!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), WaitForCallsToComplete);
 }
 
 export function RpcServerUnregisterIfEx(
@@ -21339,14 +21847,14 @@ export function RpcServerUnregisterIfEx(
   MgrTypeUuid: Deno.PointerValue | Uint8Array /* ptr */,
   RundownContextHandles: number /* i32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUnregisterIfEx(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), RundownContextHandles);
+  return libRPCRT4_dll.RpcServerUnregisterIfEx!(util.toPointer(IfSpec), util.toPointer(MgrTypeUuid), RundownContextHandles);
 }
 
 export function RpcServerUseAllProtseqs(
   MaxCalls: number /* u32 */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseAllProtseqs(MaxCalls, util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseAllProtseqs!(MaxCalls, util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseAllProtseqsEx(
@@ -21354,7 +21862,7 @@ export function RpcServerUseAllProtseqsEx(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseAllProtseqsEx(MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseAllProtseqsEx!(MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseAllProtseqsIf(
@@ -21362,7 +21870,7 @@ export function RpcServerUseAllProtseqsIf(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseAllProtseqsIf(MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseAllProtseqsIf!(MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseAllProtseqsIfEx(
@@ -21371,7 +21879,7 @@ export function RpcServerUseAllProtseqsIfEx(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseAllProtseqsIfEx(MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseAllProtseqsIfEx!(MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqA(
@@ -21379,7 +21887,7 @@ export function RpcServerUseProtseqA(
   MaxCalls: number /* u32 */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqA(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqA!(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqExA(
@@ -21388,7 +21896,7 @@ export function RpcServerUseProtseqExA(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqExA(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqExA!(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqW(
@@ -21396,7 +21904,7 @@ export function RpcServerUseProtseqW(
   MaxCalls: number /* u32 */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqW(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqW!(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqExW(
@@ -21405,7 +21913,7 @@ export function RpcServerUseProtseqExW(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqExW(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqExW!(util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqEpA(
@@ -21414,7 +21922,7 @@ export function RpcServerUseProtseqEpA(
   Endpoint: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqEpA(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqEpA!(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqEpExA(
@@ -21424,7 +21932,7 @@ export function RpcServerUseProtseqEpExA(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqEpExA(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqEpExA!(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqEpW(
@@ -21433,7 +21941,7 @@ export function RpcServerUseProtseqEpW(
   Endpoint: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqEpW(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqEpW!(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqEpExW(
@@ -21443,7 +21951,7 @@ export function RpcServerUseProtseqEpExW(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqEpExW(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqEpExW!(util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqIfA(
@@ -21452,7 +21960,7 @@ export function RpcServerUseProtseqIfA(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqIfA(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqIfA!(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqIfExA(
@@ -21462,7 +21970,7 @@ export function RpcServerUseProtseqIfExA(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqIfExA(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqIfExA!(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerUseProtseqIfW(
@@ -21471,7 +21979,7 @@ export function RpcServerUseProtseqIfW(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqIfW(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
+  return libRPCRT4_dll.RpcServerUseProtseqIfW!(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor));
 }
 
 export function RpcServerUseProtseqIfExW(
@@ -21481,67 +21989,67 @@ export function RpcServerUseProtseqIfExW(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUseProtseqIfExW(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.RpcServerUseProtseqIfExW!(util.toPointer(Protseq), MaxCalls, util.toPointer(IfSpec), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function RpcServerYield(): void /* void */ {
-  return libRPCRT4_dll.RpcServerYield();
+  return libRPCRT4_dll.RpcServerYield!();
 }
 
 export function RpcMgmtStatsVectorFree(
   StatsVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtStatsVectorFree(util.toPointer(StatsVector));
+  return libRPCRT4_dll.RpcMgmtStatsVectorFree!(util.toPointer(StatsVector));
 }
 
 export function RpcMgmtInqStats(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqStats(util.toPointer(Binding), util.toPointer(Statistics));
+  return libRPCRT4_dll.RpcMgmtInqStats!(util.toPointer(Binding), util.toPointer(Statistics));
 }
 
 export function RpcMgmtIsServerListening(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtIsServerListening(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcMgmtIsServerListening!(util.toPointer(Binding));
 }
 
 export function RpcMgmtStopServerListening(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtStopServerListening(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcMgmtStopServerListening!(util.toPointer(Binding));
 }
 
 export function RpcMgmtWaitServerListen(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtWaitServerListen();
+  return libRPCRT4_dll.RpcMgmtWaitServerListen!();
 }
 
 export function RpcMgmtSetServerStackSize(
   ThreadStackSize: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtSetServerStackSize(ThreadStackSize);
+  return libRPCRT4_dll.RpcMgmtSetServerStackSize!(ThreadStackSize);
 }
 
 export function RpcSsDontSerializeContext(): void /* void */ {
-  return libRPCRT4_dll.RpcSsDontSerializeContext();
+  return libRPCRT4_dll.RpcSsDontSerializeContext!();
 }
 
 export function RpcMgmtEnableIdleCleanup(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEnableIdleCleanup();
+  return libRPCRT4_dll.RpcMgmtEnableIdleCleanup!();
 }
 
 export function RpcMgmtInqIfIds(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   IfIdVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqIfIds(util.toPointer(Binding), util.toPointer(IfIdVector));
+  return libRPCRT4_dll.RpcMgmtInqIfIds!(util.toPointer(Binding), util.toPointer(IfIdVector));
 }
 
 export function RpcIfIdVectorFree(
   IfIdVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcIfIdVectorFree(util.toPointer(IfIdVector));
+  return libRPCNS4_dll.RpcIfIdVectorFree!(util.toPointer(IfIdVector));
 }
 
 export function RpcMgmtInqServerPrincNameA(
@@ -21549,7 +22057,7 @@ export function RpcMgmtInqServerPrincNameA(
   AuthnSvc: number /* u32 */,
   ServerPrincName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqServerPrincNameA(util.toPointer(Binding), AuthnSvc, util.toPointer(ServerPrincName));
+  return libRPCRT4_dll.RpcMgmtInqServerPrincNameA!(util.toPointer(Binding), AuthnSvc, util.toPointer(ServerPrincName));
 }
 
 export function RpcMgmtInqServerPrincNameW(
@@ -21557,28 +22065,28 @@ export function RpcMgmtInqServerPrincNameW(
   AuthnSvc: number /* u32 */,
   ServerPrincName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtInqServerPrincNameW(util.toPointer(Binding), AuthnSvc, util.toPointer(ServerPrincName));
+  return libRPCRT4_dll.RpcMgmtInqServerPrincNameW!(util.toPointer(Binding), AuthnSvc, util.toPointer(ServerPrincName));
 }
 
 export function RpcServerInqDefaultPrincNameA(
   AuthnSvc: number /* u32 */,
   PrincName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqDefaultPrincNameA(AuthnSvc, util.toPointer(PrincName));
+  return libRPCRT4_dll.RpcServerInqDefaultPrincNameA!(AuthnSvc, util.toPointer(PrincName));
 }
 
 export function RpcServerInqDefaultPrincNameW(
   AuthnSvc: number /* u32 */,
   PrincName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqDefaultPrincNameW(AuthnSvc, util.toPointer(PrincName));
+  return libRPCRT4_dll.RpcServerInqDefaultPrincNameW!(AuthnSvc, util.toPointer(PrincName));
 }
 
 export function RpcEpResolveBinding(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpResolveBinding(util.toPointer(Binding), util.toPointer(IfSpec));
+  return libRPCRT4_dll.RpcEpResolveBinding!(util.toPointer(Binding), util.toPointer(IfSpec));
 }
 
 export function RpcNsBindingInqEntryNameA(
@@ -21586,7 +22094,7 @@ export function RpcNsBindingInqEntryNameA(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNsBindingInqEntryNameA(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCRT4_dll.RpcNsBindingInqEntryNameA!(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcNsBindingInqEntryNameW(
@@ -21594,7 +22102,7 @@ export function RpcNsBindingInqEntryNameW(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcNsBindingInqEntryNameW(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCRT4_dll.RpcNsBindingInqEntryNameW!(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcBindingCreateA(
@@ -21603,7 +22111,7 @@ export function RpcBindingCreateA(
   Options: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingCreateA(util.toPointer(Template), util.toPointer(Security), util.toPointer(Options), util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingCreateA!(util.toPointer(Template), util.toPointer(Security), util.toPointer(Options), util.toPointer(Binding));
 }
 
 export function RpcBindingCreateW(
@@ -21612,45 +22120,45 @@ export function RpcBindingCreateW(
   Options: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingCreateW(util.toPointer(Template), util.toPointer(Security), util.toPointer(Options), util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingCreateW!(util.toPointer(Template), util.toPointer(Security), util.toPointer(Options), util.toPointer(Binding));
 }
 
 export function RpcServerInqBindingHandle(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqBindingHandle(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcServerInqBindingHandle!(util.toPointer(Binding));
 }
 
 export function RpcImpersonateClient(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcImpersonateClient(util.toPointer(BindingHandle));
+  return libRPCRT4_dll.RpcImpersonateClient!(util.toPointer(BindingHandle));
 }
 
 export function RpcImpersonateClient2(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcImpersonateClient2(util.toPointer(BindingHandle));
+  return libRPCRT4_dll.RpcImpersonateClient2!(util.toPointer(BindingHandle));
 }
 
 export function RpcRevertToSelfEx(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcRevertToSelfEx(util.toPointer(BindingHandle));
+  return libRPCRT4_dll.RpcRevertToSelfEx!(util.toPointer(BindingHandle));
 }
 
 export function RpcRevertToSelf(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcRevertToSelf();
+  return libRPCRT4_dll.RpcRevertToSelf!();
 }
 
 export function RpcImpersonateClientContainer(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcImpersonateClientContainer(util.toPointer(BindingHandle));
+  return libRPCRT4_dll.RpcImpersonateClientContainer!(util.toPointer(BindingHandle));
 }
 
 export function RpcRevertContainerImpersonation(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcRevertContainerImpersonation();
+  return libRPCRT4_dll.RpcRevertContainerImpersonation!();
 }
 
 export function RpcBindingInqAuthClientA(
@@ -21661,7 +22169,7 @@ export function RpcBindingInqAuthClientA(
   AuthnSvc: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthClientA(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc));
+  return libRPCRT4_dll.RpcBindingInqAuthClientA!(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc));
 }
 
 export function RpcBindingInqAuthClientW(
@@ -21672,7 +22180,7 @@ export function RpcBindingInqAuthClientW(
   AuthnSvc: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthClientW(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc));
+  return libRPCRT4_dll.RpcBindingInqAuthClientW!(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc));
 }
 
 export function RpcBindingInqAuthClientExA(
@@ -21684,7 +22192,7 @@ export function RpcBindingInqAuthClientExA(
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthClientExA(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc), Flags);
+  return libRPCRT4_dll.RpcBindingInqAuthClientExA!(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc), Flags);
 }
 
 export function RpcBindingInqAuthClientExW(
@@ -21696,7 +22204,7 @@ export function RpcBindingInqAuthClientExW(
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthClientExW(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc), Flags);
+  return libRPCRT4_dll.RpcBindingInqAuthClientExW!(util.toPointer(ClientBinding), util.toPointer(Privs), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthzSvc), Flags);
 }
 
 export function RpcBindingInqAuthInfoA(
@@ -21707,7 +22215,7 @@ export function RpcBindingInqAuthInfoA(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthInfoA(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc));
+  return libRPCRT4_dll.RpcBindingInqAuthInfoA!(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc));
 }
 
 export function RpcBindingInqAuthInfoW(
@@ -21718,7 +22226,7 @@ export function RpcBindingInqAuthInfoW(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthInfoW(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc));
+  return libRPCRT4_dll.RpcBindingInqAuthInfoW!(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc));
 }
 
 export function RpcBindingSetAuthInfoA(
@@ -21729,7 +22237,7 @@ export function RpcBindingSetAuthInfoA(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetAuthInfoA(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc);
+  return libRPCRT4_dll.RpcBindingSetAuthInfoA!(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc);
 }
 
 export function RpcBindingSetAuthInfoExA(
@@ -21741,7 +22249,7 @@ export function RpcBindingSetAuthInfoExA(
   AuthzSvc: number /* u32 */,
   SecurityQos: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetAuthInfoExA(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc, util.toPointer(SecurityQos));
+  return libRPCRT4_dll.RpcBindingSetAuthInfoExA!(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc, util.toPointer(SecurityQos));
 }
 
 export function RpcBindingSetAuthInfoW(
@@ -21752,7 +22260,7 @@ export function RpcBindingSetAuthInfoW(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   AuthzSvc: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetAuthInfoW(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc);
+  return libRPCRT4_dll.RpcBindingSetAuthInfoW!(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc);
 }
 
 export function RpcBindingSetAuthInfoExW(
@@ -21764,7 +22272,7 @@ export function RpcBindingSetAuthInfoExW(
   AuthzSvc: number /* u32 */,
   SecurityQOS: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingSetAuthInfoExW(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc, util.toPointer(SecurityQOS));
+  return libRPCRT4_dll.RpcBindingSetAuthInfoExW!(util.toPointer(Binding), util.toPointer(ServerPrincName), AuthnLevel, AuthnSvc, util.toPointer(AuthIdentity), AuthzSvc, util.toPointer(SecurityQOS));
 }
 
 export function RpcBindingInqAuthInfoExA(
@@ -21777,7 +22285,7 @@ export function RpcBindingInqAuthInfoExA(
   RpcQosVersion: number /* u32 */,
   SecurityQOS: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthInfoExA(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc), RpcQosVersion, util.toPointer(SecurityQOS));
+  return libRPCRT4_dll.RpcBindingInqAuthInfoExA!(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc), RpcQosVersion, util.toPointer(SecurityQOS));
 }
 
 export function RpcBindingInqAuthInfoExW(
@@ -21790,14 +22298,14 @@ export function RpcBindingInqAuthInfoExW(
   RpcQosVersion: number /* u32 */,
   SecurityQOS: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingInqAuthInfoExW(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc), RpcQosVersion, util.toPointer(SecurityQOS));
+  return libRPCRT4_dll.RpcBindingInqAuthInfoExW!(util.toPointer(Binding), util.toPointer(ServerPrincName), util.toPointer(AuthnLevel), util.toPointer(AuthnSvc), util.toPointer(AuthIdentity), util.toPointer(AuthzSvc), RpcQosVersion, util.toPointer(SecurityQOS));
 }
 
 export function RpcServerCompleteSecurityCallback(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Status: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerCompleteSecurityCallback(util.toPointer(BindingHandle), Status);
+  return libRPCRT4_dll.RpcServerCompleteSecurityCallback!(util.toPointer(BindingHandle), Status);
 }
 
 export function RpcServerRegisterAuthInfoA(
@@ -21806,7 +22314,7 @@ export function RpcServerRegisterAuthInfoA(
   GetKeyFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_AUTH_KEY_RETRIEVAL_FN */,
   Arg: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterAuthInfoA(util.toPointer(ServerPrincName), AuthnSvc, util.toPointer(GetKeyFn), util.toPointer(Arg));
+  return libRPCRT4_dll.RpcServerRegisterAuthInfoA!(util.toPointer(ServerPrincName), AuthnSvc, util.toPointer(GetKeyFn), util.toPointer(Arg));
 }
 
 export function RpcServerRegisterAuthInfoW(
@@ -21815,83 +22323,83 @@ export function RpcServerRegisterAuthInfoW(
   GetKeyFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_AUTH_KEY_RETRIEVAL_FN */,
   Arg: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerRegisterAuthInfoW(util.toPointer(ServerPrincName), AuthnSvc, util.toPointer(GetKeyFn), util.toPointer(Arg));
+  return libRPCRT4_dll.RpcServerRegisterAuthInfoW!(util.toPointer(ServerPrincName), AuthnSvc, util.toPointer(GetKeyFn), util.toPointer(Arg));
 }
 
 export function RpcBindingServerFromClient(
   ClientBinding: Deno.PointerValue | Uint8Array /* ptr */,
   ServerBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingServerFromClient(util.toPointer(ClientBinding), util.toPointer(ServerBinding));
+  return libRPCRT4_dll.RpcBindingServerFromClient!(util.toPointer(ClientBinding), util.toPointer(ServerBinding));
 }
 
 export function RpcRaiseException(
   exception: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcRaiseException(exception);
+  return libRPCRT4_dll.RpcRaiseException!(exception);
 }
 
 export function RpcTestCancel(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcTestCancel();
+  return libRPCRT4_dll.RpcTestCancel!();
 }
 
 export function RpcServerTestCancel(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerTestCancel(util.toPointer(BindingHandle));
+  return libRPCRT4_dll.RpcServerTestCancel!(util.toPointer(BindingHandle));
 }
 
 export function RpcCancelThread(
   Thread: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcCancelThread(util.toPointer(Thread));
+  return libRPCRT4_dll.RpcCancelThread!(util.toPointer(Thread));
 }
 
 export function RpcCancelThreadEx(
   Thread: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: number /* i32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcCancelThreadEx(util.toPointer(Thread), Timeout);
+  return libRPCRT4_dll.RpcCancelThreadEx!(util.toPointer(Thread), Timeout);
 }
 
 export function UuidCreate(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidCreate(util.toPointer(Uuid));
+  return libRPCRT4_dll.UuidCreate!(util.toPointer(Uuid));
 }
 
 export function UuidCreateSequential(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidCreateSequential(util.toPointer(Uuid));
+  return libRPCRT4_dll.UuidCreateSequential!(util.toPointer(Uuid));
 }
 
 export function UuidToStringA(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
   StringUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidToStringA(util.toPointer(Uuid), util.toPointer(StringUuid));
+  return libRPCRT4_dll.UuidToStringA!(util.toPointer(Uuid), util.toPointer(StringUuid));
 }
 
 export function UuidFromStringA(
   StringUuid: Deno.PointerValue | Uint8Array /* ptr */,
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidFromStringA(util.toPointer(StringUuid), util.toPointer(Uuid));
+  return libRPCRT4_dll.UuidFromStringA!(util.toPointer(StringUuid), util.toPointer(Uuid));
 }
 
 export function UuidToStringW(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
   StringUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidToStringW(util.toPointer(Uuid), util.toPointer(StringUuid));
+  return libRPCRT4_dll.UuidToStringW!(util.toPointer(Uuid), util.toPointer(StringUuid));
 }
 
 export function UuidFromStringW(
   StringUuid: Deno.PointerValue | Uint8Array /* ptr */,
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidFromStringW(util.toPointer(StringUuid), util.toPointer(Uuid));
+  return libRPCRT4_dll.UuidFromStringW!(util.toPointer(StringUuid), util.toPointer(Uuid));
 }
 
 export function UuidCompare(
@@ -21899,13 +22407,13 @@ export function UuidCompare(
   Uuid2: Deno.PointerValue | Uint8Array /* ptr */,
   Status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.UuidCompare(util.toPointer(Uuid1), util.toPointer(Uuid2), util.toPointer(Status));
+  return libRPCRT4_dll.UuidCompare!(util.toPointer(Uuid1), util.toPointer(Uuid2), util.toPointer(Status));
 }
 
 export function UuidCreateNil(
   NilUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.UuidCreateNil(util.toPointer(NilUuid));
+  return libRPCRT4_dll.UuidCreateNil!(util.toPointer(NilUuid));
 }
 
 export function UuidEqual(
@@ -21913,21 +22421,21 @@ export function UuidEqual(
   Uuid2: Deno.PointerValue | Uint8Array /* ptr */,
   Status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.UuidEqual(util.toPointer(Uuid1), util.toPointer(Uuid2), util.toPointer(Status));
+  return libRPCRT4_dll.UuidEqual!(util.toPointer(Uuid1), util.toPointer(Uuid2), util.toPointer(Status));
 }
 
 export function UuidHash(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
   Status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libRPCRT4_dll.UuidHash(util.toPointer(Uuid), util.toPointer(Status));
+  return libRPCRT4_dll.UuidHash!(util.toPointer(Uuid), util.toPointer(Status));
 }
 
 export function UuidIsNil(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
   Status: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.UuidIsNil(util.toPointer(Uuid), util.toPointer(Status));
+  return libRPCRT4_dll.UuidIsNil!(util.toPointer(Uuid), util.toPointer(Status));
 }
 
 export function RpcEpRegisterNoReplaceA(
@@ -21936,7 +22444,7 @@ export function RpcEpRegisterNoReplaceA(
   UuidVector: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpRegisterNoReplaceA(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcEpRegisterNoReplaceA!(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
 }
 
 export function RpcEpRegisterNoReplaceW(
@@ -21945,7 +22453,7 @@ export function RpcEpRegisterNoReplaceW(
   UuidVector: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpRegisterNoReplaceW(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcEpRegisterNoReplaceW!(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
 }
 
 export function RpcEpRegisterA(
@@ -21954,7 +22462,7 @@ export function RpcEpRegisterA(
   UuidVector: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpRegisterA(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcEpRegisterA!(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
 }
 
 export function RpcEpRegisterW(
@@ -21963,7 +22471,7 @@ export function RpcEpRegisterW(
   UuidVector: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpRegisterW(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcEpRegisterW!(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector), util.toPointer(Annotation));
 }
 
 export function RpcEpUnregister(
@@ -21971,21 +22479,21 @@ export function RpcEpUnregister(
   BindingVector: Deno.PointerValue | Uint8Array /* ptr */,
   UuidVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcEpUnregister(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector));
+  return libRPCRT4_dll.RpcEpUnregister!(util.toPointer(IfSpec), util.toPointer(BindingVector), util.toPointer(UuidVector));
 }
 
 export function DceErrorInqTextA(
   RpcStatus: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
   ErrorText: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.DceErrorInqTextA(RpcStatus, util.toPointer(ErrorText));
+  return libRPCRT4_dll.DceErrorInqTextA!(RpcStatus, util.toPointer(ErrorText));
 }
 
 export function DceErrorInqTextW(
   RpcStatus: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
   ErrorText: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.DceErrorInqTextW(RpcStatus, util.toPointer(ErrorText));
+  return libRPCRT4_dll.DceErrorInqTextW!(RpcStatus, util.toPointer(ErrorText));
 }
 
 export function RpcMgmtEpEltInqBegin(
@@ -21996,13 +22504,13 @@ export function RpcMgmtEpEltInqBegin(
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEpEltInqBegin(util.toPointer(EpBinding), InquiryType, util.toPointer(IfId), VersOption, util.toPointer(ObjectUuid), util.toPointer(InquiryContext));
+  return libRPCRT4_dll.RpcMgmtEpEltInqBegin!(util.toPointer(EpBinding), InquiryType, util.toPointer(IfId), VersOption, util.toPointer(ObjectUuid), util.toPointer(InquiryContext));
 }
 
 export function RpcMgmtEpEltInqDone(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEpEltInqDone(util.toPointer(InquiryContext));
+  return libRPCRT4_dll.RpcMgmtEpEltInqDone!(util.toPointer(InquiryContext));
 }
 
 export function RpcMgmtEpEltInqNextA(
@@ -22012,7 +22520,7 @@ export function RpcMgmtEpEltInqNextA(
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEpEltInqNextA(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcMgmtEpEltInqNextA!(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid), util.toPointer(Annotation));
 }
 
 export function RpcMgmtEpEltInqNextW(
@@ -22022,7 +22530,7 @@ export function RpcMgmtEpEltInqNextW(
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEpEltInqNextW(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid), util.toPointer(Annotation));
+  return libRPCRT4_dll.RpcMgmtEpEltInqNextW!(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid), util.toPointer(Annotation));
 }
 
 export function RpcMgmtEpUnregister(
@@ -22031,19 +22539,19 @@ export function RpcMgmtEpUnregister(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtEpUnregister(util.toPointer(EpBinding), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid));
+  return libRPCRT4_dll.RpcMgmtEpUnregister!(util.toPointer(EpBinding), util.toPointer(IfId), util.toPointer(Binding), util.toPointer(ObjectUuid));
 }
 
 export function RpcMgmtSetAuthorizationFn(
   AuthorizationFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_MGMT_AUTHORIZATION_FN */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcMgmtSetAuthorizationFn(util.toPointer(AuthorizationFn));
+  return libRPCRT4_dll.RpcMgmtSetAuthorizationFn!(util.toPointer(AuthorizationFn));
 }
 
 export function RpcExceptionFilter(
   ExceptionCode: number /* u32 */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.RpcExceptionFilter(ExceptionCode);
+  return libRPCRT4_dll.RpcExceptionFilter!(ExceptionCode);
 }
 
 export function RpcServerInterfaceGroupCreateW(
@@ -22056,7 +22564,7 @@ export function RpcServerInterfaceGroupCreateW(
   IdleCallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupCreateW(util.toPointer(Interfaces), NumIfs, util.toPointer(Endpoints), NumEndpoints, IdlePeriod, util.toPointer(IdleCallbackFn), util.toPointer(IdleCallbackContext), util.toPointer(IfGroup));
+  return libRPCRT4_dll.RpcServerInterfaceGroupCreateW!(util.toPointer(Interfaces), NumIfs, util.toPointer(Endpoints), NumEndpoints, IdlePeriod, util.toPointer(IdleCallbackFn), util.toPointer(IdleCallbackContext), util.toPointer(IfGroup));
 }
 
 export function RpcServerInterfaceGroupCreateA(
@@ -22069,130 +22577,130 @@ export function RpcServerInterfaceGroupCreateA(
   IdleCallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupCreateA(util.toPointer(Interfaces), NumIfs, util.toPointer(Endpoints), NumEndpoints, IdlePeriod, util.toPointer(IdleCallbackFn), util.toPointer(IdleCallbackContext), util.toPointer(IfGroup));
+  return libRPCRT4_dll.RpcServerInterfaceGroupCreateA!(util.toPointer(Interfaces), NumIfs, util.toPointer(Endpoints), NumEndpoints, IdlePeriod, util.toPointer(IdleCallbackFn), util.toPointer(IdleCallbackContext), util.toPointer(IfGroup));
 }
 
 export function RpcServerInterfaceGroupClose(
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupClose(util.toPointer(IfGroup));
+  return libRPCRT4_dll.RpcServerInterfaceGroupClose!(util.toPointer(IfGroup));
 }
 
 export function RpcServerInterfaceGroupActivate(
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupActivate(util.toPointer(IfGroup));
+  return libRPCRT4_dll.RpcServerInterfaceGroupActivate!(util.toPointer(IfGroup));
 }
 
 export function RpcServerInterfaceGroupDeactivate(
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
   ForceDeactivation: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupDeactivate(util.toPointer(IfGroup), ForceDeactivation);
+  return libRPCRT4_dll.RpcServerInterfaceGroupDeactivate!(util.toPointer(IfGroup), ForceDeactivation);
 }
 
 export function RpcServerInterfaceGroupInqBindings(
   IfGroup: Deno.PointerValue | Uint8Array /* ptr */,
   BindingVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInterfaceGroupInqBindings(util.toPointer(IfGroup), util.toPointer(BindingVector));
+  return libRPCRT4_dll.RpcServerInterfaceGroupInqBindings!(util.toPointer(IfGroup), util.toPointer(BindingVector));
 }
 
 export function I_RpcNegotiateTransferSyntax(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcNegotiateTransferSyntax(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcNegotiateTransferSyntax!(util.toPointer(Message));
 }
 
 export function I_RpcGetBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcGetBuffer(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcGetBuffer!(util.toPointer(Message));
 }
 
 export function I_RpcGetBufferWithObject(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcGetBufferWithObject(util.toPointer(Message), util.toPointer(ObjectUuid));
+  return libRPCRT4_dll.I_RpcGetBufferWithObject!(util.toPointer(Message), util.toPointer(ObjectUuid));
 }
 
 export function I_RpcSendReceive(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcSendReceive(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcSendReceive!(util.toPointer(Message));
 }
 
 export function I_RpcFreeBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcFreeBuffer(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcFreeBuffer!(util.toPointer(Message));
 }
 
 export function I_RpcSend(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcSend(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcSend!(util.toPointer(Message));
 }
 
 export function I_RpcReceive(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcReceive(util.toPointer(Message), Size);
+  return libRPCRT4_dll.I_RpcReceive!(util.toPointer(Message), Size);
 }
 
 export function I_RpcFreePipeBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcFreePipeBuffer(util.toPointer(Message));
+  return libRPCRT4_dll.I_RpcFreePipeBuffer!(util.toPointer(Message));
 }
 
 export function I_RpcReallocPipeBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   NewSize: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcReallocPipeBuffer(util.toPointer(Message), NewSize);
+  return libRPCRT4_dll.I_RpcReallocPipeBuffer!(util.toPointer(Message), NewSize);
 }
 
 export function I_RpcRequestMutex(
   Mutex: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcRequestMutex(util.toPointer(Mutex));
+  return libRPCRT4_dll.I_RpcRequestMutex!(util.toPointer(Mutex));
 }
 
 export function I_RpcClearMutex(
   Mutex: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcClearMutex(util.toPointer(Mutex));
+  return libRPCRT4_dll.I_RpcClearMutex!(util.toPointer(Mutex));
 }
 
 export function I_RpcDeleteMutex(
   Mutex: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcDeleteMutex(util.toPointer(Mutex));
+  return libRPCRT4_dll.I_RpcDeleteMutex!(util.toPointer(Mutex));
 }
 
 export function I_RpcAllocate(
   Size: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.I_RpcAllocate(Size);
+  return libRPCRT4_dll.I_RpcAllocate!(Size);
 }
 
 export function I_RpcFree(
   Object: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcFree(util.toPointer(Object));
+  return libRPCRT4_dll.I_RpcFree!(util.toPointer(Object));
 }
 
 export function I_RpcPauseExecution(
   Milliseconds: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcPauseExecution(Milliseconds);
+  return libRPCRT4_dll.I_RpcPauseExecution!(Milliseconds);
 }
 
 export function I_RpcGetExtendedError(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcGetExtendedError();
+  return libRPCRT4_dll.I_RpcGetExtendedError!();
 }
 
 export function I_RpcSystemHandleTypeSpecificWork(
@@ -22201,11 +22709,11 @@ export function I_RpcSystemHandleTypeSpecificWork(
   IdlType: number /* u8 */,
   MarshalDirection: LRPC_SYSTEM_HANDLE_MARSHAL_DIRECTION /* Windows.Win32.System.Rpc.LRPC_SYSTEM_HANDLE_MARSHAL_DIRECTION */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcSystemHandleTypeSpecificWork(util.toPointer(Handle), ActualType, IdlType, MarshalDirection);
+  return libRPCRT4_dll.I_RpcSystemHandleTypeSpecificWork!(util.toPointer(Handle), ActualType, IdlType, MarshalDirection);
 }
 
 export function I_RpcGetCurrentCallHandle(): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.I_RpcGetCurrentCallHandle();
+  return libRPCRT4_dll.I_RpcGetCurrentCallHandle!();
 }
 
 export function I_RpcNsInterfaceExported(
@@ -22213,7 +22721,7 @@ export function I_RpcNsInterfaceExported(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   RpcInterfaceInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcNsInterfaceExported(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(RpcInterfaceInformation));
+  return libRPCRT4_dll.I_RpcNsInterfaceExported!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(RpcInterfaceInformation));
 }
 
 export function I_RpcNsInterfaceUnexported(
@@ -22221,35 +22729,35 @@ export function I_RpcNsInterfaceUnexported(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   RpcInterfaceInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcNsInterfaceUnexported(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(RpcInterfaceInformation));
+  return libRPCRT4_dll.I_RpcNsInterfaceUnexported!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(RpcInterfaceInformation));
 }
 
 export function I_RpcBindingToStaticStringBindingW(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   StringBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingToStaticStringBindingW(util.toPointer(Binding), util.toPointer(StringBinding));
+  return libRPCRT4_dll.I_RpcBindingToStaticStringBindingW!(util.toPointer(Binding), util.toPointer(StringBinding));
 }
 
 export function I_RpcBindingInqSecurityContext(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqSecurityContext(util.toPointer(Binding), util.toPointer(SecurityContextHandle));
+  return libRPCRT4_dll.I_RpcBindingInqSecurityContext!(util.toPointer(Binding), util.toPointer(SecurityContextHandle));
 }
 
 export function I_RpcBindingInqSecurityContextKeyInfo(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   KeyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqSecurityContextKeyInfo(util.toPointer(Binding), util.toPointer(KeyInfo));
+  return libRPCRT4_dll.I_RpcBindingInqSecurityContextKeyInfo!(util.toPointer(Binding), util.toPointer(KeyInfo));
 }
 
 export function I_RpcBindingInqWireIdForSnego(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   WireId: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqWireIdForSnego(util.toPointer(Binding), util.toPointer(WireId));
+  return libRPCRT4_dll.I_RpcBindingInqWireIdForSnego!(util.toPointer(Binding), util.toPointer(WireId));
 }
 
 export function I_RpcBindingInqMarshalledTargetInfo(
@@ -22257,21 +22765,21 @@ export function I_RpcBindingInqMarshalledTargetInfo(
   MarshalledTargetInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
   MarshalledTargetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqMarshalledTargetInfo(util.toPointer(Binding), util.toPointer(MarshalledTargetInfoSize), util.toPointer(MarshalledTargetInfo));
+  return libRPCRT4_dll.I_RpcBindingInqMarshalledTargetInfo!(util.toPointer(Binding), util.toPointer(MarshalledTargetInfoSize), util.toPointer(MarshalledTargetInfo));
 }
 
 export function I_RpcBindingInqLocalClientPID(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   Pid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqLocalClientPID(util.toPointer(Binding), util.toPointer(Pid));
+  return libRPCRT4_dll.I_RpcBindingInqLocalClientPID!(util.toPointer(Binding), util.toPointer(Pid));
 }
 
 export function I_RpcBindingHandleToAsyncHandle(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   AsyncHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingHandleToAsyncHandle(util.toPointer(Binding), util.toPointer(AsyncHandle));
+  return libRPCRT4_dll.I_RpcBindingHandleToAsyncHandle!(util.toPointer(Binding), util.toPointer(AsyncHandle));
 }
 
 export function I_RpcNsBindingSetEntryNameW(
@@ -22279,7 +22787,7 @@ export function I_RpcNsBindingSetEntryNameW(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcNsBindingSetEntryNameW(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCRT4_dll.I_RpcNsBindingSetEntryNameW!(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function I_RpcNsBindingSetEntryNameA(
@@ -22287,7 +22795,7 @@ export function I_RpcNsBindingSetEntryNameA(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcNsBindingSetEntryNameA(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCRT4_dll.I_RpcNsBindingSetEntryNameA!(util.toPointer(Binding), EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function I_RpcServerUseProtseqEp2A(
@@ -22298,7 +22806,7 @@ export function I_RpcServerUseProtseqEp2A(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerUseProtseqEp2A(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.I_RpcServerUseProtseqEp2A!(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function I_RpcServerUseProtseqEp2W(
@@ -22309,7 +22817,7 @@ export function I_RpcServerUseProtseqEp2W(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerUseProtseqEp2W(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.I_RpcServerUseProtseqEp2W!(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(Endpoint), util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function I_RpcServerUseProtseq2W(
@@ -22319,7 +22827,7 @@ export function I_RpcServerUseProtseq2W(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerUseProtseq2W(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.I_RpcServerUseProtseq2W!(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function I_RpcServerUseProtseq2A(
@@ -22329,7 +22837,7 @@ export function I_RpcServerUseProtseq2A(
   SecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerUseProtseq2A(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
+  return libRPCRT4_dll.I_RpcServerUseProtseq2A!(util.toPointer(NetworkAddress), util.toPointer(Protseq), MaxCalls, util.toPointer(SecurityDescriptor), util.toPointer(Policy));
 }
 
 export function I_RpcServerStartService(
@@ -22337,34 +22845,34 @@ export function I_RpcServerStartService(
   Endpoint: Deno.PointerValue | Uint8Array /* ptr */,
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerStartService(util.toPointer(Protseq), util.toPointer(Endpoint), util.toPointer(IfSpec));
+  return libRPCRT4_dll.I_RpcServerStartService!(util.toPointer(Protseq), util.toPointer(Endpoint), util.toPointer(IfSpec));
 }
 
 export function I_RpcBindingInqDynamicEndpointW(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   DynamicEndpoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqDynamicEndpointW(util.toPointer(Binding), util.toPointer(DynamicEndpoint));
+  return libRPCRT4_dll.I_RpcBindingInqDynamicEndpointW!(util.toPointer(Binding), util.toPointer(DynamicEndpoint));
 }
 
 export function I_RpcBindingInqDynamicEndpointA(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   DynamicEndpoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqDynamicEndpointA(util.toPointer(Binding), util.toPointer(DynamicEndpoint));
+  return libRPCRT4_dll.I_RpcBindingInqDynamicEndpointA!(util.toPointer(Binding), util.toPointer(DynamicEndpoint));
 }
 
 export function I_RpcServerCheckClientRestriction(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerCheckClientRestriction(util.toPointer(Context));
+  return libRPCRT4_dll.I_RpcServerCheckClientRestriction!(util.toPointer(Context));
 }
 
 export function I_RpcBindingInqTransportType(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   Type: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqTransportType(util.toPointer(Binding), util.toPointer(Type));
+  return libRPCRT4_dll.I_RpcBindingInqTransportType!(util.toPointer(Binding), util.toPointer(Type));
 }
 
 export function I_RpcIfInqTransferSyntaxes(
@@ -22373,27 +22881,27 @@ export function I_RpcIfInqTransferSyntaxes(
   TransferSyntaxSize: number /* u32 */,
   TransferSyntaxCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcIfInqTransferSyntaxes(util.toPointer(RpcIfHandle), util.toPointer(TransferSyntaxes), TransferSyntaxSize, util.toPointer(TransferSyntaxCount));
+  return libRPCRT4_dll.I_RpcIfInqTransferSyntaxes!(util.toPointer(RpcIfHandle), util.toPointer(TransferSyntaxes), TransferSyntaxSize, util.toPointer(TransferSyntaxCount));
 }
 
 export function I_UuidCreate(
   Uuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_UuidCreate(util.toPointer(Uuid));
+  return libRPCRT4_dll.I_UuidCreate!(util.toPointer(Uuid));
 }
 
 export function I_RpcBindingCopy(
   SourceBinding: Deno.PointerValue | Uint8Array /* ptr */,
   DestinationBinding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingCopy(util.toPointer(SourceBinding), util.toPointer(DestinationBinding));
+  return libRPCRT4_dll.I_RpcBindingCopy!(util.toPointer(SourceBinding), util.toPointer(DestinationBinding));
 }
 
 export function I_RpcBindingIsClientLocal(
   BindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ClientLocalFlag: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingIsClientLocal(util.toPointer(BindingHandle), util.toPointer(ClientLocalFlag));
+  return libRPCRT4_dll.I_RpcBindingIsClientLocal!(util.toPointer(BindingHandle), util.toPointer(ClientLocalFlag));
 }
 
 export function I_RpcBindingCreateNP(
@@ -22402,27 +22910,27 @@ export function I_RpcBindingCreateNP(
   NetworkOptions: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingCreateNP(util.toPointer(ServerName), util.toPointer(ServiceName), util.toPointer(NetworkOptions), util.toPointer(Binding));
+  return libRPCRT4_dll.I_RpcBindingCreateNP!(util.toPointer(ServerName), util.toPointer(ServiceName), util.toPointer(NetworkOptions), util.toPointer(Binding));
 }
 
 export function I_RpcSsDontSerializeContext(): void /* void */ {
-  return libRPCRT4_dll.I_RpcSsDontSerializeContext();
+  return libRPCRT4_dll.I_RpcSsDontSerializeContext!();
 }
 
 export function I_RpcServerRegisterForwardFunction(
   pForwardFunction: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerRegisterForwardFunction(util.toPointer(pForwardFunction));
+  return libRPCRT4_dll.I_RpcServerRegisterForwardFunction!(util.toPointer(pForwardFunction));
 }
 
 export function I_RpcServerInqAddressChangeFn(): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.I_RpcServerInqAddressChangeFn();
+  return libRPCRT4_dll.I_RpcServerInqAddressChangeFn!();
 }
 
 export function I_RpcServerSetAddressChangeFn(
   pAddressChangeFn: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerSetAddressChangeFn(util.toPointer(pAddressChangeFn));
+  return libRPCRT4_dll.I_RpcServerSetAddressChangeFn!(util.toPointer(pAddressChangeFn));
 }
 
 export function I_RpcServerInqLocalConnAddress(
@@ -22431,7 +22939,7 @@ export function I_RpcServerInqLocalConnAddress(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   AddressFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerInqLocalConnAddress(util.toPointer(Binding), util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(AddressFormat));
+  return libRPCRT4_dll.I_RpcServerInqLocalConnAddress!(util.toPointer(Binding), util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(AddressFormat));
 }
 
 export function I_RpcServerInqRemoteConnAddress(
@@ -22440,27 +22948,27 @@ export function I_RpcServerInqRemoteConnAddress(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   AddressFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerInqRemoteConnAddress(util.toPointer(Binding), util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(AddressFormat));
+  return libRPCRT4_dll.I_RpcServerInqRemoteConnAddress!(util.toPointer(Binding), util.toPointer(Buffer), util.toPointer(BufferSize), util.toPointer(AddressFormat));
 }
 
 export function I_RpcSessionStrictContextHandle(): void /* void */ {
-  return libRPCRT4_dll.I_RpcSessionStrictContextHandle();
+  return libRPCRT4_dll.I_RpcSessionStrictContextHandle!();
 }
 
 export function I_RpcTurnOnEEInfoPropagation(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcTurnOnEEInfoPropagation();
+  return libRPCRT4_dll.I_RpcTurnOnEEInfoPropagation!();
 }
 
 export function I_RpcServerInqTransportType(
   Type: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerInqTransportType(util.toPointer(Type));
+  return libRPCRT4_dll.I_RpcServerInqTransportType!(util.toPointer(Type));
 }
 
 export function I_RpcMapWin32Status(
   Status: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.I_RpcMapWin32Status(Status);
+  return libRPCRT4_dll.I_RpcMapWin32Status!(Status);
 }
 
 export function I_RpcRecordCalloutFailure(
@@ -22468,17 +22976,17 @@ export function I_RpcRecordCalloutFailure(
   CallOutState: Deno.PointerValue | Uint8Array /* ptr */,
   DllName: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.I_RpcRecordCalloutFailure(RpcStatus, util.toPointer(CallOutState), util.toPointer(DllName));
+  return libRPCRT4_dll.I_RpcRecordCalloutFailure!(RpcStatus, util.toPointer(CallOutState), util.toPointer(DllName));
 }
 
 export function I_RpcMgmtEnableDedicatedThreadPool(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcMgmtEnableDedicatedThreadPool();
+  return libRPCRT4_dll.I_RpcMgmtEnableDedicatedThreadPool!();
 }
 
 export function I_RpcGetDefaultSD(
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcGetDefaultSD(util.toPointer(ppSecurityDescriptor));
+  return libRPCRT4_dll.I_RpcGetDefaultSD!(util.toPointer(ppSecurityDescriptor));
 }
 
 export function I_RpcOpenClientProcess(
@@ -22486,14 +22994,14 @@ export function I_RpcOpenClientProcess(
   DesiredAccess: number /* u32 */,
   ClientProcess: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcOpenClientProcess(util.toPointer(Binding), DesiredAccess, util.toPointer(ClientProcess));
+  return libRPCRT4_dll.I_RpcOpenClientProcess!(util.toPointer(Binding), DesiredAccess, util.toPointer(ClientProcess));
 }
 
 export function I_RpcBindingIsServerLocal(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   ServerLocalFlag: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingIsServerLocal(util.toPointer(Binding), util.toPointer(ServerLocalFlag));
+  return libRPCRT4_dll.I_RpcBindingIsServerLocal!(util.toPointer(Binding), util.toPointer(ServerLocalFlag));
 }
 
 export function I_RpcBindingSetPrivateOption(
@@ -22501,25 +23009,25 @@ export function I_RpcBindingSetPrivateOption(
   option: number /* u32 */,
   optionValue: bigint | number /* usize */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingSetPrivateOption(util.toPointer(hBinding), option, optionValue);
+  return libRPCRT4_dll.I_RpcBindingSetPrivateOption!(util.toPointer(hBinding), option, optionValue);
 }
 
 export function I_RpcServerSubscribeForDisconnectNotification(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   hEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerSubscribeForDisconnectNotification(util.toPointer(Binding), util.toPointer(hEvent));
+  return libRPCRT4_dll.I_RpcServerSubscribeForDisconnectNotification!(util.toPointer(Binding), util.toPointer(hEvent));
 }
 
 export function I_RpcServerGetAssociationID(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   AssociationID: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerGetAssociationID(util.toPointer(Binding), util.toPointer(AssociationID));
+  return libRPCRT4_dll.I_RpcServerGetAssociationID!(util.toPointer(Binding), util.toPointer(AssociationID));
 }
 
 export function I_RpcServerDisableExceptionFilter(): number /* i32 */ {
-  return libRPCRT4_dll.I_RpcServerDisableExceptionFilter();
+  return libRPCRT4_dll.I_RpcServerDisableExceptionFilter!();
 }
 
 export function I_RpcServerSubscribeForDisconnectNotification2(
@@ -22527,14 +23035,14 @@ export function I_RpcServerSubscribeForDisconnectNotification2(
   hEvent: Deno.PointerValue | Uint8Array /* ptr */,
   SubscriptionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerSubscribeForDisconnectNotification2(util.toPointer(Binding), util.toPointer(hEvent), util.toPointer(SubscriptionId));
+  return libRPCRT4_dll.I_RpcServerSubscribeForDisconnectNotification2!(util.toPointer(Binding), util.toPointer(hEvent), util.toPointer(SubscriptionId));
 }
 
 export function I_RpcServerUnsubscribeForDisconnectNotification(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   SubscriptionId: Uint8Array | Deno.PointerValue /* System.Guid */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcServerUnsubscribeForDisconnectNotification(util.toPointer(Binding), util.toPointer(SubscriptionId));
+  return libRPCRT4_dll.I_RpcServerUnsubscribeForDisconnectNotification!(util.toPointer(Binding), util.toPointer(SubscriptionId));
 }
 
 export function RpcNsBindingExportA(
@@ -22544,7 +23052,7 @@ export function RpcNsBindingExportA(
   BindingVec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingExportA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(BindingVec), util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsBindingExportA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(BindingVec), util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsBindingUnexportA(
@@ -22553,7 +23061,7 @@ export function RpcNsBindingUnexportA(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingUnexportA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsBindingUnexportA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsBindingExportW(
@@ -22563,7 +23071,7 @@ export function RpcNsBindingExportW(
   BindingVec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingExportW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(BindingVec), util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsBindingExportW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(BindingVec), util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsBindingUnexportW(
@@ -22572,7 +23080,7 @@ export function RpcNsBindingUnexportW(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingUnexportW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsBindingUnexportW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsBindingExportPnPA(
@@ -22581,7 +23089,7 @@ export function RpcNsBindingExportPnPA(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingExportPnPA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
+  return libRPCNS4_dll.RpcNsBindingExportPnPA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
 }
 
 export function RpcNsBindingUnexportPnPA(
@@ -22590,7 +23098,7 @@ export function RpcNsBindingUnexportPnPA(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingUnexportPnPA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
+  return libRPCNS4_dll.RpcNsBindingUnexportPnPA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
 }
 
 export function RpcNsBindingExportPnPW(
@@ -22599,7 +23107,7 @@ export function RpcNsBindingExportPnPW(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingExportPnPW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
+  return libRPCNS4_dll.RpcNsBindingExportPnPW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
 }
 
 export function RpcNsBindingUnexportPnPW(
@@ -22608,7 +23116,7 @@ export function RpcNsBindingUnexportPnPW(
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
   ObjectVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingUnexportPnPW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
+  return libRPCNS4_dll.RpcNsBindingUnexportPnPW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjectVector));
 }
 
 export function RpcNsBindingLookupBeginA(
@@ -22619,7 +23127,7 @@ export function RpcNsBindingLookupBeginA(
   BindingMaxCount: number /* u32 */,
   LookupContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingLookupBeginA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), BindingMaxCount, util.toPointer(LookupContext));
+  return libRPCNS4_dll.RpcNsBindingLookupBeginA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), BindingMaxCount, util.toPointer(LookupContext));
 }
 
 export function RpcNsBindingLookupBeginW(
@@ -22630,27 +23138,27 @@ export function RpcNsBindingLookupBeginW(
   BindingMaxCount: number /* u32 */,
   LookupContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingLookupBeginW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), BindingMaxCount, util.toPointer(LookupContext));
+  return libRPCNS4_dll.RpcNsBindingLookupBeginW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), BindingMaxCount, util.toPointer(LookupContext));
 }
 
 export function RpcNsBindingLookupNext(
   LookupContext: Deno.PointerValue | Uint8Array /* ptr */,
   BindingVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingLookupNext(util.toPointer(LookupContext), util.toPointer(BindingVec));
+  return libRPCNS4_dll.RpcNsBindingLookupNext!(util.toPointer(LookupContext), util.toPointer(BindingVec));
 }
 
 export function RpcNsBindingLookupDone(
   LookupContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingLookupDone(util.toPointer(LookupContext));
+  return libRPCNS4_dll.RpcNsBindingLookupDone!(util.toPointer(LookupContext));
 }
 
 export function RpcNsGroupDeleteA(
   GroupNameSyntax: GROUP_NAME_SYNTAX /* Windows.Win32.System.Rpc.GROUP_NAME_SYNTAX */,
   GroupName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupDeleteA(GroupNameSyntax, util.toPointer(GroupName));
+  return libRPCNS4_dll.RpcNsGroupDeleteA!(GroupNameSyntax, util.toPointer(GroupName));
 }
 
 export function RpcNsGroupMbrAddA(
@@ -22659,7 +23167,7 @@ export function RpcNsGroupMbrAddA(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrAddA(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrAddA!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsGroupMbrRemoveA(
@@ -22668,7 +23176,7 @@ export function RpcNsGroupMbrRemoveA(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrRemoveA(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrRemoveA!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsGroupMbrInqBeginA(
@@ -22677,21 +23185,21 @@ export function RpcNsGroupMbrInqBeginA(
   MemberNameSyntax: number /* u32 */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrInqBeginA(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsGroupMbrInqBeginA!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(InquiryContext));
 }
 
 export function RpcNsGroupMbrInqNextA(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrInqNextA(util.toPointer(InquiryContext), util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrInqNextA!(util.toPointer(InquiryContext), util.toPointer(MemberName));
 }
 
 export function RpcNsGroupDeleteW(
   GroupNameSyntax: GROUP_NAME_SYNTAX /* Windows.Win32.System.Rpc.GROUP_NAME_SYNTAX */,
   GroupName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupDeleteW(GroupNameSyntax, util.toPointer(GroupName));
+  return libRPCNS4_dll.RpcNsGroupDeleteW!(GroupNameSyntax, util.toPointer(GroupName));
 }
 
 export function RpcNsGroupMbrAddW(
@@ -22700,7 +23208,7 @@ export function RpcNsGroupMbrAddW(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrAddW(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrAddW!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsGroupMbrRemoveW(
@@ -22709,7 +23217,7 @@ export function RpcNsGroupMbrRemoveW(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrRemoveW(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrRemoveW!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsGroupMbrInqBeginW(
@@ -22718,27 +23226,27 @@ export function RpcNsGroupMbrInqBeginW(
   MemberNameSyntax: number /* u32 */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrInqBeginW(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsGroupMbrInqBeginW!(GroupNameSyntax, util.toPointer(GroupName), MemberNameSyntax, util.toPointer(InquiryContext));
 }
 
 export function RpcNsGroupMbrInqNextW(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrInqNextW(util.toPointer(InquiryContext), util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsGroupMbrInqNextW!(util.toPointer(InquiryContext), util.toPointer(MemberName));
 }
 
 export function RpcNsGroupMbrInqDone(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsGroupMbrInqDone(util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsGroupMbrInqDone!(util.toPointer(InquiryContext));
 }
 
 export function RpcNsProfileDeleteA(
   ProfileNameSyntax: number /* u32 */,
   ProfileName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileDeleteA(ProfileNameSyntax, util.toPointer(ProfileName));
+  return libRPCNS4_dll.RpcNsProfileDeleteA!(ProfileNameSyntax, util.toPointer(ProfileName));
 }
 
 export function RpcNsProfileEltAddA(
@@ -22750,7 +23258,7 @@ export function RpcNsProfileEltAddA(
   Priority: number /* u32 */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltAddA(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName), Priority, util.toPointer(Annotation));
+  return libRPCNS4_dll.RpcNsProfileEltAddA!(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName), Priority, util.toPointer(Annotation));
 }
 
 export function RpcNsProfileEltRemoveA(
@@ -22760,7 +23268,7 @@ export function RpcNsProfileEltRemoveA(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltRemoveA(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsProfileEltRemoveA!(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsProfileEltInqBeginA(
@@ -22773,7 +23281,7 @@ export function RpcNsProfileEltInqBeginA(
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltInqBeginA(ProfileNameSyntax, util.toPointer(ProfileName), InquiryType, util.toPointer(IfId), VersOption, MemberNameSyntax, util.toPointer(MemberName), util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsProfileEltInqBeginA!(ProfileNameSyntax, util.toPointer(ProfileName), InquiryType, util.toPointer(IfId), VersOption, MemberNameSyntax, util.toPointer(MemberName), util.toPointer(InquiryContext));
 }
 
 export function RpcNsProfileEltInqNextA(
@@ -22783,14 +23291,14 @@ export function RpcNsProfileEltInqNextA(
   Priority: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltInqNextA(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(MemberName), util.toPointer(Priority), util.toPointer(Annotation));
+  return libRPCNS4_dll.RpcNsProfileEltInqNextA!(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(MemberName), util.toPointer(Priority), util.toPointer(Annotation));
 }
 
 export function RpcNsProfileDeleteW(
   ProfileNameSyntax: number /* u32 */,
   ProfileName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileDeleteW(ProfileNameSyntax, util.toPointer(ProfileName));
+  return libRPCNS4_dll.RpcNsProfileDeleteW!(ProfileNameSyntax, util.toPointer(ProfileName));
 }
 
 export function RpcNsProfileEltAddW(
@@ -22802,7 +23310,7 @@ export function RpcNsProfileEltAddW(
   Priority: number /* u32 */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltAddW(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName), Priority, util.toPointer(Annotation));
+  return libRPCNS4_dll.RpcNsProfileEltAddW!(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName), Priority, util.toPointer(Annotation));
 }
 
 export function RpcNsProfileEltRemoveW(
@@ -22812,7 +23320,7 @@ export function RpcNsProfileEltRemoveW(
   MemberNameSyntax: number /* u32 */,
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltRemoveW(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName));
+  return libRPCNS4_dll.RpcNsProfileEltRemoveW!(ProfileNameSyntax, util.toPointer(ProfileName), util.toPointer(IfId), MemberNameSyntax, util.toPointer(MemberName));
 }
 
 export function RpcNsProfileEltInqBeginW(
@@ -22825,7 +23333,7 @@ export function RpcNsProfileEltInqBeginW(
   MemberName: Deno.PointerValue | Uint8Array /* ptr */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltInqBeginW(ProfileNameSyntax, util.toPointer(ProfileName), InquiryType, util.toPointer(IfId), VersOption, MemberNameSyntax, util.toPointer(MemberName), util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsProfileEltInqBeginW!(ProfileNameSyntax, util.toPointer(ProfileName), InquiryType, util.toPointer(IfId), VersOption, MemberNameSyntax, util.toPointer(MemberName), util.toPointer(InquiryContext));
 }
 
 export function RpcNsProfileEltInqNextW(
@@ -22835,13 +23343,13 @@ export function RpcNsProfileEltInqNextW(
   Priority: Deno.PointerValue | Uint8Array /* ptr */,
   Annotation: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltInqNextW(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(MemberName), util.toPointer(Priority), util.toPointer(Annotation));
+  return libRPCNS4_dll.RpcNsProfileEltInqNextW!(util.toPointer(InquiryContext), util.toPointer(IfId), util.toPointer(MemberName), util.toPointer(Priority), util.toPointer(Annotation));
 }
 
 export function RpcNsProfileEltInqDone(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsProfileEltInqDone(util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsProfileEltInqDone!(util.toPointer(InquiryContext));
 }
 
 export function RpcNsEntryObjectInqBeginA(
@@ -22849,7 +23357,7 @@ export function RpcNsEntryObjectInqBeginA(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryObjectInqBeginA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsEntryObjectInqBeginA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(InquiryContext));
 }
 
 export function RpcNsEntryObjectInqBeginW(
@@ -22857,20 +23365,20 @@ export function RpcNsEntryObjectInqBeginW(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryObjectInqBeginW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsEntryObjectInqBeginW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(InquiryContext));
 }
 
 export function RpcNsEntryObjectInqNext(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
   ObjUuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryObjectInqNext(util.toPointer(InquiryContext), util.toPointer(ObjUuid));
+  return libRPCNS4_dll.RpcNsEntryObjectInqNext!(util.toPointer(InquiryContext), util.toPointer(ObjUuid));
 }
 
 export function RpcNsEntryObjectInqDone(
   InquiryContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryObjectInqDone(util.toPointer(InquiryContext));
+  return libRPCNS4_dll.RpcNsEntryObjectInqDone!(util.toPointer(InquiryContext));
 }
 
 export function RpcNsEntryExpandNameA(
@@ -22878,7 +23386,7 @@ export function RpcNsEntryExpandNameA(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   ExpandedName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryExpandNameA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(ExpandedName));
+  return libRPCNS4_dll.RpcNsEntryExpandNameA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(ExpandedName));
 }
 
 export function RpcNsMgmtBindingUnexportA(
@@ -22888,21 +23396,21 @@ export function RpcNsMgmtBindingUnexportA(
   VersOption: number /* u32 */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtBindingUnexportA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfId), VersOption, util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsMgmtBindingUnexportA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfId), VersOption, util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsMgmtEntryCreateA(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryCreateA(EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCNS4_dll.RpcNsMgmtEntryCreateA!(EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcNsMgmtEntryDeleteA(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryDeleteA(EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCNS4_dll.RpcNsMgmtEntryDeleteA!(EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcNsMgmtEntryInqIfIdsA(
@@ -22910,26 +23418,26 @@ export function RpcNsMgmtEntryInqIfIdsA(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   IfIdVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryInqIfIdsA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfIdVec));
+  return libRPCNS4_dll.RpcNsMgmtEntryInqIfIdsA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfIdVec));
 }
 
 export function RpcNsMgmtHandleSetExpAge(
   NsHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ExpirationAge: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtHandleSetExpAge(util.toPointer(NsHandle), ExpirationAge);
+  return libRPCNS4_dll.RpcNsMgmtHandleSetExpAge!(util.toPointer(NsHandle), ExpirationAge);
 }
 
 export function RpcNsMgmtInqExpAge(
   ExpirationAge: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtInqExpAge(util.toPointer(ExpirationAge));
+  return libRPCNS4_dll.RpcNsMgmtInqExpAge!(util.toPointer(ExpirationAge));
 }
 
 export function RpcNsMgmtSetExpAge(
   ExpirationAge: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtSetExpAge(ExpirationAge);
+  return libRPCNS4_dll.RpcNsMgmtSetExpAge!(ExpirationAge);
 }
 
 export function RpcNsEntryExpandNameW(
@@ -22937,7 +23445,7 @@ export function RpcNsEntryExpandNameW(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   ExpandedName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsEntryExpandNameW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(ExpandedName));
+  return libRPCNS4_dll.RpcNsEntryExpandNameW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(ExpandedName));
 }
 
 export function RpcNsMgmtBindingUnexportW(
@@ -22947,21 +23455,21 @@ export function RpcNsMgmtBindingUnexportW(
   VersOption: number /* u32 */,
   ObjectUuidVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtBindingUnexportW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfId), VersOption, util.toPointer(ObjectUuidVec));
+  return libRPCNS4_dll.RpcNsMgmtBindingUnexportW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfId), VersOption, util.toPointer(ObjectUuidVec));
 }
 
 export function RpcNsMgmtEntryCreateW(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryCreateW(EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCNS4_dll.RpcNsMgmtEntryCreateW!(EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcNsMgmtEntryDeleteW(
   EntryNameSyntax: number /* u32 */,
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryDeleteW(EntryNameSyntax, util.toPointer(EntryName));
+  return libRPCNS4_dll.RpcNsMgmtEntryDeleteW!(EntryNameSyntax, util.toPointer(EntryName));
 }
 
 export function RpcNsMgmtEntryInqIfIdsW(
@@ -22969,7 +23477,7 @@ export function RpcNsMgmtEntryInqIfIdsW(
   EntryName: Deno.PointerValue | Uint8Array /* ptr */,
   IfIdVec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsMgmtEntryInqIfIdsW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfIdVec));
+  return libRPCNS4_dll.RpcNsMgmtEntryInqIfIdsW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfIdVec));
 }
 
 export function RpcNsBindingImportBeginA(
@@ -22979,7 +23487,7 @@ export function RpcNsBindingImportBeginA(
   ObjUuid: Deno.PointerValue | Uint8Array /* ptr */,
   ImportContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingImportBeginA(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), util.toPointer(ImportContext));
+  return libRPCNS4_dll.RpcNsBindingImportBeginA!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), util.toPointer(ImportContext));
 }
 
 export function RpcNsBindingImportBeginW(
@@ -22989,73 +23497,73 @@ export function RpcNsBindingImportBeginW(
   ObjUuid: Deno.PointerValue | Uint8Array /* ptr */,
   ImportContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingImportBeginW(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), util.toPointer(ImportContext));
+  return libRPCNS4_dll.RpcNsBindingImportBeginW!(EntryNameSyntax, util.toPointer(EntryName), util.toPointer(IfSpec), util.toPointer(ObjUuid), util.toPointer(ImportContext));
 }
 
 export function RpcNsBindingImportNext(
   ImportContext: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingImportNext(util.toPointer(ImportContext), util.toPointer(Binding));
+  return libRPCNS4_dll.RpcNsBindingImportNext!(util.toPointer(ImportContext), util.toPointer(Binding));
 }
 
 export function RpcNsBindingImportDone(
   ImportContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingImportDone(util.toPointer(ImportContext));
+  return libRPCNS4_dll.RpcNsBindingImportDone!(util.toPointer(ImportContext));
 }
 
 export function RpcNsBindingSelect(
   BindingVec: Deno.PointerValue | Uint8Array /* ptr */,
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.RpcNsBindingSelect(util.toPointer(BindingVec), util.toPointer(Binding));
+  return libRPCNS4_dll.RpcNsBindingSelect!(util.toPointer(BindingVec), util.toPointer(Binding));
 }
 
 export function RpcAsyncRegisterInfo(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncRegisterInfo(util.toPointer(pAsync));
+  return libRPCRT4_dll.RpcAsyncRegisterInfo!(util.toPointer(pAsync));
 }
 
 export function RpcAsyncInitializeHandle(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncInitializeHandle(util.toPointer(pAsync), Size);
+  return libRPCRT4_dll.RpcAsyncInitializeHandle!(util.toPointer(pAsync), Size);
 }
 
 export function RpcAsyncGetCallStatus(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncGetCallStatus(util.toPointer(pAsync));
+  return libRPCRT4_dll.RpcAsyncGetCallStatus!(util.toPointer(pAsync));
 }
 
 export function RpcAsyncCompleteCall(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
   Reply: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncCompleteCall(util.toPointer(pAsync), util.toPointer(Reply));
+  return libRPCRT4_dll.RpcAsyncCompleteCall!(util.toPointer(pAsync), util.toPointer(Reply));
 }
 
 export function RpcAsyncAbortCall(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
   ExceptionCode: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncAbortCall(util.toPointer(pAsync), ExceptionCode);
+  return libRPCRT4_dll.RpcAsyncAbortCall!(util.toPointer(pAsync), ExceptionCode);
 }
 
 export function RpcAsyncCancelCall(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
   fAbort: boolean /* Windows.Win32.Foundation.BOOL */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcAsyncCancelCall(util.toPointer(pAsync), util.boolToFfi(fAbort));
+  return libRPCRT4_dll.RpcAsyncCancelCall!(util.toPointer(pAsync), util.boolToFfi(fAbort));
 }
 
 export function RpcErrorStartEnumeration(
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorStartEnumeration(util.toPointer(EnumHandle));
+  return libRPCRT4_dll.RpcErrorStartEnumeration!(util.toPointer(EnumHandle));
 }
 
 export function RpcErrorGetNextRecord(
@@ -23063,26 +23571,26 @@ export function RpcErrorGetNextRecord(
   CopyStrings: boolean /* Windows.Win32.Foundation.BOOL */,
   ErrorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorGetNextRecord(util.toPointer(EnumHandle), util.boolToFfi(CopyStrings), util.toPointer(ErrorInfo));
+  return libRPCRT4_dll.RpcErrorGetNextRecord!(util.toPointer(EnumHandle), util.boolToFfi(CopyStrings), util.toPointer(ErrorInfo));
 }
 
 export function RpcErrorEndEnumeration(
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorEndEnumeration(util.toPointer(EnumHandle));
+  return libRPCRT4_dll.RpcErrorEndEnumeration!(util.toPointer(EnumHandle));
 }
 
 export function RpcErrorResetEnumeration(
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorResetEnumeration(util.toPointer(EnumHandle));
+  return libRPCRT4_dll.RpcErrorResetEnumeration!(util.toPointer(EnumHandle));
 }
 
 export function RpcErrorGetNumberOfRecords(
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Records: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorGetNumberOfRecords(util.toPointer(EnumHandle), util.toPointer(Records));
+  return libRPCRT4_dll.RpcErrorGetNumberOfRecords!(util.toPointer(EnumHandle), util.toPointer(Records));
 }
 
 export function RpcErrorSaveErrorInfo(
@@ -23090,7 +23598,7 @@ export function RpcErrorSaveErrorInfo(
   ErrorBlob: Deno.PointerValue | Uint8Array /* ptr */,
   BlobSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorSaveErrorInfo(util.toPointer(EnumHandle), util.toPointer(ErrorBlob), util.toPointer(BlobSize));
+  return libRPCRT4_dll.RpcErrorSaveErrorInfo!(util.toPointer(EnumHandle), util.toPointer(ErrorBlob), util.toPointer(BlobSize));
 }
 
 export function RpcErrorLoadErrorInfo(
@@ -23098,17 +23606,17 @@ export function RpcErrorLoadErrorInfo(
   BlobSize: bigint | number /* usize */,
   EnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorLoadErrorInfo(util.toPointer(ErrorBlob), BlobSize, util.toPointer(EnumHandle));
+  return libRPCRT4_dll.RpcErrorLoadErrorInfo!(util.toPointer(ErrorBlob), BlobSize, util.toPointer(EnumHandle));
 }
 
 export function RpcErrorAddRecord(
   ErrorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcErrorAddRecord(util.toPointer(ErrorInfo));
+  return libRPCRT4_dll.RpcErrorAddRecord!(util.toPointer(ErrorInfo));
 }
 
 export function RpcErrorClearInformation(): void /* void */ {
-  return libRPCRT4_dll.RpcErrorClearInformation();
+  return libRPCRT4_dll.RpcErrorClearInformation!();
 }
 
 export function RpcGetAuthorizationContextForClient(
@@ -23121,41 +23629,41 @@ export function RpcGetAuthorizationContextForClient(
   Reserved4: Deno.PointerValue | Uint8Array /* ptr */,
   pAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcGetAuthorizationContextForClient(util.toPointer(ClientBinding), util.boolToFfi(ImpersonateOnReturn), util.toPointer(Reserved1), util.toPointer(pExpirationTime), util.toPointer(Reserved2), Reserved3, util.toPointer(Reserved4), util.toPointer(pAuthzClientContext));
+  return libRPCRT4_dll.RpcGetAuthorizationContextForClient!(util.toPointer(ClientBinding), util.boolToFfi(ImpersonateOnReturn), util.toPointer(Reserved1), util.toPointer(pExpirationTime), util.toPointer(Reserved2), Reserved3, util.toPointer(Reserved4), util.toPointer(pAuthzClientContext));
 }
 
 export function RpcFreeAuthorizationContext(
   pAuthzClientContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcFreeAuthorizationContext(util.toPointer(pAuthzClientContext));
+  return libRPCRT4_dll.RpcFreeAuthorizationContext!(util.toPointer(pAuthzClientContext));
 }
 
 export function RpcSsContextLockExclusive(
   ServerBindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSsContextLockExclusive(util.toPointer(ServerBindingHandle), util.toPointer(UserContext));
+  return libRPCRT4_dll.RpcSsContextLockExclusive!(util.toPointer(ServerBindingHandle), util.toPointer(UserContext));
 }
 
 export function RpcSsContextLockShared(
   ServerBindingHandle: Deno.PointerValue | Uint8Array /* ptr */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSsContextLockShared(util.toPointer(ServerBindingHandle), util.toPointer(UserContext));
+  return libRPCRT4_dll.RpcSsContextLockShared!(util.toPointer(ServerBindingHandle), util.toPointer(UserContext));
 }
 
 export function RpcServerInqCallAttributesW(
   ClientBinding: Deno.PointerValue | Uint8Array /* ptr */,
   RpcCallAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqCallAttributesW(util.toPointer(ClientBinding), util.toPointer(RpcCallAttributes));
+  return libRPCRT4_dll.RpcServerInqCallAttributesW!(util.toPointer(ClientBinding), util.toPointer(RpcCallAttributes));
 }
 
 export function RpcServerInqCallAttributesA(
   ClientBinding: Deno.PointerValue | Uint8Array /* ptr */,
   RpcCallAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerInqCallAttributesA(util.toPointer(ClientBinding), util.toPointer(RpcCallAttributes));
+  return libRPCRT4_dll.RpcServerInqCallAttributesA!(util.toPointer(ClientBinding), util.toPointer(RpcCallAttributes));
 }
 
 export function RpcServerSubscribeForNotification(
@@ -23164,7 +23672,7 @@ export function RpcServerSubscribeForNotification(
   NotificationType: RPC_NOTIFICATION_TYPES /* Windows.Win32.System.Rpc.RPC_NOTIFICATION_TYPES */,
   NotificationInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerSubscribeForNotification(util.toPointer(Binding), Notification, NotificationType, util.toPointer(NotificationInfo));
+  return libRPCRT4_dll.RpcServerSubscribeForNotification!(util.toPointer(Binding), Notification, NotificationType, util.toPointer(NotificationInfo));
 }
 
 export function RpcServerUnsubscribeForNotification(
@@ -23172,7 +23680,7 @@ export function RpcServerUnsubscribeForNotification(
   Notification: RPC_NOTIFICATIONS /* Windows.Win32.System.Rpc.RPC_NOTIFICATIONS */,
   NotificationsQueued: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcServerUnsubscribeForNotification(util.toPointer(Binding), Notification, util.toPointer(NotificationsQueued));
+  return libRPCRT4_dll.RpcServerUnsubscribeForNotification!(util.toPointer(Binding), Notification, util.toPointer(NotificationsQueued));
 }
 
 export function RpcBindingBind(
@@ -23180,33 +23688,33 @@ export function RpcBindingBind(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
   IfSpec: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingBind(util.toPointer(pAsync), util.toPointer(Binding), util.toPointer(IfSpec));
+  return libRPCRT4_dll.RpcBindingBind!(util.toPointer(pAsync), util.toPointer(Binding), util.toPointer(IfSpec));
 }
 
 export function RpcBindingUnbind(
   Binding: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcBindingUnbind(util.toPointer(Binding));
+  return libRPCRT4_dll.RpcBindingUnbind!(util.toPointer(Binding));
 }
 
 export function I_RpcAsyncSetHandle(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcAsyncSetHandle(util.toPointer(Message), util.toPointer(pAsync));
+  return libRPCRT4_dll.I_RpcAsyncSetHandle!(util.toPointer(Message), util.toPointer(pAsync));
 }
 
 export function I_RpcAsyncAbortCall(
   pAsync: Deno.PointerValue | Uint8Array /* ptr */,
   ExceptionCode: number /* u32 */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcAsyncAbortCall(util.toPointer(pAsync), ExceptionCode);
+  return libRPCRT4_dll.I_RpcAsyncAbortCall!(util.toPointer(pAsync), ExceptionCode);
 }
 
 export function I_RpcExceptionFilter(
   ExceptionCode: number /* u32 */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.I_RpcExceptionFilter(ExceptionCode);
+  return libRPCRT4_dll.I_RpcExceptionFilter!(ExceptionCode);
 }
 
 export function I_RpcBindingInqClientTokenAttributes(
@@ -23215,46 +23723,46 @@ export function I_RpcBindingInqClientTokenAttributes(
   AuthenticationId: Deno.PointerValue | Uint8Array /* ptr */,
   ModifiedId: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.I_RpcBindingInqClientTokenAttributes(util.toPointer(Binding), util.toPointer(TokenId), util.toPointer(AuthenticationId), util.toPointer(ModifiedId));
+  return libRPCRT4_dll.I_RpcBindingInqClientTokenAttributes!(util.toPointer(Binding), util.toPointer(TokenId), util.toPointer(AuthenticationId), util.toPointer(ModifiedId));
 }
 
 export function I_RpcNsGetBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.I_RpcNsGetBuffer(util.toPointer(Message));
+  return libRPCNS4_dll.I_RpcNsGetBuffer!(util.toPointer(Message));
 }
 
 export function I_RpcNsSendReceive(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.I_RpcNsSendReceive(util.toPointer(Message), util.toPointer(Handle));
+  return libRPCNS4_dll.I_RpcNsSendReceive!(util.toPointer(Message), util.toPointer(Handle));
 }
 
 export function I_RpcNsRaiseException(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   Status: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
 ): void /* void */ {
-  return libRPCNS4_dll.I_RpcNsRaiseException(util.toPointer(Message), Status);
+  return libRPCNS4_dll.I_RpcNsRaiseException!(util.toPointer(Message), Status);
 }
 
 export function I_RpcReBindBuffer(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCNS4_dll.I_RpcReBindBuffer(util.toPointer(Message));
+  return libRPCNS4_dll.I_RpcReBindBuffer!(util.toPointer(Message));
 }
 
 export function NDRCContextBinding(
   CContext: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NDRCContextBinding(CContext);
+  return libRPCRT4_dll.NDRCContextBinding!(CContext);
 }
 
 export function NDRCContextMarshall(
   CContext: bigint | number /* isize */,
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NDRCContextMarshall(CContext, util.toPointer(pBuff));
+  return libRPCRT4_dll.NDRCContextMarshall!(CContext, util.toPointer(pBuff));
 }
 
 export function NDRCContextUnmarshall(
@@ -23263,7 +23771,7 @@ export function NDRCContextUnmarshall(
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
   DataRepresentation: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NDRCContextUnmarshall(util.toPointer(pCContext), util.toPointer(hBinding), util.toPointer(pBuff), DataRepresentation);
+  return libRPCRT4_dll.NDRCContextUnmarshall!(util.toPointer(pCContext), util.toPointer(hBinding), util.toPointer(pBuff), DataRepresentation);
 }
 
 export function NDRSContextMarshall(
@@ -23271,14 +23779,14 @@ export function NDRSContextMarshall(
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
   userRunDownIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.NDR_RUNDOWN */,
 ): void /* void */ {
-  return libRPCRT4_dll.NDRSContextMarshall(util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn));
+  return libRPCRT4_dll.NDRSContextMarshall!(util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn));
 }
 
 export function NDRSContextUnmarshall(
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
   DataRepresentation: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NDRSContextUnmarshall(util.toPointer(pBuff), DataRepresentation);
+  return libRPCRT4_dll.NDRSContextUnmarshall!(util.toPointer(pBuff), DataRepresentation);
 }
 
 export function NDRSContextMarshallEx(
@@ -23287,7 +23795,7 @@ export function NDRSContextMarshallEx(
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
   userRunDownIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.NDR_RUNDOWN */,
 ): void /* void */ {
-  return libRPCRT4_dll.NDRSContextMarshallEx(util.toPointer(BindingHandle), util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn));
+  return libRPCRT4_dll.NDRSContextMarshallEx!(util.toPointer(BindingHandle), util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn));
 }
 
 export function NDRSContextMarshall2(
@@ -23298,7 +23806,7 @@ export function NDRSContextMarshall2(
   CtxGuard: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NDRSContextMarshall2(util.toPointer(BindingHandle), util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn), util.toPointer(CtxGuard), Flags);
+  return libRPCRT4_dll.NDRSContextMarshall2!(util.toPointer(BindingHandle), util.toPointer(CContext), util.toPointer(pBuff), util.toPointer(userRunDownIn), util.toPointer(CtxGuard), Flags);
 }
 
 export function NDRSContextUnmarshallEx(
@@ -23306,7 +23814,7 @@ export function NDRSContextUnmarshallEx(
   pBuff: Deno.PointerValue | Uint8Array /* ptr */,
   DataRepresentation: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NDRSContextUnmarshallEx(util.toPointer(BindingHandle), util.toPointer(pBuff), DataRepresentation);
+  return libRPCRT4_dll.NDRSContextUnmarshallEx!(util.toPointer(BindingHandle), util.toPointer(pBuff), DataRepresentation);
 }
 
 export function NDRSContextUnmarshall2(
@@ -23316,13 +23824,13 @@ export function NDRSContextUnmarshall2(
   CtxGuard: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NDRSContextUnmarshall2(util.toPointer(BindingHandle), util.toPointer(pBuff), DataRepresentation, util.toPointer(CtxGuard), Flags);
+  return libRPCRT4_dll.NDRSContextUnmarshall2!(util.toPointer(BindingHandle), util.toPointer(pBuff), DataRepresentation, util.toPointer(CtxGuard), Flags);
 }
 
 export function RpcSsDestroyClientContext(
   ContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcSsDestroyClientContext(util.toPointer(ContextHandle));
+  return libRPCRT4_dll.RpcSsDestroyClientContext!(util.toPointer(ContextHandle));
 }
 
 export function NdrSimpleTypeMarshall(
@@ -23330,7 +23838,7 @@ export function NdrSimpleTypeMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   FormatChar: number /* u8 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrSimpleTypeMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), FormatChar);
+  return libRPCRT4_dll.NdrSimpleTypeMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), FormatChar);
 }
 
 export function NdrPointerMarshall(
@@ -23338,7 +23846,7 @@ export function NdrPointerMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrPointerMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrPointerMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrSimpleStructMarshall(
@@ -23346,7 +23854,7 @@ export function NdrSimpleStructMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrSimpleStructMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrSimpleStructMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantStructMarshall(
@@ -23354,7 +23862,7 @@ export function NdrConformantStructMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantStructMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStructMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingStructMarshall(
@@ -23362,7 +23870,7 @@ export function NdrConformantVaryingStructMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantVaryingStructMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingStructMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexStructMarshall(
@@ -23370,7 +23878,7 @@ export function NdrComplexStructMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrComplexStructMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexStructMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrFixedArrayMarshall(
@@ -23378,7 +23886,7 @@ export function NdrFixedArrayMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrFixedArrayMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrFixedArrayMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantArrayMarshall(
@@ -23386,7 +23894,7 @@ export function NdrConformantArrayMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantArrayMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantArrayMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingArrayMarshall(
@@ -23394,7 +23902,7 @@ export function NdrConformantVaryingArrayMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantVaryingArrayMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingArrayMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrVaryingArrayMarshall(
@@ -23402,7 +23910,7 @@ export function NdrVaryingArrayMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrVaryingArrayMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrVaryingArrayMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexArrayMarshall(
@@ -23410,7 +23918,7 @@ export function NdrComplexArrayMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrComplexArrayMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexArrayMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrNonConformantStringMarshall(
@@ -23418,7 +23926,7 @@ export function NdrNonConformantStringMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNonConformantStringMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonConformantStringMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantStringMarshall(
@@ -23426,7 +23934,7 @@ export function NdrConformantStringMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantStringMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStringMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrEncapsulatedUnionMarshall(
@@ -23434,7 +23942,7 @@ export function NdrEncapsulatedUnionMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrEncapsulatedUnionMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrEncapsulatedUnionMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrNonEncapsulatedUnionMarshall(
@@ -23442,7 +23950,7 @@ export function NdrNonEncapsulatedUnionMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNonEncapsulatedUnionMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonEncapsulatedUnionMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrByteCountPointerMarshall(
@@ -23450,7 +23958,7 @@ export function NdrByteCountPointerMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrByteCountPointerMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrByteCountPointerMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrXmitOrRepAsMarshall(
@@ -23458,7 +23966,7 @@ export function NdrXmitOrRepAsMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrXmitOrRepAsMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrXmitOrRepAsMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrUserMarshalMarshall(
@@ -23466,7 +23974,7 @@ export function NdrUserMarshalMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrUserMarshalMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrUserMarshalMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrInterfacePointerMarshall(
@@ -23474,7 +23982,7 @@ export function NdrInterfacePointerMarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrInterfacePointerMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrInterfacePointerMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrClientContextMarshall(
@@ -23482,7 +23990,7 @@ export function NdrClientContextMarshall(
   ContextHandle: bigint | number /* isize */,
   fCheck: number /* i32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrClientContextMarshall(util.toPointer(pStubMsg), ContextHandle, fCheck);
+  return libRPCRT4_dll.NdrClientContextMarshall!(util.toPointer(pStubMsg), ContextHandle, fCheck);
 }
 
 export function NdrServerContextMarshall(
@@ -23490,7 +23998,7 @@ export function NdrServerContextMarshall(
   ContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
   RundownRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.NDR_RUNDOWN */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerContextMarshall(util.toPointer(pStubMsg), util.toPointer(ContextHandle), util.toPointer(RundownRoutine));
+  return libRPCRT4_dll.NdrServerContextMarshall!(util.toPointer(pStubMsg), util.toPointer(ContextHandle), util.toPointer(RundownRoutine));
 }
 
 export function NdrServerContextNewMarshall(
@@ -23499,7 +24007,7 @@ export function NdrServerContextNewMarshall(
   RundownRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.NDR_RUNDOWN */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerContextNewMarshall(util.toPointer(pStubMsg), util.toPointer(ContextHandle), util.toPointer(RundownRoutine), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrServerContextNewMarshall!(util.toPointer(pStubMsg), util.toPointer(ContextHandle), util.toPointer(RundownRoutine), util.toPointer(pFormat));
 }
 
 export function NdrSimpleTypeUnmarshall(
@@ -23507,7 +24015,7 @@ export function NdrSimpleTypeUnmarshall(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   FormatChar: number /* u8 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrSimpleTypeUnmarshall(util.toPointer(pStubMsg), util.toPointer(pMemory), FormatChar);
+  return libRPCRT4_dll.NdrSimpleTypeUnmarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory), FormatChar);
 }
 
 export function NdrRangeUnmarshall(
@@ -23516,7 +24024,7 @@ export function NdrRangeUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrRangeUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrRangeUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrCorrelationInitialize(
@@ -23525,19 +24033,19 @@ export function NdrCorrelationInitialize(
   CacheSize: number /* u32 */,
   flags: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrCorrelationInitialize(util.toPointer(pStubMsg), util.toPointer(pMemory), CacheSize, flags);
+  return libRPCRT4_dll.NdrCorrelationInitialize!(util.toPointer(pStubMsg), util.toPointer(pMemory), CacheSize, flags);
 }
 
 export function NdrCorrelationPass(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrCorrelationPass(util.toPointer(pStubMsg));
+  return libRPCRT4_dll.NdrCorrelationPass!(util.toPointer(pStubMsg));
 }
 
 export function NdrCorrelationFree(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrCorrelationFree(util.toPointer(pStubMsg));
+  return libRPCRT4_dll.NdrCorrelationFree!(util.toPointer(pStubMsg));
 }
 
 export function NdrPointerUnmarshall(
@@ -23546,7 +24054,7 @@ export function NdrPointerUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrPointerUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrPointerUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrSimpleStructUnmarshall(
@@ -23555,7 +24063,7 @@ export function NdrSimpleStructUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrSimpleStructUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrSimpleStructUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrConformantStructUnmarshall(
@@ -23564,7 +24072,7 @@ export function NdrConformantStructUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantStructUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrConformantStructUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrConformantVaryingStructUnmarshall(
@@ -23573,7 +24081,7 @@ export function NdrConformantVaryingStructUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantVaryingStructUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrConformantVaryingStructUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrComplexStructUnmarshall(
@@ -23582,7 +24090,7 @@ export function NdrComplexStructUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrComplexStructUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrComplexStructUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrFixedArrayUnmarshall(
@@ -23591,7 +24099,7 @@ export function NdrFixedArrayUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrFixedArrayUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrFixedArrayUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrConformantArrayUnmarshall(
@@ -23600,7 +24108,7 @@ export function NdrConformantArrayUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantArrayUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrConformantArrayUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrConformantVaryingArrayUnmarshall(
@@ -23609,7 +24117,7 @@ export function NdrConformantVaryingArrayUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantVaryingArrayUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrConformantVaryingArrayUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrVaryingArrayUnmarshall(
@@ -23618,7 +24126,7 @@ export function NdrVaryingArrayUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrVaryingArrayUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrVaryingArrayUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrComplexArrayUnmarshall(
@@ -23627,7 +24135,7 @@ export function NdrComplexArrayUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrComplexArrayUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrComplexArrayUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrNonConformantStringUnmarshall(
@@ -23636,7 +24144,7 @@ export function NdrNonConformantStringUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNonConformantStringUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrNonConformantStringUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrConformantStringUnmarshall(
@@ -23645,7 +24153,7 @@ export function NdrConformantStringUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrConformantStringUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrConformantStringUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrEncapsulatedUnionUnmarshall(
@@ -23654,7 +24162,7 @@ export function NdrEncapsulatedUnionUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrEncapsulatedUnionUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrEncapsulatedUnionUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrNonEncapsulatedUnionUnmarshall(
@@ -23663,7 +24171,7 @@ export function NdrNonEncapsulatedUnionUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNonEncapsulatedUnionUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrNonEncapsulatedUnionUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrByteCountPointerUnmarshall(
@@ -23672,7 +24180,7 @@ export function NdrByteCountPointerUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrByteCountPointerUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrByteCountPointerUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrXmitOrRepAsUnmarshall(
@@ -23681,7 +24189,7 @@ export function NdrXmitOrRepAsUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrXmitOrRepAsUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrXmitOrRepAsUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrUserMarshalUnmarshall(
@@ -23690,7 +24198,7 @@ export function NdrUserMarshalUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrUserMarshalUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrUserMarshalUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrInterfacePointerUnmarshall(
@@ -23699,7 +24207,7 @@ export function NdrInterfacePointerUnmarshall(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   fMustAlloc: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrInterfacePointerUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
+  return libRPCRT4_dll.NdrInterfacePointerUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat), fMustAlloc);
 }
 
 export function NdrClientContextUnmarshall(
@@ -23707,27 +24215,27 @@ export function NdrClientContextUnmarshall(
   pContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
   BindHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrClientContextUnmarshall(util.toPointer(pStubMsg), util.toPointer(pContextHandle), util.toPointer(BindHandle));
+  return libRPCRT4_dll.NdrClientContextUnmarshall!(util.toPointer(pStubMsg), util.toPointer(pContextHandle), util.toPointer(BindHandle));
 }
 
 export function NdrServerContextUnmarshall(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrServerContextUnmarshall(util.toPointer(pStubMsg));
+  return libRPCRT4_dll.NdrServerContextUnmarshall!(util.toPointer(pStubMsg));
 }
 
 export function NdrContextHandleInitialize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrContextHandleInitialize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrContextHandleInitialize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrServerContextNewUnmarshall(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrServerContextNewUnmarshall(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrServerContextNewUnmarshall!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrPointerBufferSize(
@@ -23735,7 +24243,7 @@ export function NdrPointerBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPointerBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrPointerBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrSimpleStructBufferSize(
@@ -23743,7 +24251,7 @@ export function NdrSimpleStructBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrSimpleStructBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrSimpleStructBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantStructBufferSize(
@@ -23751,7 +24259,7 @@ export function NdrConformantStructBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantStructBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStructBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingStructBufferSize(
@@ -23759,7 +24267,7 @@ export function NdrConformantVaryingStructBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantVaryingStructBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingStructBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexStructBufferSize(
@@ -23767,7 +24275,7 @@ export function NdrComplexStructBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrComplexStructBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexStructBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrFixedArrayBufferSize(
@@ -23775,7 +24283,7 @@ export function NdrFixedArrayBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrFixedArrayBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrFixedArrayBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantArrayBufferSize(
@@ -23783,7 +24291,7 @@ export function NdrConformantArrayBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantArrayBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantArrayBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingArrayBufferSize(
@@ -23791,7 +24299,7 @@ export function NdrConformantVaryingArrayBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantVaryingArrayBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingArrayBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrVaryingArrayBufferSize(
@@ -23799,7 +24307,7 @@ export function NdrVaryingArrayBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrVaryingArrayBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrVaryingArrayBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexArrayBufferSize(
@@ -23807,7 +24315,7 @@ export function NdrComplexArrayBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrComplexArrayBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexArrayBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantStringBufferSize(
@@ -23815,7 +24323,7 @@ export function NdrConformantStringBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantStringBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStringBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrNonConformantStringBufferSize(
@@ -23823,7 +24331,7 @@ export function NdrNonConformantStringBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrNonConformantStringBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonConformantStringBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrEncapsulatedUnionBufferSize(
@@ -23831,7 +24339,7 @@ export function NdrEncapsulatedUnionBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrEncapsulatedUnionBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrEncapsulatedUnionBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrNonEncapsulatedUnionBufferSize(
@@ -23839,7 +24347,7 @@ export function NdrNonEncapsulatedUnionBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrNonEncapsulatedUnionBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonEncapsulatedUnionBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrByteCountPointerBufferSize(
@@ -23847,7 +24355,7 @@ export function NdrByteCountPointerBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrByteCountPointerBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrByteCountPointerBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrXmitOrRepAsBufferSize(
@@ -23855,7 +24363,7 @@ export function NdrXmitOrRepAsBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrXmitOrRepAsBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrXmitOrRepAsBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrUserMarshalBufferSize(
@@ -23863,7 +24371,7 @@ export function NdrUserMarshalBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrUserMarshalBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrUserMarshalBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrInterfacePointerBufferSize(
@@ -23871,7 +24379,7 @@ export function NdrInterfacePointerBufferSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrInterfacePointerBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrInterfacePointerBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrContextHandleSize(
@@ -23879,126 +24387,126 @@ export function NdrContextHandleSize(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrContextHandleSize(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrContextHandleSize!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrPointerMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrPointerMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrPointerMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrSimpleStructMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrSimpleStructMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrSimpleStructMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrConformantStructMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrConformantStructMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStructMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingStructMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrConformantVaryingStructMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingStructMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrComplexStructMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrComplexStructMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexStructMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrFixedArrayMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrFixedArrayMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrFixedArrayMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrConformantArrayMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrConformantArrayMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantArrayMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingArrayMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrConformantVaryingArrayMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingArrayMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrVaryingArrayMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrVaryingArrayMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrVaryingArrayMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrComplexArrayMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrComplexArrayMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexArrayMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrConformantStringMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrConformantStringMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStringMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrNonConformantStringMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrNonConformantStringMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonConformantStringMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrEncapsulatedUnionMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrEncapsulatedUnionMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrEncapsulatedUnionMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrNonEncapsulatedUnionMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrNonEncapsulatedUnionMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonEncapsulatedUnionMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrXmitOrRepAsMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrXmitOrRepAsMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrXmitOrRepAsMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrUserMarshalMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrUserMarshalMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrUserMarshalMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrInterfacePointerMemorySize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRPCRT4_dll.NdrInterfacePointerMemorySize(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrInterfacePointerMemorySize!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrPointerFree(
@@ -24006,7 +24514,7 @@ export function NdrPointerFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPointerFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrPointerFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrSimpleStructFree(
@@ -24014,7 +24522,7 @@ export function NdrSimpleStructFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrSimpleStructFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrSimpleStructFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantStructFree(
@@ -24022,7 +24530,7 @@ export function NdrConformantStructFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantStructFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantStructFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingStructFree(
@@ -24030,7 +24538,7 @@ export function NdrConformantVaryingStructFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantVaryingStructFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingStructFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexStructFree(
@@ -24038,7 +24546,7 @@ export function NdrComplexStructFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrComplexStructFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexStructFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrFixedArrayFree(
@@ -24046,7 +24554,7 @@ export function NdrFixedArrayFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrFixedArrayFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrFixedArrayFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantArrayFree(
@@ -24054,7 +24562,7 @@ export function NdrConformantArrayFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantArrayFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantArrayFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConformantVaryingArrayFree(
@@ -24062,7 +24570,7 @@ export function NdrConformantVaryingArrayFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConformantVaryingArrayFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConformantVaryingArrayFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrVaryingArrayFree(
@@ -24070,7 +24578,7 @@ export function NdrVaryingArrayFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrVaryingArrayFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrVaryingArrayFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrComplexArrayFree(
@@ -24078,7 +24586,7 @@ export function NdrComplexArrayFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrComplexArrayFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrComplexArrayFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrEncapsulatedUnionFree(
@@ -24086,7 +24594,7 @@ export function NdrEncapsulatedUnionFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrEncapsulatedUnionFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrEncapsulatedUnionFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrNonEncapsulatedUnionFree(
@@ -24094,7 +24602,7 @@ export function NdrNonEncapsulatedUnionFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrNonEncapsulatedUnionFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrNonEncapsulatedUnionFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrByteCountPointerFree(
@@ -24102,7 +24610,7 @@ export function NdrByteCountPointerFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrByteCountPointerFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrByteCountPointerFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrXmitOrRepAsFree(
@@ -24110,7 +24618,7 @@ export function NdrXmitOrRepAsFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrXmitOrRepAsFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrXmitOrRepAsFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrUserMarshalFree(
@@ -24118,7 +24626,7 @@ export function NdrUserMarshalFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrUserMarshalFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrUserMarshalFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrInterfacePointerFree(
@@ -24126,7 +24634,7 @@ export function NdrInterfacePointerFree(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrInterfacePointerFree(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrInterfacePointerFree!(util.toPointer(pStubMsg), util.toPointer(pMemory), util.toPointer(pFormat));
 }
 
 export function NdrConvert2(
@@ -24134,14 +24642,14 @@ export function NdrConvert2(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   NumberParams: number /* i32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConvert2(util.toPointer(pStubMsg), util.toPointer(pFormat), NumberParams);
+  return libRPCRT4_dll.NdrConvert2!(util.toPointer(pStubMsg), util.toPointer(pFormat), NumberParams);
 }
 
 export function NdrConvert(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrConvert(util.toPointer(pStubMsg), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrConvert!(util.toPointer(pStubMsg), util.toPointer(pFormat));
 }
 
 export function NdrUserMarshalSimpleTypeConvert(
@@ -24149,7 +24657,7 @@ export function NdrUserMarshalSimpleTypeConvert(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   FormatChar: number /* u8 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrUserMarshalSimpleTypeConvert(util.toPointer(pFlags), util.toPointer(pBuffer), FormatChar);
+  return libRPCRT4_dll.NdrUserMarshalSimpleTypeConvert!(util.toPointer(pFlags), util.toPointer(pBuffer), FormatChar);
 }
 
 export function NdrClientInitializeNew(
@@ -24158,7 +24666,7 @@ export function NdrClientInitializeNew(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   ProcNum: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrClientInitializeNew(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), ProcNum);
+  return libRPCRT4_dll.NdrClientInitializeNew!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), ProcNum);
 }
 
 export function NdrServerInitializeNew(
@@ -24166,7 +24674,7 @@ export function NdrServerInitializeNew(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrServerInitializeNew(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor));
+  return libRPCRT4_dll.NdrServerInitializeNew!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor));
 }
 
 export function NdrServerInitializePartial(
@@ -24175,7 +24683,7 @@ export function NdrServerInitializePartial(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   RequestedBufferSize: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerInitializePartial(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), RequestedBufferSize);
+  return libRPCRT4_dll.NdrServerInitializePartial!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), RequestedBufferSize);
 }
 
 export function NdrClientInitialize(
@@ -24184,7 +24692,7 @@ export function NdrClientInitialize(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   ProcNum: number /* u32 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrClientInitialize(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), ProcNum);
+  return libRPCRT4_dll.NdrClientInitialize!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), ProcNum);
 }
 
 export function NdrServerInitialize(
@@ -24192,7 +24700,7 @@ export function NdrServerInitialize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrServerInitialize(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor));
+  return libRPCRT4_dll.NdrServerInitialize!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg), util.toPointer(pStubDescriptor));
 }
 
 export function NdrServerInitializeUnmarshall(
@@ -24200,14 +24708,14 @@ export function NdrServerInitializeUnmarshall(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrServerInitializeUnmarshall(util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.NdrServerInitializeUnmarshall!(util.toPointer(pStubMsg), util.toPointer(pStubDescriptor), util.toPointer(pRpcMsg));
 }
 
 export function NdrServerInitializeMarshall(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerInitializeMarshall(util.toPointer(pRpcMsg), util.toPointer(pStubMsg));
+  return libRPCRT4_dll.NdrServerInitializeMarshall!(util.toPointer(pRpcMsg), util.toPointer(pStubMsg));
 }
 
 export function NdrGetBuffer(
@@ -24215,7 +24723,7 @@ export function NdrGetBuffer(
   BufferLength: number /* u32 */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrGetBuffer(util.toPointer(pStubMsg), BufferLength, util.toPointer(Handle));
+  return libRPCRT4_dll.NdrGetBuffer!(util.toPointer(pStubMsg), BufferLength, util.toPointer(Handle));
 }
 
 export function NdrNsGetBuffer(
@@ -24223,14 +24731,14 @@ export function NdrNsGetBuffer(
   BufferLength: number /* u32 */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNsGetBuffer(util.toPointer(pStubMsg), BufferLength, util.toPointer(Handle));
+  return libRPCRT4_dll.NdrNsGetBuffer!(util.toPointer(pStubMsg), BufferLength, util.toPointer(Handle));
 }
 
 export function NdrSendReceive(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferEnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrSendReceive(util.toPointer(pStubMsg), util.toPointer(pBufferEnd));
+  return libRPCRT4_dll.NdrSendReceive!(util.toPointer(pStubMsg), util.toPointer(pBufferEnd));
 }
 
 export function NdrNsSendReceive(
@@ -24238,47 +24746,47 @@ export function NdrNsSendReceive(
   pBufferEnd: Deno.PointerValue | Uint8Array /* ptr */,
   pAutoHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrNsSendReceive(util.toPointer(pStubMsg), util.toPointer(pBufferEnd), util.toPointer(pAutoHandle));
+  return libRPCRT4_dll.NdrNsSendReceive!(util.toPointer(pStubMsg), util.toPointer(pBufferEnd), util.toPointer(pAutoHandle));
 }
 
 export function NdrFreeBuffer(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrFreeBuffer(util.toPointer(pStubMsg));
+  return libRPCRT4_dll.NdrFreeBuffer!(util.toPointer(pStubMsg));
 }
 
 export function NdrGetDcomProtocolVersion(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libRPCRT4_dll.NdrGetDcomProtocolVersion(util.toPointer(pStubMsg), util.toPointer(pVersion));
+  return libRPCRT4_dll.NdrGetDcomProtocolVersion!(util.toPointer(pStubMsg), util.toPointer(pVersion));
 }
 
 export function NdrClientCall2(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrClientCall2(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrClientCall2!(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
 }
 
 export function NdrAsyncClientCall(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrAsyncClientCall(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrAsyncClientCall!(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
 }
 
 export function NdrDcomAsyncClientCall(
   pStubDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrDcomAsyncClientCall(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrDcomAsyncClientCall!(util.toPointer(pStubDescriptor), util.toPointer(pFormat));
 }
 
 export function NdrAsyncServerCall(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrAsyncServerCall(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.NdrAsyncServerCall!(util.toPointer(pRpcMsg));
 }
 
 export function NdrDcomAsyncStubCall(
@@ -24287,7 +24795,7 @@ export function NdrDcomAsyncStubCall(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pdwStubPhase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.NdrDcomAsyncStubCall(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
+  return libRPCRT4_dll.NdrDcomAsyncStubCall!(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
 }
 
 export function NdrStubCall2(
@@ -24296,13 +24804,13 @@ export function NdrStubCall2(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pdwStubPhase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.NdrStubCall2(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
+  return libRPCRT4_dll.NdrStubCall2!(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
 }
 
 export function NdrServerCall2(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerCall2(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.NdrServerCall2!(util.toPointer(pRpcMsg));
 }
 
 export function NdrMapCommAndFaultStatus(
@@ -24311,44 +24819,44 @@ export function NdrMapCommAndFaultStatus(
   pFaultStatus: Deno.PointerValue | Uint8Array /* ptr */,
   Status: RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.NdrMapCommAndFaultStatus(util.toPointer(pStubMsg), util.toPointer(pCommStatus), util.toPointer(pFaultStatus), Status);
+  return libRPCRT4_dll.NdrMapCommAndFaultStatus!(util.toPointer(pStubMsg), util.toPointer(pCommStatus), util.toPointer(pFaultStatus), Status);
 }
 
 export function RpcSsAllocate(
   Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.RpcSsAllocate(Size);
+  return libRPCRT4_dll.RpcSsAllocate!(Size);
 }
 
 export function RpcSsDisableAllocate(): void /* void */ {
-  return libRPCRT4_dll.RpcSsDisableAllocate();
+  return libRPCRT4_dll.RpcSsDisableAllocate!();
 }
 
 export function RpcSsEnableAllocate(): void /* void */ {
-  return libRPCRT4_dll.RpcSsEnableAllocate();
+  return libRPCRT4_dll.RpcSsEnableAllocate!();
 }
 
 export function RpcSsFree(
   NodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcSsFree(util.toPointer(NodeToFree));
+  return libRPCRT4_dll.RpcSsFree!(util.toPointer(NodeToFree));
 }
 
 export function RpcSsGetThreadHandle(): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.RpcSsGetThreadHandle();
+  return libRPCRT4_dll.RpcSsGetThreadHandle!();
 }
 
 export function RpcSsSetClientAllocFree(
   ClientAlloc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_CLIENT_ALLOC */,
   ClientFree: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_CLIENT_FREE */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcSsSetClientAllocFree(util.toPointer(ClientAlloc), util.toPointer(ClientFree));
+  return libRPCRT4_dll.RpcSsSetClientAllocFree!(util.toPointer(ClientAlloc), util.toPointer(ClientFree));
 }
 
 export function RpcSsSetThreadHandle(
   Id: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcSsSetThreadHandle(util.toPointer(Id));
+  return libRPCRT4_dll.RpcSsSetThreadHandle!(util.toPointer(Id));
 }
 
 export function RpcSsSwapClientAllocFree(
@@ -24357,59 +24865,59 @@ export function RpcSsSwapClientAllocFree(
   OldClientAlloc: Deno.PointerValue | Uint8Array /* ptr */,
   OldClientFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcSsSwapClientAllocFree(util.toPointer(ClientAlloc), util.toPointer(ClientFree), util.toPointer(OldClientAlloc), util.toPointer(OldClientFree));
+  return libRPCRT4_dll.RpcSsSwapClientAllocFree!(util.toPointer(ClientAlloc), util.toPointer(ClientFree), util.toPointer(OldClientAlloc), util.toPointer(OldClientFree));
 }
 
 export function RpcSmAllocate(
   Size: bigint | number /* usize */,
   pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.RpcSmAllocate(Size, util.toPointer(pStatus));
+  return libRPCRT4_dll.RpcSmAllocate!(Size, util.toPointer(pStatus));
 }
 
 export function RpcSmClientFree(
   pNodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmClientFree(util.toPointer(pNodeToFree));
+  return libRPCRT4_dll.RpcSmClientFree!(util.toPointer(pNodeToFree));
 }
 
 export function RpcSmDestroyClientContext(
   ContextHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmDestroyClientContext(util.toPointer(ContextHandle));
+  return libRPCRT4_dll.RpcSmDestroyClientContext!(util.toPointer(ContextHandle));
 }
 
 export function RpcSmDisableAllocate(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmDisableAllocate();
+  return libRPCRT4_dll.RpcSmDisableAllocate!();
 }
 
 export function RpcSmEnableAllocate(): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmEnableAllocate();
+  return libRPCRT4_dll.RpcSmEnableAllocate!();
 }
 
 export function RpcSmFree(
   NodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmFree(util.toPointer(NodeToFree));
+  return libRPCRT4_dll.RpcSmFree!(util.toPointer(NodeToFree));
 }
 
 export function RpcSmGetThreadHandle(
   pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.RpcSmGetThreadHandle(util.toPointer(pStatus));
+  return libRPCRT4_dll.RpcSmGetThreadHandle!(util.toPointer(pStatus));
 }
 
 export function RpcSmSetClientAllocFree(
   ClientAlloc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_CLIENT_ALLOC */,
   ClientFree: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.RPC_CLIENT_FREE */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmSetClientAllocFree(util.toPointer(ClientAlloc), util.toPointer(ClientFree));
+  return libRPCRT4_dll.RpcSmSetClientAllocFree!(util.toPointer(ClientAlloc), util.toPointer(ClientFree));
 }
 
 export function RpcSmSetThreadHandle(
   Id: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmSetThreadHandle(util.toPointer(Id));
+  return libRPCRT4_dll.RpcSmSetThreadHandle!(util.toPointer(Id));
 }
 
 export function RpcSmSwapClientAllocFree(
@@ -24418,69 +24926,69 @@ export function RpcSmSwapClientAllocFree(
   OldClientAlloc: Deno.PointerValue | Uint8Array /* ptr */,
   OldClientFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcSmSwapClientAllocFree(util.toPointer(ClientAlloc), util.toPointer(ClientFree), util.toPointer(OldClientAlloc), util.toPointer(OldClientFree));
+  return libRPCRT4_dll.RpcSmSwapClientAllocFree!(util.toPointer(ClientAlloc), util.toPointer(ClientFree), util.toPointer(OldClientAlloc), util.toPointer(OldClientFree));
 }
 
 export function NdrRpcSsEnableAllocate(
   pMessage: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrRpcSsEnableAllocate(util.toPointer(pMessage));
+  return libRPCRT4_dll.NdrRpcSsEnableAllocate!(util.toPointer(pMessage));
 }
 
 export function NdrRpcSsDisableAllocate(
   pMessage: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrRpcSsDisableAllocate(util.toPointer(pMessage));
+  return libRPCRT4_dll.NdrRpcSsDisableAllocate!(util.toPointer(pMessage));
 }
 
 export function NdrRpcSmSetClientToOsf(
   pMessage: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrRpcSmSetClientToOsf(util.toPointer(pMessage));
+  return libRPCRT4_dll.NdrRpcSmSetClientToOsf!(util.toPointer(pMessage));
 }
 
 export function NdrRpcSmClientAllocate(
   Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrRpcSmClientAllocate(Size);
+  return libRPCRT4_dll.NdrRpcSmClientAllocate!(Size);
 }
 
 export function NdrRpcSmClientFree(
   NodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrRpcSmClientFree(util.toPointer(NodeToFree));
+  return libRPCRT4_dll.NdrRpcSmClientFree!(util.toPointer(NodeToFree));
 }
 
 export function NdrRpcSsDefaultAllocate(
   Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrRpcSsDefaultAllocate(Size);
+  return libRPCRT4_dll.NdrRpcSsDefaultAllocate!(Size);
 }
 
 export function NdrRpcSsDefaultFree(
   NodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrRpcSsDefaultFree(util.toPointer(NodeToFree));
+  return libRPCRT4_dll.NdrRpcSsDefaultFree!(util.toPointer(NodeToFree));
 }
 
 export function NdrFullPointerXlatInit(
   NumberOfPointers: number /* u32 */,
   XlatSide: XLAT_SIDE /* Windows.Win32.System.Rpc.XLAT_SIDE */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrFullPointerXlatInit(NumberOfPointers, XlatSide);
+  return libRPCRT4_dll.NdrFullPointerXlatInit!(NumberOfPointers, XlatSide);
 }
 
 export function NdrFullPointerXlatFree(
   pXlatTables: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrFullPointerXlatFree(util.toPointer(pXlatTables));
+  return libRPCRT4_dll.NdrFullPointerXlatFree!(util.toPointer(pXlatTables));
 }
 
 export function NdrAllocate(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   Len: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrAllocate(util.toPointer(pStubMsg), Len);
+  return libRPCRT4_dll.NdrAllocate!(util.toPointer(pStubMsg), Len);
 }
 
 export function NdrClearOutParameters(
@@ -24488,19 +24996,19 @@ export function NdrClearOutParameters(
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
   ArgAddr: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrClearOutParameters(util.toPointer(pStubMsg), util.toPointer(pFormat), util.toPointer(ArgAddr));
+  return libRPCRT4_dll.NdrClearOutParameters!(util.toPointer(pStubMsg), util.toPointer(pFormat), util.toPointer(ArgAddr));
 }
 
 export function NdrOleAllocate(
   Size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libRPCRT4_dll.NdrOleAllocate(Size);
+  return libRPCRT4_dll.NdrOleAllocate!(Size);
 }
 
 export function NdrOleFree(
   NodeToFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrOleFree(util.toPointer(NodeToFree));
+  return libRPCRT4_dll.NdrOleFree!(util.toPointer(NodeToFree));
 }
 
 export function NdrGetUserMarshalInfo(
@@ -24508,14 +25016,14 @@ export function NdrGetUserMarshalInfo(
   InformationLevel: number /* u32 */,
   pMarshalInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.NdrGetUserMarshalInfo(util.toPointer(pFlags), InformationLevel, util.toPointer(pMarshalInfo));
+  return libRPCRT4_dll.NdrGetUserMarshalInfo!(util.toPointer(pFlags), InformationLevel, util.toPointer(pMarshalInfo));
 }
 
 export function NdrCreateServerInterfaceFromStub(
   pStub: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IRpcStubBuffer */,
   pServerIf: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.NdrCreateServerInterfaceFromStub(util.toPointer(pStub), util.toPointer(pServerIf));
+  return libRPCRT4_dll.NdrCreateServerInterfaceFromStub!(util.toPointer(pStub), util.toPointer(pServerIf));
 }
 
 export function NdrClientCall3(
@@ -24523,7 +25031,7 @@ export function NdrClientCall3(
   nProcNum: number /* u32 */,
   pReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrClientCall3(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
+  return libRPCRT4_dll.NdrClientCall3!(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
 }
 
 export function Ndr64AsyncClientCall(
@@ -24531,7 +25039,7 @@ export function Ndr64AsyncClientCall(
   nProcNum: number /* u32 */,
   pReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.Ndr64AsyncClientCall(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
+  return libRPCRT4_dll.Ndr64AsyncClientCall!(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
 }
 
 export function Ndr64DcomAsyncClientCall(
@@ -24539,19 +25047,19 @@ export function Ndr64DcomAsyncClientCall(
   nProcNum: number /* u32 */,
   pReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.Ndr64DcomAsyncClientCall(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
+  return libRPCRT4_dll.Ndr64DcomAsyncClientCall!(util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
 }
 
 export function Ndr64AsyncServerCall64(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.Ndr64AsyncServerCall64(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.Ndr64AsyncServerCall64!(util.toPointer(pRpcMsg));
 }
 
 export function Ndr64AsyncServerCallAll(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.Ndr64AsyncServerCallAll(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.Ndr64AsyncServerCallAll!(util.toPointer(pRpcMsg));
 }
 
 export function Ndr64DcomAsyncStubCall(
@@ -24560,7 +25068,7 @@ export function Ndr64DcomAsyncStubCall(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pdwStubPhase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.Ndr64DcomAsyncStubCall(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
+  return libRPCRT4_dll.Ndr64DcomAsyncStubCall!(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
 }
 
 export function NdrStubCall3(
@@ -24569,40 +25077,40 @@ export function NdrStubCall3(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pdwStubPhase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libRPCRT4_dll.NdrStubCall3(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
+  return libRPCRT4_dll.NdrStubCall3!(util.toPointer(pThis), util.toPointer(pChannel), util.toPointer(pRpcMsg), util.toPointer(pdwStubPhase));
 }
 
 export function NdrServerCallAll(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerCallAll(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.NdrServerCallAll!(util.toPointer(pRpcMsg));
 }
 
 export function NdrServerCallNdr64(
   pRpcMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrServerCallNdr64(util.toPointer(pRpcMsg));
+  return libRPCRT4_dll.NdrServerCallNdr64!(util.toPointer(pRpcMsg));
 }
 
 export function NdrPartialIgnoreClientMarshall(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPartialIgnoreClientMarshall(util.toPointer(pStubMsg), util.toPointer(pMemory));
+  return libRPCRT4_dll.NdrPartialIgnoreClientMarshall!(util.toPointer(pStubMsg), util.toPointer(pMemory));
 }
 
 export function NdrPartialIgnoreServerUnmarshall(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   ppMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPartialIgnoreServerUnmarshall(util.toPointer(pStubMsg), util.toPointer(ppMemory));
+  return libRPCRT4_dll.NdrPartialIgnoreServerUnmarshall!(util.toPointer(pStubMsg), util.toPointer(ppMemory));
 }
 
 export function NdrPartialIgnoreClientBufferSize(
   pStubMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPartialIgnoreClientBufferSize(util.toPointer(pStubMsg), util.toPointer(pMemory));
+  return libRPCRT4_dll.NdrPartialIgnoreClientBufferSize!(util.toPointer(pStubMsg), util.toPointer(pMemory));
 }
 
 export function NdrPartialIgnoreServerInitialize(
@@ -24610,14 +25118,14 @@ export function NdrPartialIgnoreServerInitialize(
   ppMemory: Deno.PointerValue | Uint8Array /* ptr */,
   pFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrPartialIgnoreServerInitialize(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat));
+  return libRPCRT4_dll.NdrPartialIgnoreServerInitialize!(util.toPointer(pStubMsg), util.toPointer(ppMemory), util.toPointer(pFormat));
 }
 
 export function RpcUserFree(
   AsyncHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.RpcUserFree(util.toPointer(AsyncHandle), util.toPointer(pBuffer));
+  return libRPCRT4_dll.RpcUserFree!(util.toPointer(AsyncHandle), util.toPointer(pBuffer));
 }
 
 export function MesEncodeIncrementalHandleCreate(
@@ -24626,7 +25134,7 @@ export function MesEncodeIncrementalHandleCreate(
   WriteFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.MIDL_ES_WRITE */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesEncodeIncrementalHandleCreate(util.toPointer(UserState), util.toPointer(AllocFn), util.toPointer(WriteFn), util.toPointer(pHandle));
+  return libRPCRT4_dll.MesEncodeIncrementalHandleCreate!(util.toPointer(UserState), util.toPointer(AllocFn), util.toPointer(WriteFn), util.toPointer(pHandle));
 }
 
 export function MesDecodeIncrementalHandleCreate(
@@ -24634,7 +25142,7 @@ export function MesDecodeIncrementalHandleCreate(
   ReadFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.MIDL_ES_READ */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesDecodeIncrementalHandleCreate(util.toPointer(UserState), util.toPointer(ReadFn), util.toPointer(pHandle));
+  return libRPCRT4_dll.MesDecodeIncrementalHandleCreate!(util.toPointer(UserState), util.toPointer(ReadFn), util.toPointer(pHandle));
 }
 
 export function MesIncrementalHandleReset(
@@ -24645,7 +25153,7 @@ export function MesIncrementalHandleReset(
   ReadFn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Rpc.MIDL_ES_READ */,
   Operation: MIDL_ES_CODE /* Windows.Win32.System.Rpc.MIDL_ES_CODE */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesIncrementalHandleReset(util.toPointer(Handle), util.toPointer(UserState), util.toPointer(AllocFn), util.toPointer(WriteFn), util.toPointer(ReadFn), Operation);
+  return libRPCRT4_dll.MesIncrementalHandleReset!(util.toPointer(Handle), util.toPointer(UserState), util.toPointer(AllocFn), util.toPointer(WriteFn), util.toPointer(ReadFn), Operation);
 }
 
 export function MesEncodeFixedBufferHandleCreate(
@@ -24654,7 +25162,7 @@ export function MesEncodeFixedBufferHandleCreate(
   pEncodedSize: Deno.PointerValue | Uint8Array /* ptr */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesEncodeFixedBufferHandleCreate(util.pstrToFfi(pBuffer), BufferSize, util.toPointer(pEncodedSize), util.toPointer(pHandle));
+  return libRPCRT4_dll.MesEncodeFixedBufferHandleCreate!(util.pstrToFfi(pBuffer), BufferSize, util.toPointer(pEncodedSize), util.toPointer(pHandle));
 }
 
 export function MesEncodeDynBufferHandleCreate(
@@ -24662,7 +25170,7 @@ export function MesEncodeDynBufferHandleCreate(
   pEncodedSize: Deno.PointerValue | Uint8Array /* ptr */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesEncodeDynBufferHandleCreate(util.toPointer(pBuffer), util.toPointer(pEncodedSize), util.toPointer(pHandle));
+  return libRPCRT4_dll.MesEncodeDynBufferHandleCreate!(util.toPointer(pBuffer), util.toPointer(pEncodedSize), util.toPointer(pHandle));
 }
 
 export function MesDecodeBufferHandleCreate(
@@ -24670,7 +25178,7 @@ export function MesDecodeBufferHandleCreate(
   BufferSize: number /* u32 */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesDecodeBufferHandleCreate(util.pstrToFfi(Buffer), BufferSize, util.toPointer(pHandle));
+  return libRPCRT4_dll.MesDecodeBufferHandleCreate!(util.pstrToFfi(Buffer), BufferSize, util.toPointer(pHandle));
 }
 
 export function MesBufferHandleReset(
@@ -24681,13 +25189,13 @@ export function MesBufferHandleReset(
   BufferSize: number /* u32 */,
   pEncodedSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesBufferHandleReset(util.toPointer(Handle), HandleStyle, Operation, util.toPointer(pBuffer), BufferSize, util.toPointer(pEncodedSize));
+  return libRPCRT4_dll.MesBufferHandleReset!(util.toPointer(Handle), HandleStyle, Operation, util.toPointer(pBuffer), BufferSize, util.toPointer(pEncodedSize));
 }
 
 export function MesHandleFree(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesHandleFree(util.toPointer(Handle));
+  return libRPCRT4_dll.MesHandleFree!(util.toPointer(Handle));
 }
 
 export function MesInqProcEncodingId(
@@ -24695,13 +25203,13 @@ export function MesInqProcEncodingId(
   pInterfaceId: Deno.PointerValue | Uint8Array /* ptr */,
   pProcNum: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.MesInqProcEncodingId(util.toPointer(Handle), util.toPointer(pInterfaceId), util.toPointer(pProcNum));
+  return libRPCRT4_dll.MesInqProcEncodingId!(util.toPointer(Handle), util.toPointer(pInterfaceId), util.toPointer(pProcNum));
 }
 
 export function NdrMesSimpleTypeAlignSize(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeAlignSize(util.toPointer(param0));
+  return libRPCRT4_dll.NdrMesSimpleTypeAlignSize!(util.toPointer(param0));
 }
 
 export function NdrMesSimpleTypeDecode(
@@ -24709,7 +25217,7 @@ export function NdrMesSimpleTypeDecode(
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* i16 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeDecode(util.toPointer(Handle), util.toPointer(pObject), Size);
+  return libRPCRT4_dll.NdrMesSimpleTypeDecode!(util.toPointer(Handle), util.toPointer(pObject), Size);
 }
 
 export function NdrMesSimpleTypeEncode(
@@ -24718,7 +25226,7 @@ export function NdrMesSimpleTypeEncode(
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* i16 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeEncode(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pObject), Size);
+  return libRPCRT4_dll.NdrMesSimpleTypeEncode!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pObject), Size);
 }
 
 export function NdrMesTypeAlignSize(
@@ -24727,7 +25235,7 @@ export function NdrMesTypeAlignSize(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libRPCRT4_dll.NdrMesTypeAlignSize(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeAlignSize!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeEncode(
@@ -24736,7 +25244,7 @@ export function NdrMesTypeEncode(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeEncode(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeEncode!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeDecode(
@@ -24745,7 +25253,7 @@ export function NdrMesTypeDecode(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeDecode(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeDecode!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeAlignSize2(
@@ -24755,7 +25263,7 @@ export function NdrMesTypeAlignSize2(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libRPCRT4_dll.NdrMesTypeAlignSize2(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeAlignSize2!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeEncode2(
@@ -24765,7 +25273,7 @@ export function NdrMesTypeEncode2(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeEncode2(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeEncode2!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeDecode2(
@@ -24775,7 +25283,7 @@ export function NdrMesTypeDecode2(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeDecode2(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeDecode2!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesTypeFree2(
@@ -24785,7 +25293,7 @@ export function NdrMesTypeFree2(
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeFree2(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeFree2!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pStubDesc), util.toPointer(pFormatString), util.toPointer(pObject));
 }
 
 export function NdrMesProcEncodeDecode(
@@ -24793,7 +25301,7 @@ export function NdrMesProcEncodeDecode(
   pStubDesc: Deno.PointerValue | Uint8Array /* ptr */,
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesProcEncodeDecode(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString));
+  return libRPCRT4_dll.NdrMesProcEncodeDecode!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString));
 }
 
 export function NdrMesProcEncodeDecode2(
@@ -24801,7 +25309,7 @@ export function NdrMesProcEncodeDecode2(
   pStubDesc: Deno.PointerValue | Uint8Array /* ptr */,
   pFormatString: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrMesProcEncodeDecode2(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString));
+  return libRPCRT4_dll.NdrMesProcEncodeDecode2!(util.toPointer(Handle), util.toPointer(pStubDesc), util.toPointer(pFormatString));
 }
 
 export function NdrMesTypeAlignSize3(
@@ -24812,7 +25320,7 @@ export function NdrMesTypeAlignSize3(
   nTypeIndex: number /* u32 */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libRPCRT4_dll.NdrMesTypeAlignSize3(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeAlignSize3!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
 }
 
 export function NdrMesTypeEncode3(
@@ -24823,7 +25331,7 @@ export function NdrMesTypeEncode3(
   nTypeIndex: number /* u32 */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeEncode3(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeEncode3!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
 }
 
 export function NdrMesTypeDecode3(
@@ -24834,7 +25342,7 @@ export function NdrMesTypeDecode3(
   nTypeIndex: number /* u32 */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeDecode3(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeDecode3!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
 }
 
 export function NdrMesTypeFree3(
@@ -24845,7 +25353,7 @@ export function NdrMesTypeFree3(
   nTypeIndex: number /* u32 */,
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesTypeFree3(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
+  return libRPCRT4_dll.NdrMesTypeFree3!(util.toPointer(Handle), util.toPointer(pPicklingInfo), util.toPointer(pProxyInfo), util.toPointer(ArrTypeOffset), nTypeIndex, util.toPointer(pObject));
 }
 
 export function NdrMesProcEncodeDecode3(
@@ -24854,7 +25362,7 @@ export function NdrMesProcEncodeDecode3(
   nProcNum: number /* u32 */,
   pReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Rpc.CLIENT_CALL_RETURN */ {
-  return libRPCRT4_dll.NdrMesProcEncodeDecode3(util.toPointer(Handle), util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
+  return libRPCRT4_dll.NdrMesProcEncodeDecode3!(util.toPointer(Handle), util.toPointer(pProxyInfo), nProcNum, util.toPointer(pReturnValue));
 }
 
 export function NdrMesSimpleTypeDecodeAll(
@@ -24863,7 +25371,7 @@ export function NdrMesSimpleTypeDecodeAll(
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* i16 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeDecodeAll(util.toPointer(Handle), util.toPointer(pProxyInfo), util.toPointer(pObject), Size);
+  return libRPCRT4_dll.NdrMesSimpleTypeDecodeAll!(util.toPointer(Handle), util.toPointer(pProxyInfo), util.toPointer(pObject), Size);
 }
 
 export function NdrMesSimpleTypeEncodeAll(
@@ -24872,14 +25380,14 @@ export function NdrMesSimpleTypeEncodeAll(
   pObject: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* i16 */,
 ): void /* void */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeEncodeAll(util.toPointer(Handle), util.toPointer(pProxyInfo), util.toPointer(pObject), Size);
+  return libRPCRT4_dll.NdrMesSimpleTypeEncodeAll!(util.toPointer(Handle), util.toPointer(pProxyInfo), util.toPointer(pObject), Size);
 }
 
 export function NdrMesSimpleTypeAlignSizeAll(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
   pProxyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libRPCRT4_dll.NdrMesSimpleTypeAlignSizeAll(util.toPointer(Handle), util.toPointer(pProxyInfo));
+  return libRPCRT4_dll.NdrMesSimpleTypeAlignSizeAll!(util.toPointer(Handle), util.toPointer(pProxyInfo));
 }
 
 export function RpcCertGeneratePrincipalNameW(
@@ -24887,7 +25395,7 @@ export function RpcCertGeneratePrincipalNameW(
   Flags: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcCertGeneratePrincipalNameW(util.toPointer(Context), Flags, util.toPointer(pBuffer));
+  return libRPCRT4_dll.RpcCertGeneratePrincipalNameW!(util.toPointer(Context), Flags, util.toPointer(pBuffer));
 }
 
 export function RpcCertGeneratePrincipalNameA(
@@ -24895,6 +25403,6 @@ export function RpcCertGeneratePrincipalNameA(
   Flags: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): RPC_STATUS /* Windows.Win32.System.Rpc.RPC_STATUS */ {
-  return libRPCRT4_dll.RpcCertGeneratePrincipalNameA(util.toPointer(Context), Flags, util.toPointer(pBuffer));
+  return libRPCRT4_dll.RpcCertGeneratePrincipalNameA!(util.toPointer(Context), Flags, util.toPointer(pBuffer));
 }
 

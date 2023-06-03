@@ -364,6 +364,7 @@ try {
     DXCoreCreateAdapterFactory: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -374,6 +375,6 @@ export function DXCoreCreateAdapterFactory(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvFactory: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDXCORE_dll.DXCoreCreateAdapterFactory(util.toPointer(riid), util.toPointer(ppvFactory));
+  return libDXCORE_dll.DXCoreCreateAdapterFactory!(util.toPointer(riid), util.toPointer(ppvFactory));
 }
 

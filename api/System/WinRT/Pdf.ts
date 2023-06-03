@@ -275,6 +275,7 @@ try {
     PdfCreateRenderer: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -285,6 +286,6 @@ export function PdfCreateRenderer(
   pDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Dxgi.IDXGIDevice */,
   ppRenderer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Data_Pdf_dll.PdfCreateRenderer(util.toPointer(pDevice), util.toPointer(ppRenderer));
+  return libWindows_Data_Pdf_dll.PdfCreateRenderer!(util.toPointer(pDevice), util.toPointer(ppRenderer));
 }
 

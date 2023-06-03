@@ -8498,38 +8498,47 @@ try {
     Direct3DCreate9: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     D3DPERF_BeginEvent: {
       parameters: ["u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     D3DPERF_EndEvent: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     D3DPERF_SetMarker: {
       parameters: ["u32", "buffer"],
       result: "void",
+      optional: true,
     },
     D3DPERF_SetRegion: {
       parameters: ["u32", "buffer"],
       result: "void",
+      optional: true,
     },
     D3DPERF_QueryRepeatFrame: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     D3DPERF_SetOptions: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     D3DPERF_GetStatus: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     Direct3DCreate9Ex: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -8539,52 +8548,52 @@ try {
 export function Direct3DCreate9(
   SDKVersion: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Direct3D9.IDirect3D9 */ {
-  return libd3d9_dll.Direct3DCreate9(SDKVersion);
+  return libd3d9_dll.Direct3DCreate9!(SDKVersion);
 }
 
 export function D3DPERF_BeginEvent(
   col: number /* u32 */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libd3d9_dll.D3DPERF_BeginEvent(col, util.pwstrToFfi(wszName));
+  return libd3d9_dll.D3DPERF_BeginEvent!(col, util.pwstrToFfi(wszName));
 }
 
 export function D3DPERF_EndEvent(): number /* i32 */ {
-  return libd3d9_dll.D3DPERF_EndEvent();
+  return libd3d9_dll.D3DPERF_EndEvent!();
 }
 
 export function D3DPERF_SetMarker(
   col: number /* u32 */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libd3d9_dll.D3DPERF_SetMarker(col, util.pwstrToFfi(wszName));
+  return libd3d9_dll.D3DPERF_SetMarker!(col, util.pwstrToFfi(wszName));
 }
 
 export function D3DPERF_SetRegion(
   col: number /* u32 */,
   wszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libd3d9_dll.D3DPERF_SetRegion(col, util.pwstrToFfi(wszName));
+  return libd3d9_dll.D3DPERF_SetRegion!(col, util.pwstrToFfi(wszName));
 }
 
 export function D3DPERF_QueryRepeatFrame(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd3d9_dll.D3DPERF_QueryRepeatFrame());
+  return util.boolFromFfi(libd3d9_dll.D3DPERF_QueryRepeatFrame!());
 }
 
 export function D3DPERF_SetOptions(
   dwOptions: number /* u32 */,
 ): void /* void */ {
-  return libd3d9_dll.D3DPERF_SetOptions(dwOptions);
+  return libd3d9_dll.D3DPERF_SetOptions!(dwOptions);
 }
 
 export function D3DPERF_GetStatus(): number /* u32 */ {
-  return libd3d9_dll.D3DPERF_GetStatus();
+  return libd3d9_dll.D3DPERF_GetStatus!();
 }
 
 export function Direct3DCreate9Ex(
   SDKVersion: number /* u32 */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3d9_dll.Direct3DCreate9Ex(SDKVersion, util.toPointer(param1));
+  return libd3d9_dll.Direct3DCreate9Ex!(SDKVersion, util.toPointer(param1));
 }
 

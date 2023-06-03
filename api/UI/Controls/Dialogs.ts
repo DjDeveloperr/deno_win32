@@ -5656,86 +5656,107 @@ try {
     GetOpenFileNameA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetOpenFileNameW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetSaveFileNameA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetSaveFileNameW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetFileTitleA: {
       parameters: ["buffer", "buffer", "u16"],
       result: "i16",
+      optional: true,
     },
     GetFileTitleW: {
       parameters: ["buffer", "buffer", "u16"],
       result: "i16",
+      optional: true,
     },
     ChooseColorA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ChooseColorW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FindTextA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FindTextW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ReplaceTextA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ReplaceTextW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ChooseFontA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ChooseFontW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PrintDlgA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PrintDlgW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PrintDlgExA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     PrintDlgExW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CommDlgExtendedError: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     PageSetupDlgA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PageSetupDlgW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5745,25 +5766,25 @@ try {
 export function GetOpenFileNameA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameA!(util.toPointer(param0)));
 }
 
 export function GetOpenFileNameW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetOpenFileNameW!(util.toPointer(param0)));
 }
 
 export function GetSaveFileNameA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameA!(util.toPointer(param0)));
 }
 
 export function GetSaveFileNameW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.GetSaveFileNameW!(util.toPointer(param0)));
 }
 
 export function GetFileTitleA(
@@ -5771,7 +5792,7 @@ export function GetFileTitleA(
   Buf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSize: number /* u16 */,
 ): number /* i16 */ {
-  return libCOMDLG32_dll.GetFileTitleA(util.pstrToFfi(param0), util.pstrToFfi(Buf), cchSize);
+  return libCOMDLG32_dll.GetFileTitleA!(util.pstrToFfi(param0), util.pstrToFfi(Buf), cchSize);
 }
 
 export function GetFileTitleW(
@@ -5779,94 +5800,94 @@ export function GetFileTitleW(
   Buf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSize: number /* u16 */,
 ): number /* i16 */ {
-  return libCOMDLG32_dll.GetFileTitleW(util.pwstrToFfi(param0), util.pwstrToFfi(Buf), cchSize);
+  return libCOMDLG32_dll.GetFileTitleW!(util.pwstrToFfi(param0), util.pwstrToFfi(Buf), cchSize);
 }
 
 export function ChooseColorA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorA!(util.toPointer(param0)));
 }
 
 export function ChooseColorW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseColorW!(util.toPointer(param0)));
 }
 
 export function FindTextA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMDLG32_dll.FindTextA(util.toPointer(param0)));
+  return (libCOMDLG32_dll.FindTextA!(util.toPointer(param0)));
 }
 
 export function FindTextW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMDLG32_dll.FindTextW(util.toPointer(param0)));
+  return (libCOMDLG32_dll.FindTextW!(util.toPointer(param0)));
 }
 
 export function ReplaceTextA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMDLG32_dll.ReplaceTextA(util.toPointer(param0)));
+  return (libCOMDLG32_dll.ReplaceTextA!(util.toPointer(param0)));
 }
 
 export function ReplaceTextW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMDLG32_dll.ReplaceTextW(util.toPointer(param0)));
+  return (libCOMDLG32_dll.ReplaceTextW!(util.toPointer(param0)));
 }
 
 export function ChooseFontA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontA!(util.toPointer(param0)));
 }
 
 export function ChooseFontW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.ChooseFontW!(util.toPointer(param0)));
 }
 
 export function PrintDlgA(
   pPD: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgA(util.toPointer(pPD)));
+  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgA!(util.toPointer(pPD)));
 }
 
 export function PrintDlgW(
   pPD: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgW(util.toPointer(pPD)));
+  return util.boolFromFfi(libCOMDLG32_dll.PrintDlgW!(util.toPointer(pPD)));
 }
 
 export function PrintDlgExA(
   pPD: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMDLG32_dll.PrintDlgExA(util.toPointer(pPD));
+  return libCOMDLG32_dll.PrintDlgExA!(util.toPointer(pPD));
 }
 
 export function PrintDlgExW(
   pPD: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMDLG32_dll.PrintDlgExW(util.toPointer(pPD));
+  return libCOMDLG32_dll.PrintDlgExW!(util.toPointer(pPD));
 }
 
 export function CommDlgExtendedError(): COMMON_DLG_ERRORS /* Windows.Win32.UI.Controls.Dialogs.COMMON_DLG_ERRORS */ {
-  return libCOMDLG32_dll.CommDlgExtendedError();
+  return libCOMDLG32_dll.CommDlgExtendedError!();
 }
 
 export function PageSetupDlgA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgA(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgA!(util.toPointer(param0)));
 }
 
 export function PageSetupDlgW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgW(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMDLG32_dll.PageSetupDlgW!(util.toPointer(param0)));
 }
 

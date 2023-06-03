@@ -1129,18 +1129,22 @@ try {
     DtcGetTransactionManager: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u16", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DtcGetTransactionManagerC: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u16", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DtcGetTransactionManagerExA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DtcGetTransactionManagerExW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1156,7 +1160,7 @@ export function DtcGetTransactionManager(
   i_pvReserved2: Deno.PointerValue | Uint8Array /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXOLEHLP_dll.DtcGetTransactionManager(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
+  return libXOLEHLP_dll.DtcGetTransactionManager!(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerC(
@@ -1168,7 +1172,7 @@ export function DtcGetTransactionManagerC(
   i_pvReserved2: Deno.PointerValue | Uint8Array /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXOLEHLP_dll.DtcGetTransactionManagerC(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
+  return libXOLEHLP_dll.DtcGetTransactionManagerC!(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_dwReserved1, i_wcbReserved2, util.toPointer(i_pvReserved2), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerExA(
@@ -1179,7 +1183,7 @@ export function DtcGetTransactionManagerExA(
   i_pvConfigParams: Deno.PointerValue | Uint8Array /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXOLEHLP_dll.DtcGetTransactionManagerExA(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
+  return libXOLEHLP_dll.DtcGetTransactionManagerExA!(util.pstrToFfi(i_pszHost), util.pstrToFfi(i_pszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
 }
 
 export function DtcGetTransactionManagerExW(
@@ -1190,6 +1194,6 @@ export function DtcGetTransactionManagerExW(
   i_pvConfigParams: Deno.PointerValue | Uint8Array /* ptr */,
   o_ppvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXOLEHLP_dll.DtcGetTransactionManagerExW(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
+  return libXOLEHLP_dll.DtcGetTransactionManagerExW!(util.pwstrToFfi(i_pwszHost), util.pwstrToFfi(i_pwszTmName), util.toPointer(i_riid), i_grfOptions, util.toPointer(i_pvConfigParams), util.toPointer(o_ppvObject));
 }
 

@@ -11189,354 +11189,442 @@ try {
     uaw_lstrcmpW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     uaw_lstrcmpiW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     uaw_lstrlenW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     uaw_wcschr: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     uaw_wcscpy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     uaw_wcsicmp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     uaw_wcslen: {
       parameters: ["pointer"],
       result: "usize",
+      optional: true,
     },
     uaw_wcsrchr: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryThreadCycleTime: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryProcessCycleTime: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryIdleProcessorCycleTime: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryIdleProcessorCycleTimeEx: {
       parameters: ["u16", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryUnbiasedInterruptTime: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GlobalCompact: {
       parameters: ["u32"],
       result: "usize",
+      optional: true,
     },
     GlobalFix: {
       parameters: ["isize"],
       result: "void",
+      optional: true,
     },
     GlobalUnfix: {
       parameters: ["isize"],
       result: "void",
+      optional: true,
     },
     GlobalWire: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     GlobalUnWire: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     LocalShrink: {
       parameters: ["isize", "u32"],
       result: "usize",
+      optional: true,
     },
     LocalCompact: {
       parameters: ["u32"],
       result: "usize",
+      optional: true,
     },
     SetEnvironmentStringsA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SetHandleCount: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     RequestDeviceWakeup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CancelDeviceWakeupRequest: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetMessageWaitingIndicator: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     MulDiv: {
       parameters: ["i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetSystemRegistryQuota: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FileTimeToDosDateTime: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DosDateTimeToFileTime: {
       parameters: ["u16", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     _lopen: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     _lcreat: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     _lread: {
       parameters: ["i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     _lwrite: {
       parameters: ["i32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     _hread: {
       parameters: ["i32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     _hwrite: {
       parameters: ["i32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     _lclose: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     _llseek: {
       parameters: ["i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SignalObjectAndWait: {
       parameters: ["pointer", "pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     OpenMutexA: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenSemaphoreA: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateWaitableTimerA: {
       parameters: ["pointer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenWaitableTimerA: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateWaitableTimerExA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetFirmwareEnvironmentVariableA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetFirmwareEnvironmentVariableW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetFirmwareEnvironmentVariableExA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetFirmwareEnvironmentVariableExW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetFirmwareEnvironmentVariableA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetFirmwareEnvironmentVariableW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetFirmwareEnvironmentVariableExA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetFirmwareEnvironmentVariableExW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     IsNativeVhdBoot: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetProfileIntA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetProfileIntW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetProfileStringA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetProfileStringW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     WriteProfileStringA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WriteProfileStringW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetProfileSectionA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetProfileSectionW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     WriteProfileSectionA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WriteProfileSectionW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetPrivateProfileIntA: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileIntW: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileStringA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileStringW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     WritePrivateProfileStringA: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WritePrivateProfileStringW: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetPrivateProfileSectionA: {
       parameters: ["buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileSectionW: {
       parameters: ["buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     WritePrivateProfileSectionA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WritePrivateProfileSectionW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetPrivateProfileSectionNamesA: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileSectionNamesW: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateProfileStructA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetPrivateProfileStructW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     WritePrivateProfileStructA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     WritePrivateProfileStructW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     IsBadHugeReadPtr: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     IsBadHugeWritePtr: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     GetComputerNameA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetComputerNameW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsHostnameToComputerNameA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsHostnameToComputerNameW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CancelTimerQueueTimer: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReplacePartitionUnit: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetThreadEnabledXStateFeatures: {
       parameters: [],
       result: "u64",
+      optional: true,
     },
     EnableProcessOptionalXStateFeatures: {
       parameters: ["u64"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11546,126 +11634,157 @@ try {
     RtlGetReturnAddressHijackTarget: {
       parameters: [],
       result: "usize",
+      optional: true,
     },
     RtlRaiseCustomSystemEventTrigger: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     NtClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NtOpenFile: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NtRenameKey: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtNotifyChangeMultipleKeys: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQueryMultipleValueKey: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtSetInformationKey: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NtDeviceIoControlFile: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NtWaitForSingleObject: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlIsNameLegalDOS8Dot3: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQueryObject: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQuerySystemInformation: {
       parameters: ["i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQuerySystemTime: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQueryTimerResolution: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlLocalTimeToSystemTime: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlTimeToSecondsSince1970: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlFreeAnsiString: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlFreeUnicodeString: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlFreeOemString: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlInitString: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RtlInitStringEx: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInitAnsiString: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RtlInitAnsiStringEx: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInitUnicodeString: {
       parameters: ["pointer", "buffer"],
       result: "void",
+      optional: true,
     },
     RtlAnsiStringToUnicodeString: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlUnicodeStringToAnsiString: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlUnicodeStringToOemString: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlUnicodeToMultiByteSize: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RtlCharToInteger: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlUniform: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11675,6 +11794,7 @@ try {
     IsApiSetImplemented: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11684,14 +11804,17 @@ try {
     QueryInterruptTimePrecise: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     QueryUnbiasedInterruptTimePrecise: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     QueryInterruptTime: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11701,14 +11824,17 @@ try {
     QueryAuxiliaryCounterFrequency: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertAuxiliaryCounterToPerformanceCounter: {
       parameters: ["u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertPerformanceCounterToAuxiliaryCounter: {
       parameters: ["u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11718,22 +11844,27 @@ try {
     GetUserNameA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUserNameW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsTokenUntrusted: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentHwProfileA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentHwProfileW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11743,6 +11874,7 @@ try {
     RaiseCustomSystemEventTrigger: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11752,22 +11884,27 @@ try {
     GetFeatureEnabledState: {
       parameters: ["u32", "i32"],
       result: "i32",
+      optional: true,
     },
     RecordFeatureUsage: {
       parameters: ["u32", "u32", "u32", "buffer"],
       result: "void",
+      optional: true,
     },
     RecordFeatureError: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     SubscribeFeatureStateChangeNotification: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     UnsubscribeFeatureStateChangeNotification: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11777,6 +11914,7 @@ try {
     GetFeatureVariant: {
       parameters: ["u32", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11786,82 +11924,102 @@ try {
     DCIOpenProvider: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     DCICloseProvider: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DCICreatePrimary: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCICreateOffscreen: {
       parameters: ["pointer", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCICreateOverlay: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCIEnum: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCISetSrcDestClip: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinWatchOpen: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WinWatchClose: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WinWatchGetClipList: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WinWatchDidStatusChange: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowRegionData: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetDCRegionData: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WinWatchNotify: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCIEndAccess: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DCIBeginAccess: {
       parameters: ["pointer", "i32", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     DCIDestroy: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DCIDraw: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DCISetClipList: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DCISetDestination: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11871,6 +12029,7 @@ try {
     GdiEntry13: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11880,202 +12039,252 @@ try {
     RunSetupCommandA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RunSetupCommandW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NeedRebootInit: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     NeedReboot: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     RebootCheckOnInstallA: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RebootCheckOnInstallW: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     TranslateInfStringA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateInfStringW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegInstallA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegInstallW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LaunchINFSectionExW: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     ExecuteCabA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExecuteCabW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AdvInstallFileA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     AdvInstallFileW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegSaveRestoreA: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegSaveRestoreW: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegSaveRestoreOnINFA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegSaveRestoreOnINFW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegRestoreAllA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegRestoreAllW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FileSaveRestoreW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FileSaveRestoreOnINFA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FileSaveRestoreOnINFW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AddDelBackupEntryA: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AddDelBackupEntryW: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FileSaveMarkNotExistA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FileSaveMarkNotExistW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     GetVersionFromFileA: {
       parameters: ["buffer", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetVersionFromFileW: {
       parameters: ["buffer", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetVersionFromFileExA: {
       parameters: ["buffer", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetVersionFromFileExW: {
       parameters: ["buffer", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     IsNTAdmin: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DelNodeA: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DelNodeW: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DelNodeRunDLL32W: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     OpenINFEngineA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OpenINFEngineW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateInfStringExA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateInfStringExW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CloseINFEngine: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ExtractFilesA: {
       parameters: ["buffer", "buffer", "u32", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ExtractFilesW: {
       parameters: ["buffer", "buffer", "u32", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LaunchINFSectionW: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UserInstStubWrapperA: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     UserInstStubWrapperW: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     UserUnInstStubWrapperA: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     UserUnInstStubWrapperW: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SetPerUserSecValuesA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetPerUserSecValuesW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12085,46 +12294,57 @@ try {
     SendIMEMessageExA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendIMEMessageExW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IMPGetIMEA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IMPGetIMEW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IMPQueryIMEA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IMPQueryIMEW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IMPSetIMEA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IMPSetIMEW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WINNLSGetIMEHotkey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WINNLSEnableIME: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     WINNLSGetEnableStatus: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12134,6 +12354,7 @@ try {
     ApphelpCheckShellObject: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12143,26 +12364,32 @@ try {
     WldpGetLockdownPolicy: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WldpIsClassInApprovedList: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WldpSetDynamicCodeTrust: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WldpIsDynamicCodePolicyEnabled: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WldpQueryDynamicCodeTrust: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WldpQueryDeviceSecurityInformation: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12173,91 +12400,91 @@ export function uaw_lstrcmpW(
   String1: Deno.PointerValue | Uint8Array /* ptr */,
   String2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.uaw_lstrcmpW(util.toPointer(String1), util.toPointer(String2));
+  return libKERNEL32_dll.uaw_lstrcmpW!(util.toPointer(String1), util.toPointer(String2));
 }
 
 export function uaw_lstrcmpiW(
   String1: Deno.PointerValue | Uint8Array /* ptr */,
   String2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.uaw_lstrcmpiW(util.toPointer(String1), util.toPointer(String2));
+  return libKERNEL32_dll.uaw_lstrcmpiW!(util.toPointer(String1), util.toPointer(String2));
 }
 
 export function uaw_lstrlenW(
   String: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.uaw_lstrlenW(util.toPointer(String));
+  return libKERNEL32_dll.uaw_lstrlenW!(util.toPointer(String));
 }
 
 export function uaw_wcschr(
   String: Deno.PointerValue | Uint8Array /* ptr */,
   Character: Uint8Array | Deno.PointerValue /* char */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.uaw_wcschr(util.toPointer(String), util.toPointer(Character));
+  return libKERNEL32_dll.uaw_wcschr!(util.toPointer(String), util.toPointer(Character));
 }
 
 export function uaw_wcscpy(
   Destination: Deno.PointerValue | Uint8Array /* ptr */,
   Source: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.uaw_wcscpy(util.toPointer(Destination), util.toPointer(Source));
+  return libKERNEL32_dll.uaw_wcscpy!(util.toPointer(Destination), util.toPointer(Source));
 }
 
 export function uaw_wcsicmp(
   String1: Deno.PointerValue | Uint8Array /* ptr */,
   String2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.uaw_wcsicmp(util.toPointer(String1), util.toPointer(String2));
+  return libKERNEL32_dll.uaw_wcsicmp!(util.toPointer(String1), util.toPointer(String2));
 }
 
 export function uaw_wcslen(
   String: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* usize */ {
-  return libKERNEL32_dll.uaw_wcslen(util.toPointer(String));
+  return libKERNEL32_dll.uaw_wcslen!(util.toPointer(String));
 }
 
 export function uaw_wcsrchr(
   String: Deno.PointerValue | Uint8Array /* ptr */,
   Character: Uint8Array | Deno.PointerValue /* char */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.uaw_wcsrchr(util.toPointer(String), util.toPointer(Character));
+  return libKERNEL32_dll.uaw_wcsrchr!(util.toPointer(String), util.toPointer(Character));
 }
 
 export function RtlGetReturnAddressHijackTarget(): bigint | number /* usize */ {
-  return libntdll_dll.RtlGetReturnAddressHijackTarget();
+  return libntdll_dll.RtlGetReturnAddressHijackTarget!();
 }
 
 export function RtlRaiseCustomSystemEventTrigger(
   TriggerConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlRaiseCustomSystemEventTrigger(util.toPointer(TriggerConfig));
+  return libntdll_dll.RtlRaiseCustomSystemEventTrigger!(util.toPointer(TriggerConfig));
 }
 
 export function IsApiSetImplemented(
   Contract: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_apiquery_l2_1_0_dll.IsApiSetImplemented(util.pstrToFfi(Contract)));
+  return util.boolFromFfi(libapi_ms_win_core_apiquery_l2_1_0_dll.IsApiSetImplemented!(util.pstrToFfi(Contract)));
 }
 
 export function QueryThreadCycleTime(
   ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CycleTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryThreadCycleTime(util.toPointer(ThreadHandle), util.toPointer(CycleTime)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryThreadCycleTime!(util.toPointer(ThreadHandle), util.toPointer(CycleTime)));
 }
 
 export function QueryProcessCycleTime(
   ProcessHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CycleTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryProcessCycleTime(util.toPointer(ProcessHandle), util.toPointer(CycleTime)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryProcessCycleTime!(util.toPointer(ProcessHandle), util.toPointer(CycleTime)));
 }
 
 export function QueryIdleProcessorCycleTime(
   BufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   ProcessorIdleCycleTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryIdleProcessorCycleTime(util.toPointer(BufferLength), util.toPointer(ProcessorIdleCycleTime)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryIdleProcessorCycleTime!(util.toPointer(BufferLength), util.toPointer(ProcessorIdleCycleTime)));
 }
 
 export function QueryIdleProcessorCycleTimeEx(
@@ -12265,37 +12492,37 @@ export function QueryIdleProcessorCycleTimeEx(
   BufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   ProcessorIdleCycleTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryIdleProcessorCycleTimeEx(Group, util.toPointer(BufferLength), util.toPointer(ProcessorIdleCycleTime)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryIdleProcessorCycleTimeEx!(Group, util.toPointer(BufferLength), util.toPointer(ProcessorIdleCycleTime)));
 }
 
 export function QueryInterruptTimePrecise(
   lpInterruptTimePrecise: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryInterruptTimePrecise(util.toPointer(lpInterruptTimePrecise));
+  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryInterruptTimePrecise!(util.toPointer(lpInterruptTimePrecise));
 }
 
 export function QueryUnbiasedInterruptTimePrecise(
   lpUnbiasedInterruptTimePrecise: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryUnbiasedInterruptTimePrecise(util.toPointer(lpUnbiasedInterruptTimePrecise));
+  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryUnbiasedInterruptTimePrecise!(util.toPointer(lpUnbiasedInterruptTimePrecise));
 }
 
 export function QueryInterruptTime(
   lpInterruptTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryInterruptTime(util.toPointer(lpInterruptTime));
+  return libapi_ms_win_core_realtime_l1_1_1_dll.QueryInterruptTime!(util.toPointer(lpInterruptTime));
 }
 
 export function QueryUnbiasedInterruptTime(
   UnbiasedTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryUnbiasedInterruptTime(util.toPointer(UnbiasedTime)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryUnbiasedInterruptTime!(util.toPointer(UnbiasedTime)));
 }
 
 export function QueryAuxiliaryCounterFrequency(
   lpAuxiliaryCounterFrequency: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_realtime_l1_1_2_dll.QueryAuxiliaryCounterFrequency(util.toPointer(lpAuxiliaryCounterFrequency));
+  return libapi_ms_win_core_realtime_l1_1_2_dll.QueryAuxiliaryCounterFrequency!(util.toPointer(lpAuxiliaryCounterFrequency));
 }
 
 export function ConvertAuxiliaryCounterToPerformanceCounter(
@@ -12303,7 +12530,7 @@ export function ConvertAuxiliaryCounterToPerformanceCounter(
   lpPerformanceCounterValue: Deno.PointerValue | Uint8Array /* ptr */,
   lpConversionError: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_realtime_l1_1_2_dll.ConvertAuxiliaryCounterToPerformanceCounter(ullAuxiliaryCounterValue, util.toPointer(lpPerformanceCounterValue), util.toPointer(lpConversionError));
+  return libapi_ms_win_core_realtime_l1_1_2_dll.ConvertAuxiliaryCounterToPerformanceCounter!(ullAuxiliaryCounterValue, util.toPointer(lpPerformanceCounterValue), util.toPointer(lpConversionError));
 }
 
 export function ConvertPerformanceCounterToAuxiliaryCounter(
@@ -12311,81 +12538,81 @@ export function ConvertPerformanceCounterToAuxiliaryCounter(
   lpAuxiliaryCounterValue: Deno.PointerValue | Uint8Array /* ptr */,
   lpConversionError: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_realtime_l1_1_2_dll.ConvertPerformanceCounterToAuxiliaryCounter(ullPerformanceCounterValue, util.toPointer(lpAuxiliaryCounterValue), util.toPointer(lpConversionError));
+  return libapi_ms_win_core_realtime_l1_1_2_dll.ConvertPerformanceCounterToAuxiliaryCounter!(ullPerformanceCounterValue, util.toPointer(lpAuxiliaryCounterValue), util.toPointer(lpConversionError));
 }
 
 export function GlobalCompact(
   dwMinFree: number /* u32 */,
 ): bigint | number /* usize */ {
-  return libKERNEL32_dll.GlobalCompact(dwMinFree);
+  return libKERNEL32_dll.GlobalCompact!(dwMinFree);
 }
 
 export function GlobalFix(
   hMem: bigint | number /* isize */,
 ): void /* void */ {
-  return libKERNEL32_dll.GlobalFix(hMem);
+  return libKERNEL32_dll.GlobalFix!(hMem);
 }
 
 export function GlobalUnfix(
   hMem: bigint | number /* isize */,
 ): void /* void */ {
-  return libKERNEL32_dll.GlobalUnfix(hMem);
+  return libKERNEL32_dll.GlobalUnfix!(hMem);
 }
 
 export function GlobalWire(
   hMem: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.GlobalWire(hMem);
+  return libKERNEL32_dll.GlobalWire!(hMem);
 }
 
 export function GlobalUnWire(
   hMem: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GlobalUnWire(hMem));
+  return util.boolFromFfi(libKERNEL32_dll.GlobalUnWire!(hMem));
 }
 
 export function LocalShrink(
   hMem: bigint | number /* isize */,
   cbNewSize: number /* u32 */,
 ): bigint | number /* usize */ {
-  return libKERNEL32_dll.LocalShrink(hMem, cbNewSize);
+  return libKERNEL32_dll.LocalShrink!(hMem, cbNewSize);
 }
 
 export function LocalCompact(
   uMinFree: number /* u32 */,
 ): bigint | number /* usize */ {
-  return libKERNEL32_dll.LocalCompact(uMinFree);
+  return libKERNEL32_dll.LocalCompact!(uMinFree);
 }
 
 export function SetEnvironmentStringsA(
   NewEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentStringsA(util.pstrToFfi(NewEnvironment)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEnvironmentStringsA!(util.pstrToFfi(NewEnvironment)));
 }
 
 export function SetHandleCount(
   uNumber: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SetHandleCount(uNumber);
+  return libKERNEL32_dll.SetHandleCount!(uNumber);
 }
 
 export function RequestDeviceWakeup(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.RequestDeviceWakeup(util.toPointer(hDevice)));
+  return util.boolFromFfi(libKERNEL32_dll.RequestDeviceWakeup!(util.toPointer(hDevice)));
 }
 
 export function CancelDeviceWakeupRequest(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelDeviceWakeupRequest(util.toPointer(hDevice)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelDeviceWakeupRequest!(util.toPointer(hDevice)));
 }
 
 export function SetMessageWaitingIndicator(
   hMsgIndicator: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulMsgCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetMessageWaitingIndicator(util.toPointer(hMsgIndicator), ulMsgCount));
+  return util.boolFromFfi(libKERNEL32_dll.SetMessageWaitingIndicator!(util.toPointer(hMsgIndicator), ulMsgCount));
 }
 
 export function MulDiv(
@@ -12393,14 +12620,14 @@ export function MulDiv(
   nNumerator: number /* i32 */,
   nDenominator: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.MulDiv(nNumber, nNumerator, nDenominator);
+  return libKERNEL32_dll.MulDiv!(nNumber, nNumerator, nDenominator);
 }
 
 export function GetSystemRegistryQuota(
   pdwQuotaAllowed: Deno.PointerValue | Uint8Array /* ptr */,
   pdwQuotaUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetSystemRegistryQuota(util.toPointer(pdwQuotaAllowed), util.toPointer(pdwQuotaUsed)));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemRegistryQuota!(util.toPointer(pdwQuotaAllowed), util.toPointer(pdwQuotaUsed)));
 }
 
 export function FileTimeToDosDateTime(
@@ -12408,7 +12635,7 @@ export function FileTimeToDosDateTime(
   lpFatDate: Deno.PointerValue | Uint8Array /* ptr */,
   lpFatTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FileTimeToDosDateTime(util.toPointer(lpFileTime), util.toPointer(lpFatDate), util.toPointer(lpFatTime)));
+  return util.boolFromFfi(libKERNEL32_dll.FileTimeToDosDateTime!(util.toPointer(lpFileTime), util.toPointer(lpFatDate), util.toPointer(lpFatTime)));
 }
 
 export function DosDateTimeToFileTime(
@@ -12416,21 +12643,21 @@ export function DosDateTimeToFileTime(
   wFatTime: number /* u16 */,
   lpFileTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DosDateTimeToFileTime(wFatDate, wFatTime, util.toPointer(lpFileTime)));
+  return util.boolFromFfi(libKERNEL32_dll.DosDateTimeToFileTime!(wFatDate, wFatTime, util.toPointer(lpFileTime)));
 }
 
 export function _lopen(
   lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iReadWrite: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._lopen(util.pstrToFfi(lpPathName), iReadWrite);
+  return libKERNEL32_dll._lopen!(util.pstrToFfi(lpPathName), iReadWrite);
 }
 
 export function _lcreat(
   lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iAttribute: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._lcreat(util.pstrToFfi(lpPathName), iAttribute);
+  return libKERNEL32_dll._lcreat!(util.pstrToFfi(lpPathName), iAttribute);
 }
 
 export function _lread(
@@ -12438,7 +12665,7 @@ export function _lread(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uBytes: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll._lread(hFile, util.toPointer(lpBuffer), uBytes);
+  return libKERNEL32_dll._lread!(hFile, util.toPointer(lpBuffer), uBytes);
 }
 
 export function _lwrite(
@@ -12446,7 +12673,7 @@ export function _lwrite(
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBytes: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll._lwrite(hFile, util.pstrToFfi(lpBuffer), uBytes);
+  return libKERNEL32_dll._lwrite!(hFile, util.pstrToFfi(lpBuffer), uBytes);
 }
 
 export function _hread(
@@ -12454,7 +12681,7 @@ export function _hread(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lBytes: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._hread(hFile, util.toPointer(lpBuffer), lBytes);
+  return libKERNEL32_dll._hread!(hFile, util.toPointer(lpBuffer), lBytes);
 }
 
 export function _hwrite(
@@ -12462,13 +12689,13 @@ export function _hwrite(
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lBytes: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._hwrite(hFile, util.pstrToFfi(lpBuffer), lBytes);
+  return libKERNEL32_dll._hwrite!(hFile, util.pstrToFfi(lpBuffer), lBytes);
 }
 
 export function _lclose(
   hFile: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._lclose(hFile);
+  return libKERNEL32_dll._lclose!(hFile);
 }
 
 export function _llseek(
@@ -12476,7 +12703,7 @@ export function _llseek(
   lOffset: number /* i32 */,
   iOrigin: number /* i32 */,
 ): number /* i32 */ {
-  return libKERNEL32_dll._llseek(hFile, lOffset, iOrigin);
+  return libKERNEL32_dll._llseek!(hFile, lOffset, iOrigin);
 }
 
 export function SignalObjectAndWait(
@@ -12485,7 +12712,7 @@ export function SignalObjectAndWait(
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.SignalObjectAndWait(util.toPointer(hObjectToSignal), util.toPointer(hObjectToWaitOn), dwMilliseconds, util.boolToFfi(bAlertable));
+  return libKERNEL32_dll.SignalObjectAndWait!(util.toPointer(hObjectToSignal), util.toPointer(hObjectToWaitOn), dwMilliseconds, util.boolToFfi(bAlertable));
 }
 
 export function OpenMutexA(
@@ -12493,7 +12720,7 @@ export function OpenMutexA(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenMutexA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
+  return libKERNEL32_dll.OpenMutexA!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
 }
 
 export function OpenSemaphoreA(
@@ -12501,7 +12728,7 @@ export function OpenSemaphoreA(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenSemaphoreA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
+  return libKERNEL32_dll.OpenSemaphoreA!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
 }
 
 export function CreateWaitableTimerA(
@@ -12509,7 +12736,7 @@ export function CreateWaitableTimerA(
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
   lpTimerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateWaitableTimerA(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pstrToFfi(lpTimerName));
+  return libKERNEL32_dll.CreateWaitableTimerA!(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pstrToFfi(lpTimerName));
 }
 
 export function OpenWaitableTimerA(
@@ -12517,7 +12744,7 @@ export function OpenWaitableTimerA(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpTimerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenWaitableTimerA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpTimerName));
+  return libKERNEL32_dll.OpenWaitableTimerA!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpTimerName));
 }
 
 export function CreateWaitableTimerExA(
@@ -12526,7 +12753,7 @@ export function CreateWaitableTimerExA(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateWaitableTimerExA(util.toPointer(lpTimerAttributes), util.pstrToFfi(lpTimerName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateWaitableTimerExA!(util.toPointer(lpTimerAttributes), util.pstrToFfi(lpTimerName), dwFlags, dwDesiredAccess);
 }
 
 export function GetFirmwareEnvironmentVariableA(
@@ -12535,7 +12762,7 @@ export function GetFirmwareEnvironmentVariableA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetFirmwareEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pBuffer), nSize);
+  return libKERNEL32_dll.GetFirmwareEnvironmentVariableA!(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pBuffer), nSize);
 }
 
 export function GetFirmwareEnvironmentVariableW(
@@ -12544,7 +12771,7 @@ export function GetFirmwareEnvironmentVariableW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetFirmwareEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pBuffer), nSize);
+  return libKERNEL32_dll.GetFirmwareEnvironmentVariableW!(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pBuffer), nSize);
 }
 
 export function GetFirmwareEnvironmentVariableExA(
@@ -12554,7 +12781,7 @@ export function GetFirmwareEnvironmentVariableExA(
   nSize: number /* u32 */,
   pdwAttribubutes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetFirmwareEnvironmentVariableExA(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pBuffer), nSize, util.toPointer(pdwAttribubutes));
+  return libKERNEL32_dll.GetFirmwareEnvironmentVariableExA!(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pBuffer), nSize, util.toPointer(pdwAttribubutes));
 }
 
 export function GetFirmwareEnvironmentVariableExW(
@@ -12564,7 +12791,7 @@ export function GetFirmwareEnvironmentVariableExW(
   nSize: number /* u32 */,
   pdwAttribubutes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetFirmwareEnvironmentVariableExW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pBuffer), nSize, util.toPointer(pdwAttribubutes));
+  return libKERNEL32_dll.GetFirmwareEnvironmentVariableExW!(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pBuffer), nSize, util.toPointer(pdwAttribubutes));
 }
 
 export function SetFirmwareEnvironmentVariableA(
@@ -12573,7 +12800,7 @@ export function SetFirmwareEnvironmentVariableA(
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableA(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pValue), nSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableA!(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pValue), nSize));
 }
 
 export function SetFirmwareEnvironmentVariableW(
@@ -12582,7 +12809,7 @@ export function SetFirmwareEnvironmentVariableW(
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pValue), nSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableW!(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pValue), nSize));
 }
 
 export function SetFirmwareEnvironmentVariableExA(
@@ -12592,7 +12819,7 @@ export function SetFirmwareEnvironmentVariableExA(
   nSize: number /* u32 */,
   dwAttributes: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableExA(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pValue), nSize, dwAttributes));
+  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableExA!(util.pstrToFfi(lpName), util.pstrToFfi(lpGuid), util.toPointer(pValue), nSize, dwAttributes));
 }
 
 export function SetFirmwareEnvironmentVariableExW(
@@ -12602,13 +12829,13 @@ export function SetFirmwareEnvironmentVariableExW(
   nSize: number /* u32 */,
   dwAttributes: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableExW(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pValue), nSize, dwAttributes));
+  return util.boolFromFfi(libKERNEL32_dll.SetFirmwareEnvironmentVariableExW!(util.pwstrToFfi(lpName), util.pwstrToFfi(lpGuid), util.toPointer(pValue), nSize, dwAttributes));
 }
 
 export function IsNativeVhdBoot(
   NativeVhdBoot: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsNativeVhdBoot(util.toPointer(NativeVhdBoot)));
+  return util.boolFromFfi(libKERNEL32_dll.IsNativeVhdBoot!(util.toPointer(NativeVhdBoot)));
 }
 
 export function GetProfileIntA(
@@ -12616,7 +12843,7 @@ export function GetProfileIntA(
   lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nDefault: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileIntA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault);
+  return libKERNEL32_dll.GetProfileIntA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault);
 }
 
 export function GetProfileIntW(
@@ -12624,7 +12851,7 @@ export function GetProfileIntW(
   lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nDefault: number /* i32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileIntW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault);
+  return libKERNEL32_dll.GetProfileIntW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault);
 }
 
 export function GetProfileStringA(
@@ -12634,7 +12861,7 @@ export function GetProfileStringA(
   lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize);
+  return libKERNEL32_dll.GetProfileStringA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize);
 }
 
 export function GetProfileStringW(
@@ -12644,7 +12871,7 @@ export function GetProfileStringW(
   lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize);
+  return libKERNEL32_dll.GetProfileStringW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize);
 }
 
 export function WriteProfileStringA(
@@ -12652,7 +12879,7 @@ export function WriteProfileStringA(
   lpKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString)));
 }
 
 export function WriteProfileStringW(
@@ -12660,7 +12887,7 @@ export function WriteProfileStringW(
   lpKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteProfileStringW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString)));
 }
 
 export function GetProfileSectionA(
@@ -12668,7 +12895,7 @@ export function GetProfileSectionA(
   lpReturnedString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize);
+  return libKERNEL32_dll.GetProfileSectionA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize);
 }
 
 export function GetProfileSectionW(
@@ -12676,21 +12903,21 @@ export function GetProfileSectionW(
   lpReturnedString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize);
+  return libKERNEL32_dll.GetProfileSectionW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize);
 }
 
 export function WriteProfileSectionA(
   lpAppName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString)));
 }
 
 export function WriteProfileSectionW(
   lpAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteProfileSectionW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString)));
 }
 
 export function GetPrivateProfileIntA(
@@ -12699,7 +12926,7 @@ export function GetPrivateProfileIntA(
   nDefault: number /* i32 */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileIntA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault, util.pstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileIntA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), nDefault, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileIntW(
@@ -12708,7 +12935,7 @@ export function GetPrivateProfileIntW(
   nDefault: number /* i32 */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileIntW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault, util.pwstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileIntW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), nDefault, util.pwstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStringA(
@@ -12719,7 +12946,7 @@ export function GetPrivateProfileStringA(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileStringA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpDefault), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStringW(
@@ -12730,7 +12957,7 @@ export function GetPrivateProfileStringW(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileStringW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpDefault), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function WritePrivateProfileStringA(
@@ -12739,7 +12966,7 @@ export function WritePrivateProfileStringA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpKeyName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
 }
 
 export function WritePrivateProfileStringW(
@@ -12748,7 +12975,7 @@ export function WritePrivateProfileStringW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStringW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpKeyName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetPrivateProfileSectionA(
@@ -12757,7 +12984,7 @@ export function GetPrivateProfileSectionA(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileSectionA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpReturnedString), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileSectionW(
@@ -12766,7 +12993,7 @@ export function GetPrivateProfileSectionW(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileSectionW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpReturnedString), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function WritePrivateProfileSectionA(
@@ -12774,7 +13001,7 @@ export function WritePrivateProfileSectionA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionA(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionA!(util.pstrToFfi(lpAppName), util.pstrToFfi(lpString), util.pstrToFfi(lpFileName)));
 }
 
 export function WritePrivateProfileSectionW(
@@ -12782,7 +13009,7 @@ export function WritePrivateProfileSectionW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionW(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileSectionW!(util.pwstrToFfi(lpAppName), util.pwstrToFfi(lpString), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetPrivateProfileSectionNamesA(
@@ -12790,7 +13017,7 @@ export function GetPrivateProfileSectionNamesA(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileSectionNamesA(util.pstrToFfi(lpszReturnBuffer), nSize, util.pstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileSectionNamesA!(util.pstrToFfi(lpszReturnBuffer), nSize, util.pstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileSectionNamesW(
@@ -12798,7 +13025,7 @@ export function GetPrivateProfileSectionNamesW(
   nSize: number /* u32 */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPrivateProfileSectionNamesW(util.pwstrToFfi(lpszReturnBuffer), nSize, util.pwstrToFfi(lpFileName));
+  return libKERNEL32_dll.GetPrivateProfileSectionNamesW!(util.pwstrToFfi(lpszReturnBuffer), nSize, util.pwstrToFfi(lpFileName));
 }
 
 export function GetPrivateProfileStructA(
@@ -12808,7 +13035,7 @@ export function GetPrivateProfileStructA(
   uSizeStruct: number /* u32 */,
   szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructA(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
+  return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructA!(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
 }
 
 export function GetPrivateProfileStructW(
@@ -12818,7 +13045,7 @@ export function GetPrivateProfileStructW(
   uSizeStruct: number /* u32 */,
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructW(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
+  return util.boolFromFfi(libKERNEL32_dll.GetPrivateProfileStructW!(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
 }
 
 export function WritePrivateProfileStructA(
@@ -12828,7 +13055,7 @@ export function WritePrivateProfileStructA(
   uSizeStruct: number /* u32 */,
   szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructA(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructA!(util.pstrToFfi(lpszSection), util.pstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pstrToFfi(szFile)));
 }
 
 export function WritePrivateProfileStructW(
@@ -12838,35 +13065,35 @@ export function WritePrivateProfileStructW(
   uSizeStruct: number /* u32 */,
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructW(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
+  return util.boolFromFfi(libKERNEL32_dll.WritePrivateProfileStructW!(util.pwstrToFfi(lpszSection), util.pwstrToFfi(lpszKey), util.toPointer(lpStruct), uSizeStruct, util.pwstrToFfi(szFile)));
 }
 
 export function IsBadHugeReadPtr(
   lp: Deno.PointerValue | Uint8Array /* ptr */,
   ucb: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsBadHugeReadPtr(util.toPointer(lp), ucb));
+  return util.boolFromFfi(libKERNEL32_dll.IsBadHugeReadPtr!(util.toPointer(lp), ucb));
 }
 
 export function IsBadHugeWritePtr(
   lp: Deno.PointerValue | Uint8Array /* ptr */,
   ucb: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsBadHugeWritePtr(util.toPointer(lp), ucb));
+  return util.boolFromFfi(libKERNEL32_dll.IsBadHugeWritePtr!(util.toPointer(lp), ucb));
 }
 
 export function GetComputerNameA(
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameA(util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameA!(util.pstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function GetComputerNameW(
   lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameW(util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetComputerNameW!(util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function DnsHostnameToComputerNameA(
@@ -12874,7 +13101,7 @@ export function DnsHostnameToComputerNameA(
   ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameA(util.pstrToFfi(Hostname), util.pstrToFfi(ComputerName), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameA!(util.pstrToFfi(Hostname), util.pstrToFfi(ComputerName), util.toPointer(nSize)));
 }
 
 export function DnsHostnameToComputerNameW(
@@ -12882,46 +13109,46 @@ export function DnsHostnameToComputerNameW(
   ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameW(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
+  return util.boolFromFfi(libKERNEL32_dll.DnsHostnameToComputerNameW!(util.pwstrToFfi(Hostname), util.pwstrToFfi(ComputerName), util.toPointer(nSize)));
 }
 
 export function GetUserNameA(
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetUserNameA(util.pstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetUserNameA!(util.pstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
 }
 
 export function GetUserNameW(
   lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetUserNameW(util.pwstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetUserNameW!(util.pwstrToFfi(lpBuffer), util.toPointer(pcbBuffer)));
 }
 
 export function IsTokenUntrusted(
   TokenHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsTokenUntrusted(util.toPointer(TokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.IsTokenUntrusted!(util.toPointer(TokenHandle)));
 }
 
 export function CancelTimerQueueTimer(
   TimerQueue: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Timer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelTimerQueueTimer(util.toPointer(TimerQueue), util.toPointer(Timer)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelTimerQueueTimer!(util.toPointer(TimerQueue), util.toPointer(Timer)));
 }
 
 export function GetCurrentHwProfileA(
   lpHwProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetCurrentHwProfileA(util.toPointer(lpHwProfileInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.GetCurrentHwProfileA!(util.toPointer(lpHwProfileInfo)));
 }
 
 export function GetCurrentHwProfileW(
   lpHwProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetCurrentHwProfileW(util.toPointer(lpHwProfileInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.GetCurrentHwProfileW!(util.toPointer(lpHwProfileInfo)));
 }
 
 export function ReplacePartitionUnit(
@@ -12929,29 +13156,29 @@ export function ReplacePartitionUnit(
   SparePartition: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ReplacePartitionUnit(util.pwstrToFfi(TargetPartition), util.pwstrToFfi(SparePartition), Flags));
+  return util.boolFromFfi(libKERNEL32_dll.ReplacePartitionUnit!(util.pwstrToFfi(TargetPartition), util.pwstrToFfi(SparePartition), Flags));
 }
 
 export function GetThreadEnabledXStateFeatures(): bigint | number /* u64 */ {
-  return libKERNEL32_dll.GetThreadEnabledXStateFeatures();
+  return libKERNEL32_dll.GetThreadEnabledXStateFeatures!();
 }
 
 export function EnableProcessOptionalXStateFeatures(
   Features: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnableProcessOptionalXStateFeatures(Features));
+  return util.boolFromFfi(libKERNEL32_dll.EnableProcessOptionalXStateFeatures!(Features));
 }
 
 export function RaiseCustomSystemEventTrigger(
   CustomSystemEventTriggerConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_backgroundtask_l1_1_0_dll.RaiseCustomSystemEventTrigger(util.toPointer(CustomSystemEventTriggerConfig));
+  return libapi_ms_win_core_backgroundtask_l1_1_0_dll.RaiseCustomSystemEventTrigger!(util.toPointer(CustomSystemEventTriggerConfig));
 }
 
 export function NtClose(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtClose(util.toPointer(Handle));
+  return libntdll_dll.NtClose!(util.toPointer(Handle));
 }
 
 export function NtOpenFile(
@@ -12962,14 +13189,14 @@ export function NtOpenFile(
   ShareAccess: number /* u32 */,
   OpenOptions: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtOpenFile(util.toPointer(FileHandle), DesiredAccess, util.toPointer(ObjectAttributes), util.toPointer(IoStatusBlock), ShareAccess, OpenOptions);
+  return libntdll_dll.NtOpenFile!(util.toPointer(FileHandle), DesiredAccess, util.toPointer(ObjectAttributes), util.toPointer(IoStatusBlock), ShareAccess, OpenOptions);
 }
 
 export function NtRenameKey(
   KeyHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   NewName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtRenameKey(util.toPointer(KeyHandle), util.toPointer(NewName));
+  return libntdll_dll.NtRenameKey!(util.toPointer(KeyHandle), util.toPointer(NewName));
 }
 
 export function NtNotifyChangeMultipleKeys(
@@ -12986,7 +13213,7 @@ export function NtNotifyChangeMultipleKeys(
   BufferSize: number /* u32 */,
   Asynchronous: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtNotifyChangeMultipleKeys(util.toPointer(MasterKeyHandle), Count, util.toPointer(SubordinateObjects), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(IoStatusBlock), CompletionFilter, util.toPointer(WatchTree), util.toPointer(Buffer), BufferSize, util.toPointer(Asynchronous));
+  return libntdll_dll.NtNotifyChangeMultipleKeys!(util.toPointer(MasterKeyHandle), Count, util.toPointer(SubordinateObjects), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(IoStatusBlock), CompletionFilter, util.toPointer(WatchTree), util.toPointer(Buffer), BufferSize, util.toPointer(Asynchronous));
 }
 
 export function NtQueryMultipleValueKey(
@@ -12997,7 +13224,7 @@ export function NtQueryMultipleValueKey(
   BufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   RequiredBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQueryMultipleValueKey(util.toPointer(KeyHandle), util.toPointer(ValueEntries), EntryCount, util.toPointer(ValueBuffer), util.toPointer(BufferLength), util.toPointer(RequiredBufferLength));
+  return libntdll_dll.NtQueryMultipleValueKey!(util.toPointer(KeyHandle), util.toPointer(ValueEntries), EntryCount, util.toPointer(ValueBuffer), util.toPointer(BufferLength), util.toPointer(RequiredBufferLength));
 }
 
 export function NtSetInformationKey(
@@ -13006,7 +13233,7 @@ export function NtSetInformationKey(
   KeySetInformation: Deno.PointerValue | Uint8Array /* ptr */,
   KeySetInformationLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtSetInformationKey(util.toPointer(KeyHandle), KeySetInformationClass, util.toPointer(KeySetInformation), KeySetInformationLength);
+  return libntdll_dll.NtSetInformationKey!(util.toPointer(KeyHandle), KeySetInformationClass, util.toPointer(KeySetInformation), KeySetInformationLength);
 }
 
 export function NtDeviceIoControlFile(
@@ -13021,7 +13248,7 @@ export function NtDeviceIoControlFile(
   OutputBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   OutputBufferLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtDeviceIoControlFile(util.toPointer(FileHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(IoStatusBlock), IoControlCode, util.toPointer(InputBuffer), InputBufferLength, util.toPointer(OutputBuffer), OutputBufferLength);
+  return libntdll_dll.NtDeviceIoControlFile!(util.toPointer(FileHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(IoStatusBlock), IoControlCode, util.toPointer(InputBuffer), InputBufferLength, util.toPointer(OutputBuffer), OutputBufferLength);
 }
 
 export function NtWaitForSingleObject(
@@ -13029,7 +13256,7 @@ export function NtWaitForSingleObject(
   Alertable: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   Timeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtWaitForSingleObject(util.toPointer(Handle), util.toPointer(Alertable), util.toPointer(Timeout));
+  return libntdll_dll.NtWaitForSingleObject!(util.toPointer(Handle), util.toPointer(Alertable), util.toPointer(Timeout));
 }
 
 export function RtlIsNameLegalDOS8Dot3(
@@ -13037,7 +13264,7 @@ export function RtlIsNameLegalDOS8Dot3(
   OemName: Deno.PointerValue | Uint8Array /* ptr */,
   NameContainsSpaces: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libntdll_dll.RtlIsNameLegalDOS8Dot3(util.toPointer(Name), util.toPointer(OemName), util.toPointer(NameContainsSpaces));
+  return libntdll_dll.RtlIsNameLegalDOS8Dot3!(util.toPointer(Name), util.toPointer(OemName), util.toPointer(NameContainsSpaces));
 }
 
 export function NtQueryObject(
@@ -13047,7 +13274,7 @@ export function NtQueryObject(
   ObjectInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQueryObject(util.toPointer(Handle), ObjectInformationClass, util.toPointer(ObjectInformation), ObjectInformationLength, util.toPointer(ReturnLength));
+  return libntdll_dll.NtQueryObject!(util.toPointer(Handle), ObjectInformationClass, util.toPointer(ObjectInformation), ObjectInformationLength, util.toPointer(ReturnLength));
 }
 
 export function NtQuerySystemInformation(
@@ -13056,13 +13283,13 @@ export function NtQuerySystemInformation(
   SystemInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQuerySystemInformation(SystemInformationClass, util.toPointer(SystemInformation), SystemInformationLength, util.toPointer(ReturnLength));
+  return libntdll_dll.NtQuerySystemInformation!(SystemInformationClass, util.toPointer(SystemInformation), SystemInformationLength, util.toPointer(ReturnLength));
 }
 
 export function NtQuerySystemTime(
   SystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQuerySystemTime(util.toPointer(SystemTime));
+  return libntdll_dll.NtQuerySystemTime!(util.toPointer(SystemTime));
 }
 
 export function NtQueryTimerResolution(
@@ -13070,74 +13297,74 @@ export function NtQueryTimerResolution(
   MinimumTime: Deno.PointerValue | Uint8Array /* ptr */,
   CurrentTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQueryTimerResolution(util.toPointer(MaximumTime), util.toPointer(MinimumTime), util.toPointer(CurrentTime));
+  return libntdll_dll.NtQueryTimerResolution!(util.toPointer(MaximumTime), util.toPointer(MinimumTime), util.toPointer(CurrentTime));
 }
 
 export function RtlLocalTimeToSystemTime(
   LocalTime: Deno.PointerValue | Uint8Array /* ptr */,
   SystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlLocalTimeToSystemTime(util.toPointer(LocalTime), util.toPointer(SystemTime));
+  return libntdll_dll.RtlLocalTimeToSystemTime!(util.toPointer(LocalTime), util.toPointer(SystemTime));
 }
 
 export function RtlTimeToSecondsSince1970(
   Time: Deno.PointerValue | Uint8Array /* ptr */,
   ElapsedSeconds: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libntdll_dll.RtlTimeToSecondsSince1970(util.toPointer(Time), util.toPointer(ElapsedSeconds));
+  return libntdll_dll.RtlTimeToSecondsSince1970!(util.toPointer(Time), util.toPointer(ElapsedSeconds));
 }
 
 export function RtlFreeAnsiString(
   AnsiString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlFreeAnsiString(util.toPointer(AnsiString));
+  return libntdll_dll.RtlFreeAnsiString!(util.toPointer(AnsiString));
 }
 
 export function RtlFreeUnicodeString(
   UnicodeString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlFreeUnicodeString(util.toPointer(UnicodeString));
+  return libntdll_dll.RtlFreeUnicodeString!(util.toPointer(UnicodeString));
 }
 
 export function RtlFreeOemString(
   OemString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlFreeOemString(util.toPointer(OemString));
+  return libntdll_dll.RtlFreeOemString!(util.toPointer(OemString));
 }
 
 export function RtlInitString(
   DestinationString: Deno.PointerValue | Uint8Array /* ptr */,
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlInitString(util.toPointer(DestinationString), util.toPointer(SourceString));
+  return libntdll_dll.RtlInitString!(util.toPointer(DestinationString), util.toPointer(SourceString));
 }
 
 export function RtlInitStringEx(
   DestinationString: Deno.PointerValue | Uint8Array /* ptr */,
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlInitStringEx(util.toPointer(DestinationString), util.toPointer(SourceString));
+  return libntdll_dll.RtlInitStringEx!(util.toPointer(DestinationString), util.toPointer(SourceString));
 }
 
 export function RtlInitAnsiString(
   DestinationString: Deno.PointerValue | Uint8Array /* ptr */,
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlInitAnsiString(util.toPointer(DestinationString), util.toPointer(SourceString));
+  return libntdll_dll.RtlInitAnsiString!(util.toPointer(DestinationString), util.toPointer(SourceString));
 }
 
 export function RtlInitAnsiStringEx(
   DestinationString: Deno.PointerValue | Uint8Array /* ptr */,
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlInitAnsiStringEx(util.toPointer(DestinationString), util.toPointer(SourceString));
+  return libntdll_dll.RtlInitAnsiStringEx!(util.toPointer(DestinationString), util.toPointer(SourceString));
 }
 
 export function RtlInitUnicodeString(
   DestinationString: Deno.PointerValue | Uint8Array /* ptr */,
   SourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libntdll_dll.RtlInitUnicodeString(util.toPointer(DestinationString), util.pwstrToFfi(SourceString));
+  return libntdll_dll.RtlInitUnicodeString!(util.toPointer(DestinationString), util.pwstrToFfi(SourceString));
 }
 
 export function RtlAnsiStringToUnicodeString(
@@ -13145,7 +13372,7 @@ export function RtlAnsiStringToUnicodeString(
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
   AllocateDestinationString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlAnsiStringToUnicodeString(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
+  return libntdll_dll.RtlAnsiStringToUnicodeString!(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
 }
 
 export function RtlUnicodeStringToAnsiString(
@@ -13153,7 +13380,7 @@ export function RtlUnicodeStringToAnsiString(
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
   AllocateDestinationString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlUnicodeStringToAnsiString(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
+  return libntdll_dll.RtlUnicodeStringToAnsiString!(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
 }
 
 export function RtlUnicodeStringToOemString(
@@ -13161,7 +13388,7 @@ export function RtlUnicodeStringToOemString(
   SourceString: Deno.PointerValue | Uint8Array /* ptr */,
   AllocateDestinationString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlUnicodeStringToOemString(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
+  return libntdll_dll.RtlUnicodeStringToOemString!(util.toPointer(DestinationString), util.toPointer(SourceString), util.toPointer(AllocateDestinationString));
 }
 
 export function RtlUnicodeToMultiByteSize(
@@ -13169,7 +13396,7 @@ export function RtlUnicodeToMultiByteSize(
   UnicodeString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInUnicodeString: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlUnicodeToMultiByteSize(util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
+  return libntdll_dll.RtlUnicodeToMultiByteSize!(util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
 }
 
 export function RtlCharToInteger(
@@ -13177,20 +13404,20 @@ export function RtlCharToInteger(
   Base: number /* u32 */,
   Value: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlCharToInteger(util.toPointer(String), Base, util.toPointer(Value));
+  return libntdll_dll.RtlCharToInteger!(util.toPointer(String), Base, util.toPointer(Value));
 }
 
 export function RtlUniform(
   Seed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlUniform(util.toPointer(Seed));
+  return libntdll_dll.RtlUniform!(util.toPointer(Seed));
 }
 
 export function GetFeatureEnabledState(
   featureId: number /* u32 */,
   changeTime: FEATURE_CHANGE_TIME /* Windows.Win32.System.WindowsProgramming.FEATURE_CHANGE_TIME */,
 ): FEATURE_ENABLED_STATE /* Windows.Win32.System.WindowsProgramming.FEATURE_ENABLED_STATE */ {
-  return libapi_ms_win_core_featurestaging_l1_1_0_dll.GetFeatureEnabledState(featureId, changeTime);
+  return libapi_ms_win_core_featurestaging_l1_1_0_dll.GetFeatureEnabledState!(featureId, changeTime);
 }
 
 export function RecordFeatureUsage(
@@ -13199,14 +13426,14 @@ export function RecordFeatureUsage(
   addend: number /* u32 */,
   originName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libapi_ms_win_core_featurestaging_l1_1_0_dll.RecordFeatureUsage(featureId, kind, addend, util.pstrToFfi(originName));
+  return libapi_ms_win_core_featurestaging_l1_1_0_dll.RecordFeatureUsage!(featureId, kind, addend, util.pstrToFfi(originName));
 }
 
 export function RecordFeatureError(
   featureId: number /* u32 */,
   error: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_featurestaging_l1_1_0_dll.RecordFeatureError(featureId, util.toPointer(error));
+  return libapi_ms_win_core_featurestaging_l1_1_0_dll.RecordFeatureError!(featureId, util.toPointer(error));
 }
 
 export function SubscribeFeatureStateChangeNotification(
@@ -13214,13 +13441,13 @@ export function SubscribeFeatureStateChangeNotification(
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.PFEATURE_STATE_CHANGE_CALLBACK */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_featurestaging_l1_1_0_dll.SubscribeFeatureStateChangeNotification(util.toPointer(subscription), util.toPointer(callback), util.toPointer(context));
+  return libapi_ms_win_core_featurestaging_l1_1_0_dll.SubscribeFeatureStateChangeNotification!(util.toPointer(subscription), util.toPointer(callback), util.toPointer(context));
 }
 
 export function UnsubscribeFeatureStateChangeNotification(
   subscription: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FEATURE_STATE_CHANGE_SUBSCRIPTION */,
 ): void /* void */ {
-  return libapi_ms_win_core_featurestaging_l1_1_0_dll.UnsubscribeFeatureStateChangeNotification(util.toPointer(subscription));
+  return libapi_ms_win_core_featurestaging_l1_1_0_dll.UnsubscribeFeatureStateChangeNotification!(util.toPointer(subscription));
 }
 
 export function GetFeatureVariant(
@@ -13229,24 +13456,24 @@ export function GetFeatureVariant(
   payloadId: Deno.PointerValue | Uint8Array /* ptr */,
   hasNotification: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_featurestaging_l1_1_1_dll.GetFeatureVariant(featureId, changeTime, util.toPointer(payloadId), util.toPointer(hasNotification));
+  return libapi_ms_win_core_featurestaging_l1_1_1_dll.GetFeatureVariant!(featureId, changeTime, util.toPointer(payloadId), util.toPointer(hasNotification));
 }
 
 export function DCIOpenProvider(): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return libDCIMAN32_dll.DCIOpenProvider();
+  return libDCIMAN32_dll.DCIOpenProvider!();
 }
 
 export function DCICloseProvider(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): void /* void */ {
-  return libDCIMAN32_dll.DCICloseProvider(util.toPointer(hdc));
+  return libDCIMAN32_dll.DCICloseProvider!(util.toPointer(hdc));
 }
 
 export function DCICreatePrimary(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lplpSurface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCICreatePrimary(util.toPointer(hdc), util.toPointer(lplpSurface));
+  return libDCIMAN32_dll.DCICreatePrimary!(util.toPointer(hdc), util.toPointer(lplpSurface));
 }
 
 export function DCICreateOffscreen(
@@ -13261,7 +13488,7 @@ export function DCICreateOffscreen(
   dwBitCount: number /* u32 */,
   lplpSurface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCICreateOffscreen(util.toPointer(hdc), dwCompression, dwRedMask, dwGreenMask, dwBlueMask, dwWidth, dwHeight, dwDCICaps, dwBitCount, util.toPointer(lplpSurface));
+  return libDCIMAN32_dll.DCICreateOffscreen!(util.toPointer(hdc), dwCompression, dwRedMask, dwGreenMask, dwBlueMask, dwWidth, dwHeight, dwDCICaps, dwBitCount, util.toPointer(lplpSurface));
 }
 
 export function DCICreateOverlay(
@@ -13269,7 +13496,7 @@ export function DCICreateOverlay(
   lpOffscreenSurf: Deno.PointerValue | Uint8Array /* ptr */,
   lplpSurface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCICreateOverlay(util.toPointer(hdc), util.toPointer(lpOffscreenSurf), util.toPointer(lplpSurface));
+  return libDCIMAN32_dll.DCICreateOverlay!(util.toPointer(hdc), util.toPointer(lpOffscreenSurf), util.toPointer(lplpSurface));
 }
 
 export function DCIEnum(
@@ -13279,7 +13506,7 @@ export function DCIEnum(
   lpFnCallback: Deno.PointerValue | Uint8Array /* ptr */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCIEnum(util.toPointer(hdc), util.toPointer(lprDst), util.toPointer(lprSrc), util.toPointer(lpFnCallback), util.toPointer(lpContext));
+  return libDCIMAN32_dll.DCIEnum!(util.toPointer(hdc), util.toPointer(lprDst), util.toPointer(lprSrc), util.toPointer(lpFnCallback), util.toPointer(lpContext));
 }
 
 export function DCISetSrcDestClip(
@@ -13288,19 +13515,19 @@ export function DCISetSrcDestClip(
   destrc: Deno.PointerValue | Uint8Array /* ptr */,
   prd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCISetSrcDestClip(util.toPointer(pdci), util.toPointer(srcrc), util.toPointer(destrc), util.toPointer(prd));
+  return libDCIMAN32_dll.DCISetSrcDestClip!(util.toPointer(pdci), util.toPointer(srcrc), util.toPointer(destrc), util.toPointer(prd));
 }
 
 export function WinWatchOpen(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.HWINWATCH */ {
-  return libDCIMAN32_dll.WinWatchOpen((hwnd));
+  return libDCIMAN32_dll.WinWatchOpen!((hwnd));
 }
 
 export function WinWatchClose(
   hWW: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.HWINWATCH */,
 ): void /* void */ {
-  return libDCIMAN32_dll.WinWatchClose(util.toPointer(hWW));
+  return libDCIMAN32_dll.WinWatchClose!(util.toPointer(hWW));
 }
 
 export function WinWatchGetClipList(
@@ -13309,13 +13536,13 @@ export function WinWatchGetClipList(
   size: number /* u32 */,
   prd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDCIMAN32_dll.WinWatchGetClipList(util.toPointer(hWW), util.toPointer(prc), size, util.toPointer(prd));
+  return libDCIMAN32_dll.WinWatchGetClipList!(util.toPointer(hWW), util.toPointer(prc), size, util.toPointer(prd));
 }
 
 export function WinWatchDidStatusChange(
   hWW: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.HWINWATCH */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDCIMAN32_dll.WinWatchDidStatusChange(util.toPointer(hWW)));
+  return util.boolFromFfi(libDCIMAN32_dll.WinWatchDidStatusChange!(util.toPointer(hWW)));
 }
 
 export function GetWindowRegionData(
@@ -13323,7 +13550,7 @@ export function GetWindowRegionData(
   size: number /* u32 */,
   prd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDCIMAN32_dll.GetWindowRegionData((hwnd), size, util.toPointer(prd));
+  return libDCIMAN32_dll.GetWindowRegionData!((hwnd), size, util.toPointer(prd));
 }
 
 export function GetDCRegionData(
@@ -13331,7 +13558,7 @@ export function GetDCRegionData(
   size: number /* u32 */,
   prd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDCIMAN32_dll.GetDCRegionData(util.toPointer(hdc), size, util.toPointer(prd));
+  return libDCIMAN32_dll.GetDCRegionData!(util.toPointer(hdc), size, util.toPointer(prd));
 }
 
 export function WinWatchNotify(
@@ -13339,13 +13566,13 @@ export function WinWatchNotify(
   NotifyCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.WINWATCHNOTIFYPROC */,
   NotifyParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDCIMAN32_dll.WinWatchNotify(util.toPointer(hWW), util.toPointer(NotifyCallback), util.toPointer(NotifyParam)));
+  return util.boolFromFfi(libDCIMAN32_dll.WinWatchNotify!(util.toPointer(hWW), util.toPointer(NotifyCallback), util.toPointer(NotifyParam)));
 }
 
 export function DCIEndAccess(
   pdci: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDCIMAN32_dll.DCIEndAccess(util.toPointer(pdci));
+  return libDCIMAN32_dll.DCIEndAccess!(util.toPointer(pdci));
 }
 
 export function DCIBeginAccess(
@@ -13355,26 +13582,26 @@ export function DCIBeginAccess(
   dx: number /* i32 */,
   dy: number /* i32 */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCIBeginAccess(util.toPointer(pdci), x, y, dx, dy);
+  return libDCIMAN32_dll.DCIBeginAccess!(util.toPointer(pdci), x, y, dx, dy);
 }
 
 export function DCIDestroy(
   pdci: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDCIMAN32_dll.DCIDestroy(util.toPointer(pdci));
+  return libDCIMAN32_dll.DCIDestroy!(util.toPointer(pdci));
 }
 
 export function DCIDraw(
   pdci: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCIDraw(util.toPointer(pdci));
+  return libDCIMAN32_dll.DCIDraw!(util.toPointer(pdci));
 }
 
 export function DCISetClipList(
   pdci: Deno.PointerValue | Uint8Array /* ptr */,
   prd: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCISetClipList(util.toPointer(pdci), util.toPointer(prd));
+  return libDCIMAN32_dll.DCISetClipList!(util.toPointer(pdci), util.toPointer(prd));
 }
 
 export function DCISetDestination(
@@ -13382,11 +13609,11 @@ export function DCISetDestination(
   dst: Deno.PointerValue | Uint8Array /* ptr */,
   src: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDCIMAN32_dll.DCISetDestination(util.toPointer(pdci), util.toPointer(dst), util.toPointer(src));
+  return libDCIMAN32_dll.DCISetDestination!(util.toPointer(pdci), util.toPointer(dst), util.toPointer(src));
 }
 
 export function GdiEntry13(): number /* u32 */ {
-  return libapi_ms_win_dx_d3dkmt_l1_1_0_dll.GdiEntry13();
+  return libapi_ms_win_dx_d3dkmt_l1_1_0_dll.GdiEntry13!();
 }
 
 export function RunSetupCommandA(
@@ -13399,7 +13626,7 @@ export function RunSetupCommandA(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RunSetupCommandA((hWnd), util.pstrToFfi(szCmdName), util.pstrToFfi(szInfSection), util.pstrToFfi(szDir), util.pstrToFfi(lpszTitle), util.toPointer(phEXE), dwFlags, util.toPointer(pvReserved));
+  return libADVPACK_dll.RunSetupCommandA!((hWnd), util.pstrToFfi(szCmdName), util.pstrToFfi(szInfSection), util.pstrToFfi(szDir), util.pstrToFfi(lpszTitle), util.toPointer(phEXE), dwFlags, util.toPointer(pvReserved));
 }
 
 export function RunSetupCommandW(
@@ -13412,17 +13639,17 @@ export function RunSetupCommandW(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RunSetupCommandW((hWnd), util.pwstrToFfi(szCmdName), util.pwstrToFfi(szInfSection), util.pwstrToFfi(szDir), util.pwstrToFfi(lpszTitle), util.toPointer(phEXE), dwFlags, util.toPointer(pvReserved));
+  return libADVPACK_dll.RunSetupCommandW!((hWnd), util.pwstrToFfi(szCmdName), util.pwstrToFfi(szInfSection), util.pwstrToFfi(szDir), util.pwstrToFfi(lpszTitle), util.toPointer(phEXE), dwFlags, util.toPointer(pvReserved));
 }
 
 export function NeedRebootInit(): number /* u32 */ {
-  return libADVPACK_dll.NeedRebootInit();
+  return libADVPACK_dll.NeedRebootInit!();
 }
 
 export function NeedReboot(
   dwRebootCheck: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVPACK_dll.NeedReboot(dwRebootCheck));
+  return util.boolFromFfi(libADVPACK_dll.NeedReboot!(dwRebootCheck));
 }
 
 export function RebootCheckOnInstallA(
@@ -13431,7 +13658,7 @@ export function RebootCheckOnInstallA(
   pszSec: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RebootCheckOnInstallA((hwnd), util.pstrToFfi(pszINF), util.pstrToFfi(pszSec), dwReserved);
+  return libADVPACK_dll.RebootCheckOnInstallA!((hwnd), util.pstrToFfi(pszINF), util.pstrToFfi(pszSec), dwReserved);
 }
 
 export function RebootCheckOnInstallW(
@@ -13440,7 +13667,7 @@ export function RebootCheckOnInstallW(
   pszSec: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RebootCheckOnInstallW((hwnd), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSec), dwReserved);
+  return libADVPACK_dll.RebootCheckOnInstallW!((hwnd), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSec), dwReserved);
 }
 
 export function TranslateInfStringA(
@@ -13453,7 +13680,7 @@ export function TranslateInfStringA(
   pdwRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.TranslateInfStringA(util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszInstallSection), util.pstrToFfi(pszTranslateSection), util.pstrToFfi(pszTranslateKey), util.pstrToFfi(pszBuffer), cchBuffer, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
+  return libADVPACK_dll.TranslateInfStringA!(util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszInstallSection), util.pstrToFfi(pszTranslateSection), util.pstrToFfi(pszTranslateKey), util.pstrToFfi(pszBuffer), cchBuffer, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
 }
 
 export function TranslateInfStringW(
@@ -13466,7 +13693,7 @@ export function TranslateInfStringW(
   pdwRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.TranslateInfStringW(util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszInstallSection), util.pwstrToFfi(pszTranslateSection), util.pwstrToFfi(pszTranslateKey), util.pwstrToFfi(pszBuffer), cchBuffer, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
+  return libADVPACK_dll.TranslateInfStringW!(util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszInstallSection), util.pwstrToFfi(pszTranslateSection), util.pwstrToFfi(pszTranslateKey), util.pwstrToFfi(pszBuffer), cchBuffer, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
 }
 
 export function RegInstallA(
@@ -13474,7 +13701,7 @@ export function RegInstallA(
   pszSection: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pstTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegInstallA(util.toPointer(hmod), util.pstrToFfi(pszSection), util.toPointer(pstTable));
+  return libADVPACK_dll.RegInstallA!(util.toPointer(hmod), util.pstrToFfi(pszSection), util.toPointer(pstTable));
 }
 
 export function RegInstallW(
@@ -13482,7 +13709,7 @@ export function RegInstallW(
   pszSection: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pstTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegInstallW(util.toPointer(hmod), util.pwstrToFfi(pszSection), util.toPointer(pstTable));
+  return libADVPACK_dll.RegInstallW!(util.toPointer(hmod), util.pwstrToFfi(pszSection), util.toPointer(pstTable));
 }
 
 export function LaunchINFSectionExW(
@@ -13491,7 +13718,7 @@ export function LaunchINFSectionExW(
   pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.LaunchINFSectionExW((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.LaunchINFSectionExW!((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
 }
 
 export function ExecuteCabA(
@@ -13499,7 +13726,7 @@ export function ExecuteCabA(
   pCab: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.ExecuteCabA((hwnd), util.toPointer(pCab), util.toPointer(pReserved));
+  return libADVPACK_dll.ExecuteCabA!((hwnd), util.toPointer(pCab), util.toPointer(pReserved));
 }
 
 export function ExecuteCabW(
@@ -13507,7 +13734,7 @@ export function ExecuteCabW(
   pCab: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.ExecuteCabW((hwnd), util.toPointer(pCab), util.toPointer(pReserved));
+  return libADVPACK_dll.ExecuteCabW!((hwnd), util.toPointer(pCab), util.toPointer(pReserved));
 }
 
 export function AdvInstallFileA(
@@ -13519,7 +13746,7 @@ export function AdvInstallFileA(
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.AdvInstallFileA((hwnd), util.pstrToFfi(lpszSourceDir), util.pstrToFfi(lpszSourceFile), util.pstrToFfi(lpszDestDir), util.pstrToFfi(lpszDestFile), dwFlags, dwReserved);
+  return libADVPACK_dll.AdvInstallFileA!((hwnd), util.pstrToFfi(lpszSourceDir), util.pstrToFfi(lpszSourceFile), util.pstrToFfi(lpszDestDir), util.pstrToFfi(lpszDestFile), dwFlags, dwReserved);
 }
 
 export function AdvInstallFileW(
@@ -13531,7 +13758,7 @@ export function AdvInstallFileW(
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.AdvInstallFileW((hwnd), util.pwstrToFfi(lpszSourceDir), util.pwstrToFfi(lpszSourceFile), util.pwstrToFfi(lpszDestDir), util.pwstrToFfi(lpszDestFile), dwFlags, dwReserved);
+  return libADVPACK_dll.AdvInstallFileW!((hwnd), util.pwstrToFfi(lpszSourceDir), util.pwstrToFfi(lpszSourceFile), util.pwstrToFfi(lpszDestDir), util.pwstrToFfi(lpszDestFile), dwFlags, dwReserved);
 }
 
 export function RegSaveRestoreA(
@@ -13543,7 +13770,7 @@ export function RegSaveRestoreA(
   pcszValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegSaveRestoreA((hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pstrToFfi(pcszRootKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValueName), dwFlags);
+  return libADVPACK_dll.RegSaveRestoreA!((hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pstrToFfi(pcszRootKey), util.pstrToFfi(pcszSubKey), util.pstrToFfi(pcszValueName), dwFlags);
 }
 
 export function RegSaveRestoreW(
@@ -13555,7 +13782,7 @@ export function RegSaveRestoreW(
   pcszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegSaveRestoreW((hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pwstrToFfi(pcszRootKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValueName), dwFlags);
+  return libADVPACK_dll.RegSaveRestoreW!((hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey), util.pwstrToFfi(pcszRootKey), util.pwstrToFfi(pcszSubKey), util.pwstrToFfi(pcszValueName), dwFlags);
 }
 
 export function RegSaveRestoreOnINFA(
@@ -13567,7 +13794,7 @@ export function RegSaveRestoreOnINFA(
   hHKCUBackKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegSaveRestoreOnINFA((hWnd), util.pstrToFfi(pszTitle), util.pstrToFfi(pszINF), util.pstrToFfi(pszSection), util.toPointer(hHKLMBackKey), util.toPointer(hHKCUBackKey), dwFlags);
+  return libADVPACK_dll.RegSaveRestoreOnINFA!((hWnd), util.pstrToFfi(pszTitle), util.pstrToFfi(pszINF), util.pstrToFfi(pszSection), util.toPointer(hHKLMBackKey), util.toPointer(hHKCUBackKey), dwFlags);
 }
 
 export function RegSaveRestoreOnINFW(
@@ -13579,7 +13806,7 @@ export function RegSaveRestoreOnINFW(
   hHKCUBackKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegSaveRestoreOnINFW((hWnd), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSection), util.toPointer(hHKLMBackKey), util.toPointer(hHKCUBackKey), dwFlags);
+  return libADVPACK_dll.RegSaveRestoreOnINFW!((hWnd), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSection), util.toPointer(hHKLMBackKey), util.toPointer(hHKCUBackKey), dwFlags);
 }
 
 export function RegRestoreAllA(
@@ -13587,7 +13814,7 @@ export function RegRestoreAllA(
   pszTitleString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegRestoreAllA((hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey));
+  return libADVPACK_dll.RegRestoreAllA!((hWnd), util.pstrToFfi(pszTitleString), util.toPointer(hkBckupKey));
 }
 
 export function RegRestoreAllW(
@@ -13595,7 +13822,7 @@ export function RegRestoreAllW(
   pszTitleString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hkBckupKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.RegRestoreAllW((hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey));
+  return libADVPACK_dll.RegRestoreAllW!((hWnd), util.pwstrToFfi(pszTitleString), util.toPointer(hkBckupKey));
 }
 
 export function FileSaveRestoreW(
@@ -13605,7 +13832,7 @@ export function FileSaveRestoreW(
   lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.FileSaveRestoreW((hDlg), util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName), dwFlags);
+  return libADVPACK_dll.FileSaveRestoreW!((hDlg), util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName), dwFlags);
 }
 
 export function FileSaveRestoreOnINFA(
@@ -13617,7 +13844,7 @@ export function FileSaveRestoreOnINFA(
   pszBaseBackupFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.FileSaveRestoreOnINFA((hWnd), util.pstrToFfi(pszTitle), util.pstrToFfi(pszINF), util.pstrToFfi(pszSection), util.pstrToFfi(pszBackupDir), util.pstrToFfi(pszBaseBackupFile), dwFlags);
+  return libADVPACK_dll.FileSaveRestoreOnINFA!((hWnd), util.pstrToFfi(pszTitle), util.pstrToFfi(pszINF), util.pstrToFfi(pszSection), util.pstrToFfi(pszBackupDir), util.pstrToFfi(pszBaseBackupFile), dwFlags);
 }
 
 export function FileSaveRestoreOnINFW(
@@ -13629,7 +13856,7 @@ export function FileSaveRestoreOnINFW(
   pszBaseBackupFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.FileSaveRestoreOnINFW((hWnd), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSection), util.pwstrToFfi(pszBackupDir), util.pwstrToFfi(pszBaseBackupFile), dwFlags);
+  return libADVPACK_dll.FileSaveRestoreOnINFW!((hWnd), util.pwstrToFfi(pszTitle), util.pwstrToFfi(pszINF), util.pwstrToFfi(pszSection), util.pwstrToFfi(pszBackupDir), util.pwstrToFfi(pszBaseBackupFile), dwFlags);
 }
 
 export function AddDelBackupEntryA(
@@ -13638,7 +13865,7 @@ export function AddDelBackupEntryA(
   lpcszBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.AddDelBackupEntryA(util.pstrToFfi(lpcszFileList), util.pstrToFfi(lpcszBackupDir), util.pstrToFfi(lpcszBaseName), dwFlags);
+  return libADVPACK_dll.AddDelBackupEntryA!(util.pstrToFfi(lpcszFileList), util.pstrToFfi(lpcszBackupDir), util.pstrToFfi(lpcszBaseName), dwFlags);
 }
 
 export function AddDelBackupEntryW(
@@ -13647,7 +13874,7 @@ export function AddDelBackupEntryW(
   lpcszBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.AddDelBackupEntryW(util.pwstrToFfi(lpcszFileList), util.pwstrToFfi(lpcszBackupDir), util.pwstrToFfi(lpcszBaseName), dwFlags);
+  return libADVPACK_dll.AddDelBackupEntryW!(util.pwstrToFfi(lpcszFileList), util.pwstrToFfi(lpcszBackupDir), util.pwstrToFfi(lpcszBaseName), dwFlags);
 }
 
 export function FileSaveMarkNotExistA(
@@ -13655,7 +13882,7 @@ export function FileSaveMarkNotExistA(
   lpDir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.FileSaveMarkNotExistA(util.pstrToFfi(lpFileList), util.pstrToFfi(lpDir), util.pstrToFfi(lpBaseName));
+  return libADVPACK_dll.FileSaveMarkNotExistA!(util.pstrToFfi(lpFileList), util.pstrToFfi(lpDir), util.pstrToFfi(lpBaseName));
 }
 
 export function FileSaveMarkNotExistW(
@@ -13663,7 +13890,7 @@ export function FileSaveMarkNotExistW(
   lpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.FileSaveMarkNotExistW(util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName));
+  return libADVPACK_dll.FileSaveMarkNotExistW!(util.pwstrToFfi(lpFileList), util.pwstrToFfi(lpDir), util.pwstrToFfi(lpBaseName));
 }
 
 export function GetVersionFromFileA(
@@ -13672,7 +13899,7 @@ export function GetVersionFromFileA(
   pdwLSVer: Deno.PointerValue | Uint8Array /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.GetVersionFromFileA(util.pstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
+  return libADVPACK_dll.GetVersionFromFileA!(util.pstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
 }
 
 export function GetVersionFromFileW(
@@ -13681,7 +13908,7 @@ export function GetVersionFromFileW(
   pdwLSVer: Deno.PointerValue | Uint8Array /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.GetVersionFromFileW(util.pwstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
+  return libADVPACK_dll.GetVersionFromFileW!(util.pwstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
 }
 
 export function GetVersionFromFileExA(
@@ -13690,7 +13917,7 @@ export function GetVersionFromFileExA(
   pdwLSVer: Deno.PointerValue | Uint8Array /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.GetVersionFromFileExA(util.pstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
+  return libADVPACK_dll.GetVersionFromFileExA!(util.pstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
 }
 
 export function GetVersionFromFileExW(
@@ -13699,28 +13926,28 @@ export function GetVersionFromFileExW(
   pdwLSVer: Deno.PointerValue | Uint8Array /* ptr */,
   bVersion: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.GetVersionFromFileExW(util.pwstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
+  return libADVPACK_dll.GetVersionFromFileExW!(util.pwstrToFfi(lpszFilename), util.toPointer(pdwMSVer), util.toPointer(pdwLSVer), util.boolToFfi(bVersion));
 }
 
 export function IsNTAdmin(
   dwReserved: number /* u32 */,
   lpdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVPACK_dll.IsNTAdmin(dwReserved, util.toPointer(lpdwReserved)));
+  return util.boolFromFfi(libADVPACK_dll.IsNTAdmin!(dwReserved, util.toPointer(lpdwReserved)));
 }
 
 export function DelNodeA(
   pszFileOrDirName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.DelNodeA(util.pstrToFfi(pszFileOrDirName), dwFlags);
+  return libADVPACK_dll.DelNodeA!(util.pstrToFfi(pszFileOrDirName), dwFlags);
 }
 
 export function DelNodeW(
   pszFileOrDirName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.DelNodeW(util.pwstrToFfi(pszFileOrDirName), dwFlags);
+  return libADVPACK_dll.DelNodeW!(util.pwstrToFfi(pszFileOrDirName), dwFlags);
 }
 
 export function DelNodeRunDLL32W(
@@ -13729,7 +13956,7 @@ export function DelNodeRunDLL32W(
   pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.DelNodeRunDLL32W((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.DelNodeRunDLL32W!((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
 }
 
 export function OpenINFEngineA(
@@ -13739,7 +13966,7 @@ export function OpenINFEngineA(
   phInf: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.OpenINFEngineA(util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszInstallSection), dwFlags, util.toPointer(phInf), util.toPointer(pvReserved));
+  return libADVPACK_dll.OpenINFEngineA!(util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszInstallSection), dwFlags, util.toPointer(phInf), util.toPointer(pvReserved));
 }
 
 export function OpenINFEngineW(
@@ -13749,7 +13976,7 @@ export function OpenINFEngineW(
   phInf: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.OpenINFEngineW(util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszInstallSection), dwFlags, util.toPointer(phInf), util.toPointer(pvReserved));
+  return libADVPACK_dll.OpenINFEngineW!(util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszInstallSection), dwFlags, util.toPointer(phInf), util.toPointer(pvReserved));
 }
 
 export function TranslateInfStringExA(
@@ -13762,7 +13989,7 @@ export function TranslateInfStringExA(
   pdwRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.TranslateInfStringExA(util.toPointer(hInf), util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszTranslateSection), util.pstrToFfi(pszTranslateKey), util.pstrToFfi(pszBuffer), dwBufferSize, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
+  return libADVPACK_dll.TranslateInfStringExA!(util.toPointer(hInf), util.pstrToFfi(pszInfFilename), util.pstrToFfi(pszTranslateSection), util.pstrToFfi(pszTranslateKey), util.pstrToFfi(pszBuffer), dwBufferSize, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
 }
 
 export function TranslateInfStringExW(
@@ -13775,13 +14002,13 @@ export function TranslateInfStringExW(
   pdwRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.TranslateInfStringExW(util.toPointer(hInf), util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszTranslateSection), util.pwstrToFfi(pszTranslateKey), util.pwstrToFfi(pszBuffer), dwBufferSize, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
+  return libADVPACK_dll.TranslateInfStringExW!(util.toPointer(hInf), util.pwstrToFfi(pszInfFilename), util.pwstrToFfi(pszTranslateSection), util.pwstrToFfi(pszTranslateKey), util.pwstrToFfi(pszBuffer), dwBufferSize, util.toPointer(pdwRequiredSize), util.toPointer(pvReserved));
 }
 
 export function CloseINFEngine(
   hInf: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.CloseINFEngine(util.toPointer(hInf));
+  return libADVPACK_dll.CloseINFEngine!(util.toPointer(hInf));
 }
 
 export function ExtractFilesA(
@@ -13792,7 +14019,7 @@ export function ExtractFilesA(
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.ExtractFilesA(util.pstrToFfi(pszCabName), util.pstrToFfi(pszExpandDir), dwFlags, util.pstrToFfi(pszFileList), util.toPointer(lpReserved), dwReserved);
+  return libADVPACK_dll.ExtractFilesA!(util.pstrToFfi(pszCabName), util.pstrToFfi(pszExpandDir), dwFlags, util.pstrToFfi(pszFileList), util.toPointer(lpReserved), dwReserved);
 }
 
 export function ExtractFilesW(
@@ -13803,7 +14030,7 @@ export function ExtractFilesW(
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.ExtractFilesW(util.pwstrToFfi(pszCabName), util.pwstrToFfi(pszExpandDir), dwFlags, util.pwstrToFfi(pszFileList), util.toPointer(lpReserved), dwReserved);
+  return libADVPACK_dll.ExtractFilesW!(util.pwstrToFfi(pszCabName), util.pwstrToFfi(pszExpandDir), dwFlags, util.pwstrToFfi(pszFileList), util.toPointer(lpReserved), dwReserved);
 }
 
 export function LaunchINFSectionW(
@@ -13812,7 +14039,7 @@ export function LaunchINFSectionW(
   pszParams: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): number /* i32 */ {
-  return libADVPACK_dll.LaunchINFSectionW((hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszParams), nShow);
+  return libADVPACK_dll.LaunchINFSectionW!((hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszParams), nShow);
 }
 
 export function UserInstStubWrapperA(
@@ -13821,7 +14048,7 @@ export function UserInstStubWrapperA(
   pszParms: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.UserInstStubWrapperA((hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.UserInstStubWrapperA!((hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow);
 }
 
 export function UserInstStubWrapperW(
@@ -13830,7 +14057,7 @@ export function UserInstStubWrapperW(
   pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.UserInstStubWrapperW((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.UserInstStubWrapperW!((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
 }
 
 export function UserUnInstStubWrapperA(
@@ -13839,7 +14066,7 @@ export function UserUnInstStubWrapperA(
   pszParms: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.UserUnInstStubWrapperA((hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.UserUnInstStubWrapperA!((hwnd), util.toPointer(hInstance), util.pstrToFfi(pszParms), nShow);
 }
 
 export function UserUnInstStubWrapperW(
@@ -13848,92 +14075,92 @@ export function UserUnInstStubWrapperW(
   pszParms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.UserUnInstStubWrapperW((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
+  return libADVPACK_dll.UserUnInstStubWrapperW!((hwnd), util.toPointer(hInstance), util.pwstrToFfi(pszParms), nShow);
 }
 
 export function SetPerUserSecValuesA(
   pPerUser: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.SetPerUserSecValuesA(util.toPointer(pPerUser));
+  return libADVPACK_dll.SetPerUserSecValuesA!(util.toPointer(pPerUser));
 }
 
 export function SetPerUserSecValuesW(
   pPerUser: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libADVPACK_dll.SetPerUserSecValuesW(util.toPointer(pPerUser));
+  return libADVPACK_dll.SetPerUserSecValuesW!(util.toPointer(pPerUser));
 }
 
 export function SendIMEMessageExA(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendIMEMessageExA((param0), util.toPointer(param1));
+  return libUSER32_dll.SendIMEMessageExA!((param0), util.toPointer(param1));
 }
 
 export function SendIMEMessageExW(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendIMEMessageExW((param0), util.toPointer(param1));
+  return libUSER32_dll.SendIMEMessageExW!((param0), util.toPointer(param1));
 }
 
 export function IMPGetIMEA(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPGetIMEA((param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.IMPGetIMEA!((param0), util.toPointer(param1)));
 }
 
 export function IMPGetIMEW(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPGetIMEW((param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.IMPGetIMEW!((param0), util.toPointer(param1)));
 }
 
 export function IMPQueryIMEA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPQueryIMEA(util.toPointer(param0)));
+  return util.boolFromFfi(libUSER32_dll.IMPQueryIMEA!(util.toPointer(param0)));
 }
 
 export function IMPQueryIMEW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPQueryIMEW(util.toPointer(param0)));
+  return util.boolFromFfi(libUSER32_dll.IMPQueryIMEW!(util.toPointer(param0)));
 }
 
 export function IMPSetIMEA(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPSetIMEA((param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.IMPSetIMEA!((param0), util.toPointer(param1)));
 }
 
 export function IMPSetIMEW(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IMPSetIMEW((param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.IMPSetIMEW!((param0), util.toPointer(param1)));
 }
 
 export function WINNLSGetIMEHotkey(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32_dll.WINNLSGetIMEHotkey((param0));
+  return libUSER32_dll.WINNLSGetIMEHotkey!((param0));
 }
 
 export function WINNLSEnableIME(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.WINNLSEnableIME((param0), util.boolToFfi(param1)));
+  return util.boolFromFfi(libUSER32_dll.WINNLSEnableIME!((param0), util.boolToFfi(param1)));
 }
 
 export function WINNLSGetEnableStatus(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.WINNLSGetEnableStatus((param0)));
+  return util.boolFromFfi(libUSER32_dll.WINNLSGetEnableStatus!((param0)));
 }
 
 export function ApphelpCheckShellObject(
@@ -13941,7 +14168,7 @@ export function ApphelpCheckShellObject(
   bShimIfNecessary: boolean /* Windows.Win32.Foundation.BOOL */,
   pullFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAPPHELP_dll.ApphelpCheckShellObject(util.toPointer(ObjectCLSID), util.boolToFfi(bShimIfNecessary), util.toPointer(pullFlags)));
+  return util.boolFromFfi(libAPPHELP_dll.ApphelpCheckShellObject!(util.toPointer(ObjectCLSID), util.boolToFfi(bShimIfNecessary), util.toPointer(pullFlags)));
 }
 
 export function WldpGetLockdownPolicy(
@@ -13949,7 +14176,7 @@ export function WldpGetLockdownPolicy(
   lockdownState: Deno.PointerValue | Uint8Array /* ptr */,
   lockdownFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpGetLockdownPolicy(util.toPointer(hostInformation), util.toPointer(lockdownState), lockdownFlags);
+  return libWldp_dll.WldpGetLockdownPolicy!(util.toPointer(hostInformation), util.toPointer(lockdownState), lockdownFlags);
 }
 
 export function WldpIsClassInApprovedList(
@@ -13958,19 +14185,19 @@ export function WldpIsClassInApprovedList(
   isApproved: Deno.PointerValue | Uint8Array /* ptr */,
   optionalFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpIsClassInApprovedList(util.toPointer(classID), util.toPointer(hostInformation), util.toPointer(isApproved), optionalFlags);
+  return libWldp_dll.WldpIsClassInApprovedList!(util.toPointer(classID), util.toPointer(hostInformation), util.toPointer(isApproved), optionalFlags);
 }
 
 export function WldpSetDynamicCodeTrust(
   fileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpSetDynamicCodeTrust(util.toPointer(fileHandle));
+  return libWldp_dll.WldpSetDynamicCodeTrust!(util.toPointer(fileHandle));
 }
 
 export function WldpIsDynamicCodePolicyEnabled(
   isEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpIsDynamicCodePolicyEnabled(util.toPointer(isEnabled));
+  return libWldp_dll.WldpIsDynamicCodePolicyEnabled!(util.toPointer(isEnabled));
 }
 
 export function WldpQueryDynamicCodeTrust(
@@ -13978,7 +14205,7 @@ export function WldpQueryDynamicCodeTrust(
   baseImage: Deno.PointerValue | Uint8Array /* ptr */,
   imageSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpQueryDynamicCodeTrust(util.toPointer(fileHandle), util.toPointer(baseImage), imageSize);
+  return libWldp_dll.WldpQueryDynamicCodeTrust!(util.toPointer(fileHandle), util.toPointer(baseImage), imageSize);
 }
 
 export function WldpQueryDeviceSecurityInformation(
@@ -13986,6 +14213,6 @@ export function WldpQueryDeviceSecurityInformation(
   informationLength: number /* u32 */,
   returnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWldp_dll.WldpQueryDeviceSecurityInformation(util.toPointer(information), informationLength, util.toPointer(returnLength));
+  return libWldp_dll.WldpQueryDeviceSecurityInformation!(util.toPointer(information), informationLength, util.toPointer(returnLength));
 }
 

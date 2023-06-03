@@ -2522,6 +2522,7 @@ try {
     CoGetDefaultContext: {
       parameters: ["i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2531,30 +2532,37 @@ try {
     CoCreateActivity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CoEnterServiceDomain: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CoLeaveServiceDomain: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     GetManagedExtensions: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeRef: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RecycleSurrogate: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     MTSCreateActivity: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2564,6 +2572,7 @@ try {
     GetDispenserManager: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2575,7 +2584,7 @@ export function CoGetDefaultContext(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CoGetDefaultContext(aptType, util.toPointer(riid), util.toPointer(ppv));
+  return libOLE32_dll.CoGetDefaultContext!(aptType, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CoCreateActivity(
@@ -2583,50 +2592,50 @@ export function CoCreateActivity(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcomsvcs_dll.CoCreateActivity(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj));
+  return libcomsvcs_dll.CoCreateActivity!(util.toPointer(pIUnknown), util.toPointer(riid), util.toPointer(ppObj));
 }
 
 export function CoEnterServiceDomain(
   pConfigObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcomsvcs_dll.CoEnterServiceDomain(util.toPointer(pConfigObject));
+  return libcomsvcs_dll.CoEnterServiceDomain!(util.toPointer(pConfigObject));
 }
 
 export function CoLeaveServiceDomain(
   pUnkStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): void /* void */ {
-  return libcomsvcs_dll.CoLeaveServiceDomain(util.toPointer(pUnkStatus));
+  return libcomsvcs_dll.CoLeaveServiceDomain!(util.toPointer(pUnkStatus));
 }
 
 export function GetManagedExtensions(
   dwExts: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcomsvcs_dll.GetManagedExtensions(util.toPointer(dwExts));
+  return libcomsvcs_dll.GetManagedExtensions!(util.toPointer(dwExts));
 }
 
 export function SafeRef(
   rid: Deno.PointerValue | Uint8Array /* ptr */,
   pUnk: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* ptr */ {
-  return libcomsvcs_dll.SafeRef(util.toPointer(rid), util.toPointer(pUnk));
+  return libcomsvcs_dll.SafeRef!(util.toPointer(rid), util.toPointer(pUnk));
 }
 
 export function RecycleSurrogate(
   lReasonCode: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcomsvcs_dll.RecycleSurrogate(lReasonCode);
+  return libcomsvcs_dll.RecycleSurrogate!(lReasonCode);
 }
 
 export function MTSCreateActivity(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppobj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcomsvcs_dll.MTSCreateActivity(util.toPointer(riid), util.toPointer(ppobj));
+  return libcomsvcs_dll.MTSCreateActivity!(util.toPointer(riid), util.toPointer(ppobj));
 }
 
 export function GetDispenserManager(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMTxDM_dll.GetDispenserManager(util.toPointer(param0));
+  return libMTxDM_dll.GetDispenserManager!(util.toPointer(param0));
 }
 

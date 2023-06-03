@@ -3047,42 +3047,52 @@ try {
     PssCaptureSnapshot: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PssFreeSnapshot: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PssQuerySnapshot: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PssWalkSnapshot: {
       parameters: ["pointer", "i32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PssDuplicateSnapshot: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PssWalkMarkerCreate: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PssWalkMarkerFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PssWalkMarkerGetPosition: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PssWalkMarkerSetPosition: {
       parameters: ["pointer", "usize"],
       result: "u32",
+      optional: true,
     },
     PssWalkMarkerSeekToBeginning: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3095,14 +3105,14 @@ export function PssCaptureSnapshot(
   ThreadContextFlags: number /* u32 */,
   SnapshotHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssCaptureSnapshot(util.toPointer(ProcessHandle), CaptureFlags, ThreadContextFlags, util.toPointer(SnapshotHandle));
+  return libKERNEL32_dll.PssCaptureSnapshot!(util.toPointer(ProcessHandle), CaptureFlags, ThreadContextFlags, util.toPointer(SnapshotHandle));
 }
 
 export function PssFreeSnapshot(
   ProcessHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SnapshotHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.HPSS */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssFreeSnapshot(util.toPointer(ProcessHandle), util.toPointer(SnapshotHandle));
+  return libKERNEL32_dll.PssFreeSnapshot!(util.toPointer(ProcessHandle), util.toPointer(SnapshotHandle));
 }
 
 export function PssQuerySnapshot(
@@ -3111,7 +3121,7 @@ export function PssQuerySnapshot(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssQuerySnapshot(util.toPointer(SnapshotHandle), InformationClass, util.toPointer(Buffer), BufferLength);
+  return libKERNEL32_dll.PssQuerySnapshot!(util.toPointer(SnapshotHandle), InformationClass, util.toPointer(Buffer), BufferLength);
 }
 
 export function PssWalkSnapshot(
@@ -3121,7 +3131,7 @@ export function PssWalkSnapshot(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLength: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkSnapshot(util.toPointer(SnapshotHandle), InformationClass, util.toPointer(WalkMarkerHandle), util.toPointer(Buffer), BufferLength);
+  return libKERNEL32_dll.PssWalkSnapshot!(util.toPointer(SnapshotHandle), InformationClass, util.toPointer(WalkMarkerHandle), util.toPointer(Buffer), BufferLength);
 }
 
 export function PssDuplicateSnapshot(
@@ -3131,39 +3141,39 @@ export function PssDuplicateSnapshot(
   TargetSnapshotHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: PSS_DUPLICATE_FLAGS /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.PSS_DUPLICATE_FLAGS */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssDuplicateSnapshot(util.toPointer(SourceProcessHandle), util.toPointer(SnapshotHandle), util.toPointer(TargetProcessHandle), util.toPointer(TargetSnapshotHandle), Flags);
+  return libKERNEL32_dll.PssDuplicateSnapshot!(util.toPointer(SourceProcessHandle), util.toPointer(SnapshotHandle), util.toPointer(TargetProcessHandle), util.toPointer(TargetSnapshotHandle), Flags);
 }
 
 export function PssWalkMarkerCreate(
   Allocator: Deno.PointerValue | Uint8Array /* ptr */,
   WalkMarkerHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkMarkerCreate(util.toPointer(Allocator), util.toPointer(WalkMarkerHandle));
+  return libKERNEL32_dll.PssWalkMarkerCreate!(util.toPointer(Allocator), util.toPointer(WalkMarkerHandle));
 }
 
 export function PssWalkMarkerFree(
   WalkMarkerHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.HPSSWALK */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkMarkerFree(util.toPointer(WalkMarkerHandle));
+  return libKERNEL32_dll.PssWalkMarkerFree!(util.toPointer(WalkMarkerHandle));
 }
 
 export function PssWalkMarkerGetPosition(
   WalkMarkerHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.HPSSWALK */,
   Position: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkMarkerGetPosition(util.toPointer(WalkMarkerHandle), util.toPointer(Position));
+  return libKERNEL32_dll.PssWalkMarkerGetPosition!(util.toPointer(WalkMarkerHandle), util.toPointer(Position));
 }
 
 export function PssWalkMarkerSetPosition(
   WalkMarkerHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.HPSSWALK */,
   Position: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkMarkerSetPosition(util.toPointer(WalkMarkerHandle), Position);
+  return libKERNEL32_dll.PssWalkMarkerSetPosition!(util.toPointer(WalkMarkerHandle), Position);
 }
 
 export function PssWalkMarkerSeekToBeginning(
   WalkMarkerHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.ProcessSnapshotting.HPSSWALK */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.PssWalkMarkerSeekToBeginning(util.toPointer(WalkMarkerHandle));
+  return libKERNEL32_dll.PssWalkMarkerSeekToBeginning!(util.toPointer(WalkMarkerHandle));
 }
 

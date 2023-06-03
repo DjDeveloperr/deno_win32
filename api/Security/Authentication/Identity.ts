@@ -38913,358 +38913,447 @@ try {
     LsaRegisterLogonProcess: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLogonUser: {
       parameters: ["pointer", "pointer", "i32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLookupAuthenticationPackage: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaFreeReturnBuffer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaCallAuthenticationPackage: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaDeregisterLogonProcess: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaConnectUntrusted: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaEnumerateLogonSessions: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaGetLogonSessionData: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaRegisterPolicyChangeNotification: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaUnregisterPolicyChangeNotification: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AcquireCredentialsHandleW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AcquireCredentialsHandleA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FreeCredentialsHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     AddCredentialsW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AddCredentialsA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ChangeAccountPasswordW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ChangeAccountPasswordA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeSecurityContextW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeSecurityContextA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AcceptSecurityContext: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CompleteAuthToken: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImpersonateSecurityContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RevertSecurityContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     QuerySecurityContextToken: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteSecurityContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ApplyControlToken: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryContextAttributesW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryContextAttributesA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetContextAttributesW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetContextAttributesA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryCredentialsAttributesW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryCredentialsAttributesA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetCredentialsAttributesW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetCredentialsAttributesA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FreeContextBuffer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MakeSignature: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     VerifySignature: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EncryptMessage: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DecryptMessage: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EnumerateSecurityPackagesW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EnumerateSecurityPackagesA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QuerySecurityPackageInfoW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QuerySecurityPackageInfoA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ExportSecurityContext: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImportSecurityContextW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImportSecurityContextA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitSecurityInterfaceA: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     InitSecurityInterfaceW: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     SaslEnumerateProfilesA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslEnumerateProfilesW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslGetProfilePackageA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslGetProfilePackageW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslIdentifyPackageA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslIdentifyPackageW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslInitializeSecurityContextW: {
       parameters: ["pointer", "pointer", "buffer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslInitializeSecurityContextA: {
       parameters: ["pointer", "pointer", "buffer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslAcceptSecurityContext: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SaslSetContextOption: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SaslGetContextOption: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiPrepareForCredRead: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiPrepareForCredWrite: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiEncryptAuthIdentity: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiDecryptAuthIdentity: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiIsAuthIdentityEncrypted: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiEncodeAuthIdentityAsStrings: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiValidateAuthIdentity: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiCopyAuthIdentity: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiFreeAuthIdentity: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SspiZeroAuthIdentity: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SspiLocalFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SspiEncodeStringsAsAuthIdentity: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiCompareAuthIdentities: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiMarshalAuthIdentity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiUnmarshalAuthIdentity: {
       parameters: ["u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiGetTargetHostName: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiExcludePackage: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AddSecurityPackageA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AddSecurityPackageW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteSecurityPackageA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     DeleteSecurityPackageW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     CredMarshalTargetInfo: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CredUnmarshalTargetInfo: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetUserNameExA: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetUserNameExW: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetComputerObjectNameA: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetComputerObjectNameW: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateNameA: {
       parameters: ["buffer", "i32", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateNameW: {
       parameters: ["buffer", "i32", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39274,230 +39363,287 @@ try {
     LsaFreeMemory: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaOpenPolicy: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetCAPs: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     LsaGetAppliedCAPIDs: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryCAPs: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryInformationPolicy: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetInformationPolicy: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryDomainInformationPolicy: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetDomainInformationPolicy: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaEnumerateTrustedDomains: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLookupNames: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLookupNames2: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLookupSids: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaLookupSids2: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaEnumerateAccountsWithUserRight: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaEnumerateAccountRights: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaAddAccountRights: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LsaRemoveAccountRights: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LsaOpenTrustedDomainByName: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryTrustedDomainInfo: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetTrustedDomainInformation: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaDeleteTrustedDomain: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryTrustedDomainInfoByName: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetTrustedDomainInfoByName: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaEnumerateTrustedDomainsEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaCreateTrustedDomainEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaQueryForestTrustInformation: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaSetForestTrustInformation: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaStorePrivateData: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaRetrievePrivateData: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LsaNtStatusToWinError: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SystemFunction036: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SystemFunction040: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     SystemFunction041: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     AuditSetSystemPolicy: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AuditSetPerUserPolicy: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AuditQuerySystemPolicy: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditQueryPerUserPolicy: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditEnumeratePerUserPolicy: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditComputeEffectivePolicyBySid: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditComputeEffectivePolicyByToken: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditEnumerateCategories: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditEnumerateSubCategories: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupCategoryNameW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupCategoryNameA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupSubCategoryNameW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupSubCategoryNameA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupCategoryIdFromCategoryGuid: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditLookupCategoryGuidFromCategoryId: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditSetSecurity: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditQuerySecurity: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditSetGlobalSaclW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditSetGlobalSaclA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditQueryGlobalSaclW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditQueryGlobalSaclA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AuditFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39507,26 +39653,32 @@ try {
     QueryContextAttributesExW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryContextAttributesExA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryCredentialsAttributesExW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryCredentialsAttributesExA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SspiEncryptAuthIdentityEx: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SspiDecryptAuthIdentityEx: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39536,14 +39688,17 @@ try {
     SspiPromptForCredentialsW: {
       parameters: ["buffer", "pointer", "u32", "buffer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SspiPromptForCredentialsA: {
       parameters: ["buffer", "pointer", "u32", "buffer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SspiIsPromptingNeeded: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39553,34 +39708,42 @@ try {
     SslEmptyCacheA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SslEmptyCacheW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SslGenerateRandomBits: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     SslCrackCertificate: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SslFreeCertificate: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SslGetMaximumKeySize: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     SslGetServerIdentity: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SslGetExtensions: {
       parameters: ["pointer", "u32", "pointer", "u8", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39590,42 +39753,52 @@ try {
     TokenBindingGenerateBinding: {
       parameters: ["i32", "buffer", "i32", "pointer", "u32", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGenerateMessage: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingVerifyMessage: {
       parameters: ["pointer", "u32", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGetKeyTypesClient: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGetKeyTypesServer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingDeleteBinding: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingDeleteAllBindings: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGenerateID: {
       parameters: ["i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGenerateIDForUri: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TokenBindingGetHighestSupportedVersion: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39635,130 +39808,162 @@ try {
     SLOpen: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SLClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SLInstallProofOfPurchase: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLUninstallProofOfPurchase: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLInstallLicense: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLUninstallLicense: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLConsumeRight: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetProductSkuInformation: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetPKeyInformation: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetLicenseInformation: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetLicensingStatusInformation: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetPolicyInformation: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetPolicyInformationDWORD: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetServiceInformation: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetApplicationInformation: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGenerateOfflineInstallationId: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGenerateOfflineInstallationIdEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLDepositOfflineConfirmationId: {
       parameters: ["pointer", "pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SLDepositOfflineConfirmationIdEx: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SLGetPKeyId: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetInstalledProductKeyIds: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLSetCurrentProductKey: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetSLIDList: {
       parameters: ["pointer", "i32", "pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetLicenseFileId: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetLicense: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLFireEvent: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLRegisterEvent: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLUnregisterEvent: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetWindowsInformation: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetWindowsInformationDWORD: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLSetGenuineInformation: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLGetGenuineInformation: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39768,18 +39973,22 @@ try {
     SLActivateProduct: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "buffer", "u16"],
       result: "pointer",
+      optional: true,
     },
     SLGetServerStatus: {
       parameters: ["buffer", "buffer", "buffer", "u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SLAcquireGenuineTicket: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SLGetReferralInformation: {
       parameters: ["pointer", "i32", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39789,6 +39998,7 @@ try {
     SLIsGenuineLocal: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39798,6 +40008,7 @@ try {
     SLQueryLicenseValueFromApp: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -39809,7 +40020,7 @@ export function LsaRegisterLogonProcess(
   LsaHandle: Deno.PointerValue | Uint8Array /* ptr */,
   SecurityMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaRegisterLogonProcess(util.toPointer(LogonProcessName), util.toPointer(LsaHandle), util.toPointer(SecurityMode));
+  return libSECUR32_dll.LsaRegisterLogonProcess!(util.toPointer(LogonProcessName), util.toPointer(LsaHandle), util.toPointer(SecurityMode));
 }
 
 export function LsaLogonUser(
@@ -39828,7 +40039,7 @@ export function LsaLogonUser(
   Quotas: Deno.PointerValue | Uint8Array /* ptr */,
   SubStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaLogonUser(util.toPointer(LsaHandle), util.toPointer(OriginName), LogonType, AuthenticationPackage, util.toPointer(AuthenticationInformation), AuthenticationInformationLength, util.toPointer(LocalGroups), util.toPointer(SourceContext), util.toPointer(ProfileBuffer), util.toPointer(ProfileBufferLength), util.toPointer(LogonId), util.toPointer(Token), util.toPointer(Quotas), util.toPointer(SubStatus));
+  return libSECUR32_dll.LsaLogonUser!(util.toPointer(LsaHandle), util.toPointer(OriginName), LogonType, AuthenticationPackage, util.toPointer(AuthenticationInformation), AuthenticationInformationLength, util.toPointer(LocalGroups), util.toPointer(SourceContext), util.toPointer(ProfileBuffer), util.toPointer(ProfileBufferLength), util.toPointer(LogonId), util.toPointer(Token), util.toPointer(Quotas), util.toPointer(SubStatus));
 }
 
 export function LsaLookupAuthenticationPackage(
@@ -39836,13 +40047,13 @@ export function LsaLookupAuthenticationPackage(
   PackageName: Deno.PointerValue | Uint8Array /* ptr */,
   AuthenticationPackage: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaLookupAuthenticationPackage(util.toPointer(LsaHandle), util.toPointer(PackageName), util.toPointer(AuthenticationPackage));
+  return libSECUR32_dll.LsaLookupAuthenticationPackage!(util.toPointer(LsaHandle), util.toPointer(PackageName), util.toPointer(AuthenticationPackage));
 }
 
 export function LsaFreeReturnBuffer(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaFreeReturnBuffer(util.toPointer(Buffer));
+  return libSECUR32_dll.LsaFreeReturnBuffer!(util.toPointer(Buffer));
 }
 
 export function LsaCallAuthenticationPackage(
@@ -39854,45 +40065,45 @@ export function LsaCallAuthenticationPackage(
   ReturnBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   ProtocolStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaCallAuthenticationPackage(util.toPointer(LsaHandle), AuthenticationPackage, util.toPointer(ProtocolSubmitBuffer), SubmitBufferLength, util.toPointer(ProtocolReturnBuffer), util.toPointer(ReturnBufferLength), util.toPointer(ProtocolStatus));
+  return libSECUR32_dll.LsaCallAuthenticationPackage!(util.toPointer(LsaHandle), AuthenticationPackage, util.toPointer(ProtocolSubmitBuffer), SubmitBufferLength, util.toPointer(ProtocolReturnBuffer), util.toPointer(ReturnBufferLength), util.toPointer(ProtocolStatus));
 }
 
 export function LsaDeregisterLogonProcess(
   LsaHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authentication.Identity.LsaHandle */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaDeregisterLogonProcess(util.toPointer(LsaHandle));
+  return libSECUR32_dll.LsaDeregisterLogonProcess!(util.toPointer(LsaHandle));
 }
 
 export function LsaConnectUntrusted(
   LsaHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaConnectUntrusted(util.toPointer(LsaHandle));
+  return libSECUR32_dll.LsaConnectUntrusted!(util.toPointer(LsaHandle));
 }
 
 export function LsaFreeMemory(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaFreeMemory(util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaFreeMemory!(util.toPointer(Buffer));
 }
 
 export function LsaClose(
   ObjectHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaClose(util.toPointer(ObjectHandle));
+  return libADVAPI32_dll.LsaClose!(util.toPointer(ObjectHandle));
 }
 
 export function LsaEnumerateLogonSessions(
   LogonSessionCount: Deno.PointerValue | Uint8Array /* ptr */,
   LogonSessionList: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaEnumerateLogonSessions(util.toPointer(LogonSessionCount), util.toPointer(LogonSessionList));
+  return libSECUR32_dll.LsaEnumerateLogonSessions!(util.toPointer(LogonSessionCount), util.toPointer(LogonSessionList));
 }
 
 export function LsaGetLogonSessionData(
   LogonId: Deno.PointerValue | Uint8Array /* ptr */,
   ppLogonSessionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaGetLogonSessionData(util.toPointer(LogonId), util.toPointer(ppLogonSessionData));
+  return libSECUR32_dll.LsaGetLogonSessionData!(util.toPointer(LogonId), util.toPointer(ppLogonSessionData));
 }
 
 export function LsaOpenPolicy(
@@ -39901,7 +40112,7 @@ export function LsaOpenPolicy(
   DesiredAccess: number /* u32 */,
   PolicyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaOpenPolicy(util.toPointer(SystemName), util.toPointer(ObjectAttributes), DesiredAccess, util.toPointer(PolicyHandle));
+  return libADVAPI32_dll.LsaOpenPolicy!(util.toPointer(SystemName), util.toPointer(ObjectAttributes), DesiredAccess, util.toPointer(PolicyHandle));
 }
 
 export function LsaSetCAPs(
@@ -39909,7 +40120,7 @@ export function LsaSetCAPs(
   CAPDNCount: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetCAPs(util.toPointer(CAPDNs), CAPDNCount, Flags);
+  return libADVAPI32_dll.LsaSetCAPs!(util.toPointer(CAPDNs), CAPDNCount, Flags);
 }
 
 export function LsaGetAppliedCAPIDs(
@@ -39917,7 +40128,7 @@ export function LsaGetAppliedCAPIDs(
   CAPIDs: Deno.PointerValue | Uint8Array /* ptr */,
   CAPIDCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaGetAppliedCAPIDs(util.toPointer(SystemName), util.toPointer(CAPIDs), util.toPointer(CAPIDCount));
+  return libADVAPI32_dll.LsaGetAppliedCAPIDs!(util.toPointer(SystemName), util.toPointer(CAPIDs), util.toPointer(CAPIDCount));
 }
 
 export function LsaQueryCAPs(
@@ -39926,7 +40137,7 @@ export function LsaQueryCAPs(
   CAPs: Deno.PointerValue | Uint8Array /* ptr */,
   CAPCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryCAPs(util.toPointer(CAPIDs), CAPIDCount, util.toPointer(CAPs), util.toPointer(CAPCount));
+  return libADVAPI32_dll.LsaQueryCAPs!(util.toPointer(CAPIDs), CAPIDCount, util.toPointer(CAPs), util.toPointer(CAPCount));
 }
 
 export function LsaQueryInformationPolicy(
@@ -39934,7 +40145,7 @@ export function LsaQueryInformationPolicy(
   InformationClass: POLICY_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryInformationPolicy(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaQueryInformationPolicy!(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaSetInformationPolicy(
@@ -39942,7 +40153,7 @@ export function LsaSetInformationPolicy(
   InformationClass: POLICY_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetInformationPolicy(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaSetInformationPolicy!(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaQueryDomainInformationPolicy(
@@ -39950,7 +40161,7 @@ export function LsaQueryDomainInformationPolicy(
   InformationClass: POLICY_DOMAIN_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_DOMAIN_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryDomainInformationPolicy(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaQueryDomainInformationPolicy!(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaSetDomainInformationPolicy(
@@ -39958,21 +40169,21 @@ export function LsaSetDomainInformationPolicy(
   InformationClass: POLICY_DOMAIN_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_DOMAIN_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetDomainInformationPolicy(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaSetDomainInformationPolicy!(util.toPointer(PolicyHandle), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaRegisterPolicyChangeNotification(
   InformationClass: POLICY_NOTIFICATION_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_NOTIFICATION_INFORMATION_CLASS */,
   NotificationEventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaRegisterPolicyChangeNotification(InformationClass, util.toPointer(NotificationEventHandle));
+  return libSECUR32_dll.LsaRegisterPolicyChangeNotification!(InformationClass, util.toPointer(NotificationEventHandle));
 }
 
 export function LsaUnregisterPolicyChangeNotification(
   InformationClass: POLICY_NOTIFICATION_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.POLICY_NOTIFICATION_INFORMATION_CLASS */,
   NotificationEventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.LsaUnregisterPolicyChangeNotification(InformationClass, util.toPointer(NotificationEventHandle));
+  return libSECUR32_dll.LsaUnregisterPolicyChangeNotification!(InformationClass, util.toPointer(NotificationEventHandle));
 }
 
 export function LsaEnumerateTrustedDomains(
@@ -39982,7 +40193,7 @@ export function LsaEnumerateTrustedDomains(
   PreferedMaximumLength: number /* u32 */,
   CountReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaEnumerateTrustedDomains(util.toPointer(PolicyHandle), util.toPointer(EnumerationContext), util.toPointer(Buffer), PreferedMaximumLength, util.toPointer(CountReturned));
+  return libADVAPI32_dll.LsaEnumerateTrustedDomains!(util.toPointer(PolicyHandle), util.toPointer(EnumerationContext), util.toPointer(Buffer), PreferedMaximumLength, util.toPointer(CountReturned));
 }
 
 export function LsaLookupNames(
@@ -39992,7 +40203,7 @@ export function LsaLookupNames(
   ReferencedDomains: Deno.PointerValue | Uint8Array /* ptr */,
   Sids: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaLookupNames(util.toPointer(PolicyHandle), Count, util.toPointer(Names), util.toPointer(ReferencedDomains), util.toPointer(Sids));
+  return libADVAPI32_dll.LsaLookupNames!(util.toPointer(PolicyHandle), Count, util.toPointer(Names), util.toPointer(ReferencedDomains), util.toPointer(Sids));
 }
 
 export function LsaLookupNames2(
@@ -40003,7 +40214,7 @@ export function LsaLookupNames2(
   ReferencedDomains: Deno.PointerValue | Uint8Array /* ptr */,
   Sids: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaLookupNames2(util.toPointer(PolicyHandle), Flags, Count, util.toPointer(Names), util.toPointer(ReferencedDomains), util.toPointer(Sids));
+  return libADVAPI32_dll.LsaLookupNames2!(util.toPointer(PolicyHandle), Flags, Count, util.toPointer(Names), util.toPointer(ReferencedDomains), util.toPointer(Sids));
 }
 
 export function LsaLookupSids(
@@ -40013,7 +40224,7 @@ export function LsaLookupSids(
   ReferencedDomains: Deno.PointerValue | Uint8Array /* ptr */,
   Names: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaLookupSids(util.toPointer(PolicyHandle), Count, util.toPointer(Sids), util.toPointer(ReferencedDomains), util.toPointer(Names));
+  return libADVAPI32_dll.LsaLookupSids!(util.toPointer(PolicyHandle), Count, util.toPointer(Sids), util.toPointer(ReferencedDomains), util.toPointer(Names));
 }
 
 export function LsaLookupSids2(
@@ -40024,7 +40235,7 @@ export function LsaLookupSids2(
   ReferencedDomains: Deno.PointerValue | Uint8Array /* ptr */,
   Names: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaLookupSids2(util.toPointer(PolicyHandle), LookupOptions, Count, util.toPointer(Sids), util.toPointer(ReferencedDomains), util.toPointer(Names));
+  return libADVAPI32_dll.LsaLookupSids2!(util.toPointer(PolicyHandle), LookupOptions, Count, util.toPointer(Sids), util.toPointer(ReferencedDomains), util.toPointer(Names));
 }
 
 export function LsaEnumerateAccountsWithUserRight(
@@ -40033,7 +40244,7 @@ export function LsaEnumerateAccountsWithUserRight(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   CountReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaEnumerateAccountsWithUserRight(util.toPointer(PolicyHandle), util.toPointer(UserRight), util.toPointer(Buffer), util.toPointer(CountReturned));
+  return libADVAPI32_dll.LsaEnumerateAccountsWithUserRight!(util.toPointer(PolicyHandle), util.toPointer(UserRight), util.toPointer(Buffer), util.toPointer(CountReturned));
 }
 
 export function LsaEnumerateAccountRights(
@@ -40042,7 +40253,7 @@ export function LsaEnumerateAccountRights(
   UserRights: Deno.PointerValue | Uint8Array /* ptr */,
   CountOfRights: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaEnumerateAccountRights(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(UserRights), util.toPointer(CountOfRights));
+  return libADVAPI32_dll.LsaEnumerateAccountRights!(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(UserRights), util.toPointer(CountOfRights));
 }
 
 export function LsaAddAccountRights(
@@ -40051,7 +40262,7 @@ export function LsaAddAccountRights(
   UserRights: Deno.PointerValue | Uint8Array /* ptr */,
   CountOfRights: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaAddAccountRights(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(UserRights), CountOfRights);
+  return libADVAPI32_dll.LsaAddAccountRights!(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(UserRights), CountOfRights);
 }
 
 export function LsaRemoveAccountRights(
@@ -40061,7 +40272,7 @@ export function LsaRemoveAccountRights(
   UserRights: Deno.PointerValue | Uint8Array /* ptr */,
   CountOfRights: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaRemoveAccountRights(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(AllRights), util.toPointer(UserRights), CountOfRights);
+  return libADVAPI32_dll.LsaRemoveAccountRights!(util.toPointer(PolicyHandle), util.toPointer(AccountSid), util.toPointer(AllRights), util.toPointer(UserRights), CountOfRights);
 }
 
 export function LsaOpenTrustedDomainByName(
@@ -40070,7 +40281,7 @@ export function LsaOpenTrustedDomainByName(
   DesiredAccess: number /* u32 */,
   TrustedDomainHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaOpenTrustedDomainByName(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), DesiredAccess, util.toPointer(TrustedDomainHandle));
+  return libADVAPI32_dll.LsaOpenTrustedDomainByName!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), DesiredAccess, util.toPointer(TrustedDomainHandle));
 }
 
 export function LsaQueryTrustedDomainInfo(
@@ -40079,7 +40290,7 @@ export function LsaQueryTrustedDomainInfo(
   InformationClass: TRUSTED_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.TRUSTED_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryTrustedDomainInfo(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaQueryTrustedDomainInfo!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaSetTrustedDomainInformation(
@@ -40088,14 +40299,14 @@ export function LsaSetTrustedDomainInformation(
   InformationClass: TRUSTED_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.TRUSTED_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetTrustedDomainInformation(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaSetTrustedDomainInformation!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaDeleteTrustedDomain(
   PolicyHandle: Deno.PointerValue | Uint8Array /* ptr */,
   TrustedDomainSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaDeleteTrustedDomain(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid));
+  return libADVAPI32_dll.LsaDeleteTrustedDomain!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainSid));
 }
 
 export function LsaQueryTrustedDomainInfoByName(
@@ -40104,7 +40315,7 @@ export function LsaQueryTrustedDomainInfoByName(
   InformationClass: TRUSTED_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.TRUSTED_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryTrustedDomainInfoByName(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaQueryTrustedDomainInfoByName!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaSetTrustedDomainInfoByName(
@@ -40113,7 +40324,7 @@ export function LsaSetTrustedDomainInfoByName(
   InformationClass: TRUSTED_INFORMATION_CLASS /* Windows.Win32.Security.Authentication.Identity.TRUSTED_INFORMATION_CLASS */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetTrustedDomainInfoByName(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), InformationClass, util.toPointer(Buffer));
+  return libADVAPI32_dll.LsaSetTrustedDomainInfoByName!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), InformationClass, util.toPointer(Buffer));
 }
 
 export function LsaEnumerateTrustedDomainsEx(
@@ -40123,7 +40334,7 @@ export function LsaEnumerateTrustedDomainsEx(
   PreferedMaximumLength: number /* u32 */,
   CountReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaEnumerateTrustedDomainsEx(util.toPointer(PolicyHandle), util.toPointer(EnumerationContext), util.toPointer(Buffer), PreferedMaximumLength, util.toPointer(CountReturned));
+  return libADVAPI32_dll.LsaEnumerateTrustedDomainsEx!(util.toPointer(PolicyHandle), util.toPointer(EnumerationContext), util.toPointer(Buffer), PreferedMaximumLength, util.toPointer(CountReturned));
 }
 
 export function LsaCreateTrustedDomainEx(
@@ -40133,7 +40344,7 @@ export function LsaCreateTrustedDomainEx(
   DesiredAccess: number /* u32 */,
   TrustedDomainHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaCreateTrustedDomainEx(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainInformation), util.toPointer(AuthenticationInformation), DesiredAccess, util.toPointer(TrustedDomainHandle));
+  return libADVAPI32_dll.LsaCreateTrustedDomainEx!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainInformation), util.toPointer(AuthenticationInformation), DesiredAccess, util.toPointer(TrustedDomainHandle));
 }
 
 export function LsaQueryForestTrustInformation(
@@ -40141,7 +40352,7 @@ export function LsaQueryForestTrustInformation(
   TrustedDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   ForestTrustInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaQueryForestTrustInformation(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), util.toPointer(ForestTrustInfo));
+  return libADVAPI32_dll.LsaQueryForestTrustInformation!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), util.toPointer(ForestTrustInfo));
 }
 
 export function LsaSetForestTrustInformation(
@@ -40151,7 +40362,7 @@ export function LsaSetForestTrustInformation(
   CheckOnly: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   CollisionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaSetForestTrustInformation(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), util.toPointer(ForestTrustInfo), util.toPointer(CheckOnly), util.toPointer(CollisionInfo));
+  return libADVAPI32_dll.LsaSetForestTrustInformation!(util.toPointer(PolicyHandle), util.toPointer(TrustedDomainName), util.toPointer(ForestTrustInfo), util.toPointer(CheckOnly), util.toPointer(CollisionInfo));
 }
 
 export function LsaStorePrivateData(
@@ -40159,7 +40370,7 @@ export function LsaStorePrivateData(
   KeyName: Deno.PointerValue | Uint8Array /* ptr */,
   PrivateData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaStorePrivateData(util.toPointer(PolicyHandle), util.toPointer(KeyName), util.toPointer(PrivateData));
+  return libADVAPI32_dll.LsaStorePrivateData!(util.toPointer(PolicyHandle), util.toPointer(KeyName), util.toPointer(PrivateData));
 }
 
 export function LsaRetrievePrivateData(
@@ -40167,20 +40378,20 @@ export function LsaRetrievePrivateData(
   KeyName: Deno.PointerValue | Uint8Array /* ptr */,
   PrivateData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.LsaRetrievePrivateData(util.toPointer(PolicyHandle), util.toPointer(KeyName), util.toPointer(PrivateData));
+  return libADVAPI32_dll.LsaRetrievePrivateData!(util.toPointer(PolicyHandle), util.toPointer(KeyName), util.toPointer(PrivateData));
 }
 
 export function LsaNtStatusToWinError(
   Status: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.LsaNtStatusToWinError(util.toPointer(Status));
+  return libADVAPI32_dll.LsaNtStatusToWinError!(util.toPointer(Status));
 }
 
 export function SystemFunction036(
   RandomBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   RandomBufferLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.SystemFunction036(util.toPointer(RandomBuffer), RandomBufferLength);
+  return libADVAPI32_dll.SystemFunction036!(util.toPointer(RandomBuffer), RandomBufferLength);
 }
 
 export function SystemFunction040(
@@ -40188,7 +40399,7 @@ export function SystemFunction040(
   MemorySize: number /* u32 */,
   OptionFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.SystemFunction040(util.toPointer(Memory), MemorySize, OptionFlags);
+  return libADVAPI32_dll.SystemFunction040!(util.toPointer(Memory), MemorySize, OptionFlags);
 }
 
 export function SystemFunction041(
@@ -40196,14 +40407,14 @@ export function SystemFunction041(
   MemorySize: number /* u32 */,
   OptionFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libADVAPI32_dll.SystemFunction041(util.toPointer(Memory), MemorySize, OptionFlags);
+  return libADVAPI32_dll.SystemFunction041!(util.toPointer(Memory), MemorySize, OptionFlags);
 }
 
 export function AuditSetSystemPolicy(
   pAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
   dwPolicyCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditSetSystemPolicy(util.toPointer(pAuditPolicy), dwPolicyCount);
+  return libADVAPI32_dll.AuditSetSystemPolicy!(util.toPointer(pAuditPolicy), dwPolicyCount);
 }
 
 export function AuditSetPerUserPolicy(
@@ -40211,7 +40422,7 @@ export function AuditSetPerUserPolicy(
   pAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
   dwPolicyCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditSetPerUserPolicy(util.toPointer(pSid), util.toPointer(pAuditPolicy), dwPolicyCount);
+  return libADVAPI32_dll.AuditSetPerUserPolicy!(util.toPointer(pSid), util.toPointer(pAuditPolicy), dwPolicyCount);
 }
 
 export function AuditQuerySystemPolicy(
@@ -40219,7 +40430,7 @@ export function AuditQuerySystemPolicy(
   dwPolicyCount: number /* u32 */,
   ppAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditQuerySystemPolicy(util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
+  return libADVAPI32_dll.AuditQuerySystemPolicy!(util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
 }
 
 export function AuditQueryPerUserPolicy(
@@ -40228,13 +40439,13 @@ export function AuditQueryPerUserPolicy(
   dwPolicyCount: number /* u32 */,
   ppAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditQueryPerUserPolicy(util.toPointer(pSid), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
+  return libADVAPI32_dll.AuditQueryPerUserPolicy!(util.toPointer(pSid), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
 }
 
 export function AuditEnumeratePerUserPolicy(
   ppAuditSidArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditEnumeratePerUserPolicy(util.toPointer(ppAuditSidArray));
+  return libADVAPI32_dll.AuditEnumeratePerUserPolicy!(util.toPointer(ppAuditSidArray));
 }
 
 export function AuditComputeEffectivePolicyBySid(
@@ -40243,7 +40454,7 @@ export function AuditComputeEffectivePolicyBySid(
   dwPolicyCount: number /* u32 */,
   ppAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditComputeEffectivePolicyBySid(util.toPointer(pSid), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
+  return libADVAPI32_dll.AuditComputeEffectivePolicyBySid!(util.toPointer(pSid), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
 }
 
 export function AuditComputeEffectivePolicyByToken(
@@ -40252,14 +40463,14 @@ export function AuditComputeEffectivePolicyByToken(
   dwPolicyCount: number /* u32 */,
   ppAuditPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditComputeEffectivePolicyByToken(util.toPointer(hTokenHandle), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
+  return libADVAPI32_dll.AuditComputeEffectivePolicyByToken!(util.toPointer(hTokenHandle), util.toPointer(pSubCategoryGuids), dwPolicyCount, util.toPointer(ppAuditPolicy));
 }
 
 export function AuditEnumerateCategories(
   ppAuditCategoriesArray: Deno.PointerValue | Uint8Array /* ptr */,
   pdwCountReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditEnumerateCategories(util.toPointer(ppAuditCategoriesArray), util.toPointer(pdwCountReturned));
+  return libADVAPI32_dll.AuditEnumerateCategories!(util.toPointer(ppAuditCategoriesArray), util.toPointer(pdwCountReturned));
 }
 
 export function AuditEnumerateSubCategories(
@@ -40268,97 +40479,97 @@ export function AuditEnumerateSubCategories(
   ppAuditSubCategoriesArray: Deno.PointerValue | Uint8Array /* ptr */,
   pdwCountReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditEnumerateSubCategories(util.toPointer(pAuditCategoryGuid), util.toPointer(bRetrieveAllSubCategories), util.toPointer(ppAuditSubCategoriesArray), util.toPointer(pdwCountReturned));
+  return libADVAPI32_dll.AuditEnumerateSubCategories!(util.toPointer(pAuditCategoryGuid), util.toPointer(bRetrieveAllSubCategories), util.toPointer(ppAuditSubCategoriesArray), util.toPointer(pdwCountReturned));
 }
 
 export function AuditLookupCategoryNameW(
   pAuditCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppszCategoryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupCategoryNameW(util.toPointer(pAuditCategoryGuid), util.toPointer(ppszCategoryName));
+  return libADVAPI32_dll.AuditLookupCategoryNameW!(util.toPointer(pAuditCategoryGuid), util.toPointer(ppszCategoryName));
 }
 
 export function AuditLookupCategoryNameA(
   pAuditCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppszCategoryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupCategoryNameA(util.toPointer(pAuditCategoryGuid), util.toPointer(ppszCategoryName));
+  return libADVAPI32_dll.AuditLookupCategoryNameA!(util.toPointer(pAuditCategoryGuid), util.toPointer(ppszCategoryName));
 }
 
 export function AuditLookupSubCategoryNameW(
   pAuditSubCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppszSubCategoryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupSubCategoryNameW(util.toPointer(pAuditSubCategoryGuid), util.toPointer(ppszSubCategoryName));
+  return libADVAPI32_dll.AuditLookupSubCategoryNameW!(util.toPointer(pAuditSubCategoryGuid), util.toPointer(ppszSubCategoryName));
 }
 
 export function AuditLookupSubCategoryNameA(
   pAuditSubCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppszSubCategoryName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupSubCategoryNameA(util.toPointer(pAuditSubCategoryGuid), util.toPointer(ppszSubCategoryName));
+  return libADVAPI32_dll.AuditLookupSubCategoryNameA!(util.toPointer(pAuditSubCategoryGuid), util.toPointer(ppszSubCategoryName));
 }
 
 export function AuditLookupCategoryIdFromCategoryGuid(
   pAuditCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pAuditCategoryId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupCategoryIdFromCategoryGuid(util.toPointer(pAuditCategoryGuid), util.toPointer(pAuditCategoryId));
+  return libADVAPI32_dll.AuditLookupCategoryIdFromCategoryGuid!(util.toPointer(pAuditCategoryGuid), util.toPointer(pAuditCategoryId));
 }
 
 export function AuditLookupCategoryGuidFromCategoryId(
   AuditCategoryId: POLICY_AUDIT_EVENT_TYPE /* Windows.Win32.Security.Authentication.Identity.POLICY_AUDIT_EVENT_TYPE */,
   pAuditCategoryGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditLookupCategoryGuidFromCategoryId(AuditCategoryId, util.toPointer(pAuditCategoryGuid));
+  return libADVAPI32_dll.AuditLookupCategoryGuidFromCategoryId!(AuditCategoryId, util.toPointer(pAuditCategoryGuid));
 }
 
 export function AuditSetSecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditSetSecurity(SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libADVAPI32_dll.AuditSetSecurity!(SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function AuditQuerySecurity(
   SecurityInformation: number /* u32 */,
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditQuerySecurity(SecurityInformation, util.toPointer(ppSecurityDescriptor));
+  return libADVAPI32_dll.AuditQuerySecurity!(SecurityInformation, util.toPointer(ppSecurityDescriptor));
 }
 
 export function AuditSetGlobalSaclW(
   ObjectTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Acl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditSetGlobalSaclW(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl));
+  return libADVAPI32_dll.AuditSetGlobalSaclW!(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl));
 }
 
 export function AuditSetGlobalSaclA(
   ObjectTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Acl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditSetGlobalSaclA(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl));
+  return libADVAPI32_dll.AuditSetGlobalSaclA!(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl));
 }
 
 export function AuditQueryGlobalSaclW(
   ObjectTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Acl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditQueryGlobalSaclW(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl));
+  return libADVAPI32_dll.AuditQueryGlobalSaclW!(util.pwstrToFfi(ObjectTypeName), util.toPointer(Acl));
 }
 
 export function AuditQueryGlobalSaclA(
   ObjectTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Acl: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.AuditQueryGlobalSaclA(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl));
+  return libADVAPI32_dll.AuditQueryGlobalSaclA!(util.pstrToFfi(ObjectTypeName), util.toPointer(Acl));
 }
 
 export function AuditFree(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.AuditFree(util.toPointer(Buffer));
+  return libADVAPI32_dll.AuditFree!(util.toPointer(Buffer));
 }
 
 export function AcquireCredentialsHandleW(
@@ -40372,7 +40583,7 @@ export function AcquireCredentialsHandleW(
   phCredential: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AcquireCredentialsHandleW(util.pwstrToFfi(pszPrincipal), util.pwstrToFfi(pszPackage), fCredentialUse, util.toPointer(pvLogonId), util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(phCredential), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.AcquireCredentialsHandleW!(util.pwstrToFfi(pszPrincipal), util.pwstrToFfi(pszPackage), fCredentialUse, util.toPointer(pvLogonId), util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(phCredential), util.toPointer(ptsExpiry));
 }
 
 export function AcquireCredentialsHandleA(
@@ -40386,13 +40597,13 @@ export function AcquireCredentialsHandleA(
   phCredential: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AcquireCredentialsHandleA(util.pstrToFfi(pszPrincipal), util.pstrToFfi(pszPackage), fCredentialUse, util.toPointer(pvLogonId), util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(phCredential), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.AcquireCredentialsHandleA!(util.pstrToFfi(pszPrincipal), util.pstrToFfi(pszPackage), fCredentialUse, util.toPointer(pvLogonId), util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(phCredential), util.toPointer(ptsExpiry));
 }
 
 export function FreeCredentialsHandle(
   phCredential: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.FreeCredentialsHandle(util.toPointer(phCredential));
+  return libSECUR32_dll.FreeCredentialsHandle!(util.toPointer(phCredential));
 }
 
 export function AddCredentialsW(
@@ -40405,7 +40616,7 @@ export function AddCredentialsW(
   pvGetKeyArgument: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AddCredentialsW(util.toPointer(hCredentials), util.pwstrToFfi(pszPrincipal), util.pwstrToFfi(pszPackage), fCredentialUse, util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.AddCredentialsW!(util.toPointer(hCredentials), util.pwstrToFfi(pszPrincipal), util.pwstrToFfi(pszPackage), fCredentialUse, util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(ptsExpiry));
 }
 
 export function AddCredentialsA(
@@ -40418,7 +40629,7 @@ export function AddCredentialsA(
   pvGetKeyArgument: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AddCredentialsA(util.toPointer(hCredentials), util.pstrToFfi(pszPrincipal), util.pstrToFfi(pszPackage), fCredentialUse, util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.AddCredentialsA!(util.toPointer(hCredentials), util.pstrToFfi(pszPrincipal), util.pstrToFfi(pszPackage), fCredentialUse, util.toPointer(pAuthData), util.toPointer(pGetKeyFn), util.toPointer(pvGetKeyArgument), util.toPointer(ptsExpiry));
 }
 
 export function ChangeAccountPasswordW(
@@ -40431,7 +40642,7 @@ export function ChangeAccountPasswordW(
   dwReserved: number /* u32 */,
   pOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ChangeAccountPasswordW(util.toPointer(pszPackageName), util.toPointer(pszDomainName), util.toPointer(pszAccountName), util.toPointer(pszOldPassword), util.toPointer(pszNewPassword), util.toPointer(bImpersonating), dwReserved, util.toPointer(pOutput));
+  return libSECUR32_dll.ChangeAccountPasswordW!(util.toPointer(pszPackageName), util.toPointer(pszDomainName), util.toPointer(pszAccountName), util.toPointer(pszOldPassword), util.toPointer(pszNewPassword), util.toPointer(bImpersonating), dwReserved, util.toPointer(pOutput));
 }
 
 export function ChangeAccountPasswordA(
@@ -40444,7 +40655,7 @@ export function ChangeAccountPasswordA(
   dwReserved: number /* u32 */,
   pOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ChangeAccountPasswordA(util.toPointer(pszPackageName), util.toPointer(pszDomainName), util.toPointer(pszAccountName), util.toPointer(pszOldPassword), util.toPointer(pszNewPassword), util.toPointer(bImpersonating), dwReserved, util.toPointer(pOutput));
+  return libSECUR32_dll.ChangeAccountPasswordA!(util.toPointer(pszPackageName), util.toPointer(pszDomainName), util.toPointer(pszAccountName), util.toPointer(pszOldPassword), util.toPointer(pszNewPassword), util.toPointer(bImpersonating), dwReserved, util.toPointer(pOutput));
 }
 
 export function InitializeSecurityContextW(
@@ -40461,7 +40672,7 @@ export function InitializeSecurityContextW(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.InitializeSecurityContextW(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.InitializeSecurityContextW!(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function InitializeSecurityContextA(
@@ -40478,7 +40689,7 @@ export function InitializeSecurityContextA(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.InitializeSecurityContextA(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.InitializeSecurityContextA!(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function AcceptSecurityContext(
@@ -40492,46 +40703,46 @@ export function AcceptSecurityContext(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AcceptSecurityContext(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pInput), fContextReq, TargetDataRep, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.AcceptSecurityContext!(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pInput), fContextReq, TargetDataRep, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function CompleteAuthToken(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
   pToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.CompleteAuthToken(util.toPointer(phContext), util.toPointer(pToken));
+  return libSECUR32_dll.CompleteAuthToken!(util.toPointer(phContext), util.toPointer(pToken));
 }
 
 export function ImpersonateSecurityContext(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ImpersonateSecurityContext(util.toPointer(phContext));
+  return libSECUR32_dll.ImpersonateSecurityContext!(util.toPointer(phContext));
 }
 
 export function RevertSecurityContext(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.RevertSecurityContext(util.toPointer(phContext));
+  return libSECUR32_dll.RevertSecurityContext!(util.toPointer(phContext));
 }
 
 export function QuerySecurityContextToken(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
   Token: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QuerySecurityContextToken(util.toPointer(phContext), util.toPointer(Token));
+  return libSECUR32_dll.QuerySecurityContextToken!(util.toPointer(phContext), util.toPointer(Token));
 }
 
 export function DeleteSecurityContext(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.DeleteSecurityContext(util.toPointer(phContext));
+  return libSECUR32_dll.DeleteSecurityContext!(util.toPointer(phContext));
 }
 
 export function ApplyControlToken(
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
   pInput: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ApplyControlToken(util.toPointer(phContext), util.toPointer(pInput));
+  return libSECUR32_dll.ApplyControlToken!(util.toPointer(phContext), util.toPointer(pInput));
 }
 
 export function QueryContextAttributesW(
@@ -40539,7 +40750,7 @@ export function QueryContextAttributesW(
   ulAttribute: SECPKG_ATTR /* Windows.Win32.Security.Authentication.Identity.SECPKG_ATTR */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QueryContextAttributesW(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer));
+  return libSECUR32_dll.QueryContextAttributesW!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer));
 }
 
 export function QueryContextAttributesExW(
@@ -40548,7 +40759,7 @@ export function QueryContextAttributesExW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.QueryContextAttributesExW(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSspiCli_dll.QueryContextAttributesExW!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function QueryContextAttributesA(
@@ -40556,7 +40767,7 @@ export function QueryContextAttributesA(
   ulAttribute: SECPKG_ATTR /* Windows.Win32.Security.Authentication.Identity.SECPKG_ATTR */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QueryContextAttributesA(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer));
+  return libSECUR32_dll.QueryContextAttributesA!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer));
 }
 
 export function QueryContextAttributesExA(
@@ -40565,7 +40776,7 @@ export function QueryContextAttributesExA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.QueryContextAttributesExA(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSspiCli_dll.QueryContextAttributesExA!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function SetContextAttributesW(
@@ -40574,7 +40785,7 @@ export function SetContextAttributesW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SetContextAttributesW(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSECUR32_dll.SetContextAttributesW!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function SetContextAttributesA(
@@ -40583,7 +40794,7 @@ export function SetContextAttributesA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SetContextAttributesA(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSECUR32_dll.SetContextAttributesA!(util.toPointer(phContext), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function QueryCredentialsAttributesW(
@@ -40591,7 +40802,7 @@ export function QueryCredentialsAttributesW(
   ulAttribute: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QueryCredentialsAttributesW(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer));
+  return libSECUR32_dll.QueryCredentialsAttributesW!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer));
 }
 
 export function QueryCredentialsAttributesExW(
@@ -40600,7 +40811,7 @@ export function QueryCredentialsAttributesExW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.QueryCredentialsAttributesExW(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSspiCli_dll.QueryCredentialsAttributesExW!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function QueryCredentialsAttributesA(
@@ -40608,7 +40819,7 @@ export function QueryCredentialsAttributesA(
   ulAttribute: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QueryCredentialsAttributesA(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer));
+  return libSECUR32_dll.QueryCredentialsAttributesA!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer));
 }
 
 export function QueryCredentialsAttributesExA(
@@ -40617,7 +40828,7 @@ export function QueryCredentialsAttributesExA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.QueryCredentialsAttributesExA(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSspiCli_dll.QueryCredentialsAttributesExA!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function SetCredentialsAttributesW(
@@ -40626,7 +40837,7 @@ export function SetCredentialsAttributesW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SetCredentialsAttributesW(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSECUR32_dll.SetCredentialsAttributesW!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function SetCredentialsAttributesA(
@@ -40635,13 +40846,13 @@ export function SetCredentialsAttributesA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SetCredentialsAttributesA(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
+  return libSECUR32_dll.SetCredentialsAttributesA!(util.toPointer(phCredential), ulAttribute, util.toPointer(pBuffer), cbBuffer);
 }
 
 export function FreeContextBuffer(
   pvContextBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.FreeContextBuffer(util.toPointer(pvContextBuffer));
+  return libSECUR32_dll.FreeContextBuffer!(util.toPointer(pvContextBuffer));
 }
 
 export function MakeSignature(
@@ -40650,7 +40861,7 @@ export function MakeSignature(
   pMessage: Deno.PointerValue | Uint8Array /* ptr */,
   MessageSeqNo: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.MakeSignature(util.toPointer(phContext), fQOP, util.toPointer(pMessage), MessageSeqNo);
+  return libSECUR32_dll.MakeSignature!(util.toPointer(phContext), fQOP, util.toPointer(pMessage), MessageSeqNo);
 }
 
 export function VerifySignature(
@@ -40659,7 +40870,7 @@ export function VerifySignature(
   MessageSeqNo: number /* u32 */,
   pfQOP: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.VerifySignature(util.toPointer(phContext), util.toPointer(pMessage), MessageSeqNo, util.toPointer(pfQOP));
+  return libSECUR32_dll.VerifySignature!(util.toPointer(phContext), util.toPointer(pMessage), MessageSeqNo, util.toPointer(pfQOP));
 }
 
 export function EncryptMessage(
@@ -40668,7 +40879,7 @@ export function EncryptMessage(
   pMessage: Deno.PointerValue | Uint8Array /* ptr */,
   MessageSeqNo: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.EncryptMessage(util.toPointer(phContext), fQOP, util.toPointer(pMessage), MessageSeqNo);
+  return libSECUR32_dll.EncryptMessage!(util.toPointer(phContext), fQOP, util.toPointer(pMessage), MessageSeqNo);
 }
 
 export function DecryptMessage(
@@ -40677,35 +40888,35 @@ export function DecryptMessage(
   MessageSeqNo: number /* u32 */,
   pfQOP: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.DecryptMessage(util.toPointer(phContext), util.toPointer(pMessage), MessageSeqNo, util.toPointer(pfQOP));
+  return libSECUR32_dll.DecryptMessage!(util.toPointer(phContext), util.toPointer(pMessage), MessageSeqNo, util.toPointer(pfQOP));
 }
 
 export function EnumerateSecurityPackagesW(
   pcPackages: Deno.PointerValue | Uint8Array /* ptr */,
   ppPackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.EnumerateSecurityPackagesW(util.toPointer(pcPackages), util.toPointer(ppPackageInfo));
+  return libSECUR32_dll.EnumerateSecurityPackagesW!(util.toPointer(pcPackages), util.toPointer(ppPackageInfo));
 }
 
 export function EnumerateSecurityPackagesA(
   pcPackages: Deno.PointerValue | Uint8Array /* ptr */,
   ppPackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.EnumerateSecurityPackagesA(util.toPointer(pcPackages), util.toPointer(ppPackageInfo));
+  return libSECUR32_dll.EnumerateSecurityPackagesA!(util.toPointer(pcPackages), util.toPointer(ppPackageInfo));
 }
 
 export function QuerySecurityPackageInfoW(
   pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppPackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QuerySecurityPackageInfoW(util.pwstrToFfi(pszPackageName), util.toPointer(ppPackageInfo));
+  return libSECUR32_dll.QuerySecurityPackageInfoW!(util.pwstrToFfi(pszPackageName), util.toPointer(ppPackageInfo));
 }
 
 export function QuerySecurityPackageInfoA(
   pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppPackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.QuerySecurityPackageInfoA(util.pstrToFfi(pszPackageName), util.toPointer(ppPackageInfo));
+  return libSECUR32_dll.QuerySecurityPackageInfoA!(util.pstrToFfi(pszPackageName), util.toPointer(ppPackageInfo));
 }
 
 export function ExportSecurityContext(
@@ -40714,7 +40925,7 @@ export function ExportSecurityContext(
   pPackedContext: Deno.PointerValue | Uint8Array /* ptr */,
   pToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ExportSecurityContext(util.toPointer(phContext), fFlags, util.toPointer(pPackedContext), util.toPointer(pToken));
+  return libSECUR32_dll.ExportSecurityContext!(util.toPointer(phContext), fFlags, util.toPointer(pPackedContext), util.toPointer(pToken));
 }
 
 export function ImportSecurityContextW(
@@ -40723,7 +40934,7 @@ export function ImportSecurityContextW(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ImportSecurityContextW(util.pwstrToFfi(pszPackage), util.toPointer(pPackedContext), util.toPointer(Token), util.toPointer(phContext));
+  return libSECUR32_dll.ImportSecurityContextW!(util.pwstrToFfi(pszPackage), util.toPointer(pPackedContext), util.toPointer(Token), util.toPointer(phContext));
 }
 
 export function ImportSecurityContextA(
@@ -40732,57 +40943,57 @@ export function ImportSecurityContextA(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.ImportSecurityContextA(util.pstrToFfi(pszPackage), util.toPointer(pPackedContext), util.toPointer(Token), util.toPointer(phContext));
+  return libSECUR32_dll.ImportSecurityContextA!(util.pstrToFfi(pszPackage), util.toPointer(pPackedContext), util.toPointer(Token), util.toPointer(phContext));
 }
 
 export function InitSecurityInterfaceA(): Deno.PointerValue /* ptr */ {
-  return libSECUR32_dll.InitSecurityInterfaceA();
+  return libSECUR32_dll.InitSecurityInterfaceA!();
 }
 
 export function InitSecurityInterfaceW(): Deno.PointerValue /* ptr */ {
-  return libSECUR32_dll.InitSecurityInterfaceW();
+  return libSECUR32_dll.InitSecurityInterfaceW!();
 }
 
 export function SaslEnumerateProfilesA(
   ProfileList: Deno.PointerValue | Uint8Array /* ptr */,
   ProfileCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslEnumerateProfilesA(util.toPointer(ProfileList), util.toPointer(ProfileCount));
+  return libSECUR32_dll.SaslEnumerateProfilesA!(util.toPointer(ProfileList), util.toPointer(ProfileCount));
 }
 
 export function SaslEnumerateProfilesW(
   ProfileList: Deno.PointerValue | Uint8Array /* ptr */,
   ProfileCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslEnumerateProfilesW(util.toPointer(ProfileList), util.toPointer(ProfileCount));
+  return libSECUR32_dll.SaslEnumerateProfilesW!(util.toPointer(ProfileList), util.toPointer(ProfileCount));
 }
 
 export function SaslGetProfilePackageA(
   ProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslGetProfilePackageA(util.pstrToFfi(ProfileName), util.toPointer(PackageInfo));
+  return libSECUR32_dll.SaslGetProfilePackageA!(util.pstrToFfi(ProfileName), util.toPointer(PackageInfo));
 }
 
 export function SaslGetProfilePackageW(
   ProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslGetProfilePackageW(util.pwstrToFfi(ProfileName), util.toPointer(PackageInfo));
+  return libSECUR32_dll.SaslGetProfilePackageW!(util.pwstrToFfi(ProfileName), util.toPointer(PackageInfo));
 }
 
 export function SaslIdentifyPackageA(
   pInput: Deno.PointerValue | Uint8Array /* ptr */,
   PackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslIdentifyPackageA(util.toPointer(pInput), util.toPointer(PackageInfo));
+  return libSECUR32_dll.SaslIdentifyPackageA!(util.toPointer(pInput), util.toPointer(PackageInfo));
 }
 
 export function SaslIdentifyPackageW(
   pInput: Deno.PointerValue | Uint8Array /* ptr */,
   PackageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslIdentifyPackageW(util.toPointer(pInput), util.toPointer(PackageInfo));
+  return libSECUR32_dll.SaslIdentifyPackageW!(util.toPointer(pInput), util.toPointer(PackageInfo));
 }
 
 export function SaslInitializeSecurityContextW(
@@ -40799,7 +41010,7 @@ export function SaslInitializeSecurityContextW(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslInitializeSecurityContextW(util.toPointer(phCredential), util.toPointer(phContext), util.pwstrToFfi(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.SaslInitializeSecurityContextW!(util.toPointer(phCredential), util.toPointer(phContext), util.pwstrToFfi(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function SaslInitializeSecurityContextA(
@@ -40816,7 +41027,7 @@ export function SaslInitializeSecurityContextA(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslInitializeSecurityContextA(util.toPointer(phCredential), util.toPointer(phContext), util.pstrToFfi(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.SaslInitializeSecurityContextA!(util.toPointer(phCredential), util.toPointer(phContext), util.pstrToFfi(pszTargetName), fContextReq, Reserved1, TargetDataRep, util.toPointer(pInput), Reserved2, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function SaslAcceptSecurityContext(
@@ -40830,7 +41041,7 @@ export function SaslAcceptSecurityContext(
   pfContextAttr: Deno.PointerValue | Uint8Array /* ptr */,
   ptsExpiry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslAcceptSecurityContext(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pInput), fContextReq, TargetDataRep, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
+  return libSECUR32_dll.SaslAcceptSecurityContext!(util.toPointer(phCredential), util.toPointer(phContext), util.toPointer(pInput), fContextReq, TargetDataRep, util.toPointer(phNewContext), util.toPointer(pOutput), util.toPointer(pfContextAttr), util.toPointer(ptsExpiry));
 }
 
 export function SaslSetContextOption(
@@ -40839,7 +41050,7 @@ export function SaslSetContextOption(
   Value: Deno.PointerValue | Uint8Array /* ptr */,
   Size: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslSetContextOption(util.toPointer(ContextHandle), Option, util.toPointer(Value), Size);
+  return libSECUR32_dll.SaslSetContextOption!(util.toPointer(ContextHandle), Option, util.toPointer(Value), Size);
 }
 
 export function SaslGetContextOption(
@@ -40849,7 +41060,7 @@ export function SaslGetContextOption(
   Size: number /* u32 */,
   Needed: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SaslGetContextOption(util.toPointer(ContextHandle), Option, util.toPointer(Value), Size, util.toPointer(Needed));
+  return libSECUR32_dll.SaslGetContextOption!(util.toPointer(ContextHandle), Option, util.toPointer(Value), Size, util.toPointer(Needed));
 }
 
 export function SspiPromptForCredentialsW(
@@ -40862,7 +41073,7 @@ export function SspiPromptForCredentialsW(
   pfSave: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libcredui_dll.SspiPromptForCredentialsW(util.pwstrToFfi(pszTargetName), util.toPointer(pUiInfo), dwAuthError, util.pwstrToFfi(pszPackage), util.toPointer(pInputAuthIdentity), util.toPointer(ppAuthIdentity), util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.SspiPromptForCredentialsW!(util.pwstrToFfi(pszTargetName), util.toPointer(pUiInfo), dwAuthError, util.pwstrToFfi(pszPackage), util.toPointer(pInputAuthIdentity), util.toPointer(ppAuthIdentity), util.toPointer(pfSave), dwFlags);
 }
 
 export function SspiPromptForCredentialsA(
@@ -40875,7 +41086,7 @@ export function SspiPromptForCredentialsA(
   pfSave: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libcredui_dll.SspiPromptForCredentialsA(util.pstrToFfi(pszTargetName), util.toPointer(pUiInfo), dwAuthError, util.pstrToFfi(pszPackage), util.toPointer(pInputAuthIdentity), util.toPointer(ppAuthIdentity), util.toPointer(pfSave), dwFlags);
+  return libcredui_dll.SspiPromptForCredentialsA!(util.pstrToFfi(pszTargetName), util.toPointer(pUiInfo), dwAuthError, util.pstrToFfi(pszPackage), util.toPointer(pInputAuthIdentity), util.toPointer(ppAuthIdentity), util.toPointer(pfSave), dwFlags);
 }
 
 export function SspiPrepareForCredRead(
@@ -40884,7 +41095,7 @@ export function SspiPrepareForCredRead(
   pCredmanCredentialType: Deno.PointerValue | Uint8Array /* ptr */,
   ppszCredmanTargetName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiPrepareForCredRead(util.toPointer(AuthIdentity), util.pwstrToFfi(pszTargetName), util.toPointer(pCredmanCredentialType), util.toPointer(ppszCredmanTargetName));
+  return libSECUR32_dll.SspiPrepareForCredRead!(util.toPointer(AuthIdentity), util.pwstrToFfi(pszTargetName), util.toPointer(pCredmanCredentialType), util.toPointer(ppszCredmanTargetName));
 }
 
 export function SspiPrepareForCredWrite(
@@ -40896,39 +41107,39 @@ export function SspiPrepareForCredWrite(
   ppCredentialBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pCredentialBlobSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiPrepareForCredWrite(util.toPointer(AuthIdentity), util.pwstrToFfi(pszTargetName), util.toPointer(pCredmanCredentialType), util.toPointer(ppszCredmanTargetName), util.toPointer(ppszCredmanUserName), util.toPointer(ppCredentialBlob), util.toPointer(pCredentialBlobSize));
+  return libSECUR32_dll.SspiPrepareForCredWrite!(util.toPointer(AuthIdentity), util.pwstrToFfi(pszTargetName), util.toPointer(pCredmanCredentialType), util.toPointer(ppszCredmanTargetName), util.toPointer(ppszCredmanUserName), util.toPointer(ppCredentialBlob), util.toPointer(pCredentialBlobSize));
 }
 
 export function SspiEncryptAuthIdentity(
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiEncryptAuthIdentity(util.toPointer(AuthData));
+  return libSECUR32_dll.SspiEncryptAuthIdentity!(util.toPointer(AuthData));
 }
 
 export function SspiEncryptAuthIdentityEx(
   Options: number /* u32 */,
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.SspiEncryptAuthIdentityEx(Options, util.toPointer(AuthData));
+  return libSspiCli_dll.SspiEncryptAuthIdentityEx!(Options, util.toPointer(AuthData));
 }
 
 export function SspiDecryptAuthIdentity(
   EncryptedAuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiDecryptAuthIdentity(util.toPointer(EncryptedAuthData));
+  return libSECUR32_dll.SspiDecryptAuthIdentity!(util.toPointer(EncryptedAuthData));
 }
 
 export function SspiDecryptAuthIdentityEx(
   Options: number /* u32 */,
   EncryptedAuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSspiCli_dll.SspiDecryptAuthIdentityEx(Options, util.toPointer(EncryptedAuthData));
+  return libSspiCli_dll.SspiDecryptAuthIdentityEx!(Options, util.toPointer(EncryptedAuthData));
 }
 
 export function SspiIsAuthIdentityEncrypted(
   EncryptedAuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.SspiIsAuthIdentityEncrypted(util.toPointer(EncryptedAuthData));
+  return libSECUR32_dll.SspiIsAuthIdentityEncrypted!(util.toPointer(EncryptedAuthData));
 }
 
 export function SspiEncodeAuthIdentityAsStrings(
@@ -40937,38 +41148,38 @@ export function SspiEncodeAuthIdentityAsStrings(
   ppszDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   ppszPackedCredentialsString: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiEncodeAuthIdentityAsStrings(util.toPointer(pAuthIdentity), util.toPointer(ppszUserName), util.toPointer(ppszDomainName), util.toPointer(ppszPackedCredentialsString));
+  return libSECUR32_dll.SspiEncodeAuthIdentityAsStrings!(util.toPointer(pAuthIdentity), util.toPointer(ppszUserName), util.toPointer(ppszDomainName), util.toPointer(ppszPackedCredentialsString));
 }
 
 export function SspiValidateAuthIdentity(
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiValidateAuthIdentity(util.toPointer(AuthData));
+  return libSECUR32_dll.SspiValidateAuthIdentity!(util.toPointer(AuthData));
 }
 
 export function SspiCopyAuthIdentity(
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
   AuthDataCopy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiCopyAuthIdentity(util.toPointer(AuthData), util.toPointer(AuthDataCopy));
+  return libSECUR32_dll.SspiCopyAuthIdentity!(util.toPointer(AuthData), util.toPointer(AuthDataCopy));
 }
 
 export function SspiFreeAuthIdentity(
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSECUR32_dll.SspiFreeAuthIdentity(util.toPointer(AuthData));
+  return libSECUR32_dll.SspiFreeAuthIdentity!(util.toPointer(AuthData));
 }
 
 export function SspiZeroAuthIdentity(
   AuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSECUR32_dll.SspiZeroAuthIdentity(util.toPointer(AuthData));
+  return libSECUR32_dll.SspiZeroAuthIdentity!(util.toPointer(AuthData));
 }
 
 export function SspiLocalFree(
   DataBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSECUR32_dll.SspiLocalFree(util.toPointer(DataBuffer));
+  return libSECUR32_dll.SspiLocalFree!(util.toPointer(DataBuffer));
 }
 
 export function SspiEncodeStringsAsAuthIdentity(
@@ -40977,7 +41188,7 @@ export function SspiEncodeStringsAsAuthIdentity(
   pszPackedCredentialsString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiEncodeStringsAsAuthIdentity(util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszDomainName), util.pwstrToFfi(pszPackedCredentialsString), util.toPointer(ppAuthIdentity));
+  return libSECUR32_dll.SspiEncodeStringsAsAuthIdentity!(util.pwstrToFfi(pszUserName), util.pwstrToFfi(pszDomainName), util.pwstrToFfi(pszPackedCredentialsString), util.toPointer(ppAuthIdentity));
 }
 
 export function SspiCompareAuthIdentities(
@@ -40986,7 +41197,7 @@ export function SspiCompareAuthIdentities(
   SameSuppliedUser: Deno.PointerValue | Uint8Array /* ptr */,
   SameSuppliedIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiCompareAuthIdentities(util.toPointer(AuthIdentity1), util.toPointer(AuthIdentity2), util.toPointer(SameSuppliedUser), util.toPointer(SameSuppliedIdentity));
+  return libSECUR32_dll.SspiCompareAuthIdentities!(util.toPointer(AuthIdentity1), util.toPointer(AuthIdentity2), util.toPointer(SameSuppliedUser), util.toPointer(SameSuppliedIdentity));
 }
 
 export function SspiMarshalAuthIdentity(
@@ -40994,7 +41205,7 @@ export function SspiMarshalAuthIdentity(
   AuthIdentityLength: Deno.PointerValue | Uint8Array /* ptr */,
   AuthIdentityByteArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiMarshalAuthIdentity(util.toPointer(AuthIdentity), util.toPointer(AuthIdentityLength), util.toPointer(AuthIdentityByteArray));
+  return libSECUR32_dll.SspiMarshalAuthIdentity!(util.toPointer(AuthIdentity), util.toPointer(AuthIdentityLength), util.toPointer(AuthIdentityByteArray));
 }
 
 export function SspiUnmarshalAuthIdentity(
@@ -41002,20 +41213,20 @@ export function SspiUnmarshalAuthIdentity(
   AuthIdentityByteArray: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppAuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiUnmarshalAuthIdentity(AuthIdentityLength, util.pstrToFfi(AuthIdentityByteArray), util.toPointer(ppAuthIdentity));
+  return libSECUR32_dll.SspiUnmarshalAuthIdentity!(AuthIdentityLength, util.pstrToFfi(AuthIdentityByteArray), util.toPointer(ppAuthIdentity));
 }
 
 export function SspiIsPromptingNeeded(
   ErrorOrNtStatus: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libcredui_dll.SspiIsPromptingNeeded(ErrorOrNtStatus);
+  return libcredui_dll.SspiIsPromptingNeeded!(ErrorOrNtStatus);
 }
 
 export function SspiGetTargetHostName(
   pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszHostName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiGetTargetHostName(util.pwstrToFfi(pszTargetName), util.toPointer(pszHostName));
+  return libSECUR32_dll.SspiGetTargetHostName!(util.pwstrToFfi(pszTargetName), util.toPointer(pszHostName));
 }
 
 export function SspiExcludePackage(
@@ -41023,33 +41234,33 @@ export function SspiExcludePackage(
   pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppNewAuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.SspiExcludePackage(util.toPointer(AuthIdentity), util.pwstrToFfi(pszPackageName), util.toPointer(ppNewAuthIdentity));
+  return libSECUR32_dll.SspiExcludePackage!(util.toPointer(AuthIdentity), util.pwstrToFfi(pszPackageName), util.toPointer(ppNewAuthIdentity));
 }
 
 export function AddSecurityPackageA(
   pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AddSecurityPackageA(util.pstrToFfi(pszPackageName), util.toPointer(pOptions));
+  return libSECUR32_dll.AddSecurityPackageA!(util.pstrToFfi(pszPackageName), util.toPointer(pOptions));
 }
 
 export function AddSecurityPackageW(
   pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.AddSecurityPackageW(util.pwstrToFfi(pszPackageName), util.toPointer(pOptions));
+  return libSECUR32_dll.AddSecurityPackageW!(util.pwstrToFfi(pszPackageName), util.toPointer(pOptions));
 }
 
 export function DeleteSecurityPackageA(
   pszPackageName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.DeleteSecurityPackageA(util.pstrToFfi(pszPackageName));
+  return libSECUR32_dll.DeleteSecurityPackageA!(util.pstrToFfi(pszPackageName));
 }
 
 export function DeleteSecurityPackageW(
   pszPackageName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSECUR32_dll.DeleteSecurityPackageW(util.pwstrToFfi(pszPackageName));
+  return libSECUR32_dll.DeleteSecurityPackageW!(util.pwstrToFfi(pszPackageName));
 }
 
 export function CredMarshalTargetInfo(
@@ -41057,7 +41268,7 @@ export function CredMarshalTargetInfo(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.CredMarshalTargetInfo(util.toPointer(InTargetInfo), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libSECUR32_dll.CredMarshalTargetInfo!(util.toPointer(InTargetInfo), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function CredUnmarshalTargetInfo(
@@ -41066,28 +41277,28 @@ export function CredUnmarshalTargetInfo(
   RetTargetInfo: Deno.PointerValue | Uint8Array /* ptr */,
   RetActualSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSECUR32_dll.CredUnmarshalTargetInfo(util.toPointer(Buffer), BufferSize, util.toPointer(RetTargetInfo), util.toPointer(RetActualSize));
+  return libSECUR32_dll.CredUnmarshalTargetInfo!(util.toPointer(Buffer), BufferSize, util.toPointer(RetTargetInfo), util.toPointer(RetActualSize));
 }
 
 export function SslEmptyCacheA(
   pszTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheA(util.pstrToFfi(pszTargetName), dwFlags));
+  return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheA!(util.pstrToFfi(pszTargetName), dwFlags));
 }
 
 export function SslEmptyCacheW(
   pszTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheW(util.pwstrToFfi(pszTargetName), dwFlags));
+  return util.boolFromFfi(libSCHANNEL_dll.SslEmptyCacheW!(util.pwstrToFfi(pszTargetName), dwFlags));
 }
 
 export function SslGenerateRandomBits(
   pRandomData: Deno.PointerValue | Uint8Array /* ptr */,
   cRandomData: number /* i32 */,
 ): void /* void */ {
-  return libSCHANNEL_dll.SslGenerateRandomBits(util.toPointer(pRandomData), cRandomData);
+  return libSCHANNEL_dll.SslGenerateRandomBits!(util.toPointer(pRandomData), cRandomData);
 }
 
 export function SslCrackCertificate(
@@ -41096,19 +41307,19 @@ export function SslCrackCertificate(
   dwFlags: number /* u32 */,
   ppCertificate: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSCHANNEL_dll.SslCrackCertificate(util.toPointer(pbCertificate), cbCertificate, dwFlags, util.toPointer(ppCertificate)));
+  return util.boolFromFfi(libSCHANNEL_dll.SslCrackCertificate!(util.toPointer(pbCertificate), cbCertificate, dwFlags, util.toPointer(ppCertificate)));
 }
 
 export function SslFreeCertificate(
   pCertificate: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSCHANNEL_dll.SslFreeCertificate(util.toPointer(pCertificate));
+  return libSCHANNEL_dll.SslFreeCertificate!(util.toPointer(pCertificate));
 }
 
 export function SslGetMaximumKeySize(
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libSCHANNEL_dll.SslGetMaximumKeySize(Reserved);
+  return libSCHANNEL_dll.SslGetMaximumKeySize!(Reserved);
 }
 
 export function SslGetServerIdentity(
@@ -41118,7 +41329,7 @@ export function SslGetServerIdentity(
   ServerIdentitySize: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSCHANNEL_dll.SslGetServerIdentity(util.toPointer(ClientHello), ClientHelloSize, util.toPointer(ServerIdentity), util.toPointer(ServerIdentitySize), Flags);
+  return libSCHANNEL_dll.SslGetServerIdentity!(util.toPointer(ClientHello), ClientHelloSize, util.toPointer(ServerIdentity), util.toPointer(ServerIdentitySize), Flags);
 }
 
 export function SslGetExtensions(
@@ -41129,7 +41340,7 @@ export function SslGetExtensions(
   bytesToRead: Deno.PointerValue | Uint8Array /* ptr */,
   flags: SchGetExtensionsOptions /* Windows.Win32.Security.Authentication.Identity.SchGetExtensionsOptions */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSCHANNEL_dll.SslGetExtensions(util.toPointer(clientHello), clientHelloByteSize, util.toPointer(genericExtensions), genericExtensionsCount, util.toPointer(bytesToRead), flags);
+  return libSCHANNEL_dll.SslGetExtensions!(util.toPointer(clientHello), clientHelloByteSize, util.toPointer(genericExtensions), genericExtensionsCount, util.toPointer(bytesToRead), flags);
 }
 
 export function TokenBindingGenerateBinding(
@@ -41144,7 +41355,7 @@ export function TokenBindingGenerateBinding(
   tokenBindingSize: Deno.PointerValue | Uint8Array /* ptr */,
   resultData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGenerateBinding(keyType, util.pwstrToFfi(targetURL), bindingType, util.toPointer(tlsEKM), tlsEKMSize, extensionFormat, util.toPointer(extensionData), util.toPointer(tokenBinding), util.toPointer(tokenBindingSize), util.toPointer(resultData));
+  return libTOKENBINDING_dll.TokenBindingGenerateBinding!(keyType, util.pwstrToFfi(targetURL), bindingType, util.toPointer(tlsEKM), tlsEKMSize, extensionFormat, util.toPointer(extensionData), util.toPointer(tokenBinding), util.toPointer(tokenBindingSize), util.toPointer(resultData));
 }
 
 export function TokenBindingGenerateMessage(
@@ -41154,7 +41365,7 @@ export function TokenBindingGenerateMessage(
   tokenBindingMessage: Deno.PointerValue | Uint8Array /* ptr */,
   tokenBindingMessageSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGenerateMessage(util.toPointer(tokenBindings), util.toPointer(tokenBindingsSize), tokenBindingsCount, util.toPointer(tokenBindingMessage), util.toPointer(tokenBindingMessageSize));
+  return libTOKENBINDING_dll.TokenBindingGenerateMessage!(util.toPointer(tokenBindings), util.toPointer(tokenBindingsSize), tokenBindingsCount, util.toPointer(tokenBindingMessage), util.toPointer(tokenBindingMessageSize));
 }
 
 export function TokenBindingVerifyMessage(
@@ -41165,29 +41376,29 @@ export function TokenBindingVerifyMessage(
   tlsEKMSize: number /* u32 */,
   resultList: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingVerifyMessage(util.toPointer(tokenBindingMessage), tokenBindingMessageSize, keyType, util.toPointer(tlsEKM), tlsEKMSize, util.toPointer(resultList));
+  return libTOKENBINDING_dll.TokenBindingVerifyMessage!(util.toPointer(tokenBindingMessage), tokenBindingMessageSize, keyType, util.toPointer(tlsEKM), tlsEKMSize, util.toPointer(resultList));
 }
 
 export function TokenBindingGetKeyTypesClient(
   keyTypes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGetKeyTypesClient(util.toPointer(keyTypes));
+  return libTOKENBINDING_dll.TokenBindingGetKeyTypesClient!(util.toPointer(keyTypes));
 }
 
 export function TokenBindingGetKeyTypesServer(
   keyTypes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGetKeyTypesServer(util.toPointer(keyTypes));
+  return libTOKENBINDING_dll.TokenBindingGetKeyTypesServer!(util.toPointer(keyTypes));
 }
 
 export function TokenBindingDeleteBinding(
   targetURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingDeleteBinding(util.pwstrToFfi(targetURL));
+  return libTOKENBINDING_dll.TokenBindingDeleteBinding!(util.pwstrToFfi(targetURL));
 }
 
 export function TokenBindingDeleteAllBindings(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingDeleteAllBindings();
+  return libTOKENBINDING_dll.TokenBindingDeleteAllBindings!();
 }
 
 export function TokenBindingGenerateID(
@@ -41196,7 +41407,7 @@ export function TokenBindingGenerateID(
   publicKeySize: number /* u32 */,
   resultData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGenerateID(keyType, util.toPointer(publicKey), publicKeySize, util.toPointer(resultData));
+  return libTOKENBINDING_dll.TokenBindingGenerateID!(keyType, util.toPointer(publicKey), publicKeySize, util.toPointer(resultData));
 }
 
 export function TokenBindingGenerateIDForUri(
@@ -41204,14 +41415,14 @@ export function TokenBindingGenerateIDForUri(
   targetUri: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   resultData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGenerateIDForUri(keyType, util.pwstrToFfi(targetUri), util.toPointer(resultData));
+  return libTOKENBINDING_dll.TokenBindingGenerateIDForUri!(keyType, util.pwstrToFfi(targetUri), util.toPointer(resultData));
 }
 
 export function TokenBindingGetHighestSupportedVersion(
   majorVersion: Deno.PointerValue | Uint8Array /* ptr */,
   minorVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libTOKENBINDING_dll.TokenBindingGetHighestSupportedVersion(util.toPointer(majorVersion), util.toPointer(minorVersion));
+  return libTOKENBINDING_dll.TokenBindingGetHighestSupportedVersion!(util.toPointer(majorVersion), util.toPointer(minorVersion));
 }
 
 export function GetUserNameExA(
@@ -41219,7 +41430,7 @@ export function GetUserNameExA(
   lpNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.GetUserNameExA(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize));
+  return libSECUR32_dll.GetUserNameExA!(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize));
 }
 
 export function GetUserNameExW(
@@ -41227,7 +41438,7 @@ export function GetUserNameExW(
   lpNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.GetUserNameExW(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize));
+  return libSECUR32_dll.GetUserNameExW!(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize));
 }
 
 export function GetComputerObjectNameA(
@@ -41235,7 +41446,7 @@ export function GetComputerObjectNameA(
   lpNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.GetComputerObjectNameA(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize));
+  return libSECUR32_dll.GetComputerObjectNameA!(NameFormat, util.pstrToFfi(lpNameBuffer), util.toPointer(nSize));
 }
 
 export function GetComputerObjectNameW(
@@ -41243,7 +41454,7 @@ export function GetComputerObjectNameW(
   lpNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.GetComputerObjectNameW(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize));
+  return libSECUR32_dll.GetComputerObjectNameW!(NameFormat, util.pwstrToFfi(lpNameBuffer), util.toPointer(nSize));
 }
 
 export function TranslateNameA(
@@ -41253,7 +41464,7 @@ export function TranslateNameA(
   lpTranslatedName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.TranslateNameA(util.pstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pstrToFfi(lpTranslatedName), util.toPointer(nSize));
+  return libSECUR32_dll.TranslateNameA!(util.pstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pstrToFfi(lpTranslatedName), util.toPointer(nSize));
 }
 
 export function TranslateNameW(
@@ -41263,19 +41474,19 @@ export function TranslateNameW(
   lpTranslatedName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSECUR32_dll.TranslateNameW(util.pwstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pwstrToFfi(lpTranslatedName), util.toPointer(nSize));
+  return libSECUR32_dll.TranslateNameW!(util.pwstrToFfi(lpAccountName), AccountNameFormat, DesiredNameFormat, util.pwstrToFfi(lpTranslatedName), util.toPointer(nSize));
 }
 
 export function SLOpen(
   phSLC: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLOpen(util.toPointer(phSLC));
+  return libSLC_dll.SLOpen!(util.toPointer(phSLC));
 }
 
 export function SLClose(
   hSLC: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLClose(util.toPointer(hSLC));
+  return libSLC_dll.SLClose!(util.toPointer(hSLC));
 }
 
 export function SLInstallProofOfPurchase(
@@ -41286,14 +41497,14 @@ export function SLInstallProofOfPurchase(
   pbPKeySpecificData: Deno.PointerValue | Uint8Array /* ptr */,
   pPkeyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLInstallProofOfPurchase(util.toPointer(hSLC), util.pwstrToFfi(pwszPKeyAlgorithm), util.pwstrToFfi(pwszPKeyString), cbPKeySpecificData, util.toPointer(pbPKeySpecificData), util.toPointer(pPkeyId));
+  return libSLC_dll.SLInstallProofOfPurchase!(util.toPointer(hSLC), util.pwstrToFfi(pwszPKeyAlgorithm), util.pwstrToFfi(pwszPKeyString), cbPKeySpecificData, util.toPointer(pbPKeySpecificData), util.toPointer(pPkeyId));
 }
 
 export function SLUninstallProofOfPurchase(
   hSLC: Deno.PointerValue | Uint8Array /* ptr */,
   pPKeyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLUninstallProofOfPurchase(util.toPointer(hSLC), util.toPointer(pPKeyId));
+  return libSLC_dll.SLUninstallProofOfPurchase!(util.toPointer(hSLC), util.toPointer(pPKeyId));
 }
 
 export function SLInstallLicense(
@@ -41302,14 +41513,14 @@ export function SLInstallLicense(
   pbLicenseBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pLicenseFileId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLInstallLicense(util.toPointer(hSLC), cbLicenseBlob, util.toPointer(pbLicenseBlob), util.toPointer(pLicenseFileId));
+  return libSLC_dll.SLInstallLicense!(util.toPointer(hSLC), cbLicenseBlob, util.toPointer(pbLicenseBlob), util.toPointer(pLicenseFileId));
 }
 
 export function SLUninstallLicense(
   hSLC: Deno.PointerValue | Uint8Array /* ptr */,
   pLicenseFileId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLUninstallLicense(util.toPointer(hSLC), util.toPointer(pLicenseFileId));
+  return libSLC_dll.SLUninstallLicense!(util.toPointer(hSLC), util.toPointer(pLicenseFileId));
 }
 
 export function SLConsumeRight(
@@ -41319,7 +41530,7 @@ export function SLConsumeRight(
   pwszRightName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLConsumeRight(util.toPointer(hSLC), util.toPointer(pAppId), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszRightName), util.toPointer(pvReserved));
+  return libSLC_dll.SLConsumeRight!(util.toPointer(hSLC), util.toPointer(pAppId), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszRightName), util.toPointer(pvReserved));
 }
 
 export function SLGetProductSkuInformation(
@@ -41330,7 +41541,7 @@ export function SLGetProductSkuInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetProductSkuInformation(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetProductSkuInformation!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetPKeyInformation(
@@ -41341,7 +41552,7 @@ export function SLGetPKeyInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetPKeyInformation(util.toPointer(hSLC), util.toPointer(pPKeyId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetPKeyInformation!(util.toPointer(hSLC), util.toPointer(pPKeyId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetLicenseInformation(
@@ -41352,7 +41563,7 @@ export function SLGetLicenseInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetLicenseInformation(util.toPointer(hSLC), util.toPointer(pSLLicenseId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetLicenseInformation!(util.toPointer(hSLC), util.toPointer(pSLLicenseId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetLicensingStatusInformation(
@@ -41363,7 +41574,7 @@ export function SLGetLicensingStatusInformation(
   pnStatusCount: Deno.PointerValue | Uint8Array /* ptr */,
   ppLicensingStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetLicensingStatusInformation(util.toPointer(hSLC), util.toPointer(pAppID), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszRightName), util.toPointer(pnStatusCount), util.toPointer(ppLicensingStatus));
+  return libSLC_dll.SLGetLicensingStatusInformation!(util.toPointer(hSLC), util.toPointer(pAppID), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszRightName), util.toPointer(pnStatusCount), util.toPointer(ppLicensingStatus));
 }
 
 export function SLGetPolicyInformation(
@@ -41373,7 +41584,7 @@ export function SLGetPolicyInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetPolicyInformation(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetPolicyInformation!(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetPolicyInformationDWORD(
@@ -41381,7 +41592,7 @@ export function SLGetPolicyInformationDWORD(
   pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetPolicyInformationDWORD(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue));
+  return libSLC_dll.SLGetPolicyInformationDWORD!(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue));
 }
 
 export function SLGetServiceInformation(
@@ -41391,7 +41602,7 @@ export function SLGetServiceInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetServiceInformation(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetServiceInformation!(util.toPointer(hSLC), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetApplicationInformation(
@@ -41402,7 +41613,7 @@ export function SLGetApplicationInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetApplicationInformation(util.toPointer(hSLC), util.toPointer(pApplicationId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetApplicationInformation!(util.toPointer(hSLC), util.toPointer(pApplicationId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLActivateProduct(
@@ -41414,7 +41625,7 @@ export function SLActivateProduct(
   pwszProxyServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wProxyPort: number /* u16 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libslcext_dll.SLActivateProduct(util.toPointer(hSLC), util.toPointer(pProductSkuId), cbAppSpecificData, util.toPointer(pvAppSpecificData), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszProxyServer), wProxyPort);
+  return libslcext_dll.SLActivateProduct!(util.toPointer(hSLC), util.toPointer(pProductSkuId), cbAppSpecificData, util.toPointer(pvAppSpecificData), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszProxyServer), wProxyPort);
 }
 
 export function SLGetServerStatus(
@@ -41424,7 +41635,7 @@ export function SLGetServerStatus(
   wProxyPort: number /* u16 */,
   phrStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libslcext_dll.SLGetServerStatus(util.pwstrToFfi(pwszServerURL), util.pwstrToFfi(pwszAcquisitionType), util.pwstrToFfi(pwszProxyServer), wProxyPort, util.toPointer(phrStatus));
+  return libslcext_dll.SLGetServerStatus!(util.pwstrToFfi(pwszServerURL), util.pwstrToFfi(pwszAcquisitionType), util.pwstrToFfi(pwszProxyServer), wProxyPort, util.toPointer(phrStatus));
 }
 
 export function SLGenerateOfflineInstallationId(
@@ -41432,7 +41643,7 @@ export function SLGenerateOfflineInstallationId(
   pProductSkuId: Deno.PointerValue | Uint8Array /* ptr */,
   ppwszInstallationId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGenerateOfflineInstallationId(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(ppwszInstallationId));
+  return libSLC_dll.SLGenerateOfflineInstallationId!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(ppwszInstallationId));
 }
 
 export function SLGenerateOfflineInstallationIdEx(
@@ -41441,7 +41652,7 @@ export function SLGenerateOfflineInstallationIdEx(
   pActivationInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppwszInstallationId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGenerateOfflineInstallationIdEx(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pActivationInfo), util.toPointer(ppwszInstallationId));
+  return libSLC_dll.SLGenerateOfflineInstallationIdEx!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pActivationInfo), util.toPointer(ppwszInstallationId));
 }
 
 export function SLDepositOfflineConfirmationId(
@@ -41450,7 +41661,7 @@ export function SLDepositOfflineConfirmationId(
   pwszInstallationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszConfirmationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLDepositOfflineConfirmationId(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId));
+  return libSLC_dll.SLDepositOfflineConfirmationId!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId));
 }
 
 export function SLDepositOfflineConfirmationIdEx(
@@ -41460,7 +41671,7 @@ export function SLDepositOfflineConfirmationIdEx(
   pwszInstallationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszConfirmationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLDepositOfflineConfirmationIdEx(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId));
+  return libSLC_dll.SLDepositOfflineConfirmationIdEx!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pActivationInfo), util.pwstrToFfi(pwszInstallationId), util.pwstrToFfi(pwszConfirmationId));
 }
 
 export function SLGetPKeyId(
@@ -41471,7 +41682,7 @@ export function SLGetPKeyId(
   pbPKeySpecificData: Deno.PointerValue | Uint8Array /* ptr */,
   pPKeyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetPKeyId(util.toPointer(hSLC), util.pwstrToFfi(pwszPKeyAlgorithm), util.pwstrToFfi(pwszPKeyString), cbPKeySpecificData, util.toPointer(pbPKeySpecificData), util.toPointer(pPKeyId));
+  return libSLC_dll.SLGetPKeyId!(util.toPointer(hSLC), util.pwstrToFfi(pwszPKeyAlgorithm), util.pwstrToFfi(pwszPKeyString), cbPKeySpecificData, util.toPointer(pbPKeySpecificData), util.toPointer(pPKeyId));
 }
 
 export function SLGetInstalledProductKeyIds(
@@ -41480,7 +41691,7 @@ export function SLGetInstalledProductKeyIds(
   pnProductKeyIds: Deno.PointerValue | Uint8Array /* ptr */,
   ppProductKeyIds: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetInstalledProductKeyIds(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pnProductKeyIds), util.toPointer(ppProductKeyIds));
+  return libSLC_dll.SLGetInstalledProductKeyIds!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pnProductKeyIds), util.toPointer(ppProductKeyIds));
 }
 
 export function SLSetCurrentProductKey(
@@ -41488,7 +41699,7 @@ export function SLSetCurrentProductKey(
   pProductSkuId: Deno.PointerValue | Uint8Array /* ptr */,
   pProductKeyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLSetCurrentProductKey(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pProductKeyId));
+  return libSLC_dll.SLSetCurrentProductKey!(util.toPointer(hSLC), util.toPointer(pProductSkuId), util.toPointer(pProductKeyId));
 }
 
 export function SLGetSLIDList(
@@ -41499,7 +41710,7 @@ export function SLGetSLIDList(
   pnReturnIds: Deno.PointerValue | Uint8Array /* ptr */,
   ppReturnIds: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetSLIDList(util.toPointer(hSLC), eQueryIdType, util.toPointer(pQueryId), eReturnIdType, util.toPointer(pnReturnIds), util.toPointer(ppReturnIds));
+  return libSLC_dll.SLGetSLIDList!(util.toPointer(hSLC), eQueryIdType, util.toPointer(pQueryId), eReturnIdType, util.toPointer(pnReturnIds), util.toPointer(ppReturnIds));
 }
 
 export function SLGetLicenseFileId(
@@ -41508,7 +41719,7 @@ export function SLGetLicenseFileId(
   pbLicenseBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pLicenseFileId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetLicenseFileId(util.toPointer(hSLC), cbLicenseBlob, util.toPointer(pbLicenseBlob), util.toPointer(pLicenseFileId));
+  return libSLC_dll.SLGetLicenseFileId!(util.toPointer(hSLC), cbLicenseBlob, util.toPointer(pbLicenseBlob), util.toPointer(pLicenseFileId));
 }
 
 export function SLGetLicense(
@@ -41517,7 +41728,7 @@ export function SLGetLicense(
   pcbLicenseFile: Deno.PointerValue | Uint8Array /* ptr */,
   ppbLicenseFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetLicense(util.toPointer(hSLC), util.toPointer(pLicenseFileId), util.toPointer(pcbLicenseFile), util.toPointer(ppbLicenseFile));
+  return libSLC_dll.SLGetLicense!(util.toPointer(hSLC), util.toPointer(pLicenseFileId), util.toPointer(pcbLicenseFile), util.toPointer(ppbLicenseFile));
 }
 
 export function SLFireEvent(
@@ -41525,7 +41736,7 @@ export function SLFireEvent(
   pwszEventId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pApplicationId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLFireEvent(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId));
+  return libSLC_dll.SLFireEvent!(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId));
 }
 
 export function SLRegisterEvent(
@@ -41534,7 +41745,7 @@ export function SLRegisterEvent(
   pApplicationId: Deno.PointerValue | Uint8Array /* ptr */,
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLRegisterEvent(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId), util.toPointer(hEvent));
+  return libSLC_dll.SLRegisterEvent!(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId), util.toPointer(hEvent));
 }
 
 export function SLUnregisterEvent(
@@ -41543,7 +41754,7 @@ export function SLUnregisterEvent(
   pApplicationId: Deno.PointerValue | Uint8Array /* ptr */,
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLUnregisterEvent(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId), util.toPointer(hEvent));
+  return libSLC_dll.SLUnregisterEvent!(util.toPointer(hSLC), util.pwstrToFfi(pwszEventId), util.toPointer(pApplicationId), util.toPointer(hEvent));
 }
 
 export function SLGetWindowsInformation(
@@ -41552,14 +41763,14 @@ export function SLGetWindowsInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetWindowsInformation(util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetWindowsInformation!(util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLGetWindowsInformationDWORD(
   pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetWindowsInformationDWORD(util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue));
+  return libSLC_dll.SLGetWindowsInformationDWORD!(util.pwstrToFfi(pwszValueName), util.toPointer(pdwValue));
 }
 
 export function SLIsGenuineLocal(
@@ -41567,7 +41778,7 @@ export function SLIsGenuineLocal(
   pGenuineState: Deno.PointerValue | Uint8Array /* ptr */,
   pUIOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLWGA_dll.SLIsGenuineLocal(util.toPointer(pAppId), util.toPointer(pGenuineState), util.toPointer(pUIOptions));
+  return libSLWGA_dll.SLIsGenuineLocal!(util.toPointer(pAppId), util.toPointer(pGenuineState), util.toPointer(pUIOptions));
 }
 
 export function SLAcquireGenuineTicket(
@@ -41577,7 +41788,7 @@ export function SLAcquireGenuineTicket(
   pwszServerUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszClientToken: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libslcext_dll.SLAcquireGenuineTicket(util.toPointer(ppTicketBlob), util.toPointer(pcbTicketBlob), util.pwstrToFfi(pwszTemplateId), util.pwstrToFfi(pwszServerUrl), util.pwstrToFfi(pwszClientToken));
+  return libslcext_dll.SLAcquireGenuineTicket!(util.toPointer(ppTicketBlob), util.toPointer(pcbTicketBlob), util.pwstrToFfi(pwszTemplateId), util.pwstrToFfi(pwszServerUrl), util.pwstrToFfi(pwszClientToken));
 }
 
 export function SLSetGenuineInformation(
@@ -41587,7 +41798,7 @@ export function SLSetGenuineInformation(
   cbValue: number /* u32 */,
   pbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLSetGenuineInformation(util.toPointer(pQueryId), util.pwstrToFfi(pwszValueName), eDataType, cbValue, util.toPointer(pbValue));
+  return libSLC_dll.SLSetGenuineInformation!(util.toPointer(pQueryId), util.pwstrToFfi(pwszValueName), eDataType, cbValue, util.toPointer(pbValue));
 }
 
 export function SLGetReferralInformation(
@@ -41597,7 +41808,7 @@ export function SLGetReferralInformation(
   pwszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libslcext_dll.SLGetReferralInformation(util.toPointer(hSLC), eReferralType, util.toPointer(pSkuOrAppId), util.pwstrToFfi(pwszValueName), util.toPointer(ppwszValue));
+  return libslcext_dll.SLGetReferralInformation!(util.toPointer(hSLC), eReferralType, util.toPointer(pSkuOrAppId), util.pwstrToFfi(pwszValueName), util.toPointer(ppwszValue));
 }
 
 export function SLGetGenuineInformation(
@@ -41607,7 +41818,7 @@ export function SLGetGenuineInformation(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSLC_dll.SLGetGenuineInformation(util.toPointer(pQueryId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libSLC_dll.SLGetGenuineInformation!(util.toPointer(pQueryId), util.pwstrToFfi(pwszValueName), util.toPointer(peDataType), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function SLQueryLicenseValueFromApp(
@@ -41617,6 +41828,6 @@ export function SLQueryLicenseValueFromApp(
   dataSize: number /* u32 */,
   resultDataSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_slapi_l1_1_0_dll.SLQueryLicenseValueFromApp(util.pwstrToFfi(valueName), util.toPointer(valueType), util.toPointer(dataBuffer), dataSize, util.toPointer(resultDataSize));
+  return libapi_ms_win_core_slapi_l1_1_0_dll.SLQueryLicenseValueFromApp!(util.pwstrToFfi(valueName), util.toPointer(valueType), util.toPointer(dataBuffer), dataSize, util.toPointer(resultDataSize));
 }
 

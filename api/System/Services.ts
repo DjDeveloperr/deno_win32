@@ -4389,210 +4389,262 @@ try {
     SetServiceBits: {
       parameters: ["pointer", "u32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ChangeServiceConfigA: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ChangeServiceConfigW: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ChangeServiceConfig2A: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ChangeServiceConfig2W: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CloseServiceHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ControlService: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateServiceA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateServiceW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     DeleteService: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EnumDependentServicesA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumDependentServicesW: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumServicesStatusA: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumServicesStatusW: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumServicesStatusExA: {
       parameters: ["pointer", "i32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     EnumServicesStatusExW: {
       parameters: ["pointer", "i32", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetServiceKeyNameA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetServiceKeyNameW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetServiceDisplayNameA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetServiceDisplayNameW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LockServiceDatabase: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NotifyBootConfigStatus: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     OpenSCManagerA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     OpenSCManagerW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     OpenServiceA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     OpenServiceW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryServiceConfigA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceConfigW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceConfig2A: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceConfig2W: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceLockStatusA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceLockStatusW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceObjectSecurity: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceStatus: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceStatusEx: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterServiceCtrlHandlerA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterServiceCtrlHandlerW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterServiceCtrlHandlerExA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterServiceCtrlHandlerExW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetServiceObjectSecurity: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetServiceStatus: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     StartServiceCtrlDispatcherA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     StartServiceCtrlDispatcherW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     StartServiceA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     StartServiceW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     UnlockServiceDatabase: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     NotifyServiceStatusChangeA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NotifyServiceStatusChangeW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ControlServiceExA: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ControlServiceExW: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryServiceDynamicInformation: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WaitServiceState: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4602,6 +4654,7 @@ try {
     GetServiceRegistryStateKey: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4611,6 +4664,7 @@ try {
     GetServiceDirectory: {
       parameters: ["pointer", "i32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4620,10 +4674,12 @@ try {
     GetSharedServiceRegistryStateKey: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetSharedServiceDirectory: {
       parameters: ["pointer", "i32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4636,7 +4692,7 @@ export function SetServiceBits(
   bSetBitsOn: boolean /* Windows.Win32.Foundation.BOOL */,
   bUpdateImmediately: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetServiceBits(util.toPointer(hServiceStatus), dwServiceBits, util.boolToFfi(bSetBitsOn), util.boolToFfi(bUpdateImmediately)));
+  return util.boolFromFfi(libADVAPI32_dll.SetServiceBits!(util.toPointer(hServiceStatus), dwServiceBits, util.boolToFfi(bSetBitsOn), util.boolToFfi(bUpdateImmediately)));
 }
 
 export function ChangeServiceConfigA(
@@ -4652,7 +4708,7 @@ export function ChangeServiceConfigA(
   lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigA(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword), util.pstrToFfi(lpDisplayName)));
+  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigA!(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword), util.pstrToFfi(lpDisplayName)));
 }
 
 export function ChangeServiceConfigW(
@@ -4668,7 +4724,7 @@ export function ChangeServiceConfigW(
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigW(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpDisplayName)));
+  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfigW!(util.toPointer(hService), dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword), util.pwstrToFfi(lpDisplayName)));
 }
 
 export function ChangeServiceConfig2A(
@@ -4676,7 +4732,7 @@ export function ChangeServiceConfig2A(
   dwInfoLevel: SERVICE_CONFIG /* Windows.Win32.System.Services.SERVICE_CONFIG */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfig2A(util.toPointer(hService), dwInfoLevel, util.toPointer(lpInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfig2A!(util.toPointer(hService), dwInfoLevel, util.toPointer(lpInfo)));
 }
 
 export function ChangeServiceConfig2W(
@@ -4684,13 +4740,13 @@ export function ChangeServiceConfig2W(
   dwInfoLevel: SERVICE_CONFIG /* Windows.Win32.System.Services.SERVICE_CONFIG */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfig2W(util.toPointer(hService), dwInfoLevel, util.toPointer(lpInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.ChangeServiceConfig2W!(util.toPointer(hService), dwInfoLevel, util.toPointer(lpInfo)));
 }
 
 export function CloseServiceHandle(
   hSCObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CloseServiceHandle(util.toPointer(hSCObject)));
+  return util.boolFromFfi(libADVAPI32_dll.CloseServiceHandle!(util.toPointer(hSCObject)));
 }
 
 export function ControlService(
@@ -4698,7 +4754,7 @@ export function ControlService(
   dwControl: number /* u32 */,
   lpServiceStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ControlService(util.toPointer(hService), dwControl, util.toPointer(lpServiceStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.ControlService!(util.toPointer(hService), dwControl, util.toPointer(lpServiceStatus)));
 }
 
 export function CreateServiceA(
@@ -4716,7 +4772,7 @@ export function CreateServiceA(
   lpServiceStartName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.CreateServiceA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword));
+  return libADVAPI32_dll.CreateServiceA!(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pstrToFfi(lpBinaryPathName), util.pstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pstrToFfi(lpDependencies), util.pstrToFfi(lpServiceStartName), util.pstrToFfi(lpPassword));
 }
 
 export function CreateServiceW(
@@ -4734,13 +4790,13 @@ export function CreateServiceW(
   lpServiceStartName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.CreateServiceW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword));
+  return libADVAPI32_dll.CreateServiceW!(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), dwDesiredAccess, dwServiceType, dwStartType, dwErrorControl, util.pwstrToFfi(lpBinaryPathName), util.pwstrToFfi(lpLoadOrderGroup), util.toPointer(lpdwTagId), util.pwstrToFfi(lpDependencies), util.pwstrToFfi(lpServiceStartName), util.pwstrToFfi(lpPassword));
 }
 
 export function DeleteService(
   hService: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.DeleteService(util.toPointer(hService)));
+  return util.boolFromFfi(libADVAPI32_dll.DeleteService!(util.toPointer(hService)));
 }
 
 export function EnumDependentServicesA(
@@ -4751,7 +4807,7 @@ export function EnumDependentServicesA(
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   lpServicesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumDependentServicesA(util.toPointer(hService), dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumDependentServicesA!(util.toPointer(hService), dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned)));
 }
 
 export function EnumDependentServicesW(
@@ -4762,7 +4818,7 @@ export function EnumDependentServicesW(
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   lpServicesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumDependentServicesW(util.toPointer(hService), dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumDependentServicesW!(util.toPointer(hService), dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned)));
 }
 
 export function EnumServicesStatusA(
@@ -4775,7 +4831,7 @@ export function EnumServicesStatusA(
   lpServicesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   lpResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusA(util.toPointer(hSCManager), dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusA!(util.toPointer(hSCManager), dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle)));
 }
 
 export function EnumServicesStatusW(
@@ -4788,7 +4844,7 @@ export function EnumServicesStatusW(
   lpServicesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   lpResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusW(util.toPointer(hSCManager), dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusW!(util.toPointer(hSCManager), dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle)));
 }
 
 export function EnumServicesStatusExA(
@@ -4803,7 +4859,7 @@ export function EnumServicesStatusExA(
   lpResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pszGroupName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExA(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pstrToFfi(pszGroupName)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExA!(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pstrToFfi(pszGroupName)));
 }
 
 export function EnumServicesStatusExW(
@@ -4818,7 +4874,7 @@ export function EnumServicesStatusExW(
   lpResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExW(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pwstrToFfi(pszGroupName)));
+  return util.boolFromFfi(libADVAPI32_dll.EnumServicesStatusExW!(util.toPointer(hSCManager), InfoLevel, dwServiceType, dwServiceState, util.toPointer(lpServices), cbBufSize, util.toPointer(pcbBytesNeeded), util.toPointer(lpServicesReturned), util.toPointer(lpResumeHandle), util.pwstrToFfi(pszGroupName)));
 }
 
 export function GetServiceKeyNameA(
@@ -4827,7 +4883,7 @@ export function GetServiceKeyNameA(
   lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameA(util.toPointer(hSCManager), util.pstrToFfi(lpDisplayName), util.pstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameA!(util.toPointer(hSCManager), util.pstrToFfi(lpDisplayName), util.pstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
 }
 
 export function GetServiceKeyNameW(
@@ -4836,7 +4892,7 @@ export function GetServiceKeyNameW(
   lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameW(util.toPointer(hSCManager), util.pwstrToFfi(lpDisplayName), util.pwstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetServiceKeyNameW!(util.toPointer(hSCManager), util.pwstrToFfi(lpDisplayName), util.pwstrToFfi(lpServiceName), util.toPointer(lpcchBuffer)));
 }
 
 export function GetServiceDisplayNameA(
@@ -4845,7 +4901,7 @@ export function GetServiceDisplayNameA(
   lpDisplayName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameA!(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), util.pstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
 }
 
 export function GetServiceDisplayNameW(
@@ -4854,19 +4910,19 @@ export function GetServiceDisplayNameW(
   lpDisplayName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.GetServiceDisplayNameW!(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), util.pwstrToFfi(lpDisplayName), util.toPointer(lpcchBuffer)));
 }
 
 export function LockServiceDatabase(
   hSCManager: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.LockServiceDatabase(util.toPointer(hSCManager));
+  return libADVAPI32_dll.LockServiceDatabase!(util.toPointer(hSCManager));
 }
 
 export function NotifyBootConfigStatus(
   BootAcceptable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.NotifyBootConfigStatus(util.boolToFfi(BootAcceptable)));
+  return util.boolFromFfi(libADVAPI32_dll.NotifyBootConfigStatus!(util.boolToFfi(BootAcceptable)));
 }
 
 export function OpenSCManagerA(
@@ -4874,7 +4930,7 @@ export function OpenSCManagerA(
   lpDatabaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.OpenSCManagerA(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpDatabaseName), dwDesiredAccess);
+  return libADVAPI32_dll.OpenSCManagerA!(util.pstrToFfi(lpMachineName), util.pstrToFfi(lpDatabaseName), dwDesiredAccess);
 }
 
 export function OpenSCManagerW(
@@ -4882,7 +4938,7 @@ export function OpenSCManagerW(
   lpDatabaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.OpenSCManagerW(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpDatabaseName), dwDesiredAccess);
+  return libADVAPI32_dll.OpenSCManagerW!(util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpDatabaseName), dwDesiredAccess);
 }
 
 export function OpenServiceA(
@@ -4890,7 +4946,7 @@ export function OpenServiceA(
   lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.OpenServiceA(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), dwDesiredAccess);
+  return libADVAPI32_dll.OpenServiceA!(util.toPointer(hSCManager), util.pstrToFfi(lpServiceName), dwDesiredAccess);
 }
 
 export function OpenServiceW(
@@ -4898,7 +4954,7 @@ export function OpenServiceW(
   lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */ {
-  return libADVAPI32_dll.OpenServiceW(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), dwDesiredAccess);
+  return libADVAPI32_dll.OpenServiceW!(util.toPointer(hSCManager), util.pwstrToFfi(lpServiceName), dwDesiredAccess);
 }
 
 export function QueryServiceConfigA(
@@ -4907,7 +4963,7 @@ export function QueryServiceConfigA(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfigA(util.toPointer(hService), util.toPointer(lpServiceConfig), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfigA!(util.toPointer(hService), util.toPointer(lpServiceConfig), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceConfigW(
@@ -4916,7 +4972,7 @@ export function QueryServiceConfigW(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfigW(util.toPointer(hService), util.toPointer(lpServiceConfig), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfigW!(util.toPointer(hService), util.toPointer(lpServiceConfig), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceConfig2A(
@@ -4926,7 +4982,7 @@ export function QueryServiceConfig2A(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfig2A(util.toPointer(hService), dwInfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfig2A!(util.toPointer(hService), dwInfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceConfig2W(
@@ -4936,7 +4992,7 @@ export function QueryServiceConfig2W(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfig2W(util.toPointer(hService), dwInfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceConfig2W!(util.toPointer(hService), dwInfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceLockStatusA(
@@ -4945,7 +5001,7 @@ export function QueryServiceLockStatusA(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceLockStatusA(util.toPointer(hSCManager), util.toPointer(lpLockStatus), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceLockStatusA!(util.toPointer(hSCManager), util.toPointer(lpLockStatus), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceLockStatusW(
@@ -4954,7 +5010,7 @@ export function QueryServiceLockStatusW(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceLockStatusW(util.toPointer(hSCManager), util.toPointer(lpLockStatus), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceLockStatusW!(util.toPointer(hSCManager), util.toPointer(lpLockStatus), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceObjectSecurity(
@@ -4964,14 +5020,14 @@ export function QueryServiceObjectSecurity(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceObjectSecurity(util.toPointer(hService), dwSecurityInformation, util.toPointer(lpSecurityDescriptor), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceObjectSecurity!(util.toPointer(hService), dwSecurityInformation, util.toPointer(lpSecurityDescriptor), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function QueryServiceStatus(
   hService: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
   lpServiceStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceStatus(util.toPointer(hService), util.toPointer(lpServiceStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceStatus!(util.toPointer(hService), util.toPointer(lpServiceStatus)));
 }
 
 export function QueryServiceStatusEx(
@@ -4981,21 +5037,21 @@ export function QueryServiceStatusEx(
   cbBufSize: number /* u32 */,
   pcbBytesNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceStatusEx(util.toPointer(hService), InfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceStatusEx!(util.toPointer(hService), InfoLevel, util.toPointer(lpBuffer), cbBufSize, util.toPointer(pcbBytesNeeded)));
 }
 
 export function RegisterServiceCtrlHandlerA(
   lpServiceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Services.LPHANDLER_FUNCTION */,
 ): Deno.PointerValue /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
-  return libADVAPI32_dll.RegisterServiceCtrlHandlerA(util.pstrToFfi(lpServiceName), util.toPointer(lpHandlerProc));
+  return libADVAPI32_dll.RegisterServiceCtrlHandlerA!(util.pstrToFfi(lpServiceName), util.toPointer(lpHandlerProc));
 }
 
 export function RegisterServiceCtrlHandlerW(
   lpServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHandlerProc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Services.LPHANDLER_FUNCTION */,
 ): Deno.PointerValue /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
-  return libADVAPI32_dll.RegisterServiceCtrlHandlerW(util.pwstrToFfi(lpServiceName), util.toPointer(lpHandlerProc));
+  return libADVAPI32_dll.RegisterServiceCtrlHandlerW!(util.pwstrToFfi(lpServiceName), util.toPointer(lpHandlerProc));
 }
 
 export function RegisterServiceCtrlHandlerExA(
@@ -5003,7 +5059,7 @@ export function RegisterServiceCtrlHandlerExA(
   lpHandlerProc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Services.LPHANDLER_FUNCTION_EX */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
-  return libADVAPI32_dll.RegisterServiceCtrlHandlerExA(util.pstrToFfi(lpServiceName), util.toPointer(lpHandlerProc), util.toPointer(lpContext));
+  return libADVAPI32_dll.RegisterServiceCtrlHandlerExA!(util.pstrToFfi(lpServiceName), util.toPointer(lpHandlerProc), util.toPointer(lpContext));
 }
 
 export function RegisterServiceCtrlHandlerExW(
@@ -5011,7 +5067,7 @@ export function RegisterServiceCtrlHandlerExW(
   lpHandlerProc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Services.LPHANDLER_FUNCTION_EX */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */ {
-  return libADVAPI32_dll.RegisterServiceCtrlHandlerExW(util.pwstrToFfi(lpServiceName), util.toPointer(lpHandlerProc), util.toPointer(lpContext));
+  return libADVAPI32_dll.RegisterServiceCtrlHandlerExW!(util.pwstrToFfi(lpServiceName), util.toPointer(lpHandlerProc), util.toPointer(lpContext));
 }
 
 export function SetServiceObjectSecurity(
@@ -5019,26 +5075,26 @@ export function SetServiceObjectSecurity(
   dwSecurityInformation: OBJECT_SECURITY_INFORMATION /* Windows.Win32.Security.OBJECT_SECURITY_INFORMATION */,
   lpSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetServiceObjectSecurity(util.toPointer(hService), dwSecurityInformation, util.toPointer(lpSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetServiceObjectSecurity!(util.toPointer(hService), dwSecurityInformation, util.toPointer(lpSecurityDescriptor)));
 }
 
 export function SetServiceStatus(
   hServiceStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Services.SERVICE_STATUS_HANDLE */,
   lpServiceStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetServiceStatus(util.toPointer(hServiceStatus), util.toPointer(lpServiceStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.SetServiceStatus!(util.toPointer(hServiceStatus), util.toPointer(lpServiceStatus)));
 }
 
 export function StartServiceCtrlDispatcherA(
   lpServiceStartTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.StartServiceCtrlDispatcherA(util.toPointer(lpServiceStartTable)));
+  return util.boolFromFfi(libADVAPI32_dll.StartServiceCtrlDispatcherA!(util.toPointer(lpServiceStartTable)));
 }
 
 export function StartServiceCtrlDispatcherW(
   lpServiceStartTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.StartServiceCtrlDispatcherW(util.toPointer(lpServiceStartTable)));
+  return util.boolFromFfi(libADVAPI32_dll.StartServiceCtrlDispatcherW!(util.toPointer(lpServiceStartTable)));
 }
 
 export function StartServiceA(
@@ -5046,7 +5102,7 @@ export function StartServiceA(
   dwNumServiceArgs: number /* u32 */,
   lpServiceArgVectors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.StartServiceA(util.toPointer(hService), dwNumServiceArgs, util.toPointer(lpServiceArgVectors)));
+  return util.boolFromFfi(libADVAPI32_dll.StartServiceA!(util.toPointer(hService), dwNumServiceArgs, util.toPointer(lpServiceArgVectors)));
 }
 
 export function StartServiceW(
@@ -5054,13 +5110,13 @@ export function StartServiceW(
   dwNumServiceArgs: number /* u32 */,
   lpServiceArgVectors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.StartServiceW(util.toPointer(hService), dwNumServiceArgs, util.toPointer(lpServiceArgVectors)));
+  return util.boolFromFfi(libADVAPI32_dll.StartServiceW!(util.toPointer(hService), dwNumServiceArgs, util.toPointer(lpServiceArgVectors)));
 }
 
 export function UnlockServiceDatabase(
   ScLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.UnlockServiceDatabase(util.toPointer(ScLock)));
+  return util.boolFromFfi(libADVAPI32_dll.UnlockServiceDatabase!(util.toPointer(ScLock)));
 }
 
 export function NotifyServiceStatusChangeA(
@@ -5068,7 +5124,7 @@ export function NotifyServiceStatusChangeA(
   dwNotifyMask: SERVICE_NOTIFY /* Windows.Win32.System.Services.SERVICE_NOTIFY */,
   pNotifyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.NotifyServiceStatusChangeA(util.toPointer(hService), dwNotifyMask, util.toPointer(pNotifyBuffer));
+  return libADVAPI32_dll.NotifyServiceStatusChangeA!(util.toPointer(hService), dwNotifyMask, util.toPointer(pNotifyBuffer));
 }
 
 export function NotifyServiceStatusChangeW(
@@ -5076,7 +5132,7 @@ export function NotifyServiceStatusChangeW(
   dwNotifyMask: SERVICE_NOTIFY /* Windows.Win32.System.Services.SERVICE_NOTIFY */,
   pNotifyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.NotifyServiceStatusChangeW(util.toPointer(hService), dwNotifyMask, util.toPointer(pNotifyBuffer));
+  return libADVAPI32_dll.NotifyServiceStatusChangeW!(util.toPointer(hService), dwNotifyMask, util.toPointer(pNotifyBuffer));
 }
 
 export function ControlServiceExA(
@@ -5085,7 +5141,7 @@ export function ControlServiceExA(
   dwInfoLevel: number /* u32 */,
   pControlParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ControlServiceExA(util.toPointer(hService), dwControl, dwInfoLevel, util.toPointer(pControlParams)));
+  return util.boolFromFfi(libADVAPI32_dll.ControlServiceExA!(util.toPointer(hService), dwControl, dwInfoLevel, util.toPointer(pControlParams)));
 }
 
 export function ControlServiceExW(
@@ -5094,7 +5150,7 @@ export function ControlServiceExW(
   dwInfoLevel: number /* u32 */,
   pControlParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ControlServiceExW(util.toPointer(hService), dwControl, dwInfoLevel, util.toPointer(pControlParams)));
+  return util.boolFromFfi(libADVAPI32_dll.ControlServiceExW!(util.toPointer(hService), dwControl, dwInfoLevel, util.toPointer(pControlParams)));
 }
 
 export function QueryServiceDynamicInformation(
@@ -5102,7 +5158,7 @@ export function QueryServiceDynamicInformation(
   dwInfoLevel: number /* u32 */,
   ppDynamicInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.QueryServiceDynamicInformation(util.toPointer(hServiceStatus), dwInfoLevel, util.toPointer(ppDynamicInfo)));
+  return util.boolFromFfi(libADVAPI32_dll.QueryServiceDynamicInformation!(util.toPointer(hServiceStatus), dwInfoLevel, util.toPointer(ppDynamicInfo)));
 }
 
 export function WaitServiceState(
@@ -5111,7 +5167,7 @@ export function WaitServiceState(
   dwTimeout: number /* u32 */,
   hCancelEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.WaitServiceState(util.toPointer(hService), dwNotify, dwTimeout, util.toPointer(hCancelEvent));
+  return libADVAPI32_dll.WaitServiceState!(util.toPointer(hService), dwNotify, dwTimeout, util.toPointer(hCancelEvent));
 }
 
 export function GetServiceRegistryStateKey(
@@ -5120,7 +5176,7 @@ export function GetServiceRegistryStateKey(
   AccessMask: number /* u32 */,
   ServiceStateKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_service_core_l1_1_3_dll.GetServiceRegistryStateKey(util.toPointer(ServiceStatusHandle), StateType, AccessMask, util.toPointer(ServiceStateKey));
+  return libapi_ms_win_service_core_l1_1_3_dll.GetServiceRegistryStateKey!(util.toPointer(ServiceStatusHandle), StateType, AccessMask, util.toPointer(ServiceStateKey));
 }
 
 export function GetServiceDirectory(
@@ -5130,7 +5186,7 @@ export function GetServiceDirectory(
   cchPathBufferLength: number /* u32 */,
   lpcchRequiredBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_service_core_l1_1_4_dll.GetServiceDirectory(util.toPointer(hServiceStatus), eDirectoryType, util.pwstrToFfi(lpPathBuffer), cchPathBufferLength, util.toPointer(lpcchRequiredBufferLength));
+  return libapi_ms_win_service_core_l1_1_4_dll.GetServiceDirectory!(util.toPointer(hServiceStatus), eDirectoryType, util.pwstrToFfi(lpPathBuffer), cchPathBufferLength, util.toPointer(lpcchRequiredBufferLength));
 }
 
 export function GetSharedServiceRegistryStateKey(
@@ -5139,7 +5195,7 @@ export function GetSharedServiceRegistryStateKey(
   AccessMask: number /* u32 */,
   ServiceStateKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_service_core_l1_1_5_dll.GetSharedServiceRegistryStateKey(util.toPointer(ServiceHandle), StateType, AccessMask, util.toPointer(ServiceStateKey));
+  return libapi_ms_win_service_core_l1_1_5_dll.GetSharedServiceRegistryStateKey!(util.toPointer(ServiceHandle), StateType, AccessMask, util.toPointer(ServiceStateKey));
 }
 
 export function GetSharedServiceDirectory(
@@ -5149,6 +5205,6 @@ export function GetSharedServiceDirectory(
   PathBufferLength: number /* u32 */,
   RequiredBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_service_core_l1_1_5_dll.GetSharedServiceDirectory(util.toPointer(ServiceHandle), DirectoryType, util.pwstrToFfi(PathBuffer), PathBufferLength, util.toPointer(RequiredBufferLength));
+  return libapi_ms_win_service_core_l1_1_5_dll.GetSharedServiceDirectory!(util.toPointer(ServiceHandle), DirectoryType, util.pwstrToFfi(PathBuffer), PathBufferLength, util.toPointer(RequiredBufferLength));
 }
 

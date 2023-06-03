@@ -19984,130 +19984,162 @@ try {
     GetNumberOfPhysicalMonitorsFromHMONITOR: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumberOfPhysicalMonitorsFromIDirect3DDevice9: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetPhysicalMonitorsFromHMONITOR: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPhysicalMonitorsFromIDirect3DDevice9: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyPhysicalMonitor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DestroyPhysicalMonitors: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetVCPFeatureAndVCPFeatureReply: {
       parameters: ["pointer", "u8", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetVCPFeature: {
       parameters: ["pointer", "u8", "u32"],
       result: "i32",
+      optional: true,
     },
     SaveCurrentSettings: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCapabilitiesStringLength: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CapabilitiesRequestAndCapabilitiesReply: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetTimingReport: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorCapabilities: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SaveCurrentMonitorSettings: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorTechnologyType: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorBrightness: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorContrast: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorColorTemperature: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorRedGreenOrBlueDrive: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorRedGreenOrBlueGain: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMonitorBrightness: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetMonitorContrast: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetMonitorColorTemperature: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetMonitorRedGreenOrBlueDrive: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetMonitorRedGreenOrBlueGain: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     DegaussMonitor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorDisplayAreaSize: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMonitorDisplayAreaPosition: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMonitorDisplayAreaSize: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetMonitorDisplayAreaPosition: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     RestoreMonitorFactoryColorDefaults: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RestoreMonitorFactoryDefaults: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20117,318 +20149,397 @@ try {
     BRUSHOBJ_pvAllocRbrush: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BRUSHOBJ_pvGetRbrush: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BRUSHOBJ_ulGetBrushColor: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     BRUSHOBJ_hGetColorTransform: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CLIPOBJ_cEnumStart: {
       parameters: ["pointer", "i32", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     CLIPOBJ_bEnum: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CLIPOBJ_ppoGetPath: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FONTOBJ_cGetAllGlyphHandles: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FONTOBJ_vGetInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     FONTOBJ_cGetGlyphs: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FONTOBJ_pxoGetXform: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FONTOBJ_pifi: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FONTOBJ_pfdg: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FONTOBJ_pvTrueTypeFontFile: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FONTOBJ_pQueryGlyphAttrs: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PATHOBJ_vEnumStart: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     PATHOBJ_bEnum: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PATHOBJ_vEnumStartClipLines: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     PATHOBJ_bEnumClipLines: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     PATHOBJ_vGetBounds: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     STROBJ_vEnumStart: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     STROBJ_bEnum: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     STROBJ_bEnumPositionsOnly: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     STROBJ_dwGetCodePage: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     STROBJ_bGetAdvanceWidths: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     XFORMOBJ_iGetXform: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     XFORMOBJ_bApplyXform: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     XLATEOBJ_iXlate: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     XLATEOBJ_piVector: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     XLATEOBJ_cGetPalette: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     XLATEOBJ_hGetColorTransform: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     EngCreateBitmap: {
       parameters: ["pointer", "i32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EngCreateDeviceSurface: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     EngCreateDeviceBitmap: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     EngDeleteSurface: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EngLockSurface: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     EngUnlockSurface: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngEraseSurface: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngAssociateSurface: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngMarkBandingSurface: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EngCheckAbort: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EngDeletePath: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngCreatePalette: {
       parameters: ["u32", "u32", "pointer", "u32", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     EngDeletePalette: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EngCreateClip: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     EngDeleteClip: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngBitBlt: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngLineTo: {
       parameters: ["pointer", "pointer", "pointer", "i32", "i32", "i32", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngStretchBlt: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngStretchBltROP: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngAlphaBlend: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EngGradientFill: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngTransparentBlt: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     EngTextOut: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngStrokePath: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngFillPath: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     EngStrokeAndFillPath: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     EngPaint: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EngCopyBits: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EngPlgBlt: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HT_Get8BPPFormatPalette: {
       parameters: ["pointer", "u16", "u16", "u16"],
       result: "i32",
+      optional: true,
     },
     HT_Get8BPPMaskPalette: {
       parameters: ["pointer", "i32", "u8", "u16", "u16", "u16"],
       result: "i32",
+      optional: true,
     },
     EngGetPrinterDataFileName: {
       parameters: ["pointer"],
       result: "buffer",
+      optional: true,
     },
     EngGetDriverName: {
       parameters: ["pointer"],
       result: "buffer",
+      optional: true,
     },
     EngLoadModule: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     EngFindResource: {
       parameters: ["pointer", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EngFreeModule: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngCreateSemaphore: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     EngAcquireSemaphore: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngReleaseSemaphore: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngDeleteSemaphore: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngMultiByteToUnicodeN: {
       parameters: ["buffer", "u32", "pointer", "buffer", "u32"],
       result: "void",
+      optional: true,
     },
     EngUnicodeToMultiByteN: {
       parameters: ["buffer", "u32", "pointer", "buffer", "u32"],
       result: "void",
+      optional: true,
     },
     EngQueryLocalTime: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EngComputeGlyphSet: {
       parameters: ["i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     EngMultiByteToWideChar: {
       parameters: ["u32", "buffer", "i32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     EngWideCharToMultiByte: {
       parameters: ["u32", "buffer", "i32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     EngGetCurrentCodePage: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     EngQueryEMFInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20438,34 +20549,42 @@ try {
     GetDisplayConfigBufferSizes: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetDisplayConfig: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     QueryDisplayConfig: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DisplayConfigGetDeviceInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DisplayConfigSetDeviceInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetAutoRotationState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetDisplayAutoRotationPreferences: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetDisplayAutoRotationPreferences: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20476,14 +20595,14 @@ export function GetNumberOfPhysicalMonitorsFromHMONITOR(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HMONITOR */,
   pdwNumberOfPhysicalMonitors: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetNumberOfPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), util.toPointer(pdwNumberOfPhysicalMonitors));
+  return libdxva2_dll.GetNumberOfPhysicalMonitorsFromHMONITOR!(util.toPointer(hMonitor), util.toPointer(pdwNumberOfPhysicalMonitors));
 }
 
 export function GetNumberOfPhysicalMonitorsFromIDirect3DDevice9(
   pDirect3DDevice9: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct3D9.IDirect3DDevice9 */,
   pdwNumberOfPhysicalMonitors: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdxva2_dll.GetNumberOfPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), util.toPointer(pdwNumberOfPhysicalMonitors));
+  return libdxva2_dll.GetNumberOfPhysicalMonitorsFromIDirect3DDevice9!(util.toPointer(pDirect3DDevice9), util.toPointer(pdwNumberOfPhysicalMonitors));
 }
 
 export function GetPhysicalMonitorsFromHMONITOR(
@@ -20491,7 +20610,7 @@ export function GetPhysicalMonitorsFromHMONITOR(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetPhysicalMonitorsFromHMONITOR(util.toPointer(hMonitor), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
+  return libdxva2_dll.GetPhysicalMonitorsFromHMONITOR!(util.toPointer(hMonitor), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
 }
 
 export function GetPhysicalMonitorsFromIDirect3DDevice9(
@@ -20499,20 +20618,20 @@ export function GetPhysicalMonitorsFromIDirect3DDevice9(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdxva2_dll.GetPhysicalMonitorsFromIDirect3DDevice9(util.toPointer(pDirect3DDevice9), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
+  return libdxva2_dll.GetPhysicalMonitorsFromIDirect3DDevice9!(util.toPointer(pDirect3DDevice9), dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
 }
 
 export function DestroyPhysicalMonitor(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.DestroyPhysicalMonitor(util.toPointer(hMonitor));
+  return libdxva2_dll.DestroyPhysicalMonitor!(util.toPointer(hMonitor));
 }
 
 export function DestroyPhysicalMonitors(
   dwPhysicalMonitorArraySize: number /* u32 */,
   pPhysicalMonitorArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.DestroyPhysicalMonitors(dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
+  return libdxva2_dll.DestroyPhysicalMonitors!(dwPhysicalMonitorArraySize, util.toPointer(pPhysicalMonitorArray));
 }
 
 export function GetVCPFeatureAndVCPFeatureReply(
@@ -20522,7 +20641,7 @@ export function GetVCPFeatureAndVCPFeatureReply(
   pdwCurrentValue: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetVCPFeatureAndVCPFeatureReply(util.toPointer(hMonitor), bVCPCode, util.toPointer(pvct), util.toPointer(pdwCurrentValue), util.toPointer(pdwMaximumValue));
+  return libdxva2_dll.GetVCPFeatureAndVCPFeatureReply!(util.toPointer(hMonitor), bVCPCode, util.toPointer(pvct), util.toPointer(pdwCurrentValue), util.toPointer(pdwMaximumValue));
 }
 
 export function SetVCPFeature(
@@ -20530,20 +20649,20 @@ export function SetVCPFeature(
   bVCPCode: number /* u8 */,
   dwNewValue: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetVCPFeature(util.toPointer(hMonitor), bVCPCode, dwNewValue);
+  return libdxva2_dll.SetVCPFeature!(util.toPointer(hMonitor), bVCPCode, dwNewValue);
 }
 
 export function SaveCurrentSettings(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.SaveCurrentSettings(util.toPointer(hMonitor));
+  return libdxva2_dll.SaveCurrentSettings!(util.toPointer(hMonitor));
 }
 
 export function GetCapabilitiesStringLength(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwCapabilitiesStringLengthInCharacters: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetCapabilitiesStringLength(util.toPointer(hMonitor), util.toPointer(pdwCapabilitiesStringLengthInCharacters));
+  return libdxva2_dll.GetCapabilitiesStringLength!(util.toPointer(hMonitor), util.toPointer(pdwCapabilitiesStringLengthInCharacters));
 }
 
 export function CapabilitiesRequestAndCapabilitiesReply(
@@ -20551,14 +20670,14 @@ export function CapabilitiesRequestAndCapabilitiesReply(
   pszASCIICapabilitiesString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwCapabilitiesStringLengthInCharacters: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.CapabilitiesRequestAndCapabilitiesReply(util.toPointer(hMonitor), util.pstrToFfi(pszASCIICapabilitiesString), dwCapabilitiesStringLengthInCharacters);
+  return libdxva2_dll.CapabilitiesRequestAndCapabilitiesReply!(util.toPointer(hMonitor), util.pstrToFfi(pszASCIICapabilitiesString), dwCapabilitiesStringLengthInCharacters);
 }
 
 export function GetTimingReport(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pmtrMonitorTimingReport: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetTimingReport(util.toPointer(hMonitor), util.toPointer(pmtrMonitorTimingReport));
+  return libdxva2_dll.GetTimingReport!(util.toPointer(hMonitor), util.toPointer(pmtrMonitorTimingReport));
 }
 
 export function GetMonitorCapabilities(
@@ -20566,20 +20685,20 @@ export function GetMonitorCapabilities(
   pdwMonitorCapabilities: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSupportedColorTemperatures: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorCapabilities(util.toPointer(hMonitor), util.toPointer(pdwMonitorCapabilities), util.toPointer(pdwSupportedColorTemperatures));
+  return libdxva2_dll.GetMonitorCapabilities!(util.toPointer(hMonitor), util.toPointer(pdwMonitorCapabilities), util.toPointer(pdwSupportedColorTemperatures));
 }
 
 export function SaveCurrentMonitorSettings(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.SaveCurrentMonitorSettings(util.toPointer(hMonitor));
+  return libdxva2_dll.SaveCurrentMonitorSettings!(util.toPointer(hMonitor));
 }
 
 export function GetMonitorTechnologyType(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdtyDisplayTechnologyType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorTechnologyType(util.toPointer(hMonitor), util.toPointer(pdtyDisplayTechnologyType));
+  return libdxva2_dll.GetMonitorTechnologyType!(util.toPointer(hMonitor), util.toPointer(pdtyDisplayTechnologyType));
 }
 
 export function GetMonitorBrightness(
@@ -20588,7 +20707,7 @@ export function GetMonitorBrightness(
   pdwCurrentBrightness: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumBrightness: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorBrightness(util.toPointer(hMonitor), util.toPointer(pdwMinimumBrightness), util.toPointer(pdwCurrentBrightness), util.toPointer(pdwMaximumBrightness));
+  return libdxva2_dll.GetMonitorBrightness!(util.toPointer(hMonitor), util.toPointer(pdwMinimumBrightness), util.toPointer(pdwCurrentBrightness), util.toPointer(pdwMaximumBrightness));
 }
 
 export function GetMonitorContrast(
@@ -20597,14 +20716,14 @@ export function GetMonitorContrast(
   pdwCurrentContrast: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumContrast: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorContrast(util.toPointer(hMonitor), util.toPointer(pdwMinimumContrast), util.toPointer(pdwCurrentContrast), util.toPointer(pdwMaximumContrast));
+  return libdxva2_dll.GetMonitorContrast!(util.toPointer(hMonitor), util.toPointer(pdwMinimumContrast), util.toPointer(pdwCurrentContrast), util.toPointer(pdwMaximumContrast));
 }
 
 export function GetMonitorColorTemperature(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pctCurrentColorTemperature: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorColorTemperature(util.toPointer(hMonitor), util.toPointer(pctCurrentColorTemperature));
+  return libdxva2_dll.GetMonitorColorTemperature!(util.toPointer(hMonitor), util.toPointer(pctCurrentColorTemperature));
 }
 
 export function GetMonitorRedGreenOrBlueDrive(
@@ -20614,7 +20733,7 @@ export function GetMonitorRedGreenOrBlueDrive(
   pdwCurrentDrive: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumDrive: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, util.toPointer(pdwMinimumDrive), util.toPointer(pdwCurrentDrive), util.toPointer(pdwMaximumDrive));
+  return libdxva2_dll.GetMonitorRedGreenOrBlueDrive!(util.toPointer(hMonitor), dtDriveType, util.toPointer(pdwMinimumDrive), util.toPointer(pdwCurrentDrive), util.toPointer(pdwMaximumDrive));
 }
 
 export function GetMonitorRedGreenOrBlueGain(
@@ -20624,28 +20743,28 @@ export function GetMonitorRedGreenOrBlueGain(
   pdwCurrentGain: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumGain: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, util.toPointer(pdwMinimumGain), util.toPointer(pdwCurrentGain), util.toPointer(pdwMaximumGain));
+  return libdxva2_dll.GetMonitorRedGreenOrBlueGain!(util.toPointer(hMonitor), gtGainType, util.toPointer(pdwMinimumGain), util.toPointer(pdwCurrentGain), util.toPointer(pdwMaximumGain));
 }
 
 export function SetMonitorBrightness(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNewBrightness: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorBrightness(util.toPointer(hMonitor), dwNewBrightness);
+  return libdxva2_dll.SetMonitorBrightness!(util.toPointer(hMonitor), dwNewBrightness);
 }
 
 export function SetMonitorContrast(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNewContrast: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorContrast(util.toPointer(hMonitor), dwNewContrast);
+  return libdxva2_dll.SetMonitorContrast!(util.toPointer(hMonitor), dwNewContrast);
 }
 
 export function SetMonitorColorTemperature(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ctCurrentColorTemperature: MC_COLOR_TEMPERATURE /* Windows.Win32.Devices.Display.MC_COLOR_TEMPERATURE */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorColorTemperature(util.toPointer(hMonitor), ctCurrentColorTemperature);
+  return libdxva2_dll.SetMonitorColorTemperature!(util.toPointer(hMonitor), ctCurrentColorTemperature);
 }
 
 export function SetMonitorRedGreenOrBlueDrive(
@@ -20653,7 +20772,7 @@ export function SetMonitorRedGreenOrBlueDrive(
   dtDriveType: MC_DRIVE_TYPE /* Windows.Win32.Devices.Display.MC_DRIVE_TYPE */,
   dwNewDrive: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorRedGreenOrBlueDrive(util.toPointer(hMonitor), dtDriveType, dwNewDrive);
+  return libdxva2_dll.SetMonitorRedGreenOrBlueDrive!(util.toPointer(hMonitor), dtDriveType, dwNewDrive);
 }
 
 export function SetMonitorRedGreenOrBlueGain(
@@ -20661,13 +20780,13 @@ export function SetMonitorRedGreenOrBlueGain(
   gtGainType: MC_GAIN_TYPE /* Windows.Win32.Devices.Display.MC_GAIN_TYPE */,
   dwNewGain: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorRedGreenOrBlueGain(util.toPointer(hMonitor), gtGainType, dwNewGain);
+  return libdxva2_dll.SetMonitorRedGreenOrBlueGain!(util.toPointer(hMonitor), gtGainType, dwNewGain);
 }
 
 export function DegaussMonitor(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.DegaussMonitor(util.toPointer(hMonitor));
+  return libdxva2_dll.DegaussMonitor!(util.toPointer(hMonitor));
 }
 
 export function GetMonitorDisplayAreaSize(
@@ -20677,7 +20796,7 @@ export function GetMonitorDisplayAreaSize(
   pdwCurrentWidthOrHeight: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumWidthOrHeight: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, util.toPointer(pdwMinimumWidthOrHeight), util.toPointer(pdwCurrentWidthOrHeight), util.toPointer(pdwMaximumWidthOrHeight));
+  return libdxva2_dll.GetMonitorDisplayAreaSize!(util.toPointer(hMonitor), stSizeType, util.toPointer(pdwMinimumWidthOrHeight), util.toPointer(pdwCurrentWidthOrHeight), util.toPointer(pdwMaximumWidthOrHeight));
 }
 
 export function GetMonitorDisplayAreaPosition(
@@ -20687,7 +20806,7 @@ export function GetMonitorDisplayAreaPosition(
   pdwCurrentPosition: Deno.PointerValue | Uint8Array /* ptr */,
   pdwMaximumPosition: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdxva2_dll.GetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, util.toPointer(pdwMinimumPosition), util.toPointer(pdwCurrentPosition), util.toPointer(pdwMaximumPosition));
+  return libdxva2_dll.GetMonitorDisplayAreaPosition!(util.toPointer(hMonitor), ptPositionType, util.toPointer(pdwMinimumPosition), util.toPointer(pdwCurrentPosition), util.toPointer(pdwMaximumPosition));
 }
 
 export function SetMonitorDisplayAreaSize(
@@ -20695,7 +20814,7 @@ export function SetMonitorDisplayAreaSize(
   stSizeType: MC_SIZE_TYPE /* Windows.Win32.Devices.Display.MC_SIZE_TYPE */,
   dwNewDisplayAreaWidthOrHeight: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorDisplayAreaSize(util.toPointer(hMonitor), stSizeType, dwNewDisplayAreaWidthOrHeight);
+  return libdxva2_dll.SetMonitorDisplayAreaSize!(util.toPointer(hMonitor), stSizeType, dwNewDisplayAreaWidthOrHeight);
 }
 
 export function SetMonitorDisplayAreaPosition(
@@ -20703,44 +20822,44 @@ export function SetMonitorDisplayAreaPosition(
   ptPositionType: MC_POSITION_TYPE /* Windows.Win32.Devices.Display.MC_POSITION_TYPE */,
   dwNewPosition: number /* u32 */,
 ): number /* i32 */ {
-  return libdxva2_dll.SetMonitorDisplayAreaPosition(util.toPointer(hMonitor), ptPositionType, dwNewPosition);
+  return libdxva2_dll.SetMonitorDisplayAreaPosition!(util.toPointer(hMonitor), ptPositionType, dwNewPosition);
 }
 
 export function RestoreMonitorFactoryColorDefaults(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.RestoreMonitorFactoryColorDefaults(util.toPointer(hMonitor));
+  return libdxva2_dll.RestoreMonitorFactoryColorDefaults!(util.toPointer(hMonitor));
 }
 
 export function RestoreMonitorFactoryDefaults(
   hMonitor: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libdxva2_dll.RestoreMonitorFactoryDefaults(util.toPointer(hMonitor));
+  return libdxva2_dll.RestoreMonitorFactoryDefaults!(util.toPointer(hMonitor));
 }
 
 export function BRUSHOBJ_pvAllocRbrush(
   pbo: Deno.PointerValue | Uint8Array /* ptr */,
   cj: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.BRUSHOBJ_pvAllocRbrush(util.toPointer(pbo), cj);
+  return libGDI32_dll.BRUSHOBJ_pvAllocRbrush!(util.toPointer(pbo), cj);
 }
 
 export function BRUSHOBJ_pvGetRbrush(
   pbo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.BRUSHOBJ_pvGetRbrush(util.toPointer(pbo));
+  return libGDI32_dll.BRUSHOBJ_pvGetRbrush!(util.toPointer(pbo));
 }
 
 export function BRUSHOBJ_ulGetBrushColor(
   pbo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.BRUSHOBJ_ulGetBrushColor(util.toPointer(pbo));
+  return libGDI32_dll.BRUSHOBJ_ulGetBrushColor!(util.toPointer(pbo));
 }
 
 export function BRUSHOBJ_hGetColorTransform(
   pbo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libGDI32_dll.BRUSHOBJ_hGetColorTransform(util.toPointer(pbo));
+  return libGDI32_dll.BRUSHOBJ_hGetColorTransform!(util.toPointer(pbo));
 }
 
 export function CLIPOBJ_cEnumStart(
@@ -20750,7 +20869,7 @@ export function CLIPOBJ_cEnumStart(
   iDirection: number /* u32 */,
   cLimit: number /* u32 */,
 ): number /* u32 */ {
-  return libGDI32_dll.CLIPOBJ_cEnumStart(util.toPointer(pco), util.boolToFfi(bAll), iType, iDirection, cLimit);
+  return libGDI32_dll.CLIPOBJ_cEnumStart!(util.toPointer(pco), util.boolToFfi(bAll), iType, iDirection, cLimit);
 }
 
 export function CLIPOBJ_bEnum(
@@ -20758,20 +20877,20 @@ export function CLIPOBJ_bEnum(
   cj: number /* u32 */,
   pul: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.CLIPOBJ_bEnum(util.toPointer(pco), cj, util.toPointer(pul)));
+  return util.boolFromFfi(libGDI32_dll.CLIPOBJ_bEnum!(util.toPointer(pco), cj, util.toPointer(pul)));
 }
 
 export function CLIPOBJ_ppoGetPath(
   pco: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.CLIPOBJ_ppoGetPath(util.toPointer(pco));
+  return libGDI32_dll.CLIPOBJ_ppoGetPath!(util.toPointer(pco));
 }
 
 export function FONTOBJ_cGetAllGlyphHandles(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
   phg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.FONTOBJ_cGetAllGlyphHandles(util.toPointer(pfo), util.toPointer(phg));
+  return libGDI32_dll.FONTOBJ_cGetAllGlyphHandles!(util.toPointer(pfo), util.toPointer(phg));
 }
 
 export function FONTOBJ_vGetInfo(
@@ -20779,7 +20898,7 @@ export function FONTOBJ_vGetInfo(
   cjSize: number /* u32 */,
   pfi: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.FONTOBJ_vGetInfo(util.toPointer(pfo), cjSize, util.toPointer(pfi));
+  return libGDI32_dll.FONTOBJ_vGetInfo!(util.toPointer(pfo), cjSize, util.toPointer(pfi));
 }
 
 export function FONTOBJ_cGetGlyphs(
@@ -20789,52 +20908,52 @@ export function FONTOBJ_cGetGlyphs(
   phg: Deno.PointerValue | Uint8Array /* ptr */,
   ppvGlyph: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.FONTOBJ_cGetGlyphs(util.toPointer(pfo), iMode, cGlyph, util.toPointer(phg), util.toPointer(ppvGlyph));
+  return libGDI32_dll.FONTOBJ_cGetGlyphs!(util.toPointer(pfo), iMode, cGlyph, util.toPointer(phg), util.toPointer(ppvGlyph));
 }
 
 export function FONTOBJ_pxoGetXform(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.FONTOBJ_pxoGetXform(util.toPointer(pfo));
+  return libGDI32_dll.FONTOBJ_pxoGetXform!(util.toPointer(pfo));
 }
 
 export function FONTOBJ_pifi(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.FONTOBJ_pifi(util.toPointer(pfo));
+  return libGDI32_dll.FONTOBJ_pifi!(util.toPointer(pfo));
 }
 
 export function FONTOBJ_pfdg(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.FONTOBJ_pfdg(util.toPointer(pfo));
+  return libGDI32_dll.FONTOBJ_pfdg!(util.toPointer(pfo));
 }
 
 export function FONTOBJ_pvTrueTypeFontFile(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcjFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.FONTOBJ_pvTrueTypeFontFile(util.toPointer(pfo), util.toPointer(pcjFile));
+  return libGDI32_dll.FONTOBJ_pvTrueTypeFontFile!(util.toPointer(pfo), util.toPointer(pcjFile));
 }
 
 export function FONTOBJ_pQueryGlyphAttrs(
   pfo: Deno.PointerValue | Uint8Array /* ptr */,
   iMode: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.FONTOBJ_pQueryGlyphAttrs(util.toPointer(pfo), iMode);
+  return libGDI32_dll.FONTOBJ_pQueryGlyphAttrs!(util.toPointer(pfo), iMode);
 }
 
 export function PATHOBJ_vEnumStart(
   ppo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.PATHOBJ_vEnumStart(util.toPointer(ppo));
+  return libGDI32_dll.PATHOBJ_vEnumStart!(util.toPointer(ppo));
 }
 
 export function PATHOBJ_bEnum(
   ppo: Deno.PointerValue | Uint8Array /* ptr */,
   ppd: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnum(util.toPointer(ppo), util.toPointer(ppd)));
+  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnum!(util.toPointer(ppo), util.toPointer(ppd)));
 }
 
 export function PATHOBJ_vEnumStartClipLines(
@@ -20843,7 +20962,7 @@ export function PATHOBJ_vEnumStartClipLines(
   pso: Deno.PointerValue | Uint8Array /* ptr */,
   pla: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.PATHOBJ_vEnumStartClipLines(util.toPointer(ppo), util.toPointer(pco), util.toPointer(pso), util.toPointer(pla));
+  return libGDI32_dll.PATHOBJ_vEnumStartClipLines!(util.toPointer(ppo), util.toPointer(pco), util.toPointer(pso), util.toPointer(pla));
 }
 
 export function PATHOBJ_bEnumClipLines(
@@ -20851,20 +20970,20 @@ export function PATHOBJ_bEnumClipLines(
   cb: number /* u32 */,
   pcl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnumClipLines(util.toPointer(ppo), cb, util.toPointer(pcl)));
+  return util.boolFromFfi(libGDI32_dll.PATHOBJ_bEnumClipLines!(util.toPointer(ppo), cb, util.toPointer(pcl)));
 }
 
 export function PATHOBJ_vGetBounds(
   ppo: Deno.PointerValue | Uint8Array /* ptr */,
   prectfx: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.PATHOBJ_vGetBounds(util.toPointer(ppo), util.toPointer(prectfx));
+  return libGDI32_dll.PATHOBJ_vGetBounds!(util.toPointer(ppo), util.toPointer(prectfx));
 }
 
 export function STROBJ_vEnumStart(
   pstro: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.STROBJ_vEnumStart(util.toPointer(pstro));
+  return libGDI32_dll.STROBJ_vEnumStart!(util.toPointer(pstro));
 }
 
 export function STROBJ_bEnum(
@@ -20872,7 +20991,7 @@ export function STROBJ_bEnum(
   pc: Deno.PointerValue | Uint8Array /* ptr */,
   ppgpos: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnum(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnum!(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
 }
 
 export function STROBJ_bEnumPositionsOnly(
@@ -20880,13 +20999,13 @@ export function STROBJ_bEnumPositionsOnly(
   pc: Deno.PointerValue | Uint8Array /* ptr */,
   ppgpos: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnumPositionsOnly(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bEnumPositionsOnly!(util.toPointer(pstro), util.toPointer(pc), util.toPointer(ppgpos)));
 }
 
 export function STROBJ_dwGetCodePage(
   pstro: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.STROBJ_dwGetCodePage(util.toPointer(pstro));
+  return libGDI32_dll.STROBJ_dwGetCodePage!(util.toPointer(pstro));
 }
 
 export function STROBJ_bGetAdvanceWidths(
@@ -20895,14 +21014,14 @@ export function STROBJ_bGetAdvanceWidths(
   c: number /* u32 */,
   pptqD: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.STROBJ_bGetAdvanceWidths(util.toPointer(pso), iFirst, c, util.toPointer(pptqD)));
+  return util.boolFromFfi(libGDI32_dll.STROBJ_bGetAdvanceWidths!(util.toPointer(pso), iFirst, c, util.toPointer(pptqD)));
 }
 
 export function XFORMOBJ_iGetXform(
   pxo: Deno.PointerValue | Uint8Array /* ptr */,
   pxform: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.XFORMOBJ_iGetXform(util.toPointer(pxo), util.toPointer(pxform));
+  return libGDI32_dll.XFORMOBJ_iGetXform!(util.toPointer(pxo), util.toPointer(pxform));
 }
 
 export function XFORMOBJ_bApplyXform(
@@ -20912,20 +21031,20 @@ export function XFORMOBJ_bApplyXform(
   pvIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.XFORMOBJ_bApplyXform(util.toPointer(pxo), iMode, cPoints, util.toPointer(pvIn), util.toPointer(pvOut)));
+  return util.boolFromFfi(libGDI32_dll.XFORMOBJ_bApplyXform!(util.toPointer(pxo), iMode, cPoints, util.toPointer(pvIn), util.toPointer(pvOut)));
 }
 
 export function XLATEOBJ_iXlate(
   pxlo: Deno.PointerValue | Uint8Array /* ptr */,
   iColor: number /* u32 */,
 ): number /* u32 */ {
-  return libGDI32_dll.XLATEOBJ_iXlate(util.toPointer(pxlo), iColor);
+  return libGDI32_dll.XLATEOBJ_iXlate!(util.toPointer(pxlo), iColor);
 }
 
 export function XLATEOBJ_piVector(
   pxlo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.XLATEOBJ_piVector(util.toPointer(pxlo));
+  return libGDI32_dll.XLATEOBJ_piVector!(util.toPointer(pxlo));
 }
 
 export function XLATEOBJ_cGetPalette(
@@ -20934,13 +21053,13 @@ export function XLATEOBJ_cGetPalette(
   cPal: number /* u32 */,
   pPal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libGDI32_dll.XLATEOBJ_cGetPalette(util.toPointer(pxlo), iPal, cPal, util.toPointer(pPal));
+  return libGDI32_dll.XLATEOBJ_cGetPalette!(util.toPointer(pxlo), iPal, cPal, util.toPointer(pPal));
 }
 
 export function XLATEOBJ_hGetColorTransform(
   pxlo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libGDI32_dll.XLATEOBJ_hGetColorTransform(util.toPointer(pxlo));
+  return libGDI32_dll.XLATEOBJ_hGetColorTransform!(util.toPointer(pxlo));
 }
 
 export function EngCreateBitmap(
@@ -20950,7 +21069,7 @@ export function EngCreateBitmap(
   fl: number /* u32 */,
   pvBits: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return libGDI32_dll.EngCreateBitmap(util.toPointer(sizl), lWidth, iFormat, fl, util.toPointer(pvBits));
+  return libGDI32_dll.EngCreateBitmap!(util.toPointer(sizl), lWidth, iFormat, fl, util.toPointer(pvBits));
 }
 
 export function EngCreateDeviceSurface(
@@ -20958,7 +21077,7 @@ export function EngCreateDeviceSurface(
   sizl: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.SIZE */,
   iFormatCompat: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Devices.Display.HSURF */ {
-  return libGDI32_dll.EngCreateDeviceSurface(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat);
+  return libGDI32_dll.EngCreateDeviceSurface!(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat);
 }
 
 export function EngCreateDeviceBitmap(
@@ -20966,25 +21085,25 @@ export function EngCreateDeviceBitmap(
   sizl: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.SIZE */,
   iFormatCompat: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return libGDI32_dll.EngCreateDeviceBitmap(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat);
+  return libGDI32_dll.EngCreateDeviceBitmap!(util.toPointer(dhsurf), util.toPointer(sizl), iFormatCompat);
 }
 
 export function EngDeleteSurface(
   hsurf: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSURF */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngDeleteSurface(util.toPointer(hsurf)));
+  return util.boolFromFfi(libGDI32_dll.EngDeleteSurface!(util.toPointer(hsurf)));
 }
 
 export function EngLockSurface(
   hsurf: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSURF */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.EngLockSurface(util.toPointer(hsurf));
+  return libGDI32_dll.EngLockSurface!(util.toPointer(hsurf));
 }
 
 export function EngUnlockSurface(
   pso: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.EngUnlockSurface(util.toPointer(pso));
+  return libGDI32_dll.EngUnlockSurface!(util.toPointer(pso));
 }
 
 export function EngEraseSurface(
@@ -20992,7 +21111,7 @@ export function EngEraseSurface(
   prcl: Deno.PointerValue | Uint8Array /* ptr */,
   iColor: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngEraseSurface(util.toPointer(pso), util.toPointer(prcl), iColor));
+  return util.boolFromFfi(libGDI32_dll.EngEraseSurface!(util.toPointer(pso), util.toPointer(prcl), iColor));
 }
 
 export function EngAssociateSurface(
@@ -21000,25 +21119,25 @@ export function EngAssociateSurface(
   hdev: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HDEV */,
   flHooks: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngAssociateSurface(util.toPointer(hsurf), util.toPointer(hdev), flHooks));
+  return util.boolFromFfi(libGDI32_dll.EngAssociateSurface!(util.toPointer(hsurf), util.toPointer(hdev), flHooks));
 }
 
 export function EngMarkBandingSurface(
   hsurf: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSURF */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngMarkBandingSurface(util.toPointer(hsurf)));
+  return util.boolFromFfi(libGDI32_dll.EngMarkBandingSurface!(util.toPointer(hsurf)));
 }
 
 export function EngCheckAbort(
   pso: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngCheckAbort(util.toPointer(pso)));
+  return util.boolFromFfi(libGDI32_dll.EngCheckAbort!(util.toPointer(pso)));
 }
 
 export function EngDeletePath(
   ppo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.EngDeletePath(util.toPointer(ppo));
+  return libGDI32_dll.EngDeletePath!(util.toPointer(ppo));
 }
 
 export function EngCreatePalette(
@@ -21029,23 +21148,23 @@ export function EngCreatePalette(
   flGreen: number /* u32 */,
   flBlue: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */ {
-  return libGDI32_dll.EngCreatePalette(iMode, cColors, util.toPointer(pulColors), flRed, flGreen, flBlue);
+  return libGDI32_dll.EngCreatePalette!(iMode, cColors, util.toPointer(pulColors), flRed, flGreen, flBlue);
 }
 
 export function EngDeletePalette(
   hpal: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngDeletePalette(util.toPointer(hpal)));
+  return util.boolFromFfi(libGDI32_dll.EngDeletePalette!(util.toPointer(hpal)));
 }
 
 export function EngCreateClip(): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.EngCreateClip();
+  return libGDI32_dll.EngCreateClip!();
 }
 
 export function EngDeleteClip(
   pco: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.EngDeleteClip(util.toPointer(pco));
+  return libGDI32_dll.EngDeleteClip!(util.toPointer(pco));
 }
 
 export function EngBitBlt(
@@ -21061,7 +21180,7 @@ export function EngBitBlt(
   pptlBrush: Deno.PointerValue | Uint8Array /* ptr */,
   rop4: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngBitBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclTrg), util.toPointer(pptlSrc), util.toPointer(pptlMask), util.toPointer(pbo), util.toPointer(pptlBrush), rop4));
+  return util.boolFromFfi(libGDI32_dll.EngBitBlt!(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclTrg), util.toPointer(pptlSrc), util.toPointer(pptlMask), util.toPointer(pbo), util.toPointer(pptlBrush), rop4));
 }
 
 export function EngLineTo(
@@ -21075,7 +21194,7 @@ export function EngLineTo(
   prclBounds: Deno.PointerValue | Uint8Array /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngLineTo(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), x1, y1, x2, y2, util.toPointer(prclBounds), mix));
+  return util.boolFromFfi(libGDI32_dll.EngLineTo!(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), x1, y1, x2, y2, util.toPointer(prclBounds), mix));
 }
 
 export function EngStretchBlt(
@@ -21091,7 +21210,7 @@ export function EngStretchBlt(
   pptlMask: Deno.PointerValue | Uint8Array /* ptr */,
   iMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngStretchBlt(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode));
+  return util.boolFromFfi(libGDI32_dll.EngStretchBlt!(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode));
 }
 
 export function EngStretchBltROP(
@@ -21109,7 +21228,7 @@ export function EngStretchBltROP(
   pbo: Deno.PointerValue | Uint8Array /* ptr */,
   rop4: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngStretchBltROP(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode, util.toPointer(pbo), rop4));
+  return util.boolFromFfi(libGDI32_dll.EngStretchBltROP!(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(psoMask), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlHTOrg), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pptlMask), iMode, util.toPointer(pbo), rop4));
 }
 
 export function EngAlphaBlend(
@@ -21121,7 +21240,7 @@ export function EngAlphaBlend(
   prclSrc: Deno.PointerValue | Uint8Array /* ptr */,
   pBlendObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngAlphaBlend(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pBlendObj)));
+  return util.boolFromFfi(libGDI32_dll.EngAlphaBlend!(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(prclSrc), util.toPointer(pBlendObj)));
 }
 
 export function EngGradientFill(
@@ -21136,7 +21255,7 @@ export function EngGradientFill(
   pptlDitherOrg: Deno.PointerValue | Uint8Array /* ptr */,
   ulMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngGradientFill(util.toPointer(psoDest), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pVertex), nVertex, util.toPointer(pMesh), nMesh, util.toPointer(prclExtents), util.toPointer(pptlDitherOrg), ulMode));
+  return util.boolFromFfi(libGDI32_dll.EngGradientFill!(util.toPointer(psoDest), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pVertex), nVertex, util.toPointer(pMesh), nMesh, util.toPointer(prclExtents), util.toPointer(pptlDitherOrg), ulMode));
 }
 
 export function EngTransparentBlt(
@@ -21149,7 +21268,7 @@ export function EngTransparentBlt(
   TransColor: number /* u32 */,
   bCalledFromBitBlt: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngTransparentBlt(util.toPointer(psoDst), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDst), util.toPointer(prclSrc), TransColor, bCalledFromBitBlt));
+  return util.boolFromFfi(libGDI32_dll.EngTransparentBlt!(util.toPointer(psoDst), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDst), util.toPointer(prclSrc), TransColor, bCalledFromBitBlt));
 }
 
 export function EngTextOut(
@@ -21164,7 +21283,7 @@ export function EngTextOut(
   pptlOrg: Deno.PointerValue | Uint8Array /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngTextOut(util.toPointer(pso), util.toPointer(pstro), util.toPointer(pfo), util.toPointer(pco), util.toPointer(prclExtra), util.toPointer(prclOpaque), util.toPointer(pboFore), util.toPointer(pboOpaque), util.toPointer(pptlOrg), mix));
+  return util.boolFromFfi(libGDI32_dll.EngTextOut!(util.toPointer(pso), util.toPointer(pstro), util.toPointer(pfo), util.toPointer(pco), util.toPointer(prclExtra), util.toPointer(prclOpaque), util.toPointer(pboFore), util.toPointer(pboOpaque), util.toPointer(pptlOrg), mix));
 }
 
 export function EngStrokePath(
@@ -21177,7 +21296,7 @@ export function EngStrokePath(
   plineattrs: Deno.PointerValue | Uint8Array /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngStrokePath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pbo), util.toPointer(pptlBrushOrg), util.toPointer(plineattrs), mix));
+  return util.boolFromFfi(libGDI32_dll.EngStrokePath!(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pbo), util.toPointer(pptlBrushOrg), util.toPointer(plineattrs), mix));
 }
 
 export function EngFillPath(
@@ -21189,7 +21308,7 @@ export function EngFillPath(
   mix: number /* u32 */,
   flOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix, flOptions));
+  return util.boolFromFfi(libGDI32_dll.EngFillPath!(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix, flOptions));
 }
 
 export function EngStrokeAndFillPath(
@@ -21204,7 +21323,7 @@ export function EngStrokeAndFillPath(
   mixFill: number /* u32 */,
   flOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngStrokeAndFillPath(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pboStroke), util.toPointer(plineattrs), util.toPointer(pboFill), util.toPointer(pptlBrushOrg), mixFill, flOptions));
+  return util.boolFromFfi(libGDI32_dll.EngStrokeAndFillPath!(util.toPointer(pso), util.toPointer(ppo), util.toPointer(pco), util.toPointer(pxo), util.toPointer(pboStroke), util.toPointer(plineattrs), util.toPointer(pboFill), util.toPointer(pptlBrushOrg), mixFill, flOptions));
 }
 
 export function EngPaint(
@@ -21214,7 +21333,7 @@ export function EngPaint(
   pptlBrushOrg: Deno.PointerValue | Uint8Array /* ptr */,
   mix: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngPaint(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix));
+  return util.boolFromFfi(libGDI32_dll.EngPaint!(util.toPointer(pso), util.toPointer(pco), util.toPointer(pbo), util.toPointer(pptlBrushOrg), mix));
 }
 
 export function EngCopyBits(
@@ -21225,7 +21344,7 @@ export function EngCopyBits(
   prclDest: Deno.PointerValue | Uint8Array /* ptr */,
   pptlSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngCopyBits(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(pptlSrc)));
+  return util.boolFromFfi(libGDI32_dll.EngCopyBits!(util.toPointer(psoDest), util.toPointer(psoSrc), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(prclDest), util.toPointer(pptlSrc)));
 }
 
 export function EngPlgBlt(
@@ -21241,7 +21360,7 @@ export function EngPlgBlt(
   pptl: Deno.PointerValue | Uint8Array /* ptr */,
   iMode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngPlgBlt(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMsk), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlBrushOrg), util.toPointer(pptfx), util.toPointer(prcl), util.toPointer(pptl), iMode));
+  return util.boolFromFfi(libGDI32_dll.EngPlgBlt!(util.toPointer(psoTrg), util.toPointer(psoSrc), util.toPointer(psoMsk), util.toPointer(pco), util.toPointer(pxlo), util.toPointer(pca), util.toPointer(pptlBrushOrg), util.toPointer(pptfx), util.toPointer(prcl), util.toPointer(pptl), iMode));
 }
 
 export function HT_Get8BPPFormatPalette(
@@ -21250,7 +21369,7 @@ export function HT_Get8BPPFormatPalette(
   GreenGamma: number /* u16 */,
   BlueGamma: number /* u16 */,
 ): number /* i32 */ {
-  return libGDI32_dll.HT_Get8BPPFormatPalette(util.toPointer(pPaletteEntry), RedGamma, GreenGamma, BlueGamma);
+  return libGDI32_dll.HT_Get8BPPFormatPalette!(util.toPointer(pPaletteEntry), RedGamma, GreenGamma, BlueGamma);
 }
 
 export function HT_Get8BPPMaskPalette(
@@ -21261,25 +21380,25 @@ export function HT_Get8BPPMaskPalette(
   GreenGamma: number /* u16 */,
   BlueGamma: number /* u16 */,
 ): number /* i32 */ {
-  return libGDI32_dll.HT_Get8BPPMaskPalette(util.toPointer(pPaletteEntry), util.boolToFfi(Use8BPPMaskPal), CMYMask, RedGamma, GreenGamma, BlueGamma);
+  return libGDI32_dll.HT_Get8BPPMaskPalette!(util.toPointer(pPaletteEntry), util.boolToFfi(Use8BPPMaskPal), CMYMask, RedGamma, GreenGamma, BlueGamma);
 }
 
 export function EngGetPrinterDataFileName(
   hdev: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HDEV */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libGDI32_dll.EngGetPrinterDataFileName(util.toPointer(hdev)));
+  return util.pwstrFromFfi(libGDI32_dll.EngGetPrinterDataFileName!(util.toPointer(hdev)));
 }
 
 export function EngGetDriverName(
   hdev: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HDEV */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libGDI32_dll.EngGetDriverName(util.toPointer(hdev)));
+  return util.pwstrFromFfi(libGDI32_dll.EngGetDriverName!(util.toPointer(hdev)));
 }
 
 export function EngLoadModule(
   pwsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libGDI32_dll.EngLoadModule(util.pwstrToFfi(pwsz));
+  return libGDI32_dll.EngLoadModule!(util.pwstrToFfi(pwsz));
 }
 
 export function EngFindResource(
@@ -21288,35 +21407,35 @@ export function EngFindResource(
   iType: number /* i32 */,
   pulSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.EngFindResource(util.toPointer(h), iName, iType, util.toPointer(pulSize));
+  return libGDI32_dll.EngFindResource!(util.toPointer(h), iName, iType, util.toPointer(pulSize));
 }
 
 export function EngFreeModule(
   h: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libGDI32_dll.EngFreeModule(util.toPointer(h));
+  return libGDI32_dll.EngFreeModule!(util.toPointer(h));
 }
 
 export function EngCreateSemaphore(): Deno.PointerValue /* Windows.Win32.Devices.Display.HSEMAPHORE */ {
-  return libGDI32_dll.EngCreateSemaphore();
+  return libGDI32_dll.EngCreateSemaphore!();
 }
 
 export function EngAcquireSemaphore(
   hsem: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32_dll.EngAcquireSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngAcquireSemaphore!(util.toPointer(hsem));
 }
 
 export function EngReleaseSemaphore(
   hsem: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32_dll.EngReleaseSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngReleaseSemaphore!(util.toPointer(hsem));
 }
 
 export function EngDeleteSemaphore(
   hsem: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HSEMAPHORE */,
 ): void /* void */ {
-  return libGDI32_dll.EngDeleteSemaphore(util.toPointer(hsem));
+  return libGDI32_dll.EngDeleteSemaphore!(util.toPointer(hsem));
 }
 
 export function EngMultiByteToUnicodeN(
@@ -21326,7 +21445,7 @@ export function EngMultiByteToUnicodeN(
   MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* u32 */,
 ): void /* void */ {
-  return libGDI32_dll.EngMultiByteToUnicodeN(util.pwstrToFfi(UnicodeString), MaxBytesInUnicodeString, util.toPointer(BytesInUnicodeString), util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngMultiByteToUnicodeN!(util.pwstrToFfi(UnicodeString), MaxBytesInUnicodeString, util.toPointer(BytesInUnicodeString), util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngUnicodeToMultiByteN(
@@ -21336,13 +21455,13 @@ export function EngUnicodeToMultiByteN(
   UnicodeString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BytesInUnicodeString: number /* u32 */,
 ): void /* void */ {
-  return libGDI32_dll.EngUnicodeToMultiByteN(util.pstrToFfi(MultiByteString), MaxBytesInMultiByteString, util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
+  return libGDI32_dll.EngUnicodeToMultiByteN!(util.pstrToFfi(MultiByteString), MaxBytesInMultiByteString, util.toPointer(BytesInMultiByteString), util.pwstrToFfi(UnicodeString), BytesInUnicodeString);
 }
 
 export function EngQueryLocalTime(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.EngQueryLocalTime(util.toPointer(param0));
+  return libGDI32_dll.EngQueryLocalTime!(util.toPointer(param0));
 }
 
 export function EngComputeGlyphSet(
@@ -21350,7 +21469,7 @@ export function EngComputeGlyphSet(
   nFirstChar: number /* i32 */,
   cChars: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libGDI32_dll.EngComputeGlyphSet(nCodePage, nFirstChar, cChars);
+  return libGDI32_dll.EngComputeGlyphSet!(nCodePage, nFirstChar, cChars);
 }
 
 export function EngMultiByteToWideChar(
@@ -21360,7 +21479,7 @@ export function EngMultiByteToWideChar(
   MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
-  return libGDI32_dll.EngMultiByteToWideChar(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngMultiByteToWideChar!(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngWideCharToMultiByte(
@@ -21370,21 +21489,21 @@ export function EngWideCharToMultiByte(
   MultiByteString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   BytesInMultiByteString: number /* i32 */,
 ): number /* i32 */ {
-  return libGDI32_dll.EngWideCharToMultiByte(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
+  return libGDI32_dll.EngWideCharToMultiByte!(CodePage, util.pwstrToFfi(WideCharString), BytesInWideCharString, util.pstrToFfi(MultiByteString), BytesInMultiByteString);
 }
 
 export function EngGetCurrentCodePage(
   OemCodePage: Deno.PointerValue | Uint8Array /* ptr */,
   AnsiCodePage: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libGDI32_dll.EngGetCurrentCodePage(util.toPointer(OemCodePage), util.toPointer(AnsiCodePage));
+  return libGDI32_dll.EngGetCurrentCodePage!(util.toPointer(OemCodePage), util.toPointer(AnsiCodePage));
 }
 
 export function EngQueryEMFInfo(
   hdev: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Display.HDEV */,
   pEMFInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.EngQueryEMFInfo(util.toPointer(hdev), util.toPointer(pEMFInfo)));
+  return util.boolFromFfi(libGDI32_dll.EngQueryEMFInfo!(util.toPointer(hdev), util.toPointer(pEMFInfo)));
 }
 
 export function GetDisplayConfigBufferSizes(
@@ -21392,7 +21511,7 @@ export function GetDisplayConfigBufferSizes(
   numPathArrayElements: Deno.PointerValue | Uint8Array /* ptr */,
   numModeInfoArrayElements: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetDisplayConfigBufferSizes(flags, util.toPointer(numPathArrayElements), util.toPointer(numModeInfoArrayElements));
+  return libUSER32_dll.GetDisplayConfigBufferSizes!(flags, util.toPointer(numPathArrayElements), util.toPointer(numModeInfoArrayElements));
 }
 
 export function SetDisplayConfig(
@@ -21402,7 +21521,7 @@ export function SetDisplayConfig(
   modeInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.SetDisplayConfig(numPathArrayElements, util.toPointer(pathArray), numModeInfoArrayElements, util.toPointer(modeInfoArray), flags);
+  return libUSER32_dll.SetDisplayConfig!(numPathArrayElements, util.toPointer(pathArray), numModeInfoArrayElements, util.toPointer(modeInfoArray), flags);
 }
 
 export function QueryDisplayConfig(
@@ -21413,36 +21532,36 @@ export function QueryDisplayConfig(
   modeInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
   currentTopologyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.QueryDisplayConfig(flags, util.toPointer(numPathArrayElements), util.toPointer(pathArray), util.toPointer(numModeInfoArrayElements), util.toPointer(modeInfoArray), util.toPointer(currentTopologyId));
+  return libUSER32_dll.QueryDisplayConfig!(flags, util.toPointer(numPathArrayElements), util.toPointer(pathArray), util.toPointer(numModeInfoArrayElements), util.toPointer(modeInfoArray), util.toPointer(currentTopologyId));
 }
 
 export function DisplayConfigGetDeviceInfo(
   requestPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.DisplayConfigGetDeviceInfo(util.toPointer(requestPacket));
+  return libUSER32_dll.DisplayConfigGetDeviceInfo!(util.toPointer(requestPacket));
 }
 
 export function DisplayConfigSetDeviceInfo(
   setPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.DisplayConfigSetDeviceInfo(util.toPointer(setPacket));
+  return libUSER32_dll.DisplayConfigSetDeviceInfo!(util.toPointer(setPacket));
 }
 
 export function GetAutoRotationState(
   pState: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetAutoRotationState(util.toPointer(pState)));
+  return util.boolFromFfi(libUSER32_dll.GetAutoRotationState!(util.toPointer(pState)));
 }
 
 export function GetDisplayAutoRotationPreferences(
   pOrientation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetDisplayAutoRotationPreferences(util.toPointer(pOrientation)));
+  return util.boolFromFfi(libUSER32_dll.GetDisplayAutoRotationPreferences!(util.toPointer(pOrientation)));
 }
 
 export function SetDisplayAutoRotationPreferences(
   orientation: ORIENTATION_PREFERENCE /* Windows.Win32.Devices.Display.ORIENTATION_PREFERENCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDisplayAutoRotationPreferences(orientation));
+  return util.boolFromFfi(libUSER32_dll.SetDisplayAutoRotationPreferences!(orientation));
 }
 

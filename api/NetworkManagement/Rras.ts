@@ -23302,338 +23302,422 @@ try {
     RasDialA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasDialW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumConnectionsA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumConnectionsW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumEntriesA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumEntriesW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetConnectStatusA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetConnectStatusW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetErrorStringA: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetErrorStringW: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasHangUpA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RasHangUpW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetProjectionInfoA: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetProjectionInfoW: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasCreatePhonebookEntryA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasCreatePhonebookEntryW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasEditPhonebookEntryA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasEditPhonebookEntryW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasSetEntryDialParamsA: {
       parameters: ["buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RasSetEntryDialParamsW: {
       parameters: ["buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RasGetEntryDialParamsA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEntryDialParamsW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumDevicesA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumDevicesW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetCountryInfoA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetCountryInfoW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEntryPropertiesA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEntryPropertiesW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetEntryPropertiesA: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetEntryPropertiesW: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasRenameEntryA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasRenameEntryW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasDeleteEntryA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasDeleteEntryW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasValidateEntryNameA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasValidateEntryNameW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RasConnectionNotificationA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasConnectionNotificationW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetSubEntryHandleA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetSubEntryHandleW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetCredentialsA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetCredentialsW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetCredentialsA: {
       parameters: ["buffer", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RasSetCredentialsW: {
       parameters: ["buffer", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RasGetSubEntryPropertiesA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetSubEntryPropertiesW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetSubEntryPropertiesA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetSubEntryPropertiesW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialAddressA: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialAddressW: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialAddressA: {
       parameters: ["buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialAddressW: {
       parameters: ["buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RasEnumAutodialAddressesA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasEnumAutodialAddressesW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialEnableA: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialEnableW: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialEnableA: {
       parameters: ["u32", "i32"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialEnableW: {
       parameters: ["u32", "i32"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialParamA: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetAutodialParamW: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialParamA: {
       parameters: ["u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetAutodialParamW: {
       parameters: ["u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetPCscf: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RasInvokeEapUI: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetLinkStatistics: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetConnectionStatistics: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasClearLinkStatistics: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasClearConnectionStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEapUserDataA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEapUserDataW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetEapUserDataA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetEapUserDataW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetCustomAuthDataA: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetCustomAuthDataW: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasSetCustomAuthDataA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasSetCustomAuthDataW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasGetEapUserIdentityW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetEapUserIdentityA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasFreeEapUserIdentityW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RasFreeEapUserIdentityA: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RasDeleteSubEntryA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasDeleteSubEntryW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RasUpdateConnection: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RasGetProjectionInfoEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -23643,26 +23727,32 @@ try {
     RasPhonebookDlgA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RasPhonebookDlgW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RasEntryDlgA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RasEntryDlgW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RasDialDlgA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RasDialDlgW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -23672,450 +23762,562 @@ try {
     MprAdminConnectionEnumEx: {
       parameters: ["isize", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminConnectionGetInfoEx: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerGetInfoEx: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerSetInfoEx: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerGetInfoEx: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerSetInfoEx: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminUpdateConnection: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminIsServiceInitialized: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceSetCustomInfoEx: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceGetCustomInfoEx: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceGetCustomInfoEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceSetCustomInfoEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminConnectionEnum: {
       parameters: ["isize", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminPortEnum: {
       parameters: ["isize", "u32", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminConnectionGetInfo: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminPortGetInfo: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminConnectionClearStats: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminPortClearStats: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminPortReset: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminPortDisconnect: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminConnectionRemoveQuarantine: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MprAdminUserGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminUserSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminSendUserMessage: {
       parameters: ["isize", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprAdminGetPDCServer: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprAdminIsServiceRunning: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     MprAdminServerConnect: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerDisconnect: {
       parameters: ["isize"],
       result: "void",
+      optional: true,
     },
     MprAdminServerGetCredentials: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerSetCredentials: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminBufferFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminGetErrorString: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerGetInfo: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminServerSetInfo: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminEstablishDomainRasServer: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MprAdminIsDomainRasServer: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminTransportCreate: {
       parameters: ["isize", "u32", "buffer", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprAdminTransportSetInfo: {
       parameters: ["isize", "u32", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminTransportGetInfo: {
       parameters: ["isize", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminDeviceEnum: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceGetHandle: {
       parameters: ["isize", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceCreate: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceGetInfo: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceSetInfo: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceDelete: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceDeviceGetInfo: {
       parameters: ["isize", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceDeviceSetInfo: {
       parameters: ["isize", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceTransportRemove: {
       parameters: ["isize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceTransportAdd: {
       parameters: ["isize", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceTransportGetInfo: {
       parameters: ["isize", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceTransportSetInfo: {
       parameters: ["isize", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceEnum: {
       parameters: ["isize", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceSetCredentials: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceGetCredentials: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceSetCredentialsEx: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceGetCredentialsEx: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceConnect: {
       parameters: ["isize", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceDisconnect: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceUpdateRoutes: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceQueryUpdateResult: {
       parameters: ["isize", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminInterfaceUpdatePhonebookInfo: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminRegisterConnectionNotification: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminDeregisterConnectionNotification: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBServerConnect: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBServerDisconnect: {
       parameters: ["isize"],
       result: "void",
+      optional: true,
     },
     MprAdminMIBEntryCreate: {
       parameters: ["isize", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBEntryDelete: {
       parameters: ["isize", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBEntrySet: {
       parameters: ["isize", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBEntryGet: {
       parameters: ["isize", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBEntryGetFirst: {
       parameters: ["isize", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBEntryGetNext: {
       parameters: ["isize", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprAdminMIBBufferFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerInstall: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerConnect: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerDisconnect: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     MprConfigServerRefresh: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigBufferFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerGetInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerSetInfo: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerBackup: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprConfigServerRestore: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportCreate: {
       parameters: ["pointer", "u32", "buffer", "pointer", "u32", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportDelete: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportGetHandle: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportSetInfo: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportGetInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigTransportEnum: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceCreate: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceDelete: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceGetHandle: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceGetInfo: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceSetInfo: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceEnum: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportAdd: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportRemove: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportGetHandle: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportGetInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportSetInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprConfigInterfaceTransportEnum: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigGetFriendlyName: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprConfigGetGuidName: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MprConfigFilterGetInfo: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprConfigFilterSetInfo: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoCreate: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoDelete: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoRemoveAll: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoDuplicate: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoBlockAdd: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoBlockRemove: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoBlockSet: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoBlockFind: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprInfoBlockQuerySize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -24125,302 +24327,377 @@ try {
     MgmRegisterMProtocol: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmDeRegisterMProtocol: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MgmTakeInterfaceOwnership: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmReleaseInterfaceOwnership: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmGetProtocolOnInterface: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmAddGroupMembershipEntry: {
       parameters: ["pointer", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmDeleteGroupMembershipEntry: {
       parameters: ["pointer", "u32", "u32", "u32", "u32", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmGetMfe: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmGetFirstMfe: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmGetNextMfe: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmGetMfeStats: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmGetFirstMfeStats: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmGetNextMfeStats: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MgmGroupEnumerationStart: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmGroupEnumerationGetNext: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MgmGroupEnumerationEnd: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RtmConvertNetAddressToIpv6AddressAndLength: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RtmConvertIpv6AddressAndLengthToNetAddress: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RtmRegisterEntity: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeregisterEntity: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     RtmGetRegisteredEntities: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseEntities: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmLockDestination: {
       parameters: ["isize", "isize", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     RtmGetOpaqueInformationPointer: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetEntityMethods: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmInvokeMethod: {
       parameters: ["isize", "isize", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmBlockMethods: {
       parameters: ["isize", "pointer", "u8", "u32"],
       result: "u32",
+      optional: true,
     },
     RtmGetEntityInfo: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetDestInfo: {
       parameters: ["isize", "isize", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetRouteInfo: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetNextHopInfo: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseEntityInfo: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseDestInfo: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseRouteInfo: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseNextHopInfo: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmAddRouteToDest: {
       parameters: ["isize", "pointer", "pointer", "pointer", "u32", "isize", "u32", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeleteRouteToDest: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmHoldDestination: {
       parameters: ["isize", "isize", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RtmGetRoutePointer: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmLockRoute: {
       parameters: ["isize", "isize", "i32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmUpdateAndUnlockRoute: {
       parameters: ["isize", "isize", "u32", "isize", "u32", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetExactMatchDestination: {
       parameters: ["isize", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetMostSpecificDestination: {
       parameters: ["isize", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetLessSpecificDestination: {
       parameters: ["isize", "isize", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetExactMatchRoute: {
       parameters: ["isize", "pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmIsBestRoute: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmAddNextHop: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmFindNextHop: {
       parameters: ["isize", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeleteNextHop: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetNextHopPointer: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmLockNextHop: {
       parameters: ["isize", "isize", "i32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmCreateDestEnum: {
       parameters: ["isize", "u32", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetEnumDests: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseDests: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmCreateRouteEnum: {
       parameters: ["isize", "isize", "u32", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetEnumRoutes: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseRoutes: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmCreateNextHopEnum: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetEnumNextHops: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseNextHops: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeleteEnumHandle: {
       parameters: ["isize", "isize"],
       result: "u32",
+      optional: true,
     },
     RtmRegisterForChangeNotification: {
       parameters: ["isize", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetChangedDests: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmReleaseChangedDests: {
       parameters: ["isize", "isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmIgnoreChangedDests: {
       parameters: ["isize", "isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetChangeStatus: {
       parameters: ["isize", "isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmMarkDestForChangeNotification: {
       parameters: ["isize", "isize", "isize", "i32"],
       result: "u32",
+      optional: true,
     },
     RtmIsMarkedForChangeNotification: {
       parameters: ["isize", "isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeregisterFromChangeNotification: {
       parameters: ["isize", "isize"],
       result: "u32",
+      optional: true,
     },
     RtmCreateRouteList: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmInsertInRouteList: {
       parameters: ["isize", "isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmCreateRouteListEnum: {
       parameters: ["isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmGetListEnumRoutes: {
       parameters: ["isize", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtmDeleteRouteList: {
       parameters: ["isize", "isize"],
       result: "u32",
+      optional: true,
     },
     RtmReferenceHandles: {
       parameters: ["isize", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -24435,7 +24712,7 @@ export function RasDialA(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDialA(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), util.toPointer(param5));
+  return libRASAPI32_dll.RasDialA!(util.toPointer(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), util.toPointer(param5));
 }
 
 export function RasDialW(
@@ -24446,7 +24723,7 @@ export function RasDialW(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDialW(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), util.toPointer(param5));
+  return libRASAPI32_dll.RasDialW!(util.toPointer(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), util.toPointer(param5));
 }
 
 export function RasEnumConnectionsA(
@@ -24454,7 +24731,7 @@ export function RasEnumConnectionsA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumConnectionsA(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasEnumConnectionsA!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasEnumConnectionsW(
@@ -24462,7 +24739,7 @@ export function RasEnumConnectionsW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumConnectionsW(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasEnumConnectionsW!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasEnumEntriesA(
@@ -24472,7 +24749,7 @@ export function RasEnumEntriesA(
   param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumEntriesA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
+  return libRASAPI32_dll.RasEnumEntriesA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
 }
 
 export function RasEnumEntriesW(
@@ -24482,21 +24759,21 @@ export function RasEnumEntriesW(
   param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumEntriesW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
+  return libRASAPI32_dll.RasEnumEntriesW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
 }
 
 export function RasGetConnectStatusA(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetConnectStatusA(util.toPointer(param0), util.toPointer(param1));
+  return libRASAPI32_dll.RasGetConnectStatusA!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function RasGetConnectStatusW(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetConnectStatusW(util.toPointer(param0), util.toPointer(param1));
+  return libRASAPI32_dll.RasGetConnectStatusW!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function RasGetErrorStringA(
@@ -24504,7 +24781,7 @@ export function RasGetErrorStringA(
   lpszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InBufSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetErrorStringA(ResourceId, util.pstrToFfi(lpszString), InBufSize);
+  return libRASAPI32_dll.RasGetErrorStringA!(ResourceId, util.pstrToFfi(lpszString), InBufSize);
 }
 
 export function RasGetErrorStringW(
@@ -24512,19 +24789,19 @@ export function RasGetErrorStringW(
   lpszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InBufSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetErrorStringW(ResourceId, util.pwstrToFfi(lpszString), InBufSize);
+  return libRASAPI32_dll.RasGetErrorStringW!(ResourceId, util.pwstrToFfi(lpszString), InBufSize);
 }
 
 export function RasHangUpA(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasHangUpA(util.toPointer(param0));
+  return libRASAPI32_dll.RasHangUpA!(util.toPointer(param0));
 }
 
 export function RasHangUpW(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasHangUpW(util.toPointer(param0));
+  return libRASAPI32_dll.RasHangUpW!(util.toPointer(param0));
 }
 
 export function RasGetProjectionInfoA(
@@ -24533,7 +24810,7 @@ export function RasGetProjectionInfoA(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetProjectionInfoA(util.toPointer(param0), param1, util.toPointer(param2), util.toPointer(param3));
+  return libRASAPI32_dll.RasGetProjectionInfoA!(util.toPointer(param0), param1, util.toPointer(param2), util.toPointer(param3));
 }
 
 export function RasGetProjectionInfoW(
@@ -24542,21 +24819,21 @@ export function RasGetProjectionInfoW(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetProjectionInfoW(util.toPointer(param0), param1, util.toPointer(param2), util.toPointer(param3));
+  return libRASAPI32_dll.RasGetProjectionInfoW!(util.toPointer(param0), param1, util.toPointer(param2), util.toPointer(param3));
 }
 
 export function RasCreatePhonebookEntryA(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasCreatePhonebookEntryA((param0), util.pstrToFfi(param1));
+  return libRASAPI32_dll.RasCreatePhonebookEntryA!((param0), util.pstrToFfi(param1));
 }
 
 export function RasCreatePhonebookEntryW(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasCreatePhonebookEntryW((param0), util.pwstrToFfi(param1));
+  return libRASAPI32_dll.RasCreatePhonebookEntryW!((param0), util.pwstrToFfi(param1));
 }
 
 export function RasEditPhonebookEntryA(
@@ -24564,7 +24841,7 @@ export function RasEditPhonebookEntryA(
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEditPhonebookEntryA((param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
+  return libRASAPI32_dll.RasEditPhonebookEntryA!((param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
 }
 
 export function RasEditPhonebookEntryW(
@@ -24572,7 +24849,7 @@ export function RasEditPhonebookEntryW(
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEditPhonebookEntryW((param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
+  return libRASAPI32_dll.RasEditPhonebookEntryW!((param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
 }
 
 export function RasSetEntryDialParamsA(
@@ -24580,7 +24857,7 @@ export function RasSetEntryDialParamsA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEntryDialParamsA(util.pstrToFfi(param0), util.toPointer(param1), util.boolToFfi(param2));
+  return libRASAPI32_dll.RasSetEntryDialParamsA!(util.pstrToFfi(param0), util.toPointer(param1), util.boolToFfi(param2));
 }
 
 export function RasSetEntryDialParamsW(
@@ -24588,7 +24865,7 @@ export function RasSetEntryDialParamsW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEntryDialParamsW(util.pwstrToFfi(param0), util.toPointer(param1), util.boolToFfi(param2));
+  return libRASAPI32_dll.RasSetEntryDialParamsW!(util.pwstrToFfi(param0), util.toPointer(param1), util.boolToFfi(param2));
 }
 
 export function RasGetEntryDialParamsA(
@@ -24596,7 +24873,7 @@ export function RasGetEntryDialParamsA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEntryDialParamsA(util.pstrToFfi(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetEntryDialParamsA!(util.pstrToFfi(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasGetEntryDialParamsW(
@@ -24604,7 +24881,7 @@ export function RasGetEntryDialParamsW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEntryDialParamsW(util.pwstrToFfi(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetEntryDialParamsW!(util.pwstrToFfi(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasEnumDevicesA(
@@ -24612,7 +24889,7 @@ export function RasEnumDevicesA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumDevicesA(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasEnumDevicesA!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasEnumDevicesW(
@@ -24620,21 +24897,21 @@ export function RasEnumDevicesW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumDevicesW(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasEnumDevicesW!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasGetCountryInfoA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCountryInfoA(util.toPointer(param0), util.toPointer(param1));
+  return libRASAPI32_dll.RasGetCountryInfoA!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function RasGetCountryInfoW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCountryInfoW(util.toPointer(param0), util.toPointer(param1));
+  return libRASAPI32_dll.RasGetCountryInfoW!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function RasGetEntryPropertiesA(
@@ -24645,7 +24922,7 @@ export function RasGetEntryPropertiesA(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEntryPropertiesA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4), util.toPointer(param5));
+  return libRASAPI32_dll.RasGetEntryPropertiesA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4), util.toPointer(param5));
 }
 
 export function RasGetEntryPropertiesW(
@@ -24656,7 +24933,7 @@ export function RasGetEntryPropertiesW(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEntryPropertiesW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4), util.toPointer(param5));
+  return libRASAPI32_dll.RasGetEntryPropertiesW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4), util.toPointer(param5));
 }
 
 export function RasSetEntryPropertiesA(
@@ -24667,7 +24944,7 @@ export function RasSetEntryPropertiesA(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEntryPropertiesA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), param5);
+  return libRASAPI32_dll.RasSetEntryPropertiesA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), param5);
 }
 
 export function RasSetEntryPropertiesW(
@@ -24678,7 +24955,7 @@ export function RasSetEntryPropertiesW(
   param4: Deno.PointerValue | Uint8Array /* ptr */,
   param5: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEntryPropertiesW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), param5);
+  return libRASAPI32_dll.RasSetEntryPropertiesW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), param3, util.toPointer(param4), param5);
 }
 
 export function RasRenameEntryA(
@@ -24686,7 +24963,7 @@ export function RasRenameEntryA(
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasRenameEntryA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
+  return libRASAPI32_dll.RasRenameEntryA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.pstrToFfi(param2));
 }
 
 export function RasRenameEntryW(
@@ -24694,35 +24971,35 @@ export function RasRenameEntryW(
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasRenameEntryW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
+  return libRASAPI32_dll.RasRenameEntryW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.pwstrToFfi(param2));
 }
 
 export function RasDeleteEntryA(
   param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDeleteEntryA(util.pstrToFfi(param0), util.pstrToFfi(param1));
+  return libRASAPI32_dll.RasDeleteEntryA!(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function RasDeleteEntryW(
   param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDeleteEntryW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
+  return libRASAPI32_dll.RasDeleteEntryW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
 
 export function RasValidateEntryNameA(
   param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasValidateEntryNameA(util.pstrToFfi(param0), util.pstrToFfi(param1));
+  return libRASAPI32_dll.RasValidateEntryNameA!(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function RasValidateEntryNameW(
   param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasValidateEntryNameW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
+  return libRASAPI32_dll.RasValidateEntryNameW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
 
 export function RasConnectionNotificationA(
@@ -24730,7 +25007,7 @@ export function RasConnectionNotificationA(
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasConnectionNotificationA(util.toPointer(param0), util.toPointer(param1), param2);
+  return libRASAPI32_dll.RasConnectionNotificationA!(util.toPointer(param0), util.toPointer(param1), param2);
 }
 
 export function RasConnectionNotificationW(
@@ -24738,7 +25015,7 @@ export function RasConnectionNotificationW(
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasConnectionNotificationW(util.toPointer(param0), util.toPointer(param1), param2);
+  return libRASAPI32_dll.RasConnectionNotificationW!(util.toPointer(param0), util.toPointer(param1), param2);
 }
 
 export function RasGetSubEntryHandleA(
@@ -24746,7 +25023,7 @@ export function RasGetSubEntryHandleA(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetSubEntryHandleA(util.toPointer(param0), param1, util.toPointer(param2));
+  return libRASAPI32_dll.RasGetSubEntryHandleA!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function RasGetSubEntryHandleW(
@@ -24754,7 +25031,7 @@ export function RasGetSubEntryHandleW(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetSubEntryHandleW(util.toPointer(param0), param1, util.toPointer(param2));
+  return libRASAPI32_dll.RasGetSubEntryHandleW!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function RasGetCredentialsA(
@@ -24762,7 +25039,7 @@ export function RasGetCredentialsA(
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCredentialsA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetCredentialsA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2));
 }
 
 export function RasGetCredentialsW(
@@ -24770,7 +25047,7 @@ export function RasGetCredentialsW(
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCredentialsW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetCredentialsW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2));
 }
 
 export function RasSetCredentialsA(
@@ -24779,7 +25056,7 @@ export function RasSetCredentialsA(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetCredentialsA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.boolToFfi(param3));
+  return libRASAPI32_dll.RasSetCredentialsA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(param2), util.boolToFfi(param3));
 }
 
 export function RasSetCredentialsW(
@@ -24788,7 +25065,7 @@ export function RasSetCredentialsW(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetCredentialsW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.boolToFfi(param3));
+  return libRASAPI32_dll.RasSetCredentialsW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(param2), util.boolToFfi(param3));
 }
 
 export function RasGetSubEntryPropertiesA(
@@ -24800,7 +25077,7 @@ export function RasGetSubEntryPropertiesA(
   param5: Deno.PointerValue | Uint8Array /* ptr */,
   param6: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetSubEntryPropertiesA(util.pstrToFfi(param0), util.pstrToFfi(param1), param2, util.toPointer(param3), util.toPointer(param4), util.toPointer(param5), util.toPointer(param6));
+  return libRASAPI32_dll.RasGetSubEntryPropertiesA!(util.pstrToFfi(param0), util.pstrToFfi(param1), param2, util.toPointer(param3), util.toPointer(param4), util.toPointer(param5), util.toPointer(param6));
 }
 
 export function RasGetSubEntryPropertiesW(
@@ -24812,7 +25089,7 @@ export function RasGetSubEntryPropertiesW(
   param5: Deno.PointerValue | Uint8Array /* ptr */,
   param6: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetSubEntryPropertiesW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3), util.toPointer(param4), util.toPointer(param5), util.toPointer(param6));
+  return libRASAPI32_dll.RasGetSubEntryPropertiesW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3), util.toPointer(param4), util.toPointer(param5), util.toPointer(param6));
 }
 
 export function RasSetSubEntryPropertiesA(
@@ -24824,7 +25101,7 @@ export function RasSetSubEntryPropertiesA(
   param5: Deno.PointerValue | Uint8Array /* ptr */,
   param6: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetSubEntryPropertiesA(util.pstrToFfi(param0), util.pstrToFfi(param1), param2, util.toPointer(param3), param4, util.toPointer(param5), param6);
+  return libRASAPI32_dll.RasSetSubEntryPropertiesA!(util.pstrToFfi(param0), util.pstrToFfi(param1), param2, util.toPointer(param3), param4, util.toPointer(param5), param6);
 }
 
 export function RasSetSubEntryPropertiesW(
@@ -24836,7 +25113,7 @@ export function RasSetSubEntryPropertiesW(
   param5: Deno.PointerValue | Uint8Array /* ptr */,
   param6: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetSubEntryPropertiesW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3), param4, util.toPointer(param5), param6);
+  return libRASAPI32_dll.RasSetSubEntryPropertiesW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), param2, util.toPointer(param3), param4, util.toPointer(param5), param6);
 }
 
 export function RasGetAutodialAddressA(
@@ -24846,7 +25123,7 @@ export function RasGetAutodialAddressA(
   param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialAddressA(util.pstrToFfi(param0), util.toPointer(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
+  return libRASAPI32_dll.RasGetAutodialAddressA!(util.pstrToFfi(param0), util.toPointer(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
 }
 
 export function RasGetAutodialAddressW(
@@ -24856,7 +25133,7 @@ export function RasGetAutodialAddressW(
   param3: Deno.PointerValue | Uint8Array /* ptr */,
   param4: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialAddressW(util.pwstrToFfi(param0), util.toPointer(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
+  return libRASAPI32_dll.RasGetAutodialAddressW!(util.pwstrToFfi(param0), util.toPointer(param1), util.toPointer(param2), util.toPointer(param3), util.toPointer(param4));
 }
 
 export function RasSetAutodialAddressA(
@@ -24866,7 +25143,7 @@ export function RasSetAutodialAddressA(
   param3: number /* u32 */,
   param4: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialAddressA(util.pstrToFfi(param0), param1, util.toPointer(param2), param3, param4);
+  return libRASAPI32_dll.RasSetAutodialAddressA!(util.pstrToFfi(param0), param1, util.toPointer(param2), param3, param4);
 }
 
 export function RasSetAutodialAddressW(
@@ -24876,7 +25153,7 @@ export function RasSetAutodialAddressW(
   param3: number /* u32 */,
   param4: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialAddressW(util.pwstrToFfi(param0), param1, util.toPointer(param2), param3, param4);
+  return libRASAPI32_dll.RasSetAutodialAddressW!(util.pwstrToFfi(param0), param1, util.toPointer(param2), param3, param4);
 }
 
 export function RasEnumAutodialAddressesA(
@@ -24884,7 +25161,7 @@ export function RasEnumAutodialAddressesA(
   lpdwcbRasAutodialAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwcRasAutodialAddresses: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumAutodialAddressesA(util.toPointer(lppRasAutodialAddresses), util.toPointer(lpdwcbRasAutodialAddresses), util.toPointer(lpdwcRasAutodialAddresses));
+  return libRASAPI32_dll.RasEnumAutodialAddressesA!(util.toPointer(lppRasAutodialAddresses), util.toPointer(lpdwcbRasAutodialAddresses), util.toPointer(lpdwcRasAutodialAddresses));
 }
 
 export function RasEnumAutodialAddressesW(
@@ -24892,35 +25169,35 @@ export function RasEnumAutodialAddressesW(
   lpdwcbRasAutodialAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwcRasAutodialAddresses: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasEnumAutodialAddressesW(util.toPointer(lppRasAutodialAddresses), util.toPointer(lpdwcbRasAutodialAddresses), util.toPointer(lpdwcRasAutodialAddresses));
+  return libRASAPI32_dll.RasEnumAutodialAddressesW!(util.toPointer(lppRasAutodialAddresses), util.toPointer(lpdwcbRasAutodialAddresses), util.toPointer(lpdwcRasAutodialAddresses));
 }
 
 export function RasGetAutodialEnableA(
   param0: number /* u32 */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialEnableA(param0, util.toPointer(param1));
+  return libRASAPI32_dll.RasGetAutodialEnableA!(param0, util.toPointer(param1));
 }
 
 export function RasGetAutodialEnableW(
   param0: number /* u32 */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialEnableW(param0, util.toPointer(param1));
+  return libRASAPI32_dll.RasGetAutodialEnableW!(param0, util.toPointer(param1));
 }
 
 export function RasSetAutodialEnableA(
   param0: number /* u32 */,
   param1: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialEnableA(param0, util.boolToFfi(param1));
+  return libRASAPI32_dll.RasSetAutodialEnableA!(param0, util.boolToFfi(param1));
 }
 
 export function RasSetAutodialEnableW(
   param0: number /* u32 */,
   param1: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialEnableW(param0, util.boolToFfi(param1));
+  return libRASAPI32_dll.RasSetAutodialEnableW!(param0, util.boolToFfi(param1));
 }
 
 export function RasGetAutodialParamA(
@@ -24928,7 +25205,7 @@ export function RasGetAutodialParamA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialParamA(param0, util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetAutodialParamA!(param0, util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasGetAutodialParamW(
@@ -24936,7 +25213,7 @@ export function RasGetAutodialParamW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetAutodialParamW(param0, util.toPointer(param1), util.toPointer(param2));
+  return libRASAPI32_dll.RasGetAutodialParamW!(param0, util.toPointer(param1), util.toPointer(param2));
 }
 
 export function RasSetAutodialParamA(
@@ -24944,7 +25221,7 @@ export function RasSetAutodialParamA(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialParamA(param0, util.toPointer(param1), param2);
+  return libRASAPI32_dll.RasSetAutodialParamA!(param0, util.toPointer(param1), param2);
 }
 
 export function RasSetAutodialParamW(
@@ -24952,13 +25229,13 @@ export function RasSetAutodialParamW(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetAutodialParamW(param0, util.toPointer(param1), param2);
+  return libRASAPI32_dll.RasSetAutodialParamW!(param0, util.toPointer(param1), param2);
 }
 
 export function RasGetPCscf(
   lpszPCscf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetPCscf(util.pwstrToFfi(lpszPCscf));
+  return libRASAPI32_dll.RasGetPCscf!(util.pwstrToFfi(lpszPCscf));
 }
 
 export function RasInvokeEapUI(
@@ -24967,7 +25244,7 @@ export function RasInvokeEapUI(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasInvokeEapUI(util.toPointer(param0), param1, util.toPointer(param2), (param3));
+  return libRASAPI32_dll.RasInvokeEapUI!(util.toPointer(param0), param1, util.toPointer(param2), (param3));
 }
 
 export function RasGetLinkStatistics(
@@ -24975,27 +25252,27 @@ export function RasGetLinkStatistics(
   dwSubEntry: number /* u32 */,
   lpStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetLinkStatistics(util.toPointer(hRasConn), dwSubEntry, util.toPointer(lpStatistics));
+  return libRASAPI32_dll.RasGetLinkStatistics!(util.toPointer(hRasConn), dwSubEntry, util.toPointer(lpStatistics));
 }
 
 export function RasGetConnectionStatistics(
   hRasConn: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
   lpStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetConnectionStatistics(util.toPointer(hRasConn), util.toPointer(lpStatistics));
+  return libRASAPI32_dll.RasGetConnectionStatistics!(util.toPointer(hRasConn), util.toPointer(lpStatistics));
 }
 
 export function RasClearLinkStatistics(
   hRasConn: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
   dwSubEntry: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasClearLinkStatistics(util.toPointer(hRasConn), dwSubEntry);
+  return libRASAPI32_dll.RasClearLinkStatistics!(util.toPointer(hRasConn), dwSubEntry);
 }
 
 export function RasClearConnectionStatistics(
   hRasConn: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasClearConnectionStatistics(util.toPointer(hRasConn));
+  return libRASAPI32_dll.RasClearConnectionStatistics!(util.toPointer(hRasConn));
 }
 
 export function RasGetEapUserDataA(
@@ -25005,7 +25282,7 @@ export function RasGetEapUserDataA(
   pbEapData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSizeofEapData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEapUserDataA(util.toPointer(hToken), util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbEapData), util.toPointer(pdwSizeofEapData));
+  return libRASAPI32_dll.RasGetEapUserDataA!(util.toPointer(hToken), util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbEapData), util.toPointer(pdwSizeofEapData));
 }
 
 export function RasGetEapUserDataW(
@@ -25015,7 +25292,7 @@ export function RasGetEapUserDataW(
   pbEapData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSizeofEapData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEapUserDataW(util.toPointer(hToken), util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbEapData), util.toPointer(pdwSizeofEapData));
+  return libRASAPI32_dll.RasGetEapUserDataW!(util.toPointer(hToken), util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbEapData), util.toPointer(pdwSizeofEapData));
 }
 
 export function RasSetEapUserDataA(
@@ -25025,7 +25302,7 @@ export function RasSetEapUserDataA(
   pbEapData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofEapData: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEapUserDataA(util.toPointer(hToken), util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbEapData), dwSizeofEapData);
+  return libRASAPI32_dll.RasSetEapUserDataA!(util.toPointer(hToken), util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbEapData), dwSizeofEapData);
 }
 
 export function RasSetEapUserDataW(
@@ -25035,7 +25312,7 @@ export function RasSetEapUserDataW(
   pbEapData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofEapData: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetEapUserDataW(util.toPointer(hToken), util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbEapData), dwSizeofEapData);
+  return libRASAPI32_dll.RasSetEapUserDataW!(util.toPointer(hToken), util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbEapData), dwSizeofEapData);
 }
 
 export function RasGetCustomAuthDataA(
@@ -25044,7 +25321,7 @@ export function RasGetCustomAuthDataA(
   pbCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSizeofCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCustomAuthDataA(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), util.toPointer(pdwSizeofCustomAuthData));
+  return libRASAPI32_dll.RasGetCustomAuthDataA!(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), util.toPointer(pdwSizeofCustomAuthData));
 }
 
 export function RasGetCustomAuthDataW(
@@ -25053,7 +25330,7 @@ export function RasGetCustomAuthDataW(
   pbCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSizeofCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetCustomAuthDataW(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), util.toPointer(pdwSizeofCustomAuthData));
+  return libRASAPI32_dll.RasGetCustomAuthDataW!(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), util.toPointer(pdwSizeofCustomAuthData));
 }
 
 export function RasSetCustomAuthDataA(
@@ -25062,7 +25339,7 @@ export function RasSetCustomAuthDataA(
   pbCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofCustomAuthData: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetCustomAuthDataA(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), dwSizeofCustomAuthData);
+  return libRASAPI32_dll.RasSetCustomAuthDataA!(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), dwSizeofCustomAuthData);
 }
 
 export function RasSetCustomAuthDataW(
@@ -25071,7 +25348,7 @@ export function RasSetCustomAuthDataW(
   pbCustomAuthData: Deno.PointerValue | Uint8Array /* ptr */,
   dwSizeofCustomAuthData: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasSetCustomAuthDataW(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), dwSizeofCustomAuthData);
+  return libRASAPI32_dll.RasSetCustomAuthDataW!(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), util.toPointer(pbCustomAuthData), dwSizeofCustomAuthData);
 }
 
 export function RasGetEapUserIdentityW(
@@ -25081,7 +25358,7 @@ export function RasGetEapUserIdentityW(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ppRasEapUserIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEapUserIdentityW(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), dwFlags, (hwnd), util.toPointer(ppRasEapUserIdentity));
+  return libRASAPI32_dll.RasGetEapUserIdentityW!(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), dwFlags, (hwnd), util.toPointer(ppRasEapUserIdentity));
 }
 
 export function RasGetEapUserIdentityA(
@@ -25091,19 +25368,19 @@ export function RasGetEapUserIdentityA(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ppRasEapUserIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetEapUserIdentityA(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), dwFlags, (hwnd), util.toPointer(ppRasEapUserIdentity));
+  return libRASAPI32_dll.RasGetEapUserIdentityA!(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), dwFlags, (hwnd), util.toPointer(ppRasEapUserIdentity));
 }
 
 export function RasFreeEapUserIdentityW(
   pRasEapUserIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRASAPI32_dll.RasFreeEapUserIdentityW(util.toPointer(pRasEapUserIdentity));
+  return libRASAPI32_dll.RasFreeEapUserIdentityW!(util.toPointer(pRasEapUserIdentity));
 }
 
 export function RasFreeEapUserIdentityA(
   pRasEapUserIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRASAPI32_dll.RasFreeEapUserIdentityA(util.toPointer(pRasEapUserIdentity));
+  return libRASAPI32_dll.RasFreeEapUserIdentityA!(util.toPointer(pRasEapUserIdentity));
 }
 
 export function RasDeleteSubEntryA(
@@ -25111,7 +25388,7 @@ export function RasDeleteSubEntryA(
   pszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwSubentryId: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDeleteSubEntryA(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), dwSubentryId);
+  return libRASAPI32_dll.RasDeleteSubEntryA!(util.pstrToFfi(pszPhonebook), util.pstrToFfi(pszEntry), dwSubentryId);
 }
 
 export function RasDeleteSubEntryW(
@@ -25119,14 +25396,14 @@ export function RasDeleteSubEntryW(
   pszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSubEntryId: number /* u32 */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasDeleteSubEntryW(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), dwSubEntryId);
+  return libRASAPI32_dll.RasDeleteSubEntryW!(util.pwstrToFfi(pszPhonebook), util.pwstrToFfi(pszEntry), dwSubEntryId);
 }
 
 export function RasUpdateConnection(
   hrasconn: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Rras.HRASCONN */,
   lprasupdateconn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasUpdateConnection(util.toPointer(hrasconn), util.toPointer(lprasupdateconn));
+  return libRASAPI32_dll.RasUpdateConnection!(util.toPointer(hrasconn), util.toPointer(lprasupdateconn));
 }
 
 export function RasGetProjectionInfoEx(
@@ -25134,7 +25411,7 @@ export function RasGetProjectionInfoEx(
   pRasProjection: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRASAPI32_dll.RasGetProjectionInfoEx(util.toPointer(hrasconn), util.toPointer(pRasProjection), util.toPointer(lpdwSize));
+  return libRASAPI32_dll.RasGetProjectionInfoEx!(util.toPointer(hrasconn), util.toPointer(pRasProjection), util.toPointer(lpdwSize));
 }
 
 export function RasPhonebookDlgA(
@@ -25142,7 +25419,7 @@ export function RasPhonebookDlgA(
   lpszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgA!(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasPhonebookDlgW(
@@ -25150,7 +25427,7 @@ export function RasPhonebookDlgW(
   lpszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasPhonebookDlgW!(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasEntryDlgA(
@@ -25158,7 +25435,7 @@ export function RasEntryDlgA(
   lpszEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasEntryDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasEntryDlgA!(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasEntryDlgW(
@@ -25166,7 +25443,7 @@ export function RasEntryDlgW(
   lpszEntry: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasEntryDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasEntryDlgW!(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.toPointer(lpInfo)));
 }
 
 export function RasDialDlgA(
@@ -25175,7 +25452,7 @@ export function RasDialDlgA(
   lpszPhoneNumber: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasDialDlgA(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.pstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasDialDlgA!(util.pstrToFfi(lpszPhonebook), util.pstrToFfi(lpszEntry), util.pstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
 }
 
 export function RasDialDlgW(
@@ -25184,7 +25461,7 @@ export function RasDialDlgW(
   lpszPhoneNumber: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRASDLG_dll.RasDialDlgW(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.pwstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
+  return util.boolFromFfi(libRASDLG_dll.RasDialDlgW!(util.pwstrToFfi(lpszPhonebook), util.pwstrToFfi(lpszEntry), util.pwstrToFfi(lpszPhoneNumber), util.toPointer(lpInfo)));
 }
 
 export function MprAdminConnectionEnumEx(
@@ -25196,7 +25473,7 @@ export function MprAdminConnectionEnumEx(
   ppRasConn: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionEnumEx(hRasServer, util.toPointer(pObjectHeader), dwPreferedMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(ppRasConn), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprAdminConnectionEnumEx!(hRasServer, util.toPointer(pObjectHeader), dwPreferedMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(ppRasConn), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprAdminConnectionGetInfoEx(
@@ -25204,35 +25481,35 @@ export function MprAdminConnectionGetInfoEx(
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pRasConnection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionGetInfoEx(hRasServer, util.toPointer(hRasConnection), util.toPointer(pRasConnection));
+  return libMPRAPI_dll.MprAdminConnectionGetInfoEx!(hRasServer, util.toPointer(hRasConnection), util.toPointer(pRasConnection));
 }
 
 export function MprAdminServerGetInfoEx(
   hMprServer: bigint | number /* isize */,
   pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerGetInfoEx(hMprServer, util.toPointer(pServerInfo));
+  return libMPRAPI_dll.MprAdminServerGetInfoEx!(hMprServer, util.toPointer(pServerInfo));
 }
 
 export function MprAdminServerSetInfoEx(
   hMprServer: bigint | number /* isize */,
   pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerSetInfoEx(hMprServer, util.toPointer(pServerInfo));
+  return libMPRAPI_dll.MprAdminServerSetInfoEx!(hMprServer, util.toPointer(pServerInfo));
 }
 
 export function MprConfigServerGetInfoEx(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerGetInfoEx(util.toPointer(hMprConfig), util.toPointer(pServerInfo));
+  return libMPRAPI_dll.MprConfigServerGetInfoEx!(util.toPointer(hMprConfig), util.toPointer(pServerInfo));
 }
 
 export function MprConfigServerSetInfoEx(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pSetServerConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerSetInfoEx(util.toPointer(hMprConfig), util.toPointer(pSetServerConfig));
+  return libMPRAPI_dll.MprConfigServerSetInfoEx!(util.toPointer(hMprConfig), util.toPointer(pSetServerConfig));
 }
 
 export function MprAdminUpdateConnection(
@@ -25240,14 +25517,14 @@ export function MprAdminUpdateConnection(
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pRasUpdateConnection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminUpdateConnection(hRasServer, util.toPointer(hRasConnection), util.toPointer(pRasUpdateConnection));
+  return libMPRAPI_dll.MprAdminUpdateConnection!(hRasServer, util.toPointer(hRasConnection), util.toPointer(pRasUpdateConnection));
 }
 
 export function MprAdminIsServiceInitialized(
   lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fIsServiceInitialized: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminIsServiceInitialized(util.pwstrToFfi(lpwsServerName), util.toPointer(fIsServiceInitialized));
+  return libMPRAPI_dll.MprAdminIsServiceInitialized!(util.pwstrToFfi(lpwsServerName), util.toPointer(fIsServiceInitialized));
 }
 
 export function MprAdminInterfaceSetCustomInfoEx(
@@ -25255,7 +25532,7 @@ export function MprAdminInterfaceSetCustomInfoEx(
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceSetCustomInfoEx(hMprServer, util.toPointer(hInterface), util.toPointer(pCustomInfo));
+  return libMPRAPI_dll.MprAdminInterfaceSetCustomInfoEx!(hMprServer, util.toPointer(hInterface), util.toPointer(pCustomInfo));
 }
 
 export function MprAdminInterfaceGetCustomInfoEx(
@@ -25263,7 +25540,7 @@ export function MprAdminInterfaceGetCustomInfoEx(
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceGetCustomInfoEx(hMprServer, util.toPointer(hInterface), util.toPointer(pCustomInfo));
+  return libMPRAPI_dll.MprAdminInterfaceGetCustomInfoEx!(hMprServer, util.toPointer(hInterface), util.toPointer(pCustomInfo));
 }
 
 export function MprConfigInterfaceGetCustomInfoEx(
@@ -25271,7 +25548,7 @@ export function MprConfigInterfaceGetCustomInfoEx(
   hRouterInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceGetCustomInfoEx(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(pCustomInfo));
+  return libMPRAPI_dll.MprConfigInterfaceGetCustomInfoEx!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(pCustomInfo));
 }
 
 export function MprConfigInterfaceSetCustomInfoEx(
@@ -25279,7 +25556,7 @@ export function MprConfigInterfaceSetCustomInfoEx(
   hRouterInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCustomInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceSetCustomInfoEx(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(pCustomInfo));
+  return libMPRAPI_dll.MprConfigInterfaceSetCustomInfoEx!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(pCustomInfo));
 }
 
 export function MprAdminConnectionEnum(
@@ -25291,7 +25568,7 @@ export function MprAdminConnectionEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionEnum(hRasServer, dwLevel, util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprAdminConnectionEnum!(hRasServer, dwLevel, util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprAdminPortEnum(
@@ -25304,7 +25581,7 @@ export function MprAdminPortEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminPortEnum(hRasServer, dwLevel, util.toPointer(hRasConnection), util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprAdminPortEnum!(hRasServer, dwLevel, util.toPointer(hRasConnection), util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprAdminConnectionGetInfo(
@@ -25313,7 +25590,7 @@ export function MprAdminConnectionGetInfo(
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionGetInfo(hRasServer, dwLevel, util.toPointer(hRasConnection), util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminConnectionGetInfo!(hRasServer, dwLevel, util.toPointer(hRasConnection), util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminPortGetInfo(
@@ -25322,35 +25599,35 @@ export function MprAdminPortGetInfo(
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminPortGetInfo(hRasServer, dwLevel, util.toPointer(hPort), util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminPortGetInfo!(hRasServer, dwLevel, util.toPointer(hPort), util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminConnectionClearStats(
   hRasServer: bigint | number /* isize */,
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionClearStats(hRasServer, util.toPointer(hRasConnection));
+  return libMPRAPI_dll.MprAdminConnectionClearStats!(hRasServer, util.toPointer(hRasConnection));
 }
 
 export function MprAdminPortClearStats(
   hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminPortClearStats(hRasServer, util.toPointer(hPort));
+  return libMPRAPI_dll.MprAdminPortClearStats!(hRasServer, util.toPointer(hPort));
 }
 
 export function MprAdminPortReset(
   hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminPortReset(hRasServer, util.toPointer(hPort));
+  return libMPRAPI_dll.MprAdminPortReset!(hRasServer, util.toPointer(hPort));
 }
 
 export function MprAdminPortDisconnect(
   hRasServer: bigint | number /* isize */,
   hPort: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminPortDisconnect(hRasServer, util.toPointer(hPort));
+  return libMPRAPI_dll.MprAdminPortDisconnect!(hRasServer, util.toPointer(hPort));
 }
 
 export function MprAdminConnectionRemoveQuarantine(
@@ -25358,7 +25635,7 @@ export function MprAdminConnectionRemoveQuarantine(
   hRasConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fIsIpAddress: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminConnectionRemoveQuarantine(util.toPointer(hRasServer), util.toPointer(hRasConnection), util.boolToFfi(fIsIpAddress));
+  return libMPRAPI_dll.MprAdminConnectionRemoveQuarantine!(util.toPointer(hRasServer), util.toPointer(hRasConnection), util.boolToFfi(fIsIpAddress));
 }
 
 export function MprAdminUserGetInfo(
@@ -25367,7 +25644,7 @@ export function MprAdminUserGetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminUserGetInfo(util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszUser), dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminUserGetInfo!(util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszUser), dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminUserSetInfo(
@@ -25376,7 +25653,7 @@ export function MprAdminUserSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminUserSetInfo(util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszUser), dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminUserSetInfo!(util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszUser), dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminSendUserMessage(
@@ -25384,7 +25661,7 @@ export function MprAdminSendUserMessage(
   hConnection: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpwszMessage: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminSendUserMessage(hMprServer, util.toPointer(hConnection), util.pwstrToFfi(lpwszMessage));
+  return libMPRAPI_dll.MprAdminSendUserMessage!(hMprServer, util.toPointer(hConnection), util.pwstrToFfi(lpwszMessage));
 }
 
 export function MprAdminGetPDCServer(
@@ -25392,26 +25669,26 @@ export function MprAdminGetPDCServer(
   lpszServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszPDCServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminGetPDCServer(util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszPDCServer));
+  return libMPRAPI_dll.MprAdminGetPDCServer!(util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszServer), util.pwstrToFfi(lpszPDCServer));
 }
 
 export function MprAdminIsServiceRunning(
   lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMPRAPI_dll.MprAdminIsServiceRunning(util.pwstrToFfi(lpwsServerName)));
+  return util.boolFromFfi(libMPRAPI_dll.MprAdminIsServiceRunning!(util.pwstrToFfi(lpwsServerName)));
 }
 
 export function MprAdminServerConnect(
   lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMprServer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprServer));
+  return libMPRAPI_dll.MprAdminServerConnect!(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprServer));
 }
 
 export function MprAdminServerDisconnect(
   hMprServer: bigint | number /* isize */,
 ): void /* void */ {
-  return libMPRAPI_dll.MprAdminServerDisconnect(hMprServer);
+  return libMPRAPI_dll.MprAdminServerDisconnect!(hMprServer);
 }
 
 export function MprAdminServerGetCredentials(
@@ -25419,7 +25696,7 @@ export function MprAdminServerGetCredentials(
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerGetCredentials(hMprServer, dwLevel, util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminServerGetCredentials!(hMprServer, dwLevel, util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminServerSetCredentials(
@@ -25427,20 +25704,20 @@ export function MprAdminServerSetCredentials(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerSetCredentials(hMprServer, dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminServerSetCredentials!(hMprServer, dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminBufferFree(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminBufferFree(util.toPointer(pBuffer));
+  return libMPRAPI_dll.MprAdminBufferFree!(util.toPointer(pBuffer));
 }
 
 export function MprAdminGetErrorString(
   dwError: number /* u32 */,
   lplpwsErrorString: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminGetErrorString(dwError, util.toPointer(lplpwsErrorString));
+  return libMPRAPI_dll.MprAdminGetErrorString!(dwError, util.toPointer(lplpwsErrorString));
 }
 
 export function MprAdminServerGetInfo(
@@ -25448,7 +25725,7 @@ export function MprAdminServerGetInfo(
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerGetInfo(hMprServer, dwLevel, util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminServerGetInfo!(hMprServer, dwLevel, util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminServerSetInfo(
@@ -25456,7 +25733,7 @@ export function MprAdminServerSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminServerSetInfo(hMprServer, dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminServerSetInfo!(hMprServer, dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminEstablishDomainRasServer(
@@ -25464,7 +25741,7 @@ export function MprAdminEstablishDomainRasServer(
   pszMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminEstablishDomainRasServer(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.boolToFfi(bEnable));
+  return libMPRAPI_dll.MprAdminEstablishDomainRasServer!(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.boolToFfi(bEnable));
 }
 
 export function MprAdminIsDomainRasServer(
@@ -25472,7 +25749,7 @@ export function MprAdminIsDomainRasServer(
   pszMachine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbIsRasServer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminIsDomainRasServer(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.toPointer(pbIsRasServer));
+  return libMPRAPI_dll.MprAdminIsDomainRasServer!(util.pwstrToFfi(pszDomain), util.pwstrToFfi(pszMachine), util.toPointer(pbIsRasServer));
 }
 
 export function MprAdminTransportCreate(
@@ -25485,7 +25762,7 @@ export function MprAdminTransportCreate(
   dwClientInterfaceInfoSize: number /* u32 */,
   lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminTransportCreate(hMprServer, dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
+  return libMPRAPI_dll.MprAdminTransportCreate!(hMprServer, dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
 }
 
 export function MprAdminTransportSetInfo(
@@ -25496,7 +25773,7 @@ export function MprAdminTransportSetInfo(
   pClientInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwClientInterfaceInfoSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminTransportSetInfo(hMprServer, dwTransportId, util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize);
+  return libMPRAPI_dll.MprAdminTransportSetInfo!(hMprServer, dwTransportId, util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize);
 }
 
 export function MprAdminTransportGetInfo(
@@ -25507,7 +25784,7 @@ export function MprAdminTransportGetInfo(
   ppClientInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwClientInterfaceInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminTransportGetInfo(hMprServer, dwTransportId, util.toPointer(ppGlobalInfo), util.toPointer(lpdwGlobalInfoSize), util.toPointer(ppClientInterfaceInfo), util.toPointer(lpdwClientInterfaceInfoSize));
+  return libMPRAPI_dll.MprAdminTransportGetInfo!(hMprServer, dwTransportId, util.toPointer(ppGlobalInfo), util.toPointer(lpdwGlobalInfoSize), util.toPointer(ppClientInterfaceInfo), util.toPointer(lpdwClientInterfaceInfoSize));
 }
 
 export function MprAdminDeviceEnum(
@@ -25516,7 +25793,7 @@ export function MprAdminDeviceEnum(
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminDeviceEnum(hMprServer, dwLevel, util.toPointer(lplpbBuffer), util.toPointer(lpdwTotalEntries));
+  return libMPRAPI_dll.MprAdminDeviceEnum!(hMprServer, dwLevel, util.toPointer(lplpbBuffer), util.toPointer(lpdwTotalEntries));
 }
 
 export function MprAdminInterfaceGetHandle(
@@ -25525,7 +25802,7 @@ export function MprAdminInterfaceGetHandle(
   phInterface: Deno.PointerValue | Uint8Array /* ptr */,
   fIncludeClientInterfaces: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceGetHandle(hMprServer, util.pwstrToFfi(lpwsInterfaceName), util.toPointer(phInterface), util.boolToFfi(fIncludeClientInterfaces));
+  return libMPRAPI_dll.MprAdminInterfaceGetHandle!(hMprServer, util.pwstrToFfi(lpwsInterfaceName), util.toPointer(phInterface), util.boolToFfi(fIncludeClientInterfaces));
 }
 
 export function MprAdminInterfaceCreate(
@@ -25534,7 +25811,7 @@ export function MprAdminInterfaceCreate(
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   phInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceCreate(hMprServer, dwLevel, util.toPointer(lpbBuffer), util.toPointer(phInterface));
+  return libMPRAPI_dll.MprAdminInterfaceCreate!(hMprServer, dwLevel, util.toPointer(lpbBuffer), util.toPointer(phInterface));
 }
 
 export function MprAdminInterfaceGetInfo(
@@ -25543,7 +25820,7 @@ export function MprAdminInterfaceGetInfo(
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceGetInfo(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceGetInfo!(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminInterfaceSetInfo(
@@ -25552,14 +25829,14 @@ export function MprAdminInterfaceSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceSetInfo(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceSetInfo!(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminInterfaceDelete(
   hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceDelete(hMprServer, util.toPointer(hInterface));
+  return libMPRAPI_dll.MprAdminInterfaceDelete!(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminInterfaceDeviceGetInfo(
@@ -25569,7 +25846,7 @@ export function MprAdminInterfaceDeviceGetInfo(
   dwLevel: number /* u32 */,
   lplpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceDeviceGetInfo(hMprServer, util.toPointer(hInterface), dwIndex, dwLevel, util.toPointer(lplpBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceDeviceGetInfo!(hMprServer, util.toPointer(hInterface), dwIndex, dwLevel, util.toPointer(lplpBuffer));
 }
 
 export function MprAdminInterfaceDeviceSetInfo(
@@ -25579,7 +25856,7 @@ export function MprAdminInterfaceDeviceSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceDeviceSetInfo(hMprServer, util.toPointer(hInterface), dwIndex, dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceDeviceSetInfo!(hMprServer, util.toPointer(hInterface), dwIndex, dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminInterfaceTransportRemove(
@@ -25587,7 +25864,7 @@ export function MprAdminInterfaceTransportRemove(
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwTransportId: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceTransportRemove(hMprServer, util.toPointer(hInterface), dwTransportId);
+  return libMPRAPI_dll.MprAdminInterfaceTransportRemove!(hMprServer, util.toPointer(hInterface), dwTransportId);
 }
 
 export function MprAdminInterfaceTransportAdd(
@@ -25597,7 +25874,7 @@ export function MprAdminInterfaceTransportAdd(
   pInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwInterfaceInfoSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceTransportAdd(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
+  return libMPRAPI_dll.MprAdminInterfaceTransportAdd!(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
 }
 
 export function MprAdminInterfaceTransportGetInfo(
@@ -25607,7 +25884,7 @@ export function MprAdminInterfaceTransportGetInfo(
   ppInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwInterfaceInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceTransportGetInfo(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(ppInterfaceInfo), util.toPointer(lpdwInterfaceInfoSize));
+  return libMPRAPI_dll.MprAdminInterfaceTransportGetInfo!(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(ppInterfaceInfo), util.toPointer(lpdwInterfaceInfoSize));
 }
 
 export function MprAdminInterfaceTransportSetInfo(
@@ -25617,7 +25894,7 @@ export function MprAdminInterfaceTransportSetInfo(
   pInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwInterfaceInfoSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceTransportSetInfo(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
+  return libMPRAPI_dll.MprAdminInterfaceTransportSetInfo!(hMprServer, util.toPointer(hInterface), dwTransportId, util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
 }
 
 export function MprAdminInterfaceEnum(
@@ -25629,7 +25906,7 @@ export function MprAdminInterfaceEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceEnum(hMprServer, dwLevel, util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprAdminInterfaceEnum!(hMprServer, dwLevel, util.toPointer(lplpbBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprAdminInterfaceSetCredentials(
@@ -25639,7 +25916,7 @@ export function MprAdminInterfaceSetCredentials(
   lpwsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpwsPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceSetCredentials(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsDomainName), util.pwstrToFfi(lpwsPassword));
+  return libMPRAPI_dll.MprAdminInterfaceSetCredentials!(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsDomainName), util.pwstrToFfi(lpwsPassword));
 }
 
 export function MprAdminInterfaceGetCredentials(
@@ -25649,7 +25926,7 @@ export function MprAdminInterfaceGetCredentials(
   lpwsPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpwsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceGetCredentials(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsPassword), util.pwstrToFfi(lpwsDomainName));
+  return libMPRAPI_dll.MprAdminInterfaceGetCredentials!(util.pwstrToFfi(lpwsServer), util.pwstrToFfi(lpwsInterfaceName), util.pwstrToFfi(lpwsUserName), util.pwstrToFfi(lpwsPassword), util.pwstrToFfi(lpwsDomainName));
 }
 
 export function MprAdminInterfaceSetCredentialsEx(
@@ -25658,7 +25935,7 @@ export function MprAdminInterfaceSetCredentialsEx(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceSetCredentialsEx(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceSetCredentialsEx!(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprAdminInterfaceGetCredentialsEx(
@@ -25667,7 +25944,7 @@ export function MprAdminInterfaceGetCredentialsEx(
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceGetCredentialsEx(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprAdminInterfaceGetCredentialsEx!(hMprServer, util.toPointer(hInterface), dwLevel, util.toPointer(lplpbBuffer));
 }
 
 export function MprAdminInterfaceConnect(
@@ -25676,14 +25953,14 @@ export function MprAdminInterfaceConnect(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fSynchronous: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceConnect(hMprServer, util.toPointer(hInterface), util.toPointer(hEvent), util.boolToFfi(fSynchronous));
+  return libMPRAPI_dll.MprAdminInterfaceConnect!(hMprServer, util.toPointer(hInterface), util.toPointer(hEvent), util.boolToFfi(fSynchronous));
 }
 
 export function MprAdminInterfaceDisconnect(
   hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceDisconnect(hMprServer, util.toPointer(hInterface));
+  return libMPRAPI_dll.MprAdminInterfaceDisconnect!(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminInterfaceUpdateRoutes(
@@ -25692,7 +25969,7 @@ export function MprAdminInterfaceUpdateRoutes(
   dwProtocolId: number /* u32 */,
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceUpdateRoutes(hMprServer, util.toPointer(hInterface), dwProtocolId, util.toPointer(hEvent));
+  return libMPRAPI_dll.MprAdminInterfaceUpdateRoutes!(hMprServer, util.toPointer(hInterface), dwProtocolId, util.toPointer(hEvent));
 }
 
 export function MprAdminInterfaceQueryUpdateResult(
@@ -25701,41 +25978,41 @@ export function MprAdminInterfaceQueryUpdateResult(
   dwProtocolId: number /* u32 */,
   lpdwUpdateResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceQueryUpdateResult(hMprServer, util.toPointer(hInterface), dwProtocolId, util.toPointer(lpdwUpdateResult));
+  return libMPRAPI_dll.MprAdminInterfaceQueryUpdateResult!(hMprServer, util.toPointer(hInterface), dwProtocolId, util.toPointer(lpdwUpdateResult));
 }
 
 export function MprAdminInterfaceUpdatePhonebookInfo(
   hMprServer: bigint | number /* isize */,
   hInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminInterfaceUpdatePhonebookInfo(hMprServer, util.toPointer(hInterface));
+  return libMPRAPI_dll.MprAdminInterfaceUpdatePhonebookInfo!(hMprServer, util.toPointer(hInterface));
 }
 
 export function MprAdminRegisterConnectionNotification(
   hMprServer: bigint | number /* isize */,
   hEventNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminRegisterConnectionNotification(hMprServer, util.toPointer(hEventNotification));
+  return libMPRAPI_dll.MprAdminRegisterConnectionNotification!(hMprServer, util.toPointer(hEventNotification));
 }
 
 export function MprAdminDeregisterConnectionNotification(
   hMprServer: bigint | number /* isize */,
   hEventNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminDeregisterConnectionNotification(hMprServer, util.toPointer(hEventNotification));
+  return libMPRAPI_dll.MprAdminDeregisterConnectionNotification!(hMprServer, util.toPointer(hEventNotification));
 }
 
 export function MprAdminMIBServerConnect(
   lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMibServer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMibServer));
+  return libMPRAPI_dll.MprAdminMIBServerConnect!(util.pwstrToFfi(lpwsServerName), util.toPointer(phMibServer));
 }
 
 export function MprAdminMIBServerDisconnect(
   hMibServer: bigint | number /* isize */,
 ): void /* void */ {
-  return libMPRAPI_dll.MprAdminMIBServerDisconnect(hMibServer);
+  return libMPRAPI_dll.MprAdminMIBServerDisconnect!(hMibServer);
 }
 
 export function MprAdminMIBEntryCreate(
@@ -25745,7 +26022,7 @@ export function MprAdminMIBEntryCreate(
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
   dwEntrySize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntryCreate(hMibServer, dwPid, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
+  return libMPRAPI_dll.MprAdminMIBEntryCreate!(hMibServer, dwPid, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
 }
 
 export function MprAdminMIBEntryDelete(
@@ -25755,7 +26032,7 @@ export function MprAdminMIBEntryDelete(
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
   dwEntrySize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntryDelete(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
+  return libMPRAPI_dll.MprAdminMIBEntryDelete!(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
 }
 
 export function MprAdminMIBEntrySet(
@@ -25765,7 +26042,7 @@ export function MprAdminMIBEntrySet(
   lpEntry: Deno.PointerValue | Uint8Array /* ptr */,
   dwEntrySize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntrySet(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
+  return libMPRAPI_dll.MprAdminMIBEntrySet!(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpEntry), dwEntrySize);
 }
 
 export function MprAdminMIBEntryGet(
@@ -25777,7 +26054,7 @@ export function MprAdminMIBEntryGet(
   lplpOutEntry: Deno.PointerValue | Uint8Array /* ptr */,
   lpOutEntrySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntryGet(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
+  return libMPRAPI_dll.MprAdminMIBEntryGet!(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
 }
 
 export function MprAdminMIBEntryGetFirst(
@@ -25789,7 +26066,7 @@ export function MprAdminMIBEntryGetFirst(
   lplpOutEntry: Deno.PointerValue | Uint8Array /* ptr */,
   lpOutEntrySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntryGetFirst(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
+  return libMPRAPI_dll.MprAdminMIBEntryGetFirst!(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
 }
 
 export function MprAdminMIBEntryGetNext(
@@ -25801,45 +26078,45 @@ export function MprAdminMIBEntryGetNext(
   lplpOutEntry: Deno.PointerValue | Uint8Array /* ptr */,
   lpOutEntrySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBEntryGetNext(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
+  return libMPRAPI_dll.MprAdminMIBEntryGetNext!(hMibServer, dwProtocolId, dwRoutingPid, util.toPointer(lpInEntry), dwInEntrySize, util.toPointer(lplpOutEntry), util.toPointer(lpOutEntrySize));
 }
 
 export function MprAdminMIBBufferFree(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprAdminMIBBufferFree(util.toPointer(pBuffer));
+  return libMPRAPI_dll.MprAdminMIBBufferFree!(util.toPointer(pBuffer));
 }
 
 export function MprConfigServerInstall(
   dwLevel: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerInstall(dwLevel, util.toPointer(pBuffer));
+  return libMPRAPI_dll.MprConfigServerInstall!(dwLevel, util.toPointer(pBuffer));
 }
 
 export function MprConfigServerConnect(
   lpwsServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phMprConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerConnect(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprConfig));
+  return libMPRAPI_dll.MprConfigServerConnect!(util.pwstrToFfi(lpwsServerName), util.toPointer(phMprConfig));
 }
 
 export function MprConfigServerDisconnect(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libMPRAPI_dll.MprConfigServerDisconnect(util.toPointer(hMprConfig));
+  return libMPRAPI_dll.MprConfigServerDisconnect!(util.toPointer(hMprConfig));
 }
 
 export function MprConfigServerRefresh(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerRefresh(util.toPointer(hMprConfig));
+  return libMPRAPI_dll.MprConfigServerRefresh!(util.toPointer(hMprConfig));
 }
 
 export function MprConfigBufferFree(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigBufferFree(util.toPointer(pBuffer));
+  return libMPRAPI_dll.MprConfigBufferFree!(util.toPointer(pBuffer));
 }
 
 export function MprConfigServerGetInfo(
@@ -25847,7 +26124,7 @@ export function MprConfigServerGetInfo(
   dwLevel: number /* u32 */,
   lplpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerGetInfo(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpbBuffer));
+  return libMPRAPI_dll.MprConfigServerGetInfo!(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpbBuffer));
 }
 
 export function MprConfigServerSetInfo(
@@ -25855,21 +26132,21 @@ export function MprConfigServerSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerSetInfo(hMprServer, dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprConfigServerSetInfo!(hMprServer, dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprConfigServerBackup(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpwsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerBackup(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
+  return libMPRAPI_dll.MprConfigServerBackup!(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
 }
 
 export function MprConfigServerRestore(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpwsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigServerRestore(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
+  return libMPRAPI_dll.MprConfigServerRestore!(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsPath));
 }
 
 export function MprConfigTransportCreate(
@@ -25883,14 +26160,14 @@ export function MprConfigTransportCreate(
   lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phRouterTransport: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportCreate(util.toPointer(hMprConfig), dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath), util.toPointer(phRouterTransport));
+  return libMPRAPI_dll.MprConfigTransportCreate!(util.toPointer(hMprConfig), dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath), util.toPointer(phRouterTransport));
 }
 
 export function MprConfigTransportDelete(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hRouterTransport: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportDelete(util.toPointer(hMprConfig), util.toPointer(hRouterTransport));
+  return libMPRAPI_dll.MprConfigTransportDelete!(util.toPointer(hMprConfig), util.toPointer(hRouterTransport));
 }
 
 export function MprConfigTransportGetHandle(
@@ -25898,7 +26175,7 @@ export function MprConfigTransportGetHandle(
   dwTransportId: number /* u32 */,
   phRouterTransport: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportGetHandle(util.toPointer(hMprConfig), dwTransportId, util.toPointer(phRouterTransport));
+  return libMPRAPI_dll.MprConfigTransportGetHandle!(util.toPointer(hMprConfig), dwTransportId, util.toPointer(phRouterTransport));
 }
 
 export function MprConfigTransportSetInfo(
@@ -25910,7 +26187,7 @@ export function MprConfigTransportSetInfo(
   dwClientInterfaceInfoSize: number /* u32 */,
   lpwsDLLPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportSetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterTransport), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
+  return libMPRAPI_dll.MprConfigTransportSetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterTransport), util.toPointer(pGlobalInfo), dwGlobalInfoSize, util.toPointer(pClientInterfaceInfo), dwClientInterfaceInfoSize, util.pwstrToFfi(lpwsDLLPath));
 }
 
 export function MprConfigTransportGetInfo(
@@ -25922,7 +26199,7 @@ export function MprConfigTransportGetInfo(
   lpdwClientInterfaceInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
   lplpwsDLLPath: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportGetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterTransport), util.toPointer(ppGlobalInfo), util.toPointer(lpdwGlobalInfoSize), util.toPointer(ppClientInterfaceInfo), util.toPointer(lpdwClientInterfaceInfoSize), util.toPointer(lplpwsDLLPath));
+  return libMPRAPI_dll.MprConfigTransportGetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterTransport), util.toPointer(ppGlobalInfo), util.toPointer(lpdwGlobalInfoSize), util.toPointer(ppClientInterfaceInfo), util.toPointer(lpdwClientInterfaceInfoSize), util.toPointer(lplpwsDLLPath));
 }
 
 export function MprConfigTransportEnum(
@@ -25934,7 +26211,7 @@ export function MprConfigTransportEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigTransportEnum(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprConfigTransportEnum!(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprConfigInterfaceCreate(
@@ -25943,14 +26220,14 @@ export function MprConfigInterfaceCreate(
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   phRouterInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceCreate(util.toPointer(hMprConfig), dwLevel, util.toPointer(lpbBuffer), util.toPointer(phRouterInterface));
+  return libMPRAPI_dll.MprConfigInterfaceCreate!(util.toPointer(hMprConfig), dwLevel, util.toPointer(lpbBuffer), util.toPointer(phRouterInterface));
 }
 
 export function MprConfigInterfaceDelete(
   hMprConfig: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hRouterInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceDelete(util.toPointer(hMprConfig), util.toPointer(hRouterInterface));
+  return libMPRAPI_dll.MprConfigInterfaceDelete!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface));
 }
 
 export function MprConfigInterfaceGetHandle(
@@ -25958,7 +26235,7 @@ export function MprConfigInterfaceGetHandle(
   lpwsInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phRouterInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceGetHandle(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsInterfaceName), util.toPointer(phRouterInterface));
+  return libMPRAPI_dll.MprConfigInterfaceGetHandle!(util.toPointer(hMprConfig), util.pwstrToFfi(lpwsInterfaceName), util.toPointer(phRouterInterface));
 }
 
 export function MprConfigInterfaceGetInfo(
@@ -25968,7 +26245,7 @@ export function MprConfigInterfaceGetInfo(
   lplpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceGetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lplpBuffer), util.toPointer(lpdwBufferSize));
+  return libMPRAPI_dll.MprConfigInterfaceGetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lplpBuffer), util.toPointer(lpdwBufferSize));
 }
 
 export function MprConfigInterfaceSetInfo(
@@ -25977,7 +26254,7 @@ export function MprConfigInterfaceSetInfo(
   dwLevel: number /* u32 */,
   lpbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceSetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lpbBuffer));
+  return libMPRAPI_dll.MprConfigInterfaceSetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lpbBuffer));
 }
 
 export function MprConfigInterfaceEnum(
@@ -25989,7 +26266,7 @@ export function MprConfigInterfaceEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceEnum(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprConfigInterfaceEnum!(util.toPointer(hMprConfig), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprConfigInterfaceTransportAdd(
@@ -26001,7 +26278,7 @@ export function MprConfigInterfaceTransportAdd(
   dwInterfaceInfoSize: number /* u32 */,
   phRouterIfTransport: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportAdd(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pInterfaceInfo), dwInterfaceInfoSize, util.toPointer(phRouterIfTransport));
+  return libMPRAPI_dll.MprConfigInterfaceTransportAdd!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwTransportId, util.pwstrToFfi(lpwsTransportName), util.toPointer(pInterfaceInfo), dwInterfaceInfoSize, util.toPointer(phRouterIfTransport));
 }
 
 export function MprConfigInterfaceTransportRemove(
@@ -26009,7 +26286,7 @@ export function MprConfigInterfaceTransportRemove(
   hRouterInterface: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hRouterIfTransport: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportRemove(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport));
+  return libMPRAPI_dll.MprConfigInterfaceTransportRemove!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport));
 }
 
 export function MprConfigInterfaceTransportGetHandle(
@@ -26018,7 +26295,7 @@ export function MprConfigInterfaceTransportGetHandle(
   dwTransportId: number /* u32 */,
   phRouterIfTransport: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportGetHandle(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwTransportId, util.toPointer(phRouterIfTransport));
+  return libMPRAPI_dll.MprConfigInterfaceTransportGetHandle!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwTransportId, util.toPointer(phRouterIfTransport));
 }
 
 export function MprConfigInterfaceTransportGetInfo(
@@ -26028,7 +26305,7 @@ export function MprConfigInterfaceTransportGetInfo(
   ppInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwInterfaceInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportGetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport), util.toPointer(ppInterfaceInfo), util.toPointer(lpdwInterfaceInfoSize));
+  return libMPRAPI_dll.MprConfigInterfaceTransportGetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport), util.toPointer(ppInterfaceInfo), util.toPointer(lpdwInterfaceInfoSize));
 }
 
 export function MprConfigInterfaceTransportSetInfo(
@@ -26038,7 +26315,7 @@ export function MprConfigInterfaceTransportSetInfo(
   pInterfaceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwInterfaceInfoSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportSetInfo(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport), util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
+  return libMPRAPI_dll.MprConfigInterfaceTransportSetInfo!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), util.toPointer(hRouterIfTransport), util.toPointer(pInterfaceInfo), dwInterfaceInfoSize);
 }
 
 export function MprConfigInterfaceTransportEnum(
@@ -26051,7 +26328,7 @@ export function MprConfigInterfaceTransportEnum(
   lpdwTotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigInterfaceTransportEnum(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
+  return libMPRAPI_dll.MprConfigInterfaceTransportEnum!(util.toPointer(hMprConfig), util.toPointer(hRouterInterface), dwLevel, util.toPointer(lplpBuffer), dwPrefMaxLen, util.toPointer(lpdwEntriesRead), util.toPointer(lpdwTotalEntries), util.toPointer(lpdwResumeHandle));
 }
 
 export function MprConfigGetFriendlyName(
@@ -26060,7 +26337,7 @@ export function MprConfigGetFriendlyName(
   pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigGetFriendlyName(util.toPointer(hMprConfig), util.pwstrToFfi(pszGuidName), util.pwstrToFfi(pszBuffer), dwBufferSize);
+  return libMPRAPI_dll.MprConfigGetFriendlyName!(util.toPointer(hMprConfig), util.pwstrToFfi(pszGuidName), util.pwstrToFfi(pszBuffer), dwBufferSize);
 }
 
 export function MprConfigGetGuidName(
@@ -26069,7 +26346,7 @@ export function MprConfigGetGuidName(
   pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigGetGuidName(util.toPointer(hMprConfig), util.pwstrToFfi(pszFriendlyName), util.pwstrToFfi(pszBuffer), dwBufferSize);
+  return libMPRAPI_dll.MprConfigGetGuidName!(util.toPointer(hMprConfig), util.pwstrToFfi(pszFriendlyName), util.pwstrToFfi(pszBuffer), dwBufferSize);
 }
 
 export function MprConfigFilterGetInfo(
@@ -26078,7 +26355,7 @@ export function MprConfigFilterGetInfo(
   dwTransportId: number /* u32 */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigFilterGetInfo(util.toPointer(hMprConfig), dwLevel, dwTransportId, util.toPointer(lpBuffer));
+  return libMPRAPI_dll.MprConfigFilterGetInfo!(util.toPointer(hMprConfig), dwLevel, dwTransportId, util.toPointer(lpBuffer));
 }
 
 export function MprConfigFilterSetInfo(
@@ -26087,34 +26364,34 @@ export function MprConfigFilterSetInfo(
   dwTransportId: number /* u32 */,
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprConfigFilterSetInfo(util.toPointer(hMprConfig), dwLevel, dwTransportId, util.toPointer(lpBuffer));
+  return libMPRAPI_dll.MprConfigFilterSetInfo!(util.toPointer(hMprConfig), dwLevel, dwTransportId, util.toPointer(lpBuffer));
 }
 
 export function MprInfoCreate(
   dwVersion: number /* u32 */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoCreate(dwVersion, util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoCreate!(dwVersion, util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoDelete(
   lpHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoDelete(util.toPointer(lpHeader));
+  return libMPRAPI_dll.MprInfoDelete!(util.toPointer(lpHeader));
 }
 
 export function MprInfoRemoveAll(
   lpHeader: Deno.PointerValue | Uint8Array /* ptr */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoRemoveAll(util.toPointer(lpHeader), util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoRemoveAll!(util.toPointer(lpHeader), util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoDuplicate(
   lpHeader: Deno.PointerValue | Uint8Array /* ptr */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoDuplicate(util.toPointer(lpHeader), util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoDuplicate!(util.toPointer(lpHeader), util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoBlockAdd(
@@ -26125,7 +26402,7 @@ export function MprInfoBlockAdd(
   lpItemData: Deno.PointerValue | Uint8Array /* ptr */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoBlockAdd(util.toPointer(lpHeader), dwInfoType, dwItemSize, dwItemCount, util.toPointer(lpItemData), util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoBlockAdd!(util.toPointer(lpHeader), dwInfoType, dwItemSize, dwItemCount, util.toPointer(lpItemData), util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoBlockRemove(
@@ -26133,7 +26410,7 @@ export function MprInfoBlockRemove(
   dwInfoType: number /* u32 */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoBlockRemove(util.toPointer(lpHeader), dwInfoType, util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoBlockRemove!(util.toPointer(lpHeader), dwInfoType, util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoBlockSet(
@@ -26144,7 +26421,7 @@ export function MprInfoBlockSet(
   lpItemData: Deno.PointerValue | Uint8Array /* ptr */,
   lplpNewHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoBlockSet(util.toPointer(lpHeader), dwInfoType, dwItemSize, dwItemCount, util.toPointer(lpItemData), util.toPointer(lplpNewHeader));
+  return libMPRAPI_dll.MprInfoBlockSet!(util.toPointer(lpHeader), dwInfoType, dwItemSize, dwItemCount, util.toPointer(lpItemData), util.toPointer(lplpNewHeader));
 }
 
 export function MprInfoBlockFind(
@@ -26154,13 +26431,13 @@ export function MprInfoBlockFind(
   lpdwItemCount: Deno.PointerValue | Uint8Array /* ptr */,
   lplpItemData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoBlockFind(util.toPointer(lpHeader), dwInfoType, util.toPointer(lpdwItemSize), util.toPointer(lpdwItemCount), util.toPointer(lplpItemData));
+  return libMPRAPI_dll.MprInfoBlockFind!(util.toPointer(lpHeader), dwInfoType, util.toPointer(lpdwItemSize), util.toPointer(lpdwItemCount), util.toPointer(lplpItemData));
 }
 
 export function MprInfoBlockQuerySize(
   lpHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMPRAPI_dll.MprInfoBlockQuerySize(util.toPointer(lpHeader));
+  return libMPRAPI_dll.MprInfoBlockQuerySize!(util.toPointer(lpHeader));
 }
 
 export function MgmRegisterMProtocol(
@@ -26169,13 +26446,13 @@ export function MgmRegisterMProtocol(
   dwComponentId: number /* u32 */,
   phProtocol: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmRegisterMProtocol(util.toPointer(prpiInfo), dwProtocolId, dwComponentId, util.toPointer(phProtocol));
+  return librtm_dll.MgmRegisterMProtocol!(util.toPointer(prpiInfo), dwProtocolId, dwComponentId, util.toPointer(phProtocol));
 }
 
 export function MgmDeRegisterMProtocol(
   hProtocol: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return librtm_dll.MgmDeRegisterMProtocol(util.toPointer(hProtocol));
+  return librtm_dll.MgmDeRegisterMProtocol!(util.toPointer(hProtocol));
 }
 
 export function MgmTakeInterfaceOwnership(
@@ -26183,7 +26460,7 @@ export function MgmTakeInterfaceOwnership(
   dwIfIndex: number /* u32 */,
   dwIfNextHopAddr: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmTakeInterfaceOwnership(util.toPointer(hProtocol), dwIfIndex, dwIfNextHopAddr);
+  return librtm_dll.MgmTakeInterfaceOwnership!(util.toPointer(hProtocol), dwIfIndex, dwIfNextHopAddr);
 }
 
 export function MgmReleaseInterfaceOwnership(
@@ -26191,7 +26468,7 @@ export function MgmReleaseInterfaceOwnership(
   dwIfIndex: number /* u32 */,
   dwIfNextHopAddr: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmReleaseInterfaceOwnership(util.toPointer(hProtocol), dwIfIndex, dwIfNextHopAddr);
+  return librtm_dll.MgmReleaseInterfaceOwnership!(util.toPointer(hProtocol), dwIfIndex, dwIfNextHopAddr);
 }
 
 export function MgmGetProtocolOnInterface(
@@ -26200,7 +26477,7 @@ export function MgmGetProtocolOnInterface(
   pdwIfProtocolId: Deno.PointerValue | Uint8Array /* ptr */,
   pdwIfComponentId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetProtocolOnInterface(dwIfIndex, dwIfNextHopAddr, util.toPointer(pdwIfProtocolId), util.toPointer(pdwIfComponentId));
+  return librtm_dll.MgmGetProtocolOnInterface!(dwIfIndex, dwIfNextHopAddr, util.toPointer(pdwIfProtocolId), util.toPointer(pdwIfComponentId));
 }
 
 export function MgmAddGroupMembershipEntry(
@@ -26213,7 +26490,7 @@ export function MgmAddGroupMembershipEntry(
   dwIfNextHopIPAddr: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmAddGroupMembershipEntry(util.toPointer(hProtocol), dwSourceAddr, dwSourceMask, dwGroupAddr, dwGroupMask, dwIfIndex, dwIfNextHopIPAddr, dwFlags);
+  return librtm_dll.MgmAddGroupMembershipEntry!(util.toPointer(hProtocol), dwSourceAddr, dwSourceMask, dwGroupAddr, dwGroupMask, dwIfIndex, dwIfNextHopIPAddr, dwFlags);
 }
 
 export function MgmDeleteGroupMembershipEntry(
@@ -26226,7 +26503,7 @@ export function MgmDeleteGroupMembershipEntry(
   dwIfNextHopIPAddr: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmDeleteGroupMembershipEntry(util.toPointer(hProtocol), dwSourceAddr, dwSourceMask, dwGroupAddr, dwGroupMask, dwIfIndex, dwIfNextHopIPAddr, dwFlags);
+  return librtm_dll.MgmDeleteGroupMembershipEntry!(util.toPointer(hProtocol), dwSourceAddr, dwSourceMask, dwGroupAddr, dwGroupMask, dwIfIndex, dwIfNextHopIPAddr, dwFlags);
 }
 
 export function MgmGetMfe(
@@ -26234,7 +26511,7 @@ export function MgmGetMfe(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetMfe(util.toPointer(pimm), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer));
+  return librtm_dll.MgmGetMfe!(util.toPointer(pimm), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer));
 }
 
 export function MgmGetFirstMfe(
@@ -26242,7 +26519,7 @@ export function MgmGetFirstMfe(
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetFirstMfe(util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
+  return librtm_dll.MgmGetFirstMfe!(util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
 }
 
 export function MgmGetNextMfe(
@@ -26251,7 +26528,7 @@ export function MgmGetNextMfe(
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetNextMfe(util.toPointer(pimmStart), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
+  return librtm_dll.MgmGetNextMfe!(util.toPointer(pimmStart), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
 }
 
 export function MgmGetMfeStats(
@@ -26260,7 +26537,7 @@ export function MgmGetMfeStats(
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetMfeStats(util.toPointer(pimm), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), dwFlags);
+  return librtm_dll.MgmGetMfeStats!(util.toPointer(pimm), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), dwFlags);
 }
 
 export function MgmGetFirstMfeStats(
@@ -26269,7 +26546,7 @@ export function MgmGetFirstMfeStats(
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetFirstMfeStats(util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries), dwFlags);
+  return librtm_dll.MgmGetFirstMfeStats!(util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries), dwFlags);
 }
 
 export function MgmGetNextMfeStats(
@@ -26279,7 +26556,7 @@ export function MgmGetNextMfeStats(
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGetNextMfeStats(util.toPointer(pimmStart), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries), dwFlags);
+  return librtm_dll.MgmGetNextMfeStats!(util.toPointer(pimmStart), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries), dwFlags);
 }
 
 export function MgmGroupEnumerationStart(
@@ -26287,7 +26564,7 @@ export function MgmGroupEnumerationStart(
   metEnumType: MGM_ENUM_TYPES /* Windows.Win32.NetworkManagement.Rras.MGM_ENUM_TYPES */,
   phEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGroupEnumerationStart(util.toPointer(hProtocol), metEnumType, util.toPointer(phEnumHandle));
+  return librtm_dll.MgmGroupEnumerationStart!(util.toPointer(hProtocol), metEnumType, util.toPointer(phEnumHandle));
 }
 
 export function MgmGroupEnumerationGetNext(
@@ -26296,13 +26573,13 @@ export function MgmGroupEnumerationGetNext(
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwNumEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGroupEnumerationGetNext(util.toPointer(hEnum), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
+  return librtm_dll.MgmGroupEnumerationGetNext!(util.toPointer(hEnum), util.toPointer(pdwBufferSize), util.toPointer(pbBuffer), util.toPointer(pdwNumEntries));
 }
 
 export function MgmGroupEnumerationEnd(
   hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return librtm_dll.MgmGroupEnumerationEnd(util.toPointer(hEnum));
+  return librtm_dll.MgmGroupEnumerationEnd!(util.toPointer(hEnum));
 }
 
 export function RtmConvertNetAddressToIpv6AddressAndLength(
@@ -26311,7 +26588,7 @@ export function RtmConvertNetAddressToIpv6AddressAndLength(
   pLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwAddressSize: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.RtmConvertNetAddressToIpv6AddressAndLength(util.toPointer(pNetAddress), util.toPointer(pAddress), util.toPointer(pLength), dwAddressSize);
+  return librtm_dll.RtmConvertNetAddressToIpv6AddressAndLength!(util.toPointer(pNetAddress), util.toPointer(pAddress), util.toPointer(pLength), dwAddressSize);
 }
 
 export function RtmConvertIpv6AddressAndLengthToNetAddress(
@@ -26320,7 +26597,7 @@ export function RtmConvertIpv6AddressAndLengthToNetAddress(
   dwLength: number /* u32 */,
   dwAddressSize: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.RtmConvertIpv6AddressAndLengthToNetAddress(util.toPointer(pNetAddress), util.toPointer(Address), dwLength, dwAddressSize);
+  return librtm_dll.RtmConvertIpv6AddressAndLengthToNetAddress!(util.toPointer(pNetAddress), util.toPointer(Address), dwLength, dwAddressSize);
 }
 
 export function RtmRegisterEntity(
@@ -26331,13 +26608,13 @@ export function RtmRegisterEntity(
   RtmRegProfile: Deno.PointerValue | Uint8Array /* ptr */,
   RtmRegHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmRegisterEntity(util.toPointer(RtmEntityInfo), util.toPointer(ExportMethods), util.toPointer(EventCallback), util.boolToFfi(ReserveOpaquePointer), util.toPointer(RtmRegProfile), util.toPointer(RtmRegHandle));
+  return librtm_dll.RtmRegisterEntity!(util.toPointer(RtmEntityInfo), util.toPointer(ExportMethods), util.toPointer(EventCallback), util.boolToFfi(ReserveOpaquePointer), util.toPointer(RtmRegProfile), util.toPointer(RtmRegHandle));
 }
 
 export function RtmDeregisterEntity(
   RtmRegHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeregisterEntity(RtmRegHandle);
+  return librtm_dll.RtmDeregisterEntity!(RtmRegHandle);
 }
 
 export function RtmGetRegisteredEntities(
@@ -26346,7 +26623,7 @@ export function RtmGetRegisteredEntities(
   EntityHandles: Deno.PointerValue | Uint8Array /* ptr */,
   EntityInfos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetRegisteredEntities(RtmRegHandle, util.toPointer(NumEntities), util.toPointer(EntityHandles), util.toPointer(EntityInfos));
+  return librtm_dll.RtmGetRegisteredEntities!(RtmRegHandle, util.toPointer(NumEntities), util.toPointer(EntityHandles), util.toPointer(EntityInfos));
 }
 
 export function RtmReleaseEntities(
@@ -26354,7 +26631,7 @@ export function RtmReleaseEntities(
   NumEntities: number /* u32 */,
   EntityHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseEntities(RtmRegHandle, NumEntities, util.toPointer(EntityHandles));
+  return librtm_dll.RtmReleaseEntities!(RtmRegHandle, NumEntities, util.toPointer(EntityHandles));
 }
 
 export function RtmLockDestination(
@@ -26363,7 +26640,7 @@ export function RtmLockDestination(
   Exclusive: boolean /* Windows.Win32.Foundation.BOOL */,
   LockDest: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return librtm_dll.RtmLockDestination(RtmRegHandle, DestHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockDest));
+  return librtm_dll.RtmLockDestination!(RtmRegHandle, DestHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockDest));
 }
 
 export function RtmGetOpaqueInformationPointer(
@@ -26371,7 +26648,7 @@ export function RtmGetOpaqueInformationPointer(
   DestHandle: bigint | number /* isize */,
   OpaqueInfoPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetOpaqueInformationPointer(RtmRegHandle, DestHandle, util.toPointer(OpaqueInfoPointer));
+  return librtm_dll.RtmGetOpaqueInformationPointer!(RtmRegHandle, DestHandle, util.toPointer(OpaqueInfoPointer));
 }
 
 export function RtmGetEntityMethods(
@@ -26380,7 +26657,7 @@ export function RtmGetEntityMethods(
   NumMethods: Deno.PointerValue | Uint8Array /* ptr */,
   ExptMethods: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetEntityMethods(RtmRegHandle, EntityHandle, util.toPointer(NumMethods), util.toPointer(ExptMethods));
+  return librtm_dll.RtmGetEntityMethods!(RtmRegHandle, EntityHandle, util.toPointer(NumMethods), util.toPointer(ExptMethods));
 }
 
 export function RtmInvokeMethod(
@@ -26390,7 +26667,7 @@ export function RtmInvokeMethod(
   OutputSize: Deno.PointerValue | Uint8Array /* ptr */,
   Output: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmInvokeMethod(RtmRegHandle, EntityHandle, util.toPointer(Input), util.toPointer(OutputSize), util.toPointer(Output));
+  return librtm_dll.RtmInvokeMethod!(RtmRegHandle, EntityHandle, util.toPointer(Input), util.toPointer(OutputSize), util.toPointer(Output));
 }
 
 export function RtmBlockMethods(
@@ -26399,7 +26676,7 @@ export function RtmBlockMethods(
   TargetType: number /* u8 */,
   BlockingFlag: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.RtmBlockMethods(RtmRegHandle, util.toPointer(TargetHandle), TargetType, BlockingFlag);
+  return librtm_dll.RtmBlockMethods!(RtmRegHandle, util.toPointer(TargetHandle), TargetType, BlockingFlag);
 }
 
 export function RtmGetEntityInfo(
@@ -26407,7 +26684,7 @@ export function RtmGetEntityInfo(
   EntityHandle: bigint | number /* isize */,
   EntityInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetEntityInfo(RtmRegHandle, EntityHandle, util.toPointer(EntityInfo));
+  return librtm_dll.RtmGetEntityInfo!(RtmRegHandle, EntityHandle, util.toPointer(EntityInfo));
 }
 
 export function RtmGetDestInfo(
@@ -26417,7 +26694,7 @@ export function RtmGetDestInfo(
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetDestInfo(RtmRegHandle, DestHandle, ProtocolId, TargetViews, util.toPointer(DestInfo));
+  return librtm_dll.RtmGetDestInfo!(RtmRegHandle, DestHandle, ProtocolId, TargetViews, util.toPointer(DestInfo));
 }
 
 export function RtmGetRouteInfo(
@@ -26426,7 +26703,7 @@ export function RtmGetRouteInfo(
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
   DestAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetRouteInfo(RtmRegHandle, RouteHandle, util.toPointer(RouteInfo), util.toPointer(DestAddress));
+  return librtm_dll.RtmGetRouteInfo!(RtmRegHandle, RouteHandle, util.toPointer(RouteInfo), util.toPointer(DestAddress));
 }
 
 export function RtmGetNextHopInfo(
@@ -26434,35 +26711,35 @@ export function RtmGetNextHopInfo(
   NextHopHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetNextHopInfo(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
+  return librtm_dll.RtmGetNextHopInfo!(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmReleaseEntityInfo(
   RtmRegHandle: bigint | number /* isize */,
   EntityInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseEntityInfo(RtmRegHandle, util.toPointer(EntityInfo));
+  return librtm_dll.RtmReleaseEntityInfo!(RtmRegHandle, util.toPointer(EntityInfo));
 }
 
 export function RtmReleaseDestInfo(
   RtmRegHandle: bigint | number /* isize */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseDestInfo(RtmRegHandle, util.toPointer(DestInfo));
+  return librtm_dll.RtmReleaseDestInfo!(RtmRegHandle, util.toPointer(DestInfo));
 }
 
 export function RtmReleaseRouteInfo(
   RtmRegHandle: bigint | number /* isize */,
   RouteInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseRouteInfo(RtmRegHandle, util.toPointer(RouteInfo));
+  return librtm_dll.RtmReleaseRouteInfo!(RtmRegHandle, util.toPointer(RouteInfo));
 }
 
 export function RtmReleaseNextHopInfo(
   RtmRegHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseNextHopInfo(RtmRegHandle, util.toPointer(NextHopInfo));
+  return librtm_dll.RtmReleaseNextHopInfo!(RtmRegHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmAddRouteToDest(
@@ -26476,7 +26753,7 @@ export function RtmAddRouteToDest(
   NotifyHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmAddRouteToDest(RtmRegHandle, util.toPointer(RouteHandle), util.toPointer(DestAddress), util.toPointer(RouteInfo), TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
+  return librtm_dll.RtmAddRouteToDest!(RtmRegHandle, util.toPointer(RouteHandle), util.toPointer(DestAddress), util.toPointer(RouteInfo), TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmDeleteRouteToDest(
@@ -26484,7 +26761,7 @@ export function RtmDeleteRouteToDest(
   RouteHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeleteRouteToDest(RtmRegHandle, RouteHandle, util.toPointer(ChangeFlags));
+  return librtm_dll.RtmDeleteRouteToDest!(RtmRegHandle, RouteHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmHoldDestination(
@@ -26493,7 +26770,7 @@ export function RtmHoldDestination(
   TargetViews: number /* u32 */,
   HoldTime: number /* u32 */,
 ): number /* u32 */ {
-  return librtm_dll.RtmHoldDestination(RtmRegHandle, DestHandle, TargetViews, HoldTime);
+  return librtm_dll.RtmHoldDestination!(RtmRegHandle, DestHandle, TargetViews, HoldTime);
 }
 
 export function RtmGetRoutePointer(
@@ -26501,7 +26778,7 @@ export function RtmGetRoutePointer(
   RouteHandle: bigint | number /* isize */,
   RoutePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetRoutePointer(RtmRegHandle, RouteHandle, util.toPointer(RoutePointer));
+  return librtm_dll.RtmGetRoutePointer!(RtmRegHandle, RouteHandle, util.toPointer(RoutePointer));
 }
 
 export function RtmLockRoute(
@@ -26511,7 +26788,7 @@ export function RtmLockRoute(
   LockRoute: boolean /* Windows.Win32.Foundation.BOOL */,
   RoutePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmLockRoute(RtmRegHandle, RouteHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockRoute), util.toPointer(RoutePointer));
+  return librtm_dll.RtmLockRoute!(RtmRegHandle, RouteHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockRoute), util.toPointer(RoutePointer));
 }
 
 export function RtmUpdateAndUnlockRoute(
@@ -26523,7 +26800,7 @@ export function RtmUpdateAndUnlockRoute(
   NotifyHandle: bigint | number /* isize */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmUpdateAndUnlockRoute(RtmRegHandle, RouteHandle, TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
+  return librtm_dll.RtmUpdateAndUnlockRoute!(RtmRegHandle, RouteHandle, TimeToLive, RouteListHandle, NotifyType, NotifyHandle, util.toPointer(ChangeFlags));
 }
 
 export function RtmGetExactMatchDestination(
@@ -26533,7 +26810,7 @@ export function RtmGetExactMatchDestination(
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetExactMatchDestination(RtmRegHandle, util.toPointer(DestAddress), ProtocolId, TargetViews, util.toPointer(DestInfo));
+  return librtm_dll.RtmGetExactMatchDestination!(RtmRegHandle, util.toPointer(DestAddress), ProtocolId, TargetViews, util.toPointer(DestInfo));
 }
 
 export function RtmGetMostSpecificDestination(
@@ -26543,7 +26820,7 @@ export function RtmGetMostSpecificDestination(
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetMostSpecificDestination(RtmRegHandle, util.toPointer(DestAddress), ProtocolId, TargetViews, util.toPointer(DestInfo));
+  return librtm_dll.RtmGetMostSpecificDestination!(RtmRegHandle, util.toPointer(DestAddress), ProtocolId, TargetViews, util.toPointer(DestInfo));
 }
 
 export function RtmGetLessSpecificDestination(
@@ -26553,7 +26830,7 @@ export function RtmGetLessSpecificDestination(
   TargetViews: number /* u32 */,
   DestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetLessSpecificDestination(RtmRegHandle, DestHandle, ProtocolId, TargetViews, util.toPointer(DestInfo));
+  return librtm_dll.RtmGetLessSpecificDestination!(RtmRegHandle, DestHandle, ProtocolId, TargetViews, util.toPointer(DestInfo));
 }
 
 export function RtmGetExactMatchRoute(
@@ -26565,7 +26842,7 @@ export function RtmGetExactMatchRoute(
   TargetViews: number /* u32 */,
   RouteHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetExactMatchRoute(RtmRegHandle, util.toPointer(DestAddress), MatchingFlags, util.toPointer(RouteInfo), InterfaceIndex, TargetViews, util.toPointer(RouteHandle));
+  return librtm_dll.RtmGetExactMatchRoute!(RtmRegHandle, util.toPointer(DestAddress), MatchingFlags, util.toPointer(RouteInfo), InterfaceIndex, TargetViews, util.toPointer(RouteHandle));
 }
 
 export function RtmIsBestRoute(
@@ -26573,7 +26850,7 @@ export function RtmIsBestRoute(
   RouteHandle: bigint | number /* isize */,
   BestInViews: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmIsBestRoute(RtmRegHandle, RouteHandle, util.toPointer(BestInViews));
+  return librtm_dll.RtmIsBestRoute!(RtmRegHandle, RouteHandle, util.toPointer(BestInViews));
 }
 
 export function RtmAddNextHop(
@@ -26582,7 +26859,7 @@ export function RtmAddNextHop(
   NextHopHandle: Deno.PointerValue | Uint8Array /* ptr */,
   ChangeFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmAddNextHop(RtmRegHandle, util.toPointer(NextHopInfo), util.toPointer(NextHopHandle), util.toPointer(ChangeFlags));
+  return librtm_dll.RtmAddNextHop!(RtmRegHandle, util.toPointer(NextHopInfo), util.toPointer(NextHopHandle), util.toPointer(ChangeFlags));
 }
 
 export function RtmFindNextHop(
@@ -26591,7 +26868,7 @@ export function RtmFindNextHop(
   NextHopHandle: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmFindNextHop(RtmRegHandle, util.toPointer(NextHopInfo), util.toPointer(NextHopHandle), util.toPointer(NextHopPointer));
+  return librtm_dll.RtmFindNextHop!(RtmRegHandle, util.toPointer(NextHopInfo), util.toPointer(NextHopHandle), util.toPointer(NextHopPointer));
 }
 
 export function RtmDeleteNextHop(
@@ -26599,7 +26876,7 @@ export function RtmDeleteNextHop(
   NextHopHandle: bigint | number /* isize */,
   NextHopInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeleteNextHop(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
+  return librtm_dll.RtmDeleteNextHop!(RtmRegHandle, NextHopHandle, util.toPointer(NextHopInfo));
 }
 
 export function RtmGetNextHopPointer(
@@ -26607,7 +26884,7 @@ export function RtmGetNextHopPointer(
   NextHopHandle: bigint | number /* isize */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetNextHopPointer(RtmRegHandle, NextHopHandle, util.toPointer(NextHopPointer));
+  return librtm_dll.RtmGetNextHopPointer!(RtmRegHandle, NextHopHandle, util.toPointer(NextHopPointer));
 }
 
 export function RtmLockNextHop(
@@ -26617,7 +26894,7 @@ export function RtmLockNextHop(
   LockNextHop: boolean /* Windows.Win32.Foundation.BOOL */,
   NextHopPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmLockNextHop(RtmRegHandle, NextHopHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockNextHop), util.toPointer(NextHopPointer));
+  return librtm_dll.RtmLockNextHop!(RtmRegHandle, NextHopHandle, util.boolToFfi(Exclusive), util.boolToFfi(LockNextHop), util.toPointer(NextHopPointer));
 }
 
 export function RtmCreateDestEnum(
@@ -26628,7 +26905,7 @@ export function RtmCreateDestEnum(
   ProtocolId: number /* u32 */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmCreateDestEnum(RtmRegHandle, TargetViews, EnumFlags, util.toPointer(NetAddress), ProtocolId, util.toPointer(RtmEnumHandle));
+  return librtm_dll.RtmCreateDestEnum!(RtmRegHandle, TargetViews, EnumFlags, util.toPointer(NetAddress), ProtocolId, util.toPointer(RtmEnumHandle));
 }
 
 export function RtmGetEnumDests(
@@ -26637,7 +26914,7 @@ export function RtmGetEnumDests(
   NumDests: Deno.PointerValue | Uint8Array /* ptr */,
   DestInfos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetEnumDests(RtmRegHandle, EnumHandle, util.toPointer(NumDests), util.toPointer(DestInfos));
+  return librtm_dll.RtmGetEnumDests!(RtmRegHandle, EnumHandle, util.toPointer(NumDests), util.toPointer(DestInfos));
 }
 
 export function RtmReleaseDests(
@@ -26645,7 +26922,7 @@ export function RtmReleaseDests(
   NumDests: number /* u32 */,
   DestInfos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseDests(RtmRegHandle, NumDests, util.toPointer(DestInfos));
+  return librtm_dll.RtmReleaseDests!(RtmRegHandle, NumDests, util.toPointer(DestInfos));
 }
 
 export function RtmCreateRouteEnum(
@@ -26659,7 +26936,7 @@ export function RtmCreateRouteEnum(
   CriteriaInterface: number /* u32 */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmCreateRouteEnum(RtmRegHandle, DestHandle, TargetViews, EnumFlags, util.toPointer(StartDest), MatchingFlags, util.toPointer(CriteriaRoute), CriteriaInterface, util.toPointer(RtmEnumHandle));
+  return librtm_dll.RtmCreateRouteEnum!(RtmRegHandle, DestHandle, TargetViews, EnumFlags, util.toPointer(StartDest), MatchingFlags, util.toPointer(CriteriaRoute), CriteriaInterface, util.toPointer(RtmEnumHandle));
 }
 
 export function RtmGetEnumRoutes(
@@ -26668,7 +26945,7 @@ export function RtmGetEnumRoutes(
   NumRoutes: Deno.PointerValue | Uint8Array /* ptr */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetEnumRoutes(RtmRegHandle, EnumHandle, util.toPointer(NumRoutes), util.toPointer(RouteHandles));
+  return librtm_dll.RtmGetEnumRoutes!(RtmRegHandle, EnumHandle, util.toPointer(NumRoutes), util.toPointer(RouteHandles));
 }
 
 export function RtmReleaseRoutes(
@@ -26676,7 +26953,7 @@ export function RtmReleaseRoutes(
   NumRoutes: number /* u32 */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseRoutes(RtmRegHandle, NumRoutes, util.toPointer(RouteHandles));
+  return librtm_dll.RtmReleaseRoutes!(RtmRegHandle, NumRoutes, util.toPointer(RouteHandles));
 }
 
 export function RtmCreateNextHopEnum(
@@ -26685,7 +26962,7 @@ export function RtmCreateNextHopEnum(
   NetAddress: Deno.PointerValue | Uint8Array /* ptr */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmCreateNextHopEnum(RtmRegHandle, EnumFlags, util.toPointer(NetAddress), util.toPointer(RtmEnumHandle));
+  return librtm_dll.RtmCreateNextHopEnum!(RtmRegHandle, EnumFlags, util.toPointer(NetAddress), util.toPointer(RtmEnumHandle));
 }
 
 export function RtmGetEnumNextHops(
@@ -26694,7 +26971,7 @@ export function RtmGetEnumNextHops(
   NumNextHops: Deno.PointerValue | Uint8Array /* ptr */,
   NextHopHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetEnumNextHops(RtmRegHandle, EnumHandle, util.toPointer(NumNextHops), util.toPointer(NextHopHandles));
+  return librtm_dll.RtmGetEnumNextHops!(RtmRegHandle, EnumHandle, util.toPointer(NumNextHops), util.toPointer(NextHopHandles));
 }
 
 export function RtmReleaseNextHops(
@@ -26702,14 +26979,14 @@ export function RtmReleaseNextHops(
   NumNextHops: number /* u32 */,
   NextHopHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseNextHops(RtmRegHandle, NumNextHops, util.toPointer(NextHopHandles));
+  return librtm_dll.RtmReleaseNextHops!(RtmRegHandle, NumNextHops, util.toPointer(NextHopHandles));
 }
 
 export function RtmDeleteEnumHandle(
   RtmRegHandle: bigint | number /* isize */,
   EnumHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeleteEnumHandle(RtmRegHandle, EnumHandle);
+  return librtm_dll.RtmDeleteEnumHandle!(RtmRegHandle, EnumHandle);
 }
 
 export function RtmRegisterForChangeNotification(
@@ -26719,7 +26996,7 @@ export function RtmRegisterForChangeNotification(
   NotifyContext: Deno.PointerValue | Uint8Array /* ptr */,
   NotifyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmRegisterForChangeNotification(RtmRegHandle, TargetViews, NotifyFlags, util.toPointer(NotifyContext), util.toPointer(NotifyHandle));
+  return librtm_dll.RtmRegisterForChangeNotification!(RtmRegHandle, TargetViews, NotifyFlags, util.toPointer(NotifyContext), util.toPointer(NotifyHandle));
 }
 
 export function RtmGetChangedDests(
@@ -26728,7 +27005,7 @@ export function RtmGetChangedDests(
   NumDests: Deno.PointerValue | Uint8Array /* ptr */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetChangedDests(RtmRegHandle, NotifyHandle, util.toPointer(NumDests), util.toPointer(ChangedDests));
+  return librtm_dll.RtmGetChangedDests!(RtmRegHandle, NotifyHandle, util.toPointer(NumDests), util.toPointer(ChangedDests));
 }
 
 export function RtmReleaseChangedDests(
@@ -26737,7 +27014,7 @@ export function RtmReleaseChangedDests(
   NumDests: number /* u32 */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReleaseChangedDests(RtmRegHandle, NotifyHandle, NumDests, util.toPointer(ChangedDests));
+  return librtm_dll.RtmReleaseChangedDests!(RtmRegHandle, NotifyHandle, NumDests, util.toPointer(ChangedDests));
 }
 
 export function RtmIgnoreChangedDests(
@@ -26746,7 +27023,7 @@ export function RtmIgnoreChangedDests(
   NumDests: number /* u32 */,
   ChangedDests: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmIgnoreChangedDests(RtmRegHandle, NotifyHandle, NumDests, util.toPointer(ChangedDests));
+  return librtm_dll.RtmIgnoreChangedDests!(RtmRegHandle, NotifyHandle, NumDests, util.toPointer(ChangedDests));
 }
 
 export function RtmGetChangeStatus(
@@ -26755,7 +27032,7 @@ export function RtmGetChangeStatus(
   DestHandle: bigint | number /* isize */,
   ChangeStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetChangeStatus(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(ChangeStatus));
+  return librtm_dll.RtmGetChangeStatus!(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(ChangeStatus));
 }
 
 export function RtmMarkDestForChangeNotification(
@@ -26764,7 +27041,7 @@ export function RtmMarkDestForChangeNotification(
   DestHandle: bigint | number /* isize */,
   MarkDest: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return librtm_dll.RtmMarkDestForChangeNotification(RtmRegHandle, NotifyHandle, DestHandle, util.boolToFfi(MarkDest));
+  return librtm_dll.RtmMarkDestForChangeNotification!(RtmRegHandle, NotifyHandle, DestHandle, util.boolToFfi(MarkDest));
 }
 
 export function RtmIsMarkedForChangeNotification(
@@ -26773,21 +27050,21 @@ export function RtmIsMarkedForChangeNotification(
   DestHandle: bigint | number /* isize */,
   DestMarked: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmIsMarkedForChangeNotification(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(DestMarked));
+  return librtm_dll.RtmIsMarkedForChangeNotification!(RtmRegHandle, NotifyHandle, DestHandle, util.toPointer(DestMarked));
 }
 
 export function RtmDeregisterFromChangeNotification(
   RtmRegHandle: bigint | number /* isize */,
   NotifyHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeregisterFromChangeNotification(RtmRegHandle, NotifyHandle);
+  return librtm_dll.RtmDeregisterFromChangeNotification!(RtmRegHandle, NotifyHandle);
 }
 
 export function RtmCreateRouteList(
   RtmRegHandle: bigint | number /* isize */,
   RouteListHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmCreateRouteList(RtmRegHandle, util.toPointer(RouteListHandle));
+  return librtm_dll.RtmCreateRouteList!(RtmRegHandle, util.toPointer(RouteListHandle));
 }
 
 export function RtmInsertInRouteList(
@@ -26796,7 +27073,7 @@ export function RtmInsertInRouteList(
   NumRoutes: number /* u32 */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmInsertInRouteList(RtmRegHandle, RouteListHandle, NumRoutes, util.toPointer(RouteHandles));
+  return librtm_dll.RtmInsertInRouteList!(RtmRegHandle, RouteListHandle, NumRoutes, util.toPointer(RouteHandles));
 }
 
 export function RtmCreateRouteListEnum(
@@ -26804,7 +27081,7 @@ export function RtmCreateRouteListEnum(
   RouteListHandle: bigint | number /* isize */,
   RtmEnumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmCreateRouteListEnum(RtmRegHandle, RouteListHandle, util.toPointer(RtmEnumHandle));
+  return librtm_dll.RtmCreateRouteListEnum!(RtmRegHandle, RouteListHandle, util.toPointer(RtmEnumHandle));
 }
 
 export function RtmGetListEnumRoutes(
@@ -26813,14 +27090,14 @@ export function RtmGetListEnumRoutes(
   NumRoutes: Deno.PointerValue | Uint8Array /* ptr */,
   RouteHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmGetListEnumRoutes(RtmRegHandle, EnumHandle, util.toPointer(NumRoutes), util.toPointer(RouteHandles));
+  return librtm_dll.RtmGetListEnumRoutes!(RtmRegHandle, EnumHandle, util.toPointer(NumRoutes), util.toPointer(RouteHandles));
 }
 
 export function RtmDeleteRouteList(
   RtmRegHandle: bigint | number /* isize */,
   RouteListHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return librtm_dll.RtmDeleteRouteList(RtmRegHandle, RouteListHandle);
+  return librtm_dll.RtmDeleteRouteList!(RtmRegHandle, RouteListHandle);
 }
 
 export function RtmReferenceHandles(
@@ -26828,6 +27105,6 @@ export function RtmReferenceHandles(
   NumHandles: number /* u32 */,
   RtmHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtm_dll.RtmReferenceHandles(RtmRegHandle, NumHandles, util.toPointer(RtmHandles));
+  return librtm_dll.RtmReferenceHandles!(RtmRegHandle, NumHandles, util.toPointer(RtmHandles));
 }
 

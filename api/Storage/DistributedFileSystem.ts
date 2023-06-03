@@ -2944,90 +2944,112 @@ try {
     NetDfsAdd: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsAddStdRoot: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsRemoveStdRoot: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsAddFtRoot: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsRemoveFtRoot: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsRemoveFtRootForced: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsRemove: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetDfsEnum: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetInfo: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsSetInfo: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetClientInfo: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsSetClientInfo: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsMove: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsAddRootTarget: {
       parameters: ["buffer", "buffer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsRemoveRootTarget: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetSecurity: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsSetSecurity: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetStdContainerSecurity: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsSetStdContainerSecurity: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetFtContainerSecurity: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsSetFtContainerSecurity: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetDfsGetSupportedNamespaceVersion: {
       parameters: ["i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3041,7 +3063,7 @@ export function NetDfsAdd(
   Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsAdd(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), util.pwstrToFfi(Comment), Flags);
+  return libNETAPI32_dll.NetDfsAdd!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsAddStdRoot(
@@ -3050,7 +3072,7 @@ export function NetDfsAddStdRoot(
   Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsAddStdRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(Comment), Flags);
+  return libNETAPI32_dll.NetDfsAddStdRoot!(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsRemoveStdRoot(
@@ -3058,7 +3080,7 @@ export function NetDfsRemoveStdRoot(
   RootShare: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsRemoveStdRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), Flags);
+  return libNETAPI32_dll.NetDfsRemoveStdRoot!(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), Flags);
 }
 
 export function NetDfsAddFtRoot(
@@ -3068,7 +3090,7 @@ export function NetDfsAddFtRoot(
   Comment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsAddFtRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), util.pwstrToFfi(Comment), Flags);
+  return libNETAPI32_dll.NetDfsAddFtRoot!(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), util.pwstrToFfi(Comment), Flags);
 }
 
 export function NetDfsRemoveFtRoot(
@@ -3077,7 +3099,7 @@ export function NetDfsRemoveFtRoot(
   FtDfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsRemoveFtRoot(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
+  return libNETAPI32_dll.NetDfsRemoveFtRoot!(util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
 }
 
 export function NetDfsRemoveFtRootForced(
@@ -3087,7 +3109,7 @@ export function NetDfsRemoveFtRootForced(
   FtDfsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsRemoveFtRootForced(util.pwstrToFfi(DomainName), util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
+  return libNETAPI32_dll.NetDfsRemoveFtRootForced!(util.pwstrToFfi(DomainName), util.pwstrToFfi(ServerName), util.pwstrToFfi(RootShare), util.pwstrToFfi(FtDfsName), Flags);
 }
 
 export function NetDfsRemove(
@@ -3095,7 +3117,7 @@ export function NetDfsRemove(
   ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ShareName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsRemove(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName));
+  return libNETAPI32_dll.NetDfsRemove!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName));
 }
 
 export function NetDfsEnum(
@@ -3106,7 +3128,7 @@ export function NetDfsEnum(
   EntriesRead: Deno.PointerValue | Uint8Array /* ptr */,
   ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsEnum(util.pwstrToFfi(DfsName), Level, PrefMaxLen, util.toPointer(Buffer), util.toPointer(EntriesRead), util.toPointer(ResumeHandle));
+  return libNETAPI32_dll.NetDfsEnum!(util.pwstrToFfi(DfsName), Level, PrefMaxLen, util.toPointer(Buffer), util.toPointer(EntriesRead), util.toPointer(ResumeHandle));
 }
 
 export function NetDfsGetInfo(
@@ -3116,7 +3138,7 @@ export function NetDfsGetInfo(
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetInfo(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetDfsGetInfo!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
 }
 
 export function NetDfsSetInfo(
@@ -3126,7 +3148,7 @@ export function NetDfsSetInfo(
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsSetInfo(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetDfsSetInfo!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
 }
 
 export function NetDfsGetClientInfo(
@@ -3136,7 +3158,7 @@ export function NetDfsGetClientInfo(
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetClientInfo(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetDfsGetClientInfo!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
 }
 
 export function NetDfsSetClientInfo(
@@ -3146,7 +3168,7 @@ export function NetDfsSetClientInfo(
   Level: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsSetClientInfo(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetDfsSetClientInfo!(util.pwstrToFfi(DfsEntryPath), util.pwstrToFfi(ServerName), util.pwstrToFfi(ShareName), Level, util.toPointer(Buffer));
 }
 
 export function NetDfsMove(
@@ -3154,7 +3176,7 @@ export function NetDfsMove(
   NewDfsEntryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsMove(util.pwstrToFfi(OldDfsEntryPath), util.pwstrToFfi(NewDfsEntryPath), Flags);
+  return libNETAPI32_dll.NetDfsMove!(util.pwstrToFfi(OldDfsEntryPath), util.pwstrToFfi(NewDfsEntryPath), Flags);
 }
 
 export function NetDfsAddRootTarget(
@@ -3164,7 +3186,7 @@ export function NetDfsAddRootTarget(
   pComment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsAddRootTarget(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), MajorVersion, util.pwstrToFfi(pComment), Flags);
+  return libNETAPI32_dll.NetDfsAddRootTarget!(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), MajorVersion, util.pwstrToFfi(pComment), Flags);
 }
 
 export function NetDfsRemoveRootTarget(
@@ -3172,7 +3194,7 @@ export function NetDfsRemoveRootTarget(
   pTargetPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsRemoveRootTarget(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), Flags);
+  return libNETAPI32_dll.NetDfsRemoveRootTarget!(util.pwstrToFfi(pDfsPath), util.pwstrToFfi(pTargetPath), Flags);
 }
 
 export function NetDfsGetSecurity(
@@ -3181,7 +3203,7 @@ export function NetDfsGetSecurity(
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetSecurity(util.pwstrToFfi(DfsEntryPath), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsGetSecurity!(util.pwstrToFfi(DfsEntryPath), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function NetDfsSetSecurity(
@@ -3189,7 +3211,7 @@ export function NetDfsSetSecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsSetSecurity(util.pwstrToFfi(DfsEntryPath), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsSetSecurity!(util.pwstrToFfi(DfsEntryPath), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function NetDfsGetStdContainerSecurity(
@@ -3198,7 +3220,7 @@ export function NetDfsGetStdContainerSecurity(
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetStdContainerSecurity(util.pwstrToFfi(MachineName), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsGetStdContainerSecurity!(util.pwstrToFfi(MachineName), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function NetDfsSetStdContainerSecurity(
@@ -3206,7 +3228,7 @@ export function NetDfsSetStdContainerSecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsSetStdContainerSecurity(util.pwstrToFfi(MachineName), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsSetStdContainerSecurity!(util.pwstrToFfi(MachineName), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function NetDfsGetFtContainerSecurity(
@@ -3215,7 +3237,7 @@ export function NetDfsGetFtContainerSecurity(
   ppSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetFtContainerSecurity(util.pwstrToFfi(DomainName), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsGetFtContainerSecurity!(util.pwstrToFfi(DomainName), SecurityInformation, util.toPointer(ppSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function NetDfsSetFtContainerSecurity(
@@ -3223,7 +3245,7 @@ export function NetDfsSetFtContainerSecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsSetFtContainerSecurity(util.pwstrToFfi(DomainName), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libNETAPI32_dll.NetDfsSetFtContainerSecurity!(util.pwstrToFfi(DomainName), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function NetDfsGetSupportedNamespaceVersion(
@@ -3231,6 +3253,6 @@ export function NetDfsGetSupportedNamespaceVersion(
   pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppVersionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetDfsGetSupportedNamespaceVersion(Origin, util.pwstrToFfi(pName), util.toPointer(ppVersionInfo));
+  return libNETAPI32_dll.NetDfsGetSupportedNamespaceVersion!(Origin, util.pwstrToFfi(pName), util.toPointer(ppVersionInfo));
 }
 

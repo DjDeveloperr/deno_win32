@@ -849,6 +849,7 @@ try {
     DMProcessConfigXMLFiltered: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -861,6 +862,6 @@ export function DMProcessConfigXMLFiltered(
   dwNumAllowedCspNodes: number /* u32 */,
   pbstrXmlOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDMProcessXMLFiltered_dll.DMProcessConfigXMLFiltered(util.pwstrToFfi(pszXmlIn), util.toPointer(rgszAllowedCspNodes), dwNumAllowedCspNodes, util.toPointer(pbstrXmlOut));
+  return libDMProcessXMLFiltered_dll.DMProcessConfigXMLFiltered!(util.pwstrToFfi(pszXmlIn), util.toPointer(rgszAllowedCspNodes), dwNumAllowedCspNodes, util.toPointer(pbstrXmlOut));
 }
 

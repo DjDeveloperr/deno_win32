@@ -16439,10 +16439,12 @@ try {
     DMLCreateDevice: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DMLCreateDevice1: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -16455,7 +16457,7 @@ export function DMLCreateDevice(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDirectML_dll.DMLCreateDevice(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv));
+  return libDirectML_dll.DMLCreateDevice!(util.toPointer(d3d12Device), flags, util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function DMLCreateDevice1(
@@ -16465,6 +16467,6 @@ export function DMLCreateDevice1(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDirectML_dll.DMLCreateDevice1(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv));
+  return libDirectML_dll.DMLCreateDevice1!(util.toPointer(d3d12Device), flags, minimumFeatureLevel, util.toPointer(riid), util.toPointer(ppv));
 }
 

@@ -32767,34 +32767,42 @@ try {
     KsCreateAllocator: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     KsCreateClock: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     KsCreatePin: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     KsCreateTopologyNode: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     KsCreateAllocator2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     KsCreateClock2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     KsCreatePin2: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     KsCreateTopologyNode2: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -32806,7 +32814,7 @@ export function KsCreateAllocator(
   AllocatorFraming: Deno.PointerValue | Uint8Array /* ptr */,
   AllocatorHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libksuser_dll.KsCreateAllocator(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
+  return libksuser_dll.KsCreateAllocator!(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
 }
 
 export function KsCreateClock(
@@ -32814,7 +32822,7 @@ export function KsCreateClock(
   ClockCreate: Deno.PointerValue | Uint8Array /* ptr */,
   ClockHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libksuser_dll.KsCreateClock(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
+  return libksuser_dll.KsCreateClock!(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
 }
 
 export function KsCreatePin(
@@ -32823,7 +32831,7 @@ export function KsCreatePin(
   DesiredAccess: number /* u32 */,
   ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libksuser_dll.KsCreatePin(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
+  return libksuser_dll.KsCreatePin!(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
 }
 
 export function KsCreateTopologyNode(
@@ -32832,7 +32840,7 @@ export function KsCreateTopologyNode(
   DesiredAccess: number /* u32 */,
   NodeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libksuser_dll.KsCreateTopologyNode(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
+  return libksuser_dll.KsCreateTopologyNode!(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
 }
 
 export function KsCreateAllocator2(
@@ -32840,7 +32848,7 @@ export function KsCreateAllocator2(
   AllocatorFraming: Deno.PointerValue | Uint8Array /* ptr */,
   AllocatorHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libksuser_dll.KsCreateAllocator2(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
+  return libksuser_dll.KsCreateAllocator2!(util.toPointer(ConnectionHandle), util.toPointer(AllocatorFraming), util.toPointer(AllocatorHandle));
 }
 
 export function KsCreateClock2(
@@ -32848,7 +32856,7 @@ export function KsCreateClock2(
   ClockCreate: Deno.PointerValue | Uint8Array /* ptr */,
   ClockHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libksuser_dll.KsCreateClock2(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
+  return libksuser_dll.KsCreateClock2!(util.toPointer(ConnectionHandle), util.toPointer(ClockCreate), util.toPointer(ClockHandle));
 }
 
 export function KsCreatePin2(
@@ -32857,7 +32865,7 @@ export function KsCreatePin2(
   DesiredAccess: number /* u32 */,
   ConnectionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libksuser_dll.KsCreatePin2(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
+  return libksuser_dll.KsCreatePin2!(util.toPointer(FilterHandle), util.toPointer(Connect), DesiredAccess, util.toPointer(ConnectionHandle));
 }
 
 export function KsCreateTopologyNode2(
@@ -32866,6 +32874,6 @@ export function KsCreateTopologyNode2(
   DesiredAccess: number /* u32 */,
   NodeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libksuser_dll.KsCreateTopologyNode2(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
+  return libksuser_dll.KsCreateTopologyNode2!(util.toPointer(ParentHandle), util.toPointer(NodeCreate), DesiredAccess, util.toPointer(NodeHandle));
 }
 

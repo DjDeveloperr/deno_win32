@@ -21610,746 +21610,932 @@ try {
     FwpmFreeMemory0: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     FwpmEngineOpen0: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmEngineClose0: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmEngineGetOption0: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmEngineSetOption0: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmEngineGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmEngineSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSessionCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSessionEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSessionDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmTransactionBegin0: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     FwpmTransactionCommit0: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmTransactionAbort0: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderAdd0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderSubscribeChanges0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderUnsubscribeChanges0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextAdd0: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextAdd1: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextAdd2: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextAdd3: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextDeleteById0: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetById0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetById1: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetById2: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetById3: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetByKey1: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetByKey2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetByKey3: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextEnum1: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextEnum2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextEnum3: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextSubscribeChanges0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextUnsubscribeChanges0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmProviderContextSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerAdd0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerSubscribeChanges0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerUnsubscribeChanges0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSubLayerSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerGetById0: {
       parameters: ["pointer", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmLayerSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutAdd0: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutDeleteById0: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutGetById0: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutSubscribeChanges0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutUnsubscribeChanges0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmCalloutSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterAdd0: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterDeleteById0: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterGetById0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterGetByKey0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterSubscribeChanges0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterUnsubscribeChanges0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmFilterSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmGetAppIdFromFileName0: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmIPsecTunnelAdd0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmIPsecTunnelAdd1: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmIPsecTunnelAdd2: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmIPsecTunnelAdd3: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmIPsecTunnelDeleteByKey0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecGetStatistics0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecGetStatistics1: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextCreate0: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextCreate1: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextDeleteById0: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextGetById0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextGetById1: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextGetSpi0: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextGetSpi1: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextSetSpi0: {
       parameters: ["pointer", "u64", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextAddInbound0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextAddOutbound0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextAddInbound1: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextAddOutbound1: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextExpire0: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextUpdate0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextEnum1: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextSubscribe0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextUnsubscribe0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaContextSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaEnum1: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaDbGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecSaDbSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospGetStatistics0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospStateCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospStateEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospStateDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecDospSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecKeyManagerAddAndRegister0: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecKeyManagerUnregisterAndDelete0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecKeyManagersGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecKeyManagerGetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IPsecKeyManagerSetSecurityInfoByKey0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextGetStatistics0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextGetStatistics1: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaDeleteById0: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     IkeextSaGetById0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaGetById1: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaGetById2: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaEnum1: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaEnum2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaDbGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IkeextSaDbSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum1: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum3: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum4: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventEnum5: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventsGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventsSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscribe0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventUnsubscribe0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscriptionsGet0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscribe1: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscribe2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscribe3: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmNetEventSubscribe4: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmDynamicKeywordSubscribe0: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmDynamicKeywordUnsubscribe0: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSystemPortsGet0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSystemPortsSubscribe0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmSystemPortsUnsubscribe0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionGetById0: {
       parameters: ["pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionEnum0: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionCreateEnumHandle0: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionDestroyEnumHandle0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionSubscribe0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmConnectionUnsubscribe0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmvSwitchEventSubscribe0: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmvSwitchEventUnsubscribe0: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmvSwitchEventsGetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FwpmvSwitchEventsSetSecurityInfo0: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -22359,7 +22545,7 @@ try {
 export function FwpmFreeMemory0(
   p: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libfwpuclnt_dll.FwpmFreeMemory0(util.toPointer(p));
+  return libfwpuclnt_dll.FwpmFreeMemory0!(util.toPointer(p));
 }
 
 export function FwpmEngineOpen0(
@@ -22369,13 +22555,13 @@ export function FwpmEngineOpen0(
   session: Deno.PointerValue | Uint8Array /* ptr */,
   engineHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineOpen0(util.pwstrToFfi(serverName), authnService, util.toPointer(authIdentity), util.toPointer(session), util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmEngineOpen0!(util.pwstrToFfi(serverName), authnService, util.toPointer(authIdentity), util.toPointer(session), util.toPointer(engineHandle));
 }
 
 export function FwpmEngineClose0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineClose0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmEngineClose0!(util.toPointer(engineHandle));
 }
 
 export function FwpmEngineGetOption0(
@@ -22383,7 +22569,7 @@ export function FwpmEngineGetOption0(
   option: FWPM_ENGINE_OPTION /* Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_ENGINE_OPTION */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineGetOption0(util.toPointer(engineHandle), option, util.toPointer(value));
+  return libfwpuclnt_dll.FwpmEngineGetOption0!(util.toPointer(engineHandle), option, util.toPointer(value));
 }
 
 export function FwpmEngineSetOption0(
@@ -22391,7 +22577,7 @@ export function FwpmEngineSetOption0(
   option: FWPM_ENGINE_OPTION /* Windows.Win32.NetworkManagement.WindowsFilteringPlatform.FWPM_ENGINE_OPTION */,
   newValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineSetOption0(util.toPointer(engineHandle), option, util.toPointer(newValue));
+  return libfwpuclnt_dll.FwpmEngineSetOption0!(util.toPointer(engineHandle), option, util.toPointer(newValue));
 }
 
 export function FwpmEngineGetSecurityInfo0(
@@ -22403,7 +22589,7 @@ export function FwpmEngineGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmEngineGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmEngineSetSecurityInfo0(
@@ -22414,7 +22600,7 @@ export function FwpmEngineSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmEngineSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmEngineSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmSessionCreateEnumHandle0(
@@ -22422,7 +22608,7 @@ export function FwpmSessionCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSessionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSessionCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmSessionEnum0(
@@ -22432,33 +22618,33 @@ export function FwpmSessionEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSessionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmSessionEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmSessionDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSessionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSessionDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmTransactionBegin0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmTransactionBegin0(util.toPointer(engineHandle), flags);
+  return libfwpuclnt_dll.FwpmTransactionBegin0!(util.toPointer(engineHandle), flags);
 }
 
 export function FwpmTransactionCommit0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmTransactionCommit0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmTransactionCommit0!(util.toPointer(engineHandle));
 }
 
 export function FwpmTransactionAbort0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmTransactionAbort0(util.toPointer(engineHandle));
+  return libfwpuclnt_dll.FwpmTransactionAbort0!(util.toPointer(engineHandle));
 }
 
 export function FwpmProviderAdd0(
@@ -22466,14 +22652,14 @@ export function FwpmProviderAdd0(
   provider: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderAdd0(util.toPointer(engineHandle), util.toPointer(provider), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmProviderAdd0!(util.toPointer(engineHandle), util.toPointer(provider), util.toPointer(sd));
 }
 
 export function FwpmProviderDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmProviderDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmProviderGetByKey0(
@@ -22481,7 +22667,7 @@ export function FwpmProviderGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   provider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(provider));
+  return libfwpuclnt_dll.FwpmProviderGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(provider));
 }
 
 export function FwpmProviderCreateEnumHandle0(
@@ -22489,7 +22675,7 @@ export function FwpmProviderCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderEnum0(
@@ -22499,14 +22685,14 @@ export function FwpmProviderEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderGetSecurityInfoByKey0(
@@ -22519,7 +22705,7 @@ export function FwpmProviderGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmProviderGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmProviderSetSecurityInfoByKey0(
@@ -22531,7 +22717,7 @@ export function FwpmProviderSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmProviderSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmProviderSubscribeChanges0(
@@ -22541,14 +22727,14 @@ export function FwpmProviderSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderSubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderUnsubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderSubscriptionsGet0(
@@ -22556,7 +22742,7 @@ export function FwpmProviderSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmProviderSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmProviderContextAdd0(
@@ -22565,7 +22751,7 @@ export function FwpmProviderContextAdd0(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextAdd0(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd0!(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd1(
@@ -22574,7 +22760,7 @@ export function FwpmProviderContextAdd1(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextAdd1(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd1!(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd2(
@@ -22583,7 +22769,7 @@ export function FwpmProviderContextAdd2(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextAdd2(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd2!(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextAdd3(
@@ -22592,21 +22778,21 @@ export function FwpmProviderContextAdd3(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextAdd3(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmProviderContextAdd3!(util.toPointer(engineHandle), util.toPointer(providerContext), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmProviderContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmProviderContextDeleteById0!(util.toPointer(engineHandle), id);
 }
 
 export function FwpmProviderContextDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmProviderContextDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmProviderContextGetById0(
@@ -22614,7 +22800,7 @@ export function FwpmProviderContextGetById0(
   id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetById0(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById0!(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById1(
@@ -22622,7 +22808,7 @@ export function FwpmProviderContextGetById1(
   id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetById1(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById1!(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById2(
@@ -22630,7 +22816,7 @@ export function FwpmProviderContextGetById2(
   id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetById2(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById2!(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetById3(
@@ -22638,7 +22824,7 @@ export function FwpmProviderContextGetById3(
   id: bigint | number /* u64 */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetById3(util.toPointer(engineHandle), id, util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetById3!(util.toPointer(engineHandle), id, util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey0(
@@ -22646,7 +22832,7 @@ export function FwpmProviderContextGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey1(
@@ -22654,7 +22840,7 @@ export function FwpmProviderContextGetByKey1(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetByKey1(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey1!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey2(
@@ -22662,7 +22848,7 @@ export function FwpmProviderContextGetByKey2(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetByKey2(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey2!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextGetByKey3(
@@ -22670,7 +22856,7 @@ export function FwpmProviderContextGetByKey3(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   providerContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetByKey3(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
+  return libfwpuclnt_dll.FwpmProviderContextGetByKey3!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(providerContext));
 }
 
 export function FwpmProviderContextCreateEnumHandle0(
@@ -22678,7 +22864,7 @@ export function FwpmProviderContextCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderContextCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderContextEnum0(
@@ -22688,7 +22874,7 @@ export function FwpmProviderContextEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum1(
@@ -22698,7 +22884,7 @@ export function FwpmProviderContextEnum1(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum1!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum2(
@@ -22708,7 +22894,7 @@ export function FwpmProviderContextEnum2(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum2!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextEnum3(
@@ -22718,14 +22904,14 @@ export function FwpmProviderContextEnum3(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmProviderContextEnum3!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmProviderContextDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmProviderContextDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmProviderContextGetSecurityInfoByKey0(
@@ -22738,7 +22924,7 @@ export function FwpmProviderContextGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmProviderContextGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmProviderContextSetSecurityInfoByKey0(
@@ -22750,7 +22936,7 @@ export function FwpmProviderContextSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmProviderContextSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmProviderContextSubscribeChanges0(
@@ -22760,14 +22946,14 @@ export function FwpmProviderContextSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderContextSubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderContextUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmProviderContextUnsubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmProviderContextSubscriptionsGet0(
@@ -22775,7 +22961,7 @@ export function FwpmProviderContextSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmProviderContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmProviderContextSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmSubLayerAdd0(
@@ -22783,14 +22969,14 @@ export function FwpmSubLayerAdd0(
   subLayer: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerAdd0(util.toPointer(engineHandle), util.toPointer(subLayer), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmSubLayerAdd0!(util.toPointer(engineHandle), util.toPointer(subLayer), util.toPointer(sd));
 }
 
 export function FwpmSubLayerDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmSubLayerDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmSubLayerGetByKey0(
@@ -22798,7 +22984,7 @@ export function FwpmSubLayerGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   subLayer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(subLayer));
+  return libfwpuclnt_dll.FwpmSubLayerGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(subLayer));
 }
 
 export function FwpmSubLayerCreateEnumHandle0(
@@ -22806,7 +22992,7 @@ export function FwpmSubLayerCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSubLayerCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmSubLayerEnum0(
@@ -22816,14 +23002,14 @@ export function FwpmSubLayerEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmSubLayerEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmSubLayerDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmSubLayerDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmSubLayerGetSecurityInfoByKey0(
@@ -22836,7 +23022,7 @@ export function FwpmSubLayerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmSubLayerGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmSubLayerSetSecurityInfoByKey0(
@@ -22848,7 +23034,7 @@ export function FwpmSubLayerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmSubLayerSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmSubLayerSubscribeChanges0(
@@ -22858,14 +23044,14 @@ export function FwpmSubLayerSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmSubLayerSubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmSubLayerUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmSubLayerUnsubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmSubLayerSubscriptionsGet0(
@@ -22873,7 +23059,7 @@ export function FwpmSubLayerSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSubLayerSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmSubLayerSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmLayerGetById0(
@@ -22881,7 +23067,7 @@ export function FwpmLayerGetById0(
   id: number /* u16 */,
   layer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerGetById0(util.toPointer(engineHandle), id, util.toPointer(layer));
+  return libfwpuclnt_dll.FwpmLayerGetById0!(util.toPointer(engineHandle), id, util.toPointer(layer));
 }
 
 export function FwpmLayerGetByKey0(
@@ -22889,7 +23075,7 @@ export function FwpmLayerGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   layer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(layer));
+  return libfwpuclnt_dll.FwpmLayerGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(layer));
 }
 
 export function FwpmLayerCreateEnumHandle0(
@@ -22897,7 +23083,7 @@ export function FwpmLayerCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmLayerCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmLayerEnum0(
@@ -22907,14 +23093,14 @@ export function FwpmLayerEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmLayerEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmLayerDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmLayerDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmLayerGetSecurityInfoByKey0(
@@ -22927,7 +23113,7 @@ export function FwpmLayerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmLayerGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmLayerSetSecurityInfoByKey0(
@@ -22939,7 +23125,7 @@ export function FwpmLayerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmLayerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmLayerSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmCalloutAdd0(
@@ -22948,21 +23134,21 @@ export function FwpmCalloutAdd0(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutAdd0(util.toPointer(engineHandle), util.toPointer(callout), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmCalloutAdd0!(util.toPointer(engineHandle), util.toPointer(callout), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmCalloutDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmCalloutDeleteById0!(util.toPointer(engineHandle), id);
 }
 
 export function FwpmCalloutDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmCalloutDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmCalloutGetById0(
@@ -22970,7 +23156,7 @@ export function FwpmCalloutGetById0(
   id: number /* u32 */,
   callout: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutGetById0(util.toPointer(engineHandle), id, util.toPointer(callout));
+  return libfwpuclnt_dll.FwpmCalloutGetById0!(util.toPointer(engineHandle), id, util.toPointer(callout));
 }
 
 export function FwpmCalloutGetByKey0(
@@ -22978,7 +23164,7 @@ export function FwpmCalloutGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   callout: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(callout));
+  return libfwpuclnt_dll.FwpmCalloutGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(callout));
 }
 
 export function FwpmCalloutCreateEnumHandle0(
@@ -22986,7 +23172,7 @@ export function FwpmCalloutCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmCalloutCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmCalloutEnum0(
@@ -22996,14 +23182,14 @@ export function FwpmCalloutEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmCalloutEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmCalloutDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmCalloutDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmCalloutGetSecurityInfoByKey0(
@@ -23016,7 +23202,7 @@ export function FwpmCalloutGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmCalloutGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmCalloutSetSecurityInfoByKey0(
@@ -23028,7 +23214,7 @@ export function FwpmCalloutSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmCalloutSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmCalloutSubscribeChanges0(
@@ -23038,14 +23224,14 @@ export function FwpmCalloutSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmCalloutSubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmCalloutUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmCalloutUnsubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmCalloutSubscriptionsGet0(
@@ -23053,7 +23239,7 @@ export function FwpmCalloutSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmCalloutSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmCalloutSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmFilterAdd0(
@@ -23062,21 +23248,21 @@ export function FwpmFilterAdd0(
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterAdd0(util.toPointer(engineHandle), util.toPointer(filter), util.toPointer(sd), util.toPointer(id));
+  return libfwpuclnt_dll.FwpmFilterAdd0!(util.toPointer(engineHandle), util.toPointer(filter), util.toPointer(sd), util.toPointer(id));
 }
 
 export function FwpmFilterDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.FwpmFilterDeleteById0!(util.toPointer(engineHandle), id);
 }
 
 export function FwpmFilterDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmFilterDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function FwpmFilterGetById0(
@@ -23084,7 +23270,7 @@ export function FwpmFilterGetById0(
   id: bigint | number /* u64 */,
   filter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterGetById0(util.toPointer(engineHandle), id, util.toPointer(filter));
+  return libfwpuclnt_dll.FwpmFilterGetById0!(util.toPointer(engineHandle), id, util.toPointer(filter));
 }
 
 export function FwpmFilterGetByKey0(
@@ -23092,7 +23278,7 @@ export function FwpmFilterGetByKey0(
   key: Deno.PointerValue | Uint8Array /* ptr */,
   filter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterGetByKey0(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(filter));
+  return libfwpuclnt_dll.FwpmFilterGetByKey0!(util.toPointer(engineHandle), util.toPointer(key), util.toPointer(filter));
 }
 
 export function FwpmFilterCreateEnumHandle0(
@@ -23100,7 +23286,7 @@ export function FwpmFilterCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmFilterCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmFilterEnum0(
@@ -23110,14 +23296,14 @@ export function FwpmFilterEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmFilterEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmFilterDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmFilterDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmFilterGetSecurityInfoByKey0(
@@ -23130,7 +23316,7 @@ export function FwpmFilterGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmFilterGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmFilterSetSecurityInfoByKey0(
@@ -23142,7 +23328,7 @@ export function FwpmFilterSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmFilterSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(key), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmFilterSubscribeChanges0(
@@ -23152,14 +23338,14 @@ export function FwpmFilterSubscribeChanges0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   changeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterSubscribeChanges0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmFilterSubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(changeHandle));
 }
 
 export function FwpmFilterUnsubscribeChanges0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   changeHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterUnsubscribeChanges0(util.toPointer(engineHandle), util.toPointer(changeHandle));
+  return libfwpuclnt_dll.FwpmFilterUnsubscribeChanges0!(util.toPointer(engineHandle), util.toPointer(changeHandle));
 }
 
 export function FwpmFilterSubscriptionsGet0(
@@ -23167,14 +23353,14 @@ export function FwpmFilterSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmFilterSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmFilterSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmGetAppIdFromFileName0(
   fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   appId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmGetAppIdFromFileName0(util.pwstrToFfi(fileName), util.toPointer(appId));
+  return libfwpuclnt_dll.FwpmGetAppIdFromFileName0!(util.pwstrToFfi(fileName), util.toPointer(appId));
 }
 
 export function FwpmIPsecTunnelAdd0(
@@ -23186,7 +23372,7 @@ export function FwpmIPsecTunnelAdd0(
   filterConditions: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmIPsecTunnelAdd0(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd0!(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd1(
@@ -23199,7 +23385,7 @@ export function FwpmIPsecTunnelAdd1(
   keyModKey: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmIPsecTunnelAdd1(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd1!(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd2(
@@ -23212,7 +23398,7 @@ export function FwpmIPsecTunnelAdd2(
   keyModKey: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmIPsecTunnelAdd2(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd2!(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelAdd3(
@@ -23225,28 +23411,28 @@ export function FwpmIPsecTunnelAdd3(
   keyModKey: Deno.PointerValue | Uint8Array /* ptr */,
   sd: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmIPsecTunnelAdd3(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
+  return libfwpuclnt_dll.FwpmIPsecTunnelAdd3!(util.toPointer(engineHandle), flags, util.toPointer(mainModePolicy), util.toPointer(tunnelPolicy), numFilterConditions, util.toPointer(filterConditions), util.toPointer(keyModKey), util.toPointer(sd));
 }
 
 export function FwpmIPsecTunnelDeleteByKey0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   key: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmIPsecTunnelDeleteByKey0(util.toPointer(engineHandle), util.toPointer(key));
+  return libfwpuclnt_dll.FwpmIPsecTunnelDeleteByKey0!(util.toPointer(engineHandle), util.toPointer(key));
 }
 
 export function IPsecGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ipsecStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecGetStatistics0(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
+  return libfwpuclnt_dll.IPsecGetStatistics0!(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
 }
 
 export function IPsecGetStatistics1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ipsecStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecGetStatistics1(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
+  return libfwpuclnt_dll.IPsecGetStatistics1!(util.toPointer(engineHandle), util.toPointer(ipsecStatistics));
 }
 
 export function IPsecSaContextCreate0(
@@ -23255,7 +23441,7 @@ export function IPsecSaContextCreate0(
   inboundFilterId: Deno.PointerValue | Uint8Array /* ptr */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextCreate0(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(inboundFilterId), util.toPointer(id));
+  return libfwpuclnt_dll.IPsecSaContextCreate0!(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(inboundFilterId), util.toPointer(id));
 }
 
 export function IPsecSaContextCreate1(
@@ -23265,14 +23451,14 @@ export function IPsecSaContextCreate1(
   inboundFilterId: Deno.PointerValue | Uint8Array /* ptr */,
   id: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextCreate1(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(virtualIfTunnelInfo), util.toPointer(inboundFilterId), util.toPointer(id));
+  return libfwpuclnt_dll.IPsecSaContextCreate1!(util.toPointer(engineHandle), util.toPointer(outboundTraffic), util.toPointer(virtualIfTunnelInfo), util.toPointer(inboundFilterId), util.toPointer(id));
 }
 
 export function IPsecSaContextDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IPsecSaContextDeleteById0!(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextGetById0(
@@ -23280,7 +23466,7 @@ export function IPsecSaContextGetById0(
   id: bigint | number /* u64 */,
   saContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextGetById0(util.toPointer(engineHandle), id, util.toPointer(saContext));
+  return libfwpuclnt_dll.IPsecSaContextGetById0!(util.toPointer(engineHandle), id, util.toPointer(saContext));
 }
 
 export function IPsecSaContextGetById1(
@@ -23288,7 +23474,7 @@ export function IPsecSaContextGetById1(
   id: bigint | number /* u64 */,
   saContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextGetById1(util.toPointer(engineHandle), id, util.toPointer(saContext));
+  return libfwpuclnt_dll.IPsecSaContextGetById1!(util.toPointer(engineHandle), id, util.toPointer(saContext));
 }
 
 export function IPsecSaContextGetSpi0(
@@ -23297,7 +23483,7 @@ export function IPsecSaContextGetSpi0(
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextGetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
+  return libfwpuclnt_dll.IPsecSaContextGetSpi0!(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
 }
 
 export function IPsecSaContextGetSpi1(
@@ -23306,7 +23492,7 @@ export function IPsecSaContextGetSpi1(
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextGetSpi1(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
+  return libfwpuclnt_dll.IPsecSaContextGetSpi1!(util.toPointer(engineHandle), id, util.toPointer(getSpi), util.toPointer(inboundSpi));
 }
 
 export function IPsecSaContextSetSpi0(
@@ -23315,7 +23501,7 @@ export function IPsecSaContextSetSpi0(
   getSpi: Deno.PointerValue | Uint8Array /* ptr */,
   inboundSpi: number /* u32 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextSetSpi0(util.toPointer(engineHandle), id, util.toPointer(getSpi), inboundSpi);
+  return libfwpuclnt_dll.IPsecSaContextSetSpi0!(util.toPointer(engineHandle), id, util.toPointer(getSpi), inboundSpi);
 }
 
 export function IPsecSaContextAddInbound0(
@@ -23323,7 +23509,7 @@ export function IPsecSaContextAddInbound0(
   id: bigint | number /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextAddInbound0(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddInbound0!(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
 }
 
 export function IPsecSaContextAddOutbound0(
@@ -23331,7 +23517,7 @@ export function IPsecSaContextAddOutbound0(
   id: bigint | number /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextAddOutbound0(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddOutbound0!(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
 }
 
 export function IPsecSaContextAddInbound1(
@@ -23339,7 +23525,7 @@ export function IPsecSaContextAddInbound1(
   id: bigint | number /* u64 */,
   inboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextAddInbound1(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddInbound1!(util.toPointer(engineHandle), id, util.toPointer(inboundBundle));
 }
 
 export function IPsecSaContextAddOutbound1(
@@ -23347,14 +23533,14 @@ export function IPsecSaContextAddOutbound1(
   id: bigint | number /* u64 */,
   outboundBundle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextAddOutbound1(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
+  return libfwpuclnt_dll.IPsecSaContextAddOutbound1!(util.toPointer(engineHandle), id, util.toPointer(outboundBundle));
 }
 
 export function IPsecSaContextExpire0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextExpire0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IPsecSaContextExpire0!(util.toPointer(engineHandle), id);
 }
 
 export function IPsecSaContextUpdate0(
@@ -23362,7 +23548,7 @@ export function IPsecSaContextUpdate0(
   flags: bigint | number /* u64 */,
   newValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextUpdate0(util.toPointer(engineHandle), flags, util.toPointer(newValues));
+  return libfwpuclnt_dll.IPsecSaContextUpdate0!(util.toPointer(engineHandle), flags, util.toPointer(newValues));
 }
 
 export function IPsecSaContextCreateEnumHandle0(
@@ -23370,7 +23556,7 @@ export function IPsecSaContextCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaContextCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecSaContextEnum0(
@@ -23380,7 +23566,7 @@ export function IPsecSaContextEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaContextEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaContextEnum1(
@@ -23390,14 +23576,14 @@ export function IPsecSaContextEnum1(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaContextEnum1!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaContextDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaContextDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecSaContextSubscribe0(
@@ -23407,14 +23593,14 @@ export function IPsecSaContextSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.IPsecSaContextSubscribe0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function IPsecSaContextUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.IPsecSaContextUnsubscribe0!(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function IPsecSaContextSubscriptionsGet0(
@@ -23422,7 +23608,7 @@ export function IPsecSaContextSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaContextSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecSaContextSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecSaCreateEnumHandle0(
@@ -23430,7 +23616,7 @@ export function IPsecSaCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecSaEnum0(
@@ -23440,7 +23626,7 @@ export function IPsecSaEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaEnum1(
@@ -23450,14 +23636,14 @@ export function IPsecSaEnum1(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IPsecSaEnum1!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IPsecSaDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecSaDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecSaDbGetSecurityInfo0(
@@ -23469,7 +23655,7 @@ export function IPsecSaDbGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecSaDbGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecSaDbSetSecurityInfo0(
@@ -23480,14 +23666,14 @@ export function IPsecSaDbSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecSaDbSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IPsecDospGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   idpStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospGetStatistics0(util.toPointer(engineHandle), util.toPointer(idpStatistics));
+  return libfwpuclnt_dll.IPsecDospGetStatistics0!(util.toPointer(engineHandle), util.toPointer(idpStatistics));
 }
 
 export function IPsecDospStateCreateEnumHandle0(
@@ -23495,7 +23681,7 @@ export function IPsecDospStateCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospStateCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecDospStateCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IPsecDospStateEnum0(
@@ -23505,14 +23691,14 @@ export function IPsecDospStateEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospStateEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecDospStateEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecDospStateDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospStateDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IPsecDospStateDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IPsecDospGetSecurityInfo0(
@@ -23524,7 +23710,7 @@ export function IPsecDospGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecDospGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecDospSetSecurityInfo0(
@@ -23535,7 +23721,7 @@ export function IPsecDospSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecDospSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecDospSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IPsecKeyManagerAddAndRegister0(
@@ -23544,14 +23730,14 @@ export function IPsecKeyManagerAddAndRegister0(
   keyManagerCallbacks: Deno.PointerValue | Uint8Array /* ptr */,
   keyMgmtHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecKeyManagerAddAndRegister0(util.toPointer(engineHandle), util.toPointer(keyManager), util.toPointer(keyManagerCallbacks), util.toPointer(keyMgmtHandle));
+  return libfwpuclnt_dll.IPsecKeyManagerAddAndRegister0!(util.toPointer(engineHandle), util.toPointer(keyManager), util.toPointer(keyManagerCallbacks), util.toPointer(keyMgmtHandle));
 }
 
 export function IPsecKeyManagerUnregisterAndDelete0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   keyMgmtHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecKeyManagerUnregisterAndDelete0(util.toPointer(engineHandle), util.toPointer(keyMgmtHandle));
+  return libfwpuclnt_dll.IPsecKeyManagerUnregisterAndDelete0!(util.toPointer(engineHandle), util.toPointer(keyMgmtHandle));
 }
 
 export function IPsecKeyManagersGet0(
@@ -23559,7 +23745,7 @@ export function IPsecKeyManagersGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecKeyManagersGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.IPsecKeyManagersGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function IPsecKeyManagerGetSecurityInfoByKey0(
@@ -23572,7 +23758,7 @@ export function IPsecKeyManagerGetSecurityInfoByKey0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecKeyManagerGetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IPsecKeyManagerGetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IPsecKeyManagerSetSecurityInfoByKey0(
@@ -23584,28 +23770,28 @@ export function IPsecKeyManagerSetSecurityInfoByKey0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IPsecKeyManagerSetSecurityInfoByKey0(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IPsecKeyManagerSetSecurityInfoByKey0!(util.toPointer(engineHandle), util.toPointer(reserved), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function IkeextGetStatistics0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ikeextStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextGetStatistics0(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
+  return libfwpuclnt_dll.IkeextGetStatistics0!(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
 }
 
 export function IkeextGetStatistics1(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ikeextStatistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextGetStatistics1(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
+  return libfwpuclnt_dll.IkeextGetStatistics1!(util.toPointer(engineHandle), util.toPointer(ikeextStatistics));
 }
 
 export function IkeextSaDeleteById0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   id: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaDeleteById0(util.toPointer(engineHandle), id);
+  return libfwpuclnt_dll.IkeextSaDeleteById0!(util.toPointer(engineHandle), id);
 }
 
 export function IkeextSaGetById0(
@@ -23613,7 +23799,7 @@ export function IkeextSaGetById0(
   id: bigint | number /* u64 */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaGetById0(util.toPointer(engineHandle), id, util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById0!(util.toPointer(engineHandle), id, util.toPointer(sa));
 }
 
 export function IkeextSaGetById1(
@@ -23622,7 +23808,7 @@ export function IkeextSaGetById1(
   saLookupContext: Deno.PointerValue | Uint8Array /* ptr */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaGetById1(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById1!(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
 }
 
 export function IkeextSaGetById2(
@@ -23631,7 +23817,7 @@ export function IkeextSaGetById2(
   saLookupContext: Deno.PointerValue | Uint8Array /* ptr */,
   sa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaGetById2(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
+  return libfwpuclnt_dll.IkeextSaGetById2!(util.toPointer(engineHandle), id, util.toPointer(saLookupContext), util.toPointer(sa));
 }
 
 export function IkeextSaCreateEnumHandle0(
@@ -23639,7 +23825,7 @@ export function IkeextSaCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IkeextSaCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function IkeextSaEnum0(
@@ -23649,7 +23835,7 @@ export function IkeextSaEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaEnum1(
@@ -23659,7 +23845,7 @@ export function IkeextSaEnum1(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum1!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaEnum2(
@@ -23669,14 +23855,14 @@ export function IkeextSaEnum2(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.IkeextSaEnum2!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function IkeextSaDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.IkeextSaDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function IkeextSaDbGetSecurityInfo0(
@@ -23688,7 +23874,7 @@ export function IkeextSaDbGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaDbGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.IkeextSaDbGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function IkeextSaDbSetSecurityInfo0(
@@ -23699,7 +23885,7 @@ export function IkeextSaDbSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.IkeextSaDbSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.IkeextSaDbSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmNetEventCreateEnumHandle0(
@@ -23707,7 +23893,7 @@ export function FwpmNetEventCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmNetEventCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmNetEventEnum0(
@@ -23717,7 +23903,7 @@ export function FwpmNetEventEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum1(
@@ -23727,7 +23913,7 @@ export function FwpmNetEventEnum1(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum1(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum1!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum2(
@@ -23737,7 +23923,7 @@ export function FwpmNetEventEnum2(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum2(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum2!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum3(
@@ -23747,7 +23933,7 @@ export function FwpmNetEventEnum3(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum3(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum3!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum4(
@@ -23757,7 +23943,7 @@ export function FwpmNetEventEnum4(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum4(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum4!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventEnum5(
@@ -23767,14 +23953,14 @@ export function FwpmNetEventEnum5(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventEnum5(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmNetEventEnum5!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmNetEventDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmNetEventDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmNetEventsGetSecurityInfo0(
@@ -23786,7 +23972,7 @@ export function FwpmNetEventsGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmNetEventsGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmNetEventsSetSecurityInfo0(
@@ -23797,7 +23983,7 @@ export function FwpmNetEventsSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmNetEventsSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmNetEventSubscribe0(
@@ -23807,14 +23993,14 @@ export function FwpmNetEventSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventUnsubscribe0!(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscriptionsGet0(
@@ -23822,7 +24008,7 @@ export function FwpmNetEventSubscriptionsGet0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscriptionsGet0(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
+  return libfwpuclnt_dll.FwpmNetEventSubscriptionsGet0!(util.toPointer(engineHandle), util.toPointer(entries), util.toPointer(numEntries));
 }
 
 export function FwpmNetEventSubscribe1(
@@ -23832,7 +24018,7 @@ export function FwpmNetEventSubscribe1(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscribe1(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe1!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe2(
@@ -23842,7 +24028,7 @@ export function FwpmNetEventSubscribe2(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscribe2(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe2!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe3(
@@ -23852,7 +24038,7 @@ export function FwpmNetEventSubscribe3(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscribe3(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe3!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmNetEventSubscribe4(
@@ -23862,7 +24048,7 @@ export function FwpmNetEventSubscribe4(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmNetEventSubscribe4(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmNetEventSubscribe4!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmDynamicKeywordSubscribe0(
@@ -23871,20 +24057,20 @@ export function FwpmDynamicKeywordSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   subscriptionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmDynamicKeywordSubscribe0(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmDynamicKeywordSubscribe0!(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmDynamicKeywordUnsubscribe0(
   subscriptionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmDynamicKeywordUnsubscribe0(util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmDynamicKeywordUnsubscribe0!(util.toPointer(subscriptionHandle));
 }
 
 export function FwpmSystemPortsGet0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   sysPorts: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSystemPortsGet0(util.toPointer(engineHandle), util.toPointer(sysPorts));
+  return libfwpuclnt_dll.FwpmSystemPortsGet0!(util.toPointer(engineHandle), util.toPointer(sysPorts));
 }
 
 export function FwpmSystemPortsSubscribe0(
@@ -23894,14 +24080,14 @@ export function FwpmSystemPortsSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   sysPortsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSystemPortsSubscribe0(util.toPointer(engineHandle), util.toPointer(reserved), util.toPointer(callback), util.toPointer(context), util.toPointer(sysPortsHandle));
+  return libfwpuclnt_dll.FwpmSystemPortsSubscribe0!(util.toPointer(engineHandle), util.toPointer(reserved), util.toPointer(callback), util.toPointer(context), util.toPointer(sysPortsHandle));
 }
 
 export function FwpmSystemPortsUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   sysPortsHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmSystemPortsUnsubscribe0(util.toPointer(engineHandle), util.toPointer(sysPortsHandle));
+  return libfwpuclnt_dll.FwpmSystemPortsUnsubscribe0!(util.toPointer(engineHandle), util.toPointer(sysPortsHandle));
 }
 
 export function FwpmConnectionGetById0(
@@ -23909,7 +24095,7 @@ export function FwpmConnectionGetById0(
   id: bigint | number /* u64 */,
   connection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionGetById0(util.toPointer(engineHandle), id, util.toPointer(connection));
+  return libfwpuclnt_dll.FwpmConnectionGetById0!(util.toPointer(engineHandle), id, util.toPointer(connection));
 }
 
 export function FwpmConnectionEnum0(
@@ -23919,7 +24105,7 @@ export function FwpmConnectionEnum0(
   entries: Deno.PointerValue | Uint8Array /* ptr */,
   numEntriesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionEnum0(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
+  return libfwpuclnt_dll.FwpmConnectionEnum0!(util.toPointer(engineHandle), util.toPointer(enumHandle), numEntriesRequested, util.toPointer(entries), util.toPointer(numEntriesReturned));
 }
 
 export function FwpmConnectionCreateEnumHandle0(
@@ -23927,14 +24113,14 @@ export function FwpmConnectionCreateEnumHandle0(
   enumTemplate: Deno.PointerValue | Uint8Array /* ptr */,
   enumHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionCreateEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmConnectionCreateEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumTemplate), util.toPointer(enumHandle));
 }
 
 export function FwpmConnectionDestroyEnumHandle0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   enumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionDestroyEnumHandle0(util.toPointer(engineHandle), util.toPointer(enumHandle));
+  return libfwpuclnt_dll.FwpmConnectionDestroyEnumHandle0!(util.toPointer(engineHandle), util.toPointer(enumHandle));
 }
 
 export function FwpmConnectionGetSecurityInfo0(
@@ -23946,7 +24132,7 @@ export function FwpmConnectionGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmConnectionGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmConnectionSetSecurityInfo0(
@@ -23957,7 +24143,7 @@ export function FwpmConnectionSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmConnectionSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 
 export function FwpmConnectionSubscribe0(
@@ -23967,14 +24153,14 @@ export function FwpmConnectionSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   eventsHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmConnectionSubscribe0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(eventsHandle));
 }
 
 export function FwpmConnectionUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   eventsHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmConnectionUnsubscribe0(util.toPointer(engineHandle), util.toPointer(eventsHandle));
+  return libfwpuclnt_dll.FwpmConnectionUnsubscribe0!(util.toPointer(engineHandle), util.toPointer(eventsHandle));
 }
 
 export function FwpmvSwitchEventSubscribe0(
@@ -23984,14 +24170,14 @@ export function FwpmvSwitchEventSubscribe0(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   subscriptionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmvSwitchEventSubscribe0(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmvSwitchEventSubscribe0!(util.toPointer(engineHandle), util.toPointer(subscription), util.toPointer(callback), util.toPointer(context), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmvSwitchEventUnsubscribe0(
   engineHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   subscriptionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmvSwitchEventUnsubscribe0(util.toPointer(engineHandle), util.toPointer(subscriptionHandle));
+  return libfwpuclnt_dll.FwpmvSwitchEventUnsubscribe0!(util.toPointer(engineHandle), util.toPointer(subscriptionHandle));
 }
 
 export function FwpmvSwitchEventsGetSecurityInfo0(
@@ -24003,7 +24189,7 @@ export function FwpmvSwitchEventsGetSecurityInfo0(
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
   securityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmvSwitchEventsGetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
+  return libfwpuclnt_dll.FwpmvSwitchEventsGetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl), util.toPointer(securityDescriptor));
 }
 
 export function FwpmvSwitchEventsSetSecurityInfo0(
@@ -24014,6 +24200,6 @@ export function FwpmvSwitchEventsSetSecurityInfo0(
   dacl: Deno.PointerValue | Uint8Array /* ptr */,
   sacl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libfwpuclnt_dll.FwpmvSwitchEventsSetSecurityInfo0(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
+  return libfwpuclnt_dll.FwpmvSwitchEventsSetSecurityInfo0!(util.toPointer(engineHandle), securityInfo, util.toPointer(sidOwner), util.toPointer(sidGroup), util.toPointer(dacl), util.toPointer(sacl));
 }
 

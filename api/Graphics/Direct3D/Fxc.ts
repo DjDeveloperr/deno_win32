@@ -148,102 +148,127 @@ try {
     D3DReadFileToBlob: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DWriteBlobToFile: {
       parameters: ["pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     D3DCompile: {
       parameters: ["pointer", "usize", "buffer", "pointer", "pointer", "buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCompile2: {
       parameters: ["pointer", "usize", "buffer", "pointer", "pointer", "buffer", "buffer", "u32", "u32", "u32", "pointer", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCompileFromFile: {
       parameters: ["buffer", "pointer", "pointer", "buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DPreprocess: {
       parameters: ["pointer", "usize", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetDebugInfo: {
       parameters: ["pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DReflect: {
       parameters: ["pointer", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DReflectLibrary: {
       parameters: ["pointer", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DDisassemble: {
       parameters: ["pointer", "usize", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DDisassembleRegion: {
       parameters: ["pointer", "usize", "u32", "buffer", "usize", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCreateLinker: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DLoadModule: {
       parameters: ["pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCreateFunctionLinkingGraph: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetTraceInstructionOffsets: {
       parameters: ["pointer", "usize", "u32", "usize", "usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetInputSignatureBlob: {
       parameters: ["pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetOutputSignatureBlob: {
       parameters: ["pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetInputAndOutputSignatureBlob: {
       parameters: ["pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DStripShader: {
       parameters: ["pointer", "usize", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DGetBlobPart: {
       parameters: ["pointer", "usize", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DSetBlobPart: {
       parameters: ["pointer", "usize", "i32", "u32", "pointer", "usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCreateBlob: {
       parameters: ["usize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DCompressShaders: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DDecompressShaders: {
       parameters: ["pointer", "usize", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D3DDisassemble10Effect: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -254,7 +279,7 @@ export function D3DReadFileToBlob(
   pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppContents: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DReadFileToBlob(util.pwstrToFfi(pFileName), util.toPointer(ppContents));
+  return libD3DCOMPILER_47_dll.D3DReadFileToBlob!(util.pwstrToFfi(pFileName), util.toPointer(ppContents));
 }
 
 export function D3DWriteBlobToFile(
@@ -262,7 +287,7 @@ export function D3DWriteBlobToFile(
   pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bOverwrite: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DWriteBlobToFile(util.toPointer(pBlob), util.pwstrToFfi(pFileName), util.boolToFfi(bOverwrite));
+  return libD3DCOMPILER_47_dll.D3DWriteBlobToFile!(util.toPointer(pBlob), util.pwstrToFfi(pFileName), util.boolToFfi(bOverwrite));
 }
 
 export function D3DCompile(
@@ -278,7 +303,7 @@ export function D3DCompile(
   ppCode: Deno.PointerValue | Uint8Array /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCompile(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
+  return libD3DCOMPILER_47_dll.D3DCompile!(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
 }
 
 export function D3DCompile2(
@@ -297,7 +322,7 @@ export function D3DCompile2(
   ppCode: Deno.PointerValue | Uint8Array /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCompile2(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, SecondaryDataFlags, util.toPointer(pSecondaryData), SecondaryDataSize, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
+  return libD3DCOMPILER_47_dll.D3DCompile2!(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, SecondaryDataFlags, util.toPointer(pSecondaryData), SecondaryDataSize, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
 }
 
 export function D3DCompileFromFile(
@@ -311,7 +336,7 @@ export function D3DCompileFromFile(
   ppCode: Deno.PointerValue | Uint8Array /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCompileFromFile(util.pwstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
+  return libD3DCOMPILER_47_dll.D3DCompileFromFile!(util.pwstrToFfi(pFileName), util.toPointer(pDefines), util.toPointer(pInclude), util.pstrToFfi(pEntrypoint), util.pstrToFfi(pTarget), Flags1, Flags2, util.toPointer(ppCode), util.toPointer(ppErrorMsgs));
 }
 
 export function D3DPreprocess(
@@ -323,7 +348,7 @@ export function D3DPreprocess(
   ppCodeText: Deno.PointerValue | Uint8Array /* ptr */,
   ppErrorMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DPreprocess(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.toPointer(ppCodeText), util.toPointer(ppErrorMsgs));
+  return libD3DCOMPILER_47_dll.D3DPreprocess!(util.toPointer(pSrcData), SrcDataSize, util.pstrToFfi(pSourceName), util.toPointer(pDefines), util.toPointer(pInclude), util.toPointer(ppCodeText), util.toPointer(ppErrorMsgs));
 }
 
 export function D3DGetDebugInfo(
@@ -331,7 +356,7 @@ export function D3DGetDebugInfo(
   SrcDataSize: bigint | number /* usize */,
   ppDebugInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetDebugInfo(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppDebugInfo));
+  return libD3DCOMPILER_47_dll.D3DGetDebugInfo!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppDebugInfo));
 }
 
 export function D3DReflect(
@@ -340,7 +365,7 @@ export function D3DReflect(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ppReflector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DReflect(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pInterface), util.toPointer(ppReflector));
+  return libD3DCOMPILER_47_dll.D3DReflect!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(pInterface), util.toPointer(ppReflector));
 }
 
 export function D3DReflectLibrary(
@@ -349,7 +374,7 @@ export function D3DReflectLibrary(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppReflector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DReflectLibrary(util.toPointer(pSrcData), SrcDataSize, util.toPointer(riid), util.toPointer(ppReflector));
+  return libD3DCOMPILER_47_dll.D3DReflectLibrary!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(riid), util.toPointer(ppReflector));
 }
 
 export function D3DDisassemble(
@@ -359,7 +384,7 @@ export function D3DDisassemble(
   szComments: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DDisassemble(util.toPointer(pSrcData), SrcDataSize, Flags, util.pstrToFfi(szComments), util.toPointer(ppDisassembly));
+  return libD3DCOMPILER_47_dll.D3DDisassemble!(util.toPointer(pSrcData), SrcDataSize, Flags, util.pstrToFfi(szComments), util.toPointer(ppDisassembly));
 }
 
 export function D3DDisassembleRegion(
@@ -372,13 +397,13 @@ export function D3DDisassembleRegion(
   pFinishByteOffset: Deno.PointerValue | Uint8Array /* ptr */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DDisassembleRegion(util.toPointer(pSrcData), SrcDataSize, Flags, util.pstrToFfi(szComments), StartByteOffset, NumInsts, util.toPointer(pFinishByteOffset), util.toPointer(ppDisassembly));
+  return libD3DCOMPILER_47_dll.D3DDisassembleRegion!(util.toPointer(pSrcData), SrcDataSize, Flags, util.pstrToFfi(szComments), StartByteOffset, NumInsts, util.toPointer(pFinishByteOffset), util.toPointer(ppDisassembly));
 }
 
 export function D3DCreateLinker(
   ppLinker: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCreateLinker(util.toPointer(ppLinker));
+  return libD3DCOMPILER_47_dll.D3DCreateLinker!(util.toPointer(ppLinker));
 }
 
 export function D3DLoadModule(
@@ -386,14 +411,14 @@ export function D3DLoadModule(
   cbSrcDataSize: bigint | number /* usize */,
   ppModule: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DLoadModule(util.toPointer(pSrcData), cbSrcDataSize, util.toPointer(ppModule));
+  return libD3DCOMPILER_47_dll.D3DLoadModule!(util.toPointer(pSrcData), cbSrcDataSize, util.toPointer(ppModule));
 }
 
 export function D3DCreateFunctionLinkingGraph(
   uFlags: number /* u32 */,
   ppFunctionLinkingGraph: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCreateFunctionLinkingGraph(uFlags, util.toPointer(ppFunctionLinkingGraph));
+  return libD3DCOMPILER_47_dll.D3DCreateFunctionLinkingGraph!(uFlags, util.toPointer(ppFunctionLinkingGraph));
 }
 
 export function D3DGetTraceInstructionOffsets(
@@ -405,7 +430,7 @@ export function D3DGetTraceInstructionOffsets(
   pOffsets: Deno.PointerValue | Uint8Array /* ptr */,
   pTotalInsts: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetTraceInstructionOffsets(util.toPointer(pSrcData), SrcDataSize, Flags, StartInstIndex, NumInsts, util.toPointer(pOffsets), util.toPointer(pTotalInsts));
+  return libD3DCOMPILER_47_dll.D3DGetTraceInstructionOffsets!(util.toPointer(pSrcData), SrcDataSize, Flags, StartInstIndex, NumInsts, util.toPointer(pOffsets), util.toPointer(pTotalInsts));
 }
 
 export function D3DGetInputSignatureBlob(
@@ -413,7 +438,7 @@ export function D3DGetInputSignatureBlob(
   SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetInputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
+  return libD3DCOMPILER_47_dll.D3DGetInputSignatureBlob!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
 }
 
 export function D3DGetOutputSignatureBlob(
@@ -421,7 +446,7 @@ export function D3DGetOutputSignatureBlob(
   SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetOutputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
+  return libD3DCOMPILER_47_dll.D3DGetOutputSignatureBlob!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
 }
 
 export function D3DGetInputAndOutputSignatureBlob(
@@ -429,7 +454,7 @@ export function D3DGetInputAndOutputSignatureBlob(
   SrcDataSize: bigint | number /* usize */,
   ppSignatureBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetInputAndOutputSignatureBlob(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
+  return libD3DCOMPILER_47_dll.D3DGetInputAndOutputSignatureBlob!(util.toPointer(pSrcData), SrcDataSize, util.toPointer(ppSignatureBlob));
 }
 
 export function D3DStripShader(
@@ -438,7 +463,7 @@ export function D3DStripShader(
   uStripFlags: number /* u32 */,
   ppStrippedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DStripShader(util.toPointer(pShaderBytecode), BytecodeLength, uStripFlags, util.toPointer(ppStrippedBlob));
+  return libD3DCOMPILER_47_dll.D3DStripShader!(util.toPointer(pShaderBytecode), BytecodeLength, uStripFlags, util.toPointer(ppStrippedBlob));
 }
 
 export function D3DGetBlobPart(
@@ -448,7 +473,7 @@ export function D3DGetBlobPart(
   Flags: number /* u32 */,
   ppPart: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DGetBlobPart(util.toPointer(pSrcData), SrcDataSize, Part, Flags, util.toPointer(ppPart));
+  return libD3DCOMPILER_47_dll.D3DGetBlobPart!(util.toPointer(pSrcData), SrcDataSize, Part, Flags, util.toPointer(ppPart));
 }
 
 export function D3DSetBlobPart(
@@ -460,14 +485,14 @@ export function D3DSetBlobPart(
   PartSize: bigint | number /* usize */,
   ppNewShader: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DSetBlobPart(util.toPointer(pSrcData), SrcDataSize, Part, Flags, util.toPointer(pPart), PartSize, util.toPointer(ppNewShader));
+  return libD3DCOMPILER_47_dll.D3DSetBlobPart!(util.toPointer(pSrcData), SrcDataSize, Part, Flags, util.toPointer(pPart), PartSize, util.toPointer(ppNewShader));
 }
 
 export function D3DCreateBlob(
   Size: bigint | number /* usize */,
   ppBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCreateBlob(Size, util.toPointer(ppBlob));
+  return libD3DCOMPILER_47_dll.D3DCreateBlob!(Size, util.toPointer(ppBlob));
 }
 
 export function D3DCompressShaders(
@@ -476,7 +501,7 @@ export function D3DCompressShaders(
   uFlags: number /* u32 */,
   ppCompressedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DCompressShaders(uNumShaders, util.toPointer(pShaderData), uFlags, util.toPointer(ppCompressedData));
+  return libD3DCOMPILER_47_dll.D3DCompressShaders!(uNumShaders, util.toPointer(pShaderData), uFlags, util.toPointer(ppCompressedData));
 }
 
 export function D3DDecompressShaders(
@@ -489,7 +514,7 @@ export function D3DDecompressShaders(
   ppShaders: Deno.PointerValue | Uint8Array /* ptr */,
   pTotalShaders: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DDecompressShaders(util.toPointer(pSrcData), SrcDataSize, uNumShaders, uStartIndex, util.toPointer(pIndices), uFlags, util.toPointer(ppShaders), util.toPointer(pTotalShaders));
+  return libD3DCOMPILER_47_dll.D3DDecompressShaders!(util.toPointer(pSrcData), SrcDataSize, uNumShaders, uStartIndex, util.toPointer(pIndices), uFlags, util.toPointer(ppShaders), util.toPointer(pTotalShaders));
 }
 
 export function D3DDisassemble10Effect(
@@ -497,6 +522,6 @@ export function D3DDisassemble10Effect(
   Flags: number /* u32 */,
   ppDisassembly: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libD3DCOMPILER_47_dll.D3DDisassemble10Effect(util.toPointer(pEffect), Flags, util.toPointer(ppDisassembly));
+  return libD3DCOMPILER_47_dll.D3DDisassemble10Effect!(util.toPointer(pEffect), Flags, util.toPointer(ppDisassembly));
 }
 

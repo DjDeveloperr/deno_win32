@@ -11921,318 +11921,397 @@ try {
     GetIScsiVersionInformation: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiTargetInformationW: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiTargetInformationA: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiConnectionW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u64", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiConnectionA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u64", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiConnection: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiTargetsW: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiTargetsA: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiStaticTargetW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiStaticTargetA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiStaticTargetW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiStaticTargetA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiSendTargetPortalW: {
       parameters: ["buffer", "u32", "pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddIScsiSendTargetPortalA: {
       parameters: ["buffer", "u32", "pointer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiSendTargetPortalW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiSendTargetPortalA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RefreshIScsiSendTargetPortalW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RefreshIScsiSendTargetPortalA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiSendTargetPortalsW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiSendTargetPortalsA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiSendTargetPortalsExW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiSendTargetPortalsExA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LoginIScsiTargetW: {
       parameters: ["buffer", "pointer", "buffer", "u32", "pointer", "u64", "pointer", "pointer", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LoginIScsiTargetA: {
       parameters: ["buffer", "pointer", "buffer", "u32", "pointer", "u64", "pointer", "pointer", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiPersistentLoginsW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiPersistentLoginsA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LogoutIScsiTarget: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiPersistentTargetW: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveIScsiPersistentTargetA: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SendScsiInquiry: {
       parameters: ["pointer", "u64", "u8", "u8", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SendScsiReadCapacity: {
       parameters: ["pointer", "u64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SendScsiReportLuns: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiInitiatorListW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiInitiatorListA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportActiveIScsiTargetMappingsW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportActiveIScsiTargetMappingsA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiTunnelModeOuterAddressW: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiTunnelModeOuterAddressA: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiIKEInfoW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiIKEInfoA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiIKEInfoW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiIKEInfoA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiGroupPresharedKey: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiInitiatorCHAPSharedSecret: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiInitiatorRADIUSSharedSecret: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiInitiatorNodeNameW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     SetIScsiInitiatorNodeNameA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiInitiatorNodeNameW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiInitiatorNodeNameA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AddISNSServerW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AddISNSServerA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveISNSServerW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveISNSServerA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RefreshISNSServerW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RefreshISNSServerA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ReportISNSServerListW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportISNSServerListA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiSessionListW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiSessionListA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIScsiSessionListEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetDevicesForIScsiSessionW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetDevicesForIScsiSessionA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetupPersistentIScsiVolumes: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetupPersistentIScsiDevices: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     AddPersistentIScsiDeviceW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AddPersistentIScsiDeviceA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemovePersistentIScsiDeviceW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemovePersistentIScsiDeviceA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ClearPersistentIScsiDevices: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     ReportPersistentIScsiDevicesW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportPersistentIScsiDevicesA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiTargetPortalsW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ReportIScsiTargetPortalsA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddRadiusServerW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AddRadiusServerA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveRadiusServerW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveRadiusServerA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ReportRadiusServerListW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ReportRadiusServerListA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12242,7 +12321,7 @@ try {
 export function GetIScsiVersionInformation(
   VersionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiVersionInformation(util.toPointer(VersionInfo));
+  return libISCSIDSC_dll.GetIScsiVersionInformation!(util.toPointer(VersionInfo));
 }
 
 export function GetIScsiTargetInformationW(
@@ -12252,7 +12331,7 @@ export function GetIScsiTargetInformationW(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiTargetInformationW(util.pwstrToFfi(TargetName), util.pwstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libISCSIDSC_dll.GetIScsiTargetInformationW!(util.pwstrToFfi(TargetName), util.pwstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function GetIScsiTargetInformationA(
@@ -12262,7 +12341,7 @@ export function GetIScsiTargetInformationA(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiTargetInformationA(util.pstrToFfi(TargetName), util.pstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libISCSIDSC_dll.GetIScsiTargetInformationA!(util.pstrToFfi(TargetName), util.pstrToFfi(DiscoveryMechanism), InfoClass, util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function AddIScsiConnectionW(
@@ -12276,7 +12355,7 @@ export function AddIScsiConnectionW(
   Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiConnectionW(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.AddIScsiConnectionW!(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
 }
 
 export function AddIScsiConnectionA(
@@ -12290,14 +12369,14 @@ export function AddIScsiConnectionA(
   Key: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiConnectionA(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.AddIScsiConnectionA!(util.toPointer(UniqueSessionId), util.toPointer(Reserved), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(ConnectionId));
 }
 
 export function RemoveIScsiConnection(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
   ConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiConnection(util.toPointer(UniqueSessionId), util.toPointer(ConnectionId));
+  return libISCSIDSC_dll.RemoveIScsiConnection!(util.toPointer(UniqueSessionId), util.toPointer(ConnectionId));
 }
 
 export function ReportIScsiTargetsW(
@@ -12305,7 +12384,7 @@ export function ReportIScsiTargetsW(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiTargetsW(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiTargetsW!(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
 }
 
 export function ReportIScsiTargetsA(
@@ -12313,7 +12392,7 @@ export function ReportIScsiTargetsA(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiTargetsA(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiTargetsA!(util.toPointer(ForceUpdate), util.toPointer(BufferSize), util.pstrToFfi(Buffer));
 }
 
 export function AddIScsiStaticTargetW(
@@ -12325,7 +12404,7 @@ export function AddIScsiStaticTargetW(
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   PortalGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiStaticTargetW(util.pwstrToFfi(TargetName), util.pwstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
+  return libISCSIDSC_dll.AddIScsiStaticTargetW!(util.pwstrToFfi(TargetName), util.pwstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
 }
 
 export function AddIScsiStaticTargetA(
@@ -12337,19 +12416,19 @@ export function AddIScsiStaticTargetA(
   LoginOptions: Deno.PointerValue | Uint8Array /* ptr */,
   PortalGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiStaticTargetA(util.pstrToFfi(TargetName), util.pstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
+  return libISCSIDSC_dll.AddIScsiStaticTargetA!(util.pstrToFfi(TargetName), util.pstrToFfi(TargetAlias), TargetFlags, util.toPointer(Persist), util.toPointer(Mappings), util.toPointer(LoginOptions), util.toPointer(PortalGroup));
 }
 
 export function RemoveIScsiStaticTargetW(
   TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiStaticTargetW(util.pwstrToFfi(TargetName));
+  return libISCSIDSC_dll.RemoveIScsiStaticTargetW!(util.pwstrToFfi(TargetName));
 }
 
 export function RemoveIScsiStaticTargetA(
   TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiStaticTargetA(util.pstrToFfi(TargetName));
+  return libISCSIDSC_dll.RemoveIScsiStaticTargetA!(util.pstrToFfi(TargetName));
 }
 
 export function AddIScsiSendTargetPortalW(
@@ -12359,7 +12438,7 @@ export function AddIScsiSendTargetPortalW(
   SecurityFlags: bigint | number /* u64 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
+  return libISCSIDSC_dll.AddIScsiSendTargetPortalW!(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
 }
 
 export function AddIScsiSendTargetPortalA(
@@ -12369,7 +12448,7 @@ export function AddIScsiSendTargetPortalA(
   SecurityFlags: bigint | number /* u64 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
+  return libISCSIDSC_dll.AddIScsiSendTargetPortalA!(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(LoginOptions), SecurityFlags, util.toPointer(Portal));
 }
 
 export function RemoveIScsiSendTargetPortalW(
@@ -12377,7 +12456,7 @@ export function RemoveIScsiSendTargetPortalW(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalW!(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RemoveIScsiSendTargetPortalA(
@@ -12385,7 +12464,7 @@ export function RemoveIScsiSendTargetPortalA(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiSendTargetPortalA!(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RefreshIScsiSendTargetPortalW(
@@ -12393,7 +12472,7 @@ export function RefreshIScsiSendTargetPortalW(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalW!(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function RefreshIScsiSendTargetPortalA(
@@ -12401,21 +12480,21 @@ export function RefreshIScsiSendTargetPortalA(
   InitiatorPortNumber: number /* u32 */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
+  return libISCSIDSC_dll.RefreshIScsiSendTargetPortalA!(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(Portal));
 }
 
 export function ReportIScsiSendTargetPortalsW(
   PortalCount: Deno.PointerValue | Uint8Array /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsW(util.toPointer(PortalCount), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsW!(util.toPointer(PortalCount), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsA(
   PortalCount: Deno.PointerValue | Uint8Array /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsA(util.toPointer(PortalCount), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsA!(util.toPointer(PortalCount), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsExW(
@@ -12423,7 +12502,7 @@ export function ReportIScsiSendTargetPortalsExW(
   PortalInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExW(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExW!(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
 }
 
 export function ReportIScsiSendTargetPortalsExA(
@@ -12431,7 +12510,7 @@ export function ReportIScsiSendTargetPortalsExA(
   PortalInfoSize: Deno.PointerValue | Uint8Array /* ptr */,
   PortalInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExA(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
+  return libISCSIDSC_dll.ReportIScsiSendTargetPortalsExA!(util.toPointer(PortalCount), util.toPointer(PortalInfoSize), util.toPointer(PortalInfo));
 }
 
 export function LoginIScsiTargetW(
@@ -12449,7 +12528,7 @@ export function LoginIScsiTargetW(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
   UniqueConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.LoginIScsiTargetW(util.pwstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
+  return libISCSIDSC_dll.LoginIScsiTargetW!(util.pwstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
 }
 
 export function LoginIScsiTargetA(
@@ -12467,7 +12546,7 @@ export function LoginIScsiTargetA(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
   UniqueConnectionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.LoginIScsiTargetA(util.pstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
+  return libISCSIDSC_dll.LoginIScsiTargetA!(util.pstrToFfi(TargetName), util.toPointer(IsInformationalSession), util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.toPointer(TargetPortal), SecurityFlags, util.toPointer(Mappings), util.toPointer(LoginOptions), KeySize, util.pstrToFfi(Key), util.toPointer(IsPersistent), util.toPointer(UniqueSessionId), util.toPointer(UniqueConnectionId));
 }
 
 export function ReportIScsiPersistentLoginsW(
@@ -12475,7 +12554,7 @@ export function ReportIScsiPersistentLoginsW(
   PersistentLoginInfo: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiPersistentLoginsW(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
+  return libISCSIDSC_dll.ReportIScsiPersistentLoginsW!(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
 }
 
 export function ReportIScsiPersistentLoginsA(
@@ -12483,13 +12562,13 @@ export function ReportIScsiPersistentLoginsA(
   PersistentLoginInfo: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiPersistentLoginsA(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
+  return libISCSIDSC_dll.ReportIScsiPersistentLoginsA!(util.toPointer(Count), util.toPointer(PersistentLoginInfo), util.toPointer(BufferSizeInBytes));
 }
 
 export function LogoutIScsiTarget(
   UniqueSessionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.LogoutIScsiTarget(util.toPointer(UniqueSessionId));
+  return libISCSIDSC_dll.LogoutIScsiTarget!(util.toPointer(UniqueSessionId));
 }
 
 export function RemoveIScsiPersistentTargetW(
@@ -12498,7 +12577,7 @@ export function RemoveIScsiPersistentTargetW(
   TargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiPersistentTargetW(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pwstrToFfi(TargetName), util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiPersistentTargetW!(util.pwstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pwstrToFfi(TargetName), util.toPointer(Portal));
 }
 
 export function RemoveIScsiPersistentTargetA(
@@ -12507,7 +12586,7 @@ export function RemoveIScsiPersistentTargetA(
   TargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Portal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveIScsiPersistentTargetA(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pstrToFfi(TargetName), util.toPointer(Portal));
+  return libISCSIDSC_dll.RemoveIScsiPersistentTargetA!(util.pstrToFfi(InitiatorInstance), InitiatorPortNumber, util.pstrToFfi(TargetName), util.toPointer(Portal));
 }
 
 export function SendScsiInquiry(
@@ -12521,7 +12600,7 @@ export function SendScsiInquiry(
   SenseSize: Deno.PointerValue | Uint8Array /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SendScsiInquiry(util.toPointer(UniqueSessionId), Lun, EvpdCmddt, PageCode, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiInquiry!(util.toPointer(UniqueSessionId), Lun, EvpdCmddt, PageCode, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function SendScsiReadCapacity(
@@ -12533,7 +12612,7 @@ export function SendScsiReadCapacity(
   SenseSize: Deno.PointerValue | Uint8Array /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SendScsiReadCapacity(util.toPointer(UniqueSessionId), Lun, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiReadCapacity!(util.toPointer(UniqueSessionId), Lun, util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function SendScsiReportLuns(
@@ -12544,21 +12623,21 @@ export function SendScsiReportLuns(
   SenseSize: Deno.PointerValue | Uint8Array /* ptr */,
   SenseBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SendScsiReportLuns(util.toPointer(UniqueSessionId), util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
+  return libISCSIDSC_dll.SendScsiReportLuns!(util.toPointer(UniqueSessionId), util.toPointer(ScsiStatus), util.toPointer(ResponseSize), util.toPointer(ResponseBuffer), util.toPointer(SenseSize), util.toPointer(SenseBuffer));
 }
 
 export function ReportIScsiInitiatorListW(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiInitiatorListW(util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiInitiatorListW!(util.toPointer(BufferSize), util.pwstrToFfi(Buffer));
 }
 
 export function ReportIScsiInitiatorListA(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiInitiatorListA(util.toPointer(BufferSize), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportIScsiInitiatorListA!(util.toPointer(BufferSize), util.pstrToFfi(Buffer));
 }
 
 export function ReportActiveIScsiTargetMappingsW(
@@ -12566,7 +12645,7 @@ export function ReportActiveIScsiTargetMappingsW(
   MappingCount: Deno.PointerValue | Uint8Array /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsW(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
+  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsW!(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
 }
 
 export function ReportActiveIScsiTargetMappingsA(
@@ -12574,7 +12653,7 @@ export function ReportActiveIScsiTargetMappingsA(
   MappingCount: Deno.PointerValue | Uint8Array /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsA(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
+  return libISCSIDSC_dll.ReportActiveIScsiTargetMappingsA!(util.toPointer(BufferSize), util.toPointer(MappingCount), util.toPointer(Mappings));
 }
 
 export function SetIScsiTunnelModeOuterAddressW(
@@ -12584,7 +12663,7 @@ export function SetIScsiTunnelModeOuterAddressW(
   OuterModeAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Persist: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.pwstrToFfi(DestinationAddress), util.pwstrToFfi(OuterModeAddress), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressW!(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.pwstrToFfi(DestinationAddress), util.pwstrToFfi(OuterModeAddress), util.toPointer(Persist));
 }
 
 export function SetIScsiTunnelModeOuterAddressA(
@@ -12594,7 +12673,7 @@ export function SetIScsiTunnelModeOuterAddressA(
   OuterModeAddress: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Persist: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.pstrToFfi(DestinationAddress), util.pstrToFfi(OuterModeAddress), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiTunnelModeOuterAddressA!(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.pstrToFfi(DestinationAddress), util.pstrToFfi(OuterModeAddress), util.toPointer(Persist));
 }
 
 export function SetIScsiIKEInfoW(
@@ -12603,7 +12682,7 @@ export function SetIScsiIKEInfoW(
   AuthInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Persist: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiIKEInfoW!(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
 }
 
 export function SetIScsiIKEInfoA(
@@ -12612,7 +12691,7 @@ export function SetIScsiIKEInfoA(
   AuthInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Persist: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiIKEInfoA!(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(AuthInfo), util.toPointer(Persist));
 }
 
 export function GetIScsiIKEInfoW(
@@ -12621,7 +12700,7 @@ export function GetIScsiIKEInfoW(
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   AuthInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiIKEInfoW(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
+  return libISCSIDSC_dll.GetIScsiIKEInfoW!(util.pwstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
 }
 
 export function GetIScsiIKEInfoA(
@@ -12630,7 +12709,7 @@ export function GetIScsiIKEInfoA(
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   AuthInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiIKEInfoA(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
+  return libISCSIDSC_dll.GetIScsiIKEInfoA!(util.pstrToFfi(InitiatorName), InitiatorPortNumber, util.toPointer(Reserved), util.toPointer(AuthInfo));
 }
 
 export function SetIScsiGroupPresharedKey(
@@ -12638,95 +12717,95 @@ export function SetIScsiGroupPresharedKey(
   Key: Deno.PointerValue | Uint8Array /* ptr */,
   Persist: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiGroupPresharedKey(KeyLength, util.toPointer(Key), util.toPointer(Persist));
+  return libISCSIDSC_dll.SetIScsiGroupPresharedKey!(KeyLength, util.toPointer(Key), util.toPointer(Persist));
 }
 
 export function SetIScsiInitiatorCHAPSharedSecret(
   SharedSecretLength: number /* u32 */,
   SharedSecret: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiInitiatorCHAPSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
+  return libISCSIDSC_dll.SetIScsiInitiatorCHAPSharedSecret!(SharedSecretLength, util.toPointer(SharedSecret));
 }
 
 export function SetIScsiInitiatorRADIUSSharedSecret(
   SharedSecretLength: number /* u32 */,
   SharedSecret: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiInitiatorRADIUSSharedSecret(SharedSecretLength, util.toPointer(SharedSecret));
+  return libISCSIDSC_dll.SetIScsiInitiatorRADIUSSharedSecret!(SharedSecretLength, util.toPointer(SharedSecret));
 }
 
 export function SetIScsiInitiatorNodeNameW(
   InitiatorNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameW!(util.pwstrToFfi(InitiatorNodeName));
 }
 
 export function SetIScsiInitiatorNodeNameA(
   InitiatorNodeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.SetIScsiInitiatorNodeNameA!(util.pstrToFfi(InitiatorNodeName));
 }
 
 export function GetIScsiInitiatorNodeNameW(
   InitiatorNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameW(util.pwstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameW!(util.pwstrToFfi(InitiatorNodeName));
 }
 
 export function GetIScsiInitiatorNodeNameA(
   InitiatorNodeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameA(util.pstrToFfi(InitiatorNodeName));
+  return libISCSIDSC_dll.GetIScsiInitiatorNodeNameA!(util.pstrToFfi(InitiatorNodeName));
 }
 
 export function AddISNSServerW(
   Address: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.AddISNSServerW!(util.pwstrToFfi(Address));
 }
 
 export function AddISNSServerA(
   Address: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.AddISNSServerA!(util.pstrToFfi(Address));
 }
 
 export function RemoveISNSServerW(
   Address: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveISNSServerW!(util.pwstrToFfi(Address));
 }
 
 export function RemoveISNSServerA(
   Address: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveISNSServerA!(util.pstrToFfi(Address));
 }
 
 export function RefreshISNSServerW(
   Address: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RefreshISNSServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RefreshISNSServerW!(util.pwstrToFfi(Address));
 }
 
 export function RefreshISNSServerA(
   Address: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RefreshISNSServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RefreshISNSServerA!(util.pstrToFfi(Address));
 }
 
 export function ReportISNSServerListW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportISNSServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportISNSServerListW!(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportISNSServerListA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportISNSServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportISNSServerListA!(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 
 export function GetIScsiSessionListW(
@@ -12734,7 +12813,7 @@ export function GetIScsiSessionListW(
   SessionCount: Deno.PointerValue | Uint8Array /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiSessionListW(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListW!(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
 }
 
 export function GetIScsiSessionListA(
@@ -12742,7 +12821,7 @@ export function GetIScsiSessionListA(
   SessionCount: Deno.PointerValue | Uint8Array /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiSessionListA(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListA!(util.toPointer(BufferSize), util.toPointer(SessionCount), util.toPointer(SessionInfo));
 }
 
 export function GetIScsiSessionListEx(
@@ -12750,7 +12829,7 @@ export function GetIScsiSessionListEx(
   SessionCountPtr: Deno.PointerValue | Uint8Array /* ptr */,
   SessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetIScsiSessionListEx(util.toPointer(BufferSize), util.toPointer(SessionCountPtr), util.toPointer(SessionInfo));
+  return libISCSIDSC_dll.GetIScsiSessionListEx!(util.toPointer(BufferSize), util.toPointer(SessionCountPtr), util.toPointer(SessionInfo));
 }
 
 export function GetDevicesForIScsiSessionW(
@@ -12758,7 +12837,7 @@ export function GetDevicesForIScsiSessionW(
   DeviceCount: Deno.PointerValue | Uint8Array /* ptr */,
   Devices: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetDevicesForIScsiSessionW(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
+  return libISCSIDSC_dll.GetDevicesForIScsiSessionW!(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
 }
 
 export function GetDevicesForIScsiSessionA(
@@ -12766,57 +12845,57 @@ export function GetDevicesForIScsiSessionA(
   DeviceCount: Deno.PointerValue | Uint8Array /* ptr */,
   Devices: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.GetDevicesForIScsiSessionA(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
+  return libISCSIDSC_dll.GetDevicesForIScsiSessionA!(util.toPointer(UniqueSessionId), util.toPointer(DeviceCount), util.toPointer(Devices));
 }
 
 export function SetupPersistentIScsiVolumes(): number /* u32 */ {
-  return libISCSIDSC_dll.SetupPersistentIScsiVolumes();
+  return libISCSIDSC_dll.SetupPersistentIScsiVolumes!();
 }
 
 export function SetupPersistentIScsiDevices(): number /* u32 */ {
-  return libISCSIDSC_dll.SetupPersistentIScsiDevices();
+  return libISCSIDSC_dll.SetupPersistentIScsiDevices!();
 }
 
 export function AddPersistentIScsiDeviceW(
   DevicePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddPersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
+  return libISCSIDSC_dll.AddPersistentIScsiDeviceW!(util.pwstrToFfi(DevicePath));
 }
 
 export function AddPersistentIScsiDeviceA(
   DevicePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddPersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
+  return libISCSIDSC_dll.AddPersistentIScsiDeviceA!(util.pstrToFfi(DevicePath));
 }
 
 export function RemovePersistentIScsiDeviceW(
   DevicePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemovePersistentIScsiDeviceW(util.pwstrToFfi(DevicePath));
+  return libISCSIDSC_dll.RemovePersistentIScsiDeviceW!(util.pwstrToFfi(DevicePath));
 }
 
 export function RemovePersistentIScsiDeviceA(
   DevicePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemovePersistentIScsiDeviceA(util.pstrToFfi(DevicePath));
+  return libISCSIDSC_dll.RemovePersistentIScsiDeviceA!(util.pstrToFfi(DevicePath));
 }
 
 export function ClearPersistentIScsiDevices(): number /* u32 */ {
-  return libISCSIDSC_dll.ClearPersistentIScsiDevices();
+  return libISCSIDSC_dll.ClearPersistentIScsiDevices!();
 }
 
 export function ReportPersistentIScsiDevicesW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportPersistentIScsiDevicesW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportPersistentIScsiDevicesW!(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportPersistentIScsiDevicesA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportPersistentIScsiDevicesA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportPersistentIScsiDevicesA!(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 
 export function ReportIScsiTargetPortalsW(
@@ -12826,7 +12905,7 @@ export function ReportIScsiTargetPortalsW(
   ElementCount: Deno.PointerValue | Uint8Array /* ptr */,
   Portals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiTargetPortalsW(util.pwstrToFfi(InitiatorName), util.pwstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
+  return libISCSIDSC_dll.ReportIScsiTargetPortalsW!(util.pwstrToFfi(InitiatorName), util.pwstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
 }
 
 export function ReportIScsiTargetPortalsA(
@@ -12836,44 +12915,44 @@ export function ReportIScsiTargetPortalsA(
   ElementCount: Deno.PointerValue | Uint8Array /* ptr */,
   Portals: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportIScsiTargetPortalsA(util.pstrToFfi(InitiatorName), util.pstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
+  return libISCSIDSC_dll.ReportIScsiTargetPortalsA!(util.pstrToFfi(InitiatorName), util.pstrToFfi(TargetName), util.toPointer(TargetPortalTag), util.toPointer(ElementCount), util.toPointer(Portals));
 }
 
 export function AddRadiusServerW(
   Address: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddRadiusServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.AddRadiusServerW!(util.pwstrToFfi(Address));
 }
 
 export function AddRadiusServerA(
   Address: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.AddRadiusServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.AddRadiusServerA!(util.pstrToFfi(Address));
 }
 
 export function RemoveRadiusServerW(
   Address: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveRadiusServerW(util.pwstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveRadiusServerW!(util.pwstrToFfi(Address));
 }
 
 export function RemoveRadiusServerA(
   Address: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.RemoveRadiusServerA(util.pstrToFfi(Address));
+  return libISCSIDSC_dll.RemoveRadiusServerA!(util.pstrToFfi(Address));
 }
 
 export function ReportRadiusServerListW(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportRadiusServerListW(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportRadiusServerListW!(util.toPointer(BufferSizeInChar), util.pwstrToFfi(Buffer));
 }
 
 export function ReportRadiusServerListA(
   BufferSizeInChar: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libISCSIDSC_dll.ReportRadiusServerListA(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
+  return libISCSIDSC_dll.ReportRadiusServerListA!(util.toPointer(BufferSizeInChar), util.pstrToFfi(Buffer));
 }
 

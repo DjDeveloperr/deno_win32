@@ -6229,338 +6229,422 @@ try {
     CallNtPowerInformation: {
       parameters: ["i32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetPwrCapabilities: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     PowerDeterminePlatformRoleEx: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     PowerRegisterSuspendResumeNotification: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerUnregisterSuspendResumeNotification: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadACValue: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadDCValue: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerWriteACValueIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteDCValueIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerGetActiveScheme: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerSetActiveScheme: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerSettingRegisterNotification: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerSettingUnregisterNotification: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PowerRegisterForEffectivePowerModeNotifications: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PowerUnregisterFromEffectivePowerModeNotifications: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetPwrDiskSpindownRange: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EnumPwrSchemes: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadGlobalPwrPolicy: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadPwrScheme: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WritePwrScheme: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WriteGlobalPwrPolicy: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeletePwrScheme: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     GetActivePwrScheme: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetActivePwrScheme: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsPwrSuspendAllowed: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     IsPwrHibernateAllowed: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     IsPwrShutdownAllowed: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     IsAdminOverrideActive: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetSuspendState: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentPowerPolicies: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CanUserWritePwrScheme: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     ReadProcessorPwrScheme: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WriteProcessorPwrScheme: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ValidatePowerPolicies: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PowerIsSettingRangeDefined: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PowerSettingAccessCheckEx: {
       parameters: ["i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerSettingAccessCheck: {
       parameters: ["i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadACValueIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadDCValueIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadFriendlyName: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadDescription: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadPossibleValue: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadPossibleFriendlyName: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadPossibleDescription: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadValueMin: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadValueMax: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadValueIncrement: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadValueUnitsSpecifier: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadACDefaultIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadDCDefaultIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadIconResourceSpecifier: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerReadSettingAttributes: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerWriteFriendlyName: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteDescription: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWritePossibleValue: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWritePossibleFriendlyName: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWritePossibleDescription: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteValueMin: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteValueMax: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteValueIncrement: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteValueUnitsSpecifier: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteACDefaultIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteDCDefaultIndex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteIconResourceSpecifier: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerWriteSettingAttributes: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerDuplicateScheme: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerImportPowerScheme: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerDeleteScheme: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerRemovePowerSetting: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerCreateSetting: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerCreatePossibleSetting: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PowerEnumerate: {
       parameters: ["pointer", "pointer", "pointer", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PowerOpenUserPowerKey: {
       parameters: ["pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     PowerOpenSystemPowerKey: {
       parameters: ["pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     PowerCanRestoreIndividualDefaultPowerScheme: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PowerRestoreIndividualDefaultPowerScheme: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PowerRestoreDefaultPowerSchemes: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     PowerReplaceDefaultPowerSchemes: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     PowerDeterminePlatformRole: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     DevicePowerEnumDevices: {
       parameters: ["u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DevicePowerSetDeviceState: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DevicePowerOpen: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     DevicePowerClose: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     PowerReportThermalEvent: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6570,18 +6654,22 @@ try {
     RegisterPowerSettingNotification: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UnregisterPowerSettingNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterSuspendResumeNotification: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UnregisterSuspendResumeNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6591,38 +6679,47 @@ try {
     RequestWakeupLatency: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     IsSystemResumeAutomatic: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SetThreadExecutionState: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     PowerCreateRequest: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     PowerSetRequest: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     PowerClearRequest: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetDevicePowerState: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetSystemPowerState: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetSystemPowerStatus: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6636,19 +6733,19 @@ export function CallNtPowerInformation(
   OutputBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   OutputBufferLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libPOWRPROF_dll.CallNtPowerInformation(InformationLevel, util.toPointer(InputBuffer), InputBufferLength, util.toPointer(OutputBuffer), OutputBufferLength);
+  return libPOWRPROF_dll.CallNtPowerInformation!(InformationLevel, util.toPointer(InputBuffer), InputBufferLength, util.toPointer(OutputBuffer), OutputBufferLength);
 }
 
 export function GetPwrCapabilities(
   lpspc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.GetPwrCapabilities(util.toPointer(lpspc));
+  return libPOWRPROF_dll.GetPwrCapabilities!(util.toPointer(lpspc));
 }
 
 export function PowerDeterminePlatformRoleEx(
   Version: POWER_PLATFORM_ROLE_VERSION /* Windows.Win32.System.Power.POWER_PLATFORM_ROLE_VERSION */,
 ): POWER_PLATFORM_ROLE /* Windows.Win32.System.Power.POWER_PLATFORM_ROLE */ {
-  return libPOWRPROF_dll.PowerDeterminePlatformRoleEx(Version);
+  return libPOWRPROF_dll.PowerDeterminePlatformRoleEx!(Version);
 }
 
 export function PowerRegisterSuspendResumeNotification(
@@ -6656,13 +6753,13 @@ export function PowerRegisterSuspendResumeNotification(
   Recipient: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerRegisterSuspendResumeNotification(Flags, util.toPointer(Recipient), util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerRegisterSuspendResumeNotification!(Flags, util.toPointer(Recipient), util.toPointer(RegistrationHandle));
 }
 
 export function PowerUnregisterSuspendResumeNotification(
   RegistrationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerUnregisterSuspendResumeNotification(util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerUnregisterSuspendResumeNotification!(util.toPointer(RegistrationHandle));
 }
 
 export function PowerReadACValue(
@@ -6674,7 +6771,7 @@ export function PowerReadACValue(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadACValue(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadACValue!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadDCValue(
@@ -6686,7 +6783,7 @@ export function PowerReadDCValue(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadDCValue(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadDCValue!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerWriteACValueIndex(
@@ -6696,7 +6793,7 @@ export function PowerWriteACValueIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   AcValueIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteACValueIndex(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), AcValueIndex);
+  return libPOWRPROF_dll.PowerWriteACValueIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), AcValueIndex);
 }
 
 export function PowerWriteDCValueIndex(
@@ -6706,21 +6803,21 @@ export function PowerWriteDCValueIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DcValueIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteDCValueIndex(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DcValueIndex);
+  return libPOWRPROF_dll.PowerWriteDCValueIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DcValueIndex);
 }
 
 export function PowerGetActiveScheme(
   UserRootPowerKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   ActivePolicyGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerGetActiveScheme(util.toPointer(UserRootPowerKey), util.toPointer(ActivePolicyGuid));
+  return libPOWRPROF_dll.PowerGetActiveScheme!(util.toPointer(UserRootPowerKey), util.toPointer(ActivePolicyGuid));
 }
 
 export function PowerSetActiveScheme(
   UserRootPowerKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   SchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerSetActiveScheme(util.toPointer(UserRootPowerKey), util.toPointer(SchemeGuid));
+  return libPOWRPROF_dll.PowerSetActiveScheme!(util.toPointer(UserRootPowerKey), util.toPointer(SchemeGuid));
 }
 
 export function PowerSettingRegisterNotification(
@@ -6729,13 +6826,13 @@ export function PowerSettingRegisterNotification(
   Recipient: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerSettingRegisterNotification(util.toPointer(SettingGuid), Flags, util.toPointer(Recipient), util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerSettingRegisterNotification!(util.toPointer(SettingGuid), Flags, util.toPointer(Recipient), util.toPointer(RegistrationHandle));
 }
 
 export function PowerSettingUnregisterNotification(
   RegistrationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerSettingUnregisterNotification(util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerSettingUnregisterNotification!(util.toPointer(RegistrationHandle));
 }
 
 export function PowerRegisterForEffectivePowerModeNotifications(
@@ -6744,40 +6841,40 @@ export function PowerRegisterForEffectivePowerModeNotifications(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPOWRPROF_dll.PowerRegisterForEffectivePowerModeNotifications(Version, util.toPointer(Callback), util.toPointer(Context), util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerRegisterForEffectivePowerModeNotifications!(Version, util.toPointer(Callback), util.toPointer(Context), util.toPointer(RegistrationHandle));
 }
 
 export function PowerUnregisterFromEffectivePowerModeNotifications(
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPOWRPROF_dll.PowerUnregisterFromEffectivePowerModeNotifications(util.toPointer(RegistrationHandle));
+  return libPOWRPROF_dll.PowerUnregisterFromEffectivePowerModeNotifications!(util.toPointer(RegistrationHandle));
 }
 
 export function GetPwrDiskSpindownRange(
   puiMax: Deno.PointerValue | Uint8Array /* ptr */,
   puiMin: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.GetPwrDiskSpindownRange(util.toPointer(puiMax), util.toPointer(puiMin));
+  return libPOWRPROF_dll.GetPwrDiskSpindownRange!(util.toPointer(puiMax), util.toPointer(puiMin));
 }
 
 export function EnumPwrSchemes(
   lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Power.PWRSCHEMESENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.EnumPwrSchemes(util.toPointer(lpfn), util.toPointer(lParam));
+  return libPOWRPROF_dll.EnumPwrSchemes!(util.toPointer(lpfn), util.toPointer(lParam));
 }
 
 export function ReadGlobalPwrPolicy(
   pGlobalPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.ReadGlobalPwrPolicy(util.toPointer(pGlobalPowerPolicy));
+  return libPOWRPROF_dll.ReadGlobalPwrPolicy!(util.toPointer(pGlobalPowerPolicy));
 }
 
 export function ReadPwrScheme(
   uiID: number /* u32 */,
   pPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.ReadPwrScheme(uiID, util.toPointer(pPowerPolicy));
+  return libPOWRPROF_dll.ReadPwrScheme!(uiID, util.toPointer(pPowerPolicy));
 }
 
 export function WritePwrScheme(
@@ -6786,25 +6883,25 @@ export function WritePwrScheme(
   lpszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpScheme: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.WritePwrScheme(util.toPointer(puiID), util.pwstrToFfi(lpszSchemeName), util.pwstrToFfi(lpszDescription), util.toPointer(lpScheme));
+  return libPOWRPROF_dll.WritePwrScheme!(util.toPointer(puiID), util.pwstrToFfi(lpszSchemeName), util.pwstrToFfi(lpszDescription), util.toPointer(lpScheme));
 }
 
 export function WriteGlobalPwrPolicy(
   pGlobalPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.WriteGlobalPwrPolicy(util.toPointer(pGlobalPowerPolicy));
+  return libPOWRPROF_dll.WriteGlobalPwrPolicy!(util.toPointer(pGlobalPowerPolicy));
 }
 
 export function DeletePwrScheme(
   uiID: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.DeletePwrScheme(uiID);
+  return libPOWRPROF_dll.DeletePwrScheme!(uiID);
 }
 
 export function GetActivePwrScheme(
   puiID: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.GetActivePwrScheme(util.toPointer(puiID));
+  return libPOWRPROF_dll.GetActivePwrScheme!(util.toPointer(puiID));
 }
 
 export function SetActivePwrScheme(
@@ -6812,25 +6909,25 @@ export function SetActivePwrScheme(
   pGlobalPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
   pPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.SetActivePwrScheme(uiID, util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
+  return libPOWRPROF_dll.SetActivePwrScheme!(uiID, util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
 }
 
 export function IsPwrSuspendAllowed(): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.IsPwrSuspendAllowed();
+  return libPOWRPROF_dll.IsPwrSuspendAllowed!();
 }
 
 export function IsPwrHibernateAllowed(): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.IsPwrHibernateAllowed();
+  return libPOWRPROF_dll.IsPwrHibernateAllowed!();
 }
 
 export function IsPwrShutdownAllowed(): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.IsPwrShutdownAllowed();
+  return libPOWRPROF_dll.IsPwrShutdownAllowed!();
 }
 
 export function IsAdminOverrideActive(
   papp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.IsAdminOverrideActive(util.toPointer(papp));
+  return libPOWRPROF_dll.IsAdminOverrideActive!(util.toPointer(papp));
 }
 
 export function SetSuspendState(
@@ -6838,46 +6935,46 @@ export function SetSuspendState(
   bForce: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   bWakeupEventsDisabled: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.SetSuspendState(util.toPointer(bHibernate), util.toPointer(bForce), util.toPointer(bWakeupEventsDisabled));
+  return libPOWRPROF_dll.SetSuspendState!(util.toPointer(bHibernate), util.toPointer(bForce), util.toPointer(bWakeupEventsDisabled));
 }
 
 export function GetCurrentPowerPolicies(
   pGlobalPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
   pPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.GetCurrentPowerPolicies(util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
+  return libPOWRPROF_dll.GetCurrentPowerPolicies!(util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
 }
 
 export function CanUserWritePwrScheme(): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.CanUserWritePwrScheme();
+  return libPOWRPROF_dll.CanUserWritePwrScheme!();
 }
 
 export function ReadProcessorPwrScheme(
   uiID: number /* u32 */,
   pMachineProcessorPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.ReadProcessorPwrScheme(uiID, util.toPointer(pMachineProcessorPowerPolicy));
+  return libPOWRPROF_dll.ReadProcessorPwrScheme!(uiID, util.toPointer(pMachineProcessorPowerPolicy));
 }
 
 export function WriteProcessorPwrScheme(
   uiID: number /* u32 */,
   pMachineProcessorPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.WriteProcessorPwrScheme(uiID, util.toPointer(pMachineProcessorPowerPolicy));
+  return libPOWRPROF_dll.WriteProcessorPwrScheme!(uiID, util.toPointer(pMachineProcessorPowerPolicy));
 }
 
 export function ValidatePowerPolicies(
   pGlobalPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
   pPowerPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.ValidatePowerPolicies(util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
+  return libPOWRPROF_dll.ValidatePowerPolicies!(util.toPointer(pGlobalPowerPolicy), util.toPointer(pPowerPolicy));
 }
 
 export function PowerIsSettingRangeDefined(
   SubKeyGuid: Deno.PointerValue | Uint8Array /* ptr */,
   SettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.PowerIsSettingRangeDefined(util.toPointer(SubKeyGuid), util.toPointer(SettingGuid));
+  return libPOWRPROF_dll.PowerIsSettingRangeDefined!(util.toPointer(SubKeyGuid), util.toPointer(SettingGuid));
 }
 
 export function PowerSettingAccessCheckEx(
@@ -6885,14 +6982,14 @@ export function PowerSettingAccessCheckEx(
   PowerGuid: Deno.PointerValue | Uint8Array /* ptr */,
   AccessType: REG_SAM_FLAGS /* Windows.Win32.System.Registry.REG_SAM_FLAGS */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerSettingAccessCheckEx(AccessFlags, util.toPointer(PowerGuid), AccessType);
+  return libPOWRPROF_dll.PowerSettingAccessCheckEx!(AccessFlags, util.toPointer(PowerGuid), AccessType);
 }
 
 export function PowerSettingAccessCheck(
   AccessFlags: POWER_DATA_ACCESSOR /* Windows.Win32.System.Power.POWER_DATA_ACCESSOR */,
   PowerGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerSettingAccessCheck(AccessFlags, util.toPointer(PowerGuid));
+  return libPOWRPROF_dll.PowerSettingAccessCheck!(AccessFlags, util.toPointer(PowerGuid));
 }
 
 export function PowerReadACValueIndex(
@@ -6902,7 +6999,7 @@ export function PowerReadACValueIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   AcValueIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadACValueIndex(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(AcValueIndex));
+  return libPOWRPROF_dll.PowerReadACValueIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(AcValueIndex));
 }
 
 export function PowerReadDCValueIndex(
@@ -6912,7 +7009,7 @@ export function PowerReadDCValueIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DcValueIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadDCValueIndex(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(DcValueIndex));
+  return libPOWRPROF_dll.PowerReadDCValueIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(DcValueIndex));
 }
 
 export function PowerReadFriendlyName(
@@ -6923,7 +7020,7 @@ export function PowerReadFriendlyName(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadFriendlyName(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadFriendlyName!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadDescription(
@@ -6934,7 +7031,7 @@ export function PowerReadDescription(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadDescription(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadDescription!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadPossibleValue(
@@ -6946,7 +7043,7 @@ export function PowerReadPossibleValue(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadPossibleValue(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadPossibleValue!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Type), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadPossibleFriendlyName(
@@ -6957,7 +7054,7 @@ export function PowerReadPossibleFriendlyName(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadPossibleFriendlyName(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadPossibleFriendlyName!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadPossibleDescription(
@@ -6968,7 +7065,7 @@ export function PowerReadPossibleDescription(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadPossibleDescription(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadPossibleDescription!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadValueMin(
@@ -6977,7 +7074,7 @@ export function PowerReadValueMin(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueMinimum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadValueMin(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueMinimum));
+  return libPOWRPROF_dll.PowerReadValueMin!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueMinimum));
 }
 
 export function PowerReadValueMax(
@@ -6986,7 +7083,7 @@ export function PowerReadValueMax(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueMaximum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadValueMax(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueMaximum));
+  return libPOWRPROF_dll.PowerReadValueMax!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueMaximum));
 }
 
 export function PowerReadValueIncrement(
@@ -6995,7 +7092,7 @@ export function PowerReadValueIncrement(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueIncrement: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadValueIncrement(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueIncrement));
+  return libPOWRPROF_dll.PowerReadValueIncrement!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(ValueIncrement));
 }
 
 export function PowerReadValueUnitsSpecifier(
@@ -7005,7 +7102,7 @@ export function PowerReadValueUnitsSpecifier(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadValueUnitsSpecifier(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadValueUnitsSpecifier!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadACDefaultIndex(
@@ -7015,7 +7112,7 @@ export function PowerReadACDefaultIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   AcDefaultIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadACDefaultIndex(util.toPointer(RootPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(AcDefaultIndex));
+  return libPOWRPROF_dll.PowerReadACDefaultIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(AcDefaultIndex));
 }
 
 export function PowerReadDCDefaultIndex(
@@ -7025,7 +7122,7 @@ export function PowerReadDCDefaultIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DcDefaultIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadDCDefaultIndex(util.toPointer(RootPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(DcDefaultIndex));
+  return libPOWRPROF_dll.PowerReadDCDefaultIndex!(util.toPointer(RootPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(DcDefaultIndex));
 }
 
 export function PowerReadIconResourceSpecifier(
@@ -7036,14 +7133,14 @@ export function PowerReadIconResourceSpecifier(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadIconResourceSpecifier(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerReadIconResourceSpecifier!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerReadSettingAttributes(
   SubGroupGuid: Deno.PointerValue | Uint8Array /* ptr */,
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReadSettingAttributes(util.toPointer(SubGroupGuid), util.toPointer(PowerSettingGuid));
+  return libPOWRPROF_dll.PowerReadSettingAttributes!(util.toPointer(SubGroupGuid), util.toPointer(PowerSettingGuid));
 }
 
 export function PowerWriteFriendlyName(
@@ -7054,7 +7151,7 @@ export function PowerWriteFriendlyName(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteFriendlyName(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWriteFriendlyName!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWriteDescription(
@@ -7065,7 +7162,7 @@ export function PowerWriteDescription(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteDescription(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWriteDescription!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWritePossibleValue(
@@ -7077,7 +7174,7 @@ export function PowerWritePossibleValue(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWritePossibleValue(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), Type, PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWritePossibleValue!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), Type, PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWritePossibleFriendlyName(
@@ -7088,7 +7185,7 @@ export function PowerWritePossibleFriendlyName(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWritePossibleFriendlyName(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWritePossibleFriendlyName!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWritePossibleDescription(
@@ -7099,7 +7196,7 @@ export function PowerWritePossibleDescription(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWritePossibleDescription(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWritePossibleDescription!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex, util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWriteValueMin(
@@ -7108,7 +7205,7 @@ export function PowerWriteValueMin(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueMinimum: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteValueMin(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueMinimum);
+  return libPOWRPROF_dll.PowerWriteValueMin!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueMinimum);
 }
 
 export function PowerWriteValueMax(
@@ -7117,7 +7214,7 @@ export function PowerWriteValueMax(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueMaximum: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteValueMax(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueMaximum);
+  return libPOWRPROF_dll.PowerWriteValueMax!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueMaximum);
 }
 
 export function PowerWriteValueIncrement(
@@ -7126,7 +7223,7 @@ export function PowerWriteValueIncrement(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ValueIncrement: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteValueIncrement(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueIncrement);
+  return libPOWRPROF_dll.PowerWriteValueIncrement!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), ValueIncrement);
 }
 
 export function PowerWriteValueUnitsSpecifier(
@@ -7136,7 +7233,7 @@ export function PowerWriteValueUnitsSpecifier(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteValueUnitsSpecifier(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWriteValueUnitsSpecifier!(util.toPointer(RootPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWriteACDefaultIndex(
@@ -7146,7 +7243,7 @@ export function PowerWriteACDefaultIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DefaultAcIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteACDefaultIndex(util.toPointer(RootSystemPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DefaultAcIndex);
+  return libPOWRPROF_dll.PowerWriteACDefaultIndex!(util.toPointer(RootSystemPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DefaultAcIndex);
 }
 
 export function PowerWriteDCDefaultIndex(
@@ -7156,7 +7253,7 @@ export function PowerWriteDCDefaultIndex(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DefaultDcIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteDCDefaultIndex(util.toPointer(RootSystemPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DefaultDcIndex);
+  return libPOWRPROF_dll.PowerWriteDCDefaultIndex!(util.toPointer(RootSystemPowerKey), util.toPointer(SchemePersonalityGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), DefaultDcIndex);
 }
 
 export function PowerWriteIconResourceSpecifier(
@@ -7167,7 +7264,7 @@ export function PowerWriteIconResourceSpecifier(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteIconResourceSpecifier(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
+  return libPOWRPROF_dll.PowerWriteIconResourceSpecifier!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), util.toPointer(Buffer), BufferSize);
 }
 
 export function PowerWriteSettingAttributes(
@@ -7175,7 +7272,7 @@ export function PowerWriteSettingAttributes(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   Attributes: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerWriteSettingAttributes(util.toPointer(SubGroupGuid), util.toPointer(PowerSettingGuid), Attributes);
+  return libPOWRPROF_dll.PowerWriteSettingAttributes!(util.toPointer(SubGroupGuid), util.toPointer(PowerSettingGuid), Attributes);
 }
 
 export function PowerDuplicateScheme(
@@ -7183,7 +7280,7 @@ export function PowerDuplicateScheme(
   SourceSchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DestinationSchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerDuplicateScheme(util.toPointer(RootPowerKey), util.toPointer(SourceSchemeGuid), util.toPointer(DestinationSchemeGuid));
+  return libPOWRPROF_dll.PowerDuplicateScheme!(util.toPointer(RootPowerKey), util.toPointer(SourceSchemeGuid), util.toPointer(DestinationSchemeGuid));
 }
 
 export function PowerImportPowerScheme(
@@ -7191,21 +7288,21 @@ export function PowerImportPowerScheme(
   ImportFileNamePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DestinationSchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerImportPowerScheme(util.toPointer(RootPowerKey), util.pwstrToFfi(ImportFileNamePath), util.toPointer(DestinationSchemeGuid));
+  return libPOWRPROF_dll.PowerImportPowerScheme!(util.toPointer(RootPowerKey), util.pwstrToFfi(ImportFileNamePath), util.toPointer(DestinationSchemeGuid));
 }
 
 export function PowerDeleteScheme(
   RootPowerKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   SchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerDeleteScheme(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid));
+  return libPOWRPROF_dll.PowerDeleteScheme!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid));
 }
 
 export function PowerRemovePowerSetting(
   PowerSettingSubKeyGuid: Deno.PointerValue | Uint8Array /* ptr */,
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerRemovePowerSetting(util.toPointer(PowerSettingSubKeyGuid), util.toPointer(PowerSettingGuid));
+  return libPOWRPROF_dll.PowerRemovePowerSetting!(util.toPointer(PowerSettingSubKeyGuid), util.toPointer(PowerSettingGuid));
 }
 
 export function PowerCreateSetting(
@@ -7213,7 +7310,7 @@ export function PowerCreateSetting(
   SubGroupOfPowerSettingsGuid: Deno.PointerValue | Uint8Array /* ptr */,
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerCreateSetting(util.toPointer(RootSystemPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid));
+  return libPOWRPROF_dll.PowerCreateSetting!(util.toPointer(RootSystemPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid));
 }
 
 export function PowerCreatePossibleSetting(
@@ -7222,7 +7319,7 @@ export function PowerCreatePossibleSetting(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   PossibleSettingIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerCreatePossibleSetting(util.toPointer(RootSystemPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex);
+  return libPOWRPROF_dll.PowerCreatePossibleSetting!(util.toPointer(RootSystemPowerKey), util.toPointer(SubGroupOfPowerSettingsGuid), util.toPointer(PowerSettingGuid), PossibleSettingIndex);
 }
 
 export function PowerEnumerate(
@@ -7234,7 +7331,7 @@ export function PowerEnumerate(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerEnumerate(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), AccessFlags, Index, util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libPOWRPROF_dll.PowerEnumerate!(util.toPointer(RootPowerKey), util.toPointer(SchemeGuid), util.toPointer(SubGroupOfPowerSettingsGuid), AccessFlags, Index, util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function PowerOpenUserPowerKey(
@@ -7242,7 +7339,7 @@ export function PowerOpenUserPowerKey(
   Access: number /* u32 */,
   OpenExisting: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerOpenUserPowerKey(util.toPointer(phUserPowerKey), Access, util.boolToFfi(OpenExisting));
+  return libPOWRPROF_dll.PowerOpenUserPowerKey!(util.toPointer(phUserPowerKey), Access, util.boolToFfi(OpenExisting));
 }
 
 export function PowerOpenSystemPowerKey(
@@ -7250,31 +7347,31 @@ export function PowerOpenSystemPowerKey(
   Access: number /* u32 */,
   OpenExisting: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerOpenSystemPowerKey(util.toPointer(phSystemPowerKey), Access, util.boolToFfi(OpenExisting));
+  return libPOWRPROF_dll.PowerOpenSystemPowerKey!(util.toPointer(phSystemPowerKey), Access, util.boolToFfi(OpenExisting));
 }
 
 export function PowerCanRestoreIndividualDefaultPowerScheme(
   SchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerCanRestoreIndividualDefaultPowerScheme(util.toPointer(SchemeGuid));
+  return libPOWRPROF_dll.PowerCanRestoreIndividualDefaultPowerScheme!(util.toPointer(SchemeGuid));
 }
 
 export function PowerRestoreIndividualDefaultPowerScheme(
   SchemeGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerRestoreIndividualDefaultPowerScheme(util.toPointer(SchemeGuid));
+  return libPOWRPROF_dll.PowerRestoreIndividualDefaultPowerScheme!(util.toPointer(SchemeGuid));
 }
 
 export function PowerRestoreDefaultPowerSchemes(): number /* u32 */ {
-  return libPOWRPROF_dll.PowerRestoreDefaultPowerSchemes();
+  return libPOWRPROF_dll.PowerRestoreDefaultPowerSchemes!();
 }
 
 export function PowerReplaceDefaultPowerSchemes(): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReplaceDefaultPowerSchemes();
+  return libPOWRPROF_dll.PowerReplaceDefaultPowerSchemes!();
 }
 
 export function PowerDeterminePlatformRole(): POWER_PLATFORM_ROLE /* Windows.Win32.System.Power.POWER_PLATFORM_ROLE */ {
-  return libPOWRPROF_dll.PowerDeterminePlatformRole();
+  return libPOWRPROF_dll.PowerDeterminePlatformRole!();
 }
 
 export function DevicePowerEnumDevices(
@@ -7284,7 +7381,7 @@ export function DevicePowerEnumDevices(
   pReturnBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.DevicePowerEnumDevices(QueryIndex, QueryInterpretationFlags, QueryFlags, util.toPointer(pReturnBuffer), util.toPointer(pBufferSize));
+  return libPOWRPROF_dll.DevicePowerEnumDevices!(QueryIndex, QueryInterpretationFlags, QueryFlags, util.toPointer(pReturnBuffer), util.toPointer(pBufferSize));
 }
 
 export function DevicePowerSetDeviceState(
@@ -7292,23 +7389,23 @@ export function DevicePowerSetDeviceState(
   SetFlags: number /* u32 */,
   SetData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.DevicePowerSetDeviceState(util.pwstrToFfi(DeviceDescription), SetFlags, util.toPointer(SetData));
+  return libPOWRPROF_dll.DevicePowerSetDeviceState!(util.pwstrToFfi(DeviceDescription), SetFlags, util.toPointer(SetData));
 }
 
 export function DevicePowerOpen(
   DebugMask: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.DevicePowerOpen(DebugMask);
+  return libPOWRPROF_dll.DevicePowerOpen!(DebugMask);
 }
 
 export function DevicePowerClose(): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPOWRPROF_dll.DevicePowerClose();
+  return libPOWRPROF_dll.DevicePowerClose!();
 }
 
 export function PowerReportThermalEvent(
   Event: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libPOWRPROF_dll.PowerReportThermalEvent(util.toPointer(Event));
+  return libPOWRPROF_dll.PowerReportThermalEvent!(util.toPointer(Event));
 }
 
 export function RegisterPowerSettingNotification(
@@ -7316,81 +7413,81 @@ export function RegisterPowerSettingNotification(
   PowerSettingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */ {
-  return libUSER32_dll.RegisterPowerSettingNotification(util.toPointer(hRecipient), util.toPointer(PowerSettingGuid), Flags);
+  return libUSER32_dll.RegisterPowerSettingNotification!(util.toPointer(hRecipient), util.toPointer(PowerSettingGuid), Flags);
 }
 
 export function UnregisterPowerSettingNotification(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterPowerSettingNotification(util.toPointer(Handle)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterPowerSettingNotification!(util.toPointer(Handle)));
 }
 
 export function RegisterSuspendResumeNotification(
   hRecipient: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */ {
-  return libUSER32_dll.RegisterSuspendResumeNotification(util.toPointer(hRecipient), Flags);
+  return libUSER32_dll.RegisterSuspendResumeNotification!(util.toPointer(hRecipient), Flags);
 }
 
 export function UnregisterSuspendResumeNotification(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Power.HPOWERNOTIFY */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterSuspendResumeNotification(util.toPointer(Handle)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterSuspendResumeNotification!(util.toPointer(Handle)));
 }
 
 export function RequestWakeupLatency(
   latency: LATENCY_TIME /* Windows.Win32.System.Power.LATENCY_TIME */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.RequestWakeupLatency(latency));
+  return util.boolFromFfi(libKERNEL32_dll.RequestWakeupLatency!(latency));
 }
 
 export function IsSystemResumeAutomatic(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsSystemResumeAutomatic());
+  return util.boolFromFfi(libKERNEL32_dll.IsSystemResumeAutomatic!());
 }
 
 export function SetThreadExecutionState(
   esFlags: EXECUTION_STATE /* Windows.Win32.System.Power.EXECUTION_STATE */,
 ): EXECUTION_STATE /* Windows.Win32.System.Power.EXECUTION_STATE */ {
-  return libKERNEL32_dll.SetThreadExecutionState(esFlags);
+  return libKERNEL32_dll.SetThreadExecutionState!(esFlags);
 }
 
 export function PowerCreateRequest(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.PowerCreateRequest(util.toPointer(Context));
+  return libKERNEL32_dll.PowerCreateRequest!(util.toPointer(Context));
 }
 
 export function PowerSetRequest(
   PowerRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   RequestType: POWER_REQUEST_TYPE /* Windows.Win32.System.Power.POWER_REQUEST_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.PowerSetRequest(util.toPointer(PowerRequest), RequestType));
+  return util.boolFromFfi(libKERNEL32_dll.PowerSetRequest!(util.toPointer(PowerRequest), RequestType));
 }
 
 export function PowerClearRequest(
   PowerRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   RequestType: POWER_REQUEST_TYPE /* Windows.Win32.System.Power.POWER_REQUEST_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.PowerClearRequest(util.toPointer(PowerRequest), RequestType));
+  return util.boolFromFfi(libKERNEL32_dll.PowerClearRequest!(util.toPointer(PowerRequest), RequestType));
 }
 
 export function GetDevicePowerState(
   hDevice: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pfOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetDevicePowerState(util.toPointer(hDevice), util.toPointer(pfOn)));
+  return util.boolFromFfi(libKERNEL32_dll.GetDevicePowerState!(util.toPointer(hDevice), util.toPointer(pfOn)));
 }
 
 export function SetSystemPowerState(
   fSuspend: boolean /* Windows.Win32.Foundation.BOOL */,
   fForce: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetSystemPowerState(util.boolToFfi(fSuspend), util.boolToFfi(fForce)));
+  return util.boolFromFfi(libKERNEL32_dll.SetSystemPowerState!(util.boolToFfi(fSuspend), util.boolToFfi(fForce)));
 }
 
 export function GetSystemPowerStatus(
   lpSystemPowerStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetSystemPowerStatus(util.toPointer(lpSystemPowerStatus)));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemPowerStatus!(util.toPointer(lpSystemPowerStatus)));
 }
 

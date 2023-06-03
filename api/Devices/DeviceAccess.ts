@@ -61,6 +61,7 @@ try {
     CreateDeviceAccessInstance: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -72,6 +73,6 @@ export function CreateDeviceAccessInstance(
   desiredAccess: number /* u32 */,
   createAsync: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdeviceaccess_dll.CreateDeviceAccessInstance(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync));
+  return libdeviceaccess_dll.CreateDeviceAccessInstance!(util.pwstrToFfi(deviceInterfacePath), desiredAccess, util.toPointer(createAsync));
 }
 

@@ -9921,78 +9921,97 @@ try {
     RatingEnable: {
       parameters: ["pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RatingEnableW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RatingCheckUserAccess: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingCheckUserAccessW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingAccessDeniedDialog: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingAccessDeniedDialogW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingAccessDeniedDialog2: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingAccessDeniedDialog2W: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingFreeDetails: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingObtainCancel: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingObtainQuery: {
       parameters: ["buffer", "u32", "isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingObtainQueryW: {
       parameters: ["buffer", "u32", "isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RatingSetupUI: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     RatingSetupUIW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     RatingAddToApprovedSites: {
       parameters: ["pointer", "u32", "pointer", "buffer", "i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     RatingClickedOnPRFInternal: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RatingClickedOnRATInternal: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RatingEnabledQuery: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     RatingInit: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -10002,38 +10021,47 @@ try {
     CreateMIMEMap: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DecodeImage: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SniffStream: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMaxMIMEIDBytes: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     IdentifyMIMEType: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ComputeInvCMAP: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DitherTo8: {
       parameters: ["pointer", "i32", "pointer", "i32", "pointer", "pointer", "pointer", "pointer", "i32", "i32", "i32", "i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     CreateDDrawSurfaceOnDIB: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DecodeImageEx: {
       parameters: ["pointer", "pointer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -10043,6 +10071,7 @@ try {
     DoPrivacyDlg: {
       parameters: ["pointer", "buffer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -10054,7 +10083,7 @@ export function RatingEnable(
   pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingEnable((hwndParent), util.pstrToFfi(pszUsername), util.boolToFfi(fEnable));
+  return libMSRATING_dll.RatingEnable!((hwndParent), util.pstrToFfi(pszUsername), util.boolToFfi(fEnable));
 }
 
 export function RatingEnableW(
@@ -10062,7 +10091,7 @@ export function RatingEnableW(
   pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingEnableW((hwndParent), util.pwstrToFfi(pszUsername), util.boolToFfi(fEnable));
+  return libMSRATING_dll.RatingEnableW!((hwndParent), util.pwstrToFfi(pszUsername), util.boolToFfi(fEnable));
 }
 
 export function RatingCheckUserAccess(
@@ -10073,7 +10102,7 @@ export function RatingCheckUserAccess(
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingCheckUserAccess(util.pstrToFfi(pszUsername), util.pstrToFfi(pszURL), util.pstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails));
+  return libMSRATING_dll.RatingCheckUserAccess!(util.pstrToFfi(pszUsername), util.pstrToFfi(pszURL), util.pstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails));
 }
 
 export function RatingCheckUserAccessW(
@@ -10084,7 +10113,7 @@ export function RatingCheckUserAccessW(
   cbData: number /* u32 */,
   ppRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingCheckUserAccessW(util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszURL), util.pwstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails));
+  return libMSRATING_dll.RatingCheckUserAccessW!(util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszURL), util.pwstrToFfi(pszRatingInfo), util.toPointer(pData), cbData, util.toPointer(ppRatingDetails));
 }
 
 export function RatingAccessDeniedDialog(
@@ -10093,7 +10122,7 @@ export function RatingAccessDeniedDialog(
   pszContentDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingAccessDeniedDialog((hDlg), util.pstrToFfi(pszUsername), util.pstrToFfi(pszContentDescription), util.toPointer(pRatingDetails));
+  return libMSRATING_dll.RatingAccessDeniedDialog!((hDlg), util.pstrToFfi(pszUsername), util.pstrToFfi(pszContentDescription), util.toPointer(pRatingDetails));
 }
 
 export function RatingAccessDeniedDialogW(
@@ -10102,7 +10131,7 @@ export function RatingAccessDeniedDialogW(
   pszContentDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingAccessDeniedDialogW((hDlg), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszContentDescription), util.toPointer(pRatingDetails));
+  return libMSRATING_dll.RatingAccessDeniedDialogW!((hDlg), util.pwstrToFfi(pszUsername), util.pwstrToFfi(pszContentDescription), util.toPointer(pRatingDetails));
 }
 
 export function RatingAccessDeniedDialog2(
@@ -10110,7 +10139,7 @@ export function RatingAccessDeniedDialog2(
   pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingAccessDeniedDialog2((hDlg), util.pstrToFfi(pszUsername), util.toPointer(pRatingDetails));
+  return libMSRATING_dll.RatingAccessDeniedDialog2!((hDlg), util.pstrToFfi(pszUsername), util.toPointer(pRatingDetails));
 }
 
 export function RatingAccessDeniedDialog2W(
@@ -10118,19 +10147,19 @@ export function RatingAccessDeniedDialog2W(
   pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingAccessDeniedDialog2W((hDlg), util.pwstrToFfi(pszUsername), util.toPointer(pRatingDetails));
+  return libMSRATING_dll.RatingAccessDeniedDialog2W!((hDlg), util.pwstrToFfi(pszUsername), util.toPointer(pRatingDetails));
 }
 
 export function RatingFreeDetails(
   pRatingDetails: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingFreeDetails(util.toPointer(pRatingDetails));
+  return libMSRATING_dll.RatingFreeDetails!(util.toPointer(pRatingDetails));
 }
 
 export function RatingObtainCancel(
   hRatingObtainQuery: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingObtainCancel(util.toPointer(hRatingObtainQuery));
+  return libMSRATING_dll.RatingObtainCancel!(util.toPointer(hRatingObtainQuery));
 }
 
 export function RatingObtainQuery(
@@ -10139,7 +10168,7 @@ export function RatingObtainQuery(
   fCallback: bigint | number /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingObtainQuery(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));
+  return libMSRATING_dll.RatingObtainQuery!(util.pstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));
 }
 
 export function RatingObtainQueryW(
@@ -10148,21 +10177,21 @@ export function RatingObtainQueryW(
   fCallback: bigint | number /* isize */,
   phRatingObtainQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingObtainQueryW(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));
+  return libMSRATING_dll.RatingObtainQueryW!(util.pwstrToFfi(pszTargetUrl), dwUserData, fCallback, util.toPointer(phRatingObtainQuery));
 }
 
 export function RatingSetupUI(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszUsername: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingSetupUI((hDlg), util.pstrToFfi(pszUsername));
+  return libMSRATING_dll.RatingSetupUI!((hDlg), util.pstrToFfi(pszUsername));
 }
 
 export function RatingSetupUIW(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszUsername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingSetupUIW((hDlg), util.pwstrToFfi(pszUsername));
+  return libMSRATING_dll.RatingSetupUIW!((hDlg), util.pwstrToFfi(pszUsername));
 }
 
 export function RatingAddToApprovedSites(
@@ -10174,7 +10203,7 @@ export function RatingAddToApprovedSites(
   fSitePage: boolean /* Windows.Win32.Foundation.BOOL */,
   fApprovedSitesEnforced: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingAddToApprovedSites((hDlg), cbPasswordBlob, util.toPointer(pbPasswordBlob), util.pwstrToFfi(lpszUrl), util.boolToFfi(fAlwaysNever), util.boolToFfi(fSitePage), util.boolToFfi(fApprovedSitesEnforced));
+  return libMSRATING_dll.RatingAddToApprovedSites!((hDlg), cbPasswordBlob, util.toPointer(pbPasswordBlob), util.pwstrToFfi(lpszUrl), util.boolToFfi(fAlwaysNever), util.boolToFfi(fSitePage), util.boolToFfi(fApprovedSitesEnforced));
 }
 
 export function RatingClickedOnPRFInternal(
@@ -10183,7 +10212,7 @@ export function RatingClickedOnPRFInternal(
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingClickedOnPRFInternal((hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow);
+  return libMSRATING_dll.RatingClickedOnPRFInternal!((hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow);
 }
 
 export function RatingClickedOnRATInternal(
@@ -10192,21 +10221,21 @@ export function RatingClickedOnRATInternal(
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nShow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingClickedOnRATInternal((hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow);
+  return libMSRATING_dll.RatingClickedOnRATInternal!((hWndOwner), util.toPointer(param1), util.pstrToFfi(lpszFileName), nShow);
 }
 
 export function RatingEnabledQuery(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingEnabledQuery();
+  return libMSRATING_dll.RatingEnabledQuery!();
 }
 
 export function RatingInit(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMSRATING_dll.RatingInit();
+  return libMSRATING_dll.RatingInit!();
 }
 
 export function CreateMIMEMap(
   ppMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.CreateMIMEMap(util.toPointer(ppMap));
+  return libImgUtil_dll.CreateMIMEMap!(util.toPointer(ppMap));
 }
 
 export function DecodeImage(
@@ -10214,7 +10243,7 @@ export function DecodeImage(
   pMap: Uint8Array | Deno.PointerValue /* Windows.Win32.Web.MsHtml.IMapMIMEToCLSID */,
   pEventSink: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.DecodeImage(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink));
+  return libImgUtil_dll.DecodeImage!(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink));
 }
 
 export function SniffStream(
@@ -10222,13 +10251,13 @@ export function SniffStream(
   pnFormat: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.SniffStream(util.toPointer(pInStream), util.toPointer(pnFormat), util.toPointer(ppOutStream));
+  return libImgUtil_dll.SniffStream!(util.toPointer(pInStream), util.toPointer(pnFormat), util.toPointer(ppOutStream));
 }
 
 export function GetMaxMIMEIDBytes(
   pnMaxBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.GetMaxMIMEIDBytes(util.toPointer(pnMaxBytes));
+  return libImgUtil_dll.GetMaxMIMEIDBytes!(util.toPointer(pnMaxBytes));
 }
 
 export function IdentifyMIMEType(
@@ -10236,7 +10265,7 @@ export function IdentifyMIMEType(
   nBytes: number /* u32 */,
   pnFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.IdentifyMIMEType(util.toPointer(pbBytes), nBytes, util.toPointer(pnFormat));
+  return libImgUtil_dll.IdentifyMIMEType!(util.toPointer(pbBytes), nBytes, util.toPointer(pnFormat));
 }
 
 export function ComputeInvCMAP(
@@ -10245,7 +10274,7 @@ export function ComputeInvCMAP(
   pInvTable: Deno.PointerValue | Uint8Array /* ptr */,
   cbTable: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.ComputeInvCMAP(util.toPointer(pRGBColors), nColors, util.toPointer(pInvTable), cbTable);
+  return libImgUtil_dll.ComputeInvCMAP!(util.toPointer(pRGBColors), nColors, util.toPointer(pInvTable), cbTable);
 }
 
 export function DitherTo8(
@@ -10264,14 +10293,14 @@ export function DitherTo8(
   lDestTrans: number /* i32 */,
   lSrcTrans: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.DitherTo8(util.toPointer(pDestBits), nDestPitch, util.toPointer(pSrcBits), nSrcPitch, util.toPointer(bfidSrc), util.toPointer(prgbDestColors), util.toPointer(prgbSrcColors), util.toPointer(pbDestInvMap), x, y, cx, cy, lDestTrans, lSrcTrans);
+  return libImgUtil_dll.DitherTo8!(util.toPointer(pDestBits), nDestPitch, util.toPointer(pSrcBits), nSrcPitch, util.toPointer(bfidSrc), util.toPointer(prgbDestColors), util.toPointer(prgbSrcColors), util.toPointer(pbDestInvMap), x, y, cx, cy, lDestTrans, lSrcTrans);
 }
 
 export function CreateDDrawSurfaceOnDIB(
   hbmDib: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   ppSurface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.CreateDDrawSurfaceOnDIB(util.toPointer(hbmDib), util.toPointer(ppSurface));
+  return libImgUtil_dll.CreateDDrawSurfaceOnDIB!(util.toPointer(hbmDib), util.toPointer(ppSurface));
 }
 
 export function DecodeImageEx(
@@ -10280,7 +10309,7 @@ export function DecodeImageEx(
   pEventSink: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   pszMIMETypeParam: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libImgUtil_dll.DecodeImageEx(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink), util.pwstrToFfi(pszMIMETypeParam));
+  return libImgUtil_dll.DecodeImageEx!(util.toPointer(pStream), util.toPointer(pMap), util.toPointer(pEventSink), util.pwstrToFfi(pszMIMETypeParam));
 }
 
 export function DoPrivacyDlg(
@@ -10289,6 +10318,6 @@ export function DoPrivacyDlg(
   pPrivacyEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Web.MsHtml.IEnumPrivacyRecords */,
   fReportAllSites: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSHDOCVW_dll.DoPrivacyDlg((hwndOwner), util.pwstrToFfi(pszUrl), util.toPointer(pPrivacyEnum), util.boolToFfi(fReportAllSites));
+  return libSHDOCVW_dll.DoPrivacyDlg!((hwndOwner), util.pwstrToFfi(pszUrl), util.toPointer(pPrivacyEnum), util.boolToFfi(fReportAllSites));
 }
 

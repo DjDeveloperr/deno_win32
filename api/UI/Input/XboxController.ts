@@ -622,30 +622,37 @@ try {
     XInputGetState: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     XInputSetState: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     XInputGetCapabilities: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     XInputEnable: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
     XInputGetAudioDeviceIds: {
       parameters: ["u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     XInputGetBatteryInformation: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     XInputGetKeystroke: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -656,14 +663,14 @@ export function XInputGetState(
   dwUserIndex: number /* u32 */,
   pState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputGetState(dwUserIndex, util.toPointer(pState));
+  return libxinput1_4_dll.XInputGetState!(dwUserIndex, util.toPointer(pState));
 }
 
 export function XInputSetState(
   dwUserIndex: number /* u32 */,
   pVibration: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputSetState(dwUserIndex, util.toPointer(pVibration));
+  return libxinput1_4_dll.XInputSetState!(dwUserIndex, util.toPointer(pVibration));
 }
 
 export function XInputGetCapabilities(
@@ -671,13 +678,13 @@ export function XInputGetCapabilities(
   dwFlags: XINPUT_FLAG /* Windows.Win32.UI.Input.XboxController.XINPUT_FLAG */,
   pCapabilities: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputGetCapabilities(dwUserIndex, dwFlags, util.toPointer(pCapabilities));
+  return libxinput1_4_dll.XInputGetCapabilities!(dwUserIndex, dwFlags, util.toPointer(pCapabilities));
 }
 
 export function XInputEnable(
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libxinput1_4_dll.XInputEnable(util.boolToFfi(enable));
+  return libxinput1_4_dll.XInputEnable!(util.boolToFfi(enable));
 }
 
 export function XInputGetAudioDeviceIds(
@@ -687,7 +694,7 @@ export function XInputGetAudioDeviceIds(
   pCaptureDeviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCaptureCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputGetAudioDeviceIds(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));
+  return libxinput1_4_dll.XInputGetAudioDeviceIds!(dwUserIndex, util.pwstrToFfi(pRenderDeviceId), util.toPointer(pRenderCount), util.pwstrToFfi(pCaptureDeviceId), util.toPointer(pCaptureCount));
 }
 
 export function XInputGetBatteryInformation(
@@ -695,7 +702,7 @@ export function XInputGetBatteryInformation(
   devType: BATTERY_DEVTYPE /* Windows.Win32.UI.Input.XboxController.BATTERY_DEVTYPE */,
   pBatteryInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputGetBatteryInformation(dwUserIndex, devType, util.toPointer(pBatteryInformation));
+  return libxinput1_4_dll.XInputGetBatteryInformation!(dwUserIndex, devType, util.toPointer(pBatteryInformation));
 }
 
 export function XInputGetKeystroke(
@@ -703,6 +710,6 @@ export function XInputGetKeystroke(
   dwReserved: number /* u32 */,
   pKeystroke: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libxinput1_4_dll.XInputGetKeystroke(dwUserIndex, dwReserved, util.toPointer(pKeystroke));
+  return libxinput1_4_dll.XInputGetKeystroke!(dwUserIndex, dwReserved, util.toPointer(pKeystroke));
 }
 

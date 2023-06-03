@@ -795,14 +795,17 @@ try {
     CreateSecurityPage: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     EditSecurity: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EditSecurityAdvanced: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -812,14 +815,14 @@ try {
 export function CreateSecurityPage(
   psi: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return libACLUI_dll.CreateSecurityPage(util.toPointer(psi));
+  return libACLUI_dll.CreateSecurityPage!(util.toPointer(psi));
 }
 
 export function EditSecurity(
   hwndOwner: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   psi: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libACLUI_dll.EditSecurity((hwndOwner), util.toPointer(psi)));
+  return util.boolFromFfi(libACLUI_dll.EditSecurity!((hwndOwner), util.toPointer(psi)));
 }
 
 export function EditSecurityAdvanced(
@@ -827,6 +830,6 @@ export function EditSecurityAdvanced(
   psi: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Authorization.UI.ISecurityInformation */,
   uSIPage: SI_PAGE_TYPE /* Windows.Win32.Security.Authorization.UI.SI_PAGE_TYPE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACLUI_dll.EditSecurityAdvanced((hwndOwner), util.toPointer(psi), uSIPage);
+  return libACLUI_dll.EditSecurityAdvanced!((hwndOwner), util.toPointer(psi), uSIPage);
 }
 

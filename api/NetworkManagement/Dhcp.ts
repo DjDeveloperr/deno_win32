@@ -14773,26 +14773,32 @@ try {
     Dhcpv6CApiInitialize: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     Dhcpv6CApiCleanup: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     Dhcpv6RequestParams: {
       parameters: ["i32", "pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Dhcpv6RequestPrefix: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Dhcpv6RenewPrefix: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     Dhcpv6ReleasePrefix: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14802,34 +14808,42 @@ try {
     DhcpCApiInitialize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCApiCleanup: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     DhcpRequestParams: {
       parameters: ["u32", "pointer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpUndoRequestParams: {
       parameters: ["u32", "pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpRegisterParamChange: {
       parameters: ["u32", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeRegisterParamChange: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveDNSRegistrations: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     DhcpGetOriginalSubnetMask: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14839,786 +14853,982 @@ try {
     DhcpAddFilterV4: {
       parameters: ["buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteFilterV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetFilterV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetFilterV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumFilterV4: {
       parameters: ["buffer", "pointer", "u32", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateSubnet: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetSubnetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetSubnetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnets: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddSubnetElement: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetElements: {
       parameters: ["buffer", "u32", "i32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveSubnetElement: {
       parameters: ["buffer", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteSubnet: {
       parameters: ["buffer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateOption: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptions: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOption: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionValue: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionValues: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionValue: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptionValues: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOptionValue: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateClientInfoVQ: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetClientInfoVQ: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClientInfoVQ: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClientsVQ: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClientsFilterStatusInfo: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateClientInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetClientInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClientInfo: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteClientInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClients: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClientOptions: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetMibInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetConfig: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerGetConfig: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpScanDatabase: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRpcFreeMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpGetVersion: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddSubnetElementV4: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetElementsV4: {
       parameters: ["buffer", "u32", "i32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveSubnetElementV4: {
       parameters: ["buffer", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateClientInfoV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetClientInfoV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClientInfoV4: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClientsV4: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetConfigV4: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerGetConfigV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetSuperScopeV4: {
       parameters: ["buffer", "u32", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteSuperScopeV4: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetSuperScopeInfoV4: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClientsV5: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateOptionV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionInfoV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionInfoV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptionsV5: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOptionV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionValueV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionValuesV5: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionValueV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionValueV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptionValuesV5: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOptionValueV5: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateClass: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpModifyClass: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteClass: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClassInfo: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumClasses: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetAllOptions: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetAllOptionsV6: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetAllOptionValues: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetAllOptionValuesV6: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumServers: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddServer: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteServer: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetServerBindingInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetServerBindingInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddSubnetElementV5: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetElementsV5: {
       parameters: ["buffer", "u32", "i32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveSubnetElementV5: {
       parameters: ["buffer", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpV4EnumSubnetReservations: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateOptionV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOptionV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptionsV6: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveOptionValueV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetOptionInfoV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionInfoV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetOptionValueV6: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetSubnetInfoVQ: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateSubnetVQ: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetSubnetInfoVQ: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumOptionValuesV6: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDsInit: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     DhcpDsCleanup: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     DhcpSetThreadOptions: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetThreadOptions: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerQueryAttribute: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerQueryAttributes: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerRedoAuthorization: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DhcpAuditLogSetParams: {
       parameters: ["buffer", "u32", "buffer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DhcpAuditLogGetParams: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerQueryDnsRegCredentials: {
       parameters: ["buffer", "u32", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetDnsRegCredentials: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetDnsRegCredentialsV5: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerBackupDatabase: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerRestoreDatabase: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetConfigVQ: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerGetConfigVQ: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetServerSpecificStrings: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerAuditlogParamsFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpCreateSubnetV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteSubnetV6: {
       parameters: ["buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetsV6: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddSubnetElementV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpRemoveSubnetElementV6: {
       parameters: ["buffer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetElementsV6: {
       parameters: ["buffer", "pointer", "i32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetSubnetInfoV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumSubnetClientsV6: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerGetConfigV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpServerSetConfigV6: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetSubnetInfoV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetMibInfoV6: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetServerBindingInfoV6: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetServerBindingInfoV6: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetClientInfoV6: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetClientInfoV6: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteClientInfoV6: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpCreateClassV6: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpModifyClassV6: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpDeleteClassV6: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpEnumClassesV6: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpSetSubnetDelayOffer: {
       parameters: ["buffer", "u32", "u16"],
       result: "u32",
+      optional: true,
     },
     DhcpGetSubnetDelayOffer: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpGetMibInfoV5: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpAddSecurityGroup: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetOptionValue: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4SetOptionValue: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4SetOptionValues: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4RemoveOptionValue: {
       parameters: ["buffer", "u32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetAllOptionValues: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverCreateRelationship: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverSetRelationship: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverDeleteRelationship: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetRelationship: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverEnumRelationship: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverAddScopeToRelationship: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverDeleteScopeFromRelationship: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetScopeRelationship: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetScopeStatistics: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetClientInfo: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetSystemTime: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverGetAddressStatus: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4FailoverTriggerAddrAllocation: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprCreateV4Policy: {
       parameters: ["buffer", "i32", "u32", "u32", "i32", "buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprCreateV4PolicyEx: {
       parameters: ["buffer", "i32", "u32", "u32", "i32", "buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprAddV4PolicyExpr: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprAddV4PolicyCondition: {
       parameters: ["pointer", "u32", "i32", "u32", "u32", "buffer", "i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprAddV4PolicyRange: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprResetV4PolicyExpr: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprModifyV4PolicyExpr: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprFreeV4Policy: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFreeV4PolicyArray: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFreeV4PolicyEx: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFreeV4PolicyExArray: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFreeV4DhcpProperty: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFreeV4DhcpPropertyArray: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DhcpHlprFindV4DhcpProperty: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DhcpHlprIsV4PolicySingleUC: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DhcpV4QueryPolicyEnforcement: {
       parameters: ["buffer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4SetPolicyEnforcement: {
       parameters: ["buffer", "i32", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     DhcpHlprIsV4PolicyWellFormed: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DhcpHlprIsV4PolicyValid: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4CreatePolicy: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetPolicy: {
       parameters: ["buffer", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4SetPolicy: {
       parameters: ["buffer", "u32", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4DeletePolicy: {
       parameters: ["buffer", "i32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4EnumPolicies: {
       parameters: ["buffer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4AddPolicyRange: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4RemovePolicyRange: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV6SetStatelessStoreParams: {
       parameters: ["buffer", "i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV6GetStatelessStoreParams: {
       parameters: ["buffer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV6GetStatelessStatistics: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4CreateClientInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4EnumSubnetClients: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetClientInfo: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV6CreateClientInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetFreeIPAddress: {
       parameters: ["buffer", "u32", "u32", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV6GetFreeIPAddress: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4CreateClientInfoEx: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4EnumSubnetClientsEx: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetClientInfoEx: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4CreatePolicyEx: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4GetPolicyEx: {
       parameters: ["buffer", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4SetPolicyEx: {
       parameters: ["buffer", "u32", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DhcpV4EnumPoliciesEx: {
       parameters: ["buffer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -15628,11 +15838,11 @@ try {
 export function Dhcpv6CApiInitialize(
   Version: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libdhcpcsvc6_dll.Dhcpv6CApiInitialize(util.toPointer(Version));
+  return libdhcpcsvc6_dll.Dhcpv6CApiInitialize!(util.toPointer(Version));
 }
 
 export function Dhcpv6CApiCleanup(): void /* void */ {
-  return libdhcpcsvc6_dll.Dhcpv6CApiCleanup();
+  return libdhcpcsvc6_dll.Dhcpv6CApiCleanup!();
 }
 
 export function Dhcpv6RequestParams(
@@ -15644,7 +15854,7 @@ export function Dhcpv6RequestParams(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   pSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc6_dll.Dhcpv6RequestParams(util.boolToFfi(forceNewInform), util.toPointer(reserved), util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(recdParams), util.toPointer(buffer), util.toPointer(pSize));
+  return libdhcpcsvc6_dll.Dhcpv6RequestParams!(util.boolToFfi(forceNewInform), util.toPointer(reserved), util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(recdParams), util.toPointer(buffer), util.toPointer(pSize));
 }
 
 export function Dhcpv6RequestPrefix(
@@ -15653,7 +15863,7 @@ export function Dhcpv6RequestPrefix(
   prefixleaseInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pdwTimeToWait: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc6_dll.Dhcpv6RequestPrefix(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait));
+  return libdhcpcsvc6_dll.Dhcpv6RequestPrefix!(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait));
 }
 
 export function Dhcpv6RenewPrefix(
@@ -15663,7 +15873,7 @@ export function Dhcpv6RenewPrefix(
   pdwTimeToWait: Deno.PointerValue | Uint8Array /* ptr */,
   bValidatePrefix: number /* u32 */,
 ): number /* u32 */ {
-  return libdhcpcsvc6_dll.Dhcpv6RenewPrefix(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait), bValidatePrefix);
+  return libdhcpcsvc6_dll.Dhcpv6RenewPrefix!(util.pwstrToFfi(adapterName), util.toPointer(pclassId), util.toPointer(prefixleaseInfo), util.toPointer(pdwTimeToWait), bValidatePrefix);
 }
 
 export function Dhcpv6ReleasePrefix(
@@ -15671,17 +15881,17 @@ export function Dhcpv6ReleasePrefix(
   classId: Deno.PointerValue | Uint8Array /* ptr */,
   leaseInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc6_dll.Dhcpv6ReleasePrefix(util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(leaseInfo));
+  return libdhcpcsvc6_dll.Dhcpv6ReleasePrefix!(util.pwstrToFfi(adapterName), util.toPointer(classId), util.toPointer(leaseInfo));
 }
 
 export function DhcpCApiInitialize(
   Version: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpCApiInitialize(util.toPointer(Version));
+  return libdhcpcsvc_dll.DhcpCApiInitialize!(util.toPointer(Version));
 }
 
 export function DhcpCApiCleanup(): void /* void */ {
-  return libdhcpcsvc_dll.DhcpCApiCleanup();
+  return libdhcpcsvc_dll.DhcpCApiCleanup!();
 }
 
 export function DhcpRequestParams(
@@ -15695,7 +15905,7 @@ export function DhcpRequestParams(
   pSize: Deno.PointerValue | Uint8Array /* ptr */,
   RequestIdStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpRequestParams(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(SendParams), util.toPointer(RecdParams), util.toPointer(Buffer), util.toPointer(pSize), util.pwstrToFfi(RequestIdStr));
+  return libdhcpcsvc_dll.DhcpRequestParams!(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(SendParams), util.toPointer(RecdParams), util.toPointer(Buffer), util.toPointer(pSize), util.pwstrToFfi(RequestIdStr));
 }
 
 export function DhcpUndoRequestParams(
@@ -15704,7 +15914,7 @@ export function DhcpUndoRequestParams(
   AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RequestIdStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpUndoRequestParams(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.pwstrToFfi(RequestIdStr));
+  return libdhcpcsvc_dll.DhcpUndoRequestParams!(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.pwstrToFfi(RequestIdStr));
 }
 
 export function DhcpRegisterParamChange(
@@ -15715,7 +15925,7 @@ export function DhcpRegisterParamChange(
   Params: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCPCAPI_PARAMS_ARRAY */,
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpRegisterParamChange(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(Params), util.toPointer(Handle));
+  return libdhcpcsvc_dll.DhcpRegisterParamChange!(Flags, util.toPointer(Reserved), util.pwstrToFfi(AdapterName), util.toPointer(ClassId), util.toPointer(Params), util.toPointer(Handle));
 }
 
 export function DhcpDeRegisterParamChange(
@@ -15723,18 +15933,18 @@ export function DhcpDeRegisterParamChange(
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
   Event: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpDeRegisterParamChange(Flags, util.toPointer(Reserved), util.toPointer(Event));
+  return libdhcpcsvc_dll.DhcpDeRegisterParamChange!(Flags, util.toPointer(Reserved), util.toPointer(Event));
 }
 
 export function DhcpRemoveDNSRegistrations(): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpRemoveDNSRegistrations();
+  return libdhcpcsvc_dll.DhcpRemoveDNSRegistrations!();
 }
 
 export function DhcpGetOriginalSubnetMask(
   sAdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwSubnetMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libdhcpcsvc_dll.DhcpGetOriginalSubnetMask(util.pwstrToFfi(sAdapterName), util.toPointer(dwSubnetMask));
+  return libdhcpcsvc_dll.DhcpGetOriginalSubnetMask!(util.pwstrToFfi(sAdapterName), util.toPointer(dwSubnetMask));
 }
 
 export function DhcpAddFilterV4(
@@ -15742,28 +15952,28 @@ export function DhcpAddFilterV4(
   AddFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(AddFilterInfo), util.boolToFfi(ForceFlag));
+  return libDHCPSAPI_dll.DhcpAddFilterV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(AddFilterInfo), util.boolToFfi(ForceFlag));
 }
 
 export function DhcpDeleteFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DeleteFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(DeleteFilterInfo));
+  return libDHCPSAPI_dll.DhcpDeleteFilterV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(DeleteFilterInfo));
 }
 
 export function DhcpSetFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   GlobalFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
+  return libDHCPSAPI_dll.DhcpSetFilterV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
 }
 
 export function DhcpGetFilterV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   GlobalFilterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
+  return libDHCPSAPI_dll.DhcpGetFilterV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(GlobalFilterInfo));
 }
 
 export function DhcpEnumFilterV4(
@@ -15775,7 +15985,7 @@ export function DhcpEnumFilterV4(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumFilterV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, ListType, util.toPointer(EnumFilterInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumFilterV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, ListType, util.toPointer(EnumFilterInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpCreateSubnet(
@@ -15783,7 +15993,7 @@ export function DhcpCreateSubnet(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateSubnet(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpCreateSubnet!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpSetSubnetInfo(
@@ -15791,7 +16001,7 @@ export function DhcpSetSubnetInfo(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetSubnetInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpSetSubnetInfo!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpGetSubnetInfo(
@@ -15799,7 +16009,7 @@ export function DhcpGetSubnetInfo(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetSubnetInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpGetSubnetInfo!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpEnumSubnets(
@@ -15810,7 +16020,7 @@ export function DhcpEnumSubnets(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnets(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnets!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpAddSubnetElement(
@@ -15818,7 +16028,7 @@ export function DhcpAddSubnetElement(
   SubnetAddress: number /* u32 */,
   AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddSubnetElement(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
+  return libDHCPSAPI_dll.DhcpAddSubnetElement!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
 
 export function DhcpEnumSubnetElements(
@@ -15831,7 +16041,7 @@ export function DhcpEnumSubnetElements(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetElements(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetElements!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpRemoveSubnetElement(
@@ -15840,7 +16050,7 @@ export function DhcpRemoveSubnetElement(
   RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveSubnetElement(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
+  return libDHCPSAPI_dll.DhcpRemoveSubnetElement!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
 }
 
 export function DhcpDeleteSubnet(
@@ -15848,7 +16058,7 @@ export function DhcpDeleteSubnet(
   SubnetAddress: number /* u32 */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteSubnet(util.pwstrToFfi(ServerIpAddress), SubnetAddress, ForceFlag);
+  return libDHCPSAPI_dll.DhcpDeleteSubnet!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, ForceFlag);
 }
 
 export function DhcpCreateOption(
@@ -15856,7 +16066,7 @@ export function DhcpCreateOption(
   OptionID: number /* u32 */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateOption(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpCreateOption!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
 
 export function DhcpSetOptionInfo(
@@ -15864,7 +16074,7 @@ export function DhcpSetOptionInfo(
   OptionID: number /* u32 */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionInfo(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpSetOptionInfo!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
 
 export function DhcpGetOptionInfo(
@@ -15872,7 +16082,7 @@ export function DhcpGetOptionInfo(
   OptionID: number /* u32 */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionInfo(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpGetOptionInfo!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(OptionInfo));
 }
 
 export function DhcpEnumOptions(
@@ -15883,14 +16093,14 @@ export function DhcpEnumOptions(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptions(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptions!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpRemoveOption(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionID: number /* u32 */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOption(util.pwstrToFfi(ServerIpAddress), OptionID);
+  return libDHCPSAPI_dll.DhcpRemoveOption!(util.pwstrToFfi(ServerIpAddress), OptionID);
 }
 
 export function DhcpSetOptionValue(
@@ -15899,7 +16109,7 @@ export function DhcpSetOptionValue(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpSetOptionValue!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpSetOptionValues(
@@ -15907,7 +16117,7 @@ export function DhcpSetOptionValues(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionValues(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
+  return libDHCPSAPI_dll.DhcpSetOptionValues!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
 
 export function DhcpGetOptionValue(
@@ -15916,7 +16126,7 @@ export function DhcpGetOptionValue(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpGetOptionValue!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpEnumOptionValues(
@@ -15928,7 +16138,7 @@ export function DhcpEnumOptionValues(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptionValues(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptionValues!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpRemoveOptionValue(
@@ -15936,21 +16146,21 @@ export function DhcpRemoveOptionValue(
   OptionID: number /* u32 */,
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOptionValue(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo));
+  return libDHCPSAPI_dll.DhcpRemoveOptionValue!(util.pwstrToFfi(ServerIpAddress), OptionID, util.toPointer(ScopeInfo));
 }
 
 export function DhcpCreateClientInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpCreateClientInfoVQ!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfoVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpSetClientInfoVQ!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoVQ(
@@ -15958,7 +16168,7 @@ export function DhcpGetClientInfoVQ(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClientInfoVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpGetClientInfoVQ!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpEnumSubnetClientsVQ(
@@ -15970,7 +16180,7 @@ export function DhcpEnumSubnetClientsVQ(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClientsVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClientsVQ!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpEnumSubnetClientsFilterStatusInfo(
@@ -15982,21 +16192,21 @@ export function DhcpEnumSubnetClientsFilterStatusInfo(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClientsFilterStatusInfo(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClientsFilterStatusInfo!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpCreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpCreateClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpSetClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfo(
@@ -16004,14 +16214,14 @@ export function DhcpGetClientInfo(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpGetClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpDeleteClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpDeleteClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpEnumSubnetClients(
@@ -16023,7 +16233,7 @@ export function DhcpEnumSubnetClients(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClients(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClients!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpGetClientOptions(
@@ -16032,14 +16242,14 @@ export function DhcpGetClientOptions(
   ClientSubnetMask: number /* u32 */,
   ClientOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClientOptions(util.pwstrToFfi(ServerIpAddress), ClientIpAddress, ClientSubnetMask, util.toPointer(ClientOptions));
+  return libDHCPSAPI_dll.DhcpGetClientOptions!(util.pwstrToFfi(ServerIpAddress), ClientIpAddress, ClientSubnetMask, util.toPointer(ClientOptions));
 }
 
 export function DhcpGetMibInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetMibInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
+  return libDHCPSAPI_dll.DhcpGetMibInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
 
 export function DhcpServerSetConfig(
@@ -16047,14 +16257,14 @@ export function DhcpServerSetConfig(
   FieldsToSet: number /* u32 */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetConfig(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerSetConfig!(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfig(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerGetConfig(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerGetConfig!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
 
 export function DhcpScanDatabase(
@@ -16063,13 +16273,13 @@ export function DhcpScanDatabase(
   FixFlag: number /* u32 */,
   ScanList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpScanDatabase(util.pwstrToFfi(ServerIpAddress), SubnetAddress, FixFlag, util.toPointer(ScanList));
+  return libDHCPSAPI_dll.DhcpScanDatabase!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, FixFlag, util.toPointer(ScanList));
 }
 
 export function DhcpRpcFreeMemory(
   BufferPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpRpcFreeMemory(util.toPointer(BufferPointer));
+  return libDHCPSAPI_dll.DhcpRpcFreeMemory!(util.toPointer(BufferPointer));
 }
 
 export function DhcpGetVersion(
@@ -16077,7 +16287,7 @@ export function DhcpGetVersion(
   MajorVersion: Deno.PointerValue | Uint8Array /* ptr */,
   MinorVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetVersion(util.pwstrToFfi(ServerIpAddress), util.toPointer(MajorVersion), util.toPointer(MinorVersion));
+  return libDHCPSAPI_dll.DhcpGetVersion!(util.pwstrToFfi(ServerIpAddress), util.toPointer(MajorVersion), util.toPointer(MinorVersion));
 }
 
 export function DhcpAddSubnetElementV4(
@@ -16085,7 +16295,7 @@ export function DhcpAddSubnetElementV4(
   SubnetAddress: number /* u32 */,
   AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddSubnetElementV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
+  return libDHCPSAPI_dll.DhcpAddSubnetElementV4!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
 
 export function DhcpEnumSubnetElementsV4(
@@ -16098,7 +16308,7 @@ export function DhcpEnumSubnetElementsV4(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV4!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpRemoveSubnetElementV4(
@@ -16107,21 +16317,21 @@ export function DhcpRemoveSubnetElementV4(
   RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
+  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV4!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
 }
 
 export function DhcpCreateClientInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpCreateClientInfoV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpSetClientInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpSetClientInfoV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoV4(
@@ -16129,7 +16339,7 @@ export function DhcpGetClientInfoV4(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClientInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpGetClientInfoV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpEnumSubnetClientsV4(
@@ -16141,7 +16351,7 @@ export function DhcpEnumSubnetClientsV4(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV4!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpServerSetConfigV4(
@@ -16149,14 +16359,14 @@ export function DhcpServerSetConfigV4(
   FieldsToSet: number /* u32 */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetConfigV4(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerSetConfigV4!(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfigV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerGetConfigV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerGetConfigV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
 
 export function DhcpSetSuperScopeV4(
@@ -16165,21 +16375,21 @@ export function DhcpSetSuperScopeV4(
   SuperScopeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ChangeExisting: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetSuperScopeV4(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(SuperScopeName), util.boolToFfi(ChangeExisting));
+  return libDHCPSAPI_dll.DhcpSetSuperScopeV4!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(SuperScopeName), util.boolToFfi(ChangeExisting));
 }
 
 export function DhcpDeleteSuperScopeV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SuperScopeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteSuperScopeV4(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(SuperScopeName));
+  return libDHCPSAPI_dll.DhcpDeleteSuperScopeV4!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(SuperScopeName));
 }
 
 export function DhcpGetSuperScopeInfoV4(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SuperScopeTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetSuperScopeInfoV4(util.pwstrToFfi(ServerIpAddress), util.toPointer(SuperScopeTable));
+  return libDHCPSAPI_dll.DhcpGetSuperScopeInfoV4!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SuperScopeTable));
 }
 
 export function DhcpEnumSubnetClientsV5(
@@ -16191,7 +16401,7 @@ export function DhcpEnumSubnetClientsV5(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV5!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpCreateOptionV5(
@@ -16202,7 +16412,7 @@ export function DhcpCreateOptionV5(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateOptionV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpCreateOptionV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpSetOptionInfoV5(
@@ -16213,7 +16423,7 @@ export function DhcpSetOptionInfoV5(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionInfoV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpSetOptionInfoV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpGetOptionInfoV5(
@@ -16224,7 +16434,7 @@ export function DhcpGetOptionInfoV5(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionInfoV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpGetOptionInfoV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpEnumOptionsV5(
@@ -16238,7 +16448,7 @@ export function DhcpEnumOptionsV5(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptionsV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptionsV5!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpRemoveOptionV5(
@@ -16248,7 +16458,7 @@ export function DhcpRemoveOptionV5(
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOptionV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName));
+  return libDHCPSAPI_dll.DhcpRemoveOptionV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName));
 }
 
 export function DhcpSetOptionValueV5(
@@ -16260,7 +16470,7 @@ export function DhcpSetOptionValueV5(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpSetOptionValueV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpSetOptionValuesV5(
@@ -16271,7 +16481,7 @@ export function DhcpSetOptionValuesV5(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionValuesV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
+  return libDHCPSAPI_dll.DhcpSetOptionValuesV5!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
 
 export function DhcpGetOptionValueV5(
@@ -16283,7 +16493,7 @@ export function DhcpGetOptionValueV5(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpGetOptionValueV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpGetOptionValueV6(
@@ -16295,7 +16505,7 @@ export function DhcpGetOptionValueV6(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpGetOptionValueV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpEnumOptionValuesV5(
@@ -16310,7 +16520,7 @@ export function DhcpEnumOptionValuesV5(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptionValuesV5(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptionValuesV5!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpRemoveOptionValueV5(
@@ -16321,7 +16531,7 @@ export function DhcpRemoveOptionValueV5(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOptionValueV5(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
+  return libDHCPSAPI_dll.DhcpRemoveOptionValueV5!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
 
 export function DhcpCreateClass(
@@ -16329,7 +16539,7 @@ export function DhcpCreateClass(
   ReservedMustBeZero: number /* u32 */,
   ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateClass(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
+  return libDHCPSAPI_dll.DhcpCreateClass!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
 
 export function DhcpModifyClass(
@@ -16337,7 +16547,7 @@ export function DhcpModifyClass(
   ReservedMustBeZero: number /* u32 */,
   ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpModifyClass(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
+  return libDHCPSAPI_dll.DhcpModifyClass!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
 
 export function DhcpDeleteClass(
@@ -16345,7 +16555,7 @@ export function DhcpDeleteClass(
   ReservedMustBeZero: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteClass(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.pwstrToFfi(ClassName));
+  return libDHCPSAPI_dll.DhcpDeleteClass!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.pwstrToFfi(ClassName));
 }
 
 export function DhcpGetClassInfo(
@@ -16354,7 +16564,7 @@ export function DhcpGetClassInfo(
   PartialClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
   FilledClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClassInfo(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(PartialClassInfo), util.toPointer(FilledClassInfo));
+  return libDHCPSAPI_dll.DhcpGetClassInfo!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(PartialClassInfo), util.toPointer(FilledClassInfo));
 }
 
 export function DhcpEnumClasses(
@@ -16366,7 +16576,7 @@ export function DhcpEnumClasses(
   nRead: Deno.PointerValue | Uint8Array /* ptr */,
   nTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumClasses(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
+  return libDHCPSAPI_dll.DhcpEnumClasses!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
 }
 
 export function DhcpGetAllOptions(
@@ -16374,7 +16584,7 @@ export function DhcpGetAllOptions(
   Flags: number /* u32 */,
   OptionStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetAllOptions(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
+  return libDHCPSAPI_dll.DhcpGetAllOptions!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
 }
 
 export function DhcpGetAllOptionsV6(
@@ -16382,7 +16592,7 @@ export function DhcpGetAllOptionsV6(
   Flags: number /* u32 */,
   OptionStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetAllOptionsV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
+  return libDHCPSAPI_dll.DhcpGetAllOptionsV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(OptionStruct));
 }
 
 export function DhcpGetAllOptionValues(
@@ -16391,7 +16601,7 @@ export function DhcpGetAllOptionValues(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetAllOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
+  return libDHCPSAPI_dll.DhcpGetAllOptionValues!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
 
 export function DhcpGetAllOptionValuesV6(
@@ -16400,7 +16610,7 @@ export function DhcpGetAllOptionValuesV6(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetAllOptionValuesV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
+  return libDHCPSAPI_dll.DhcpGetAllOptionValuesV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
 
 export function DhcpEnumServers(
@@ -16410,7 +16620,7 @@ export function DhcpEnumServers(
   CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
   CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumServers(Flags, util.toPointer(IdInfo), util.toPointer(Servers), util.toPointer(CallbackFn), util.toPointer(CallbackData));
+  return libDHCPSAPI_dll.DhcpEnumServers!(Flags, util.toPointer(IdInfo), util.toPointer(Servers), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
 
 export function DhcpAddServer(
@@ -16420,7 +16630,7 @@ export function DhcpAddServer(
   CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
   CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddServer(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
+  return libDHCPSAPI_dll.DhcpAddServer!(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
 
 export function DhcpDeleteServer(
@@ -16430,7 +16640,7 @@ export function DhcpDeleteServer(
   CallbackFn: Deno.PointerValue | Uint8Array /* ptr */,
   CallbackData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteServer(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
+  return libDHCPSAPI_dll.DhcpDeleteServer!(Flags, util.toPointer(IdInfo), util.toPointer(NewServer), util.toPointer(CallbackFn), util.toPointer(CallbackData));
 }
 
 export function DhcpGetServerBindingInfo(
@@ -16438,7 +16648,7 @@ export function DhcpGetServerBindingInfo(
   Flags: number /* u32 */,
   BindElementsInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetServerBindingInfo(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
+  return libDHCPSAPI_dll.DhcpGetServerBindingInfo!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
 }
 
 export function DhcpSetServerBindingInfo(
@@ -16446,7 +16656,7 @@ export function DhcpSetServerBindingInfo(
   Flags: number /* u32 */,
   BindElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetServerBindingInfo(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
+  return libDHCPSAPI_dll.DhcpSetServerBindingInfo!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
 }
 
 export function DhcpAddSubnetElementV5(
@@ -16454,7 +16664,7 @@ export function DhcpAddSubnetElementV5(
   SubnetAddress: number /* u32 */,
   AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddSubnetElementV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
+  return libDHCPSAPI_dll.DhcpAddSubnetElementV5!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(AddElementInfo));
 }
 
 export function DhcpEnumSubnetElementsV5(
@@ -16467,7 +16677,7 @@ export function DhcpEnumSubnetElementsV5(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV5!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpRemoveSubnetElementV5(
@@ -16476,7 +16686,7 @@ export function DhcpRemoveSubnetElementV5(
   RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV5(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
+  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV5!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(RemoveElementInfo), ForceFlag);
 }
 
 export function DhcpV4EnumSubnetReservations(
@@ -16488,7 +16698,7 @@ export function DhcpV4EnumSubnetReservations(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4EnumSubnetReservations(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpV4EnumSubnetReservations!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpCreateOptionV6(
@@ -16499,7 +16709,7 @@ export function DhcpCreateOptionV6(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateOptionV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpCreateOptionV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpRemoveOptionV6(
@@ -16509,7 +16719,7 @@ export function DhcpRemoveOptionV6(
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOptionV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName));
+  return libDHCPSAPI_dll.DhcpRemoveOptionV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName));
 }
 
 export function DhcpEnumOptionsV6(
@@ -16523,7 +16733,7 @@ export function DhcpEnumOptionsV6(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptionsV6(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptionsV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(Options), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpRemoveOptionValueV6(
@@ -16534,7 +16744,7 @@ export function DhcpRemoveOptionValueV6(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
+  return libDHCPSAPI_dll.DhcpRemoveOptionValueV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
 
 export function DhcpGetOptionInfoV6(
@@ -16545,7 +16755,7 @@ export function DhcpGetOptionInfoV6(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetOptionInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpGetOptionInfoV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpSetOptionInfoV6(
@@ -16556,7 +16766,7 @@ export function DhcpSetOptionInfoV6(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
+  return libDHCPSAPI_dll.DhcpSetOptionInfoV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(OptionInfo));
 }
 
 export function DhcpSetOptionValueV6(
@@ -16568,7 +16778,7 @@ export function DhcpSetOptionValueV6(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetOptionValueV6(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpSetOptionValueV6!(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpGetSubnetInfoVQ(
@@ -16576,7 +16786,7 @@ export function DhcpGetSubnetInfoVQ(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetSubnetInfoVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpGetSubnetInfoVQ!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpCreateSubnetVQ(
@@ -16584,7 +16794,7 @@ export function DhcpCreateSubnetVQ(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateSubnetVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpCreateSubnetVQ!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpSetSubnetInfoVQ(
@@ -16592,7 +16802,7 @@ export function DhcpSetSubnetInfoVQ(
   SubnetAddress: number /* u32 */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetSubnetInfoVQ(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpSetSubnetInfoVQ!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(SubnetInfo));
 }
 
 export function DhcpEnumOptionValuesV6(
@@ -16607,29 +16817,29 @@ export function DhcpEnumOptionValuesV6(
   OptionsRead: Deno.PointerValue | Uint8Array /* ptr */,
   OptionsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumOptionValuesV6(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
+  return libDHCPSAPI_dll.DhcpEnumOptionValuesV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(ClassName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(OptionValues), util.toPointer(OptionsRead), util.toPointer(OptionsTotal));
 }
 
 export function DhcpDsInit(): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDsInit();
+  return libDHCPSAPI_dll.DhcpDsInit!();
 }
 
 export function DhcpDsCleanup(): void /* void */ {
-  return libDHCPSAPI_dll.DhcpDsCleanup();
+  return libDHCPSAPI_dll.DhcpDsCleanup!();
 }
 
 export function DhcpSetThreadOptions(
   Flags: number /* u32 */,
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetThreadOptions(Flags, util.toPointer(Reserved));
+  return libDHCPSAPI_dll.DhcpSetThreadOptions!(Flags, util.toPointer(Reserved));
 }
 
 export function DhcpGetThreadOptions(
   pFlags: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetThreadOptions(util.toPointer(pFlags), util.toPointer(Reserved));
+  return libDHCPSAPI_dll.DhcpGetThreadOptions!(util.toPointer(pFlags), util.toPointer(Reserved));
 }
 
 export function DhcpServerQueryAttribute(
@@ -16638,7 +16848,7 @@ export function DhcpServerQueryAttribute(
   DhcpAttribId: number /* u32 */,
   pDhcpAttrib: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerQueryAttribute(util.pwstrToFfi(ServerIpAddr), dwReserved, DhcpAttribId, util.toPointer(pDhcpAttrib));
+  return libDHCPSAPI_dll.DhcpServerQueryAttribute!(util.pwstrToFfi(ServerIpAddr), dwReserved, DhcpAttribId, util.toPointer(pDhcpAttrib));
 }
 
 export function DhcpServerQueryAttributes(
@@ -16648,14 +16858,14 @@ export function DhcpServerQueryAttributes(
   pDhcpAttribs: Deno.PointerValue | Uint8Array /* ptr */,
   pDhcpAttribArr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerQueryAttributes(util.pwstrToFfi(ServerIpAddr), dwReserved, dwAttribCount, util.toPointer(pDhcpAttribs), util.toPointer(pDhcpAttribArr));
+  return libDHCPSAPI_dll.DhcpServerQueryAttributes!(util.pwstrToFfi(ServerIpAddr), dwReserved, dwAttribCount, util.toPointer(pDhcpAttribs), util.toPointer(pDhcpAttribArr));
 }
 
 export function DhcpServerRedoAuthorization(
   ServerIpAddr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerRedoAuthorization(util.pwstrToFfi(ServerIpAddr), dwReserved);
+  return libDHCPSAPI_dll.DhcpServerRedoAuthorization!(util.pwstrToFfi(ServerIpAddr), dwReserved);
 }
 
 export function DhcpAuditLogSetParams(
@@ -16666,7 +16876,7 @@ export function DhcpAuditLogSetParams(
   MaxLogFilesSize: number /* u32 */,
   MinSpaceOnDisk: number /* u32 */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAuditLogSetParams(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(AuditLogDir), DiskCheckInterval, MaxLogFilesSize, MinSpaceOnDisk);
+  return libDHCPSAPI_dll.DhcpAuditLogSetParams!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(AuditLogDir), DiskCheckInterval, MaxLogFilesSize, MinSpaceOnDisk);
 }
 
 export function DhcpAuditLogGetParams(
@@ -16677,7 +16887,7 @@ export function DhcpAuditLogGetParams(
   MaxLogFilesSize: Deno.PointerValue | Uint8Array /* ptr */,
   MinSpaceOnDisk: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAuditLogGetParams(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(AuditLogDir), util.toPointer(DiskCheckInterval), util.toPointer(MaxLogFilesSize), util.toPointer(MinSpaceOnDisk));
+  return libDHCPSAPI_dll.DhcpAuditLogGetParams!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(AuditLogDir), util.toPointer(DiskCheckInterval), util.toPointer(MaxLogFilesSize), util.toPointer(MinSpaceOnDisk));
 }
 
 export function DhcpServerQueryDnsRegCredentials(
@@ -16687,7 +16897,7 @@ export function DhcpServerQueryDnsRegCredentials(
   DomainSize: number /* u32 */,
   Domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerQueryDnsRegCredentials(util.pwstrToFfi(ServerIpAddress), UnameSize, util.pwstrToFfi(Uname), DomainSize, util.pwstrToFfi(Domain));
+  return libDHCPSAPI_dll.DhcpServerQueryDnsRegCredentials!(util.pwstrToFfi(ServerIpAddress), UnameSize, util.pwstrToFfi(Uname), DomainSize, util.pwstrToFfi(Domain));
 }
 
 export function DhcpServerSetDnsRegCredentials(
@@ -16696,7 +16906,7 @@ export function DhcpServerSetDnsRegCredentials(
   Domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Passwd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetDnsRegCredentials(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Uname), util.pwstrToFfi(Domain), util.pwstrToFfi(Passwd));
+  return libDHCPSAPI_dll.DhcpServerSetDnsRegCredentials!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Uname), util.pwstrToFfi(Domain), util.pwstrToFfi(Passwd));
 }
 
 export function DhcpServerSetDnsRegCredentialsV5(
@@ -16705,21 +16915,21 @@ export function DhcpServerSetDnsRegCredentialsV5(
   Domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Passwd: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetDnsRegCredentialsV5(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Uname), util.pwstrToFfi(Domain), util.pwstrToFfi(Passwd));
+  return libDHCPSAPI_dll.DhcpServerSetDnsRegCredentialsV5!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Uname), util.pwstrToFfi(Domain), util.pwstrToFfi(Passwd));
 }
 
 export function DhcpServerBackupDatabase(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerBackupDatabase(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Path));
+  return libDHCPSAPI_dll.DhcpServerBackupDatabase!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Path));
 }
 
 export function DhcpServerRestoreDatabase(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerRestoreDatabase(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Path));
+  return libDHCPSAPI_dll.DhcpServerRestoreDatabase!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(Path));
 }
 
 export function DhcpServerSetConfigVQ(
@@ -16727,27 +16937,27 @@ export function DhcpServerSetConfigVQ(
   FieldsToSet: number /* u32 */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetConfigVQ(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerSetConfigVQ!(util.pwstrToFfi(ServerIpAddress), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerGetConfigVQ(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerGetConfigVQ(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerGetConfigVQ!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ConfigInfo));
 }
 
 export function DhcpGetServerSpecificStrings(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ServerSpecificStrings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetServerSpecificStrings(util.pwstrToFfi(ServerIpAddress), util.toPointer(ServerSpecificStrings));
+  return libDHCPSAPI_dll.DhcpGetServerSpecificStrings!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ServerSpecificStrings));
 }
 
 export function DhcpServerAuditlogParamsFree(
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpServerAuditlogParamsFree(util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerAuditlogParamsFree!(util.toPointer(ConfigInfo));
 }
 
 export function DhcpCreateSubnetV6(
@@ -16755,7 +16965,7 @@ export function DhcpCreateSubnetV6(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateSubnetV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpCreateSubnetV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpDeleteSubnetV6(
@@ -16763,7 +16973,7 @@ export function DhcpDeleteSubnetV6(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteSubnetV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), ForceFlag);
+  return libDHCPSAPI_dll.DhcpDeleteSubnetV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), ForceFlag);
 }
 
 export function DhcpEnumSubnetsV6(
@@ -16774,7 +16984,7 @@ export function DhcpEnumSubnetsV6(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetsV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpAddSubnetElementV6(
@@ -16782,7 +16992,7 @@ export function DhcpAddSubnetElementV6(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   AddElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddSubnetElementV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(AddElementInfo));
+  return libDHCPSAPI_dll.DhcpAddSubnetElementV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(AddElementInfo));
 }
 
 export function DhcpRemoveSubnetElementV6(
@@ -16791,7 +17001,7 @@ export function DhcpRemoveSubnetElementV6(
   RemoveElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ForceFlag: DHCP_FORCE_FLAG /* Windows.Win32.NetworkManagement.Dhcp.DHCP_FORCE_FLAG */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(RemoveElementInfo), ForceFlag);
+  return libDHCPSAPI_dll.DhcpRemoveSubnetElementV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(RemoveElementInfo), ForceFlag);
 }
 
 export function DhcpEnumSubnetElementsV6(
@@ -16804,7 +17014,7 @@ export function DhcpEnumSubnetElementsV6(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetElementsV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), EnumElementType, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(EnumElementInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpGetSubnetInfoV6(
@@ -16812,7 +17022,7 @@ export function DhcpGetSubnetInfoV6(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetSubnetInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpGetSubnetInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpEnumSubnetClientsV6(
@@ -16824,7 +17034,7 @@ export function DhcpEnumSubnetClientsV6(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpEnumSubnetClientsV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpServerGetConfigV6(
@@ -16832,7 +17042,7 @@ export function DhcpServerGetConfigV6(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerGetConfigV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerGetConfigV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), util.toPointer(ConfigInfo));
 }
 
 export function DhcpServerSetConfigV6(
@@ -16841,7 +17051,7 @@ export function DhcpServerSetConfigV6(
   FieldsToSet: number /* u32 */,
   ConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpServerSetConfigV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), FieldsToSet, util.toPointer(ConfigInfo));
+  return libDHCPSAPI_dll.DhcpServerSetConfigV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeInfo), FieldsToSet, util.toPointer(ConfigInfo));
 }
 
 export function DhcpSetSubnetInfoV6(
@@ -16849,14 +17059,14 @@ export function DhcpSetSubnetInfoV6(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   SubnetInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetSubnetInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
+  return libDHCPSAPI_dll.DhcpSetSubnetInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SubnetAddress), util.toPointer(SubnetInfo));
 }
 
 export function DhcpGetMibInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetMibInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
+  return libDHCPSAPI_dll.DhcpGetMibInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
 
 export function DhcpGetServerBindingInfoV6(
@@ -16864,7 +17074,7 @@ export function DhcpGetServerBindingInfoV6(
   Flags: number /* u32 */,
   BindElementsInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetServerBindingInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
+  return libDHCPSAPI_dll.DhcpGetServerBindingInfoV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementsInfo));
 }
 
 export function DhcpSetServerBindingInfoV6(
@@ -16872,14 +17082,14 @@ export function DhcpSetServerBindingInfoV6(
   Flags: number /* u32 */,
   BindElementInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetServerBindingInfoV6(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
+  return libDHCPSAPI_dll.DhcpSetServerBindingInfoV6!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(BindElementInfo));
 }
 
 export function DhcpSetClientInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpSetClientInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpGetClientInfoV6(
@@ -16887,14 +17097,14 @@ export function DhcpGetClientInfoV6(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpGetClientInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpDeleteClientInfoV6(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteClientInfoV6(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpDeleteClientInfoV6!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpCreateClassV6(
@@ -16902,7 +17112,7 @@ export function DhcpCreateClassV6(
   ReservedMustBeZero: number /* u32 */,
   ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpCreateClassV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
+  return libDHCPSAPI_dll.DhcpCreateClassV6!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
 
 export function DhcpModifyClassV6(
@@ -16910,7 +17120,7 @@ export function DhcpModifyClassV6(
   ReservedMustBeZero: number /* u32 */,
   ClassInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpModifyClassV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
+  return libDHCPSAPI_dll.DhcpModifyClassV6!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ClassInfo));
 }
 
 export function DhcpDeleteClassV6(
@@ -16918,7 +17128,7 @@ export function DhcpDeleteClassV6(
   ReservedMustBeZero: number /* u32 */,
   ClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpDeleteClassV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.pwstrToFfi(ClassName));
+  return libDHCPSAPI_dll.DhcpDeleteClassV6!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.pwstrToFfi(ClassName));
 }
 
 export function DhcpEnumClassesV6(
@@ -16930,7 +17140,7 @@ export function DhcpEnumClassesV6(
   nRead: Deno.PointerValue | Uint8Array /* ptr */,
   nTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpEnumClassesV6(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
+  return libDHCPSAPI_dll.DhcpEnumClassesV6!(util.pwstrToFfi(ServerIpAddress), ReservedMustBeZero, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClassInfoArray), util.toPointer(nRead), util.toPointer(nTotal));
 }
 
 export function DhcpSetSubnetDelayOffer(
@@ -16938,7 +17148,7 @@ export function DhcpSetSubnetDelayOffer(
   SubnetAddress: number /* u32 */,
   TimeDelayInMilliseconds: number /* u16 */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpSetSubnetDelayOffer(util.pwstrToFfi(ServerIpAddress), SubnetAddress, TimeDelayInMilliseconds);
+  return libDHCPSAPI_dll.DhcpSetSubnetDelayOffer!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, TimeDelayInMilliseconds);
 }
 
 export function DhcpGetSubnetDelayOffer(
@@ -16946,20 +17156,20 @@ export function DhcpGetSubnetDelayOffer(
   SubnetAddress: number /* u32 */,
   TimeDelayInMilliseconds: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetSubnetDelayOffer(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(TimeDelayInMilliseconds));
+  return libDHCPSAPI_dll.DhcpGetSubnetDelayOffer!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(TimeDelayInMilliseconds));
 }
 
 export function DhcpGetMibInfoV5(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   MibInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpGetMibInfoV5(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
+  return libDHCPSAPI_dll.DhcpGetMibInfoV5!(util.pwstrToFfi(ServerIpAddress), util.toPointer(MibInfo));
 }
 
 export function DhcpAddSecurityGroup(
   pServer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpAddSecurityGroup(util.pwstrToFfi(pServer));
+  return libDHCPSAPI_dll.DhcpAddSecurityGroup!(util.pwstrToFfi(pServer));
 }
 
 export function DhcpV4GetOptionValue(
@@ -16971,7 +17181,7 @@ export function DhcpV4GetOptionValue(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpV4GetOptionValue!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpV4SetOptionValue(
@@ -16983,7 +17193,7 @@ export function DhcpV4SetOptionValue(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4SetOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
+  return libDHCPSAPI_dll.DhcpV4SetOptionValue!(util.pwstrToFfi(ServerIpAddress), Flags, OptionId, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValue));
 }
 
 export function DhcpV4SetOptionValues(
@@ -16994,7 +17204,7 @@ export function DhcpV4SetOptionValues(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OptionValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4SetOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
+  return libDHCPSAPI_dll.DhcpV4SetOptionValues!(util.pwstrToFfi(ServerIpAddress), Flags, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo), util.toPointer(OptionValues));
 }
 
 export function DhcpV4RemoveOptionValue(
@@ -17005,7 +17215,7 @@ export function DhcpV4RemoveOptionValue(
   VendorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4RemoveOptionValue(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
+  return libDHCPSAPI_dll.DhcpV4RemoveOptionValue!(util.pwstrToFfi(ServerIpAddress), Flags, OptionID, util.pwstrToFfi(PolicyName), util.pwstrToFfi(VendorName), util.toPointer(ScopeInfo));
 }
 
 export function DhcpV4GetAllOptionValues(
@@ -17014,14 +17224,14 @@ export function DhcpV4GetAllOptionValues(
   ScopeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   Values: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetAllOptionValues(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
+  return libDHCPSAPI_dll.DhcpV4GetAllOptionValues!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(ScopeInfo), util.toPointer(Values));
 }
 
 export function DhcpV4FailoverCreateRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverCreateRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverCreateRelationship!(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverSetRelationship(
@@ -17029,14 +17239,14 @@ export function DhcpV4FailoverSetRelationship(
   Flags: number /* u32 */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverSetRelationship(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverSetRelationship!(util.pwstrToFfi(ServerIpAddress), Flags, util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverDeleteRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationshipName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverDeleteRelationship(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pRelationshipName));
+  return libDHCPSAPI_dll.DhcpV4FailoverDeleteRelationship!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pRelationshipName));
 }
 
 export function DhcpV4FailoverGetRelationship(
@@ -17044,7 +17254,7 @@ export function DhcpV4FailoverGetRelationship(
   pRelationshipName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetRelationship(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pRelationshipName), util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetRelationship!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pRelationshipName), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverEnumRelationship(
@@ -17055,21 +17265,21 @@ export function DhcpV4FailoverEnumRelationship(
   RelationshipRead: Deno.PointerValue | Uint8Array /* ptr */,
   RelationshipTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverEnumRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(pRelationship), util.toPointer(RelationshipRead), util.toPointer(RelationshipTotal));
+  return libDHCPSAPI_dll.DhcpV4FailoverEnumRelationship!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(pRelationship), util.toPointer(RelationshipRead), util.toPointer(RelationshipTotal));
 }
 
 export function DhcpV4FailoverAddScopeToRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverAddScopeToRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverAddScopeToRelationship!(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverDeleteScopeFromRelationship(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverDeleteScopeFromRelationship(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverDeleteScopeFromRelationship!(util.pwstrToFfi(ServerIpAddress), util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverGetScopeRelationship(
@@ -17077,7 +17287,7 @@ export function DhcpV4FailoverGetScopeRelationship(
   ScopeId: number /* u32 */,
   pRelationship: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetScopeRelationship(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pRelationship));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetScopeRelationship!(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pRelationship));
 }
 
 export function DhcpV4FailoverGetScopeStatistics(
@@ -17085,7 +17295,7 @@ export function DhcpV4FailoverGetScopeStatistics(
   ScopeId: number /* u32 */,
   pStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetScopeStatistics(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pStats));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetScopeStatistics!(util.pwstrToFfi(ServerIpAddress), ScopeId, util.toPointer(pStats));
 }
 
 export function DhcpV4FailoverGetClientInfo(
@@ -17093,7 +17303,7 @@ export function DhcpV4FailoverGetClientInfo(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4FailoverGetSystemTime(
@@ -17101,7 +17311,7 @@ export function DhcpV4FailoverGetSystemTime(
   pTime: Deno.PointerValue | Uint8Array /* ptr */,
   pMaxAllowedDeltaTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetSystemTime(util.pwstrToFfi(ServerIpAddress), util.toPointer(pTime), util.toPointer(pMaxAllowedDeltaTime));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetSystemTime!(util.pwstrToFfi(ServerIpAddress), util.toPointer(pTime), util.toPointer(pMaxAllowedDeltaTime));
 }
 
 export function DhcpV4FailoverGetAddressStatus(
@@ -17109,14 +17319,14 @@ export function DhcpV4FailoverGetAddressStatus(
   SubnetAddress: number /* u32 */,
   pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverGetAddressStatus(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(pStatus));
+  return libDHCPSAPI_dll.DhcpV4FailoverGetAddressStatus!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(pStatus));
 }
 
 export function DhcpV4FailoverTriggerAddrAllocation(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pFailRelName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4FailoverTriggerAddrAllocation(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pFailRelName));
+  return libDHCPSAPI_dll.DhcpV4FailoverTriggerAddrAllocation!(util.pwstrToFfi(ServerIpAddress), util.pwstrToFfi(pFailRelName));
 }
 
 export function DhcpHlprCreateV4Policy(
@@ -17129,7 +17339,7 @@ export function DhcpHlprCreateV4Policy(
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprCreateV4Policy(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpHlprCreateV4Policy!(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
 }
 
 export function DhcpHlprCreateV4PolicyEx(
@@ -17142,7 +17352,7 @@ export function DhcpHlprCreateV4PolicyEx(
   Enabled: boolean /* Windows.Win32.Foundation.BOOL */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprCreateV4PolicyEx(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpHlprCreateV4PolicyEx!(util.pwstrToFfi(PolicyName), util.boolToFfi(fGlobalPolicy), Subnet, ProcessingOrder, RootOperator, util.pwstrToFfi(Description), util.boolToFfi(Enabled), util.toPointer(Policy));
 }
 
 export function DhcpHlprAddV4PolicyExpr(
@@ -17151,7 +17361,7 @@ export function DhcpHlprAddV4PolicyExpr(
   Operator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
   ExprIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyExpr(util.toPointer(Policy), ParentExpr, Operator, util.toPointer(ExprIndex));
+  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyExpr!(util.toPointer(Policy), ParentExpr, Operator, util.toPointer(ExprIndex));
 }
 
 export function DhcpHlprAddV4PolicyCondition(
@@ -17166,63 +17376,63 @@ export function DhcpHlprAddV4PolicyCondition(
   ValueLength: number /* u32 */,
   ConditionIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyCondition(util.toPointer(Policy), ParentExpr, Type, OptionID, SubOptionID, util.pwstrToFfi(VendorName), Operator, util.toPointer(Value), ValueLength, util.toPointer(ConditionIndex));
+  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyCondition!(util.toPointer(Policy), ParentExpr, Type, OptionID, SubOptionID, util.pwstrToFfi(VendorName), Operator, util.toPointer(Value), ValueLength, util.toPointer(ConditionIndex));
 }
 
 export function DhcpHlprAddV4PolicyRange(
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
   Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyRange(util.toPointer(Policy), util.toPointer(Range));
+  return libDHCPSAPI_dll.DhcpHlprAddV4PolicyRange!(util.toPointer(Policy), util.toPointer(Range));
 }
 
 export function DhcpHlprResetV4PolicyExpr(
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprResetV4PolicyExpr(util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpHlprResetV4PolicyExpr!(util.toPointer(Policy));
 }
 
 export function DhcpHlprModifyV4PolicyExpr(
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
   Operator: DHCP_POL_LOGIC_OPER /* Windows.Win32.NetworkManagement.Dhcp.DHCP_POL_LOGIC_OPER */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprModifyV4PolicyExpr(util.toPointer(Policy), Operator);
+  return libDHCPSAPI_dll.DhcpHlprModifyV4PolicyExpr!(util.toPointer(Policy), Operator);
 }
 
 export function DhcpHlprFreeV4Policy(
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4Policy(util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4Policy!(util.toPointer(Policy));
 }
 
 export function DhcpHlprFreeV4PolicyArray(
   PolicyArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyArray(util.toPointer(PolicyArray));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyArray!(util.toPointer(PolicyArray));
 }
 
 export function DhcpHlprFreeV4PolicyEx(
   PolicyEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyEx(util.toPointer(PolicyEx));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyEx!(util.toPointer(PolicyEx));
 }
 
 export function DhcpHlprFreeV4PolicyExArray(
   PolicyExArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyExArray(util.toPointer(PolicyExArray));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4PolicyExArray!(util.toPointer(PolicyExArray));
 }
 
 export function DhcpHlprFreeV4DhcpProperty(
   Property: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpProperty(util.toPointer(Property));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpProperty!(util.toPointer(Property));
 }
 
 export function DhcpHlprFreeV4DhcpPropertyArray(
   PropertyArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpPropertyArray(util.toPointer(PropertyArray));
+  return libDHCPSAPI_dll.DhcpHlprFreeV4DhcpPropertyArray!(util.toPointer(PropertyArray));
 }
 
 export function DhcpHlprFindV4DhcpProperty(
@@ -17230,13 +17440,13 @@ export function DhcpHlprFindV4DhcpProperty(
   ID: DHCP_PROPERTY_ID /* Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_ID */,
   Type: DHCP_PROPERTY_TYPE /* Windows.Win32.NetworkManagement.Dhcp.DHCP_PROPERTY_TYPE */,
 ): Deno.PointerValue /* ptr */ {
-  return libDHCPSAPI_dll.DhcpHlprFindV4DhcpProperty(util.toPointer(PropertyArray), ID, Type);
+  return libDHCPSAPI_dll.DhcpHlprFindV4DhcpProperty!(util.toPointer(PropertyArray), ID, Type);
 }
 
 export function DhcpHlprIsV4PolicySingleUC(
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicySingleUC(util.toPointer(Policy)));
+  return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicySingleUC!(util.toPointer(Policy)));
 }
 
 export function DhcpV4QueryPolicyEnforcement(
@@ -17245,7 +17455,7 @@ export function DhcpV4QueryPolicyEnforcement(
   SubnetAddress: number /* u32 */,
   Enabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4QueryPolicyEnforcement(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(Enabled));
+  return libDHCPSAPI_dll.DhcpV4QueryPolicyEnforcement!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(Enabled));
 }
 
 export function DhcpV4SetPolicyEnforcement(
@@ -17254,26 +17464,26 @@ export function DhcpV4SetPolicyEnforcement(
   SubnetAddress: number /* u32 */,
   Enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4SetPolicyEnforcement(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.boolToFfi(Enable));
+  return libDHCPSAPI_dll.DhcpV4SetPolicyEnforcement!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.boolToFfi(Enable));
 }
 
 export function DhcpHlprIsV4PolicyWellFormed(
   pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicyWellFormed(util.toPointer(pPolicy)));
+  return util.boolFromFfi(libDHCPSAPI_dll.DhcpHlprIsV4PolicyWellFormed!(util.toPointer(pPolicy)));
 }
 
 export function DhcpHlprIsV4PolicyValid(
   pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpHlprIsV4PolicyValid(util.toPointer(pPolicy));
+  return libDHCPSAPI_dll.DhcpHlprIsV4PolicyValid!(util.toPointer(pPolicy));
 }
 
 export function DhcpV4CreatePolicy(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPolicy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4CreatePolicy(util.pwstrToFfi(ServerIpAddress), util.toPointer(pPolicy));
+  return libDHCPSAPI_dll.DhcpV4CreatePolicy!(util.pwstrToFfi(ServerIpAddress), util.toPointer(pPolicy));
 }
 
 export function DhcpV4GetPolicy(
@@ -17283,7 +17493,7 @@ export function DhcpV4GetPolicy(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetPolicy(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpV4GetPolicy!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
 
 export function DhcpV4SetPolicy(
@@ -17294,7 +17504,7 @@ export function DhcpV4SetPolicy(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4SetPolicy(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpV4SetPolicy!(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
 
 export function DhcpV4DeletePolicy(
@@ -17303,7 +17513,7 @@ export function DhcpV4DeletePolicy(
   SubnetAddress: number /* u32 */,
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4DeletePolicy(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName));
+  return libDHCPSAPI_dll.DhcpV4DeletePolicy!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fGlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName));
 }
 
 export function DhcpV4EnumPolicies(
@@ -17316,7 +17526,7 @@ export function DhcpV4EnumPolicies(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4EnumPolicies(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpV4EnumPolicies!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(fGlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 
 export function DhcpV4AddPolicyRange(
@@ -17325,7 +17535,7 @@ export function DhcpV4AddPolicyRange(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4AddPolicyRange(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
+  return libDHCPSAPI_dll.DhcpV4AddPolicyRange!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
 }
 
 export function DhcpV4RemovePolicyRange(
@@ -17334,7 +17544,7 @@ export function DhcpV4RemovePolicyRange(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Range: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4RemovePolicyRange(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
+  return libDHCPSAPI_dll.DhcpV4RemovePolicyRange!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Range));
 }
 
 export function DhcpV6SetStatelessStoreParams(
@@ -17344,7 +17554,7 @@ export function DhcpV6SetStatelessStoreParams(
   FieldModified: number /* u32 */,
   Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV6SetStatelessStoreParams(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), FieldModified, util.toPointer(Params));
+  return libDHCPSAPI_dll.DhcpV6SetStatelessStoreParams!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), FieldModified, util.toPointer(Params));
 }
 
 export function DhcpV6GetStatelessStoreParams(
@@ -17353,21 +17563,21 @@ export function DhcpV6GetStatelessStoreParams(
   SubnetAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dhcp.DHCP_IPV6_ADDRESS */,
   Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV6GetStatelessStoreParams(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), util.toPointer(Params));
+  return libDHCPSAPI_dll.DhcpV6GetStatelessStoreParams!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(fServerLevel), util.toPointer(SubnetAddress), util.toPointer(Params));
 }
 
 export function DhcpV6GetStatelessStatistics(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   StatelessStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV6GetStatelessStatistics(util.pwstrToFfi(ServerIpAddress), util.toPointer(StatelessStats));
+  return libDHCPSAPI_dll.DhcpV6GetStatelessStatistics!(util.pwstrToFfi(ServerIpAddress), util.toPointer(StatelessStats));
 }
 
 export function DhcpV4CreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4CreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV4CreateClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4EnumSubnetClients(
@@ -17379,7 +17589,7 @@ export function DhcpV4EnumSubnetClients(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4EnumSubnetClients(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpV4EnumSubnetClients!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpV4GetClientInfo(
@@ -17387,14 +17597,14 @@ export function DhcpV4GetClientInfo(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV4GetClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV6CreateClientInfo(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV6CreateClientInfo(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV6CreateClientInfo!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4GetFreeIPAddress(
@@ -17405,7 +17615,7 @@ export function DhcpV4GetFreeIPAddress(
   NumFreeAddrReq: number /* u32 */,
   IPAddrList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetFreeIPAddress(util.pwstrToFfi(ServerIpAddress), ScopeId, StartIP, EndIP, NumFreeAddrReq, util.toPointer(IPAddrList));
+  return libDHCPSAPI_dll.DhcpV4GetFreeIPAddress!(util.pwstrToFfi(ServerIpAddress), ScopeId, StartIP, EndIP, NumFreeAddrReq, util.toPointer(IPAddrList));
 }
 
 export function DhcpV6GetFreeIPAddress(
@@ -17416,14 +17626,14 @@ export function DhcpV6GetFreeIPAddress(
   NumFreeAddrReq: number /* u32 */,
   IPAddrList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV6GetFreeIPAddress(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeId), util.toPointer(StartIP), util.toPointer(EndIP), NumFreeAddrReq, util.toPointer(IPAddrList));
+  return libDHCPSAPI_dll.DhcpV6GetFreeIPAddress!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ScopeId), util.toPointer(StartIP), util.toPointer(EndIP), NumFreeAddrReq, util.toPointer(IPAddrList));
 }
 
 export function DhcpV4CreateClientInfoEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4CreateClientInfoEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV4CreateClientInfoEx!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4EnumSubnetClientsEx(
@@ -17435,7 +17645,7 @@ export function DhcpV4EnumSubnetClientsEx(
   ClientsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ClientsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4EnumSubnetClientsEx(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
+  return libDHCPSAPI_dll.DhcpV4EnumSubnetClientsEx!(util.pwstrToFfi(ServerIpAddress), SubnetAddress, util.toPointer(ResumeHandle), PreferredMaximum, util.toPointer(ClientInfo), util.toPointer(ClientsRead), util.toPointer(ClientsTotal));
 }
 
 export function DhcpV4GetClientInfoEx(
@@ -17443,14 +17653,14 @@ export function DhcpV4GetClientInfoEx(
   SearchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ClientInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetClientInfoEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
+  return libDHCPSAPI_dll.DhcpV4GetClientInfoEx!(util.pwstrToFfi(ServerIpAddress), util.toPointer(SearchInfo), util.toPointer(ClientInfo));
 }
 
 export function DhcpV4CreatePolicyEx(
   ServerIpAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PolicyEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4CreatePolicyEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(PolicyEx));
+  return libDHCPSAPI_dll.DhcpV4CreatePolicyEx!(util.pwstrToFfi(ServerIpAddress), util.toPointer(PolicyEx));
 }
 
 export function DhcpV4GetPolicyEx(
@@ -17460,7 +17670,7 @@ export function DhcpV4GetPolicyEx(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4GetPolicyEx(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpV4GetPolicyEx!(util.pwstrToFfi(ServerIpAddress), util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
 
 export function DhcpV4SetPolicyEx(
@@ -17471,7 +17681,7 @@ export function DhcpV4SetPolicyEx(
   PolicyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4SetPolicyEx(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
+  return libDHCPSAPI_dll.DhcpV4SetPolicyEx!(util.pwstrToFfi(ServerIpAddress), FieldsModified, util.boolToFfi(GlobalPolicy), SubnetAddress, util.pwstrToFfi(PolicyName), util.toPointer(Policy));
 }
 
 export function DhcpV4EnumPoliciesEx(
@@ -17484,6 +17694,6 @@ export function DhcpV4EnumPoliciesEx(
   ElementsRead: Deno.PointerValue | Uint8Array /* ptr */,
   ElementsTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDHCPSAPI_dll.DhcpV4EnumPoliciesEx(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(GlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
+  return libDHCPSAPI_dll.DhcpV4EnumPoliciesEx!(util.pwstrToFfi(ServerIpAddress), util.toPointer(ResumeHandle), PreferredMaximum, util.boolToFfi(GlobalPolicy), SubnetAddress, util.toPointer(EnumInfo), util.toPointer(ElementsRead), util.toPointer(ElementsTotal));
 }
 

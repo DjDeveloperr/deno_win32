@@ -3009,142 +3009,177 @@ try {
     CfGetPlatformInfo: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CfRegisterSyncRoot: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CfUnregisterSyncRoot: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     CfConnectSyncRoot: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfDisconnectSyncRoot: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetTransferKey: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReleaseTransferKey: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     CfExecute: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfUpdateSyncProviderStatus: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CfQuerySyncProviderStatus: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReportSyncStatus: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfCreatePlaceholders: {
       parameters: ["buffer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfOpenFileWithOplock: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReferenceProtectedHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetWin32HandleFromProtectedHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReleaseProtectedHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CfCloseHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CfConvertToPlaceholder: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfUpdatePlaceholder: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfRevertPlaceholder: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfHydratePlaceholder: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfDehydratePlaceholder: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfSetPinState: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfSetInSyncState: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfSetCorrelationVector: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetCorrelationVector: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetPlaceholderStateFromAttributeTag: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     CfGetPlaceholderStateFromFileInfo: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     CfGetPlaceholderStateFromFindData: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CfGetPlaceholderInfo: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetSyncRootInfoByPath: {
       parameters: ["buffer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetSyncRootInfoByHandle: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfGetPlaceholderRangeInfo: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReportProviderProgress: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CfReportProviderProgress2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3154,7 +3189,7 @@ try {
 export function CfGetPlatformInfo(
   PlatformVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetPlatformInfo(util.toPointer(PlatformVersion));
+  return libcldapi_dll.CfGetPlatformInfo!(util.toPointer(PlatformVersion));
 }
 
 export function CfRegisterSyncRoot(
@@ -3163,13 +3198,13 @@ export function CfRegisterSyncRoot(
   Policies: Deno.PointerValue | Uint8Array /* ptr */,
   RegisterFlags: CF_REGISTER_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_REGISTER_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfRegisterSyncRoot(util.pwstrToFfi(SyncRootPath), util.toPointer(Registration), util.toPointer(Policies), RegisterFlags);
+  return libcldapi_dll.CfRegisterSyncRoot!(util.pwstrToFfi(SyncRootPath), util.toPointer(Registration), util.toPointer(Policies), RegisterFlags);
 }
 
 export function CfUnregisterSyncRoot(
   SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfUnregisterSyncRoot(util.pwstrToFfi(SyncRootPath));
+  return libcldapi_dll.CfUnregisterSyncRoot!(util.pwstrToFfi(SyncRootPath));
 }
 
 export function CfConnectSyncRoot(
@@ -3179,55 +3214,55 @@ export function CfConnectSyncRoot(
   ConnectFlags: CF_CONNECT_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_CONNECT_FLAGS */,
   ConnectionKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfConnectSyncRoot(util.pwstrToFfi(SyncRootPath), util.toPointer(CallbackTable), util.toPointer(CallbackContext), ConnectFlags, util.toPointer(ConnectionKey));
+  return libcldapi_dll.CfConnectSyncRoot!(util.pwstrToFfi(SyncRootPath), util.toPointer(CallbackTable), util.toPointer(CallbackContext), ConnectFlags, util.toPointer(ConnectionKey));
 }
 
 export function CfDisconnectSyncRoot(
   ConnectionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.CloudFilters.CF_CONNECTION_KEY */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfDisconnectSyncRoot(util.toPointer(ConnectionKey));
+  return libcldapi_dll.CfDisconnectSyncRoot!(util.toPointer(ConnectionKey));
 }
 
 export function CfGetTransferKey(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   TransferKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetTransferKey(util.toPointer(FileHandle), util.toPointer(TransferKey));
+  return libcldapi_dll.CfGetTransferKey!(util.toPointer(FileHandle), util.toPointer(TransferKey));
 }
 
 export function CfReleaseTransferKey(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   TransferKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libcldapi_dll.CfReleaseTransferKey(util.toPointer(FileHandle), util.toPointer(TransferKey));
+  return libcldapi_dll.CfReleaseTransferKey!(util.toPointer(FileHandle), util.toPointer(TransferKey));
 }
 
 export function CfExecute(
   OpInfo: Deno.PointerValue | Uint8Array /* ptr */,
   OpParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfExecute(util.toPointer(OpInfo), util.toPointer(OpParams));
+  return libcldapi_dll.CfExecute!(util.toPointer(OpInfo), util.toPointer(OpParams));
 }
 
 export function CfUpdateSyncProviderStatus(
   ConnectionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.CloudFilters.CF_CONNECTION_KEY */,
   ProviderStatus: CF_SYNC_PROVIDER_STATUS /* Windows.Win32.Storage.CloudFilters.CF_SYNC_PROVIDER_STATUS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfUpdateSyncProviderStatus(util.toPointer(ConnectionKey), ProviderStatus);
+  return libcldapi_dll.CfUpdateSyncProviderStatus!(util.toPointer(ConnectionKey), ProviderStatus);
 }
 
 export function CfQuerySyncProviderStatus(
   ConnectionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.CloudFilters.CF_CONNECTION_KEY */,
   ProviderStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfQuerySyncProviderStatus(util.toPointer(ConnectionKey), util.toPointer(ProviderStatus));
+  return libcldapi_dll.CfQuerySyncProviderStatus!(util.toPointer(ConnectionKey), util.toPointer(ProviderStatus));
 }
 
 export function CfReportSyncStatus(
   SyncRootPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SyncStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfReportSyncStatus(util.pwstrToFfi(SyncRootPath), util.toPointer(SyncStatus));
+  return libcldapi_dll.CfReportSyncStatus!(util.pwstrToFfi(SyncRootPath), util.toPointer(SyncStatus));
 }
 
 export function CfCreatePlaceholders(
@@ -3237,7 +3272,7 @@ export function CfCreatePlaceholders(
   CreateFlags: CF_CREATE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_CREATE_FLAGS */,
   EntriesProcessed: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfCreatePlaceholders(util.pwstrToFfi(BaseDirectoryPath), util.toPointer(PlaceholderArray), PlaceholderCount, CreateFlags, util.toPointer(EntriesProcessed));
+  return libcldapi_dll.CfCreatePlaceholders!(util.pwstrToFfi(BaseDirectoryPath), util.toPointer(PlaceholderArray), PlaceholderCount, CreateFlags, util.toPointer(EntriesProcessed));
 }
 
 export function CfOpenFileWithOplock(
@@ -3245,31 +3280,31 @@ export function CfOpenFileWithOplock(
   Flags: CF_OPEN_FILE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_OPEN_FILE_FLAGS */,
   ProtectedHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfOpenFileWithOplock(util.pwstrToFfi(FilePath), Flags, util.toPointer(ProtectedHandle));
+  return libcldapi_dll.CfOpenFileWithOplock!(util.pwstrToFfi(FilePath), Flags, util.toPointer(ProtectedHandle));
 }
 
 export function CfReferenceProtectedHandle(
   ProtectedHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libcldapi_dll.CfReferenceProtectedHandle(util.toPointer(ProtectedHandle));
+  return libcldapi_dll.CfReferenceProtectedHandle!(util.toPointer(ProtectedHandle));
 }
 
 export function CfGetWin32HandleFromProtectedHandle(
   ProtectedHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libcldapi_dll.CfGetWin32HandleFromProtectedHandle(util.toPointer(ProtectedHandle));
+  return libcldapi_dll.CfGetWin32HandleFromProtectedHandle!(util.toPointer(ProtectedHandle));
 }
 
 export function CfReleaseProtectedHandle(
   ProtectedHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libcldapi_dll.CfReleaseProtectedHandle(util.toPointer(ProtectedHandle));
+  return libcldapi_dll.CfReleaseProtectedHandle!(util.toPointer(ProtectedHandle));
 }
 
 export function CfCloseHandle(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libcldapi_dll.CfCloseHandle(util.toPointer(FileHandle));
+  return libcldapi_dll.CfCloseHandle!(util.toPointer(FileHandle));
 }
 
 export function CfConvertToPlaceholder(
@@ -3280,7 +3315,7 @@ export function CfConvertToPlaceholder(
   ConvertUsn: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfConvertToPlaceholder(util.toPointer(FileHandle), util.toPointer(FileIdentity), FileIdentityLength, ConvertFlags, util.toPointer(ConvertUsn), util.toPointer(Overlapped));
+  return libcldapi_dll.CfConvertToPlaceholder!(util.toPointer(FileHandle), util.toPointer(FileIdentity), FileIdentityLength, ConvertFlags, util.toPointer(ConvertUsn), util.toPointer(Overlapped));
 }
 
 export function CfUpdatePlaceholder(
@@ -3294,7 +3329,7 @@ export function CfUpdatePlaceholder(
   UpdateUsn: Deno.PointerValue | Uint8Array /* ptr */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfUpdatePlaceholder(util.toPointer(FileHandle), util.toPointer(FsMetadata), util.toPointer(FileIdentity), FileIdentityLength, util.toPointer(DehydrateRangeArray), DehydrateRangeCount, UpdateFlags, util.toPointer(UpdateUsn), util.toPointer(Overlapped));
+  return libcldapi_dll.CfUpdatePlaceholder!(util.toPointer(FileHandle), util.toPointer(FsMetadata), util.toPointer(FileIdentity), FileIdentityLength, util.toPointer(DehydrateRangeArray), DehydrateRangeCount, UpdateFlags, util.toPointer(UpdateUsn), util.toPointer(Overlapped));
 }
 
 export function CfRevertPlaceholder(
@@ -3302,7 +3337,7 @@ export function CfRevertPlaceholder(
   RevertFlags: CF_REVERT_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_REVERT_FLAGS */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfRevertPlaceholder(util.toPointer(FileHandle), RevertFlags, util.toPointer(Overlapped));
+  return libcldapi_dll.CfRevertPlaceholder!(util.toPointer(FileHandle), RevertFlags, util.toPointer(Overlapped));
 }
 
 export function CfHydratePlaceholder(
@@ -3312,7 +3347,7 @@ export function CfHydratePlaceholder(
   HydrateFlags: CF_HYDRATE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_HYDRATE_FLAGS */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfHydratePlaceholder(util.toPointer(FileHandle), util.toPointer(StartingOffset), util.toPointer(Length), HydrateFlags, util.toPointer(Overlapped));
+  return libcldapi_dll.CfHydratePlaceholder!(util.toPointer(FileHandle), util.toPointer(StartingOffset), util.toPointer(Length), HydrateFlags, util.toPointer(Overlapped));
 }
 
 export function CfDehydratePlaceholder(
@@ -3322,7 +3357,7 @@ export function CfDehydratePlaceholder(
   DehydrateFlags: CF_DEHYDRATE_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_DEHYDRATE_FLAGS */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfDehydratePlaceholder(util.toPointer(FileHandle), util.toPointer(StartingOffset), util.toPointer(Length), DehydrateFlags, util.toPointer(Overlapped));
+  return libcldapi_dll.CfDehydratePlaceholder!(util.toPointer(FileHandle), util.toPointer(StartingOffset), util.toPointer(Length), DehydrateFlags, util.toPointer(Overlapped));
 }
 
 export function CfSetPinState(
@@ -3331,7 +3366,7 @@ export function CfSetPinState(
   PinFlags: CF_SET_PIN_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_SET_PIN_FLAGS */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfSetPinState(util.toPointer(FileHandle), PinState, PinFlags, util.toPointer(Overlapped));
+  return libcldapi_dll.CfSetPinState!(util.toPointer(FileHandle), PinState, PinFlags, util.toPointer(Overlapped));
 }
 
 export function CfSetInSyncState(
@@ -3340,41 +3375,41 @@ export function CfSetInSyncState(
   InSyncFlags: CF_SET_IN_SYNC_FLAGS /* Windows.Win32.Storage.CloudFilters.CF_SET_IN_SYNC_FLAGS */,
   InSyncUsn: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfSetInSyncState(util.toPointer(FileHandle), InSyncState, InSyncFlags, util.toPointer(InSyncUsn));
+  return libcldapi_dll.CfSetInSyncState!(util.toPointer(FileHandle), InSyncState, InSyncFlags, util.toPointer(InSyncUsn));
 }
 
 export function CfSetCorrelationVector(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfSetCorrelationVector(util.toPointer(FileHandle), util.toPointer(CorrelationVector));
+  return libcldapi_dll.CfSetCorrelationVector!(util.toPointer(FileHandle), util.toPointer(CorrelationVector));
 }
 
 export function CfGetCorrelationVector(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetCorrelationVector(util.toPointer(FileHandle), util.toPointer(CorrelationVector));
+  return libcldapi_dll.CfGetCorrelationVector!(util.toPointer(FileHandle), util.toPointer(CorrelationVector));
 }
 
 export function CfGetPlaceholderStateFromAttributeTag(
   FileAttributes: number /* u32 */,
   ReparseTag: number /* u32 */,
 ): CF_PLACEHOLDER_STATE /* Windows.Win32.Storage.CloudFilters.CF_PLACEHOLDER_STATE */ {
-  return libcldapi_dll.CfGetPlaceholderStateFromAttributeTag(FileAttributes, ReparseTag);
+  return libcldapi_dll.CfGetPlaceholderStateFromAttributeTag!(FileAttributes, ReparseTag);
 }
 
 export function CfGetPlaceholderStateFromFileInfo(
   InfoBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   InfoClass: FILE_INFO_BY_HANDLE_CLASS /* Windows.Win32.Storage.FileSystem.FILE_INFO_BY_HANDLE_CLASS */,
 ): CF_PLACEHOLDER_STATE /* Windows.Win32.Storage.CloudFilters.CF_PLACEHOLDER_STATE */ {
-  return libcldapi_dll.CfGetPlaceholderStateFromFileInfo(util.toPointer(InfoBuffer), InfoClass);
+  return libcldapi_dll.CfGetPlaceholderStateFromFileInfo!(util.toPointer(InfoBuffer), InfoClass);
 }
 
 export function CfGetPlaceholderStateFromFindData(
   FindData: Deno.PointerValue | Uint8Array /* ptr */,
 ): CF_PLACEHOLDER_STATE /* Windows.Win32.Storage.CloudFilters.CF_PLACEHOLDER_STATE */ {
-  return libcldapi_dll.CfGetPlaceholderStateFromFindData(util.toPointer(FindData));
+  return libcldapi_dll.CfGetPlaceholderStateFromFindData!(util.toPointer(FindData));
 }
 
 export function CfGetPlaceholderInfo(
@@ -3384,7 +3419,7 @@ export function CfGetPlaceholderInfo(
   InfoBufferLength: number /* u32 */,
   ReturnedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetPlaceholderInfo(util.toPointer(FileHandle), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
+  return libcldapi_dll.CfGetPlaceholderInfo!(util.toPointer(FileHandle), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
 }
 
 export function CfGetSyncRootInfoByPath(
@@ -3394,7 +3429,7 @@ export function CfGetSyncRootInfoByPath(
   InfoBufferLength: number /* u32 */,
   ReturnedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetSyncRootInfoByPath(util.pwstrToFfi(FilePath), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
+  return libcldapi_dll.CfGetSyncRootInfoByPath!(util.pwstrToFfi(FilePath), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
 }
 
 export function CfGetSyncRootInfoByHandle(
@@ -3404,7 +3439,7 @@ export function CfGetSyncRootInfoByHandle(
   InfoBufferLength: number /* u32 */,
   ReturnedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetSyncRootInfoByHandle(util.toPointer(FileHandle), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
+  return libcldapi_dll.CfGetSyncRootInfoByHandle!(util.toPointer(FileHandle), InfoClass, util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
 }
 
 export function CfGetPlaceholderRangeInfo(
@@ -3416,7 +3451,7 @@ export function CfGetPlaceholderRangeInfo(
   InfoBufferLength: number /* u32 */,
   ReturnedLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfGetPlaceholderRangeInfo(util.toPointer(FileHandle), InfoClass, util.toPointer(StartingOffset), util.toPointer(Length), util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
+  return libcldapi_dll.CfGetPlaceholderRangeInfo!(util.toPointer(FileHandle), InfoClass, util.toPointer(StartingOffset), util.toPointer(Length), util.toPointer(InfoBuffer), InfoBufferLength, util.toPointer(ReturnedLength));
 }
 
 export function CfReportProviderProgress(
@@ -3425,7 +3460,7 @@ export function CfReportProviderProgress(
   ProviderProgressTotal: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LARGE_INTEGER */,
   ProviderProgressCompleted: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LARGE_INTEGER */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfReportProviderProgress(util.toPointer(ConnectionKey), util.toPointer(TransferKey), util.toPointer(ProviderProgressTotal), util.toPointer(ProviderProgressCompleted));
+  return libcldapi_dll.CfReportProviderProgress!(util.toPointer(ConnectionKey), util.toPointer(TransferKey), util.toPointer(ProviderProgressTotal), util.toPointer(ProviderProgressCompleted));
 }
 
 export function CfReportProviderProgress2(
@@ -3436,6 +3471,6 @@ export function CfReportProviderProgress2(
   ProviderProgressCompleted: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LARGE_INTEGER */,
   TargetSessionId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libcldapi_dll.CfReportProviderProgress2(util.toPointer(ConnectionKey), util.toPointer(TransferKey), util.toPointer(RequestKey), util.toPointer(ProviderProgressTotal), util.toPointer(ProviderProgressCompleted), TargetSessionId);
+  return libcldapi_dll.CfReportProviderProgress2!(util.toPointer(ConnectionKey), util.toPointer(TransferKey), util.toPointer(RequestKey), util.toPointer(ProviderProgressTotal), util.toPointer(ProviderProgressCompleted), TargetSessionId);
 }
 

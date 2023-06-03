@@ -28,18 +28,22 @@ try {
     DSCreateISecurityInfoObject: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DSCreateISecurityInfoObjectEx: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DSCreateSecurityPage: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DSEditSecurity: {
       parameters: ["pointer", "buffer", "buffer", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -55,7 +59,7 @@ export function DSCreateISecurityInfoObject(
   pfnWriteSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDSSEC_dll.DSCreateISecurityInfoObject(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
+  return libDSSEC_dll.DSCreateISecurityInfoObject!(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
 }
 
 export function DSCreateISecurityInfoObjectEx(
@@ -70,7 +74,7 @@ export function DSCreateISecurityInfoObjectEx(
   pfnWriteSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDSSEC_dll.DSCreateISecurityInfoObjectEx(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
+  return libDSSEC_dll.DSCreateISecurityInfoObjectEx!(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszUserName), util.pwstrToFfi(pwszPassword), dwFlags, util.toPointer(ppSI), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
 }
 
 export function DSCreateSecurityPage(
@@ -82,7 +86,7 @@ export function DSCreateSecurityPage(
   pfnWriteSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDSSEC_dll.DSCreateSecurityPage(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(phPage), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
+  return libDSSEC_dll.DSCreateSecurityPage!(util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.toPointer(phPage), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
 }
 
 export function DSEditSecurity(
@@ -95,6 +99,6 @@ export function DSEditSecurity(
   pfnWriteSD: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.DirectoryServices.PFNWRITEOBJECTSECURITY */,
   lpContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDSSEC_dll.DSEditSecurity((hwndOwner), util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.pwstrToFfi(pwszCaption), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
+  return libDSSEC_dll.DSEditSecurity!((hwndOwner), util.pwstrToFfi(pwszObjectPath), util.pwstrToFfi(pwszObjectClass), dwFlags, util.pwstrToFfi(pwszCaption), util.toPointer(pfnReadSD), util.toPointer(pfnWriteSD), util.toPointer(lpContext));
 }
 

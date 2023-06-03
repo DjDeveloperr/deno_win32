@@ -375,46 +375,57 @@ try {
     DMORegister: {
       parameters: ["buffer", "pointer", "pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DMOUnregister: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DMOEnum: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DMOGetTypes: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DMOGetName: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MoInitMediaType: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     MoFreeMediaType: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MoCopyMediaType: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MoCreateMediaType: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     MoDeleteMediaType: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MoDuplicateMediaType: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -431,14 +442,14 @@ export function DMORegister(
   cOutTypes: number /* u32 */,
   pOutTypes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.DMORegister(util.pwstrToFfi(szName), util.toPointer(clsidDMO), util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes));
+  return libmsdmo_dll.DMORegister!(util.pwstrToFfi(szName), util.toPointer(clsidDMO), util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes));
 }
 
 export function DMOUnregister(
   clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
   guidCategory: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.DMOUnregister(util.toPointer(clsidDMO), util.toPointer(guidCategory));
+  return libmsdmo_dll.DMOUnregister!(util.toPointer(clsidDMO), util.toPointer(guidCategory));
 }
 
 export function DMOEnum(
@@ -450,7 +461,7 @@ export function DMOEnum(
   pOutTypes: Deno.PointerValue | Uint8Array /* ptr */,
   ppEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.DMOEnum(util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes), util.toPointer(ppEnum));
+  return libmsdmo_dll.DMOEnum!(util.toPointer(guidCategory), dwFlags, cInTypes, util.toPointer(pInTypes), cOutTypes, util.toPointer(pOutTypes), util.toPointer(ppEnum));
 }
 
 export function DMOGetTypes(
@@ -462,53 +473,53 @@ export function DMOGetTypes(
   pulOutputTypesSupplied: Deno.PointerValue | Uint8Array /* ptr */,
   pOutputTypes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.DMOGetTypes(util.toPointer(clsidDMO), ulInputTypesRequested, util.toPointer(pulInputTypesSupplied), util.toPointer(pInputTypes), ulOutputTypesRequested, util.toPointer(pulOutputTypesSupplied), util.toPointer(pOutputTypes));
+  return libmsdmo_dll.DMOGetTypes!(util.toPointer(clsidDMO), ulInputTypesRequested, util.toPointer(pulInputTypesSupplied), util.toPointer(pInputTypes), ulOutputTypesRequested, util.toPointer(pulOutputTypesSupplied), util.toPointer(pOutputTypes));
 }
 
 export function DMOGetName(
   clsidDMO: Deno.PointerValue | Uint8Array /* ptr */,
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.DMOGetName(util.toPointer(clsidDMO), util.pwstrToFfi(szName));
+  return libmsdmo_dll.DMOGetName!(util.toPointer(clsidDMO), util.pwstrToFfi(szName));
 }
 
 export function MoInitMediaType(
   pmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbFormat: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoInitMediaType(util.toPointer(pmt), cbFormat);
+  return libmsdmo_dll.MoInitMediaType!(util.toPointer(pmt), cbFormat);
 }
 
 export function MoFreeMediaType(
   pmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoFreeMediaType(util.toPointer(pmt));
+  return libmsdmo_dll.MoFreeMediaType!(util.toPointer(pmt));
 }
 
 export function MoCopyMediaType(
   pmtDest: Deno.PointerValue | Uint8Array /* ptr */,
   pmtSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoCopyMediaType(util.toPointer(pmtDest), util.toPointer(pmtSrc));
+  return libmsdmo_dll.MoCopyMediaType!(util.toPointer(pmtDest), util.toPointer(pmtSrc));
 }
 
 export function MoCreateMediaType(
   ppmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbFormat: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoCreateMediaType(util.toPointer(ppmt), cbFormat);
+  return libmsdmo_dll.MoCreateMediaType!(util.toPointer(ppmt), cbFormat);
 }
 
 export function MoDeleteMediaType(
   pmt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoDeleteMediaType(util.toPointer(pmt));
+  return libmsdmo_dll.MoDeleteMediaType!(util.toPointer(pmt));
 }
 
 export function MoDuplicateMediaType(
   ppmtDest: Deno.PointerValue | Uint8Array /* ptr */,
   pmtSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsdmo_dll.MoDuplicateMediaType(util.toPointer(ppmtDest), util.toPointer(pmtSrc));
+  return libmsdmo_dll.MoDuplicateMediaType!(util.toPointer(ppmtDest), util.toPointer(pmtSrc));
 }
 

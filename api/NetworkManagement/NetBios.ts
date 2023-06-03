@@ -1363,6 +1363,7 @@ try {
     Netbios: {
       parameters: ["pointer"],
       result: "u8",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1372,6 +1373,6 @@ try {
 export function Netbios(
   pncb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u8 */ {
-  return libNETAPI32_dll.Netbios(util.toPointer(pncb));
+  return libNETAPI32_dll.Netbios!(util.toPointer(pncb));
 }
 

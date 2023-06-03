@@ -4793,46 +4793,57 @@ try {
     WMIsContentProtected: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateWriter: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateReader: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateSyncReader: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateEditor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateIndexer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateBackupRestorer: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateProfileManager: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateWriterFileSink: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateWriterNetworkSink: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WMCreateWriterPushSink: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4843,14 +4854,14 @@ export function WMIsContentProtected(
   pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfIsProtected: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMIsContentProtected(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected));
+  return libWMVCore_dll.WMIsContentProtected!(util.pwstrToFfi(pwszFileName), util.toPointer(pfIsProtected));
 }
 
 export function WMCreateWriter(
   pUnkCert: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppWriter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateWriter(util.toPointer(pUnkCert), util.toPointer(ppWriter));
+  return libWMVCore_dll.WMCreateWriter!(util.toPointer(pUnkCert), util.toPointer(ppWriter));
 }
 
 export function WMCreateReader(
@@ -4858,7 +4869,7 @@ export function WMCreateReader(
   dwRights: number /* u32 */,
   ppReader: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader));
+  return libWMVCore_dll.WMCreateReader!(util.toPointer(pUnkCert), dwRights, util.toPointer(ppReader));
 }
 
 export function WMCreateSyncReader(
@@ -4866,49 +4877,49 @@ export function WMCreateSyncReader(
   dwRights: number /* u32 */,
   ppSyncReader: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateSyncReader(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader));
+  return libWMVCore_dll.WMCreateSyncReader!(util.toPointer(pUnkCert), dwRights, util.toPointer(ppSyncReader));
 }
 
 export function WMCreateEditor(
   ppEditor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateEditor(util.toPointer(ppEditor));
+  return libWMVCore_dll.WMCreateEditor!(util.toPointer(ppEditor));
 }
 
 export function WMCreateIndexer(
   ppIndexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateIndexer(util.toPointer(ppIndexer));
+  return libWMVCore_dll.WMCreateIndexer!(util.toPointer(ppIndexer));
 }
 
 export function WMCreateBackupRestorer(
   pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppBackup: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateBackupRestorer(util.toPointer(pCallback), util.toPointer(ppBackup));
+  return libWMVCore_dll.WMCreateBackupRestorer!(util.toPointer(pCallback), util.toPointer(ppBackup));
 }
 
 export function WMCreateProfileManager(
   ppProfileManager: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateProfileManager(util.toPointer(ppProfileManager));
+  return libWMVCore_dll.WMCreateProfileManager!(util.toPointer(ppProfileManager));
 }
 
 export function WMCreateWriterFileSink(
   ppSink: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateWriterFileSink(util.toPointer(ppSink));
+  return libWMVCore_dll.WMCreateWriterFileSink!(util.toPointer(ppSink));
 }
 
 export function WMCreateWriterNetworkSink(
   ppSink: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateWriterNetworkSink(util.toPointer(ppSink));
+  return libWMVCore_dll.WMCreateWriterNetworkSink!(util.toPointer(ppSink));
 }
 
 export function WMCreateWriterPushSink(
   ppSink: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWMVCore_dll.WMCreateWriterPushSink(util.toPointer(ppSink));
+  return libWMVCore_dll.WMCreateWriterPushSink!(util.toPointer(ppSink));
 }
 

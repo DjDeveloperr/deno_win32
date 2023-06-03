@@ -409,54 +409,67 @@ try {
     Tbsi_Context_Create: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsip_Context_Close: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsip_Submit_Command: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsip_Cancel_Commands: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsi_Physical_Presence_Command: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsi_Get_TCG_Log: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsi_GetDeviceInfo: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsi_Get_OwnerAuth: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     Tbsi_Revoke_Attestation: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetDeviceID: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetDeviceIDString: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Tbsi_Create_Windows_Key: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     Tbsi_Get_TCG_Log_Ex: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -467,13 +480,13 @@ export function Tbsi_Context_Create(
   pContextParams: Deno.PointerValue | Uint8Array /* ptr */,
   phContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Context_Create(util.toPointer(pContextParams), util.toPointer(phContext));
+  return libtbs_dll.Tbsi_Context_Create!(util.toPointer(pContextParams), util.toPointer(phContext));
 }
 
 export function Tbsip_Context_Close(
   hContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsip_Context_Close(util.toPointer(hContext));
+  return libtbs_dll.Tbsip_Context_Close!(util.toPointer(hContext));
 }
 
 export function Tbsip_Submit_Command(
@@ -485,13 +498,13 @@ export function Tbsip_Submit_Command(
   pabResult: Deno.PointerValue | Uint8Array /* ptr */,
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsip_Submit_Command(util.toPointer(hContext), Locality, Priority, util.toPointer(pabCommand), cbCommand, util.toPointer(pabResult), util.toPointer(pcbResult));
+  return libtbs_dll.Tbsip_Submit_Command!(util.toPointer(hContext), Locality, Priority, util.toPointer(pabCommand), cbCommand, util.toPointer(pabResult), util.toPointer(pcbResult));
 }
 
 export function Tbsip_Cancel_Commands(
   hContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsip_Cancel_Commands(util.toPointer(hContext));
+  return libtbs_dll.Tbsip_Cancel_Commands!(util.toPointer(hContext));
 }
 
 export function Tbsi_Physical_Presence_Command(
@@ -501,7 +514,7 @@ export function Tbsi_Physical_Presence_Command(
   pabOutput: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Physical_Presence_Command(util.toPointer(hContext), util.toPointer(pabInput), cbInput, util.toPointer(pabOutput), util.toPointer(pcbOutput));
+  return libtbs_dll.Tbsi_Physical_Presence_Command!(util.toPointer(hContext), util.toPointer(pabInput), cbInput, util.toPointer(pabOutput), util.toPointer(pcbOutput));
 }
 
 export function Tbsi_Get_TCG_Log(
@@ -509,14 +522,14 @@ export function Tbsi_Get_TCG_Log(
   pOutputBuf: Deno.PointerValue | Uint8Array /* ptr */,
   pOutputBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Get_TCG_Log(util.toPointer(hContext), util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
+  return libtbs_dll.Tbsi_Get_TCG_Log!(util.toPointer(hContext), util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
 }
 
 export function Tbsi_GetDeviceInfo(
   Size: number /* u32 */,
   Info: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_GetDeviceInfo(Size, util.toPointer(Info));
+  return libtbs_dll.Tbsi_GetDeviceInfo!(Size, util.toPointer(Info));
 }
 
 export function Tbsi_Get_OwnerAuth(
@@ -525,11 +538,11 @@ export function Tbsi_Get_OwnerAuth(
   pOutputBuf: Deno.PointerValue | Uint8Array /* ptr */,
   pOutputBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Get_OwnerAuth(util.toPointer(hContext), ownerauthType, util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
+  return libtbs_dll.Tbsi_Get_OwnerAuth!(util.toPointer(hContext), ownerauthType, util.toPointer(pOutputBuf), util.toPointer(pOutputBufLen));
 }
 
 export function Tbsi_Revoke_Attestation(): number /* u32 */ {
-  return libtbs_dll.Tbsi_Revoke_Attestation();
+  return libtbs_dll.Tbsi_Revoke_Attestation!();
 }
 
 export function GetDeviceID(
@@ -538,7 +551,7 @@ export function GetDeviceID(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   pfProtectedByTPM: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libtbs_dll.GetDeviceID(util.toPointer(pbWindowsAIK), cbWindowsAIK, util.toPointer(pcbResult), util.toPointer(pfProtectedByTPM));
+  return libtbs_dll.GetDeviceID!(util.toPointer(pbWindowsAIK), cbWindowsAIK, util.toPointer(pcbResult), util.toPointer(pfProtectedByTPM));
 }
 
 export function GetDeviceIDString(
@@ -547,13 +560,13 @@ export function GetDeviceIDString(
   pcchResult: Deno.PointerValue | Uint8Array /* ptr */,
   pfProtectedByTPM: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libtbs_dll.GetDeviceIDString(util.pwstrToFfi(pszWindowsAIK), cchWindowsAIK, util.toPointer(pcchResult), util.toPointer(pfProtectedByTPM));
+  return libtbs_dll.GetDeviceIDString!(util.pwstrToFfi(pszWindowsAIK), cchWindowsAIK, util.toPointer(pcchResult), util.toPointer(pfProtectedByTPM));
 }
 
 export function Tbsi_Create_Windows_Key(
   keyHandle: number /* u32 */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Create_Windows_Key(keyHandle);
+  return libtbs_dll.Tbsi_Create_Windows_Key!(keyHandle);
 }
 
 export function Tbsi_Get_TCG_Log_Ex(
@@ -561,6 +574,6 @@ export function Tbsi_Get_TCG_Log_Ex(
   pbOutput: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtbs_dll.Tbsi_Get_TCG_Log_Ex(logType, util.toPointer(pbOutput), util.toPointer(pcbOutput));
+  return libtbs_dll.Tbsi_Get_TCG_Log_Ex!(logType, util.toPointer(pbOutput), util.toPointer(pcbOutput));
 }
 

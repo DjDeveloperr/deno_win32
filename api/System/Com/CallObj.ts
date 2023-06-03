@@ -427,10 +427,12 @@ try {
     CoGetInterceptor: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CoGetInterceptorFromTypeInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -443,7 +445,7 @@ export function CoGetInterceptor(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.CoGetInterceptor(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv));
+  return libole32_dll.CoGetInterceptor!(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(iid), util.toPointer(ppv));
 }
 
 export function CoGetInterceptorFromTypeInfo(
@@ -453,6 +455,6 @@ export function CoGetInterceptorFromTypeInfo(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.CoGetInterceptorFromTypeInfo(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv));
+  return libole32_dll.CoGetInterceptorFromTypeInfo!(util.toPointer(iidIntercepted), util.toPointer(punkOuter), util.toPointer(typeInfo), util.toPointer(iid), util.toPointer(ppv));
 }
 

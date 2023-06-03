@@ -293,52 +293,64 @@ try {
     CreateIoCompletionPort: {
       parameters: ["pointer", "pointer", "usize", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetQueuedCompletionStatus: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetQueuedCompletionStatusEx: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     PostQueuedCompletionStatus: {
       parameters: ["pointer", "u32", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeviceIoControl: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetOverlappedResult: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetOverlappedResultAsync: {
       name: "GetOverlappedResult",
       nonblocking: true,
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CancelIoEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CancelIo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetOverlappedResultEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     CancelSynchronousIo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     BindIoCompletionCallback: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -351,7 +363,7 @@ export function CreateIoCompletionPort(
   CompletionKey: bigint | number /* usize */,
   NumberOfConcurrentThreads: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateIoCompletionPort(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads);
+  return libKERNEL32_dll.CreateIoCompletionPort!(util.toPointer(FileHandle), util.toPointer(ExistingCompletionPort), CompletionKey, NumberOfConcurrentThreads);
 }
 
 export function GetQueuedCompletionStatus(
@@ -361,7 +373,7 @@ export function GetQueuedCompletionStatus(
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetQueuedCompletionStatus(util.toPointer(CompletionPort), util.toPointer(lpNumberOfBytesTransferred), util.toPointer(lpCompletionKey), util.toPointer(lpOverlapped), dwMilliseconds));
+  return util.boolFromFfi(libKERNEL32_dll.GetQueuedCompletionStatus!(util.toPointer(CompletionPort), util.toPointer(lpNumberOfBytesTransferred), util.toPointer(lpCompletionKey), util.toPointer(lpOverlapped), dwMilliseconds));
 }
 
 export function GetQueuedCompletionStatusEx(
@@ -372,7 +384,7 @@ export function GetQueuedCompletionStatusEx(
   dwMilliseconds: number /* u32 */,
   fAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetQueuedCompletionStatusEx(util.toPointer(CompletionPort), util.toPointer(lpCompletionPortEntries), ulCount, util.toPointer(ulNumEntriesRemoved), dwMilliseconds, util.boolToFfi(fAlertable)));
+  return util.boolFromFfi(libKERNEL32_dll.GetQueuedCompletionStatusEx!(util.toPointer(CompletionPort), util.toPointer(lpCompletionPortEntries), ulCount, util.toPointer(ulNumEntriesRemoved), dwMilliseconds, util.boolToFfi(fAlertable)));
 }
 
 export function PostQueuedCompletionStatus(
@@ -381,7 +393,7 @@ export function PostQueuedCompletionStatus(
   dwCompletionKey: bigint | number /* usize */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, dwCompletionKey, util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.PostQueuedCompletionStatus!(util.toPointer(CompletionPort), dwNumberOfBytesTransferred, dwCompletionKey, util.toPointer(lpOverlapped)));
 }
 
 export function DeviceIoControl(
@@ -394,7 +406,7 @@ export function DeviceIoControl(
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeviceIoControl(util.toPointer(hDevice), dwIoControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.DeviceIoControl!(util.toPointer(hDevice), dwIoControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned), util.toPointer(lpOverlapped)));
 }
 
 export function GetOverlappedResult(
@@ -403,7 +415,7 @@ export function GetOverlappedResult(
   lpNumberOfBytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResult(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResult!(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), util.boolToFfi(bWait)));
 }
 
 export async function GetOverlappedResultAsync(
@@ -419,13 +431,13 @@ export function CancelIoEx(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelIoEx(util.toPointer(hFile), util.toPointer(lpOverlapped)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelIoEx!(util.toPointer(hFile), util.toPointer(lpOverlapped)));
 }
 
 export function CancelIo(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelIo(util.toPointer(hFile)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelIo!(util.toPointer(hFile)));
 }
 
 export function GetOverlappedResultEx(
@@ -435,13 +447,13 @@ export function GetOverlappedResultEx(
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResultEx(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), dwMilliseconds, util.boolToFfi(bAlertable)));
+  return util.boolFromFfi(libKERNEL32_dll.GetOverlappedResultEx!(util.toPointer(hFile), util.toPointer(lpOverlapped), util.toPointer(lpNumberOfBytesTransferred), dwMilliseconds, util.boolToFfi(bAlertable)));
 }
 
 export function CancelSynchronousIo(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelSynchronousIo(util.toPointer(hThread)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelSynchronousIo!(util.toPointer(hThread)));
 }
 
 export function BindIoCompletionCallback(
@@ -449,6 +461,6 @@ export function BindIoCompletionCallback(
   Function: Uint8Array | Deno.PointerValue /* Windows.Win32.System.IO.LPOVERLAPPED_COMPLETION_ROUTINE */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.BindIoCompletionCallback(util.toPointer(FileHandle), util.toPointer(Function), Flags));
+  return util.boolFromFfi(libKERNEL32_dll.BindIoCompletionCallback!(util.toPointer(FileHandle), util.toPointer(Function), Flags));
 }
 

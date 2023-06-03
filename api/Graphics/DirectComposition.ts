@@ -877,46 +877,57 @@ try {
     DCompositionCreateDevice: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionCreateDevice2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionCreateDevice3: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionCreateSurfaceHandle: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionAttachMouseWheelToHwnd: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DCompositionAttachMouseDragToHwnd: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DCompositionGetFrameId: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionGetStatistics: {
       parameters: ["u64", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionGetTargetStatistics: {
       parameters: ["u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DCompositionBoostCompositorClock: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     DCompositionWaitForCompositorClock: {
       parameters: ["u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -928,7 +939,7 @@ export function DCompositionCreateDevice(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionCreateDevice(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
+  return libdcomp_dll.DCompositionCreateDevice!(util.toPointer(dxgiDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateDevice2(
@@ -936,7 +947,7 @@ export function DCompositionCreateDevice2(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionCreateDevice2(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
+  return libdcomp_dll.DCompositionCreateDevice2!(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateDevice3(
@@ -944,7 +955,7 @@ export function DCompositionCreateDevice3(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   dcompositionDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionCreateDevice3(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
+  return libdcomp_dll.DCompositionCreateDevice3!(util.toPointer(renderingDevice), util.toPointer(iid), util.toPointer(dcompositionDevice));
 }
 
 export function DCompositionCreateSurfaceHandle(
@@ -952,7 +963,7 @@ export function DCompositionCreateSurfaceHandle(
   securityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   surfaceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionCreateSurfaceHandle(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle));
+  return libdcomp_dll.DCompositionCreateSurfaceHandle!(desiredAccess, util.toPointer(securityAttributes), util.toPointer(surfaceHandle));
 }
 
 export function DCompositionAttachMouseWheelToHwnd(
@@ -960,7 +971,7 @@ export function DCompositionAttachMouseWheelToHwnd(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionAttachMouseWheelToHwnd(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
+  return libdcomp_dll.DCompositionAttachMouseWheelToHwnd!(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
 }
 
 export function DCompositionAttachMouseDragToHwnd(
@@ -968,14 +979,14 @@ export function DCompositionAttachMouseDragToHwnd(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionAttachMouseDragToHwnd(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
+  return libdcomp_dll.DCompositionAttachMouseDragToHwnd!(util.toPointer(visual), (hwnd), util.boolToFfi(enable));
 }
 
 export function DCompositionGetFrameId(
   frameIdType: COMPOSITION_FRAME_ID_TYPE /* Windows.Win32.Graphics.DirectComposition.COMPOSITION_FRAME_ID_TYPE */,
   frameId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionGetFrameId(frameIdType, util.toPointer(frameId));
+  return libdcomp_dll.DCompositionGetFrameId!(frameIdType, util.toPointer(frameId));
 }
 
 export function DCompositionGetStatistics(
@@ -985,7 +996,7 @@ export function DCompositionGetStatistics(
   targetIds: Deno.PointerValue | Uint8Array /* ptr */,
   actualTargetIdCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionGetStatistics(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount));
+  return libdcomp_dll.DCompositionGetStatistics!(frameId, util.toPointer(frameStats), targetIdCount, util.toPointer(targetIds), util.toPointer(actualTargetIdCount));
 }
 
 export function DCompositionGetTargetStatistics(
@@ -993,13 +1004,13 @@ export function DCompositionGetTargetStatistics(
   targetId: Deno.PointerValue | Uint8Array /* ptr */,
   targetStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionGetTargetStatistics(frameId, util.toPointer(targetId), util.toPointer(targetStats));
+  return libdcomp_dll.DCompositionGetTargetStatistics!(frameId, util.toPointer(targetId), util.toPointer(targetStats));
 }
 
 export function DCompositionBoostCompositorClock(
   enable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.DCompositionBoostCompositorClock(util.boolToFfi(enable));
+  return libdcomp_dll.DCompositionBoostCompositorClock!(util.boolToFfi(enable));
 }
 
 export function DCompositionWaitForCompositorClock(
@@ -1007,6 +1018,6 @@ export function DCompositionWaitForCompositorClock(
   handles: Deno.PointerValue | Uint8Array /* ptr */,
   timeoutInMs: number /* u32 */,
 ): number /* u32 */ {
-  return libdcomp_dll.DCompositionWaitForCompositorClock(count, util.toPointer(handles), timeoutInMs);
+  return libdcomp_dll.DCompositionWaitForCompositorClock!(count, util.toPointer(handles), timeoutInMs);
 }
 

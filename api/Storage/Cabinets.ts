@@ -970,42 +970,52 @@ try {
     FCICreate: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FCIAddFile: {
       parameters: ["pointer", "buffer", "buffer", "i32", "pointer", "pointer", "pointer", "u16"],
       result: "i32",
+      optional: true,
     },
     FCIFlushCabinet: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FCIFlushFolder: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FCIDestroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FDICreate: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FDIIsCabinet: {
       parameters: ["pointer", "isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     FDICopy: {
       parameters: ["pointer", "buffer", "buffer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FDIDestroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FDITruncateCabinet: {
       parameters: ["pointer", "buffer", "u16"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1027,7 +1037,7 @@ export function FCICreate(
   pccab: Deno.PointerValue | Uint8Array /* ptr */,
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCabinet_dll.FCICreate(util.toPointer(perf), util.toPointer(pfnfcifp), util.toPointer(pfna), util.toPointer(pfnf), util.toPointer(pfnopen), util.toPointer(pfnread), util.toPointer(pfnwrite), util.toPointer(pfnclose), util.toPointer(pfnseek), util.toPointer(pfndelete), util.toPointer(pfnfcigtf), util.toPointer(pccab), util.toPointer(pv));
+  return libCabinet_dll.FCICreate!(util.toPointer(perf), util.toPointer(pfnfcifp), util.toPointer(pfna), util.toPointer(pfnf), util.toPointer(pfnopen), util.toPointer(pfnread), util.toPointer(pfnwrite), util.toPointer(pfnclose), util.toPointer(pfnseek), util.toPointer(pfndelete), util.toPointer(pfnfcigtf), util.toPointer(pccab), util.toPointer(pv));
 }
 
 export function FCIAddFile(
@@ -1040,7 +1050,7 @@ export function FCIAddFile(
   pfnfcigoi: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFCIGETOPENINFO */,
   typeCompress: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FCIAddFile(util.toPointer(hfci), util.pstrToFfi(pszSourceFile), util.pstrToFfi(pszFileName), util.boolToFfi(fExecute), util.toPointer(pfnfcignc), util.toPointer(pfnfcis), util.toPointer(pfnfcigoi), typeCompress));
+  return util.boolFromFfi(libCabinet_dll.FCIAddFile!(util.toPointer(hfci), util.pstrToFfi(pszSourceFile), util.pstrToFfi(pszFileName), util.boolToFfi(fExecute), util.toPointer(pfnfcignc), util.toPointer(pfnfcis), util.toPointer(pfnfcigoi), typeCompress));
 }
 
 export function FCIFlushCabinet(
@@ -1049,7 +1059,7 @@ export function FCIFlushCabinet(
   pfnfcignc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFCIGETNEXTCABINET */,
   pfnfcis: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFCISTATUS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FCIFlushCabinet(util.toPointer(hfci), util.boolToFfi(fGetNextCab), util.toPointer(pfnfcignc), util.toPointer(pfnfcis)));
+  return util.boolFromFfi(libCabinet_dll.FCIFlushCabinet!(util.toPointer(hfci), util.boolToFfi(fGetNextCab), util.toPointer(pfnfcignc), util.toPointer(pfnfcis)));
 }
 
 export function FCIFlushFolder(
@@ -1057,13 +1067,13 @@ export function FCIFlushFolder(
   pfnfcignc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFCIGETNEXTCABINET */,
   pfnfcis: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFCISTATUS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FCIFlushFolder(util.toPointer(hfci), util.toPointer(pfnfcignc), util.toPointer(pfnfcis)));
+  return util.boolFromFfi(libCabinet_dll.FCIFlushFolder!(util.toPointer(hfci), util.toPointer(pfnfcignc), util.toPointer(pfnfcis)));
 }
 
 export function FCIDestroy(
   hfci: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FCIDestroy(util.toPointer(hfci)));
+  return util.boolFromFfi(libCabinet_dll.FCIDestroy!(util.toPointer(hfci)));
 }
 
 export function FDICreate(
@@ -1077,7 +1087,7 @@ export function FDICreate(
   cpuType: FDICREATE_CPU_TYPE /* Windows.Win32.Storage.Cabinets.FDICREATE_CPU_TYPE */,
   perf: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCabinet_dll.FDICreate(util.toPointer(pfnalloc), util.toPointer(pfnfree), util.toPointer(pfnopen), util.toPointer(pfnread), util.toPointer(pfnwrite), util.toPointer(pfnclose), util.toPointer(pfnseek), cpuType, util.toPointer(perf));
+  return libCabinet_dll.FDICreate!(util.toPointer(pfnalloc), util.toPointer(pfnfree), util.toPointer(pfnopen), util.toPointer(pfnread), util.toPointer(pfnwrite), util.toPointer(pfnclose), util.toPointer(pfnseek), cpuType, util.toPointer(perf));
 }
 
 export function FDIIsCabinet(
@@ -1085,7 +1095,7 @@ export function FDIIsCabinet(
   hf: bigint | number /* isize */,
   pfdici: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FDIIsCabinet(util.toPointer(hfdi), hf, util.toPointer(pfdici)));
+  return util.boolFromFfi(libCabinet_dll.FDIIsCabinet!(util.toPointer(hfdi), hf, util.toPointer(pfdici)));
 }
 
 export function FDICopy(
@@ -1097,13 +1107,13 @@ export function FDICopy(
   pfnfdid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Cabinets.PFNFDIDECRYPT */,
   pvUser: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FDICopy(util.toPointer(hfdi), util.pstrToFfi(pszCabinet), util.pstrToFfi(pszCabPath), flags, util.toPointer(pfnfdin), util.toPointer(pfnfdid), util.toPointer(pvUser)));
+  return util.boolFromFfi(libCabinet_dll.FDICopy!(util.toPointer(hfdi), util.pstrToFfi(pszCabinet), util.pstrToFfi(pszCabPath), flags, util.toPointer(pfnfdin), util.toPointer(pfnfdid), util.toPointer(pvUser)));
 }
 
 export function FDIDestroy(
   hfdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FDIDestroy(util.toPointer(hfdi)));
+  return util.boolFromFfi(libCabinet_dll.FDIDestroy!(util.toPointer(hfdi)));
 }
 
 export function FDITruncateCabinet(
@@ -1111,6 +1121,6 @@ export function FDITruncateCabinet(
   pszCabinetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iFolderToDelete: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCabinet_dll.FDITruncateCabinet(util.toPointer(hfdi), util.pstrToFfi(pszCabinetName), iFolderToDelete));
+  return util.boolFromFfi(libCabinet_dll.FDITruncateCabinet!(util.toPointer(hfdi), util.pstrToFfi(pszCabinetName), iFolderToDelete));
 }
 

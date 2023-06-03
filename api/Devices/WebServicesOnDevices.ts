@@ -5632,130 +5632,162 @@ try {
     WSDCreateUdpMessageParameters: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateUdpAddress: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateHttpMessageParameters: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateHttpAddress: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateOutboundAttachment: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLGetNameFromBuiltinNamespace: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLCreateContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDiscoveryProvider: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDiscoveryProvider2: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDiscoveryPublisher: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDiscoveryPublisher2: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceProxy: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceProxyAdvanced: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceProxy2: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceHost: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceHostAdvanced: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDCreateDeviceHost2: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDSetConfigurationOption: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WSDGetConfigurationOption: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WSDAllocateLinkedMemory: {
       parameters: ["pointer", "usize"],
       result: "pointer",
+      optional: true,
     },
     WSDFreeLinkedMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WSDAttachLinkedMemory: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     WSDDetachLinkedMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WSDXMLBuildAnyForSingleElement: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLGetValueFromAny: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLAddSibling: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLAddChild: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDXMLCleanupElement: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDGenerateFault: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDGenerateFaultEx: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDUriEncode: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WSDUriDecode: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5765,31 +5797,31 @@ try {
 export function WSDCreateUdpMessageParameters(
   ppTxParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateUdpMessageParameters(util.toPointer(ppTxParams));
+  return libwsdapi_dll.WSDCreateUdpMessageParameters!(util.toPointer(ppTxParams));
 }
 
 export function WSDCreateUdpAddress(
   ppAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateUdpAddress(util.toPointer(ppAddress));
+  return libwsdapi_dll.WSDCreateUdpAddress!(util.toPointer(ppAddress));
 }
 
 export function WSDCreateHttpMessageParameters(
   ppTxParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateHttpMessageParameters(util.toPointer(ppTxParams));
+  return libwsdapi_dll.WSDCreateHttpMessageParameters!(util.toPointer(ppTxParams));
 }
 
 export function WSDCreateHttpAddress(
   ppAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateHttpAddress(util.toPointer(ppAddress));
+  return libwsdapi_dll.WSDCreateHttpAddress!(util.toPointer(ppAddress));
 }
 
 export function WSDCreateOutboundAttachment(
   ppAttachment: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateOutboundAttachment(util.toPointer(ppAttachment));
+  return libwsdapi_dll.WSDCreateOutboundAttachment!(util.toPointer(ppAttachment));
 }
 
 export function WSDXMLGetNameFromBuiltinNamespace(
@@ -5797,20 +5829,20 @@ export function WSDXMLGetNameFromBuiltinNamespace(
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLGetNameFromBuiltinNamespace(util.pwstrToFfi(pszNamespace), util.pwstrToFfi(pszName), util.toPointer(ppName));
+  return libwsdapi_dll.WSDXMLGetNameFromBuiltinNamespace!(util.pwstrToFfi(pszNamespace), util.pwstrToFfi(pszName), util.toPointer(ppName));
 }
 
 export function WSDXMLCreateContext(
   ppContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLCreateContext(util.toPointer(ppContext));
+  return libwsdapi_dll.WSDXMLCreateContext!(util.toPointer(ppContext));
 }
 
 export function WSDCreateDiscoveryProvider(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDiscoveryProvider(util.toPointer(pContext), util.toPointer(ppProvider));
+  return libwsdapi_dll.WSDCreateDiscoveryProvider!(util.toPointer(pContext), util.toPointer(ppProvider));
 }
 
 export function WSDCreateDiscoveryProvider2(
@@ -5819,14 +5851,14 @@ export function WSDCreateDiscoveryProvider2(
   dwConfigParamCount: number /* u32 */,
   ppProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDiscoveryProvider2(util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppProvider));
+  return libwsdapi_dll.WSDCreateDiscoveryProvider2!(util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppProvider));
 }
 
 export function WSDCreateDiscoveryPublisher(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppPublisher: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDiscoveryPublisher(util.toPointer(pContext), util.toPointer(ppPublisher));
+  return libwsdapi_dll.WSDCreateDiscoveryPublisher!(util.toPointer(pContext), util.toPointer(ppPublisher));
 }
 
 export function WSDCreateDiscoveryPublisher2(
@@ -5835,7 +5867,7 @@ export function WSDCreateDiscoveryPublisher2(
   dwConfigParamCount: number /* u32 */,
   ppPublisher: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDiscoveryPublisher2(util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppPublisher));
+  return libwsdapi_dll.WSDCreateDiscoveryPublisher2!(util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppPublisher));
 }
 
 export function WSDCreateDeviceProxy(
@@ -5844,7 +5876,7 @@ export function WSDCreateDeviceProxy(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceProxy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceProxy(util.pwstrToFfi(pszDeviceId), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceProxy));
+  return libwsdapi_dll.WSDCreateDeviceProxy!(util.pwstrToFfi(pszDeviceId), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceProxy));
 }
 
 export function WSDCreateDeviceProxyAdvanced(
@@ -5854,7 +5886,7 @@ export function WSDCreateDeviceProxyAdvanced(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceProxy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceProxyAdvanced(util.pwstrToFfi(pszDeviceId), util.toPointer(pDeviceAddress), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceProxy));
+  return libwsdapi_dll.WSDCreateDeviceProxyAdvanced!(util.pwstrToFfi(pszDeviceId), util.toPointer(pDeviceAddress), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceProxy));
 }
 
 export function WSDCreateDeviceProxy2(
@@ -5865,7 +5897,7 @@ export function WSDCreateDeviceProxy2(
   dwConfigParamCount: number /* u32 */,
   ppDeviceProxy: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceProxy2(util.pwstrToFfi(pszDeviceId), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppDeviceProxy));
+  return libwsdapi_dll.WSDCreateDeviceProxy2!(util.pwstrToFfi(pszDeviceId), util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppDeviceProxy));
 }
 
 export function WSDCreateDeviceHost(
@@ -5873,7 +5905,7 @@ export function WSDCreateDeviceHost(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppDeviceHost: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceHost(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceHost));
+  return libwsdapi_dll.WSDCreateDeviceHost!(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppDeviceHost));
 }
 
 export function WSDCreateDeviceHostAdvanced(
@@ -5883,7 +5915,7 @@ export function WSDCreateDeviceHostAdvanced(
   dwHostAddressCount: number /* u32 */,
   ppDeviceHost: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceHostAdvanced(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppHostAddresses), dwHostAddressCount, util.toPointer(ppDeviceHost));
+  return libwsdapi_dll.WSDCreateDeviceHostAdvanced!(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(ppHostAddresses), dwHostAddressCount, util.toPointer(ppDeviceHost));
 }
 
 export function WSDCreateDeviceHost2(
@@ -5893,7 +5925,7 @@ export function WSDCreateDeviceHost2(
   dwConfigParamCount: number /* u32 */,
   ppDeviceHost: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDCreateDeviceHost2(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppDeviceHost));
+  return libwsdapi_dll.WSDCreateDeviceHost2!(util.pwstrToFfi(pszLocalId), util.toPointer(pContext), util.toPointer(pConfigParams), dwConfigParamCount, util.toPointer(ppDeviceHost));
 }
 
 export function WSDSetConfigurationOption(
@@ -5901,7 +5933,7 @@ export function WSDSetConfigurationOption(
   pVoid: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDSetConfigurationOption(dwOption, util.toPointer(pVoid), cbInBuffer);
+  return libwsdapi_dll.WSDSetConfigurationOption!(dwOption, util.toPointer(pVoid), cbInBuffer);
 }
 
 export function WSDGetConfigurationOption(
@@ -5909,33 +5941,33 @@ export function WSDGetConfigurationOption(
   pVoid: Deno.PointerValue | Uint8Array /* ptr */,
   cbOutBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDGetConfigurationOption(dwOption, util.toPointer(pVoid), cbOutBuffer);
+  return libwsdapi_dll.WSDGetConfigurationOption!(dwOption, util.toPointer(pVoid), cbOutBuffer);
 }
 
 export function WSDAllocateLinkedMemory(
   pParent: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libwsdapi_dll.WSDAllocateLinkedMemory(util.toPointer(pParent), cbSize);
+  return libwsdapi_dll.WSDAllocateLinkedMemory!(util.toPointer(pParent), cbSize);
 }
 
 export function WSDFreeLinkedMemory(
   pVoid: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwsdapi_dll.WSDFreeLinkedMemory(util.toPointer(pVoid));
+  return libwsdapi_dll.WSDFreeLinkedMemory!(util.toPointer(pVoid));
 }
 
 export function WSDAttachLinkedMemory(
   pParent: Deno.PointerValue | Uint8Array /* ptr */,
   pChild: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwsdapi_dll.WSDAttachLinkedMemory(util.toPointer(pParent), util.toPointer(pChild));
+  return libwsdapi_dll.WSDAttachLinkedMemory!(util.toPointer(pParent), util.toPointer(pChild));
 }
 
 export function WSDDetachLinkedMemory(
   pVoid: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwsdapi_dll.WSDDetachLinkedMemory(util.toPointer(pVoid));
+  return libwsdapi_dll.WSDDetachLinkedMemory!(util.toPointer(pVoid));
 }
 
 export function WSDXMLBuildAnyForSingleElement(
@@ -5943,7 +5975,7 @@ export function WSDXMLBuildAnyForSingleElement(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppAny: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLBuildAnyForSingleElement(util.toPointer(pElementName), util.pwstrToFfi(pszText), util.toPointer(ppAny));
+  return libwsdapi_dll.WSDXMLBuildAnyForSingleElement!(util.toPointer(pElementName), util.pwstrToFfi(pszText), util.toPointer(ppAny));
 }
 
 export function WSDXMLGetValueFromAny(
@@ -5952,27 +5984,27 @@ export function WSDXMLGetValueFromAny(
   pAny: Deno.PointerValue | Uint8Array /* ptr */,
   ppszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLGetValueFromAny(util.pwstrToFfi(pszNamespace), util.pwstrToFfi(pszName), util.toPointer(pAny), util.toPointer(ppszValue));
+  return libwsdapi_dll.WSDXMLGetValueFromAny!(util.pwstrToFfi(pszNamespace), util.pwstrToFfi(pszName), util.toPointer(pAny), util.toPointer(ppszValue));
 }
 
 export function WSDXMLAddSibling(
   pFirst: Deno.PointerValue | Uint8Array /* ptr */,
   pSecond: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLAddSibling(util.toPointer(pFirst), util.toPointer(pSecond));
+  return libwsdapi_dll.WSDXMLAddSibling!(util.toPointer(pFirst), util.toPointer(pSecond));
 }
 
 export function WSDXMLAddChild(
   pParent: Deno.PointerValue | Uint8Array /* ptr */,
   pChild: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLAddChild(util.toPointer(pParent), util.toPointer(pChild));
+  return libwsdapi_dll.WSDXMLAddChild!(util.toPointer(pParent), util.toPointer(pChild));
 }
 
 export function WSDXMLCleanupElement(
   pAny: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDXMLCleanupElement(util.toPointer(pAny));
+  return libwsdapi_dll.WSDXMLCleanupElement!(util.toPointer(pAny));
 }
 
 export function WSDGenerateFault(
@@ -5983,7 +6015,7 @@ export function WSDGenerateFault(
   pContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.WebServicesOnDevices.IWSDXMLContext */,
   ppFault: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDGenerateFault(util.pwstrToFfi(pszCode), util.pwstrToFfi(pszSubCode), util.pwstrToFfi(pszReason), util.pwstrToFfi(pszDetail), util.toPointer(pContext), util.toPointer(ppFault));
+  return libwsdapi_dll.WSDGenerateFault!(util.pwstrToFfi(pszCode), util.pwstrToFfi(pszSubCode), util.pwstrToFfi(pszReason), util.pwstrToFfi(pszDetail), util.toPointer(pContext), util.toPointer(ppFault));
 }
 
 export function WSDGenerateFaultEx(
@@ -5993,7 +6025,7 @@ export function WSDGenerateFaultEx(
   pszDetail: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppFault: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDGenerateFaultEx(util.toPointer(pCode), util.toPointer(pSubCode), util.toPointer(pReasons), util.pwstrToFfi(pszDetail), util.toPointer(ppFault));
+  return libwsdapi_dll.WSDGenerateFaultEx!(util.toPointer(pCode), util.toPointer(pSubCode), util.toPointer(pReasons), util.pwstrToFfi(pszDetail), util.toPointer(ppFault));
 }
 
 export function WSDUriEncode(
@@ -6002,7 +6034,7 @@ export function WSDUriEncode(
   destOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchDestOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDUriEncode(util.pwstrToFfi(source), cchSource, util.toPointer(destOut), util.toPointer(cchDestOut));
+  return libwsdapi_dll.WSDUriEncode!(util.pwstrToFfi(source), cchSource, util.toPointer(destOut), util.toPointer(cchDestOut));
 }
 
 export function WSDUriDecode(
@@ -6011,6 +6043,6 @@ export function WSDUriDecode(
   destOut: Deno.PointerValue | Uint8Array /* ptr */,
   cchDestOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwsdapi_dll.WSDUriDecode(util.pwstrToFfi(source), cchSource, util.toPointer(destOut), util.toPointer(cchDestOut));
+  return libwsdapi_dll.WSDUriDecode!(util.pwstrToFfi(source), cchSource, util.toPointer(destOut), util.toPointer(cchDestOut));
 }
 

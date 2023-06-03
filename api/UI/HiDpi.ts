@@ -214,6 +214,7 @@ try {
     OpenThemeDataForDpi: {
       parameters: ["pointer", "buffer", "u32"],
       result: "isize",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -223,102 +224,127 @@ try {
     SetDialogControlDpiChangeBehavior: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetDialogControlDpiChangeBehavior: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetDialogDpiChangeBehavior: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetDialogDpiChangeBehavior: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetSystemMetricsForDpi: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     AdjustWindowRectExForDpi: {
       parameters: ["pointer", "u32", "i32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     LogicalToPhysicalPointForPerMonitorDPI: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PhysicalToLogicalPointForPerMonitorDPI: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SystemParametersInfoForDpi: {
       parameters: ["u32", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetThreadDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThreadDpiAwarenessContext: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetWindowDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAwarenessFromDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetDpiFromDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AreDpiAwarenessContextsEqual: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsValidDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetDpiForWindow: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetDpiForSystem: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetSystemDpiForProcess: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     EnableNonClientDpiScaling: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDpiAwarenessContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetDpiAwarenessContextForProcess: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetThreadDpiHostingBehavior: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     GetThreadDpiHostingBehavior: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetWindowDpiHostingBehavior: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -328,14 +354,17 @@ try {
     SetProcessDpiAwareness: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     GetProcessDpiAwareness: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetDpiForMonitor: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -347,7 +376,7 @@ export function OpenThemeDataForDpi(
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dpi: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libUxTheme_dll.OpenThemeDataForDpi((hwnd), util.pwstrToFfi(pszClassList), dpi);
+  return libUxTheme_dll.OpenThemeDataForDpi!((hwnd), util.pwstrToFfi(pszClassList), dpi);
 }
 
 export function SetDialogControlDpiChangeBehavior(
@@ -355,13 +384,13 @@ export function SetDialogControlDpiChangeBehavior(
   mask: DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */,
   values: DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDialogControlDpiChangeBehavior((hWnd), mask, values));
+  return util.boolFromFfi(libUSER32_dll.SetDialogControlDpiChangeBehavior!((hWnd), mask, values));
 }
 
 export function GetDialogControlDpiChangeBehavior(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_CONTROL_DPI_CHANGE_BEHAVIORS */ {
-  return libUSER32_dll.GetDialogControlDpiChangeBehavior((hWnd));
+  return libUSER32_dll.GetDialogControlDpiChangeBehavior!((hWnd));
 }
 
 export function SetDialogDpiChangeBehavior(
@@ -369,20 +398,20 @@ export function SetDialogDpiChangeBehavior(
   mask: DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */,
   values: DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDialogDpiChangeBehavior((hDlg), mask, values));
+  return util.boolFromFfi(libUSER32_dll.SetDialogDpiChangeBehavior!((hDlg), mask, values));
 }
 
 export function GetDialogDpiChangeBehavior(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): DIALOG_DPI_CHANGE_BEHAVIORS /* Windows.Win32.UI.HiDpi.DIALOG_DPI_CHANGE_BEHAVIORS */ {
-  return libUSER32_dll.GetDialogDpiChangeBehavior((hDlg));
+  return libUSER32_dll.GetDialogDpiChangeBehavior!((hDlg));
 }
 
 export function GetSystemMetricsForDpi(
   nIndex: SYSTEM_METRICS_INDEX /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_METRICS_INDEX */,
   dpi: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetSystemMetricsForDpi(nIndex, dpi);
+  return libUSER32_dll.GetSystemMetricsForDpi!(nIndex, dpi);
 }
 
 export function AdjustWindowRectExForDpi(
@@ -392,21 +421,21 @@ export function AdjustWindowRectExForDpi(
   dwExStyle: WINDOW_EX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_EX_STYLE */,
   dpi: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AdjustWindowRectExForDpi(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle, dpi));
+  return util.boolFromFfi(libUSER32_dll.AdjustWindowRectExForDpi!(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle, dpi));
 }
 
 export function LogicalToPhysicalPointForPerMonitorDPI(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.LogicalToPhysicalPointForPerMonitorDPI((hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.LogicalToPhysicalPointForPerMonitorDPI!((hWnd), util.toPointer(lpPoint)));
 }
 
 export function PhysicalToLogicalPointForPerMonitorDPI(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PhysicalToLogicalPointForPerMonitorDPI((hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.PhysicalToLogicalPointForPerMonitorDPI!((hWnd), util.toPointer(lpPoint)));
 }
 
 export function SystemParametersInfoForDpi(
@@ -416,111 +445,111 @@ export function SystemParametersInfoForDpi(
   fWinIni: number /* u32 */,
   dpi: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoForDpi(uiAction, uiParam, util.toPointer(pvParam), fWinIni, dpi));
+  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoForDpi!(uiAction, uiParam, util.toPointer(pvParam), fWinIni, dpi));
 }
 
 export function SetThreadDpiAwarenessContext(
   dpiContext: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return libUSER32_dll.SetThreadDpiAwarenessContext(util.toPointer(dpiContext));
+  return libUSER32_dll.SetThreadDpiAwarenessContext!(util.toPointer(dpiContext));
 }
 
 export function GetThreadDpiAwarenessContext(): Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return libUSER32_dll.GetThreadDpiAwarenessContext();
+  return libUSER32_dll.GetThreadDpiAwarenessContext!();
 }
 
 export function GetWindowDpiAwarenessContext(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return libUSER32_dll.GetWindowDpiAwarenessContext((hwnd));
+  return libUSER32_dll.GetWindowDpiAwarenessContext!((hwnd));
 }
 
 export function GetAwarenessFromDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): DPI_AWARENESS /* Windows.Win32.UI.HiDpi.DPI_AWARENESS */ {
-  return libUSER32_dll.GetAwarenessFromDpiAwarenessContext(util.toPointer(value));
+  return libUSER32_dll.GetAwarenessFromDpiAwarenessContext!(util.toPointer(value));
 }
 
 export function GetDpiFromDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetDpiFromDpiAwarenessContext(util.toPointer(value));
+  return libUSER32_dll.GetDpiFromDpiAwarenessContext!(util.toPointer(value));
 }
 
 export function AreDpiAwarenessContextsEqual(
   dpiContextA: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
   dpiContextB: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AreDpiAwarenessContextsEqual(util.toPointer(dpiContextA), util.toPointer(dpiContextB)));
+  return util.boolFromFfi(libUSER32_dll.AreDpiAwarenessContextsEqual!(util.toPointer(dpiContextA), util.toPointer(dpiContextB)));
 }
 
 export function IsValidDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsValidDpiAwarenessContext(util.toPointer(value)));
+  return util.boolFromFfi(libUSER32_dll.IsValidDpiAwarenessContext!(util.toPointer(value)));
 }
 
 export function GetDpiForWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetDpiForWindow((hwnd));
+  return libUSER32_dll.GetDpiForWindow!((hwnd));
 }
 
 export function GetDpiForSystem(): number /* u32 */ {
-  return libUSER32_dll.GetDpiForSystem();
+  return libUSER32_dll.GetDpiForSystem!();
 }
 
 export function GetSystemDpiForProcess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetSystemDpiForProcess(util.toPointer(hProcess));
+  return libUSER32_dll.GetSystemDpiForProcess!(util.toPointer(hProcess));
 }
 
 export function EnableNonClientDpiScaling(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnableNonClientDpiScaling((hwnd)));
+  return util.boolFromFfi(libUSER32_dll.EnableNonClientDpiScaling!((hwnd)));
 }
 
 export function SetProcessDpiAwarenessContext(
   value: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetProcessDpiAwarenessContext(util.toPointer(value)));
+  return util.boolFromFfi(libUSER32_dll.SetProcessDpiAwarenessContext!(util.toPointer(value)));
 }
 
 export function GetDpiAwarenessContextForProcess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.UI.HiDpi.DPI_AWARENESS_CONTEXT */ {
-  return libUSER32_dll.GetDpiAwarenessContextForProcess(util.toPointer(hProcess));
+  return libUSER32_dll.GetDpiAwarenessContextForProcess!(util.toPointer(hProcess));
 }
 
 export function SetThreadDpiHostingBehavior(
   value: DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */,
 ): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32_dll.SetThreadDpiHostingBehavior(value);
+  return libUSER32_dll.SetThreadDpiHostingBehavior!(value);
 }
 
 export function GetThreadDpiHostingBehavior(): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32_dll.GetThreadDpiHostingBehavior();
+  return libUSER32_dll.GetThreadDpiHostingBehavior!();
 }
 
 export function GetWindowDpiHostingBehavior(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): DPI_HOSTING_BEHAVIOR /* Windows.Win32.UI.HiDpi.DPI_HOSTING_BEHAVIOR */ {
-  return libUSER32_dll.GetWindowDpiHostingBehavior((hwnd));
+  return libUSER32_dll.GetWindowDpiHostingBehavior!((hwnd));
 }
 
 export function SetProcessDpiAwareness(
   value: PROCESS_DPI_AWARENESS /* Windows.Win32.UI.HiDpi.PROCESS_DPI_AWARENESS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.SetProcessDpiAwareness(value);
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.SetProcessDpiAwareness!(value);
 }
 
 export function GetProcessDpiAwareness(
   hprocess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetProcessDpiAwareness(util.toPointer(hprocess), util.toPointer(value));
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetProcessDpiAwareness!(util.toPointer(hprocess), util.toPointer(value));
 }
 
 export function GetDpiForMonitor(
@@ -529,6 +558,6 @@ export function GetDpiForMonitor(
   dpiX: Deno.PointerValue | Uint8Array /* ptr */,
   dpiY: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetDpiForMonitor(util.toPointer(hmonitor), dpiType, util.toPointer(dpiX), util.toPointer(dpiY));
+  return libapi_ms_win_shcore_scaling_l1_1_1_dll.GetDpiForMonitor!(util.toPointer(hmonitor), dpiType, util.toPointer(dpiX), util.toPointer(dpiY));
 }
 

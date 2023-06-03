@@ -299,78 +299,97 @@ try {
     MagInitialize: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     MagUninitialize: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     MagSetWindowSource: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetWindowSource: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetWindowTransform: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetWindowTransform: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetWindowFilterList: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetWindowFilterList: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetImageScalingCallback: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetImageScalingCallback: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MagSetColorEffect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetColorEffect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetFullscreenTransform: {
       parameters: ["f32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     MagGetFullscreenTransform: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetFullscreenColorEffect: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetFullscreenColorEffect: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MagSetInputTransform: {
       parameters: ["i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagGetInputTransform: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MagShowSystemCursor: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -378,39 +397,39 @@ try {
 // Symbols
 
 export function MagInitialize(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagInitialize());
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagInitialize!());
 }
 
 export function MagUninitialize(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagUninitialize());
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagUninitialize!());
 }
 
 export function MagSetWindowSource(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   rect: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.RECT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowSource((hwnd), util.toPointer(rect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowSource!((hwnd), util.toPointer(rect)));
 }
 
 export function MagGetWindowSource(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetWindowSource((hwnd), util.toPointer(pRect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetWindowSource!((hwnd), util.toPointer(pRect)));
 }
 
 export function MagSetWindowTransform(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowTransform((hwnd), util.toPointer(pTransform)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowTransform!((hwnd), util.toPointer(pTransform)));
 }
 
 export function MagGetWindowTransform(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetWindowTransform((hwnd), util.toPointer(pTransform)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetWindowTransform!((hwnd), util.toPointer(pTransform)));
 }
 
 export function MagSetWindowFilterList(
@@ -419,7 +438,7 @@ export function MagSetWindowFilterList(
   count: number /* i32 */,
   pHWND: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowFilterList((hwnd), dwFilterMode, count, util.toPointer(pHWND)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetWindowFilterList!((hwnd), dwFilterMode, count, util.toPointer(pHWND)));
 }
 
 export function MagGetWindowFilterList(
@@ -428,34 +447,34 @@ export function MagGetWindowFilterList(
   count: number /* i32 */,
   pHWND: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAGNIFICATION_dll.MagGetWindowFilterList((hwnd), util.toPointer(pdwFilterMode), count, util.toPointer(pHWND));
+  return libMAGNIFICATION_dll.MagGetWindowFilterList!((hwnd), util.toPointer(pdwFilterMode), count, util.toPointer(pHWND));
 }
 
 export function MagSetImageScalingCallback(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Magnification.MagImageScalingCallback */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetImageScalingCallback((hwnd), util.toPointer(callback)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetImageScalingCallback!((hwnd), util.toPointer(callback)));
 }
 
 export function MagGetImageScalingCallback(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.UI.Magnification.MagImageScalingCallback */ {
-  return libMAGNIFICATION_dll.MagGetImageScalingCallback((hwnd));
+  return libMAGNIFICATION_dll.MagGetImageScalingCallback!((hwnd));
 }
 
 export function MagSetColorEffect(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetColorEffect((hwnd), util.toPointer(pEffect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetColorEffect!((hwnd), util.toPointer(pEffect)));
 }
 
 export function MagGetColorEffect(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetColorEffect((hwnd), util.toPointer(pEffect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetColorEffect!((hwnd), util.toPointer(pEffect)));
 }
 
 export function MagSetFullscreenTransform(
@@ -463,7 +482,7 @@ export function MagSetFullscreenTransform(
   xOffset: number /* i32 */,
   yOffset: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetFullscreenTransform(magLevel, xOffset, yOffset));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetFullscreenTransform!(magLevel, xOffset, yOffset));
 }
 
 export function MagGetFullscreenTransform(
@@ -471,19 +490,19 @@ export function MagGetFullscreenTransform(
   pxOffset: Deno.PointerValue | Uint8Array /* ptr */,
   pyOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetFullscreenTransform(util.toPointer(pMagLevel), util.toPointer(pxOffset), util.toPointer(pyOffset)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetFullscreenTransform!(util.toPointer(pMagLevel), util.toPointer(pxOffset), util.toPointer(pyOffset)));
 }
 
 export function MagSetFullscreenColorEffect(
   pEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetFullscreenColorEffect(util.toPointer(pEffect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetFullscreenColorEffect!(util.toPointer(pEffect)));
 }
 
 export function MagGetFullscreenColorEffect(
   pEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetFullscreenColorEffect(util.toPointer(pEffect)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetFullscreenColorEffect!(util.toPointer(pEffect)));
 }
 
 export function MagSetInputTransform(
@@ -491,7 +510,7 @@ export function MagSetInputTransform(
   pRectSource: Deno.PointerValue | Uint8Array /* ptr */,
   pRectDest: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetInputTransform(util.boolToFfi(fEnabled), util.toPointer(pRectSource), util.toPointer(pRectDest)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagSetInputTransform!(util.boolToFfi(fEnabled), util.toPointer(pRectSource), util.toPointer(pRectDest)));
 }
 
 export function MagGetInputTransform(
@@ -499,12 +518,12 @@ export function MagGetInputTransform(
   pRectSource: Deno.PointerValue | Uint8Array /* ptr */,
   pRectDest: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetInputTransform(util.toPointer(pfEnabled), util.toPointer(pRectSource), util.toPointer(pRectDest)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagGetInputTransform!(util.toPointer(pfEnabled), util.toPointer(pRectSource), util.toPointer(pRectDest)));
 }
 
 export function MagShowSystemCursor(
   fShowCursor: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAGNIFICATION_dll.MagShowSystemCursor(util.boolToFfi(fShowCursor)));
+  return util.boolFromFfi(libMAGNIFICATION_dll.MagShowSystemCursor!(util.boolToFfi(fShowCursor)));
 }
 

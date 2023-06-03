@@ -713,162 +713,202 @@ try {
     GetPerformanceTime: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     InitPropVariantFromFloat: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetPropVariant: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeySetPropVariant: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetFileTime: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetGuid: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetBool: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetUlong: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetUshort: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetFloat: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetDouble: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetInt32: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetInt64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetNthUlong: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetNthUshort: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropKeyFindKeyGetNthInt64: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsKeyPresentInPropertyList: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsKeyPresentInCollectionList: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsCollectionListSame: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropVariantGetInformation: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropertiesListCopy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropertiesListGetFillableCount: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     CollectionsListGetMarshalledSize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CollectionsListCopyAndMarshall: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListMarshall: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListGetMarshalledSizeWithoutSerialization: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CollectionsListUpdateMarshalledPointer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SerializationBufferAllocate: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SerializationBufferFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CollectionsListGetSerializedSize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CollectionsListSerializeToBuffer: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListAllocateBufferAndSerialize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListDeserializeFromBuffer: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SensorCollectionGetAt: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListGetFillableCount: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     EvaluateActivityThresholds: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CollectionsListSortSubscribedActivitiesByConfidence: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitPropVariantFromCLSIDArray: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsSensorSubscribed: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsGUIDPresentInList: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -878,14 +918,14 @@ try {
 export function GetPerformanceTime(
   TimeMs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.GetPerformanceTime(util.toPointer(TimeMs));
+  return libSensorsUtilsV2_dll.GetPerformanceTime!(util.toPointer(TimeMs));
 }
 
 export function InitPropVariantFromFloat(
   fltVal: number /* f32 */,
   ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSensorsUtilsV2_dll.InitPropVariantFromFloat(fltVal, util.toPointer(ppropvar));
+  return libSensorsUtilsV2_dll.InitPropVariantFromFloat!(fltVal, util.toPointer(ppropvar));
 }
 
 export function PropKeyFindKeyGetPropVariant(
@@ -894,7 +934,7 @@ export function PropKeyFindKeyGetPropVariant(
   TypeCheck: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetPropVariant(util.toPointer(pList), util.toPointer(pKey), util.toPointer(TypeCheck), util.toPointer(pValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetPropVariant!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(TypeCheck), util.toPointer(pValue));
 }
 
 export function PropKeyFindKeySetPropVariant(
@@ -903,7 +943,7 @@ export function PropKeyFindKeySetPropVariant(
   TypeCheck: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeySetPropVariant(util.toPointer(pList), util.toPointer(pKey), util.toPointer(TypeCheck), util.toPointer(pValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeySetPropVariant!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(TypeCheck), util.toPointer(pValue));
 }
 
 export function PropKeyFindKeyGetFileTime(
@@ -911,7 +951,7 @@ export function PropKeyFindKeyGetFileTime(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetFileTime(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetFileTime!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetGuid(
@@ -919,7 +959,7 @@ export function PropKeyFindKeyGetGuid(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetGuid(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetGuid!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetBool(
@@ -927,7 +967,7 @@ export function PropKeyFindKeyGetBool(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetBool(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetBool!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetUlong(
@@ -935,7 +975,7 @@ export function PropKeyFindKeyGetUlong(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetUlong(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetUlong!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetUshort(
@@ -943,7 +983,7 @@ export function PropKeyFindKeyGetUshort(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetUshort(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetUshort!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetFloat(
@@ -951,7 +991,7 @@ export function PropKeyFindKeyGetFloat(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetFloat(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetFloat!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetDouble(
@@ -959,7 +999,7 @@ export function PropKeyFindKeyGetDouble(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetDouble(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetDouble!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetInt32(
@@ -967,7 +1007,7 @@ export function PropKeyFindKeyGetInt32(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetInt32(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetInt32!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetInt64(
@@ -975,7 +1015,7 @@ export function PropKeyFindKeyGetInt64(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetInt64(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetInt64!(util.toPointer(pList), util.toPointer(pKey), util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetNthUlong(
@@ -984,7 +1024,7 @@ export function PropKeyFindKeyGetNthUlong(
   Occurrence: number /* u32 */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthUlong(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthUlong!(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetNthUshort(
@@ -993,7 +1033,7 @@ export function PropKeyFindKeyGetNthUshort(
   Occurrence: number /* u32 */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthUshort(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthUshort!(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
 }
 
 export function PropKeyFindKeyGetNthInt64(
@@ -1002,28 +1042,28 @@ export function PropKeyFindKeyGetNthInt64(
   Occurrence: number /* u32 */,
   pRetValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthInt64(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
+  return libSensorsUtilsV2_dll.PropKeyFindKeyGetNthInt64!(util.toPointer(pList), util.toPointer(pKey), Occurrence, util.toPointer(pRetValue));
 }
 
 export function IsKeyPresentInPropertyList(
   pList: Deno.PointerValue | Uint8Array /* ptr */,
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.IsKeyPresentInPropertyList(util.toPointer(pList), util.toPointer(pKey));
+  return libSensorsUtilsV2_dll.IsKeyPresentInPropertyList!(util.toPointer(pList), util.toPointer(pKey));
 }
 
 export function IsKeyPresentInCollectionList(
   pList: Deno.PointerValue | Uint8Array /* ptr */,
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.IsKeyPresentInCollectionList(util.toPointer(pList), util.toPointer(pKey));
+  return libSensorsUtilsV2_dll.IsKeyPresentInCollectionList!(util.toPointer(pList), util.toPointer(pKey));
 }
 
 export function IsCollectionListSame(
   ListA: Deno.PointerValue | Uint8Array /* ptr */,
   ListB: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.IsCollectionListSame(util.toPointer(ListA), util.toPointer(ListB));
+  return libSensorsUtilsV2_dll.IsCollectionListSame!(util.toPointer(ListA), util.toPointer(ListB));
 }
 
 export function PropVariantGetInformation(
@@ -1033,70 +1073,70 @@ export function PropVariantGetInformation(
   PropVariantPointer: Deno.PointerValue | Uint8Array /* ptr */,
   RemappedType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropVariantGetInformation(util.toPointer(PropVariantValue), util.toPointer(PropVariantOffset), util.toPointer(PropVariantSize), util.toPointer(PropVariantPointer), util.toPointer(RemappedType));
+  return libSensorsUtilsV2_dll.PropVariantGetInformation!(util.toPointer(PropVariantValue), util.toPointer(PropVariantOffset), util.toPointer(PropVariantSize), util.toPointer(PropVariantPointer), util.toPointer(RemappedType));
 }
 
 export function PropertiesListCopy(
   Target: Deno.PointerValue | Uint8Array /* ptr */,
   Source: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.PropertiesListCopy(util.toPointer(Target), util.toPointer(Source));
+  return libSensorsUtilsV2_dll.PropertiesListCopy!(util.toPointer(Target), util.toPointer(Source));
 }
 
 export function PropertiesListGetFillableCount(
   BufferSizeBytes: number /* u32 */,
 ): number /* u32 */ {
-  return libSensorsUtilsV2_dll.PropertiesListGetFillableCount(BufferSizeBytes);
+  return libSensorsUtilsV2_dll.PropertiesListGetFillableCount!(BufferSizeBytes);
 }
 
 export function CollectionsListGetMarshalledSize(
   Collection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSensorsUtilsV2_dll.CollectionsListGetMarshalledSize(util.toPointer(Collection));
+  return libSensorsUtilsV2_dll.CollectionsListGetMarshalledSize!(util.toPointer(Collection));
 }
 
 export function CollectionsListCopyAndMarshall(
   Target: Deno.PointerValue | Uint8Array /* ptr */,
   Source: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListCopyAndMarshall(util.toPointer(Target), util.toPointer(Source));
+  return libSensorsUtilsV2_dll.CollectionsListCopyAndMarshall!(util.toPointer(Target), util.toPointer(Source));
 }
 
 export function CollectionsListMarshall(
   Target: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListMarshall(util.toPointer(Target));
+  return libSensorsUtilsV2_dll.CollectionsListMarshall!(util.toPointer(Target));
 }
 
 export function CollectionsListGetMarshalledSizeWithoutSerialization(
   Collection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSensorsUtilsV2_dll.CollectionsListGetMarshalledSizeWithoutSerialization(util.toPointer(Collection));
+  return libSensorsUtilsV2_dll.CollectionsListGetMarshalledSizeWithoutSerialization!(util.toPointer(Collection));
 }
 
 export function CollectionsListUpdateMarshalledPointer(
   Collection: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListUpdateMarshalledPointer(util.toPointer(Collection));
+  return libSensorsUtilsV2_dll.CollectionsListUpdateMarshalledPointer!(util.toPointer(Collection));
 }
 
 export function SerializationBufferAllocate(
   SizeInBytes: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.SerializationBufferAllocate(SizeInBytes, util.toPointer(pBuffer));
+  return libSensorsUtilsV2_dll.SerializationBufferAllocate!(SizeInBytes, util.toPointer(pBuffer));
 }
 
 export function SerializationBufferFree(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSensorsUtilsV2_dll.SerializationBufferFree(util.toPointer(Buffer));
+  return libSensorsUtilsV2_dll.SerializationBufferFree!(util.toPointer(Buffer));
 }
 
 export function CollectionsListGetSerializedSize(
   Collection: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSensorsUtilsV2_dll.CollectionsListGetSerializedSize(util.toPointer(Collection));
+  return libSensorsUtilsV2_dll.CollectionsListGetSerializedSize!(util.toPointer(Collection));
 }
 
 export function CollectionsListSerializeToBuffer(
@@ -1104,7 +1144,7 @@ export function CollectionsListSerializeToBuffer(
   TargetBufferSizeInBytes: number /* u32 */,
   TargetBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListSerializeToBuffer(util.toPointer(SourceCollection), TargetBufferSizeInBytes, util.toPointer(TargetBuffer));
+  return libSensorsUtilsV2_dll.CollectionsListSerializeToBuffer!(util.toPointer(SourceCollection), TargetBufferSizeInBytes, util.toPointer(TargetBuffer));
 }
 
 export function CollectionsListAllocateBufferAndSerialize(
@@ -1112,7 +1152,7 @@ export function CollectionsListAllocateBufferAndSerialize(
   pTargetBufferSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
   pTargetBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListAllocateBufferAndSerialize(util.toPointer(SourceCollection), util.toPointer(pTargetBufferSizeInBytes), util.toPointer(pTargetBuffer));
+  return libSensorsUtilsV2_dll.CollectionsListAllocateBufferAndSerialize!(util.toPointer(SourceCollection), util.toPointer(pTargetBufferSizeInBytes), util.toPointer(pTargetBuffer));
 }
 
 export function CollectionsListDeserializeFromBuffer(
@@ -1120,7 +1160,7 @@ export function CollectionsListDeserializeFromBuffer(
   SourceBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   TargetCollection: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListDeserializeFromBuffer(SourceBufferSizeInBytes, util.toPointer(SourceBuffer), util.toPointer(TargetCollection));
+  return libSensorsUtilsV2_dll.CollectionsListDeserializeFromBuffer!(SourceBufferSizeInBytes, util.toPointer(SourceBuffer), util.toPointer(TargetCollection));
 }
 
 export function SensorCollectionGetAt(
@@ -1129,13 +1169,13 @@ export function SensorCollectionGetAt(
   pKey: Deno.PointerValue | Uint8Array /* ptr */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.SensorCollectionGetAt(Index, util.toPointer(pSensorsList), util.toPointer(pKey), util.toPointer(pValue));
+  return libSensorsUtilsV2_dll.SensorCollectionGetAt!(Index, util.toPointer(pSensorsList), util.toPointer(pKey), util.toPointer(pValue));
 }
 
 export function CollectionsListGetFillableCount(
   BufferSizeBytes: number /* u32 */,
 ): number /* u32 */ {
-  return libSensorsUtilsV2_dll.CollectionsListGetFillableCount(BufferSizeBytes);
+  return libSensorsUtilsV2_dll.CollectionsListGetFillableCount!(BufferSizeBytes);
 }
 
 export function EvaluateActivityThresholds(
@@ -1143,14 +1183,14 @@ export function EvaluateActivityThresholds(
   oldSample: Deno.PointerValue | Uint8Array /* ptr */,
   thresholds: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.EvaluateActivityThresholds(util.toPointer(newSample), util.toPointer(oldSample), util.toPointer(thresholds));
+  return libSensorsUtilsV2_dll.EvaluateActivityThresholds!(util.toPointer(newSample), util.toPointer(oldSample), util.toPointer(thresholds));
 }
 
 export function CollectionsListSortSubscribedActivitiesByConfidence(
   thresholds: Deno.PointerValue | Uint8Array /* ptr */,
   pCollection: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libSensorsUtilsV2_dll.CollectionsListSortSubscribedActivitiesByConfidence(util.toPointer(thresholds), util.toPointer(pCollection));
+  return libSensorsUtilsV2_dll.CollectionsListSortSubscribedActivitiesByConfidence!(util.toPointer(thresholds), util.toPointer(pCollection));
 }
 
 export function InitPropVariantFromCLSIDArray(
@@ -1158,14 +1198,14 @@ export function InitPropVariantFromCLSIDArray(
   size: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSensorsUtilsV2_dll.InitPropVariantFromCLSIDArray(util.toPointer(members), size, util.toPointer(ppropvar));
+  return libSensorsUtilsV2_dll.InitPropVariantFromCLSIDArray!(util.toPointer(members), size, util.toPointer(ppropvar));
 }
 
 export function IsSensorSubscribed(
   subscriptionList: Deno.PointerValue | Uint8Array /* ptr */,
   currentType: Uint8Array | Deno.PointerValue /* System.Guid */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.IsSensorSubscribed(util.toPointer(subscriptionList), util.toPointer(currentType));
+  return libSensorsUtilsV2_dll.IsSensorSubscribed!(util.toPointer(subscriptionList), util.toPointer(currentType));
 }
 
 export function IsGUIDPresentInList(
@@ -1173,6 +1213,6 @@ export function IsGUIDPresentInList(
   arrayLength: number /* u32 */,
   guidElem: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libSensorsUtilsV2_dll.IsGUIDPresentInList(util.toPointer(guidArray), arrayLength, util.toPointer(guidElem));
+  return libSensorsUtilsV2_dll.IsGUIDPresentInList!(util.toPointer(guidArray), arrayLength, util.toPointer(guidElem));
 }
 

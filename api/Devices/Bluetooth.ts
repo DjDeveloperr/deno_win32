@@ -5473,166 +5473,207 @@ try {
     BluetoothFindFirstRadio: {
       parameters: ["pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     BluetoothFindNextRadio: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothFindRadioClose: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     BluetoothGetRadioInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothFindFirstDevice: {
       parameters: ["pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     BluetoothFindNextDevice: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothFindDeviceClose: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     BluetoothGetDeviceInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothUpdateDeviceRecord: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothRemoveDevice: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSetServiceState: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     BluetoothEnumerateInstalledServices: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothEnableDiscovery: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     BluetoothIsDiscoverable: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothEnableIncomingConnections: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     BluetoothIsConnectable: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothRegisterForAuthentication: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothRegisterForAuthenticationEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothUnregisterAuthentication: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     BluetoothSendAuthenticationResponse: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSendAuthenticationResponseEx: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSdpGetElementData: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSdpGetContainerElementData: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSdpGetAttributeValue: {
       parameters: ["pointer", "u32", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSdpGetString: {
       parameters: ["pointer", "u32", "pointer", "u16", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothSdpEnumAttributes: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothSetLocalServiceInfo: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     BluetoothIsVersionAvailable: {
       parameters: ["u8", "u8"],
       result: "i32",
+      optional: true,
     },
     BluetoothGATTGetServices: {
       parameters: ["pointer", "u16", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTGetIncludedServices: {
       parameters: ["pointer", "pointer", "u16", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTGetCharacteristics: {
       parameters: ["pointer", "pointer", "u16", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTGetDescriptors: {
       parameters: ["pointer", "pointer", "u16", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTGetCharacteristicValue: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTGetDescriptorValue: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTBeginReliableWrite: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTSetCharacteristicValue: {
       parameters: ["pointer", "pointer", "pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTEndReliableWrite: {
       parameters: ["pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTAbortReliableWrite: {
       parameters: ["pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTSetDescriptorValue: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTRegisterEvent: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BluetoothGATTUnregisterEvent: {
       parameters: ["isize", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5642,26 +5683,32 @@ try {
     BluetoothSelectDevices: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothSelectDevicesFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothDisplayDeviceProperties: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     BluetoothAuthenticateDevice: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     BluetoothAuthenticateDeviceEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     BluetoothAuthenticateMultipleDevices: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5672,85 +5719,85 @@ export function BluetoothFindFirstRadio(
   pbtfrp: Deno.PointerValue | Uint8Array /* ptr */,
   phRadio: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libBluetoothApis_dll.BluetoothFindFirstRadio(util.toPointer(pbtfrp), util.toPointer(phRadio));
+  return libBluetoothApis_dll.BluetoothFindFirstRadio!(util.toPointer(pbtfrp), util.toPointer(phRadio));
 }
 
 export function BluetoothFindNextRadio(
   hFind: bigint | number /* isize */,
   phRadio: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextRadio(hFind, util.toPointer(phRadio)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextRadio!(hFind, util.toPointer(phRadio)));
 }
 
 export function BluetoothFindRadioClose(
   hFind: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindRadioClose(hFind));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindRadioClose!(hFind));
 }
 
 export function BluetoothGetRadioInfo(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pRadioInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothGetRadioInfo(util.toPointer(hRadio), util.toPointer(pRadioInfo));
+  return libBluetoothApis_dll.BluetoothGetRadioInfo!(util.toPointer(hRadio), util.toPointer(pRadioInfo));
 }
 
 export function BluetoothFindFirstDevice(
   pbtsp: Deno.PointerValue | Uint8Array /* ptr */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libBluetoothApis_dll.BluetoothFindFirstDevice(util.toPointer(pbtsp), util.toPointer(pbtdi));
+  return libBluetoothApis_dll.BluetoothFindFirstDevice!(util.toPointer(pbtsp), util.toPointer(pbtdi));
 }
 
 export function BluetoothFindNextDevice(
   hFind: bigint | number /* isize */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextDevice(hFind, util.toPointer(pbtdi)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindNextDevice!(hFind, util.toPointer(pbtdi)));
 }
 
 export function BluetoothFindDeviceClose(
   hFind: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindDeviceClose(hFind));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothFindDeviceClose!(hFind));
 }
 
 export function BluetoothGetDeviceInfo(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothGetDeviceInfo(util.toPointer(hRadio), util.toPointer(pbtdi));
+  return libBluetoothApis_dll.BluetoothGetDeviceInfo!(util.toPointer(hRadio), util.toPointer(pbtdi));
 }
 
 export function BluetoothUpdateDeviceRecord(
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothUpdateDeviceRecord(util.toPointer(pbtdi));
+  return libBluetoothApis_dll.BluetoothUpdateDeviceRecord!(util.toPointer(pbtdi));
 }
 
 export function BluetoothRemoveDevice(
   pAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothRemoveDevice(util.toPointer(pAddress));
+  return libBluetoothApis_dll.BluetoothRemoveDevice!(util.toPointer(pAddress));
 }
 
 export function BluetoothSelectDevices(
   pbtsdp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libbthprops_cpl.BluetoothSelectDevices(util.toPointer(pbtsdp)));
+  return util.boolFromFfi(libbthprops_cpl.BluetoothSelectDevices!(util.toPointer(pbtsdp)));
 }
 
 export function BluetoothSelectDevicesFree(
   pbtsdp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libbthprops_cpl.BluetoothSelectDevicesFree(util.toPointer(pbtsdp)));
+  return util.boolFromFfi(libbthprops_cpl.BluetoothSelectDevicesFree!(util.toPointer(pbtsdp)));
 }
 
 export function BluetoothDisplayDeviceProperties(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libbthprops_cpl.BluetoothDisplayDeviceProperties((hwndParent), util.toPointer(pbtdi)));
+  return util.boolFromFfi(libbthprops_cpl.BluetoothDisplayDeviceProperties!((hwndParent), util.toPointer(pbtdi)));
 }
 
 export function BluetoothAuthenticateDevice(
@@ -5760,7 +5807,7 @@ export function BluetoothAuthenticateDevice(
   pszPasskey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ulPasskeyLength: number /* u32 */,
 ): number /* u32 */ {
-  return libbthprops_cpl.BluetoothAuthenticateDevice((hwndParent), util.toPointer(hRadio), util.toPointer(pbtbi), util.pwstrToFfi(pszPasskey), ulPasskeyLength);
+  return libbthprops_cpl.BluetoothAuthenticateDevice!((hwndParent), util.toPointer(hRadio), util.toPointer(pbtbi), util.pwstrToFfi(pszPasskey), ulPasskeyLength);
 }
 
 export function BluetoothAuthenticateDeviceEx(
@@ -5770,7 +5817,7 @@ export function BluetoothAuthenticateDeviceEx(
   pbtOobData: Deno.PointerValue | Uint8Array /* ptr */,
   authenticationRequirement: AUTHENTICATION_REQUIREMENTS /* Windows.Win32.Devices.Bluetooth.AUTHENTICATION_REQUIREMENTS */,
 ): number /* u32 */ {
-  return libbthprops_cpl.BluetoothAuthenticateDeviceEx((hwndParentIn), util.toPointer(hRadioIn), util.toPointer(pbtdiInout), util.toPointer(pbtOobData), authenticationRequirement);
+  return libbthprops_cpl.BluetoothAuthenticateDeviceEx!((hwndParentIn), util.toPointer(hRadioIn), util.toPointer(pbtdiInout), util.toPointer(pbtOobData), authenticationRequirement);
 }
 
 export function BluetoothAuthenticateMultipleDevices(
@@ -5779,7 +5826,7 @@ export function BluetoothAuthenticateMultipleDevices(
   cDevices: number /* u32 */,
   rgbtdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libbthprops_cpl.BluetoothAuthenticateMultipleDevices((hwndParent), util.toPointer(hRadio), cDevices, util.toPointer(rgbtdi));
+  return libbthprops_cpl.BluetoothAuthenticateMultipleDevices!((hwndParent), util.toPointer(hRadio), cDevices, util.toPointer(rgbtdi));
 }
 
 export function BluetoothSetServiceState(
@@ -5788,7 +5835,7 @@ export function BluetoothSetServiceState(
   pGuidService: Deno.PointerValue | Uint8Array /* ptr */,
   dwServiceFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSetServiceState(util.toPointer(hRadio), util.toPointer(pbtdi), util.toPointer(pGuidService), dwServiceFlags);
+  return libBluetoothApis_dll.BluetoothSetServiceState!(util.toPointer(hRadio), util.toPointer(pbtdi), util.toPointer(pGuidService), dwServiceFlags);
 }
 
 export function BluetoothEnumerateInstalledServices(
@@ -5797,33 +5844,33 @@ export function BluetoothEnumerateInstalledServices(
   pcServiceInout: Deno.PointerValue | Uint8Array /* ptr */,
   pGuidServices: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothEnumerateInstalledServices(util.toPointer(hRadio), util.toPointer(pbtdi), util.toPointer(pcServiceInout), util.toPointer(pGuidServices));
+  return libBluetoothApis_dll.BluetoothEnumerateInstalledServices!(util.toPointer(hRadio), util.toPointer(pbtdi), util.toPointer(pcServiceInout), util.toPointer(pGuidServices));
 }
 
 export function BluetoothEnableDiscovery(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothEnableDiscovery(util.toPointer(hRadio), util.boolToFfi(fEnabled)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothEnableDiscovery!(util.toPointer(hRadio), util.boolToFfi(fEnabled)));
 }
 
 export function BluetoothIsDiscoverable(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsDiscoverable(util.toPointer(hRadio)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsDiscoverable!(util.toPointer(hRadio)));
 }
 
 export function BluetoothEnableIncomingConnections(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothEnableIncomingConnections(util.toPointer(hRadio), util.boolToFfi(fEnabled)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothEnableIncomingConnections!(util.toPointer(hRadio), util.boolToFfi(fEnabled)));
 }
 
 export function BluetoothIsConnectable(
   hRadio: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsConnectable(util.toPointer(hRadio)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsConnectable!(util.toPointer(hRadio)));
 }
 
 export function BluetoothRegisterForAuthentication(
@@ -5832,7 +5879,7 @@ export function BluetoothRegisterForAuthentication(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Bluetooth.PFN_AUTHENTICATION_CALLBACK */,
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothRegisterForAuthentication(util.toPointer(pbtdi), util.toPointer(phRegHandle), util.toPointer(pfnCallback), util.toPointer(pvParam));
+  return libBluetoothApis_dll.BluetoothRegisterForAuthentication!(util.toPointer(pbtdi), util.toPointer(phRegHandle), util.toPointer(pfnCallback), util.toPointer(pvParam));
 }
 
 export function BluetoothRegisterForAuthenticationEx(
@@ -5841,13 +5888,13 @@ export function BluetoothRegisterForAuthenticationEx(
   pfnCallbackIn: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Bluetooth.PFN_AUTHENTICATION_CALLBACK_EX */,
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothRegisterForAuthenticationEx(util.toPointer(pbtdiIn), util.toPointer(phRegHandleOut), util.toPointer(pfnCallbackIn), util.toPointer(pvParam));
+  return libBluetoothApis_dll.BluetoothRegisterForAuthenticationEx!(util.toPointer(pbtdiIn), util.toPointer(phRegHandleOut), util.toPointer(pfnCallbackIn), util.toPointer(pvParam));
 }
 
 export function BluetoothUnregisterAuthentication(
   hRegHandle: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothUnregisterAuthentication(hRegHandle));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothUnregisterAuthentication!(hRegHandle));
 }
 
 export function BluetoothSendAuthenticationResponse(
@@ -5855,14 +5902,14 @@ export function BluetoothSendAuthenticationResponse(
   pbtdi: Deno.PointerValue | Uint8Array /* ptr */,
   pszPasskey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSendAuthenticationResponse(util.toPointer(hRadio), util.toPointer(pbtdi), util.pwstrToFfi(pszPasskey));
+  return libBluetoothApis_dll.BluetoothSendAuthenticationResponse!(util.toPointer(hRadio), util.toPointer(pbtdi), util.pwstrToFfi(pszPasskey));
 }
 
 export function BluetoothSendAuthenticationResponseEx(
   hRadioIn: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pauthResponse: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSendAuthenticationResponseEx(util.toPointer(hRadioIn), util.toPointer(pauthResponse));
+  return libBluetoothApis_dll.BluetoothSendAuthenticationResponseEx!(util.toPointer(hRadioIn), util.toPointer(pauthResponse));
 }
 
 export function BluetoothSdpGetElementData(
@@ -5870,7 +5917,7 @@ export function BluetoothSdpGetElementData(
   cbSdpStreamLength: number /* u32 */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSdpGetElementData(util.toPointer(pSdpStream), cbSdpStreamLength, util.toPointer(pData));
+  return libBluetoothApis_dll.BluetoothSdpGetElementData!(util.toPointer(pSdpStream), cbSdpStreamLength, util.toPointer(pData));
 }
 
 export function BluetoothSdpGetContainerElementData(
@@ -5879,7 +5926,7 @@ export function BluetoothSdpGetContainerElementData(
   pElement: Deno.PointerValue | Uint8Array /* ptr */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSdpGetContainerElementData(util.toPointer(pContainerStream), cbContainerLength, util.toPointer(pElement), util.toPointer(pData));
+  return libBluetoothApis_dll.BluetoothSdpGetContainerElementData!(util.toPointer(pContainerStream), cbContainerLength, util.toPointer(pElement), util.toPointer(pData));
 }
 
 export function BluetoothSdpGetAttributeValue(
@@ -5888,7 +5935,7 @@ export function BluetoothSdpGetAttributeValue(
   usAttributeId: number /* u16 */,
   pAttributeData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSdpGetAttributeValue(util.toPointer(pRecordStream), cbRecordLength, usAttributeId, util.toPointer(pAttributeData));
+  return libBluetoothApis_dll.BluetoothSdpGetAttributeValue!(util.toPointer(pRecordStream), cbRecordLength, usAttributeId, util.toPointer(pAttributeData));
 }
 
 export function BluetoothSdpGetString(
@@ -5899,7 +5946,7 @@ export function BluetoothSdpGetString(
   pszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchStringLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSdpGetString(util.toPointer(pRecordStream), cbRecordLength, util.toPointer(pStringData), usStringOffset, util.pwstrToFfi(pszString), util.toPointer(pcchStringLength));
+  return libBluetoothApis_dll.BluetoothSdpGetString!(util.toPointer(pRecordStream), cbRecordLength, util.toPointer(pStringData), usStringOffset, util.pwstrToFfi(pszString), util.toPointer(pcchStringLength));
 }
 
 export function BluetoothSdpEnumAttributes(
@@ -5908,7 +5955,7 @@ export function BluetoothSdpEnumAttributes(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Devices.Bluetooth.PFN_BLUETOOTH_ENUM_ATTRIBUTES_CALLBACK */,
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothSdpEnumAttributes(util.toPointer(pSDPStream), cbStreamSize, util.toPointer(pfnCallback), util.toPointer(pvParam)));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothSdpEnumAttributes!(util.toPointer(pSDPStream), cbStreamSize, util.toPointer(pfnCallback), util.toPointer(pvParam)));
 }
 
 export function BluetoothSetLocalServiceInfo(
@@ -5917,14 +5964,14 @@ export function BluetoothSetLocalServiceInfo(
   ulInstance: number /* u32 */,
   pServiceInfoIn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libBluetoothApis_dll.BluetoothSetLocalServiceInfo(util.toPointer(hRadioIn), util.toPointer(pClassGuid), ulInstance, util.toPointer(pServiceInfoIn));
+  return libBluetoothApis_dll.BluetoothSetLocalServiceInfo!(util.toPointer(hRadioIn), util.toPointer(pClassGuid), ulInstance, util.toPointer(pServiceInfoIn));
 }
 
 export function BluetoothIsVersionAvailable(
   MajorVersion: number /* u8 */,
   MinorVersion: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsVersionAvailable(MajorVersion, MinorVersion));
+  return util.boolFromFfi(libBluetoothApis_dll.BluetoothIsVersionAvailable!(MajorVersion, MinorVersion));
 }
 
 export function BluetoothGATTGetServices(
@@ -5934,7 +5981,7 @@ export function BluetoothGATTGetServices(
   ServicesBufferActual: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetServices(util.toPointer(hDevice), ServicesBufferCount, util.toPointer(ServicesBuffer), util.toPointer(ServicesBufferActual), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetServices!(util.toPointer(hDevice), ServicesBufferCount, util.toPointer(ServicesBuffer), util.toPointer(ServicesBufferActual), Flags);
 }
 
 export function BluetoothGATTGetIncludedServices(
@@ -5945,7 +5992,7 @@ export function BluetoothGATTGetIncludedServices(
   IncludedServicesBufferActual: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetIncludedServices(util.toPointer(hDevice), util.toPointer(ParentService), IncludedServicesBufferCount, util.toPointer(IncludedServicesBuffer), util.toPointer(IncludedServicesBufferActual), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetIncludedServices!(util.toPointer(hDevice), util.toPointer(ParentService), IncludedServicesBufferCount, util.toPointer(IncludedServicesBuffer), util.toPointer(IncludedServicesBufferActual), Flags);
 }
 
 export function BluetoothGATTGetCharacteristics(
@@ -5956,7 +6003,7 @@ export function BluetoothGATTGetCharacteristics(
   CharacteristicsBufferActual: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetCharacteristics(util.toPointer(hDevice), util.toPointer(Service), CharacteristicsBufferCount, util.toPointer(CharacteristicsBuffer), util.toPointer(CharacteristicsBufferActual), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetCharacteristics!(util.toPointer(hDevice), util.toPointer(Service), CharacteristicsBufferCount, util.toPointer(CharacteristicsBuffer), util.toPointer(CharacteristicsBufferActual), Flags);
 }
 
 export function BluetoothGATTGetDescriptors(
@@ -5967,7 +6014,7 @@ export function BluetoothGATTGetDescriptors(
   DescriptorsBufferActual: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetDescriptors(util.toPointer(hDevice), util.toPointer(Characteristic), DescriptorsBufferCount, util.toPointer(DescriptorsBuffer), util.toPointer(DescriptorsBufferActual), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetDescriptors!(util.toPointer(hDevice), util.toPointer(Characteristic), DescriptorsBufferCount, util.toPointer(DescriptorsBuffer), util.toPointer(DescriptorsBufferActual), Flags);
 }
 
 export function BluetoothGATTGetCharacteristicValue(
@@ -5978,7 +6025,7 @@ export function BluetoothGATTGetCharacteristicValue(
   CharacteristicValueSizeRequired: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetCharacteristicValue(util.toPointer(hDevice), util.toPointer(Characteristic), CharacteristicValueDataSize, util.toPointer(CharacteristicValue), util.toPointer(CharacteristicValueSizeRequired), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetCharacteristicValue!(util.toPointer(hDevice), util.toPointer(Characteristic), CharacteristicValueDataSize, util.toPointer(CharacteristicValue), util.toPointer(CharacteristicValueSizeRequired), Flags);
 }
 
 export function BluetoothGATTGetDescriptorValue(
@@ -5989,7 +6036,7 @@ export function BluetoothGATTGetDescriptorValue(
   DescriptorValueSizeRequired: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTGetDescriptorValue(util.toPointer(hDevice), util.toPointer(Descriptor), DescriptorValueDataSize, util.toPointer(DescriptorValue), util.toPointer(DescriptorValueSizeRequired), Flags);
+  return libBluetoothApis_dll.BluetoothGATTGetDescriptorValue!(util.toPointer(hDevice), util.toPointer(Descriptor), DescriptorValueDataSize, util.toPointer(DescriptorValue), util.toPointer(DescriptorValueSizeRequired), Flags);
 }
 
 export function BluetoothGATTBeginReliableWrite(
@@ -5997,7 +6044,7 @@ export function BluetoothGATTBeginReliableWrite(
   ReliableWriteContext: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTBeginReliableWrite(util.toPointer(hDevice), util.toPointer(ReliableWriteContext), Flags);
+  return libBluetoothApis_dll.BluetoothGATTBeginReliableWrite!(util.toPointer(hDevice), util.toPointer(ReliableWriteContext), Flags);
 }
 
 export function BluetoothGATTSetCharacteristicValue(
@@ -6007,7 +6054,7 @@ export function BluetoothGATTSetCharacteristicValue(
   ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTSetCharacteristicValue(util.toPointer(hDevice), util.toPointer(Characteristic), util.toPointer(CharacteristicValue), ReliableWriteContext, Flags);
+  return libBluetoothApis_dll.BluetoothGATTSetCharacteristicValue!(util.toPointer(hDevice), util.toPointer(Characteristic), util.toPointer(CharacteristicValue), ReliableWriteContext, Flags);
 }
 
 export function BluetoothGATTEndReliableWrite(
@@ -6015,7 +6062,7 @@ export function BluetoothGATTEndReliableWrite(
   ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTEndReliableWrite(util.toPointer(hDevice), ReliableWriteContext, Flags);
+  return libBluetoothApis_dll.BluetoothGATTEndReliableWrite!(util.toPointer(hDevice), ReliableWriteContext, Flags);
 }
 
 export function BluetoothGATTAbortReliableWrite(
@@ -6023,7 +6070,7 @@ export function BluetoothGATTAbortReliableWrite(
   ReliableWriteContext: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTAbortReliableWrite(util.toPointer(hDevice), ReliableWriteContext, Flags);
+  return libBluetoothApis_dll.BluetoothGATTAbortReliableWrite!(util.toPointer(hDevice), ReliableWriteContext, Flags);
 }
 
 export function BluetoothGATTSetDescriptorValue(
@@ -6032,7 +6079,7 @@ export function BluetoothGATTSetDescriptorValue(
   DescriptorValue: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTSetDescriptorValue(util.toPointer(hDevice), util.toPointer(Descriptor), util.toPointer(DescriptorValue), Flags);
+  return libBluetoothApis_dll.BluetoothGATTSetDescriptorValue!(util.toPointer(hDevice), util.toPointer(Descriptor), util.toPointer(DescriptorValue), Flags);
 }
 
 export function BluetoothGATTRegisterEvent(
@@ -6044,13 +6091,13 @@ export function BluetoothGATTRegisterEvent(
   pEventHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTRegisterEvent(util.toPointer(hService), EventType, util.toPointer(EventParameterIn), util.toPointer(Callback), util.toPointer(CallbackContext), util.toPointer(pEventHandle), Flags);
+  return libBluetoothApis_dll.BluetoothGATTRegisterEvent!(util.toPointer(hService), EventType, util.toPointer(EventParameterIn), util.toPointer(Callback), util.toPointer(CallbackContext), util.toPointer(pEventHandle), Flags);
 }
 
 export function BluetoothGATTUnregisterEvent(
   EventHandle: bigint | number /* isize */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libBluetoothApis_dll.BluetoothGATTUnregisterEvent(EventHandle, Flags);
+  return libBluetoothApis_dll.BluetoothGATTUnregisterEvent!(EventHandle, Flags);
 }
 

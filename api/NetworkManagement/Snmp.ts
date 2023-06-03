@@ -1389,106 +1389,132 @@ try {
     SnmpUtilOidCpy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOidAppend: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOidNCmp: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOidCmp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOidFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilOctetsCmp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOctetsNCmp: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOctetsCpy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilOctetsFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilAsnAnyCpy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilAsnAnyFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilVarBindCpy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilVarBindFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilVarBindListCpy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpUtilVarBindListFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilMemFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilMemAlloc: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     SnmpUtilMemReAlloc: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SnmpUtilOidToA: {
       parameters: ["pointer"],
       result: "buffer",
+      optional: true,
     },
     SnmpUtilIdsToA: {
       parameters: ["pointer", "u32"],
       result: "buffer",
+      optional: true,
     },
     SnmpUtilPrintOid: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpUtilPrintAsnAny: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SnmpSvcGetUptime: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SnmpSvcSetLogLevel: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     SnmpSvcSetLogType: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     SnmpUtilDbgPrint: {
       parameters: ["u32", "buffer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1498,38 +1524,47 @@ try {
     SnmpMgrOpen: {
       parameters: ["buffer", "buffer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     SnmpMgrCtl: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrClose: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrRequest: {
       parameters: ["pointer", "u8", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrStrToOid: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrOidToStr: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrTrapListen: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrGetTrap: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SnmpMgrGetTrapEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1539,198 +1574,247 @@ try {
     SnmpGetTranslateMode: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetTranslateMode: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     SnmpGetRetransmitMode: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetRetransmitMode: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     SnmpGetTimeout: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetTimeout: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpGetRetry: {
       parameters: ["isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetRetry: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpGetVendorInfo: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpStartup: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpCleanup: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SnmpOpen: {
       parameters: ["pointer", "u32"],
       result: "isize",
+      optional: true,
     },
     SnmpClose: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpSendMsg: {
       parameters: ["isize", "isize", "isize", "isize", "isize"],
       result: "u32",
+      optional: true,
     },
     SnmpRecvMsg: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpRegister: {
       parameters: ["isize", "isize", "isize", "isize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpCreateSession: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     SnmpListen: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpListenEx: {
       parameters: ["isize", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpCancelMsg: {
       parameters: ["isize", "i32"],
       result: "u32",
+      optional: true,
     },
     SnmpStartupEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpCleanupEx: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SnmpStrToEntity: {
       parameters: ["isize", "buffer"],
       result: "isize",
+      optional: true,
     },
     SnmpEntityToStr: {
       parameters: ["isize", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     SnmpFreeEntity: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpStrToContext: {
       parameters: ["isize", "pointer"],
       result: "isize",
+      optional: true,
     },
     SnmpContextToStr: {
       parameters: ["isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpFreeContext: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpSetPort: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpCreatePdu: {
       parameters: ["isize", "u32", "i32", "i32", "i32", "isize"],
       result: "isize",
+      optional: true,
     },
     SnmpGetPduData: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetPduData: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpDuplicatePdu: {
       parameters: ["isize", "isize"],
       result: "isize",
+      optional: true,
     },
     SnmpFreePdu: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpCreateVbl: {
       parameters: ["isize", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     SnmpDuplicateVbl: {
       parameters: ["isize", "isize"],
       result: "isize",
+      optional: true,
     },
     SnmpFreeVbl: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpCountVbl: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpGetVb: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpSetVb: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpDeleteVb: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     SnmpGetLastError: {
       parameters: ["isize"],
       result: "u32",
+      optional: true,
     },
     SnmpStrToOid: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpOidToStr: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     SnmpOidCopy: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpOidCompare: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpEncodeMsg: {
       parameters: ["isize", "isize", "isize", "isize", "isize", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpDecodeMsg: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SnmpFreeDescriptor: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1741,14 +1825,14 @@ export function SnmpUtilOidCpy(
   pOidDst: Deno.PointerValue | Uint8Array /* ptr */,
   pOidSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOidCpy(util.toPointer(pOidDst), util.toPointer(pOidSrc));
+  return libsnmpapi_dll.SnmpUtilOidCpy!(util.toPointer(pOidDst), util.toPointer(pOidSrc));
 }
 
 export function SnmpUtilOidAppend(
   pOidDst: Deno.PointerValue | Uint8Array /* ptr */,
   pOidSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOidAppend(util.toPointer(pOidDst), util.toPointer(pOidSrc));
+  return libsnmpapi_dll.SnmpUtilOidAppend!(util.toPointer(pOidDst), util.toPointer(pOidSrc));
 }
 
 export function SnmpUtilOidNCmp(
@@ -1756,27 +1840,27 @@ export function SnmpUtilOidNCmp(
   pOid2: Deno.PointerValue | Uint8Array /* ptr */,
   nSubIds: number /* u32 */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOidNCmp(util.toPointer(pOid1), util.toPointer(pOid2), nSubIds);
+  return libsnmpapi_dll.SnmpUtilOidNCmp!(util.toPointer(pOid1), util.toPointer(pOid2), nSubIds);
 }
 
 export function SnmpUtilOidCmp(
   pOid1: Deno.PointerValue | Uint8Array /* ptr */,
   pOid2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOidCmp(util.toPointer(pOid1), util.toPointer(pOid2));
+  return libsnmpapi_dll.SnmpUtilOidCmp!(util.toPointer(pOid1), util.toPointer(pOid2));
 }
 
 export function SnmpUtilOidFree(
   pOid: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilOidFree(util.toPointer(pOid));
+  return libsnmpapi_dll.SnmpUtilOidFree!(util.toPointer(pOid));
 }
 
 export function SnmpUtilOctetsCmp(
   pOctets1: Deno.PointerValue | Uint8Array /* ptr */,
   pOctets2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOctetsCmp(util.toPointer(pOctets1), util.toPointer(pOctets2));
+  return libsnmpapi_dll.SnmpUtilOctetsCmp!(util.toPointer(pOctets1), util.toPointer(pOctets2));
 }
 
 export function SnmpUtilOctetsNCmp(
@@ -1784,126 +1868,126 @@ export function SnmpUtilOctetsNCmp(
   pOctets2: Deno.PointerValue | Uint8Array /* ptr */,
   nChars: number /* u32 */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOctetsNCmp(util.toPointer(pOctets1), util.toPointer(pOctets2), nChars);
+  return libsnmpapi_dll.SnmpUtilOctetsNCmp!(util.toPointer(pOctets1), util.toPointer(pOctets2), nChars);
 }
 
 export function SnmpUtilOctetsCpy(
   pOctetsDst: Deno.PointerValue | Uint8Array /* ptr */,
   pOctetsSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilOctetsCpy(util.toPointer(pOctetsDst), util.toPointer(pOctetsSrc));
+  return libsnmpapi_dll.SnmpUtilOctetsCpy!(util.toPointer(pOctetsDst), util.toPointer(pOctetsSrc));
 }
 
 export function SnmpUtilOctetsFree(
   pOctets: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilOctetsFree(util.toPointer(pOctets));
+  return libsnmpapi_dll.SnmpUtilOctetsFree!(util.toPointer(pOctets));
 }
 
 export function SnmpUtilAsnAnyCpy(
   pAnyDst: Deno.PointerValue | Uint8Array /* ptr */,
   pAnySrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilAsnAnyCpy(util.toPointer(pAnyDst), util.toPointer(pAnySrc));
+  return libsnmpapi_dll.SnmpUtilAsnAnyCpy!(util.toPointer(pAnyDst), util.toPointer(pAnySrc));
 }
 
 export function SnmpUtilAsnAnyFree(
   pAny: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilAsnAnyFree(util.toPointer(pAny));
+  return libsnmpapi_dll.SnmpUtilAsnAnyFree!(util.toPointer(pAny));
 }
 
 export function SnmpUtilVarBindCpy(
   pVbDst: Deno.PointerValue | Uint8Array /* ptr */,
   pVbSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilVarBindCpy(util.toPointer(pVbDst), util.toPointer(pVbSrc));
+  return libsnmpapi_dll.SnmpUtilVarBindCpy!(util.toPointer(pVbDst), util.toPointer(pVbSrc));
 }
 
 export function SnmpUtilVarBindFree(
   pVb: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilVarBindFree(util.toPointer(pVb));
+  return libsnmpapi_dll.SnmpUtilVarBindFree!(util.toPointer(pVb));
 }
 
 export function SnmpUtilVarBindListCpy(
   pVblDst: Deno.PointerValue | Uint8Array /* ptr */,
   pVblSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libsnmpapi_dll.SnmpUtilVarBindListCpy(util.toPointer(pVblDst), util.toPointer(pVblSrc));
+  return libsnmpapi_dll.SnmpUtilVarBindListCpy!(util.toPointer(pVblDst), util.toPointer(pVblSrc));
 }
 
 export function SnmpUtilVarBindListFree(
   pVbl: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilVarBindListFree(util.toPointer(pVbl));
+  return libsnmpapi_dll.SnmpUtilVarBindListFree!(util.toPointer(pVbl));
 }
 
 export function SnmpUtilMemFree(
   pMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilMemFree(util.toPointer(pMem));
+  return libsnmpapi_dll.SnmpUtilMemFree!(util.toPointer(pMem));
 }
 
 export function SnmpUtilMemAlloc(
   nBytes: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libsnmpapi_dll.SnmpUtilMemAlloc(nBytes);
+  return libsnmpapi_dll.SnmpUtilMemAlloc!(nBytes);
 }
 
 export function SnmpUtilMemReAlloc(
   pMem: Deno.PointerValue | Uint8Array /* ptr */,
   nBytes: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libsnmpapi_dll.SnmpUtilMemReAlloc(util.toPointer(pMem), nBytes);
+  return libsnmpapi_dll.SnmpUtilMemReAlloc!(util.toPointer(pMem), nBytes);
 }
 
 export function SnmpUtilOidToA(
   Oid: Deno.PointerValue | Uint8Array /* ptr */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libsnmpapi_dll.SnmpUtilOidToA(util.toPointer(Oid)));
+  return util.pstrFromFfi(libsnmpapi_dll.SnmpUtilOidToA!(util.toPointer(Oid)));
 }
 
 export function SnmpUtilIdsToA(
   Ids: Deno.PointerValue | Uint8Array /* ptr */,
   IdLength: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libsnmpapi_dll.SnmpUtilIdsToA(util.toPointer(Ids), IdLength));
+  return util.pstrFromFfi(libsnmpapi_dll.SnmpUtilIdsToA!(util.toPointer(Ids), IdLength));
 }
 
 export function SnmpUtilPrintOid(
   Oid: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilPrintOid(util.toPointer(Oid));
+  return libsnmpapi_dll.SnmpUtilPrintOid!(util.toPointer(Oid));
 }
 
 export function SnmpUtilPrintAsnAny(
   pAny: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilPrintAsnAny(util.toPointer(pAny));
+  return libsnmpapi_dll.SnmpUtilPrintAsnAny!(util.toPointer(pAny));
 }
 
 export function SnmpSvcGetUptime(): number /* u32 */ {
-  return libsnmpapi_dll.SnmpSvcGetUptime();
+  return libsnmpapi_dll.SnmpSvcGetUptime!();
 }
 
 export function SnmpSvcSetLogLevel(
   nLogLevel: SNMP_LOG /* Windows.Win32.NetworkManagement.Snmp.SNMP_LOG */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpSvcSetLogLevel(nLogLevel);
+  return libsnmpapi_dll.SnmpSvcSetLogLevel!(nLogLevel);
 }
 
 export function SnmpSvcSetLogType(
   nLogType: SNMP_OUTPUT_LOG_TYPE /* Windows.Win32.NetworkManagement.Snmp.SNMP_OUTPUT_LOG_TYPE */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpSvcSetLogType(nLogType);
+  return libsnmpapi_dll.SnmpSvcSetLogType!(nLogType);
 }
 
 export function SnmpUtilDbgPrint(
   nLogLevel: SNMP_LOG /* Windows.Win32.NetworkManagement.Snmp.SNMP_LOG */,
   szFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libsnmpapi_dll.SnmpUtilDbgPrint(nLogLevel, util.pstrToFfi(szFormat));
+  return libsnmpapi_dll.SnmpUtilDbgPrint!(nLogLevel, util.pstrToFfi(szFormat));
 }
 
 export function SnmpMgrOpen(
@@ -1912,7 +1996,7 @@ export function SnmpMgrOpen(
   nTimeOut: number /* i32 */,
   nRetries: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libmgmtapi_dll.SnmpMgrOpen(util.pstrToFfi(lpAgentAddress), util.pstrToFfi(lpAgentCommunity), nTimeOut, nRetries);
+  return libmgmtapi_dll.SnmpMgrOpen!(util.pstrToFfi(lpAgentAddress), util.pstrToFfi(lpAgentCommunity), nTimeOut, nRetries);
 }
 
 export function SnmpMgrCtl(
@@ -1924,13 +2008,13 @@ export function SnmpMgrCtl(
   cbOUTBuffer: number /* u32 */,
   lpcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrCtl(util.toPointer(session), dwCtlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOUTBuffer), cbOUTBuffer, util.toPointer(lpcbBytesReturned)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrCtl!(util.toPointer(session), dwCtlCode, util.toPointer(lpvInBuffer), cbInBuffer, util.toPointer(lpvOUTBuffer), cbOUTBuffer, util.toPointer(lpcbBytesReturned)));
 }
 
 export function SnmpMgrClose(
   session: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrClose(util.toPointer(session)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrClose!(util.toPointer(session)));
 }
 
 export function SnmpMgrRequest(
@@ -1940,27 +2024,27 @@ export function SnmpMgrRequest(
   errorStatus: Deno.PointerValue | Uint8Array /* ptr */,
   errorIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libmgmtapi_dll.SnmpMgrRequest(util.toPointer(session), requestType, util.toPointer(variableBindings), util.toPointer(errorStatus), util.toPointer(errorIndex));
+  return libmgmtapi_dll.SnmpMgrRequest!(util.toPointer(session), requestType, util.toPointer(variableBindings), util.toPointer(errorStatus), util.toPointer(errorIndex));
 }
 
 export function SnmpMgrStrToOid(
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   oid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrStrToOid(util.pstrToFfi(string), util.toPointer(oid)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrStrToOid!(util.pstrToFfi(string), util.toPointer(oid)));
 }
 
 export function SnmpMgrOidToStr(
   oid: Deno.PointerValue | Uint8Array /* ptr */,
   string: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrOidToStr(util.toPointer(oid), util.toPointer(string)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrOidToStr!(util.toPointer(oid), util.toPointer(string)));
 }
 
 export function SnmpMgrTrapListen(
   phTrapAvailable: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrTrapListen(util.toPointer(phTrapAvailable)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrTrapListen!(util.toPointer(phTrapAvailable)));
 }
 
 export function SnmpMgrGetTrap(
@@ -1971,7 +2055,7 @@ export function SnmpMgrGetTrap(
   timeStamp: Deno.PointerValue | Uint8Array /* ptr */,
   variableBindings: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrGetTrap(util.toPointer(enterprise), util.toPointer(IPAddress), util.toPointer(genericTrap), util.toPointer(specificTrap), util.toPointer(timeStamp), util.toPointer(variableBindings)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrGetTrap!(util.toPointer(enterprise), util.toPointer(IPAddress), util.toPointer(genericTrap), util.toPointer(specificTrap), util.toPointer(timeStamp), util.toPointer(variableBindings)));
 }
 
 export function SnmpMgrGetTrapEx(
@@ -1984,31 +2068,31 @@ export function SnmpMgrGetTrapEx(
   timeStamp: Deno.PointerValue | Uint8Array /* ptr */,
   variableBindings: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrGetTrapEx(util.toPointer(enterprise), util.toPointer(agentAddress), util.toPointer(sourceAddress), util.toPointer(genericTrap), util.toPointer(specificTrap), util.toPointer(community), util.toPointer(timeStamp), util.toPointer(variableBindings)));
+  return util.boolFromFfi(libmgmtapi_dll.SnmpMgrGetTrapEx!(util.toPointer(enterprise), util.toPointer(agentAddress), util.toPointer(sourceAddress), util.toPointer(genericTrap), util.toPointer(specificTrap), util.toPointer(community), util.toPointer(timeStamp), util.toPointer(variableBindings)));
 }
 
 export function SnmpGetTranslateMode(
   nTranslateMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetTranslateMode(util.toPointer(nTranslateMode));
+  return libwsnmp32_dll.SnmpGetTranslateMode!(util.toPointer(nTranslateMode));
 }
 
 export function SnmpSetTranslateMode(
   nTranslateMode: SNMP_API_TRANSLATE_MODE /* Windows.Win32.NetworkManagement.Snmp.SNMP_API_TRANSLATE_MODE */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetTranslateMode(nTranslateMode);
+  return libwsnmp32_dll.SnmpSetTranslateMode!(nTranslateMode);
 }
 
 export function SnmpGetRetransmitMode(
   nRetransmitMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetRetransmitMode(util.toPointer(nRetransmitMode));
+  return libwsnmp32_dll.SnmpGetRetransmitMode!(util.toPointer(nRetransmitMode));
 }
 
 export function SnmpSetRetransmitMode(
   nRetransmitMode: SNMP_STATUS /* Windows.Win32.NetworkManagement.Snmp.SNMP_STATUS */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetRetransmitMode(nRetransmitMode);
+  return libwsnmp32_dll.SnmpSetRetransmitMode!(nRetransmitMode);
 }
 
 export function SnmpGetTimeout(
@@ -2016,14 +2100,14 @@ export function SnmpGetTimeout(
   nPolicyTimeout: Deno.PointerValue | Uint8Array /* ptr */,
   nActualTimeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetTimeout(hEntity, util.toPointer(nPolicyTimeout), util.toPointer(nActualTimeout));
+  return libwsnmp32_dll.SnmpGetTimeout!(hEntity, util.toPointer(nPolicyTimeout), util.toPointer(nActualTimeout));
 }
 
 export function SnmpSetTimeout(
   hEntity: bigint | number /* isize */,
   nPolicyTimeout: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetTimeout(hEntity, nPolicyTimeout);
+  return libwsnmp32_dll.SnmpSetTimeout!(hEntity, nPolicyTimeout);
 }
 
 export function SnmpGetRetry(
@@ -2031,20 +2115,20 @@ export function SnmpGetRetry(
   nPolicyRetry: Deno.PointerValue | Uint8Array /* ptr */,
   nActualRetry: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetRetry(hEntity, util.toPointer(nPolicyRetry), util.toPointer(nActualRetry));
+  return libwsnmp32_dll.SnmpGetRetry!(hEntity, util.toPointer(nPolicyRetry), util.toPointer(nActualRetry));
 }
 
 export function SnmpSetRetry(
   hEntity: bigint | number /* isize */,
   nPolicyRetry: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetRetry(hEntity, nPolicyRetry);
+  return libwsnmp32_dll.SnmpSetRetry!(hEntity, nPolicyRetry);
 }
 
 export function SnmpGetVendorInfo(
   vendorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetVendorInfo(util.toPointer(vendorInfo));
+  return libwsnmp32_dll.SnmpGetVendorInfo!(util.toPointer(vendorInfo));
 }
 
 export function SnmpStartup(
@@ -2054,24 +2138,24 @@ export function SnmpStartup(
   nTranslateMode: Deno.PointerValue | Uint8Array /* ptr */,
   nRetransmitMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpStartup(util.toPointer(nMajorVersion), util.toPointer(nMinorVersion), util.toPointer(nLevel), util.toPointer(nTranslateMode), util.toPointer(nRetransmitMode));
+  return libwsnmp32_dll.SnmpStartup!(util.toPointer(nMajorVersion), util.toPointer(nMinorVersion), util.toPointer(nLevel), util.toPointer(nTranslateMode), util.toPointer(nRetransmitMode));
 }
 
 export function SnmpCleanup(): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCleanup();
+  return libwsnmp32_dll.SnmpCleanup!();
 }
 
 export function SnmpOpen(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   wMsg: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpOpen((hWnd), wMsg);
+  return libwsnmp32_dll.SnmpOpen!((hWnd), wMsg);
 }
 
 export function SnmpClose(
   session: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpClose(session);
+  return libwsnmp32_dll.SnmpClose!(session);
 }
 
 export function SnmpSendMsg(
@@ -2081,7 +2165,7 @@ export function SnmpSendMsg(
   context: bigint | number /* isize */,
   PDU: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSendMsg(session, srcEntity, dstEntity, context, PDU);
+  return libwsnmp32_dll.SnmpSendMsg!(session, srcEntity, dstEntity, context, PDU);
 }
 
 export function SnmpRecvMsg(
@@ -2091,7 +2175,7 @@ export function SnmpRecvMsg(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   PDU: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpRecvMsg(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(PDU));
+  return libwsnmp32_dll.SnmpRecvMsg!(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(PDU));
 }
 
 export function SnmpRegister(
@@ -2102,7 +2186,7 @@ export function SnmpRegister(
   notification: Deno.PointerValue | Uint8Array /* ptr */,
   state: SNMP_STATUS /* Windows.Win32.NetworkManagement.Snmp.SNMP_STATUS */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpRegister(session, srcEntity, dstEntity, context, util.toPointer(notification), state);
+  return libwsnmp32_dll.SnmpRegister!(session, srcEntity, dstEntity, context, util.toPointer(notification), state);
 }
 
 export function SnmpCreateSession(
@@ -2111,14 +2195,14 @@ export function SnmpCreateSession(
   fCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Snmp.SNMPAPI_CALLBACK */,
   lpClientData: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpCreateSession((hWnd), wMsg, util.toPointer(fCallBack), util.toPointer(lpClientData));
+  return libwsnmp32_dll.SnmpCreateSession!((hWnd), wMsg, util.toPointer(fCallBack), util.toPointer(lpClientData));
 }
 
 export function SnmpListen(
   hEntity: bigint | number /* isize */,
   lStatus: SNMP_STATUS /* Windows.Win32.NetworkManagement.Snmp.SNMP_STATUS */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpListen(hEntity, lStatus);
+  return libwsnmp32_dll.SnmpListen!(hEntity, lStatus);
 }
 
 export function SnmpListenEx(
@@ -2126,14 +2210,14 @@ export function SnmpListenEx(
   lStatus: number /* u32 */,
   nUseEntityAddr: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpListenEx(hEntity, lStatus, nUseEntityAddr);
+  return libwsnmp32_dll.SnmpListenEx!(hEntity, lStatus, nUseEntityAddr);
 }
 
 export function SnmpCancelMsg(
   session: bigint | number /* isize */,
   reqId: number /* i32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCancelMsg(session, reqId);
+  return libwsnmp32_dll.SnmpCancelMsg!(session, reqId);
 }
 
 export function SnmpStartupEx(
@@ -2143,18 +2227,18 @@ export function SnmpStartupEx(
   nTranslateMode: Deno.PointerValue | Uint8Array /* ptr */,
   nRetransmitMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpStartupEx(util.toPointer(nMajorVersion), util.toPointer(nMinorVersion), util.toPointer(nLevel), util.toPointer(nTranslateMode), util.toPointer(nRetransmitMode));
+  return libwsnmp32_dll.SnmpStartupEx!(util.toPointer(nMajorVersion), util.toPointer(nMinorVersion), util.toPointer(nLevel), util.toPointer(nTranslateMode), util.toPointer(nRetransmitMode));
 }
 
 export function SnmpCleanupEx(): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCleanupEx();
+  return libwsnmp32_dll.SnmpCleanupEx!();
 }
 
 export function SnmpStrToEntity(
   session: bigint | number /* isize */,
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpStrToEntity(session, util.pstrToFfi(string));
+  return libwsnmp32_dll.SnmpStrToEntity!(session, util.pstrToFfi(string));
 }
 
 export function SnmpEntityToStr(
@@ -2162,40 +2246,40 @@ export function SnmpEntityToStr(
   size: number /* u32 */,
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpEntityToStr(entity, size, util.pstrToFfi(string));
+  return libwsnmp32_dll.SnmpEntityToStr!(entity, size, util.pstrToFfi(string));
 }
 
 export function SnmpFreeEntity(
   entity: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeEntity(entity);
+  return libwsnmp32_dll.SnmpFreeEntity!(entity);
 }
 
 export function SnmpStrToContext(
   session: bigint | number /* isize */,
   string: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpStrToContext(session, util.toPointer(string));
+  return libwsnmp32_dll.SnmpStrToContext!(session, util.toPointer(string));
 }
 
 export function SnmpContextToStr(
   context: bigint | number /* isize */,
   string: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpContextToStr(context, util.toPointer(string));
+  return libwsnmp32_dll.SnmpContextToStr!(context, util.toPointer(string));
 }
 
 export function SnmpFreeContext(
   context: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeContext(context);
+  return libwsnmp32_dll.SnmpFreeContext!(context);
 }
 
 export function SnmpSetPort(
   hEntity: bigint | number /* isize */,
   nPort: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetPort(hEntity, nPort);
+  return libwsnmp32_dll.SnmpSetPort!(hEntity, nPort);
 }
 
 export function SnmpCreatePdu(
@@ -2206,7 +2290,7 @@ export function SnmpCreatePdu(
   error_index: number /* i32 */,
   varbindlist: bigint | number /* isize */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpCreatePdu(session, PDU_type, request_id, error_status, error_index, varbindlist);
+  return libwsnmp32_dll.SnmpCreatePdu!(session, PDU_type, request_id, error_status, error_index, varbindlist);
 }
 
 export function SnmpGetPduData(
@@ -2217,7 +2301,7 @@ export function SnmpGetPduData(
   error_index: Deno.PointerValue | Uint8Array /* ptr */,
   varbindlist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetPduData(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(error_status), util.toPointer(error_index), util.toPointer(varbindlist));
+  return libwsnmp32_dll.SnmpGetPduData!(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(error_status), util.toPointer(error_index), util.toPointer(varbindlist));
 }
 
 export function SnmpSetPduData(
@@ -2228,20 +2312,20 @@ export function SnmpSetPduData(
   max_repetitions: Deno.PointerValue | Uint8Array /* ptr */,
   varbindlist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetPduData(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(non_repeaters), util.toPointer(max_repetitions), util.toPointer(varbindlist));
+  return libwsnmp32_dll.SnmpSetPduData!(PDU, util.toPointer(PDU_type), util.toPointer(request_id), util.toPointer(non_repeaters), util.toPointer(max_repetitions), util.toPointer(varbindlist));
 }
 
 export function SnmpDuplicatePdu(
   session: bigint | number /* isize */,
   PDU: bigint | number /* isize */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpDuplicatePdu(session, PDU);
+  return libwsnmp32_dll.SnmpDuplicatePdu!(session, PDU);
 }
 
 export function SnmpFreePdu(
   PDU: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreePdu(PDU);
+  return libwsnmp32_dll.SnmpFreePdu!(PDU);
 }
 
 export function SnmpCreateVbl(
@@ -2249,26 +2333,26 @@ export function SnmpCreateVbl(
   name: Deno.PointerValue | Uint8Array /* ptr */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpCreateVbl(session, util.toPointer(name), util.toPointer(value));
+  return libwsnmp32_dll.SnmpCreateVbl!(session, util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpDuplicateVbl(
   session: bigint | number /* isize */,
   vbl: bigint | number /* isize */,
 ): bigint | number /* isize */ {
-  return libwsnmp32_dll.SnmpDuplicateVbl(session, vbl);
+  return libwsnmp32_dll.SnmpDuplicateVbl!(session, vbl);
 }
 
 export function SnmpFreeVbl(
   vbl: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeVbl(vbl);
+  return libwsnmp32_dll.SnmpFreeVbl!(vbl);
 }
 
 export function SnmpCountVbl(
   vbl: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpCountVbl(vbl);
+  return libwsnmp32_dll.SnmpCountVbl!(vbl);
 }
 
 export function SnmpGetVb(
@@ -2277,7 +2361,7 @@ export function SnmpGetVb(
   name: Deno.PointerValue | Uint8Array /* ptr */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetVb(vbl, index, util.toPointer(name), util.toPointer(value));
+  return libwsnmp32_dll.SnmpGetVb!(vbl, index, util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpSetVb(
@@ -2286,27 +2370,27 @@ export function SnmpSetVb(
   name: Deno.PointerValue | Uint8Array /* ptr */,
   value: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpSetVb(vbl, index, util.toPointer(name), util.toPointer(value));
+  return libwsnmp32_dll.SnmpSetVb!(vbl, index, util.toPointer(name), util.toPointer(value));
 }
 
 export function SnmpDeleteVb(
   vbl: bigint | number /* isize */,
   index: number /* u32 */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpDeleteVb(vbl, index);
+  return libwsnmp32_dll.SnmpDeleteVb!(vbl, index);
 }
 
 export function SnmpGetLastError(
   session: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpGetLastError(session);
+  return libwsnmp32_dll.SnmpGetLastError!(session);
 }
 
 export function SnmpStrToOid(
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dstOID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpStrToOid(util.pstrToFfi(string), util.toPointer(dstOID));
+  return libwsnmp32_dll.SnmpStrToOid!(util.pstrToFfi(string), util.toPointer(dstOID));
 }
 
 export function SnmpOidToStr(
@@ -2314,14 +2398,14 @@ export function SnmpOidToStr(
   size: number /* u32 */,
   string: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpOidToStr(util.toPointer(srcOID), size, util.pstrToFfi(string));
+  return libwsnmp32_dll.SnmpOidToStr!(util.toPointer(srcOID), size, util.pstrToFfi(string));
 }
 
 export function SnmpOidCopy(
   srcOID: Deno.PointerValue | Uint8Array /* ptr */,
   dstOID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpOidCopy(util.toPointer(srcOID), util.toPointer(dstOID));
+  return libwsnmp32_dll.SnmpOidCopy!(util.toPointer(srcOID), util.toPointer(dstOID));
 }
 
 export function SnmpOidCompare(
@@ -2330,7 +2414,7 @@ export function SnmpOidCompare(
   maxlen: number /* u32 */,
   result: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpOidCompare(util.toPointer(xOID), util.toPointer(yOID), maxlen, util.toPointer(result));
+  return libwsnmp32_dll.SnmpOidCompare!(util.toPointer(xOID), util.toPointer(yOID), maxlen, util.toPointer(result));
 }
 
 export function SnmpEncodeMsg(
@@ -2341,7 +2425,7 @@ export function SnmpEncodeMsg(
   pdu: bigint | number /* isize */,
   msgBufDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpEncodeMsg(session, srcEntity, dstEntity, context, pdu, util.toPointer(msgBufDesc));
+  return libwsnmp32_dll.SnmpEncodeMsg!(session, srcEntity, dstEntity, context, pdu, util.toPointer(msgBufDesc));
 }
 
 export function SnmpDecodeMsg(
@@ -2352,13 +2436,13 @@ export function SnmpDecodeMsg(
   pdu: Deno.PointerValue | Uint8Array /* ptr */,
   msgBufDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpDecodeMsg(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(pdu), util.toPointer(msgBufDesc));
+  return libwsnmp32_dll.SnmpDecodeMsg!(session, util.toPointer(srcEntity), util.toPointer(dstEntity), util.toPointer(context), util.toPointer(pdu), util.toPointer(msgBufDesc));
 }
 
 export function SnmpFreeDescriptor(
   syntax: number /* u32 */,
   descriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwsnmp32_dll.SnmpFreeDescriptor(syntax, util.toPointer(descriptor));
+  return libwsnmp32_dll.SnmpFreeDescriptor!(syntax, util.toPointer(descriptor));
 }
 

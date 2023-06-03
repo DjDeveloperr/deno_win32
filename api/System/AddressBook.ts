@@ -7069,6 +7069,7 @@ try {
     CreateTable: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7078,226 +7079,282 @@ try {
     CreateIProp: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MAPIInitIdle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MAPIDeinitIdle: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     FtgRegisterIdleRoutine: {
       parameters: ["pointer", "pointer", "i16", "u32", "u16"],
       result: "pointer",
+      optional: true,
     },
     DeregisterIdleRoutine: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EnableIdleRoutine: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     ChangeIdleRoutine: {
       parameters: ["pointer", "pointer", "pointer", "i16", "u32", "u16", "u16"],
       result: "void",
+      optional: true,
     },
     MAPIGetDefaultMalloc: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     OpenStreamOnFile: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropCopyMore: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UlPropSize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FEqualNames: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FPropContainsProp: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     FPropCompareProp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     LPropCompareProp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     HrAddColumns: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HrAddColumnsEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "isize"],
       result: "pointer",
+      optional: true,
     },
     HrAllocAdviseSink: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HrThisThreadAdviseSink: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HrDispatchNotifications: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     BuildDisplayTable: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ScCountNotifications: {
       parameters: ["i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScCopyNotifications: {
       parameters: ["i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScRelocNotifications: {
       parameters: ["i32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScCountProps: {
       parameters: ["i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LpValFindProp: {
       parameters: ["u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ScCopyProps: {
       parameters: ["i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScRelocProps: {
       parameters: ["i32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScDupPropset: {
       parameters: ["i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UlAddRef: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     UlRelease: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     HrGetOneProp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HrSetOneProp: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FPropExists: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PpropFindProp: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     FreePadrlist: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     FreeProws: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     HrQueryAllRows: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SzFindCh: {
       parameters: ["pointer", "u16"],
       result: "pointer",
+      optional: true,
     },
     SzFindLastCh: {
       parameters: ["pointer", "u16"],
       result: "pointer",
+      optional: true,
     },
     SzFindSz: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UFromSz: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ScUNCFromLocalPath: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ScLocalPathFromUNC: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     FtAddFt: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FtMulDwDw: {
       parameters: ["u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     FtMulDw: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FtSubFt: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FtNegFt: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ScCreateConversationIndex: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WrapStoreEntryID: {
       parameters: ["u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RTFSync: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WrapCompressedRTFStream: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HrIStorageFromStream: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ScInitMapiUtil: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     DeinitMapiUtil: {
       parameters: [],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7315,7 +7372,7 @@ export function CreateTable(
   lpSPropTagArrayColumns: Deno.PointerValue | Uint8Array /* ptr */,
   lppTableData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return librtm_dll.CreateTable(util.toPointer(lpInterface), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpvReserved), ulTableType, ulPropTagIndexColumn, util.toPointer(lpSPropTagArrayColumns), util.toPointer(lppTableData));
+  return librtm_dll.CreateTable!(util.toPointer(lpInterface), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpvReserved), ulTableType, ulPropTagIndexColumn, util.toPointer(lpSPropTagArrayColumns), util.toPointer(lppTableData));
 }
 
 export function CreateIProp(
@@ -7326,17 +7383,17 @@ export function CreateIProp(
   lpvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   lppPropData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.CreateIProp(util.toPointer(lpInterface), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpvReserved), util.toPointer(lppPropData));
+  return libMAPI32_dll.CreateIProp!(util.toPointer(lpInterface), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpvReserved), util.toPointer(lppPropData));
 }
 
 export function MAPIInitIdle(
   lpvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.MAPIInitIdle(util.toPointer(lpvReserved));
+  return libMAPI32_dll.MAPIInitIdle!(util.toPointer(lpvReserved));
 }
 
 export function MAPIDeinitIdle(): void /* void */ {
-  return libMAPI32_dll.MAPIDeinitIdle();
+  return libMAPI32_dll.MAPIDeinitIdle!();
 }
 
 export function FtgRegisterIdleRoutine(
@@ -7346,20 +7403,20 @@ export function FtgRegisterIdleRoutine(
   csecIdle: number /* u32 */,
   iroIdle: number /* u16 */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.FtgRegisterIdleRoutine(util.toPointer(lpfnIdle), util.toPointer(lpvIdleParam), priIdle, csecIdle, iroIdle);
+  return libMAPI32_dll.FtgRegisterIdleRoutine!(util.toPointer(lpfnIdle), util.toPointer(lpvIdleParam), priIdle, csecIdle, iroIdle);
 }
 
 export function DeregisterIdleRoutine(
   ftg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMAPI32_dll.DeregisterIdleRoutine(util.toPointer(ftg));
+  return libMAPI32_dll.DeregisterIdleRoutine!(util.toPointer(ftg));
 }
 
 export function EnableIdleRoutine(
   ftg: Deno.PointerValue | Uint8Array /* ptr */,
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libMAPI32_dll.EnableIdleRoutine(util.toPointer(ftg), util.boolToFfi(fEnable));
+  return libMAPI32_dll.EnableIdleRoutine!(util.toPointer(ftg), util.boolToFfi(fEnable));
 }
 
 export function ChangeIdleRoutine(
@@ -7371,11 +7428,11 @@ export function ChangeIdleRoutine(
   iroIdle: number /* u16 */,
   ircIdle: number /* u16 */,
 ): void /* void */ {
-  return libMAPI32_dll.ChangeIdleRoutine(util.toPointer(ftg), util.toPointer(lpfnIdle), util.toPointer(lpvIdleParam), priIdle, csecIdle, iroIdle, ircIdle);
+  return libMAPI32_dll.ChangeIdleRoutine!(util.toPointer(ftg), util.toPointer(lpfnIdle), util.toPointer(lpvIdleParam), priIdle, csecIdle, iroIdle, ircIdle);
 }
 
 export function MAPIGetDefaultMalloc(): Deno.PointerValue /* Windows.Win32.System.Com.IMalloc */ {
-  return libMAPI32_dll.MAPIGetDefaultMalloc();
+  return libMAPI32_dll.MAPIGetDefaultMalloc!();
 }
 
 export function OpenStreamOnFile(
@@ -7386,7 +7443,7 @@ export function OpenStreamOnFile(
   lpszPrefix: Deno.PointerValue | Uint8Array /* ptr */,
   lppStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.OpenStreamOnFile(util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer), ulFlags, util.toPointer(lpszFileName), util.toPointer(lpszPrefix), util.toPointer(lppStream));
+  return libMAPI32_dll.OpenStreamOnFile!(util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer), ulFlags, util.toPointer(lpszFileName), util.toPointer(lpszPrefix), util.toPointer(lppStream));
 }
 
 export function PropCopyMore(
@@ -7395,20 +7452,20 @@ export function PropCopyMore(
   lpfAllocMore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEMORE */,
   lpvObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.PropCopyMore(util.toPointer(lpSPropValueDest), util.toPointer(lpSPropValueSrc), util.toPointer(lpfAllocMore), util.toPointer(lpvObject));
+  return libMAPI32_dll.PropCopyMore!(util.toPointer(lpSPropValueDest), util.toPointer(lpSPropValueSrc), util.toPointer(lpfAllocMore), util.toPointer(lpvObject));
 }
 
 export function UlPropSize(
   lpSPropValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32_dll.UlPropSize(util.toPointer(lpSPropValue));
+  return libMAPI32_dll.UlPropSize!(util.toPointer(lpSPropValue));
 }
 
 export function FEqualNames(
   lpName1: Deno.PointerValue | Uint8Array /* ptr */,
   lpName2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAPI32_dll.FEqualNames(util.toPointer(lpName1), util.toPointer(lpName2)));
+  return util.boolFromFfi(libMAPI32_dll.FEqualNames!(util.toPointer(lpName1), util.toPointer(lpName2)));
 }
 
 export function FPropContainsProp(
@@ -7416,7 +7473,7 @@ export function FPropContainsProp(
   lpSPropValueSrc: Deno.PointerValue | Uint8Array /* ptr */,
   ulFuzzyLevel: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAPI32_dll.FPropContainsProp(util.toPointer(lpSPropValueDst), util.toPointer(lpSPropValueSrc), ulFuzzyLevel));
+  return util.boolFromFfi(libMAPI32_dll.FPropContainsProp!(util.toPointer(lpSPropValueDst), util.toPointer(lpSPropValueSrc), ulFuzzyLevel));
 }
 
 export function FPropCompareProp(
@@ -7424,14 +7481,14 @@ export function FPropCompareProp(
   ulRelOp: number /* u32 */,
   lpSPropValue2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAPI32_dll.FPropCompareProp(util.toPointer(lpSPropValue1), ulRelOp, util.toPointer(lpSPropValue2)));
+  return util.boolFromFfi(libMAPI32_dll.FPropCompareProp!(util.toPointer(lpSPropValue1), ulRelOp, util.toPointer(lpSPropValue2)));
 }
 
 export function LPropCompareProp(
   lpSPropValueA: Deno.PointerValue | Uint8Array /* ptr */,
   lpSPropValueB: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.LPropCompareProp(util.toPointer(lpSPropValueA), util.toPointer(lpSPropValueB));
+  return libMAPI32_dll.LPropCompareProp!(util.toPointer(lpSPropValueA), util.toPointer(lpSPropValueB));
 }
 
 export function HrAddColumns(
@@ -7440,7 +7497,7 @@ export function HrAddColumns(
   lpAllocateBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEBUFFER */,
   lpFreeBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPFREEBUFFER */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrAddColumns(util.toPointer(lptbl), util.toPointer(lpproptagColumnsNew), util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer));
+  return libMAPI32_dll.HrAddColumns!(util.toPointer(lptbl), util.toPointer(lpproptagColumnsNew), util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer));
 }
 
 export function HrAddColumnsEx(
@@ -7450,7 +7507,7 @@ export function HrAddColumnsEx(
   lpFreeBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPFREEBUFFER */,
   lpfnFilterColumns: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrAddColumnsEx(util.toPointer(lptbl), util.toPointer(lpproptagColumnsNew), util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer), lpfnFilterColumns);
+  return libMAPI32_dll.HrAddColumnsEx!(util.toPointer(lptbl), util.toPointer(lpproptagColumnsNew), util.toPointer(lpAllocateBuffer), util.toPointer(lpFreeBuffer), lpfnFilterColumns);
 }
 
 export function HrAllocAdviseSink(
@@ -7458,20 +7515,20 @@ export function HrAllocAdviseSink(
   lpvContext: Deno.PointerValue | Uint8Array /* ptr */,
   lppAdviseSink: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrAllocAdviseSink(util.toPointer(lpfnCallback), util.toPointer(lpvContext), util.toPointer(lppAdviseSink));
+  return libMAPI32_dll.HrAllocAdviseSink!(util.toPointer(lpfnCallback), util.toPointer(lpvContext), util.toPointer(lppAdviseSink));
 }
 
 export function HrThisThreadAdviseSink(
   lpAdviseSink: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.IMAPIAdviseSink */,
   lppAdviseSink: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrThisThreadAdviseSink(util.toPointer(lpAdviseSink), util.toPointer(lppAdviseSink));
+  return libMAPI32_dll.HrThisThreadAdviseSink!(util.toPointer(lpAdviseSink), util.toPointer(lppAdviseSink));
 }
 
 export function HrDispatchNotifications(
   ulFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrDispatchNotifications(ulFlags);
+  return libMAPI32_dll.HrDispatchNotifications!(ulFlags);
 }
 
 export function BuildDisplayTable(
@@ -7486,7 +7543,7 @@ export function BuildDisplayTable(
   lppTable: Deno.PointerValue | Uint8Array /* ptr */,
   lppTblData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.BuildDisplayTable(util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(hInstance), cPages, util.toPointer(lpPage), ulFlags, util.toPointer(lppTable), util.toPointer(lppTblData));
+  return libMAPI32_dll.BuildDisplayTable!(util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(hInstance), cPages, util.toPointer(lpPage), ulFlags, util.toPointer(lppTable), util.toPointer(lppTblData));
 }
 
 export function ScCountNotifications(
@@ -7494,7 +7551,7 @@ export function ScCountNotifications(
   lpNotifications: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScCountNotifications(cNotifications, util.toPointer(lpNotifications), util.toPointer(lpcb));
+  return libMAPI32_dll.ScCountNotifications!(cNotifications, util.toPointer(lpNotifications), util.toPointer(lpcb));
 }
 
 export function ScCopyNotifications(
@@ -7503,7 +7560,7 @@ export function ScCopyNotifications(
   lpvDst: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScCopyNotifications(cNotification, util.toPointer(lpNotifications), util.toPointer(lpvDst), util.toPointer(lpcb));
+  return libMAPI32_dll.ScCopyNotifications!(cNotification, util.toPointer(lpNotifications), util.toPointer(lpvDst), util.toPointer(lpcb));
 }
 
 export function ScRelocNotifications(
@@ -7513,7 +7570,7 @@ export function ScRelocNotifications(
   lpvBaseNew: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScRelocNotifications(cNotification, util.toPointer(lpNotifications), util.toPointer(lpvBaseOld), util.toPointer(lpvBaseNew), util.toPointer(lpcb));
+  return libMAPI32_dll.ScRelocNotifications!(cNotification, util.toPointer(lpNotifications), util.toPointer(lpvBaseOld), util.toPointer(lpvBaseNew), util.toPointer(lpcb));
 }
 
 export function ScCountProps(
@@ -7521,7 +7578,7 @@ export function ScCountProps(
   lpPropArray: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScCountProps(cValues, util.toPointer(lpPropArray), util.toPointer(lpcb));
+  return libMAPI32_dll.ScCountProps!(cValues, util.toPointer(lpPropArray), util.toPointer(lpcb));
 }
 
 export function LpValFindProp(
@@ -7529,7 +7586,7 @@ export function LpValFindProp(
   cValues: number /* u32 */,
   lpPropArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.LpValFindProp(ulPropTag, cValues, util.toPointer(lpPropArray));
+  return libMAPI32_dll.LpValFindProp!(ulPropTag, cValues, util.toPointer(lpPropArray));
 }
 
 export function ScCopyProps(
@@ -7538,7 +7595,7 @@ export function ScCopyProps(
   lpvDst: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScCopyProps(cValues, util.toPointer(lpPropArray), util.toPointer(lpvDst), util.toPointer(lpcb));
+  return libMAPI32_dll.ScCopyProps!(cValues, util.toPointer(lpPropArray), util.toPointer(lpvDst), util.toPointer(lpcb));
 }
 
 export function ScRelocProps(
@@ -7548,7 +7605,7 @@ export function ScRelocProps(
   lpvBaseNew: Deno.PointerValue | Uint8Array /* ptr */,
   lpcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScRelocProps(cValues, util.toPointer(lpPropArray), util.toPointer(lpvBaseOld), util.toPointer(lpvBaseNew), util.toPointer(lpcb));
+  return libMAPI32_dll.ScRelocProps!(cValues, util.toPointer(lpPropArray), util.toPointer(lpvBaseOld), util.toPointer(lpvBaseNew), util.toPointer(lpcb));
 }
 
 export function ScDupPropset(
@@ -7557,19 +7614,19 @@ export function ScDupPropset(
   lpAllocateBuffer: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.LPALLOCATEBUFFER */,
   lppPropArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScDupPropset(cValues, util.toPointer(lpPropArray), util.toPointer(lpAllocateBuffer), util.toPointer(lppPropArray));
+  return libMAPI32_dll.ScDupPropset!(cValues, util.toPointer(lpPropArray), util.toPointer(lpAllocateBuffer), util.toPointer(lppPropArray));
 }
 
 export function UlAddRef(
   lpunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32_dll.UlAddRef(util.toPointer(lpunk));
+  return libMAPI32_dll.UlAddRef!(util.toPointer(lpunk));
 }
 
 export function UlRelease(
   lpunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32_dll.UlRelease(util.toPointer(lpunk));
+  return libMAPI32_dll.UlRelease!(util.toPointer(lpunk));
 }
 
 export function HrGetOneProp(
@@ -7577,21 +7634,21 @@ export function HrGetOneProp(
   ulPropTag: number /* u32 */,
   lppProp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrGetOneProp(util.toPointer(lpMapiProp), ulPropTag, util.toPointer(lppProp));
+  return libMAPI32_dll.HrGetOneProp!(util.toPointer(lpMapiProp), ulPropTag, util.toPointer(lppProp));
 }
 
 export function HrSetOneProp(
   lpMapiProp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.IMAPIProp */,
   lpProp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrSetOneProp(util.toPointer(lpMapiProp), util.toPointer(lpProp));
+  return libMAPI32_dll.HrSetOneProp!(util.toPointer(lpMapiProp), util.toPointer(lpProp));
 }
 
 export function FPropExists(
   lpMapiProp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.AddressBook.IMAPIProp */,
   ulPropTag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMAPI32_dll.FPropExists(util.toPointer(lpMapiProp), ulPropTag));
+  return util.boolFromFfi(libMAPI32_dll.FPropExists!(util.toPointer(lpMapiProp), ulPropTag));
 }
 
 export function PpropFindProp(
@@ -7599,19 +7656,19 @@ export function PpropFindProp(
   cValues: number /* u32 */,
   ulPropTag: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.PpropFindProp(util.toPointer(lpPropArray), cValues, ulPropTag);
+  return libMAPI32_dll.PpropFindProp!(util.toPointer(lpPropArray), cValues, ulPropTag);
 }
 
 export function FreePadrlist(
   lpAdrlist: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMAPI32_dll.FreePadrlist(util.toPointer(lpAdrlist));
+  return libMAPI32_dll.FreePadrlist!(util.toPointer(lpAdrlist));
 }
 
 export function FreeProws(
   lpRows: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMAPI32_dll.FreeProws(util.toPointer(lpRows));
+  return libMAPI32_dll.FreeProws!(util.toPointer(lpRows));
 }
 
 export function HrQueryAllRows(
@@ -7622,34 +7679,34 @@ export function HrQueryAllRows(
   crowsMax: number /* i32 */,
   lppRows: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrQueryAllRows(util.toPointer(lpTable), util.toPointer(lpPropTags), util.toPointer(lpRestriction), util.toPointer(lpSortOrderSet), crowsMax, util.toPointer(lppRows));
+  return libMAPI32_dll.HrQueryAllRows!(util.toPointer(lpTable), util.toPointer(lpPropTags), util.toPointer(lpRestriction), util.toPointer(lpSortOrderSet), crowsMax, util.toPointer(lppRows));
 }
 
 export function SzFindCh(
   lpsz: Deno.PointerValue | Uint8Array /* ptr */,
   ch: number /* u16 */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.SzFindCh(util.toPointer(lpsz), ch);
+  return libMAPI32_dll.SzFindCh!(util.toPointer(lpsz), ch);
 }
 
 export function SzFindLastCh(
   lpsz: Deno.PointerValue | Uint8Array /* ptr */,
   ch: number /* u16 */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.SzFindLastCh(util.toPointer(lpsz), ch);
+  return libMAPI32_dll.SzFindLastCh!(util.toPointer(lpsz), ch);
 }
 
 export function SzFindSz(
   lpsz: Deno.PointerValue | Uint8Array /* ptr */,
   lpszKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libMAPI32_dll.SzFindSz(util.toPointer(lpsz), util.toPointer(lpszKey));
+  return libMAPI32_dll.SzFindSz!(util.toPointer(lpsz), util.toPointer(lpszKey));
 }
 
 export function UFromSz(
   lpsz: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32_dll.UFromSz(util.toPointer(lpsz));
+  return libMAPI32_dll.UFromSz!(util.toPointer(lpsz));
 }
 
 export function ScUNCFromLocalPath(
@@ -7657,7 +7714,7 @@ export function ScUNCFromLocalPath(
   lpszUNC: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchUNC: number /* u32 */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScUNCFromLocalPath(util.pstrToFfi(lpszLocal), util.pstrToFfi(lpszUNC), cchUNC);
+  return libMAPI32_dll.ScUNCFromLocalPath!(util.pstrToFfi(lpszLocal), util.pstrToFfi(lpszUNC), cchUNC);
 }
 
 export function ScLocalPathFromUNC(
@@ -7665,41 +7722,41 @@ export function ScLocalPathFromUNC(
   lpszLocal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLocal: number /* u32 */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScLocalPathFromUNC(util.pstrToFfi(lpszUNC), util.pstrToFfi(lpszLocal), cchLocal);
+  return libMAPI32_dll.ScLocalPathFromUNC!(util.pstrToFfi(lpszUNC), util.pstrToFfi(lpszLocal), cchLocal);
 }
 
 export function FtAddFt(
   ftAddend1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
   ftAddend2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */ {
-  return libMAPI32_dll.FtAddFt(util.toPointer(ftAddend1), util.toPointer(ftAddend2));
+  return libMAPI32_dll.FtAddFt!(util.toPointer(ftAddend1), util.toPointer(ftAddend2));
 }
 
 export function FtMulDwDw(
   ftMultiplicand: number /* u32 */,
   ftMultiplier: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */ {
-  return libMAPI32_dll.FtMulDwDw(ftMultiplicand, ftMultiplier);
+  return libMAPI32_dll.FtMulDwDw!(ftMultiplicand, ftMultiplier);
 }
 
 export function FtMulDw(
   ftMultiplier: number /* u32 */,
   ftMultiplicand: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */ {
-  return libMAPI32_dll.FtMulDw(ftMultiplier, util.toPointer(ftMultiplicand));
+  return libMAPI32_dll.FtMulDw!(ftMultiplier, util.toPointer(ftMultiplicand));
 }
 
 export function FtSubFt(
   ftMinuend: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
   ftSubtrahend: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */ {
-  return libMAPI32_dll.FtSubFt(util.toPointer(ftMinuend), util.toPointer(ftSubtrahend));
+  return libMAPI32_dll.FtSubFt!(util.toPointer(ftMinuend), util.toPointer(ftSubtrahend));
 }
 
 export function FtNegFt(
   ft: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */ {
-  return libMAPI32_dll.FtNegFt(util.toPointer(ft));
+  return libMAPI32_dll.FtNegFt!(util.toPointer(ft));
 }
 
 export function ScCreateConversationIndex(
@@ -7708,7 +7765,7 @@ export function ScCreateConversationIndex(
   lpcbConvIndex: Deno.PointerValue | Uint8Array /* ptr */,
   lppbConvIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScCreateConversationIndex(cbParent, util.toPointer(lpbParent), util.toPointer(lpcbConvIndex), util.toPointer(lppbConvIndex));
+  return libMAPI32_dll.ScCreateConversationIndex!(cbParent, util.toPointer(lpbParent), util.toPointer(lpcbConvIndex), util.toPointer(lppbConvIndex));
 }
 
 export function WrapStoreEntryID(
@@ -7719,7 +7776,7 @@ export function WrapStoreEntryID(
   lpcbWrappedEntry: Deno.PointerValue | Uint8Array /* ptr */,
   lppWrappedEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.WrapStoreEntryID(ulFlags, util.toPointer(lpszDLLName), cbOrigEntry, util.toPointer(lpOrigEntry), util.toPointer(lpcbWrappedEntry), util.toPointer(lppWrappedEntry));
+  return libMAPI32_dll.WrapStoreEntryID!(ulFlags, util.toPointer(lpszDLLName), cbOrigEntry, util.toPointer(lpOrigEntry), util.toPointer(lpcbWrappedEntry), util.toPointer(lppWrappedEntry));
 }
 
 export function RTFSync(
@@ -7727,7 +7784,7 @@ export function RTFSync(
   ulFlags: number /* u32 */,
   lpfMessageUpdated: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.RTFSync(util.toPointer(lpMessage), ulFlags, util.toPointer(lpfMessageUpdated));
+  return libMAPI32_dll.RTFSync!(util.toPointer(lpMessage), ulFlags, util.toPointer(lpfMessageUpdated));
 }
 
 export function WrapCompressedRTFStream(
@@ -7735,7 +7792,7 @@ export function WrapCompressedRTFStream(
   ulFlags: number /* u32 */,
   lpUncompressedRTFStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.WrapCompressedRTFStream(util.toPointer(lpCompressedRTFStream), ulFlags, util.toPointer(lpUncompressedRTFStream));
+  return libMAPI32_dll.WrapCompressedRTFStream!(util.toPointer(lpCompressedRTFStream), ulFlags, util.toPointer(lpUncompressedRTFStream));
 }
 
 export function HrIStorageFromStream(
@@ -7744,16 +7801,16 @@ export function HrIStorageFromStream(
   ulFlags: number /* u32 */,
   lppStorageOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.HrIStorageFromStream(util.toPointer(lpUnkIn), util.toPointer(lpInterface), ulFlags, util.toPointer(lppStorageOut));
+  return libMAPI32_dll.HrIStorageFromStream!(util.toPointer(lpUnkIn), util.toPointer(lpInterface), ulFlags, util.toPointer(lppStorageOut));
 }
 
 export function ScInitMapiUtil(
   ulFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libMAPI32_dll.ScInitMapiUtil(ulFlags);
+  return libMAPI32_dll.ScInitMapiUtil!(ulFlags);
 }
 
 export function DeinitMapiUtil(): void /* void */ {
-  return libMAPI32_dll.DeinitMapiUtil();
+  return libMAPI32_dll.DeinitMapiUtil!();
 }
 

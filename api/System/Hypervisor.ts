@@ -9583,266 +9583,332 @@ try {
     WHvGetCapability: {
       parameters: ["i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCreatePartition: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetupPartition: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvResetPartition: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvDeletePartition: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetPartitionProperty: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetPartitionProperty: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvSuspendPartitionTime: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvResumePartitionTime: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvMapGpaRange: {
       parameters: ["pointer", "pointer", "u64", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvMapGpaRange2: {
       parameters: ["pointer", "pointer", "pointer", "u64", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvUnmapGpaRange: {
       parameters: ["pointer", "u64", "u64"],
       result: "pointer",
+      optional: true,
     },
     WHvTranslateGva: {
       parameters: ["pointer", "u32", "u64", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCreateVirtualProcessor: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvCreateVirtualProcessor2: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvDeleteVirtualProcessor: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvRunVirtualProcessor: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvCancelRunVirtualProcessor: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorRegisters: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVirtualProcessorRegisters: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorInterruptControllerState: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVirtualProcessorInterruptControllerState: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvRequestInterrupt: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorXsaveState: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVirtualProcessorXsaveState: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvQueryGpaRangeDirtyBitmap: {
       parameters: ["pointer", "u64", "u64", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvGetPartitionCounters: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorCounters: {
       parameters: ["pointer", "u32", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorInterruptControllerState2: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVirtualProcessorInterruptControllerState2: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvRegisterPartitionDoorbellEvent: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvUnregisterPartitionDoorbellEvent: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvAdviseGpaRange: {
       parameters: ["pointer", "pointer", "u32", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvReadGpaRange: {
       parameters: ["pointer", "u32", "u64", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvWriteGpaRange: {
       parameters: ["pointer", "u32", "u64", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvSignalVirtualProcessorSynicEvent: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorState: {
       parameters: ["pointer", "u32", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVirtualProcessorState: {
       parameters: ["pointer", "u32", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvAllocateVpciResource: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCreateVpciDevice: {
       parameters: ["pointer", "u64", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvDeleteVpciDevice: {
       parameters: ["pointer", "u64"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVpciDeviceProperty: {
       parameters: ["pointer", "u64", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVpciDeviceNotification: {
       parameters: ["pointer", "u64", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvMapVpciDeviceMmioRanges: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvUnmapVpciDeviceMmioRanges: {
       parameters: ["pointer", "u64"],
       result: "pointer",
+      optional: true,
     },
     WHvSetVpciDevicePowerState: {
       parameters: ["pointer", "u64", "i32"],
       result: "pointer",
+      optional: true,
     },
     WHvReadVpciDeviceRegister: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvWriteVpciDeviceRegister: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvMapVpciDeviceInterrupt: {
       parameters: ["pointer", "u64", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvUnmapVpciDeviceInterrupt: {
       parameters: ["pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvRetargetVpciDeviceInterrupt: {
       parameters: ["pointer", "u64", "u64", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvRequestVpciDeviceInterrupt: {
       parameters: ["pointer", "u64", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVpciDeviceInterruptTarget: {
       parameters: ["pointer", "u64", "u32", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCreateTrigger: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvUpdateTriggerParameters: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvDeleteTrigger: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCreateNotificationPort: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvSetNotificationPortProperty: {
       parameters: ["pointer", "pointer", "i32", "u64"],
       result: "pointer",
+      optional: true,
     },
     WHvDeleteNotificationPort: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvPostVirtualProcessorSynicMessage: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WHvGetVirtualProcessorCpuidOutput: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvGetInterruptTargetVpSet: {
       parameters: ["pointer", "u64", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvStartPartitionMigration: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCancelPartitionMigration: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvCompletePartitionMigration: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvAcceptPartitionMigration: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9852,18 +9918,22 @@ try {
     WHvEmulatorCreateEmulator: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvEmulatorDestroyEmulator: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvEmulatorTryIoEmulation: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WHvEmulatorTryMmioEmulation: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9873,50 +9943,62 @@ try {
     HdvInitializeDeviceHost: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvTeardownDeviceHost: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvCreateDeviceInstance: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvReadGuestMemory: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvWriteGuestMemory: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvCreateGuestMemoryAperture: {
       parameters: ["pointer", "u64", "u32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvDestroyGuestMemoryAperture: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvDeliverGuestInterrupt: {
       parameters: ["pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     HdvRegisterDoorbell: {
       parameters: ["pointer", "i32", "u64", "u64", "u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HdvUnregisterDoorbell: {
       parameters: ["pointer", "i32", "u64", "u64", "u64"],
       result: "pointer",
+      optional: true,
     },
     HdvCreateSectionBackedMmioRange: {
       parameters: ["pointer", "i32", "u64", "u64", "u32", "pointer", "u64"],
       result: "pointer",
+      optional: true,
     },
     HdvDestroySectionBackedMmioRange: {
       parameters: ["pointer", "i32", "u64"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9926,174 +10008,217 @@ try {
     LocateSavedStateFiles: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadSavedStateFile: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ApplyPendingSavedStateFileReplayLog: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadSavedStateFiles: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReleaseSavedStateFiles: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetGuestEnabledVirtualTrustLevels: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetGuestOsInfo: {
       parameters: ["pointer", "u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetVpCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetArchitecture: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ForceArchitecture: {
       parameters: ["pointer", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetActiveVirtualTrustLevel: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetEnabledVirtualTrustLevels: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ForceActiveVirtualTrustLevel: {
       parameters: ["pointer", "u32", "u8"],
       result: "pointer",
+      optional: true,
     },
     IsActiveVirtualTrustLevelEnabled: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsNestedVirtualizationEnabled: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetNestedVirtualizationMode: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ForceNestedHostMode: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InKernelSpace: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetRegisterValue: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetPagingMode: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ForcePagingMode: {
       parameters: ["pointer", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ReadGuestPhysicalAddress: {
       parameters: ["pointer", "u64", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GuestVirtualAddressToPhysicalAddress: {
       parameters: ["pointer", "u32", "u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetGuestPhysicalMemoryChunks: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GuestPhysicalAddressToRawSavedMemoryOffset: {
       parameters: ["pointer", "u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadGuestRawSavedMemory: {
       parameters: ["pointer", "u64", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetGuestRawSavedMemorySize: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetMemoryBlockCacheLimit: {
       parameters: ["pointer", "u64"],
       result: "pointer",
+      optional: true,
     },
     GetMemoryBlockCacheLimit: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ApplyGuestMemoryFix: {
       parameters: ["pointer", "u32", "u64", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadSavedStateSymbolProvider: {
       parameters: ["pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     ReleaseSavedStateSymbolProvider: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetSavedStateSymbolProviderHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetSavedStateSymbolProviderDebugInfoCallback: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadSavedStateModuleSymbols: {
       parameters: ["pointer", "buffer", "buffer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadSavedStateModuleSymbolsEx: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     ResolveSavedStateGlobalVariableAddress: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadSavedStateGlobalVariable: {
       parameters: ["pointer", "u32", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetSavedStateSymbolTypeSize: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindSavedStateSymbolFieldInType: {
       parameters: ["pointer", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetSavedStateSymbolFieldInfo: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ScanMemoryForDosImages: {
       parameters: ["pointer", "u32", "u64", "u64", "pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CallStackUnwind: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -10106,31 +10231,31 @@ export function WHvGetCapability(
   CapabilityBufferSizeInBytes: number /* u32 */,
   WrittenSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetCapability(CapabilityCode, util.toPointer(CapabilityBuffer), CapabilityBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
+  return libWinHvPlatform_dll.WHvGetCapability!(CapabilityCode, util.toPointer(CapabilityBuffer), CapabilityBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
 }
 
 export function WHvCreatePartition(
   Partition: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreatePartition(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvCreatePartition!(util.toPointer(Partition));
 }
 
 export function WHvSetupPartition(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetupPartition(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvSetupPartition!(util.toPointer(Partition));
 }
 
 export function WHvResetPartition(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvResetPartition(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvResetPartition!(util.toPointer(Partition));
 }
 
 export function WHvDeletePartition(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvDeletePartition(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvDeletePartition!(util.toPointer(Partition));
 }
 
 export function WHvGetPartitionProperty(
@@ -10140,7 +10265,7 @@ export function WHvGetPartitionProperty(
   PropertyBufferSizeInBytes: number /* u32 */,
   WrittenSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetPartitionProperty(util.toPointer(Partition), PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
+  return libWinHvPlatform_dll.WHvGetPartitionProperty!(util.toPointer(Partition), PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
 }
 
 export function WHvSetPartitionProperty(
@@ -10149,19 +10274,19 @@ export function WHvSetPartitionProperty(
   PropertyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyBufferSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetPartitionProperty(util.toPointer(Partition), PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes);
+  return libWinHvPlatform_dll.WHvSetPartitionProperty!(util.toPointer(Partition), PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes);
 }
 
 export function WHvSuspendPartitionTime(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSuspendPartitionTime(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvSuspendPartitionTime!(util.toPointer(Partition));
 }
 
 export function WHvResumePartitionTime(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvResumePartitionTime(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvResumePartitionTime!(util.toPointer(Partition));
 }
 
 export function WHvMapGpaRange(
@@ -10171,7 +10296,7 @@ export function WHvMapGpaRange(
   SizeInBytes: bigint | number /* u64 */,
   Flags: WHV_MAP_GPA_RANGE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_MAP_GPA_RANGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvMapGpaRange(util.toPointer(Partition), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
+  return libWinHvPlatform_dll.WHvMapGpaRange!(util.toPointer(Partition), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
 }
 
 export function WHvMapGpaRange2(
@@ -10182,7 +10307,7 @@ export function WHvMapGpaRange2(
   SizeInBytes: bigint | number /* u64 */,
   Flags: WHV_MAP_GPA_RANGE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_MAP_GPA_RANGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvMapGpaRange2(util.toPointer(Partition), util.toPointer(Process), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
+  return libWinHvPlatform_dll.WHvMapGpaRange2!(util.toPointer(Partition), util.toPointer(Process), util.toPointer(SourceAddress), GuestAddress, SizeInBytes, Flags);
 }
 
 export function WHvUnmapGpaRange(
@@ -10190,7 +10315,7 @@ export function WHvUnmapGpaRange(
   GuestAddress: bigint | number /* u64 */,
   SizeInBytes: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvUnmapGpaRange(util.toPointer(Partition), GuestAddress, SizeInBytes);
+  return libWinHvPlatform_dll.WHvUnmapGpaRange!(util.toPointer(Partition), GuestAddress, SizeInBytes);
 }
 
 export function WHvTranslateGva(
@@ -10201,7 +10326,7 @@ export function WHvTranslateGva(
   TranslationResult: Deno.PointerValue | Uint8Array /* ptr */,
   Gpa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvTranslateGva(util.toPointer(Partition), VpIndex, Gva, TranslateFlags, util.toPointer(TranslationResult), util.toPointer(Gpa));
+  return libWinHvPlatform_dll.WHvTranslateGva!(util.toPointer(Partition), VpIndex, Gva, TranslateFlags, util.toPointer(TranslationResult), util.toPointer(Gpa));
 }
 
 export function WHvCreateVirtualProcessor(
@@ -10209,7 +10334,7 @@ export function WHvCreateVirtualProcessor(
   VpIndex: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreateVirtualProcessor(util.toPointer(Partition), VpIndex, Flags);
+  return libWinHvPlatform_dll.WHvCreateVirtualProcessor!(util.toPointer(Partition), VpIndex, Flags);
 }
 
 export function WHvCreateVirtualProcessor2(
@@ -10218,14 +10343,14 @@ export function WHvCreateVirtualProcessor2(
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreateVirtualProcessor2(util.toPointer(Partition), VpIndex, util.toPointer(Properties), PropertyCount);
+  return libWinHvPlatform_dll.WHvCreateVirtualProcessor2!(util.toPointer(Partition), VpIndex, util.toPointer(Properties), PropertyCount);
 }
 
 export function WHvDeleteVirtualProcessor(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   VpIndex: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvDeleteVirtualProcessor(util.toPointer(Partition), VpIndex);
+  return libWinHvPlatform_dll.WHvDeleteVirtualProcessor!(util.toPointer(Partition), VpIndex);
 }
 
 export function WHvRunVirtualProcessor(
@@ -10234,7 +10359,7 @@ export function WHvRunVirtualProcessor(
   ExitContext: Deno.PointerValue | Uint8Array /* ptr */,
   ExitContextSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvRunVirtualProcessor(util.toPointer(Partition), VpIndex, util.toPointer(ExitContext), ExitContextSizeInBytes);
+  return libWinHvPlatform_dll.WHvRunVirtualProcessor!(util.toPointer(Partition), VpIndex, util.toPointer(ExitContext), ExitContextSizeInBytes);
 }
 
 export function WHvCancelRunVirtualProcessor(
@@ -10242,7 +10367,7 @@ export function WHvCancelRunVirtualProcessor(
   VpIndex: number /* u32 */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCancelRunVirtualProcessor(util.toPointer(Partition), VpIndex, Flags);
+  return libWinHvPlatform_dll.WHvCancelRunVirtualProcessor!(util.toPointer(Partition), VpIndex, Flags);
 }
 
 export function WHvGetVirtualProcessorRegisters(
@@ -10252,7 +10377,7 @@ export function WHvGetVirtualProcessorRegisters(
   RegisterCount: number /* u32 */,
   RegisterValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorRegisters(util.toPointer(Partition), VpIndex, util.toPointer(RegisterNames), RegisterCount, util.toPointer(RegisterValues));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorRegisters!(util.toPointer(Partition), VpIndex, util.toPointer(RegisterNames), RegisterCount, util.toPointer(RegisterValues));
 }
 
 export function WHvSetVirtualProcessorRegisters(
@@ -10262,7 +10387,7 @@ export function WHvSetVirtualProcessorRegisters(
   RegisterCount: number /* u32 */,
   RegisterValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVirtualProcessorRegisters(util.toPointer(Partition), VpIndex, util.toPointer(RegisterNames), RegisterCount, util.toPointer(RegisterValues));
+  return libWinHvPlatform_dll.WHvSetVirtualProcessorRegisters!(util.toPointer(Partition), VpIndex, util.toPointer(RegisterNames), RegisterCount, util.toPointer(RegisterValues));
 }
 
 export function WHvGetVirtualProcessorInterruptControllerState(
@@ -10272,7 +10397,7 @@ export function WHvGetVirtualProcessorInterruptControllerState(
   StateSize: number /* u32 */,
   WrittenSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorInterruptControllerState(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize, util.toPointer(WrittenSize));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorInterruptControllerState!(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize, util.toPointer(WrittenSize));
 }
 
 export function WHvSetVirtualProcessorInterruptControllerState(
@@ -10281,7 +10406,7 @@ export function WHvSetVirtualProcessorInterruptControllerState(
   State: Deno.PointerValue | Uint8Array /* ptr */,
   StateSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVirtualProcessorInterruptControllerState(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize);
+  return libWinHvPlatform_dll.WHvSetVirtualProcessorInterruptControllerState!(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize);
 }
 
 export function WHvRequestInterrupt(
@@ -10289,7 +10414,7 @@ export function WHvRequestInterrupt(
   Interrupt: Deno.PointerValue | Uint8Array /* ptr */,
   InterruptControlSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvRequestInterrupt(util.toPointer(Partition), util.toPointer(Interrupt), InterruptControlSize);
+  return libWinHvPlatform_dll.WHvRequestInterrupt!(util.toPointer(Partition), util.toPointer(Interrupt), InterruptControlSize);
 }
 
 export function WHvGetVirtualProcessorXsaveState(
@@ -10299,7 +10424,7 @@ export function WHvGetVirtualProcessorXsaveState(
   BufferSizeInBytes: number /* u32 */,
   BytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorXsaveState(util.toPointer(Partition), VpIndex, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorXsaveState!(util.toPointer(Partition), VpIndex, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
 }
 
 export function WHvSetVirtualProcessorXsaveState(
@@ -10308,7 +10433,7 @@ export function WHvSetVirtualProcessorXsaveState(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVirtualProcessorXsaveState(util.toPointer(Partition), VpIndex, util.toPointer(Buffer), BufferSizeInBytes);
+  return libWinHvPlatform_dll.WHvSetVirtualProcessorXsaveState!(util.toPointer(Partition), VpIndex, util.toPointer(Buffer), BufferSizeInBytes);
 }
 
 export function WHvQueryGpaRangeDirtyBitmap(
@@ -10318,7 +10443,7 @@ export function WHvQueryGpaRangeDirtyBitmap(
   Bitmap: Deno.PointerValue | Uint8Array /* ptr */,
   BitmapSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvQueryGpaRangeDirtyBitmap(util.toPointer(Partition), GuestAddress, RangeSizeInBytes, util.toPointer(Bitmap), BitmapSizeInBytes);
+  return libWinHvPlatform_dll.WHvQueryGpaRangeDirtyBitmap!(util.toPointer(Partition), GuestAddress, RangeSizeInBytes, util.toPointer(Bitmap), BitmapSizeInBytes);
 }
 
 export function WHvGetPartitionCounters(
@@ -10328,7 +10453,7 @@ export function WHvGetPartitionCounters(
   BufferSizeInBytes: number /* u32 */,
   BytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetPartitionCounters(util.toPointer(Partition), CounterSet, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
+  return libWinHvPlatform_dll.WHvGetPartitionCounters!(util.toPointer(Partition), CounterSet, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
 }
 
 export function WHvGetVirtualProcessorCounters(
@@ -10339,7 +10464,7 @@ export function WHvGetVirtualProcessorCounters(
   BufferSizeInBytes: number /* u32 */,
   BytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorCounters(util.toPointer(Partition), VpIndex, CounterSet, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorCounters!(util.toPointer(Partition), VpIndex, CounterSet, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
 }
 
 export function WHvGetVirtualProcessorInterruptControllerState2(
@@ -10349,7 +10474,7 @@ export function WHvGetVirtualProcessorInterruptControllerState2(
   StateSize: number /* u32 */,
   WrittenSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorInterruptControllerState2(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize, util.toPointer(WrittenSize));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorInterruptControllerState2!(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize, util.toPointer(WrittenSize));
 }
 
 export function WHvSetVirtualProcessorInterruptControllerState2(
@@ -10358,7 +10483,7 @@ export function WHvSetVirtualProcessorInterruptControllerState2(
   State: Deno.PointerValue | Uint8Array /* ptr */,
   StateSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVirtualProcessorInterruptControllerState2(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize);
+  return libWinHvPlatform_dll.WHvSetVirtualProcessorInterruptControllerState2!(util.toPointer(Partition), VpIndex, util.toPointer(State), StateSize);
 }
 
 export function WHvRegisterPartitionDoorbellEvent(
@@ -10366,14 +10491,14 @@ export function WHvRegisterPartitionDoorbellEvent(
   MatchData: Deno.PointerValue | Uint8Array /* ptr */,
   EventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvRegisterPartitionDoorbellEvent(util.toPointer(Partition), util.toPointer(MatchData), util.toPointer(EventHandle));
+  return libWinHvPlatform_dll.WHvRegisterPartitionDoorbellEvent!(util.toPointer(Partition), util.toPointer(MatchData), util.toPointer(EventHandle));
 }
 
 export function WHvUnregisterPartitionDoorbellEvent(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   MatchData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvUnregisterPartitionDoorbellEvent(util.toPointer(Partition), util.toPointer(MatchData));
+  return libWinHvPlatform_dll.WHvUnregisterPartitionDoorbellEvent!(util.toPointer(Partition), util.toPointer(MatchData));
 }
 
 export function WHvAdviseGpaRange(
@@ -10384,7 +10509,7 @@ export function WHvAdviseGpaRange(
   AdviceBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   AdviceBufferSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvAdviseGpaRange(util.toPointer(Partition), util.toPointer(GpaRanges), GpaRangesCount, Advice, util.toPointer(AdviceBuffer), AdviceBufferSizeInBytes);
+  return libWinHvPlatform_dll.WHvAdviseGpaRange!(util.toPointer(Partition), util.toPointer(GpaRanges), GpaRangesCount, Advice, util.toPointer(AdviceBuffer), AdviceBufferSizeInBytes);
 }
 
 export function WHvReadGpaRange(
@@ -10395,7 +10520,7 @@ export function WHvReadGpaRange(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   DataSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvReadGpaRange(util.toPointer(Partition), VpIndex, GuestAddress, util.toPointer(Controls), util.toPointer(Data), DataSizeInBytes);
+  return libWinHvPlatform_dll.WHvReadGpaRange!(util.toPointer(Partition), VpIndex, GuestAddress, util.toPointer(Controls), util.toPointer(Data), DataSizeInBytes);
 }
 
 export function WHvWriteGpaRange(
@@ -10406,7 +10531,7 @@ export function WHvWriteGpaRange(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   DataSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvWriteGpaRange(util.toPointer(Partition), VpIndex, GuestAddress, util.toPointer(Controls), util.toPointer(Data), DataSizeInBytes);
+  return libWinHvPlatform_dll.WHvWriteGpaRange!(util.toPointer(Partition), VpIndex, GuestAddress, util.toPointer(Controls), util.toPointer(Data), DataSizeInBytes);
 }
 
 export function WHvSignalVirtualProcessorSynicEvent(
@@ -10414,7 +10539,7 @@ export function WHvSignalVirtualProcessorSynicEvent(
   SynicEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_SYNIC_EVENT_PARAMETERS */,
   NewlySignaled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSignalVirtualProcessorSynicEvent(util.toPointer(Partition), util.toPointer(SynicEvent), util.toPointer(NewlySignaled));
+  return libWinHvPlatform_dll.WHvSignalVirtualProcessorSynicEvent!(util.toPointer(Partition), util.toPointer(SynicEvent), util.toPointer(NewlySignaled));
 }
 
 export function WHvGetVirtualProcessorState(
@@ -10425,7 +10550,7 @@ export function WHvGetVirtualProcessorState(
   BufferSizeInBytes: number /* u32 */,
   BytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorState(util.toPointer(Partition), VpIndex, StateType, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorState!(util.toPointer(Partition), VpIndex, StateType, util.toPointer(Buffer), BufferSizeInBytes, util.toPointer(BytesWritten));
 }
 
 export function WHvSetVirtualProcessorState(
@@ -10435,7 +10560,7 @@ export function WHvSetVirtualProcessorState(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVirtualProcessorState(util.toPointer(Partition), VpIndex, StateType, util.toPointer(Buffer), BufferSizeInBytes);
+  return libWinHvPlatform_dll.WHvSetVirtualProcessorState!(util.toPointer(Partition), VpIndex, StateType, util.toPointer(Buffer), BufferSizeInBytes);
 }
 
 export function WHvAllocateVpciResource(
@@ -10445,7 +10570,7 @@ export function WHvAllocateVpciResource(
   ResourceDescriptorSizeInBytes: number /* u32 */,
   VpciResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvAllocateVpciResource(util.toPointer(ProviderId), Flags, util.toPointer(ResourceDescriptor), ResourceDescriptorSizeInBytes, util.toPointer(VpciResource));
+  return libWinHvPlatform_dll.WHvAllocateVpciResource!(util.toPointer(ProviderId), Flags, util.toPointer(ResourceDescriptor), ResourceDescriptorSizeInBytes, util.toPointer(VpciResource));
 }
 
 export function WHvCreateVpciDevice(
@@ -10455,14 +10580,14 @@ export function WHvCreateVpciDevice(
   Flags: WHV_CREATE_VPCI_DEVICE_FLAGS /* Windows.Win32.System.Hypervisor.WHV_CREATE_VPCI_DEVICE_FLAGS */,
   NotificationEventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreateVpciDevice(util.toPointer(Partition), LogicalDeviceId, util.toPointer(VpciResource), Flags, util.toPointer(NotificationEventHandle));
+  return libWinHvPlatform_dll.WHvCreateVpciDevice!(util.toPointer(Partition), LogicalDeviceId, util.toPointer(VpciResource), Flags, util.toPointer(NotificationEventHandle));
 }
 
 export function WHvDeleteVpciDevice(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   LogicalDeviceId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvDeleteVpciDevice(util.toPointer(Partition), LogicalDeviceId);
+  return libWinHvPlatform_dll.WHvDeleteVpciDevice!(util.toPointer(Partition), LogicalDeviceId);
 }
 
 export function WHvGetVpciDeviceProperty(
@@ -10473,7 +10598,7 @@ export function WHvGetVpciDeviceProperty(
   PropertyBufferSizeInBytes: number /* u32 */,
   WrittenSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVpciDeviceProperty(util.toPointer(Partition), LogicalDeviceId, PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
+  return libWinHvPlatform_dll.WHvGetVpciDeviceProperty!(util.toPointer(Partition), LogicalDeviceId, PropertyCode, util.toPointer(PropertyBuffer), PropertyBufferSizeInBytes, util.toPointer(WrittenSizeInBytes));
 }
 
 export function WHvGetVpciDeviceNotification(
@@ -10482,7 +10607,7 @@ export function WHvGetVpciDeviceNotification(
   Notification: Deno.PointerValue | Uint8Array /* ptr */,
   NotificationSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVpciDeviceNotification(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Notification), NotificationSizeInBytes);
+  return libWinHvPlatform_dll.WHvGetVpciDeviceNotification!(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Notification), NotificationSizeInBytes);
 }
 
 export function WHvMapVpciDeviceMmioRanges(
@@ -10491,14 +10616,14 @@ export function WHvMapVpciDeviceMmioRanges(
   MappingCount: Deno.PointerValue | Uint8Array /* ptr */,
   Mappings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvMapVpciDeviceMmioRanges(util.toPointer(Partition), LogicalDeviceId, util.toPointer(MappingCount), util.toPointer(Mappings));
+  return libWinHvPlatform_dll.WHvMapVpciDeviceMmioRanges!(util.toPointer(Partition), LogicalDeviceId, util.toPointer(MappingCount), util.toPointer(Mappings));
 }
 
 export function WHvUnmapVpciDeviceMmioRanges(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   LogicalDeviceId: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvUnmapVpciDeviceMmioRanges(util.toPointer(Partition), LogicalDeviceId);
+  return libWinHvPlatform_dll.WHvUnmapVpciDeviceMmioRanges!(util.toPointer(Partition), LogicalDeviceId);
 }
 
 export function WHvSetVpciDevicePowerState(
@@ -10506,7 +10631,7 @@ export function WHvSetVpciDevicePowerState(
   LogicalDeviceId: bigint | number /* u64 */,
   PowerState: DEVICE_POWER_STATE /* Windows.Win32.System.Power.DEVICE_POWER_STATE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetVpciDevicePowerState(util.toPointer(Partition), LogicalDeviceId, PowerState);
+  return libWinHvPlatform_dll.WHvSetVpciDevicePowerState!(util.toPointer(Partition), LogicalDeviceId, PowerState);
 }
 
 export function WHvReadVpciDeviceRegister(
@@ -10515,7 +10640,7 @@ export function WHvReadVpciDeviceRegister(
   Register: Deno.PointerValue | Uint8Array /* ptr */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvReadVpciDeviceRegister(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Register), util.toPointer(Data));
+  return libWinHvPlatform_dll.WHvReadVpciDeviceRegister!(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Register), util.toPointer(Data));
 }
 
 export function WHvWriteVpciDeviceRegister(
@@ -10524,7 +10649,7 @@ export function WHvWriteVpciDeviceRegister(
   Register: Deno.PointerValue | Uint8Array /* ptr */,
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvWriteVpciDeviceRegister(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Register), util.toPointer(Data));
+  return libWinHvPlatform_dll.WHvWriteVpciDeviceRegister!(util.toPointer(Partition), LogicalDeviceId, util.toPointer(Register), util.toPointer(Data));
 }
 
 export function WHvMapVpciDeviceInterrupt(
@@ -10536,7 +10661,7 @@ export function WHvMapVpciDeviceInterrupt(
   MsiAddress: Deno.PointerValue | Uint8Array /* ptr */,
   MsiData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvMapVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, Index, MessageCount, util.toPointer(Target), util.toPointer(MsiAddress), util.toPointer(MsiData));
+  return libWinHvPlatform_dll.WHvMapVpciDeviceInterrupt!(util.toPointer(Partition), LogicalDeviceId, Index, MessageCount, util.toPointer(Target), util.toPointer(MsiAddress), util.toPointer(MsiData));
 }
 
 export function WHvUnmapVpciDeviceInterrupt(
@@ -10544,7 +10669,7 @@ export function WHvUnmapVpciDeviceInterrupt(
   LogicalDeviceId: bigint | number /* u64 */,
   Index: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvUnmapVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, Index);
+  return libWinHvPlatform_dll.WHvUnmapVpciDeviceInterrupt!(util.toPointer(Partition), LogicalDeviceId, Index);
 }
 
 export function WHvRetargetVpciDeviceInterrupt(
@@ -10554,7 +10679,7 @@ export function WHvRetargetVpciDeviceInterrupt(
   MsiData: number /* u32 */,
   Target: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvRetargetVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, MsiAddress, MsiData, util.toPointer(Target));
+  return libWinHvPlatform_dll.WHvRetargetVpciDeviceInterrupt!(util.toPointer(Partition), LogicalDeviceId, MsiAddress, MsiData, util.toPointer(Target));
 }
 
 export function WHvRequestVpciDeviceInterrupt(
@@ -10563,7 +10688,7 @@ export function WHvRequestVpciDeviceInterrupt(
   MsiAddress: bigint | number /* u64 */,
   MsiData: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvRequestVpciDeviceInterrupt(util.toPointer(Partition), LogicalDeviceId, MsiAddress, MsiData);
+  return libWinHvPlatform_dll.WHvRequestVpciDeviceInterrupt!(util.toPointer(Partition), LogicalDeviceId, MsiAddress, MsiData);
 }
 
 export function WHvGetVpciDeviceInterruptTarget(
@@ -10575,7 +10700,7 @@ export function WHvGetVpciDeviceInterruptTarget(
   TargetSizeInBytes: number /* u32 */,
   BytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVpciDeviceInterruptTarget(util.toPointer(Partition), LogicalDeviceId, Index, MultiMessageNumber, util.toPointer(Target), TargetSizeInBytes, util.toPointer(BytesWritten));
+  return libWinHvPlatform_dll.WHvGetVpciDeviceInterruptTarget!(util.toPointer(Partition), LogicalDeviceId, Index, MultiMessageNumber, util.toPointer(Target), TargetSizeInBytes, util.toPointer(BytesWritten));
 }
 
 export function WHvCreateTrigger(
@@ -10584,7 +10709,7 @@ export function WHvCreateTrigger(
   TriggerHandle: Deno.PointerValue | Uint8Array /* ptr */,
   EventHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreateTrigger(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(TriggerHandle), util.toPointer(EventHandle));
+  return libWinHvPlatform_dll.WHvCreateTrigger!(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(TriggerHandle), util.toPointer(EventHandle));
 }
 
 export function WHvUpdateTriggerParameters(
@@ -10592,14 +10717,14 @@ export function WHvUpdateTriggerParameters(
   Parameters: Deno.PointerValue | Uint8Array /* ptr */,
   TriggerHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvUpdateTriggerParameters(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(TriggerHandle));
+  return libWinHvPlatform_dll.WHvUpdateTriggerParameters!(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(TriggerHandle));
 }
 
 export function WHvDeleteTrigger(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   TriggerHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvDeleteTrigger(util.toPointer(Partition), util.toPointer(TriggerHandle));
+  return libWinHvPlatform_dll.WHvDeleteTrigger!(util.toPointer(Partition), util.toPointer(TriggerHandle));
 }
 
 export function WHvCreateNotificationPort(
@@ -10608,7 +10733,7 @@ export function WHvCreateNotificationPort(
   EventHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   PortHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCreateNotificationPort(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(EventHandle), util.toPointer(PortHandle));
+  return libWinHvPlatform_dll.WHvCreateNotificationPort!(util.toPointer(Partition), util.toPointer(Parameters), util.toPointer(EventHandle), util.toPointer(PortHandle));
 }
 
 export function WHvSetNotificationPortProperty(
@@ -10617,14 +10742,14 @@ export function WHvSetNotificationPortProperty(
   PropertyCode: WHV_NOTIFICATION_PORT_PROPERTY_CODE /* Windows.Win32.System.Hypervisor.WHV_NOTIFICATION_PORT_PROPERTY_CODE */,
   PropertyValue: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvSetNotificationPortProperty(util.toPointer(Partition), util.toPointer(PortHandle), PropertyCode, PropertyValue);
+  return libWinHvPlatform_dll.WHvSetNotificationPortProperty!(util.toPointer(Partition), util.toPointer(PortHandle), PropertyCode, PropertyValue);
 }
 
 export function WHvDeleteNotificationPort(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   PortHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvDeleteNotificationPort(util.toPointer(Partition), util.toPointer(PortHandle));
+  return libWinHvPlatform_dll.WHvDeleteNotificationPort!(util.toPointer(Partition), util.toPointer(PortHandle));
 }
 
 export function WHvPostVirtualProcessorSynicMessage(
@@ -10634,7 +10759,7 @@ export function WHvPostVirtualProcessorSynicMessage(
   Message: Deno.PointerValue | Uint8Array /* ptr */,
   MessageSizeInBytes: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvPostVirtualProcessorSynicMessage(util.toPointer(Partition), VpIndex, SintIndex, util.toPointer(Message), MessageSizeInBytes);
+  return libWinHvPlatform_dll.WHvPostVirtualProcessorSynicMessage!(util.toPointer(Partition), VpIndex, SintIndex, util.toPointer(Message), MessageSizeInBytes);
 }
 
 export function WHvGetVirtualProcessorCpuidOutput(
@@ -10644,7 +10769,7 @@ export function WHvGetVirtualProcessorCpuidOutput(
   Ecx: number /* u32 */,
   CpuidOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetVirtualProcessorCpuidOutput(util.toPointer(Partition), VpIndex, Eax, Ecx, util.toPointer(CpuidOutput));
+  return libWinHvPlatform_dll.WHvGetVirtualProcessorCpuidOutput!(util.toPointer(Partition), VpIndex, Eax, Ecx, util.toPointer(CpuidOutput));
 }
 
 export function WHvGetInterruptTargetVpSet(
@@ -10655,46 +10780,46 @@ export function WHvGetInterruptTargetVpSet(
   VpCount: number /* u32 */,
   TargetVpCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvGetInterruptTargetVpSet(util.toPointer(Partition), Destination, DestinationMode, util.toPointer(TargetVps), VpCount, util.toPointer(TargetVpCount));
+  return libWinHvPlatform_dll.WHvGetInterruptTargetVpSet!(util.toPointer(Partition), Destination, DestinationMode, util.toPointer(TargetVps), VpCount, util.toPointer(TargetVpCount));
 }
 
 export function WHvStartPartitionMigration(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
   MigrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvStartPartitionMigration(util.toPointer(Partition), util.toPointer(MigrationHandle));
+  return libWinHvPlatform_dll.WHvStartPartitionMigration!(util.toPointer(Partition), util.toPointer(MigrationHandle));
 }
 
 export function WHvCancelPartitionMigration(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCancelPartitionMigration(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvCancelPartitionMigration!(util.toPointer(Partition));
 }
 
 export function WHvCompletePartitionMigration(
   Partition: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.WHV_PARTITION_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvCompletePartitionMigration(util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvCompletePartitionMigration!(util.toPointer(Partition));
 }
 
 export function WHvAcceptPartitionMigration(
   MigrationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Partition: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvPlatform_dll.WHvAcceptPartitionMigration(util.toPointer(MigrationHandle), util.toPointer(Partition));
+  return libWinHvPlatform_dll.WHvAcceptPartitionMigration!(util.toPointer(MigrationHandle), util.toPointer(Partition));
 }
 
 export function WHvEmulatorCreateEmulator(
   Callbacks: Deno.PointerValue | Uint8Array /* ptr */,
   Emulator: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvEmulation_dll.WHvEmulatorCreateEmulator(util.toPointer(Callbacks), util.toPointer(Emulator));
+  return libWinHvEmulation_dll.WHvEmulatorCreateEmulator!(util.toPointer(Callbacks), util.toPointer(Emulator));
 }
 
 export function WHvEmulatorDestroyEmulator(
   Emulator: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvEmulation_dll.WHvEmulatorDestroyEmulator(util.toPointer(Emulator));
+  return libWinHvEmulation_dll.WHvEmulatorDestroyEmulator!(util.toPointer(Emulator));
 }
 
 export function WHvEmulatorTryIoEmulation(
@@ -10704,7 +10829,7 @@ export function WHvEmulatorTryIoEmulation(
   IoInstructionContext: Deno.PointerValue | Uint8Array /* ptr */,
   EmulatorReturnStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvEmulation_dll.WHvEmulatorTryIoEmulation(util.toPointer(Emulator), util.toPointer(Context), util.toPointer(VpContext), util.toPointer(IoInstructionContext), util.toPointer(EmulatorReturnStatus));
+  return libWinHvEmulation_dll.WHvEmulatorTryIoEmulation!(util.toPointer(Emulator), util.toPointer(Context), util.toPointer(VpContext), util.toPointer(IoInstructionContext), util.toPointer(EmulatorReturnStatus));
 }
 
 export function WHvEmulatorTryMmioEmulation(
@@ -10714,20 +10839,20 @@ export function WHvEmulatorTryMmioEmulation(
   MmioInstructionContext: Deno.PointerValue | Uint8Array /* ptr */,
   EmulatorReturnStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWinHvEmulation_dll.WHvEmulatorTryMmioEmulation(util.toPointer(Emulator), util.toPointer(Context), util.toPointer(VpContext), util.toPointer(MmioInstructionContext), util.toPointer(EmulatorReturnStatus));
+  return libWinHvEmulation_dll.WHvEmulatorTryMmioEmulation!(util.toPointer(Emulator), util.toPointer(Context), util.toPointer(VpContext), util.toPointer(MmioInstructionContext), util.toPointer(EmulatorReturnStatus));
 }
 
 export function HdvInitializeDeviceHost(
   computeSystem: Uint8Array | Deno.PointerValue /* Windows.Win32.System.HostComputeSystem.HCS_SYSTEM */,
   deviceHostHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvInitializeDeviceHost(util.toPointer(computeSystem), util.toPointer(deviceHostHandle));
+  return libvmdevicehost_dll.HdvInitializeDeviceHost!(util.toPointer(computeSystem), util.toPointer(deviceHostHandle));
 }
 
 export function HdvTeardownDeviceHost(
   deviceHostHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvTeardownDeviceHost(util.toPointer(deviceHostHandle));
+  return libvmdevicehost_dll.HdvTeardownDeviceHost!(util.toPointer(deviceHostHandle));
 }
 
 export function HdvCreateDeviceInstance(
@@ -10739,7 +10864,7 @@ export function HdvCreateDeviceInstance(
   deviceContext: Deno.PointerValue | Uint8Array /* ptr */,
   deviceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvCreateDeviceInstance(util.toPointer(deviceHostHandle), deviceType, util.toPointer(deviceClassId), util.toPointer(deviceInstanceId), util.toPointer(deviceInterface), util.toPointer(deviceContext), util.toPointer(deviceHandle));
+  return libvmdevicehost_dll.HdvCreateDeviceInstance!(util.toPointer(deviceHostHandle), deviceType, util.toPointer(deviceClassId), util.toPointer(deviceInstanceId), util.toPointer(deviceInterface), util.toPointer(deviceContext), util.toPointer(deviceHandle));
 }
 
 export function HdvReadGuestMemory(
@@ -10748,7 +10873,7 @@ export function HdvReadGuestMemory(
   byteCount: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvReadGuestMemory(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.toPointer(buffer));
+  return libvmdevicehost_dll.HdvReadGuestMemory!(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.toPointer(buffer));
 }
 
 export function HdvWriteGuestMemory(
@@ -10757,7 +10882,7 @@ export function HdvWriteGuestMemory(
   byteCount: number /* u32 */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvWriteGuestMemory(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.toPointer(buffer));
+  return libvmdevicehost_dll.HdvWriteGuestMemory!(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.toPointer(buffer));
 }
 
 export function HdvCreateGuestMemoryAperture(
@@ -10767,14 +10892,14 @@ export function HdvCreateGuestMemoryAperture(
   writeProtected: boolean /* Windows.Win32.Foundation.BOOL */,
   mappedAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvCreateGuestMemoryAperture(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.boolToFfi(writeProtected), util.toPointer(mappedAddress));
+  return libvmdevicehost_dll.HdvCreateGuestMemoryAperture!(util.toPointer(requestor), guestPhysicalAddress, byteCount, util.boolToFfi(writeProtected), util.toPointer(mappedAddress));
 }
 
 export function HdvDestroyGuestMemoryAperture(
   requestor: Deno.PointerValue | Uint8Array /* ptr */,
   mappedAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvDestroyGuestMemoryAperture(util.toPointer(requestor), util.toPointer(mappedAddress));
+  return libvmdevicehost_dll.HdvDestroyGuestMemoryAperture!(util.toPointer(requestor), util.toPointer(mappedAddress));
 }
 
 export function HdvDeliverGuestInterrupt(
@@ -10782,7 +10907,7 @@ export function HdvDeliverGuestInterrupt(
   msiAddress: bigint | number /* u64 */,
   msiData: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvDeliverGuestInterrupt(util.toPointer(requestor), msiAddress, msiData);
+  return libvmdevicehost_dll.HdvDeliverGuestInterrupt!(util.toPointer(requestor), msiAddress, msiData);
 }
 
 export function HdvRegisterDoorbell(
@@ -10793,7 +10918,7 @@ export function HdvRegisterDoorbell(
   Flags: bigint | number /* u64 */,
   DoorbellEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvRegisterDoorbell(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags, util.toPointer(DoorbellEvent));
+  return libvmdevicehost_dll.HdvRegisterDoorbell!(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags, util.toPointer(DoorbellEvent));
 }
 
 export function HdvUnregisterDoorbell(
@@ -10803,7 +10928,7 @@ export function HdvUnregisterDoorbell(
   TriggerValue: bigint | number /* u64 */,
   Flags: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvUnregisterDoorbell(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags);
+  return libvmdevicehost_dll.HdvUnregisterDoorbell!(util.toPointer(requestor), BarIndex, BarOffset, TriggerValue, Flags);
 }
 
 export function HdvCreateSectionBackedMmioRange(
@@ -10815,7 +10940,7 @@ export function HdvCreateSectionBackedMmioRange(
   sectionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   sectionOffsetInPages: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvCreateSectionBackedMmioRange(util.toPointer(requestor), barIndex, offsetInPages, lengthInPages, MappingFlags, util.toPointer(sectionHandle), sectionOffsetInPages);
+  return libvmdevicehost_dll.HdvCreateSectionBackedMmioRange!(util.toPointer(requestor), barIndex, offsetInPages, lengthInPages, MappingFlags, util.toPointer(sectionHandle), sectionOffsetInPages);
 }
 
 export function HdvDestroySectionBackedMmioRange(
@@ -10823,7 +10948,7 @@ export function HdvDestroySectionBackedMmioRange(
   barIndex: HDV_PCI_BAR_SELECTOR /* Windows.Win32.System.Hypervisor.HDV_PCI_BAR_SELECTOR */,
   offsetInPages: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libvmdevicehost_dll.HdvDestroySectionBackedMmioRange(util.toPointer(requestor), barIndex, offsetInPages);
+  return libvmdevicehost_dll.HdvDestroySectionBackedMmioRange!(util.toPointer(requestor), barIndex, offsetInPages);
 }
 
 export function LocateSavedStateFiles(
@@ -10833,20 +10958,20 @@ export function LocateSavedStateFiles(
   vsvPath: Deno.PointerValue | Uint8Array /* ptr */,
   vmrsPath: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LocateSavedStateFiles(util.pwstrToFfi(vmName), util.pwstrToFfi(snapshotName), util.toPointer(binPath), util.toPointer(vsvPath), util.toPointer(vmrsPath));
+  return libVmSavedStateDumpProvider_dll.LocateSavedStateFiles!(util.pwstrToFfi(vmName), util.pwstrToFfi(snapshotName), util.toPointer(binPath), util.toPointer(vsvPath), util.toPointer(vmrsPath));
 }
 
 export function LoadSavedStateFile(
   vmrsFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LoadSavedStateFile(util.pwstrToFfi(vmrsFile), util.toPointer(vmSavedStateDumpHandle));
+  return libVmSavedStateDumpProvider_dll.LoadSavedStateFile!(util.pwstrToFfi(vmrsFile), util.toPointer(vmSavedStateDumpHandle));
 }
 
 export function ApplyPendingSavedStateFileReplayLog(
   vmrsFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ApplyPendingSavedStateFileReplayLog(util.pwstrToFfi(vmrsFile));
+  return libVmSavedStateDumpProvider_dll.ApplyPendingSavedStateFileReplayLog!(util.pwstrToFfi(vmrsFile));
 }
 
 export function LoadSavedStateFiles(
@@ -10854,20 +10979,20 @@ export function LoadSavedStateFiles(
   vsvFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LoadSavedStateFiles(util.pwstrToFfi(binFile), util.pwstrToFfi(vsvFile), util.toPointer(vmSavedStateDumpHandle));
+  return libVmSavedStateDumpProvider_dll.LoadSavedStateFiles!(util.pwstrToFfi(binFile), util.pwstrToFfi(vsvFile), util.toPointer(vmSavedStateDumpHandle));
 }
 
 export function ReleaseSavedStateFiles(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ReleaseSavedStateFiles(util.toPointer(vmSavedStateDumpHandle));
+  return libVmSavedStateDumpProvider_dll.ReleaseSavedStateFiles!(util.toPointer(vmSavedStateDumpHandle));
 }
 
 export function GetGuestEnabledVirtualTrustLevels(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   virtualTrustLevels: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetGuestEnabledVirtualTrustLevels(util.toPointer(vmSavedStateDumpHandle), util.toPointer(virtualTrustLevels));
+  return libVmSavedStateDumpProvider_dll.GetGuestEnabledVirtualTrustLevels!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(virtualTrustLevels));
 }
 
 export function GetGuestOsInfo(
@@ -10875,14 +11000,14 @@ export function GetGuestOsInfo(
   virtualTrustLevel: number /* u8 */,
   guestOsInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetGuestOsInfo(util.toPointer(vmSavedStateDumpHandle), virtualTrustLevel, util.toPointer(guestOsInfo));
+  return libVmSavedStateDumpProvider_dll.GetGuestOsInfo!(util.toPointer(vmSavedStateDumpHandle), virtualTrustLevel, util.toPointer(guestOsInfo));
 }
 
 export function GetVpCount(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   vpCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetVpCount(util.toPointer(vmSavedStateDumpHandle), util.toPointer(vpCount));
+  return libVmSavedStateDumpProvider_dll.GetVpCount!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(vpCount));
 }
 
 export function GetArchitecture(
@@ -10890,7 +11015,7 @@ export function GetArchitecture(
   vpId: number /* u32 */,
   architecture: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetArchitecture(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(architecture));
+  return libVmSavedStateDumpProvider_dll.GetArchitecture!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(architecture));
 }
 
 export function ForceArchitecture(
@@ -10898,7 +11023,7 @@ export function ForceArchitecture(
   vpId: number /* u32 */,
   architecture: VIRTUAL_PROCESSOR_ARCH /* Windows.Win32.System.Hypervisor.VIRTUAL_PROCESSOR_ARCH */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ForceArchitecture(util.toPointer(vmSavedStateDumpHandle), vpId, architecture);
+  return libVmSavedStateDumpProvider_dll.ForceArchitecture!(util.toPointer(vmSavedStateDumpHandle), vpId, architecture);
 }
 
 export function GetActiveVirtualTrustLevel(
@@ -10906,7 +11031,7 @@ export function GetActiveVirtualTrustLevel(
   vpId: number /* u32 */,
   virtualTrustLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetActiveVirtualTrustLevel(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(virtualTrustLevel));
+  return libVmSavedStateDumpProvider_dll.GetActiveVirtualTrustLevel!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(virtualTrustLevel));
 }
 
 export function GetEnabledVirtualTrustLevels(
@@ -10914,7 +11039,7 @@ export function GetEnabledVirtualTrustLevels(
   vpId: number /* u32 */,
   virtualTrustLevels: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetEnabledVirtualTrustLevels(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(virtualTrustLevels));
+  return libVmSavedStateDumpProvider_dll.GetEnabledVirtualTrustLevels!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(virtualTrustLevels));
 }
 
 export function ForceActiveVirtualTrustLevel(
@@ -10922,7 +11047,7 @@ export function ForceActiveVirtualTrustLevel(
   vpId: number /* u32 */,
   virtualTrustLevel: number /* u8 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ForceActiveVirtualTrustLevel(util.toPointer(vmSavedStateDumpHandle), vpId, virtualTrustLevel);
+  return libVmSavedStateDumpProvider_dll.ForceActiveVirtualTrustLevel!(util.toPointer(vmSavedStateDumpHandle), vpId, virtualTrustLevel);
 }
 
 export function IsActiveVirtualTrustLevelEnabled(
@@ -10930,14 +11055,14 @@ export function IsActiveVirtualTrustLevelEnabled(
   vpId: number /* u32 */,
   activeVirtualTrustLevelEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.IsActiveVirtualTrustLevelEnabled(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(activeVirtualTrustLevelEnabled));
+  return libVmSavedStateDumpProvider_dll.IsActiveVirtualTrustLevelEnabled!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(activeVirtualTrustLevelEnabled));
 }
 
 export function IsNestedVirtualizationEnabled(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   enabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.IsNestedVirtualizationEnabled(util.toPointer(vmSavedStateDumpHandle), util.toPointer(enabled));
+  return libVmSavedStateDumpProvider_dll.IsNestedVirtualizationEnabled!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(enabled));
 }
 
 export function GetNestedVirtualizationMode(
@@ -10945,7 +11070,7 @@ export function GetNestedVirtualizationMode(
   vpId: number /* u32 */,
   enabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetNestedVirtualizationMode(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(enabled));
+  return libVmSavedStateDumpProvider_dll.GetNestedVirtualizationMode!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(enabled));
 }
 
 export function ForceNestedHostMode(
@@ -10954,7 +11079,7 @@ export function ForceNestedHostMode(
   hostMode: boolean /* Windows.Win32.Foundation.BOOL */,
   oldMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ForceNestedHostMode(util.toPointer(vmSavedStateDumpHandle), vpId, util.boolToFfi(hostMode), util.toPointer(oldMode));
+  return libVmSavedStateDumpProvider_dll.ForceNestedHostMode!(util.toPointer(vmSavedStateDumpHandle), vpId, util.boolToFfi(hostMode), util.toPointer(oldMode));
 }
 
 export function InKernelSpace(
@@ -10962,7 +11087,7 @@ export function InKernelSpace(
   vpId: number /* u32 */,
   inKernelSpace: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.InKernelSpace(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(inKernelSpace));
+  return libVmSavedStateDumpProvider_dll.InKernelSpace!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(inKernelSpace));
 }
 
 export function GetRegisterValue(
@@ -10971,7 +11096,7 @@ export function GetRegisterValue(
   registerId: number /* u32 */,
   registerValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetRegisterValue(util.toPointer(vmSavedStateDumpHandle), vpId, registerId, util.toPointer(registerValue));
+  return libVmSavedStateDumpProvider_dll.GetRegisterValue!(util.toPointer(vmSavedStateDumpHandle), vpId, registerId, util.toPointer(registerValue));
 }
 
 export function GetPagingMode(
@@ -10979,7 +11104,7 @@ export function GetPagingMode(
   vpId: number /* u32 */,
   pagingMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetPagingMode(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(pagingMode));
+  return libVmSavedStateDumpProvider_dll.GetPagingMode!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(pagingMode));
 }
 
 export function ForcePagingMode(
@@ -10987,7 +11112,7 @@ export function ForcePagingMode(
   vpId: number /* u32 */,
   pagingMode: PAGING_MODE /* Windows.Win32.System.Hypervisor.PAGING_MODE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ForcePagingMode(util.toPointer(vmSavedStateDumpHandle), vpId, pagingMode);
+  return libVmSavedStateDumpProvider_dll.ForcePagingMode!(util.toPointer(vmSavedStateDumpHandle), vpId, pagingMode);
 }
 
 export function ReadGuestPhysicalAddress(
@@ -10997,7 +11122,7 @@ export function ReadGuestPhysicalAddress(
   bufferSize: number /* u32 */,
   bytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ReadGuestPhysicalAddress(util.toPointer(vmSavedStateDumpHandle), physicalAddress, util.toPointer(buffer), bufferSize, util.toPointer(bytesRead));
+  return libVmSavedStateDumpProvider_dll.ReadGuestPhysicalAddress!(util.toPointer(vmSavedStateDumpHandle), physicalAddress, util.toPointer(buffer), bufferSize, util.toPointer(bytesRead));
 }
 
 export function GuestVirtualAddressToPhysicalAddress(
@@ -11007,7 +11132,7 @@ export function GuestVirtualAddressToPhysicalAddress(
   physicalAddress: Deno.PointerValue | Uint8Array /* ptr */,
   unmappedRegionSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GuestVirtualAddressToPhysicalAddress(util.toPointer(vmSavedStateDumpHandle), vpId, virtualAddress, util.toPointer(physicalAddress), util.toPointer(unmappedRegionSize));
+  return libVmSavedStateDumpProvider_dll.GuestVirtualAddressToPhysicalAddress!(util.toPointer(vmSavedStateDumpHandle), vpId, virtualAddress, util.toPointer(physicalAddress), util.toPointer(unmappedRegionSize));
 }
 
 export function GetGuestPhysicalMemoryChunks(
@@ -11016,7 +11141,7 @@ export function GetGuestPhysicalMemoryChunks(
   memoryChunks: Deno.PointerValue | Uint8Array /* ptr */,
   memoryChunkCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetGuestPhysicalMemoryChunks(util.toPointer(vmSavedStateDumpHandle), util.toPointer(memoryChunkPageSize), util.toPointer(memoryChunks), util.toPointer(memoryChunkCount));
+  return libVmSavedStateDumpProvider_dll.GetGuestPhysicalMemoryChunks!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(memoryChunkPageSize), util.toPointer(memoryChunks), util.toPointer(memoryChunkCount));
 }
 
 export function GuestPhysicalAddressToRawSavedMemoryOffset(
@@ -11024,7 +11149,7 @@ export function GuestPhysicalAddressToRawSavedMemoryOffset(
   physicalAddress: bigint | number /* u64 */,
   rawSavedMemoryOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GuestPhysicalAddressToRawSavedMemoryOffset(util.toPointer(vmSavedStateDumpHandle), physicalAddress, util.toPointer(rawSavedMemoryOffset));
+  return libVmSavedStateDumpProvider_dll.GuestPhysicalAddressToRawSavedMemoryOffset!(util.toPointer(vmSavedStateDumpHandle), physicalAddress, util.toPointer(rawSavedMemoryOffset));
 }
 
 export function ReadGuestRawSavedMemory(
@@ -11034,28 +11159,28 @@ export function ReadGuestRawSavedMemory(
   bufferSize: number /* u32 */,
   bytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ReadGuestRawSavedMemory(util.toPointer(vmSavedStateDumpHandle), rawSavedMemoryOffset, util.toPointer(buffer), bufferSize, util.toPointer(bytesRead));
+  return libVmSavedStateDumpProvider_dll.ReadGuestRawSavedMemory!(util.toPointer(vmSavedStateDumpHandle), rawSavedMemoryOffset, util.toPointer(buffer), bufferSize, util.toPointer(bytesRead));
 }
 
 export function GetGuestRawSavedMemorySize(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   guestRawSavedMemorySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetGuestRawSavedMemorySize(util.toPointer(vmSavedStateDumpHandle), util.toPointer(guestRawSavedMemorySize));
+  return libVmSavedStateDumpProvider_dll.GetGuestRawSavedMemorySize!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(guestRawSavedMemorySize));
 }
 
 export function SetMemoryBlockCacheLimit(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   memoryBlockCacheLimit: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.SetMemoryBlockCacheLimit(util.toPointer(vmSavedStateDumpHandle), memoryBlockCacheLimit);
+  return libVmSavedStateDumpProvider_dll.SetMemoryBlockCacheLimit!(util.toPointer(vmSavedStateDumpHandle), memoryBlockCacheLimit);
 }
 
 export function GetMemoryBlockCacheLimit(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   memoryBlockCacheLimit: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetMemoryBlockCacheLimit(util.toPointer(vmSavedStateDumpHandle), util.toPointer(memoryBlockCacheLimit));
+  return libVmSavedStateDumpProvider_dll.GetMemoryBlockCacheLimit!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(memoryBlockCacheLimit));
 }
 
 export function ApplyGuestMemoryFix(
@@ -11065,7 +11190,7 @@ export function ApplyGuestMemoryFix(
   fixBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   fixBufferSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ApplyGuestMemoryFix(util.toPointer(vmSavedStateDumpHandle), vpId, virtualAddress, util.toPointer(fixBuffer), fixBufferSize);
+  return libVmSavedStateDumpProvider_dll.ApplyGuestMemoryFix!(util.toPointer(vmSavedStateDumpHandle), vpId, virtualAddress, util.toPointer(fixBuffer), fixBufferSize);
 }
 
 export function LoadSavedStateSymbolProvider(
@@ -11073,26 +11198,26 @@ export function LoadSavedStateSymbolProvider(
   userSymbols: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   force: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LoadSavedStateSymbolProvider(util.toPointer(vmSavedStateDumpHandle), util.pwstrToFfi(userSymbols), util.boolToFfi(force));
+  return libVmSavedStateDumpProvider_dll.LoadSavedStateSymbolProvider!(util.toPointer(vmSavedStateDumpHandle), util.pwstrToFfi(userSymbols), util.boolToFfi(force));
 }
 
 export function ReleaseSavedStateSymbolProvider(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ReleaseSavedStateSymbolProvider(util.toPointer(vmSavedStateDumpHandle));
+  return libVmSavedStateDumpProvider_dll.ReleaseSavedStateSymbolProvider!(util.toPointer(vmSavedStateDumpHandle));
 }
 
 export function GetSavedStateSymbolProviderHandle(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolProviderHandle(util.toPointer(vmSavedStateDumpHandle));
+  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolProviderHandle!(util.toPointer(vmSavedStateDumpHandle));
 }
 
 export function SetSavedStateSymbolProviderDebugInfoCallback(
   vmSavedStateDumpHandle: Deno.PointerValue | Uint8Array /* ptr */,
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Hypervisor.GUEST_SYMBOLS_PROVIDER_DEBUG_INFO_CALLBACK */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.SetSavedStateSymbolProviderDebugInfoCallback(util.toPointer(vmSavedStateDumpHandle), util.toPointer(Callback));
+  return libVmSavedStateDumpProvider_dll.SetSavedStateSymbolProviderDebugInfoCallback!(util.toPointer(vmSavedStateDumpHandle), util.toPointer(Callback));
 }
 
 export function LoadSavedStateModuleSymbols(
@@ -11102,7 +11227,7 @@ export function LoadSavedStateModuleSymbols(
   baseAddress: bigint | number /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbols(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
+  return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbols!(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
 }
 
 export function LoadSavedStateModuleSymbolsEx(
@@ -11113,7 +11238,7 @@ export function LoadSavedStateModuleSymbolsEx(
   baseAddress: bigint | number /* u64 */,
   sizeOfBase: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbolsEx(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), imageTimestamp, util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
+  return libVmSavedStateDumpProvider_dll.LoadSavedStateModuleSymbolsEx!(util.toPointer(vmSavedStateDumpHandle), util.pstrToFfi(imageName), imageTimestamp, util.pstrToFfi(moduleName), baseAddress, sizeOfBase);
 }
 
 export function ResolveSavedStateGlobalVariableAddress(
@@ -11123,7 +11248,7 @@ export function ResolveSavedStateGlobalVariableAddress(
   virtualAddress: Deno.PointerValue | Uint8Array /* ptr */,
   size: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ResolveSavedStateGlobalVariableAddress(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(globalName), util.toPointer(virtualAddress), util.toPointer(size));
+  return libVmSavedStateDumpProvider_dll.ResolveSavedStateGlobalVariableAddress!(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(globalName), util.toPointer(virtualAddress), util.toPointer(size));
 }
 
 export function ReadSavedStateGlobalVariable(
@@ -11133,7 +11258,7 @@ export function ReadSavedStateGlobalVariable(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   bufferSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ReadSavedStateGlobalVariable(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(globalName), util.toPointer(buffer), bufferSize);
+  return libVmSavedStateDumpProvider_dll.ReadSavedStateGlobalVariable!(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(globalName), util.toPointer(buffer), bufferSize);
 }
 
 export function GetSavedStateSymbolTypeSize(
@@ -11142,7 +11267,7 @@ export function GetSavedStateSymbolTypeSize(
   typeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   size: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolTypeSize(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(size));
+  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolTypeSize!(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(size));
 }
 
 export function FindSavedStateSymbolFieldInType(
@@ -11153,7 +11278,7 @@ export function FindSavedStateSymbolFieldInType(
   offset: Deno.PointerValue | Uint8Array /* ptr */,
   found: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.FindSavedStateSymbolFieldInType(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.pwstrToFfi(fieldName), util.toPointer(offset), util.toPointer(found));
+  return libVmSavedStateDumpProvider_dll.FindSavedStateSymbolFieldInType!(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.pwstrToFfi(fieldName), util.toPointer(offset), util.toPointer(found));
 }
 
 export function GetSavedStateSymbolFieldInfo(
@@ -11162,7 +11287,7 @@ export function GetSavedStateSymbolFieldInfo(
   typeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   typeFieldInfoMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolFieldInfo(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(typeFieldInfoMap));
+  return libVmSavedStateDumpProvider_dll.GetSavedStateSymbolFieldInfo!(util.toPointer(vmSavedStateDumpHandle), vpId, util.pstrToFfi(typeName), util.toPointer(typeFieldInfoMap));
 }
 
 export function ScanMemoryForDosImages(
@@ -11175,7 +11300,7 @@ export function ScanMemoryForDosImages(
   standaloneAddress: Deno.PointerValue | Uint8Array /* ptr */,
   standaloneAddressCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.ScanMemoryForDosImages(util.toPointer(vmSavedStateDumpHandle), vpId, startAddress, endAddress, util.toPointer(callbackContext), util.toPointer(foundImageCallback), util.toPointer(standaloneAddress), standaloneAddressCount);
+  return libVmSavedStateDumpProvider_dll.ScanMemoryForDosImages!(util.toPointer(vmSavedStateDumpHandle), vpId, startAddress, endAddress, util.toPointer(callbackContext), util.toPointer(foundImageCallback), util.toPointer(standaloneAddress), standaloneAddressCount);
 }
 
 export function CallStackUnwind(
@@ -11186,6 +11311,6 @@ export function CallStackUnwind(
   frameCount: number /* u32 */,
   callStack: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVmSavedStateDumpProvider_dll.CallStackUnwind(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(imageInfo), imageInfoCount, frameCount, util.toPointer(callStack));
+  return libVmSavedStateDumpProvider_dll.CallStackUnwind!(util.toPointer(vmSavedStateDumpHandle), vpId, util.toPointer(imageInfo), imageInfoCount, frameCount, util.toPointer(callStack));
 }
 

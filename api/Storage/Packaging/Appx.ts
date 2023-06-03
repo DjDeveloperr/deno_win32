@@ -4422,170 +4422,212 @@ try {
     GetCurrentPackageId: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackageFullName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackageFamilyName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackagePath: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackageId: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPackageFullName: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackageFamilyName: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackagePath: {
       parameters: ["pointer", "u32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackagePathByFullName: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetStagedPackagePathByFullName: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentApplicationUserModelId: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetApplicationUserModelId: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     PackageIdFromFullName: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PackageFullNameFromId: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     PackageFamilyNameFromId: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     PackageFamilyNameFromFullName: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     PackageNameAndPublisherIdFromFamilyName: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     FormatApplicationUserModelId: {
       parameters: ["buffer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ParseApplicationUserModelId: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackagesByPackageFamily: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     FindPackagesByPackageFamily: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackageInfo: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenPackageInfoByFullName: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClosePackageInfo: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetPackageInfo: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPackageApplicationIds: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CheckIsMSIXPackage: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AppPolicyGetLifecycleManagement: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetWindowingModel: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetMediaFoundationCodecLoading: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetClrCompat: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetThreadInitializationType: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetShowDeveloperDiagnostic: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetProcessTerminationMethod: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppPolicyGetCreateFileAccess: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreatePackageVirtualizationContext: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ActivatePackageVirtualizationContext: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReleasePackageVirtualizationContext: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DeactivatePackageVirtualizationContext: {
       parameters: ["usize"],
       result: "void",
+      optional: true,
     },
     DuplicatePackageVirtualizationContext: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentPackageVirtualizationContext: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetProcessesInVirtualizationContext: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4595,42 +4637,52 @@ try {
     GetPackageFullNameFromToken: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackageFamilyNameFromToken: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetApplicationUserModelIdFromToken: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     VerifyPackageFullName: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     VerifyPackageFamilyName: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     VerifyPackageId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     VerifyApplicationUserModelId: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     VerifyPackageRelativeApplicationId: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     GetStagedPackageOrigin: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenPackageInfoByFullNameForUser: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4640,22 +4692,27 @@ try {
     GetPackagePathByFullName2: {
       parameters: ["buffer", "i32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetStagedPackagePathByFullName2: {
       parameters: ["buffer", "i32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackageInfo2: {
       parameters: ["u32", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetCurrentPackagePath2: {
       parameters: ["i32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetPackageInfo2: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4665,26 +4722,32 @@ try {
     TryCreatePackageDependency: {
       parameters: ["pointer", "buffer", "pointer", "i32", "i32", "buffer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeletePackageDependency: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     AddPackageDependency: {
       parameters: ["buffer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RemovePackageDependency: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetResolvedPackageFullNameForPackageDependency: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIdForPackageDependencyContext: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4695,28 +4758,28 @@ export function GetCurrentPackageId(
   bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentPackageId(util.toPointer(bufferLength), util.toPointer(buffer));
+  return libKERNEL32_dll.GetCurrentPackageId!(util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function GetCurrentPackageFullName(
   packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentPackageFullName(util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
+  return libKERNEL32_dll.GetCurrentPackageFullName!(util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetCurrentPackageFamilyName(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentPackageFamilyName(util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
+  return libKERNEL32_dll.GetCurrentPackageFamilyName!(util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetCurrentPackagePath(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentPackagePath(util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libKERNEL32_dll.GetCurrentPackagePath!(util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackageId(
@@ -4724,7 +4787,7 @@ export function GetPackageId(
   bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackageId(util.toPointer(hProcess), util.toPointer(bufferLength), util.toPointer(buffer));
+  return libKERNEL32_dll.GetPackageId!(util.toPointer(hProcess), util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function GetPackageFullName(
@@ -4732,7 +4795,7 @@ export function GetPackageFullName(
   packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackageFullName(util.toPointer(hProcess), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
+  return libKERNEL32_dll.GetPackageFullName!(util.toPointer(hProcess), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetPackageFullNameFromToken(
@@ -4740,7 +4803,7 @@ export function GetPackageFullNameFromToken(
   packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFullNameFromToken(util.toPointer(token), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFullNameFromToken!(util.toPointer(token), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function GetPackageFamilyName(
@@ -4748,7 +4811,7 @@ export function GetPackageFamilyName(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackageFamilyName(util.toPointer(hProcess), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
+  return libKERNEL32_dll.GetPackageFamilyName!(util.toPointer(hProcess), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetPackageFamilyNameFromToken(
@@ -4756,7 +4819,7 @@ export function GetPackageFamilyNameFromToken(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFamilyNameFromToken(util.toPointer(token), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetPackageFamilyNameFromToken!(util.toPointer(token), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function GetPackagePath(
@@ -4765,7 +4828,7 @@ export function GetPackagePath(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackagePath(util.toPointer(packageId), reserved, util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libKERNEL32_dll.GetPackagePath!(util.toPointer(packageId), reserved, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackagePathByFullName(
@@ -4773,7 +4836,7 @@ export function GetPackagePathByFullName(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libKERNEL32_dll.GetPackagePathByFullName!(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetStagedPackagePathByFullName(
@@ -4781,7 +4844,7 @@ export function GetStagedPackagePathByFullName(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetStagedPackagePathByFullName(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libKERNEL32_dll.GetStagedPackagePathByFullName!(util.pwstrToFfi(packageFullName), util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetPackagePathByFullName2(
@@ -4790,7 +4853,7 @@ export function GetPackagePathByFullName2(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackagePathByFullName2!(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetStagedPackagePathByFullName2(
@@ -4799,7 +4862,7 @@ export function GetStagedPackagePathByFullName2(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetStagedPackagePathByFullName2(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetStagedPackagePathByFullName2!(util.pwstrToFfi(packageFullName), packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetCurrentPackageInfo2(
@@ -4809,7 +4872,7 @@ export function GetCurrentPackageInfo2(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackageInfo2(flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
+  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackageInfo2!(flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetCurrentPackagePath2(
@@ -4817,14 +4880,14 @@ export function GetCurrentPackagePath2(
   pathLength: Deno.PointerValue | Uint8Array /* ptr */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackagePath2(packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
+  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetCurrentPackagePath2!(packagePathType, util.toPointer(pathLength), util.pwstrToFfi(path));
 }
 
 export function GetCurrentApplicationUserModelId(
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentApplicationUserModelId(util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
+  return libKERNEL32_dll.GetCurrentApplicationUserModelId!(util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function GetApplicationUserModelId(
@@ -4832,7 +4895,7 @@ export function GetApplicationUserModelId(
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetApplicationUserModelId(util.toPointer(hProcess), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
+  return libKERNEL32_dll.GetApplicationUserModelId!(util.toPointer(hProcess), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function GetApplicationUserModelIdFromToken(
@@ -4840,37 +4903,37 @@ export function GetApplicationUserModelIdFromToken(
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetApplicationUserModelIdFromToken(util.toPointer(token), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetApplicationUserModelIdFromToken!(util.toPointer(token), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function VerifyPackageFullName(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFullName(util.pwstrToFfi(packageFullName));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFullName!(util.pwstrToFfi(packageFullName));
 }
 
 export function VerifyPackageFamilyName(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFamilyName(util.pwstrToFfi(packageFamilyName));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageFamilyName!(util.pwstrToFfi(packageFamilyName));
 }
 
 export function VerifyPackageId(
   packageId: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageId(util.toPointer(packageId));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageId!(util.toPointer(packageId));
 }
 
 export function VerifyApplicationUserModelId(
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyApplicationUserModelId(util.pwstrToFfi(applicationUserModelId));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyApplicationUserModelId!(util.pwstrToFfi(applicationUserModelId));
 }
 
 export function VerifyPackageRelativeApplicationId(
   packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageRelativeApplicationId(util.pwstrToFfi(packageRelativeApplicationId));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.VerifyPackageRelativeApplicationId!(util.pwstrToFfi(packageRelativeApplicationId));
 }
 
 export function PackageIdFromFullName(
@@ -4879,7 +4942,7 @@ export function PackageIdFromFullName(
   bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.PackageIdFromFullName(util.pwstrToFfi(packageFullName), flags, util.toPointer(bufferLength), util.toPointer(buffer));
+  return libKERNEL32_dll.PackageIdFromFullName!(util.pwstrToFfi(packageFullName), flags, util.toPointer(bufferLength), util.toPointer(buffer));
 }
 
 export function PackageFullNameFromId(
@@ -4887,7 +4950,7 @@ export function PackageFullNameFromId(
   packageFullNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.PackageFullNameFromId(util.toPointer(packageId), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
+  return libKERNEL32_dll.PackageFullNameFromId!(util.toPointer(packageId), util.toPointer(packageFullNameLength), util.pwstrToFfi(packageFullName));
 }
 
 export function PackageFamilyNameFromId(
@@ -4895,7 +4958,7 @@ export function PackageFamilyNameFromId(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.PackageFamilyNameFromId(util.toPointer(packageId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
+  return libKERNEL32_dll.PackageFamilyNameFromId!(util.toPointer(packageId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function PackageFamilyNameFromFullName(
@@ -4903,7 +4966,7 @@ export function PackageFamilyNameFromFullName(
   packageFamilyNameLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.PackageFamilyNameFromFullName(util.pwstrToFfi(packageFullName), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
+  return libKERNEL32_dll.PackageFamilyNameFromFullName!(util.pwstrToFfi(packageFullName), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName));
 }
 
 export function PackageNameAndPublisherIdFromFamilyName(
@@ -4913,7 +4976,7 @@ export function PackageNameAndPublisherIdFromFamilyName(
   packagePublisherIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   packagePublisherId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.PackageNameAndPublisherIdFromFamilyName(util.pwstrToFfi(packageFamilyName), util.toPointer(packageNameLength), util.pwstrToFfi(packageName), util.toPointer(packagePublisherIdLength), util.pwstrToFfi(packagePublisherId));
+  return libKERNEL32_dll.PackageNameAndPublisherIdFromFamilyName!(util.pwstrToFfi(packageFamilyName), util.toPointer(packageNameLength), util.pwstrToFfi(packageName), util.toPointer(packagePublisherIdLength), util.pwstrToFfi(packagePublisherId));
 }
 
 export function FormatApplicationUserModelId(
@@ -4922,7 +4985,7 @@ export function FormatApplicationUserModelId(
   applicationUserModelIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   applicationUserModelId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.FormatApplicationUserModelId(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(packageRelativeApplicationId), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
+  return libKERNEL32_dll.FormatApplicationUserModelId!(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(packageRelativeApplicationId), util.toPointer(applicationUserModelIdLength), util.pwstrToFfi(applicationUserModelId));
 }
 
 export function ParseApplicationUserModelId(
@@ -4932,7 +4995,7 @@ export function ParseApplicationUserModelId(
   packageRelativeApplicationIdLength: Deno.PointerValue | Uint8Array /* ptr */,
   packageRelativeApplicationId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.ParseApplicationUserModelId(util.pwstrToFfi(applicationUserModelId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName), util.toPointer(packageRelativeApplicationIdLength), util.pwstrToFfi(packageRelativeApplicationId));
+  return libKERNEL32_dll.ParseApplicationUserModelId!(util.pwstrToFfi(applicationUserModelId), util.toPointer(packageFamilyNameLength), util.pwstrToFfi(packageFamilyName), util.toPointer(packageRelativeApplicationIdLength), util.pwstrToFfi(packageRelativeApplicationId));
 }
 
 export function GetPackagesByPackageFamily(
@@ -4942,7 +5005,7 @@ export function GetPackagesByPackageFamily(
   bufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer));
+  return libKERNEL32_dll.GetPackagesByPackageFamily!(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer));
 }
 
 export function FindPackagesByPackageFamily(
@@ -4954,14 +5017,14 @@ export function FindPackagesByPackageFamily(
   buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.FindPackagesByPackageFamily(util.pwstrToFfi(packageFamilyName), packageFilters, util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer), util.toPointer(packageProperties));
+  return libKERNEL32_dll.FindPackagesByPackageFamily!(util.pwstrToFfi(packageFamilyName), packageFilters, util.toPointer(count), util.toPointer(packageFullNames), util.toPointer(bufferLength), util.pwstrToFfi(buffer), util.toPointer(packageProperties));
 }
 
 export function GetStagedPackageOrigin(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   origin: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetStagedPackageOrigin(util.pwstrToFfi(packageFullName), util.toPointer(origin));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.GetStagedPackageOrigin!(util.pwstrToFfi(packageFullName), util.toPointer(origin));
 }
 
 export function GetCurrentPackageInfo(
@@ -4970,7 +5033,7 @@ export function GetCurrentPackageInfo(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetCurrentPackageInfo(flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
+  return libKERNEL32_dll.GetCurrentPackageInfo!(flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function OpenPackageInfoByFullName(
@@ -4978,7 +5041,7 @@ export function OpenPackageInfoByFullName(
   reserved: number /* u32 */,
   packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.OpenPackageInfoByFullName(util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
+  return libKERNEL32_dll.OpenPackageInfoByFullName!(util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
 }
 
 export function OpenPackageInfoByFullNameForUser(
@@ -4987,13 +5050,13 @@ export function OpenPackageInfoByFullNameForUser(
   reserved: number /* u32 */,
   packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.OpenPackageInfoByFullNameForUser(util.toPointer(userSid), util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
+  return libapi_ms_win_appmodel_runtime_l1_1_1_dll.OpenPackageInfoByFullNameForUser!(util.toPointer(userSid), util.pwstrToFfi(packageFullName), reserved, util.toPointer(packageInfoReference));
 }
 
 export function ClosePackageInfo(
   packageInfoReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.ClosePackageInfo(util.toPointer(packageInfoReference));
+  return libKERNEL32_dll.ClosePackageInfo!(util.toPointer(packageInfoReference));
 }
 
 export function GetPackageInfo(
@@ -5003,7 +5066,7 @@ export function GetPackageInfo(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackageInfo(util.toPointer(packageInfoReference), flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
+  return libKERNEL32_dll.GetPackageInfo!(util.toPointer(packageInfoReference), flags, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetPackageApplicationIds(
@@ -5012,7 +5075,7 @@ export function GetPackageApplicationIds(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetPackageApplicationIds(util.toPointer(packageInfoReference), util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
+  return libKERNEL32_dll.GetPackageApplicationIds!(util.toPointer(packageInfoReference), util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function GetPackageInfo2(
@@ -5023,14 +5086,14 @@ export function GetPackageInfo2(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   count: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackageInfo2(util.toPointer(packageInfoReference), flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
+  return libapi_ms_win_appmodel_runtime_l1_1_3_dll.GetPackageInfo2!(util.toPointer(packageInfoReference), flags, packagePathType, util.toPointer(bufferLength), util.toPointer(buffer), util.toPointer(count));
 }
 
 export function CheckIsMSIXPackage(
   packageFullName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   isMSIXPackage: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.CheckIsMSIXPackage(util.pwstrToFfi(packageFullName), util.toPointer(isMSIXPackage));
+  return libKERNEL32_dll.CheckIsMSIXPackage!(util.pwstrToFfi(packageFullName), util.toPointer(isMSIXPackage));
 }
 
 export function TryCreatePackageDependency(
@@ -5043,13 +5106,13 @@ export function TryCreatePackageDependency(
   options: CreatePackageDependencyOptions /* Windows.Win32.Storage.Packaging.Appx.CreatePackageDependencyOptions */,
   packageDependencyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.TryCreatePackageDependency(util.toPointer(user), util.pwstrToFfi(packageFamilyName), util.toPointer(minVersion), packageDependencyProcessorArchitectures, lifetimeKind, util.pwstrToFfi(lifetimeArtifact), options, util.toPointer(packageDependencyId));
+  return libKERNELBASE_dll.TryCreatePackageDependency!(util.toPointer(user), util.pwstrToFfi(packageFamilyName), util.toPointer(minVersion), packageDependencyProcessorArchitectures, lifetimeKind, util.pwstrToFfi(lifetimeArtifact), options, util.toPointer(packageDependencyId));
 }
 
 export function DeletePackageDependency(
   packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.DeletePackageDependency(util.pwstrToFfi(packageDependencyId));
+  return libKERNELBASE_dll.DeletePackageDependency!(util.pwstrToFfi(packageDependencyId));
 }
 
 export function AddPackageDependency(
@@ -5059,120 +5122,120 @@ export function AddPackageDependency(
   packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
   packageFullName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.AddPackageDependency(util.pwstrToFfi(packageDependencyId), rank, options, util.toPointer(packageDependencyContext), util.toPointer(packageFullName));
+  return libKERNELBASE_dll.AddPackageDependency!(util.pwstrToFfi(packageDependencyId), rank, options, util.toPointer(packageDependencyContext), util.toPointer(packageFullName));
 }
 
 export function RemovePackageDependency(
   packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.RemovePackageDependency(util.toPointer(packageDependencyContext));
+  return libKERNELBASE_dll.RemovePackageDependency!(util.toPointer(packageDependencyContext));
 }
 
 export function GetResolvedPackageFullNameForPackageDependency(
   packageDependencyId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   packageFullName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.GetResolvedPackageFullNameForPackageDependency(util.pwstrToFfi(packageDependencyId), util.toPointer(packageFullName));
+  return libKERNELBASE_dll.GetResolvedPackageFullNameForPackageDependency!(util.pwstrToFfi(packageDependencyId), util.toPointer(packageFullName));
 }
 
 export function GetIdForPackageDependencyContext(
   packageDependencyContext: Deno.PointerValue | Uint8Array /* ptr */,
   packageDependencyId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNELBASE_dll.GetIdForPackageDependencyContext(util.toPointer(packageDependencyContext), util.toPointer(packageDependencyId));
+  return libKERNELBASE_dll.GetIdForPackageDependencyContext!(util.toPointer(packageDependencyContext), util.toPointer(packageDependencyId));
 }
 
 export function AppPolicyGetLifecycleManagement(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetLifecycleManagement(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetLifecycleManagement!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetWindowingModel(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetWindowingModel(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetWindowingModel!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetMediaFoundationCodecLoading(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetMediaFoundationCodecLoading(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetMediaFoundationCodecLoading!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetClrCompat(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetClrCompat(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetClrCompat!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetThreadInitializationType(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetThreadInitializationType(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetThreadInitializationType!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetShowDeveloperDiagnostic(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetShowDeveloperDiagnostic(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetShowDeveloperDiagnostic!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetProcessTerminationMethod(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetProcessTerminationMethod(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetProcessTerminationMethod!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function AppPolicyGetCreateFileAccess(
   processToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   policy: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.AppPolicyGetCreateFileAccess(util.toPointer(processToken), util.toPointer(policy));
+  return libKERNEL32_dll.AppPolicyGetCreateFileAccess!(util.toPointer(processToken), util.toPointer(policy));
 }
 
 export function CreatePackageVirtualizationContext(
   packageFamilyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.CreatePackageVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(context));
+  return libKERNEL32_dll.CreatePackageVirtualizationContext!(util.pwstrToFfi(packageFamilyName), util.toPointer(context));
 }
 
 export function ActivatePackageVirtualizationContext(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   cookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.ActivatePackageVirtualizationContext(util.toPointer(context), util.toPointer(cookie));
+  return libKERNEL32_dll.ActivatePackageVirtualizationContext!(util.toPointer(context), util.toPointer(cookie));
 }
 
 export function ReleasePackageVirtualizationContext(
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleasePackageVirtualizationContext(util.toPointer(context));
+  return libKERNEL32_dll.ReleasePackageVirtualizationContext!(util.toPointer(context));
 }
 
 export function DeactivatePackageVirtualizationContext(
   cookie: bigint | number /* usize */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeactivatePackageVirtualizationContext(cookie);
+  return libKERNEL32_dll.DeactivatePackageVirtualizationContext!(cookie);
 }
 
 export function DuplicatePackageVirtualizationContext(
   sourceContext: Deno.PointerValue | Uint8Array /* ptr */,
   destContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.DuplicatePackageVirtualizationContext(util.toPointer(sourceContext), util.toPointer(destContext));
+  return libKERNEL32_dll.DuplicatePackageVirtualizationContext!(util.toPointer(sourceContext), util.toPointer(destContext));
 }
 
 export function GetCurrentPackageVirtualizationContext(): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.GetCurrentPackageVirtualizationContext();
+  return libKERNEL32_dll.GetCurrentPackageVirtualizationContext!();
 }
 
 export function GetProcessesInVirtualizationContext(
@@ -5180,6 +5243,6 @@ export function GetProcessesInVirtualizationContext(
   count: Deno.PointerValue | Uint8Array /* ptr */,
   processes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.GetProcessesInVirtualizationContext(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(processes));
+  return libKERNEL32_dll.GetProcessesInVirtualizationContext!(util.pwstrToFfi(packageFamilyName), util.toPointer(count), util.toPointer(processes));
 }
 

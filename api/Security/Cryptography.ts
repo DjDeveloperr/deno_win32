@@ -45833,158 +45833,197 @@ try {
     CryptAcquireContextA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptAcquireContextW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptReleaseContext: {
       parameters: ["usize", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGenKey: {
       parameters: ["usize", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDeriveKey: {
       parameters: ["usize", "u32", "usize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDestroyKey: {
       parameters: ["usize"],
       result: "i32",
+      optional: true,
     },
     CryptSetKeyParam: {
       parameters: ["usize", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetKeyParam: {
       parameters: ["usize", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetHashParam: {
       parameters: ["usize", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetHashParam: {
       parameters: ["usize", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetProvParam: {
       parameters: ["usize", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetProvParam: {
       parameters: ["usize", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGenRandom: {
       parameters: ["usize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetUserKey: {
       parameters: ["usize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptExportKey: {
       parameters: ["usize", "usize", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptImportKey: {
       parameters: ["usize", "pointer", "u32", "usize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEncrypt: {
       parameters: ["usize", "usize", "i32", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptDecrypt: {
       parameters: ["usize", "usize", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptCreateHash: {
       parameters: ["usize", "u32", "usize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashData: {
       parameters: ["usize", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptHashSessionKey: {
       parameters: ["usize", "usize", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptDestroyHash: {
       parameters: ["usize"],
       result: "i32",
+      optional: true,
     },
     CryptSignHashA: {
       parameters: ["usize", "u32", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSignHashW: {
       parameters: ["usize", "u32", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifySignatureA: {
       parameters: ["usize", "pointer", "u32", "usize", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptVerifySignatureW: {
       parameters: ["usize", "pointer", "u32", "usize", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetProviderA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetProviderW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetProviderExA: {
       parameters: ["buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSetProviderExW: {
       parameters: ["buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetDefaultProviderA: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetDefaultProviderW: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumProviderTypesA: {
       parameters: ["u32", "pointer", "u32", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumProviderTypesW: {
       parameters: ["u32", "pointer", "u32", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumProvidersA: {
       parameters: ["u32", "pointer", "u32", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumProvidersW: {
       parameters: ["u32", "pointer", "u32", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptContextAddRef: {
       parameters: ["usize", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptDuplicateKey: {
       parameters: ["usize", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDuplicateHash: {
       parameters: ["usize", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -45994,214 +46033,267 @@ try {
     BCryptOpenAlgorithmProvider: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumAlgorithms: {
       parameters: ["u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumProviders: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptGetProperty: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptSetProperty: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptCloseAlgorithmProvider: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptFreeBuffer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     BCryptGenerateSymmetricKey: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptGenerateKeyPair: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptEncrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDecrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptExportKey: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptImportKey: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptImportKeyPair: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDuplicateKey: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptFinalizeKeyPair: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDestroyKey: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptDestroySecret: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptSignHash: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptVerifySignature: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptSecretAgreement: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDeriveKey: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptKeyDerivation: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptCreateHash: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptHashData: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptFinishHash: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptCreateMultiHash: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptProcessMultiOperations: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDuplicateHash: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDestroyHash: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptHash: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptGenRandom: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDeriveKeyCapi: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptDeriveKeyPBKDF2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "u64", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptQueryProviderRegistration: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumRegisteredProviders: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptCreateContext: {
       parameters: ["u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptDeleteContext: {
       parameters: ["u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumContexts: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptConfigureContext: {
       parameters: ["u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptQueryContextConfiguration: {
       parameters: ["u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptAddContextFunction: {
       parameters: ["u32", "buffer", "u32", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     BCryptRemoveContextFunction: {
       parameters: ["u32", "buffer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumContextFunctions: {
       parameters: ["u32", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptConfigureContextFunction: {
       parameters: ["u32", "buffer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptQueryContextFunctionConfiguration: {
       parameters: ["u32", "buffer", "u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptEnumContextFunctionProviders: {
       parameters: ["u32", "buffer", "u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptSetContextFunctionProperty: {
       parameters: ["u32", "buffer", "u32", "buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptQueryContextFunctionProperty: {
       parameters: ["u32", "buffer", "u32", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptRegisterConfigChangeNotify: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptUnregisterConfigChangeNotify: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptResolveProviders: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BCryptGetFipsAlgorithmMode: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -46211,158 +46303,197 @@ try {
     NCryptOpenStorageProvider: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptEnumAlgorithms: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptIsAlgSupported: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptEnumKeys: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptEnumStorageProviders: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptFreeBuffer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptOpenKey: {
       parameters: ["pointer", "pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptCreatePersistedKey: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptGetProperty: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptSetProperty: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptFinalizeKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptEncrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptDecrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptImportKey: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptExportKey: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptSignHash: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptVerifySignature: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptDeleteKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptFreeObject: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptIsKeyHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     NCryptTranslateHandle: {
       parameters: ["pointer", "pointer", "usize", "usize", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptNotifyChangeKey: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptSecretAgreement: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptDeriveKey: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptKeyDerivation: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptCreateClaim: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptVerifyClaim: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptRegisterProtectionDescriptorName: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptQueryProtectionDescriptorName: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NCryptCreateProtectionDescriptor: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptCloseProtectionDescriptor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptGetProtectionDescriptorInfo: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptProtectSecret: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptUnprotectSecret: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptStreamOpenToProtect: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptStreamOpenToUnprotect: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptStreamOpenToUnprotectEx: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NCryptStreamUpdate: {
       parameters: ["pointer", "pointer", "usize", "i32"],
       result: "pointer",
+      optional: true,
     },
     NCryptStreamClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -46372,898 +46503,1122 @@ try {
     CryptFormatObject: {
       parameters: ["u32", "u32", "u32", "pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEncodeObjectEx: {
       parameters: ["u32", "buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEncodeObject: {
       parameters: ["u32", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDecodeObjectEx: {
       parameters: ["u32", "buffer", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDecodeObject: {
       parameters: ["u32", "buffer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptInstallOIDFunctionAddress: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptInitOIDFunctionSet: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptGetOIDFunctionAddress: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetDefaultOIDDllList: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetDefaultOIDFunctionAddress: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptFreeOIDFunctionAddress: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptRegisterOIDFunction: {
       parameters: ["u32", "buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CryptUnregisterOIDFunction: {
       parameters: ["u32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CryptRegisterDefaultOIDFunction: {
       parameters: ["u32", "buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     CryptUnregisterDefaultOIDFunction: {
       parameters: ["u32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CryptSetOIDFunctionValue: {
       parameters: ["u32", "buffer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetOIDFunctionValue: {
       parameters: ["u32", "buffer", "buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumOIDFunction: {
       parameters: ["u32", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptFindOIDInfo: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptRegisterOIDInfo: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptUnregisterOIDInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumOIDInfo: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptFindLocalizedName: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CryptMsgOpenToEncode: {
       parameters: ["u32", "u32", "u32", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptMsgCalculateEncodedLength: {
       parameters: ["u32", "u32", "u32", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CryptMsgOpenToDecode: {
       parameters: ["u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptMsgDuplicate: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptMsgClose: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgUpdate: {
       parameters: ["pointer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     CryptMsgGetParam: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgControl: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgVerifyCountersignatureEncoded: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgVerifyCountersignatureEncodedEx: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgCountersign: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgCountersignEncoded: {
       parameters: ["u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertOpenStore: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertDuplicateStore: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CertSaveStore: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertCloseStore: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertGetSubjectCertificateFromStore: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertEnumCertificatesInStore: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindCertificateInStore: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertGetIssuerCertificateFromStore: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertVerifySubjectCertificateContext: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertDuplicateCertificateContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CertCreateCertificateContext: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CertFreeCertificateContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetCertificateContextProperty: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetCertificateContextProperty: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumCertificateContextProperties: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertCreateCTLEntryFromCertificateContextProperties: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetCertificateContextPropertiesFromCTLEntry: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertGetCRLFromStore: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertEnumCRLsInStore: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindCRLInStore: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertDuplicateCRLContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CertCreateCRLContext: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CertFreeCRLContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetCRLContextProperty: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetCRLContextProperty: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumCRLContextProperties: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertFindCertificateInCRL: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertIsValidCRLForCertificate: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddEncodedCertificateToStore: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCertificateContextToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddSerializedElementToStore: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertDeleteCertificateFromStore: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddEncodedCRLToStore: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCRLContextToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertDeleteCRLFromStore: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertSerializeCertificateStoreElement: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSerializeCRLStoreElement: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertDuplicateCTLContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CertCreateCTLContext: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CertFreeCTLContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetCTLContextProperty: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetCTLContextProperty: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumCTLContextProperties: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertEnumCTLsInStore: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindSubjectInCTL: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CertFindCTLInStore: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertAddEncodedCTLToStore: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCTLContextToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSerializeCTLStoreElement: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertDeleteCTLFromStore: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCertificateLinkToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCRLLinkToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddCTLLinkToStore: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddStoreToCollection: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CertRemoveStoreFromCollection: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     CertControlStore: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetStoreProperty: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetStoreProperty: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertCreateContext: {
       parameters: ["u32", "u32", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertRegisterSystemStore: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertRegisterPhysicalStore: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertUnregisterSystemStore: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertUnregisterPhysicalStore: {
       parameters: ["pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     CertEnumSystemStoreLocation: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumSystemStore: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumPhysicalStore: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetEnhancedKeyUsage: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSetEnhancedKeyUsage: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAddEnhancedKeyUsageIdentifier: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CertRemoveEnhancedKeyUsageIdentifier: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CertGetValidUsages: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgGetAndVerifySigner: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgSignCTL: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMsgEncodeAndSignCTL: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertFindSubjectInSortedCTL: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertEnumSubjectInSortedCTL: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyCTLUsage: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyRevocation: {
       parameters: ["u32", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertCompareIntegerBlob: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertCompareCertificate: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertCompareCertificateName: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertIsRDNAttrsInCertificateName: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertComparePublicKeyInfo: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetPublicKeyLength: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     CryptVerifyCertificateSignature: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyCertificateSignatureEx: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertIsStrongHashToSign: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashToBeSigned: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashCertificate: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashCertificate2: {
       parameters: ["buffer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSignCertificate: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSignAndEncodeCertificate: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyTimeValidity: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyCRLTimeValidity: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyValidityNesting: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertVerifyCRLRevocation: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertAlgIdToOID: {
       parameters: ["u32"],
       result: "buffer",
+      optional: true,
     },
     CertOIDToAlgId: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     CertFindExtension: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindAttribute: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindRDNAttr: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertGetIntendedKeyUsage: {
       parameters: ["u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptInstallDefaultContext: {
       parameters: ["usize", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUninstallDefaultContext: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptExportPublicKeyInfo: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptExportPublicKeyInfoEx: {
       parameters: ["pointer", "u32", "u32", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptExportPublicKeyInfoFromBCryptKeyHandle: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptImportPublicKeyInfo: {
       parameters: ["usize", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptImportPublicKeyInfoEx: {
       parameters: ["usize", "u32", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptImportPublicKeyInfoEx2: {
       parameters: ["u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptAcquireCertificatePrivateKey: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptFindCertificateKeyProvInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptImportPKCS8: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptExportPKCS8: {
       parameters: ["usize", "u32", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashPublicKeyInfo: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertRDNValueToStrA: {
       parameters: ["u32", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertRDNValueToStrW: {
       parameters: ["u32", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertNameToStrA: {
       parameters: ["u32", "pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertNameToStrW: {
       parameters: ["u32", "pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertStrToNameA: {
       parameters: ["u32", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertStrToNameW: {
       parameters: ["u32", "buffer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetNameStringA: {
       parameters: ["pointer", "u32", "u32", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CertGetNameStringW: {
       parameters: ["pointer", "u32", "u32", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CryptSignMessage: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyMessageSignature: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetMessageSignerCount: {
       parameters: ["u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptGetMessageCertificates: {
       parameters: ["u32", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptVerifyDetachedMessageSignature: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEncryptMessage: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDecryptMessage: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSignAndEncryptMessage: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDecryptAndVerifyMessageSignature: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptDecodeMessage: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptHashMessage: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyMessageHash: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyDetachedMessageHash: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSignMessageWithKey: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyMessageSignatureWithKey: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertOpenSystemStoreA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CertOpenSystemStoreW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CertAddEncodedCertificateToSystemStoreA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertAddEncodedCertificateToSystemStoreW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptQueryObject: {
       parameters: ["u32", "pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptMemAlloc: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     CryptMemRealloc: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptMemFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CryptCreateAsyncHandle: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSetAsyncParam: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetAsyncParam: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptCloseAsyncHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertCreateSelfSignCertificate: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptGetKeyIdentifierProperty: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSetKeyIdentifierProperty: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptEnumKeyIdentifierProperties: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptCreateKeyIdentifierFromCSP: {
       parameters: ["u32", "buffer", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertCreateCertificateChainEngine: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertFreeCertificateChainEngine: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CertResyncCertificateChainEngine: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CertGetCertificateChain: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertFreeCertificateChain: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CertDuplicateCertificateChain: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CertFindChainInStore: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertVerifyCertificateChainPolicy: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptStringToBinaryA: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptStringToBinaryW: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptBinaryToStringA: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptBinaryToStringW: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PFXImportCertStore: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PFXIsPFXBlob: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PFXVerifyPassword: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PFXExportCertStoreEx: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PFXExportCertStore: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CertOpenServerOcspResponse: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertAddRefServerOcspResponse: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CertCloseServerOcspResponse: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     CertGetServerOcspResponseContext: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertAddRefServerOcspResponseContext: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CertFreeServerOcspResponseContext: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CertRetrieveLogoOrBiometricInfo: {
       parameters: ["pointer", "buffer", "u32", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertSelectCertificateChains: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertFreeCertificateChainList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CryptRetrieveTimeStamp: {
       parameters: ["buffer", "u32", "u32", "buffer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptVerifyTimeStampSignature: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CertIsWeakHash: {
       parameters: ["u32", "buffer", "u32", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CryptProtectData: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUnprotectData: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUpdateProtectedState: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptProtectMemory: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptUnprotectMemory: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -47273,6 +47628,7 @@ try {
     FindCertsByIssuer: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -47282,22 +47638,27 @@ try {
     CryptRetrieveObjectByUrlA: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptRetrieveObjectByUrlW: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptInstallCancelRetrieval: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUninstallCancelRetrieval: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptGetObjectUrl: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -47307,78 +47668,97 @@ try {
     CryptXmlClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetTransforms: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlOpenToEncode: {
       parameters: ["pointer", "u32", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlOpenToDecode: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlAddObject: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlCreateReference: {
       parameters: ["pointer", "u32", "buffer", "buffer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlDigestReference: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlSetHMACSecret: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlSign: {
       parameters: ["pointer", "pointer", "u32", "u32", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlImportPublicKey: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlVerifySignature: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetDocContext: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetSignature: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetReference: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetStatus: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlEncode: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlGetAlgorithmInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlFindAlgorithmInfo: {
       parameters: ["u32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CryptXmlEnumAlgorithmInfo: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -47388,70 +47768,87 @@ try {
     GetToken: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ManageCardSpace: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     ImportInformationCard: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     Encrypt: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Decrypt: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SignHash: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VerifyHash: {
       parameters: ["pointer", "u32", "pointer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCryptoTransform: {
       parameters: ["pointer", "u32", "i32", "u32", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetKeyedHash: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TransformBlock: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TransformFinalBlock: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HashCore: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HashFinal: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FreeToken: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CloseCryptoHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GenerateDerivedKey: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "u32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetBrowserToken: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -47465,7 +47862,7 @@ export function CryptAcquireContextA(
   dwProvType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptAcquireContextA(util.toPointer(phProv), util.pstrToFfi(szContainer), util.pstrToFfi(szProvider), dwProvType, dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptAcquireContextA!(util.toPointer(phProv), util.pstrToFfi(szContainer), util.pstrToFfi(szProvider), dwProvType, dwFlags));
 }
 
 export function CryptAcquireContextW(
@@ -47475,14 +47872,14 @@ export function CryptAcquireContextW(
   dwProvType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptAcquireContextW(util.toPointer(phProv), util.pwstrToFfi(szContainer), util.pwstrToFfi(szProvider), dwProvType, dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptAcquireContextW!(util.toPointer(phProv), util.pwstrToFfi(szContainer), util.pwstrToFfi(szProvider), dwProvType, dwFlags));
 }
 
 export function CryptReleaseContext(
   hProv: bigint | number /* usize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptReleaseContext(hProv, dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptReleaseContext!(hProv, dwFlags));
 }
 
 export function CryptGenKey(
@@ -47491,7 +47888,7 @@ export function CryptGenKey(
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGenKey(hProv, Algid, dwFlags, util.toPointer(phKey)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGenKey!(hProv, Algid, dwFlags, util.toPointer(phKey)));
 }
 
 export function CryptDeriveKey(
@@ -47501,13 +47898,13 @@ export function CryptDeriveKey(
   dwFlags: number /* u32 */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDeriveKey(hProv, Algid, hBaseData, dwFlags, util.toPointer(phKey)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDeriveKey!(hProv, Algid, hBaseData, dwFlags, util.toPointer(phKey)));
 }
 
 export function CryptDestroyKey(
   hKey: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDestroyKey(hKey));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDestroyKey!(hKey));
 }
 
 export function CryptSetKeyParam(
@@ -47516,7 +47913,7 @@ export function CryptSetKeyParam(
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetKeyParam(hKey, dwParam, util.toPointer(pbData), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetKeyParam!(hKey, dwParam, util.toPointer(pbData), dwFlags));
 }
 
 export function CryptGetKeyParam(
@@ -47526,7 +47923,7 @@ export function CryptGetKeyParam(
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetKeyParam(hKey, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetKeyParam!(hKey, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
 }
 
 export function CryptSetHashParam(
@@ -47535,7 +47932,7 @@ export function CryptSetHashParam(
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetHashParam(hHash, dwParam, util.toPointer(pbData), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetHashParam!(hHash, dwParam, util.toPointer(pbData), dwFlags));
 }
 
 export function CryptGetHashParam(
@@ -47545,7 +47942,7 @@ export function CryptGetHashParam(
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetHashParam(hHash, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetHashParam!(hHash, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
 }
 
 export function CryptSetProvParam(
@@ -47554,7 +47951,7 @@ export function CryptSetProvParam(
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetProvParam(hProv, dwParam, util.toPointer(pbData), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetProvParam!(hProv, dwParam, util.toPointer(pbData), dwFlags));
 }
 
 export function CryptGetProvParam(
@@ -47564,7 +47961,7 @@ export function CryptGetProvParam(
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetProvParam(hProv, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetProvParam!(hProv, dwParam, util.toPointer(pbData), util.toPointer(pdwDataLen), dwFlags));
 }
 
 export function CryptGenRandom(
@@ -47572,7 +47969,7 @@ export function CryptGenRandom(
   dwLen: number /* u32 */,
   pbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGenRandom(hProv, dwLen, util.toPointer(pbBuffer)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGenRandom!(hProv, dwLen, util.toPointer(pbBuffer)));
 }
 
 export function CryptGetUserKey(
@@ -47580,7 +47977,7 @@ export function CryptGetUserKey(
   dwKeySpec: number /* u32 */,
   phUserKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetUserKey(hProv, dwKeySpec, util.toPointer(phUserKey)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetUserKey!(hProv, dwKeySpec, util.toPointer(phUserKey)));
 }
 
 export function CryptExportKey(
@@ -47591,7 +47988,7 @@ export function CryptExportKey(
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptExportKey(hKey, hExpKey, dwBlobType, dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptExportKey!(hKey, hExpKey, dwBlobType, dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen)));
 }
 
 export function CryptImportKey(
@@ -47602,7 +47999,7 @@ export function CryptImportKey(
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptImportKey(hProv, util.toPointer(pbData), dwDataLen, hPubKey, dwFlags, util.toPointer(phKey)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptImportKey!(hProv, util.toPointer(pbData), dwDataLen, hPubKey, dwFlags, util.toPointer(phKey)));
 }
 
 export function CryptEncrypt(
@@ -47614,7 +48011,7 @@ export function CryptEncrypt(
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufLen: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptEncrypt(hKey, hHash, util.boolToFfi(Final), dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen), dwBufLen));
+  return util.boolFromFfi(libADVAPI32_dll.CryptEncrypt!(hKey, hHash, util.boolToFfi(Final), dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen), dwBufLen));
 }
 
 export function CryptDecrypt(
@@ -47625,7 +48022,7 @@ export function CryptDecrypt(
   pbData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDataLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDecrypt(hKey, hHash, util.boolToFfi(Final), dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDecrypt!(hKey, hHash, util.boolToFfi(Final), dwFlags, util.toPointer(pbData), util.toPointer(pdwDataLen)));
 }
 
 export function CryptCreateHash(
@@ -47635,7 +48032,7 @@ export function CryptCreateHash(
   dwFlags: number /* u32 */,
   phHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptCreateHash(hProv, Algid, hKey, dwFlags, util.toPointer(phHash)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptCreateHash!(hProv, Algid, hKey, dwFlags, util.toPointer(phHash)));
 }
 
 export function CryptHashData(
@@ -47644,7 +48041,7 @@ export function CryptHashData(
   dwDataLen: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptHashData(hHash, util.toPointer(pbData), dwDataLen, dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptHashData!(hHash, util.toPointer(pbData), dwDataLen, dwFlags));
 }
 
 export function CryptHashSessionKey(
@@ -47652,13 +48049,13 @@ export function CryptHashSessionKey(
   hKey: bigint | number /* usize */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptHashSessionKey(hHash, hKey, dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptHashSessionKey!(hHash, hKey, dwFlags));
 }
 
 export function CryptDestroyHash(
   hHash: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDestroyHash(hHash));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDestroyHash!(hHash));
 }
 
 export function CryptSignHashA(
@@ -47669,7 +48066,7 @@ export function CryptSignHashA(
   pbSignature: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSigLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSignHashA(hHash, dwKeySpec, util.pstrToFfi(szDescription), dwFlags, util.toPointer(pbSignature), util.toPointer(pdwSigLen)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSignHashA!(hHash, dwKeySpec, util.pstrToFfi(szDescription), dwFlags, util.toPointer(pbSignature), util.toPointer(pdwSigLen)));
 }
 
 export function CryptSignHashW(
@@ -47680,7 +48077,7 @@ export function CryptSignHashW(
   pbSignature: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSigLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSignHashW(hHash, dwKeySpec, util.pwstrToFfi(szDescription), dwFlags, util.toPointer(pbSignature), util.toPointer(pdwSigLen)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSignHashW!(hHash, dwKeySpec, util.pwstrToFfi(szDescription), dwFlags, util.toPointer(pbSignature), util.toPointer(pdwSigLen)));
 }
 
 export function CryptVerifySignatureA(
@@ -47691,7 +48088,7 @@ export function CryptVerifySignatureA(
   szDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptVerifySignatureA(hHash, util.toPointer(pbSignature), dwSigLen, hPubKey, util.pstrToFfi(szDescription), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptVerifySignatureA!(hHash, util.toPointer(pbSignature), dwSigLen, hPubKey, util.pstrToFfi(szDescription), dwFlags));
 }
 
 export function CryptVerifySignatureW(
@@ -47702,21 +48099,21 @@ export function CryptVerifySignatureW(
   szDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptVerifySignatureW(hHash, util.toPointer(pbSignature), dwSigLen, hPubKey, util.pwstrToFfi(szDescription), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptVerifySignatureW!(hHash, util.toPointer(pbSignature), dwSigLen, hPubKey, util.pwstrToFfi(szDescription), dwFlags));
 }
 
 export function CryptSetProviderA(
   pszProvName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwProvType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderA(util.pstrToFfi(pszProvName), dwProvType));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderA!(util.pstrToFfi(pszProvName), dwProvType));
 }
 
 export function CryptSetProviderW(
   pszProvName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwProvType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderW(util.pwstrToFfi(pszProvName), dwProvType));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderW!(util.pwstrToFfi(pszProvName), dwProvType));
 }
 
 export function CryptSetProviderExA(
@@ -47725,7 +48122,7 @@ export function CryptSetProviderExA(
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderExA(util.pstrToFfi(pszProvName), dwProvType, util.toPointer(pdwReserved), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderExA!(util.pstrToFfi(pszProvName), dwProvType, util.toPointer(pdwReserved), dwFlags));
 }
 
 export function CryptSetProviderExW(
@@ -47734,7 +48131,7 @@ export function CryptSetProviderExW(
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderExW(util.pwstrToFfi(pszProvName), dwProvType, util.toPointer(pdwReserved), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptSetProviderExW!(util.pwstrToFfi(pszProvName), dwProvType, util.toPointer(pdwReserved), dwFlags));
 }
 
 export function CryptGetDefaultProviderA(
@@ -47744,7 +48141,7 @@ export function CryptGetDefaultProviderA(
   pszProvName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbProvName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetDefaultProviderA(dwProvType, util.toPointer(pdwReserved), dwFlags, util.pstrToFfi(pszProvName), util.toPointer(pcbProvName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetDefaultProviderA!(dwProvType, util.toPointer(pdwReserved), dwFlags, util.pstrToFfi(pszProvName), util.toPointer(pcbProvName)));
 }
 
 export function CryptGetDefaultProviderW(
@@ -47754,7 +48151,7 @@ export function CryptGetDefaultProviderW(
   pszProvName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbProvName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptGetDefaultProviderW(dwProvType, util.toPointer(pdwReserved), dwFlags, util.pwstrToFfi(pszProvName), util.toPointer(pcbProvName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptGetDefaultProviderW!(dwProvType, util.toPointer(pdwReserved), dwFlags, util.pwstrToFfi(pszProvName), util.toPointer(pcbProvName)));
 }
 
 export function CryptEnumProviderTypesA(
@@ -47765,7 +48162,7 @@ export function CryptEnumProviderTypesA(
   szTypeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbTypeName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProviderTypesA(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pstrToFfi(szTypeName), util.toPointer(pcbTypeName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProviderTypesA!(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pstrToFfi(szTypeName), util.toPointer(pcbTypeName)));
 }
 
 export function CryptEnumProviderTypesW(
@@ -47776,7 +48173,7 @@ export function CryptEnumProviderTypesW(
   szTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbTypeName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProviderTypesW(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pwstrToFfi(szTypeName), util.toPointer(pcbTypeName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProviderTypesW!(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pwstrToFfi(szTypeName), util.toPointer(pcbTypeName)));
 }
 
 export function CryptEnumProvidersA(
@@ -47787,7 +48184,7 @@ export function CryptEnumProvidersA(
   szProvName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbProvName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProvidersA(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pstrToFfi(szProvName), util.toPointer(pcbProvName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProvidersA!(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pstrToFfi(szProvName), util.toPointer(pcbProvName)));
 }
 
 export function CryptEnumProvidersW(
@@ -47798,7 +48195,7 @@ export function CryptEnumProvidersW(
   szProvName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbProvName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProvidersW(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pwstrToFfi(szProvName), util.toPointer(pcbProvName)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptEnumProvidersW!(dwIndex, util.toPointer(pdwReserved), dwFlags, util.toPointer(pdwProvType), util.pwstrToFfi(szProvName), util.toPointer(pcbProvName)));
 }
 
 export function CryptContextAddRef(
@@ -47806,7 +48203,7 @@ export function CryptContextAddRef(
   pdwReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptContextAddRef(hProv, util.toPointer(pdwReserved), dwFlags));
+  return util.boolFromFfi(libADVAPI32_dll.CryptContextAddRef!(hProv, util.toPointer(pdwReserved), dwFlags));
 }
 
 export function CryptDuplicateKey(
@@ -47815,7 +48212,7 @@ export function CryptDuplicateKey(
   dwFlags: number /* u32 */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDuplicateKey(hKey, util.toPointer(pdwReserved), dwFlags, util.toPointer(phKey)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDuplicateKey!(hKey, util.toPointer(pdwReserved), dwFlags, util.toPointer(phKey)));
 }
 
 export function CryptDuplicateHash(
@@ -47824,7 +48221,7 @@ export function CryptDuplicateHash(
   dwFlags: number /* u32 */,
   phHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CryptDuplicateHash(hHash, util.toPointer(pdwReserved), dwFlags, util.toPointer(phHash)));
+  return util.boolFromFfi(libADVAPI32_dll.CryptDuplicateHash!(hHash, util.toPointer(pdwReserved), dwFlags, util.toPointer(phHash)));
 }
 
 export function BCryptOpenAlgorithmProvider(
@@ -47833,7 +48230,7 @@ export function BCryptOpenAlgorithmProvider(
   pszImplementation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: BCRYPT_OPEN_ALGORITHM_PROVIDER_FLAGS /* Windows.Win32.Security.Cryptography.BCRYPT_OPEN_ALGORITHM_PROVIDER_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptOpenAlgorithmProvider(util.toPointer(phAlgorithm), util.pwstrToFfi(pszAlgId), util.pwstrToFfi(pszImplementation), dwFlags);
+  return libbcrypt_dll.BCryptOpenAlgorithmProvider!(util.toPointer(phAlgorithm), util.pwstrToFfi(pszAlgId), util.pwstrToFfi(pszImplementation), dwFlags);
 }
 
 export function BCryptEnumAlgorithms(
@@ -47842,7 +48239,7 @@ export function BCryptEnumAlgorithms(
   ppAlgList: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumAlgorithms(dwAlgOperations, util.toPointer(pAlgCount), util.toPointer(ppAlgList), dwFlags);
+  return libbcrypt_dll.BCryptEnumAlgorithms!(dwAlgOperations, util.toPointer(pAlgCount), util.toPointer(ppAlgList), dwFlags);
 }
 
 export function BCryptEnumProviders(
@@ -47851,7 +48248,7 @@ export function BCryptEnumProviders(
   ppImplList: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumProviders(util.pwstrToFfi(pszAlgId), util.toPointer(pImplCount), util.toPointer(ppImplList), dwFlags);
+  return libbcrypt_dll.BCryptEnumProviders!(util.pwstrToFfi(pszAlgId), util.toPointer(pImplCount), util.toPointer(ppImplList), dwFlags);
 }
 
 export function BCryptGetProperty(
@@ -47862,7 +48259,7 @@ export function BCryptGetProperty(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptGetProperty(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptGetProperty!(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptSetProperty(
@@ -47872,20 +48269,20 @@ export function BCryptSetProperty(
   cbInput: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptSetProperty(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbInput), cbInput, dwFlags);
+  return libbcrypt_dll.BCryptSetProperty!(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbInput), cbInput, dwFlags);
 }
 
 export function BCryptCloseAlgorithmProvider(
   hAlgorithm: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_ALG_HANDLE */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptCloseAlgorithmProvider(util.toPointer(hAlgorithm), dwFlags);
+  return libbcrypt_dll.BCryptCloseAlgorithmProvider!(util.toPointer(hAlgorithm), dwFlags);
 }
 
 export function BCryptFreeBuffer(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libbcrypt_dll.BCryptFreeBuffer(util.toPointer(pvBuffer));
+  return libbcrypt_dll.BCryptFreeBuffer!(util.toPointer(pvBuffer));
 }
 
 export function BCryptGenerateSymmetricKey(
@@ -47897,7 +48294,7 @@ export function BCryptGenerateSymmetricKey(
   cbSecret: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptGenerateSymmetricKey(util.toPointer(hAlgorithm), util.toPointer(phKey), util.toPointer(pbKeyObject), cbKeyObject, util.toPointer(pbSecret), cbSecret, dwFlags);
+  return libbcrypt_dll.BCryptGenerateSymmetricKey!(util.toPointer(hAlgorithm), util.toPointer(phKey), util.toPointer(pbKeyObject), cbKeyObject, util.toPointer(pbSecret), cbSecret, dwFlags);
 }
 
 export function BCryptGenerateKeyPair(
@@ -47906,7 +48303,7 @@ export function BCryptGenerateKeyPair(
   dwLength: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptGenerateKeyPair(util.toPointer(hAlgorithm), util.toPointer(phKey), dwLength, dwFlags);
+  return libbcrypt_dll.BCryptGenerateKeyPair!(util.toPointer(hAlgorithm), util.toPointer(phKey), dwLength, dwFlags);
 }
 
 export function BCryptEncrypt(
@@ -47921,7 +48318,7 @@ export function BCryptEncrypt(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEncrypt(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbIV), cbIV, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptEncrypt!(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbIV), cbIV, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptDecrypt(
@@ -47936,7 +48333,7 @@ export function BCryptDecrypt(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDecrypt(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbIV), cbIV, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptDecrypt!(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbIV), cbIV, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptExportKey(
@@ -47948,7 +48345,7 @@ export function BCryptExportKey(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptExportKey(util.toPointer(hKey), util.toPointer(hExportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptExportKey!(util.toPointer(hKey), util.toPointer(hExportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptImportKey(
@@ -47962,7 +48359,7 @@ export function BCryptImportKey(
   cbInput: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptImportKey(util.toPointer(hAlgorithm), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(phKey), util.toPointer(pbKeyObject), cbKeyObject, util.toPointer(pbInput), cbInput, dwFlags);
+  return libbcrypt_dll.BCryptImportKey!(util.toPointer(hAlgorithm), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(phKey), util.toPointer(pbKeyObject), cbKeyObject, util.toPointer(pbInput), cbInput, dwFlags);
 }
 
 export function BCryptImportKeyPair(
@@ -47974,7 +48371,7 @@ export function BCryptImportKeyPair(
   cbInput: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptImportKeyPair(util.toPointer(hAlgorithm), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(phKey), util.toPointer(pbInput), cbInput, dwFlags);
+  return libbcrypt_dll.BCryptImportKeyPair!(util.toPointer(hAlgorithm), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(phKey), util.toPointer(pbInput), cbInput, dwFlags);
 }
 
 export function BCryptDuplicateKey(
@@ -47984,26 +48381,26 @@ export function BCryptDuplicateKey(
   cbKeyObject: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDuplicateKey(util.toPointer(hKey), util.toPointer(phNewKey), util.toPointer(pbKeyObject), cbKeyObject, dwFlags);
+  return libbcrypt_dll.BCryptDuplicateKey!(util.toPointer(hKey), util.toPointer(phNewKey), util.toPointer(pbKeyObject), cbKeyObject, dwFlags);
 }
 
 export function BCryptFinalizeKeyPair(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_KEY_HANDLE */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptFinalizeKeyPair(util.toPointer(hKey), dwFlags);
+  return libbcrypt_dll.BCryptFinalizeKeyPair!(util.toPointer(hKey), dwFlags);
 }
 
 export function BCryptDestroyKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_KEY_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDestroyKey(util.toPointer(hKey));
+  return libbcrypt_dll.BCryptDestroyKey!(util.toPointer(hKey));
 }
 
 export function BCryptDestroySecret(
   hSecret: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_SECRET_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDestroySecret(util.toPointer(hSecret));
+  return libbcrypt_dll.BCryptDestroySecret!(util.toPointer(hSecret));
 }
 
 export function BCryptSignHash(
@@ -48016,7 +48413,7 @@ export function BCryptSignHash(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptSignHash(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbInput), cbInput, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptSignHash!(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbInput), cbInput, util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptVerifySignature(
@@ -48028,7 +48425,7 @@ export function BCryptVerifySignature(
   cbSignature: number /* u32 */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptVerifySignature(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHash), cbHash, util.toPointer(pbSignature), cbSignature, dwFlags);
+  return libbcrypt_dll.BCryptVerifySignature!(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHash), cbHash, util.toPointer(pbSignature), cbSignature, dwFlags);
 }
 
 export function BCryptSecretAgreement(
@@ -48037,7 +48434,7 @@ export function BCryptSecretAgreement(
   phAgreedSecret: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptSecretAgreement(util.toPointer(hPrivKey), util.toPointer(hPubKey), util.toPointer(phAgreedSecret), dwFlags);
+  return libbcrypt_dll.BCryptSecretAgreement!(util.toPointer(hPrivKey), util.toPointer(hPubKey), util.toPointer(phAgreedSecret), dwFlags);
 }
 
 export function BCryptDeriveKey(
@@ -48049,7 +48446,7 @@ export function BCryptDeriveKey(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDeriveKey(util.toPointer(hSharedSecret), util.pwstrToFfi(pwszKDF), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptDeriveKey!(util.toPointer(hSharedSecret), util.pwstrToFfi(pwszKDF), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptKeyDerivation(
@@ -48060,7 +48457,7 @@ export function BCryptKeyDerivation(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptKeyDerivation(util.toPointer(hKey), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
+  return libbcrypt_dll.BCryptKeyDerivation!(util.toPointer(hKey), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
 }
 
 export function BCryptCreateHash(
@@ -48072,7 +48469,7 @@ export function BCryptCreateHash(
   cbSecret: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptCreateHash(util.toPointer(hAlgorithm), util.toPointer(phHash), util.toPointer(pbHashObject), cbHashObject, util.toPointer(pbSecret), cbSecret, dwFlags);
+  return libbcrypt_dll.BCryptCreateHash!(util.toPointer(hAlgorithm), util.toPointer(phHash), util.toPointer(pbHashObject), cbHashObject, util.toPointer(pbSecret), cbSecret, dwFlags);
 }
 
 export function BCryptHashData(
@@ -48081,7 +48478,7 @@ export function BCryptHashData(
   cbInput: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptHashData(util.toPointer(hHash), util.toPointer(pbInput), cbInput, dwFlags);
+  return libbcrypt_dll.BCryptHashData!(util.toPointer(hHash), util.toPointer(pbInput), cbInput, dwFlags);
 }
 
 export function BCryptFinishHash(
@@ -48090,7 +48487,7 @@ export function BCryptFinishHash(
   cbOutput: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptFinishHash(util.toPointer(hHash), util.toPointer(pbOutput), cbOutput, dwFlags);
+  return libbcrypt_dll.BCryptFinishHash!(util.toPointer(hHash), util.toPointer(pbOutput), cbOutput, dwFlags);
 }
 
 export function BCryptCreateMultiHash(
@@ -48103,7 +48500,7 @@ export function BCryptCreateMultiHash(
   cbSecret: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptCreateMultiHash(util.toPointer(hAlgorithm), util.toPointer(phHash), nHashes, util.toPointer(pbHashObject), cbHashObject, util.toPointer(pbSecret), cbSecret, dwFlags);
+  return libbcrypt_dll.BCryptCreateMultiHash!(util.toPointer(hAlgorithm), util.toPointer(phHash), nHashes, util.toPointer(pbHashObject), cbHashObject, util.toPointer(pbSecret), cbSecret, dwFlags);
 }
 
 export function BCryptProcessMultiOperations(
@@ -48113,7 +48510,7 @@ export function BCryptProcessMultiOperations(
   cbOperations: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptProcessMultiOperations(util.toPointer(hObject), operationType, util.toPointer(pOperations), cbOperations, dwFlags);
+  return libbcrypt_dll.BCryptProcessMultiOperations!(util.toPointer(hObject), operationType, util.toPointer(pOperations), cbOperations, dwFlags);
 }
 
 export function BCryptDuplicateHash(
@@ -48123,13 +48520,13 @@ export function BCryptDuplicateHash(
   cbHashObject: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDuplicateHash(util.toPointer(hHash), util.toPointer(phNewHash), util.toPointer(pbHashObject), cbHashObject, dwFlags);
+  return libbcrypt_dll.BCryptDuplicateHash!(util.toPointer(hHash), util.toPointer(phNewHash), util.toPointer(pbHashObject), cbHashObject, dwFlags);
 }
 
 export function BCryptDestroyHash(
   hHash: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_HASH_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDestroyHash(util.toPointer(hHash));
+  return libbcrypt_dll.BCryptDestroyHash!(util.toPointer(hHash));
 }
 
 export function BCryptHash(
@@ -48141,7 +48538,7 @@ export function BCryptHash(
   pbOutput: Deno.PointerValue | Uint8Array /* ptr */,
   cbOutput: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptHash(util.toPointer(hAlgorithm), util.toPointer(pbSecret), cbSecret, util.toPointer(pbInput), cbInput, util.toPointer(pbOutput), cbOutput);
+  return libbcrypt_dll.BCryptHash!(util.toPointer(hAlgorithm), util.toPointer(pbSecret), cbSecret, util.toPointer(pbInput), cbInput, util.toPointer(pbOutput), cbOutput);
 }
 
 export function BCryptGenRandom(
@@ -48150,7 +48547,7 @@ export function BCryptGenRandom(
   cbBuffer: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptGenRandom(util.toPointer(hAlgorithm), util.toPointer(pbBuffer), cbBuffer, dwFlags);
+  return libbcrypt_dll.BCryptGenRandom!(util.toPointer(hAlgorithm), util.toPointer(pbBuffer), cbBuffer, dwFlags);
 }
 
 export function BCryptDeriveKeyCapi(
@@ -48160,7 +48557,7 @@ export function BCryptDeriveKeyCapi(
   cbDerivedKey: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDeriveKeyCapi(util.toPointer(hHash), util.toPointer(hTargetAlg), util.toPointer(pbDerivedKey), cbDerivedKey, dwFlags);
+  return libbcrypt_dll.BCryptDeriveKeyCapi!(util.toPointer(hHash), util.toPointer(hTargetAlg), util.toPointer(pbDerivedKey), cbDerivedKey, dwFlags);
 }
 
 export function BCryptDeriveKeyPBKDF2(
@@ -48174,7 +48571,7 @@ export function BCryptDeriveKeyPBKDF2(
   cbDerivedKey: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDeriveKeyPBKDF2(util.toPointer(hPrf), util.toPointer(pbPassword), cbPassword, util.toPointer(pbSalt), cbSalt, cIterations, util.toPointer(pbDerivedKey), cbDerivedKey, dwFlags);
+  return libbcrypt_dll.BCryptDeriveKeyPBKDF2!(util.toPointer(hPrf), util.toPointer(pbPassword), cbPassword, util.toPointer(pbSalt), cbSalt, cIterations, util.toPointer(pbDerivedKey), cbDerivedKey, dwFlags);
 }
 
 export function BCryptQueryProviderRegistration(
@@ -48184,14 +48581,14 @@ export function BCryptQueryProviderRegistration(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptQueryProviderRegistration(util.pwstrToFfi(pszProvider), dwMode, dwInterface, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptQueryProviderRegistration!(util.pwstrToFfi(pszProvider), dwMode, dwInterface, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptEnumRegisteredProviders(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumRegisteredProviders(util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptEnumRegisteredProviders!(util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptCreateContext(
@@ -48199,14 +48596,14 @@ export function BCryptCreateContext(
   pszContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptCreateContext(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pConfig));
+  return libbcrypt_dll.BCryptCreateContext!(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pConfig));
 }
 
 export function BCryptDeleteContext(
   dwTable: BCRYPT_TABLE /* Windows.Win32.Security.Cryptography.BCRYPT_TABLE */,
   pszContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptDeleteContext(dwTable, util.pwstrToFfi(pszContext));
+  return libbcrypt_dll.BCryptDeleteContext!(dwTable, util.pwstrToFfi(pszContext));
 }
 
 export function BCryptEnumContexts(
@@ -48214,7 +48611,7 @@ export function BCryptEnumContexts(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumContexts(dwTable, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptEnumContexts!(dwTable, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptConfigureContext(
@@ -48222,7 +48619,7 @@ export function BCryptConfigureContext(
   pszContext: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptConfigureContext(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pConfig));
+  return libbcrypt_dll.BCryptConfigureContext!(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pConfig));
 }
 
 export function BCryptQueryContextConfiguration(
@@ -48231,7 +48628,7 @@ export function BCryptQueryContextConfiguration(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptQueryContextConfiguration(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptQueryContextConfiguration!(dwTable, util.pwstrToFfi(pszContext), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptAddContextFunction(
@@ -48241,7 +48638,7 @@ export function BCryptAddContextFunction(
   pszFunction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwPosition: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptAddContextFunction(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), dwPosition);
+  return libbcrypt_dll.BCryptAddContextFunction!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), dwPosition);
 }
 
 export function BCryptRemoveContextFunction(
@@ -48250,7 +48647,7 @@ export function BCryptRemoveContextFunction(
   dwInterface: BCRYPT_INTERFACE /* Windows.Win32.Security.Cryptography.BCRYPT_INTERFACE */,
   pszFunction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptRemoveContextFunction(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction));
+  return libbcrypt_dll.BCryptRemoveContextFunction!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction));
 }
 
 export function BCryptEnumContextFunctions(
@@ -48260,7 +48657,7 @@ export function BCryptEnumContextFunctions(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumContextFunctions(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptEnumContextFunctions!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptConfigureContextFunction(
@@ -48270,7 +48667,7 @@ export function BCryptConfigureContextFunction(
   pszFunction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptConfigureContextFunction(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pConfig));
+  return libbcrypt_dll.BCryptConfigureContextFunction!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pConfig));
 }
 
 export function BCryptQueryContextFunctionConfiguration(
@@ -48281,7 +48678,7 @@ export function BCryptQueryContextFunctionConfiguration(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptQueryContextFunctionConfiguration(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptQueryContextFunctionConfiguration!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptEnumContextFunctionProviders(
@@ -48292,7 +48689,7 @@ export function BCryptEnumContextFunctionProviders(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptEnumContextFunctionProviders(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptEnumContextFunctionProviders!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptSetContextFunctionProperty(
@@ -48304,7 +48701,7 @@ export function BCryptSetContextFunctionProperty(
   cbValue: number /* u32 */,
   pbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptSetContextFunctionProperty(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProperty), cbValue, util.toPointer(pbValue));
+  return libbcrypt_dll.BCryptSetContextFunctionProperty!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProperty), cbValue, util.toPointer(pbValue));
 }
 
 export function BCryptQueryContextFunctionProperty(
@@ -48316,19 +48713,19 @@ export function BCryptQueryContextFunctionProperty(
   pcbValue: Deno.PointerValue | Uint8Array /* ptr */,
   ppbValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptQueryContextFunctionProperty(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProperty), util.toPointer(pcbValue), util.toPointer(ppbValue));
+  return libbcrypt_dll.BCryptQueryContextFunctionProperty!(dwTable, util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProperty), util.toPointer(pcbValue), util.toPointer(ppbValue));
 }
 
 export function BCryptRegisterConfigChangeNotify(
   phEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptRegisterConfigChangeNotify(util.toPointer(phEvent));
+  return libbcrypt_dll.BCryptRegisterConfigChangeNotify!(util.toPointer(phEvent));
 }
 
 export function BCryptUnregisterConfigChangeNotify(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptUnregisterConfigChangeNotify(util.toPointer(hEvent));
+  return libbcrypt_dll.BCryptUnregisterConfigChangeNotify!(util.toPointer(hEvent));
 }
 
 export function BCryptResolveProviders(
@@ -48341,13 +48738,13 @@ export function BCryptResolveProviders(
   pcbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptResolveProviders(util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProvider), dwMode, dwFlags, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
+  return libbcrypt_dll.BCryptResolveProviders!(util.pwstrToFfi(pszContext), dwInterface, util.pwstrToFfi(pszFunction), util.pwstrToFfi(pszProvider), dwMode, dwFlags, util.toPointer(pcbBuffer), util.toPointer(ppBuffer));
 }
 
 export function BCryptGetFipsAlgorithmMode(
   pfEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libbcrypt_dll.BCryptGetFipsAlgorithmMode(util.toPointer(pfEnabled));
+  return libbcrypt_dll.BCryptGetFipsAlgorithmMode!(util.toPointer(pfEnabled));
 }
 
 export function NCryptOpenStorageProvider(
@@ -48355,7 +48752,7 @@ export function NCryptOpenStorageProvider(
   pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptOpenStorageProvider(util.toPointer(phProvider), util.pwstrToFfi(pszProviderName), dwFlags);
+  return libncrypt_dll.NCryptOpenStorageProvider!(util.toPointer(phProvider), util.pwstrToFfi(pszProviderName), dwFlags);
 }
 
 export function NCryptEnumAlgorithms(
@@ -48365,7 +48762,7 @@ export function NCryptEnumAlgorithms(
   ppAlgList: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptEnumAlgorithms(util.toPointer(hProvider), dwAlgOperations, util.toPointer(pdwAlgCount), util.toPointer(ppAlgList), dwFlags);
+  return libncrypt_dll.NCryptEnumAlgorithms!(util.toPointer(hProvider), dwAlgOperations, util.toPointer(pdwAlgCount), util.toPointer(ppAlgList), dwFlags);
 }
 
 export function NCryptIsAlgSupported(
@@ -48373,7 +48770,7 @@ export function NCryptIsAlgSupported(
   pszAlgId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptIsAlgSupported(util.toPointer(hProvider), util.pwstrToFfi(pszAlgId), dwFlags);
+  return libncrypt_dll.NCryptIsAlgSupported!(util.toPointer(hProvider), util.pwstrToFfi(pszAlgId), dwFlags);
 }
 
 export function NCryptEnumKeys(
@@ -48383,7 +48780,7 @@ export function NCryptEnumKeys(
   ppEnumState: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptEnumKeys(util.toPointer(hProvider), util.pwstrToFfi(pszScope), util.toPointer(ppKeyName), util.toPointer(ppEnumState), dwFlags);
+  return libncrypt_dll.NCryptEnumKeys!(util.toPointer(hProvider), util.pwstrToFfi(pszScope), util.toPointer(ppKeyName), util.toPointer(ppEnumState), dwFlags);
 }
 
 export function NCryptEnumStorageProviders(
@@ -48391,13 +48788,13 @@ export function NCryptEnumStorageProviders(
   ppProviderList: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptEnumStorageProviders(util.toPointer(pdwProviderCount), util.toPointer(ppProviderList), dwFlags);
+  return libncrypt_dll.NCryptEnumStorageProviders!(util.toPointer(pdwProviderCount), util.toPointer(ppProviderList), dwFlags);
 }
 
 export function NCryptFreeBuffer(
   pvInput: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptFreeBuffer(util.toPointer(pvInput));
+  return libncrypt_dll.NCryptFreeBuffer!(util.toPointer(pvInput));
 }
 
 export function NCryptOpenKey(
@@ -48407,7 +48804,7 @@ export function NCryptOpenKey(
   dwLegacyKeySpec: CERT_KEY_SPEC /* Windows.Win32.Security.Cryptography.CERT_KEY_SPEC */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptOpenKey(util.toPointer(hProvider), util.toPointer(phKey), util.pwstrToFfi(pszKeyName), dwLegacyKeySpec, dwFlags);
+  return libncrypt_dll.NCryptOpenKey!(util.toPointer(hProvider), util.toPointer(phKey), util.pwstrToFfi(pszKeyName), dwLegacyKeySpec, dwFlags);
 }
 
 export function NCryptCreatePersistedKey(
@@ -48418,7 +48815,7 @@ export function NCryptCreatePersistedKey(
   dwLegacyKeySpec: CERT_KEY_SPEC /* Windows.Win32.Security.Cryptography.CERT_KEY_SPEC */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptCreatePersistedKey(util.toPointer(hProvider), util.toPointer(phKey), util.pwstrToFfi(pszAlgId), util.pwstrToFfi(pszKeyName), dwLegacyKeySpec, dwFlags);
+  return libncrypt_dll.NCryptCreatePersistedKey!(util.toPointer(hProvider), util.toPointer(phKey), util.pwstrToFfi(pszAlgId), util.pwstrToFfi(pszKeyName), dwLegacyKeySpec, dwFlags);
 }
 
 export function NCryptGetProperty(
@@ -48429,7 +48826,7 @@ export function NCryptGetProperty(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: OBJECT_SECURITY_INFORMATION /* Windows.Win32.Security.OBJECT_SECURITY_INFORMATION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptGetProperty(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptGetProperty!(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptSetProperty(
@@ -48439,14 +48836,14 @@ export function NCryptSetProperty(
   cbInput: number /* u32 */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptSetProperty(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbInput), cbInput, dwFlags);
+  return libncrypt_dll.NCryptSetProperty!(util.toPointer(hObject), util.pwstrToFfi(pszProperty), util.toPointer(pbInput), cbInput, dwFlags);
 }
 
 export function NCryptFinalizeKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptFinalizeKey(util.toPointer(hKey), dwFlags);
+  return libncrypt_dll.NCryptFinalizeKey!(util.toPointer(hKey), dwFlags);
 }
 
 export function NCryptEncrypt(
@@ -48459,7 +48856,7 @@ export function NCryptEncrypt(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptEncrypt(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptEncrypt!(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptDecrypt(
@@ -48472,7 +48869,7 @@ export function NCryptDecrypt(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptDecrypt(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptDecrypt!(util.toPointer(hKey), util.toPointer(pbInput), cbInput, util.toPointer(pPaddingInfo), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptImportKey(
@@ -48485,7 +48882,7 @@ export function NCryptImportKey(
   cbData: number /* u32 */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptImportKey(util.toPointer(hProvider), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pParameterList), util.toPointer(phKey), util.toPointer(pbData), cbData, dwFlags);
+  return libncrypt_dll.NCryptImportKey!(util.toPointer(hProvider), util.toPointer(hImportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pParameterList), util.toPointer(phKey), util.toPointer(pbData), cbData, dwFlags);
 }
 
 export function NCryptExportKey(
@@ -48498,7 +48895,7 @@ export function NCryptExportKey(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptExportKey(util.toPointer(hKey), util.toPointer(hExportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pParameterList), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptExportKey!(util.toPointer(hKey), util.toPointer(hExportKey), util.pwstrToFfi(pszBlobType), util.toPointer(pParameterList), util.toPointer(pbOutput), cbOutput, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptSignHash(
@@ -48511,7 +48908,7 @@ export function NCryptSignHash(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptSignHash(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHashValue), cbHashValue, util.toPointer(pbSignature), cbSignature, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptSignHash!(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHashValue), cbHashValue, util.toPointer(pbSignature), cbSignature, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptVerifySignature(
@@ -48523,26 +48920,26 @@ export function NCryptVerifySignature(
   cbSignature: number /* u32 */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptVerifySignature(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHashValue), cbHashValue, util.toPointer(pbSignature), cbSignature, dwFlags);
+  return libncrypt_dll.NCryptVerifySignature!(util.toPointer(hKey), util.toPointer(pPaddingInfo), util.toPointer(pbHashValue), cbHashValue, util.toPointer(pbSignature), cbSignature, dwFlags);
 }
 
 export function NCryptDeleteKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptDeleteKey(util.toPointer(hKey), dwFlags);
+  return libncrypt_dll.NCryptDeleteKey!(util.toPointer(hKey), dwFlags);
 }
 
 export function NCryptFreeObject(
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.NCRYPT_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptFreeObject(util.toPointer(hObject));
+  return libncrypt_dll.NCryptFreeObject!(util.toPointer(hObject));
 }
 
 export function NCryptIsKeyHandle(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.NCRYPT_KEY_HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libncrypt_dll.NCryptIsKeyHandle(util.toPointer(hKey)));
+  return util.boolFromFfi(libncrypt_dll.NCryptIsKeyHandle!(util.toPointer(hKey)));
 }
 
 export function NCryptTranslateHandle(
@@ -48553,7 +48950,7 @@ export function NCryptTranslateHandle(
   dwLegacyKeySpec: CERT_KEY_SPEC /* Windows.Win32.Security.Cryptography.CERT_KEY_SPEC */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptTranslateHandle(util.toPointer(phProvider), util.toPointer(phKey), hLegacyProv, hLegacyKey, dwLegacyKeySpec, dwFlags);
+  return libncrypt_dll.NCryptTranslateHandle!(util.toPointer(phProvider), util.toPointer(phKey), hLegacyProv, hLegacyKey, dwLegacyKeySpec, dwFlags);
 }
 
 export function NCryptNotifyChangeKey(
@@ -48561,7 +48958,7 @@ export function NCryptNotifyChangeKey(
   phEvent: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptNotifyChangeKey(util.toPointer(hProvider), util.toPointer(phEvent), dwFlags);
+  return libncrypt_dll.NCryptNotifyChangeKey!(util.toPointer(hProvider), util.toPointer(phEvent), dwFlags);
 }
 
 export function NCryptSecretAgreement(
@@ -48570,7 +48967,7 @@ export function NCryptSecretAgreement(
   phAgreedSecret: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: NCRYPT_FLAGS /* Windows.Win32.Security.Cryptography.NCRYPT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptSecretAgreement(util.toPointer(hPrivKey), util.toPointer(hPubKey), util.toPointer(phAgreedSecret), dwFlags);
+  return libncrypt_dll.NCryptSecretAgreement!(util.toPointer(hPrivKey), util.toPointer(hPubKey), util.toPointer(phAgreedSecret), dwFlags);
 }
 
 export function NCryptDeriveKey(
@@ -48582,7 +48979,7 @@ export function NCryptDeriveKey(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptDeriveKey(util.toPointer(hSharedSecret), util.pwstrToFfi(pwszKDF), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptDeriveKey!(util.toPointer(hSharedSecret), util.pwstrToFfi(pwszKDF), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptKeyDerivation(
@@ -48593,7 +48990,7 @@ export function NCryptKeyDerivation(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptKeyDerivation(util.toPointer(hKey), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptKeyDerivation!(util.toPointer(hKey), util.toPointer(pParameterList), util.toPointer(pbDerivedKey), cbDerivedKey, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptCreateClaim(
@@ -48606,7 +49003,7 @@ export function NCryptCreateClaim(
   pcbResult: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptCreateClaim(util.toPointer(hSubjectKey), util.toPointer(hAuthorityKey), dwClaimType, util.toPointer(pParameterList), util.toPointer(pbClaimBlob), cbClaimBlob, util.toPointer(pcbResult), dwFlags);
+  return libncrypt_dll.NCryptCreateClaim!(util.toPointer(hSubjectKey), util.toPointer(hAuthorityKey), dwClaimType, util.toPointer(pParameterList), util.toPointer(pbClaimBlob), cbClaimBlob, util.toPointer(pcbResult), dwFlags);
 }
 
 export function NCryptVerifyClaim(
@@ -48619,7 +49016,7 @@ export function NCryptVerifyClaim(
   pOutput: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptVerifyClaim(util.toPointer(hSubjectKey), util.toPointer(hAuthorityKey), dwClaimType, util.toPointer(pParameterList), util.toPointer(pbClaimBlob), cbClaimBlob, util.toPointer(pOutput), dwFlags);
+  return libncrypt_dll.NCryptVerifyClaim!(util.toPointer(hSubjectKey), util.toPointer(hAuthorityKey), dwClaimType, util.toPointer(pParameterList), util.toPointer(pbClaimBlob), cbClaimBlob, util.toPointer(pOutput), dwFlags);
 }
 
 export function CryptFormatObject(
@@ -48633,7 +49030,7 @@ export function CryptFormatObject(
   pbFormat: Deno.PointerValue | Uint8Array /* ptr */,
   pcbFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptFormatObject(dwCertEncodingType, dwFormatType, dwFormatStrType, util.toPointer(pFormatStruct), util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbFormat), util.toPointer(pcbFormat)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptFormatObject!(dwCertEncodingType, dwFormatType, dwFormatStrType, util.toPointer(pFormatStruct), util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbFormat), util.toPointer(pcbFormat)));
 }
 
 export function CryptEncodeObjectEx(
@@ -48645,7 +49042,7 @@ export function CryptEncodeObjectEx(
   pvEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEncodeObjectEx(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), dwFlags, util.toPointer(pEncodePara), util.toPointer(pvEncoded), util.toPointer(pcbEncoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEncodeObjectEx!(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), dwFlags, util.toPointer(pEncodePara), util.toPointer(pvEncoded), util.toPointer(pcbEncoded)));
 }
 
 export function CryptEncodeObject(
@@ -48655,7 +49052,7 @@ export function CryptEncodeObject(
   pbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEncodeObject(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEncodeObject!(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
 }
 
 export function CryptDecodeObjectEx(
@@ -48668,7 +49065,7 @@ export function CryptDecodeObjectEx(
   pvStructInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcbStructInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeObjectEx(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pDecodePara), util.toPointer(pvStructInfo), util.toPointer(pcbStructInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeObjectEx!(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pDecodePara), util.toPointer(pvStructInfo), util.toPointer(pcbStructInfo)));
 }
 
 export function CryptDecodeObject(
@@ -48680,7 +49077,7 @@ export function CryptDecodeObject(
   pvStructInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcbStructInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeObject(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pvStructInfo), util.toPointer(pcbStructInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeObject!(dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pvStructInfo), util.toPointer(pcbStructInfo)));
 }
 
 export function CryptInstallOIDFunctionAddress(
@@ -48691,14 +49088,14 @@ export function CryptInstallOIDFunctionAddress(
   rgFuncEntry: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptInstallOIDFunctionAddress(util.toPointer(hModule), dwEncodingType, util.pstrToFfi(pszFuncName), cFuncEntry, util.toPointer(rgFuncEntry), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CryptInstallOIDFunctionAddress!(util.toPointer(hModule), dwEncodingType, util.pstrToFfi(pszFuncName), cFuncEntry, util.toPointer(rgFuncEntry), dwFlags));
 }
 
 export function CryptInitOIDFunctionSet(
   pszFuncName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptInitOIDFunctionSet(util.pstrToFfi(pszFuncName), dwFlags);
+  return libCRYPT32_dll.CryptInitOIDFunctionSet!(util.pstrToFfi(pszFuncName), dwFlags);
 }
 
 export function CryptGetOIDFunctionAddress(
@@ -48709,7 +49106,7 @@ export function CryptGetOIDFunctionAddress(
   ppvFuncAddr: Deno.PointerValue | Uint8Array /* ptr */,
   phFuncAddr: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetOIDFunctionAddress(util.toPointer(hFuncSet), dwEncodingType, util.pstrToFfi(pszOID), dwFlags, util.toPointer(ppvFuncAddr), util.toPointer(phFuncAddr)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetOIDFunctionAddress!(util.toPointer(hFuncSet), dwEncodingType, util.pstrToFfi(pszOID), dwFlags, util.toPointer(ppvFuncAddr), util.toPointer(phFuncAddr)));
 }
 
 export function CryptGetDefaultOIDDllList(
@@ -48718,7 +49115,7 @@ export function CryptGetDefaultOIDDllList(
   pwszDllList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDllList: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetDefaultOIDDllList(util.toPointer(hFuncSet), dwEncodingType, util.pwstrToFfi(pwszDllList), util.toPointer(pcchDllList)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetDefaultOIDDllList!(util.toPointer(hFuncSet), dwEncodingType, util.pwstrToFfi(pwszDllList), util.toPointer(pcchDllList)));
 }
 
 export function CryptGetDefaultOIDFunctionAddress(
@@ -48729,14 +49126,14 @@ export function CryptGetDefaultOIDFunctionAddress(
   ppvFuncAddr: Deno.PointerValue | Uint8Array /* ptr */,
   phFuncAddr: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetDefaultOIDFunctionAddress(util.toPointer(hFuncSet), dwEncodingType, util.pwstrToFfi(pwszDll), dwFlags, util.toPointer(ppvFuncAddr), util.toPointer(phFuncAddr)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetDefaultOIDFunctionAddress!(util.toPointer(hFuncSet), dwEncodingType, util.pwstrToFfi(pwszDll), dwFlags, util.toPointer(ppvFuncAddr), util.toPointer(phFuncAddr)));
 }
 
 export function CryptFreeOIDFunctionAddress(
   hFuncAddr: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptFreeOIDFunctionAddress(util.toPointer(hFuncAddr), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CryptFreeOIDFunctionAddress!(util.toPointer(hFuncAddr), dwFlags));
 }
 
 export function CryptRegisterOIDFunction(
@@ -48746,7 +49143,7 @@ export function CryptRegisterOIDFunction(
   pwszDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszOverrideFuncName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterOIDFunction(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszDll), util.pstrToFfi(pszOverrideFuncName)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterOIDFunction!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszDll), util.pstrToFfi(pszOverrideFuncName)));
 }
 
 export function CryptUnregisterOIDFunction(
@@ -48754,7 +49151,7 @@ export function CryptUnregisterOIDFunction(
   pszFuncName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszOID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterOIDFunction(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterOIDFunction!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID)));
 }
 
 export function CryptRegisterDefaultOIDFunction(
@@ -48763,7 +49160,7 @@ export function CryptRegisterDefaultOIDFunction(
   dwIndex: number /* u32 */,
   pwszDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterDefaultOIDFunction(dwEncodingType, util.pstrToFfi(pszFuncName), dwIndex, util.pwstrToFfi(pwszDll)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterDefaultOIDFunction!(dwEncodingType, util.pstrToFfi(pszFuncName), dwIndex, util.pwstrToFfi(pwszDll)));
 }
 
 export function CryptUnregisterDefaultOIDFunction(
@@ -48771,7 +49168,7 @@ export function CryptUnregisterDefaultOIDFunction(
   pszFuncName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pwszDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterDefaultOIDFunction(dwEncodingType, util.pstrToFfi(pszFuncName), util.pwstrToFfi(pwszDll)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterDefaultOIDFunction!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pwstrToFfi(pwszDll)));
 }
 
 export function CryptSetOIDFunctionValue(
@@ -48783,7 +49180,7 @@ export function CryptSetOIDFunctionValue(
   pbValueData: Deno.PointerValue | Uint8Array /* ptr */,
   cbValueData: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSetOIDFunctionValue(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszValueName), dwValueType, util.toPointer(pbValueData), cbValueData));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSetOIDFunctionValue!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszValueName), dwValueType, util.toPointer(pbValueData), cbValueData));
 }
 
 export function CryptGetOIDFunctionValue(
@@ -48795,7 +49192,7 @@ export function CryptGetOIDFunctionValue(
   pbValueData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbValueData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetOIDFunctionValue(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszValueName), util.toPointer(pdwValueType), util.toPointer(pbValueData), util.toPointer(pcbValueData)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetOIDFunctionValue!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), util.pwstrToFfi(pwszValueName), util.toPointer(pdwValueType), util.toPointer(pbValueData), util.toPointer(pcbValueData)));
 }
 
 export function CryptEnumOIDFunction(
@@ -48806,7 +49203,7 @@ export function CryptEnumOIDFunction(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnumOIDFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_ENUM_OID_FUNC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEnumOIDFunction(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumOIDFunc)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEnumOIDFunction!(dwEncodingType, util.pstrToFfi(pszFuncName), util.pstrToFfi(pszOID), dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumOIDFunc)));
 }
 
 export function CryptFindOIDInfo(
@@ -48814,20 +49211,20 @@ export function CryptFindOIDInfo(
   pvKey: Deno.PointerValue | Uint8Array /* ptr */,
   dwGroupId: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptFindOIDInfo(dwKeyType, util.toPointer(pvKey), dwGroupId);
+  return libCRYPT32_dll.CryptFindOIDInfo!(dwKeyType, util.toPointer(pvKey), dwGroupId);
 }
 
 export function CryptRegisterOIDInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterOIDInfo(util.toPointer(pInfo), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CryptRegisterOIDInfo!(util.toPointer(pInfo), dwFlags));
 }
 
 export function CryptUnregisterOIDInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterOIDInfo(util.toPointer(pInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUnregisterOIDInfo!(util.toPointer(pInfo)));
 }
 
 export function CryptEnumOIDInfo(
@@ -48836,13 +49233,13 @@ export function CryptEnumOIDInfo(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnumOIDInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_ENUM_OID_INFO */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEnumOIDInfo(dwGroupId, dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumOIDInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEnumOIDInfo!(dwGroupId, dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumOIDInfo)));
 }
 
 export function CryptFindLocalizedName(
   pwszCryptName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libCRYPT32_dll.CryptFindLocalizedName(util.pwstrToFfi(pwszCryptName)));
+  return util.pwstrFromFfi(libCRYPT32_dll.CryptFindLocalizedName!(util.pwstrToFfi(pwszCryptName)));
 }
 
 export function CryptMsgOpenToEncode(
@@ -48853,7 +49250,7 @@ export function CryptMsgOpenToEncode(
   pszInnerContentObjID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pStreamInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptMsgOpenToEncode(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(pvMsgEncodeInfo), util.pstrToFfi(pszInnerContentObjID), util.toPointer(pStreamInfo));
+  return libCRYPT32_dll.CryptMsgOpenToEncode!(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(pvMsgEncodeInfo), util.pstrToFfi(pszInnerContentObjID), util.toPointer(pStreamInfo));
 }
 
 export function CryptMsgCalculateEncodedLength(
@@ -48864,7 +49261,7 @@ export function CryptMsgCalculateEncodedLength(
   pszInnerContentObjID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CryptMsgCalculateEncodedLength(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(pvMsgEncodeInfo), util.pstrToFfi(pszInnerContentObjID), cbData);
+  return libCRYPT32_dll.CryptMsgCalculateEncodedLength!(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(pvMsgEncodeInfo), util.pstrToFfi(pszInnerContentObjID), cbData);
 }
 
 export function CryptMsgOpenToDecode(
@@ -48875,19 +49272,19 @@ export function CryptMsgOpenToDecode(
   pRecipientInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pStreamInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptMsgOpenToDecode(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(hCryptProv), util.toPointer(pRecipientInfo), util.toPointer(pStreamInfo));
+  return libCRYPT32_dll.CryptMsgOpenToDecode!(dwMsgEncodingType, dwFlags, dwMsgType, util.toPointer(hCryptProv), util.toPointer(pRecipientInfo), util.toPointer(pStreamInfo));
 }
 
 export function CryptMsgDuplicate(
   hCryptMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptMsgDuplicate(util.toPointer(hCryptMsg));
+  return libCRYPT32_dll.CryptMsgDuplicate!(util.toPointer(hCryptMsg));
 }
 
 export function CryptMsgClose(
   hCryptMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgClose(util.toPointer(hCryptMsg)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgClose!(util.toPointer(hCryptMsg)));
 }
 
 export function CryptMsgUpdate(
@@ -48896,7 +49293,7 @@ export function CryptMsgUpdate(
   cbData: number /* u32 */,
   fFinal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgUpdate(util.toPointer(hCryptMsg), util.toPointer(pbData), cbData, util.boolToFfi(fFinal)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgUpdate!(util.toPointer(hCryptMsg), util.toPointer(pbData), cbData, util.boolToFfi(fFinal)));
 }
 
 export function CryptMsgGetParam(
@@ -48906,7 +49303,7 @@ export function CryptMsgGetParam(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgGetParam(util.toPointer(hCryptMsg), dwParamType, dwIndex, util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgGetParam!(util.toPointer(hCryptMsg), dwParamType, dwIndex, util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CryptMsgControl(
@@ -48915,7 +49312,7 @@ export function CryptMsgControl(
   dwCtrlType: number /* u32 */,
   pvCtrlPara: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgControl(util.toPointer(hCryptMsg), dwFlags, dwCtrlType, util.toPointer(pvCtrlPara)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgControl!(util.toPointer(hCryptMsg), dwFlags, dwCtrlType, util.toPointer(pvCtrlPara)));
 }
 
 export function CryptMsgVerifyCountersignatureEncoded(
@@ -48927,7 +49324,7 @@ export function CryptMsgVerifyCountersignatureEncoded(
   cbSignerInfoCountersignature: number /* u32 */,
   pciCountersigner: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgVerifyCountersignatureEncoded(util.toPointer(hCryptProv), dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, util.toPointer(pbSignerInfoCountersignature), cbSignerInfoCountersignature, util.toPointer(pciCountersigner)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgVerifyCountersignatureEncoded!(util.toPointer(hCryptProv), dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, util.toPointer(pbSignerInfoCountersignature), cbSignerInfoCountersignature, util.toPointer(pciCountersigner)));
 }
 
 export function CryptMsgVerifyCountersignatureEncodedEx(
@@ -48942,7 +49339,7 @@ export function CryptMsgVerifyCountersignatureEncodedEx(
   dwFlags: number /* u32 */,
   pvExtra: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgVerifyCountersignatureEncodedEx(util.toPointer(hCryptProv), dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, util.toPointer(pbSignerInfoCountersignature), cbSignerInfoCountersignature, dwSignerType, util.toPointer(pvSigner), dwFlags, util.toPointer(pvExtra)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgVerifyCountersignatureEncodedEx!(util.toPointer(hCryptProv), dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, util.toPointer(pbSignerInfoCountersignature), cbSignerInfoCountersignature, dwSignerType, util.toPointer(pvSigner), dwFlags, util.toPointer(pvExtra)));
 }
 
 export function CryptMsgCountersign(
@@ -48951,7 +49348,7 @@ export function CryptMsgCountersign(
   cCountersigners: number /* u32 */,
   rgCountersigners: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgCountersign(util.toPointer(hCryptMsg), dwIndex, cCountersigners, util.toPointer(rgCountersigners)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgCountersign!(util.toPointer(hCryptMsg), dwIndex, cCountersigners, util.toPointer(rgCountersigners)));
 }
 
 export function CryptMsgCountersignEncoded(
@@ -48963,7 +49360,7 @@ export function CryptMsgCountersignEncoded(
   pbCountersignature: Deno.PointerValue | Uint8Array /* ptr */,
   pcbCountersignature: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgCountersignEncoded(dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, cCountersigners, util.toPointer(rgCountersigners), util.toPointer(pbCountersignature), util.toPointer(pcbCountersignature)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgCountersignEncoded!(dwEncodingType, util.toPointer(pbSignerInfo), cbSignerInfo, cCountersigners, util.toPointer(rgCountersigners), util.toPointer(pbCountersignature), util.toPointer(pcbCountersignature)));
 }
 
 export function CertOpenStore(
@@ -48973,13 +49370,13 @@ export function CertOpenStore(
   dwFlags: CERT_OPEN_STORE_FLAGS /* Windows.Win32.Security.Cryptography.CERT_OPEN_STORE_FLAGS */,
   pvPara: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.CertOpenStore(util.pstrToFfi(lpszStoreProvider), dwEncodingType, util.toPointer(hCryptProv), dwFlags, util.toPointer(pvPara));
+  return libCRYPT32_dll.CertOpenStore!(util.pstrToFfi(lpszStoreProvider), dwEncodingType, util.toPointer(hCryptProv), dwFlags, util.toPointer(pvPara));
 }
 
 export function CertDuplicateStore(
   hCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.CertDuplicateStore(util.toPointer(hCertStore));
+  return libCRYPT32_dll.CertDuplicateStore!(util.toPointer(hCertStore));
 }
 
 export function CertSaveStore(
@@ -48990,14 +49387,14 @@ export function CertSaveStore(
   pvSaveToPara: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSaveStore(util.toPointer(hCertStore), dwEncodingType, dwSaveAs, dwSaveTo, util.toPointer(pvSaveToPara), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CertSaveStore!(util.toPointer(hCertStore), dwEncodingType, dwSaveAs, dwSaveTo, util.toPointer(pvSaveToPara), dwFlags));
 }
 
 export function CertCloseStore(
   hCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCloseStore(util.toPointer(hCertStore), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CertCloseStore!(util.toPointer(hCertStore), dwFlags));
 }
 
 export function CertGetSubjectCertificateFromStore(
@@ -49005,14 +49402,14 @@ export function CertGetSubjectCertificateFromStore(
   dwCertEncodingType: number /* u32 */,
   pCertId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertGetSubjectCertificateFromStore(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pCertId));
+  return libCRYPT32_dll.CertGetSubjectCertificateFromStore!(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pCertId));
 }
 
 export function CertEnumCertificatesInStore(
   hCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   pPrevCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertEnumCertificatesInStore(util.toPointer(hCertStore), util.toPointer(pPrevCertContext));
+  return libCRYPT32_dll.CertEnumCertificatesInStore!(util.toPointer(hCertStore), util.toPointer(pPrevCertContext));
 }
 
 export function CertFindCertificateInStore(
@@ -49023,7 +49420,7 @@ export function CertFindCertificateInStore(
   pvFindPara: Deno.PointerValue | Uint8Array /* ptr */,
   pPrevCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindCertificateInStore(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCertContext));
+  return libCRYPT32_dll.CertFindCertificateInStore!(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCertContext));
 }
 
 export function CertGetIssuerCertificateFromStore(
@@ -49032,7 +49429,7 @@ export function CertGetIssuerCertificateFromStore(
   pPrevIssuerContext: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertGetIssuerCertificateFromStore(util.toPointer(hCertStore), util.toPointer(pSubjectContext), util.toPointer(pPrevIssuerContext), util.toPointer(pdwFlags));
+  return libCRYPT32_dll.CertGetIssuerCertificateFromStore!(util.toPointer(hCertStore), util.toPointer(pSubjectContext), util.toPointer(pPrevIssuerContext), util.toPointer(pdwFlags));
 }
 
 export function CertVerifySubjectCertificateContext(
@@ -49040,13 +49437,13 @@ export function CertVerifySubjectCertificateContext(
   pIssuer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifySubjectCertificateContext(util.toPointer(pSubject), util.toPointer(pIssuer), util.toPointer(pdwFlags)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifySubjectCertificateContext!(util.toPointer(pSubject), util.toPointer(pIssuer), util.toPointer(pdwFlags)));
 }
 
 export function CertDuplicateCertificateContext(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertDuplicateCertificateContext(util.toPointer(pCertContext));
+  return libCRYPT32_dll.CertDuplicateCertificateContext!(util.toPointer(pCertContext));
 }
 
 export function CertCreateCertificateContext(
@@ -49054,13 +49451,13 @@ export function CertCreateCertificateContext(
   pbCertEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   cbCertEncoded: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertCreateCertificateContext(dwCertEncodingType, util.toPointer(pbCertEncoded), cbCertEncoded);
+  return libCRYPT32_dll.CertCreateCertificateContext!(dwCertEncodingType, util.toPointer(pbCertEncoded), cbCertEncoded);
 }
 
 export function CertFreeCertificateContext(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertFreeCertificateContext(util.toPointer(pCertContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertFreeCertificateContext!(util.toPointer(pCertContext)));
 }
 
 export function CertSetCertificateContextProperty(
@@ -49069,7 +49466,7 @@ export function CertSetCertificateContextProperty(
   dwFlags: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetCertificateContextProperty(util.toPointer(pCertContext), dwPropId, dwFlags, util.toPointer(pvData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetCertificateContextProperty!(util.toPointer(pCertContext), dwPropId, dwFlags, util.toPointer(pvData)));
 }
 
 export function CertGetCertificateContextProperty(
@@ -49078,14 +49475,14 @@ export function CertGetCertificateContextProperty(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetCertificateContextProperty(util.toPointer(pCertContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetCertificateContextProperty!(util.toPointer(pCertContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CertEnumCertificateContextProperties(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
   dwPropId: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertEnumCertificateContextProperties(util.toPointer(pCertContext), dwPropId);
+  return libCRYPT32_dll.CertEnumCertificateContextProperties!(util.toPointer(pCertContext), dwPropId);
 }
 
 export function CertCreateCTLEntryFromCertificateContextProperties(
@@ -49097,7 +49494,7 @@ export function CertCreateCTLEntryFromCertificateContextProperties(
   pCtlEntry: Deno.PointerValue | Uint8Array /* ptr */,
   pcbCtlEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCreateCTLEntryFromCertificateContextProperties(util.toPointer(pCertContext), cOptAttr, util.toPointer(rgOptAttr), dwFlags, util.toPointer(pvReserved), util.toPointer(pCtlEntry), util.toPointer(pcbCtlEntry)));
+  return util.boolFromFfi(libCRYPT32_dll.CertCreateCTLEntryFromCertificateContextProperties!(util.toPointer(pCertContext), cOptAttr, util.toPointer(rgOptAttr), dwFlags, util.toPointer(pvReserved), util.toPointer(pCtlEntry), util.toPointer(pcbCtlEntry)));
 }
 
 export function CertSetCertificateContextPropertiesFromCTLEntry(
@@ -49105,7 +49502,7 @@ export function CertSetCertificateContextPropertiesFromCTLEntry(
   pCtlEntry: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetCertificateContextPropertiesFromCTLEntry(util.toPointer(pCertContext), util.toPointer(pCtlEntry), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetCertificateContextPropertiesFromCTLEntry!(util.toPointer(pCertContext), util.toPointer(pCtlEntry), dwFlags));
 }
 
 export function CertGetCRLFromStore(
@@ -49114,14 +49511,14 @@ export function CertGetCRLFromStore(
   pPrevCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertGetCRLFromStore(util.toPointer(hCertStore), util.toPointer(pIssuerContext), util.toPointer(pPrevCrlContext), util.toPointer(pdwFlags));
+  return libCRYPT32_dll.CertGetCRLFromStore!(util.toPointer(hCertStore), util.toPointer(pIssuerContext), util.toPointer(pPrevCrlContext), util.toPointer(pdwFlags));
 }
 
 export function CertEnumCRLsInStore(
   hCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   pPrevCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertEnumCRLsInStore(util.toPointer(hCertStore), util.toPointer(pPrevCrlContext));
+  return libCRYPT32_dll.CertEnumCRLsInStore!(util.toPointer(hCertStore), util.toPointer(pPrevCrlContext));
 }
 
 export function CertFindCRLInStore(
@@ -49132,13 +49529,13 @@ export function CertFindCRLInStore(
   pvFindPara: Deno.PointerValue | Uint8Array /* ptr */,
   pPrevCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindCRLInStore(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCrlContext));
+  return libCRYPT32_dll.CertFindCRLInStore!(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCrlContext));
 }
 
 export function CertDuplicateCRLContext(
   pCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertDuplicateCRLContext(util.toPointer(pCrlContext));
+  return libCRYPT32_dll.CertDuplicateCRLContext!(util.toPointer(pCrlContext));
 }
 
 export function CertCreateCRLContext(
@@ -49146,13 +49543,13 @@ export function CertCreateCRLContext(
   pbCrlEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   cbCrlEncoded: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertCreateCRLContext(dwCertEncodingType, util.toPointer(pbCrlEncoded), cbCrlEncoded);
+  return libCRYPT32_dll.CertCreateCRLContext!(dwCertEncodingType, util.toPointer(pbCrlEncoded), cbCrlEncoded);
 }
 
 export function CertFreeCRLContext(
   pCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertFreeCRLContext(util.toPointer(pCrlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertFreeCRLContext!(util.toPointer(pCrlContext)));
 }
 
 export function CertSetCRLContextProperty(
@@ -49161,7 +49558,7 @@ export function CertSetCRLContextProperty(
   dwFlags: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetCRLContextProperty(util.toPointer(pCrlContext), dwPropId, dwFlags, util.toPointer(pvData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetCRLContextProperty!(util.toPointer(pCrlContext), dwPropId, dwFlags, util.toPointer(pvData)));
 }
 
 export function CertGetCRLContextProperty(
@@ -49170,14 +49567,14 @@ export function CertGetCRLContextProperty(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetCRLContextProperty(util.toPointer(pCrlContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetCRLContextProperty!(util.toPointer(pCrlContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CertEnumCRLContextProperties(
   pCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
   dwPropId: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertEnumCRLContextProperties(util.toPointer(pCrlContext), dwPropId);
+  return libCRYPT32_dll.CertEnumCRLContextProperties!(util.toPointer(pCrlContext), dwPropId);
 }
 
 export function CertFindCertificateInCRL(
@@ -49187,7 +49584,7 @@ export function CertFindCertificateInCRL(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppCrlEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertFindCertificateInCRL(util.toPointer(pCert), util.toPointer(pCrlContext), dwFlags, util.toPointer(pvReserved), util.toPointer(ppCrlEntry)));
+  return util.boolFromFfi(libCRYPT32_dll.CertFindCertificateInCRL!(util.toPointer(pCert), util.toPointer(pCrlContext), dwFlags, util.toPointer(pvReserved), util.toPointer(ppCrlEntry)));
 }
 
 export function CertIsValidCRLForCertificate(
@@ -49196,7 +49593,7 @@ export function CertIsValidCRLForCertificate(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertIsValidCRLForCertificate(util.toPointer(pCert), util.toPointer(pCrl), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPT32_dll.CertIsValidCRLForCertificate!(util.toPointer(pCert), util.toPointer(pCrl), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CertAddEncodedCertificateToStore(
@@ -49207,7 +49604,7 @@ export function CertAddEncodedCertificateToStore(
   dwAddDisposition: number /* u32 */,
   ppCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToStore(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pbCertEncoded), cbCertEncoded, dwAddDisposition, util.toPointer(ppCertContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToStore!(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pbCertEncoded), cbCertEncoded, dwAddDisposition, util.toPointer(ppCertContext)));
 }
 
 export function CertAddCertificateContextToStore(
@@ -49216,7 +49613,7 @@ export function CertAddCertificateContextToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCertificateContextToStore(util.toPointer(hCertStore), util.toPointer(pCertContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCertificateContextToStore!(util.toPointer(hCertStore), util.toPointer(pCertContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertAddSerializedElementToStore(
@@ -49229,13 +49626,13 @@ export function CertAddSerializedElementToStore(
   pdwContextType: Deno.PointerValue | Uint8Array /* ptr */,
   ppvContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddSerializedElementToStore(util.toPointer(hCertStore), util.toPointer(pbElement), cbElement, dwAddDisposition, dwFlags, dwContextTypeFlags, util.toPointer(pdwContextType), util.toPointer(ppvContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddSerializedElementToStore!(util.toPointer(hCertStore), util.toPointer(pbElement), cbElement, dwAddDisposition, dwFlags, dwContextTypeFlags, util.toPointer(pdwContextType), util.toPointer(ppvContext)));
 }
 
 export function CertDeleteCertificateFromStore(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCertificateFromStore(util.toPointer(pCertContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCertificateFromStore!(util.toPointer(pCertContext)));
 }
 
 export function CertAddEncodedCRLToStore(
@@ -49246,7 +49643,7 @@ export function CertAddEncodedCRLToStore(
   dwAddDisposition: number /* u32 */,
   ppCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCRLToStore(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pbCrlEncoded), cbCrlEncoded, dwAddDisposition, util.toPointer(ppCrlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCRLToStore!(util.toPointer(hCertStore), dwCertEncodingType, util.toPointer(pbCrlEncoded), cbCrlEncoded, dwAddDisposition, util.toPointer(ppCrlContext)));
 }
 
 export function CertAddCRLContextToStore(
@@ -49255,13 +49652,13 @@ export function CertAddCRLContextToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCRLContextToStore(util.toPointer(hCertStore), util.toPointer(pCrlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCRLContextToStore!(util.toPointer(hCertStore), util.toPointer(pCrlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertDeleteCRLFromStore(
   pCrlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCRLFromStore(util.toPointer(pCrlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCRLFromStore!(util.toPointer(pCrlContext)));
 }
 
 export function CertSerializeCertificateStoreElement(
@@ -49270,7 +49667,7 @@ export function CertSerializeCertificateStoreElement(
   pbElement: Deno.PointerValue | Uint8Array /* ptr */,
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCertificateStoreElement(util.toPointer(pCertContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCertificateStoreElement!(util.toPointer(pCertContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
 }
 
 export function CertSerializeCRLStoreElement(
@@ -49279,13 +49676,13 @@ export function CertSerializeCRLStoreElement(
   pbElement: Deno.PointerValue | Uint8Array /* ptr */,
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCRLStoreElement(util.toPointer(pCrlContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCRLStoreElement!(util.toPointer(pCrlContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
 }
 
 export function CertDuplicateCTLContext(
   pCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertDuplicateCTLContext(util.toPointer(pCtlContext));
+  return libCRYPT32_dll.CertDuplicateCTLContext!(util.toPointer(pCtlContext));
 }
 
 export function CertCreateCTLContext(
@@ -49293,13 +49690,13 @@ export function CertCreateCTLContext(
   pbCtlEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   cbCtlEncoded: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertCreateCTLContext(dwMsgAndCertEncodingType, util.toPointer(pbCtlEncoded), cbCtlEncoded);
+  return libCRYPT32_dll.CertCreateCTLContext!(dwMsgAndCertEncodingType, util.toPointer(pbCtlEncoded), cbCtlEncoded);
 }
 
 export function CertFreeCTLContext(
   pCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertFreeCTLContext(util.toPointer(pCtlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertFreeCTLContext!(util.toPointer(pCtlContext)));
 }
 
 export function CertSetCTLContextProperty(
@@ -49308,7 +49705,7 @@ export function CertSetCTLContextProperty(
   dwFlags: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetCTLContextProperty(util.toPointer(pCtlContext), dwPropId, dwFlags, util.toPointer(pvData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetCTLContextProperty!(util.toPointer(pCtlContext), dwPropId, dwFlags, util.toPointer(pvData)));
 }
 
 export function CertGetCTLContextProperty(
@@ -49317,21 +49714,21 @@ export function CertGetCTLContextProperty(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetCTLContextProperty(util.toPointer(pCtlContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetCTLContextProperty!(util.toPointer(pCtlContext), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CertEnumCTLContextProperties(
   pCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
   dwPropId: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertEnumCTLContextProperties(util.toPointer(pCtlContext), dwPropId);
+  return libCRYPT32_dll.CertEnumCTLContextProperties!(util.toPointer(pCtlContext), dwPropId);
 }
 
 export function CertEnumCTLsInStore(
   hCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   pPrevCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertEnumCTLsInStore(util.toPointer(hCertStore), util.toPointer(pPrevCtlContext));
+  return libCRYPT32_dll.CertEnumCTLsInStore!(util.toPointer(hCertStore), util.toPointer(pPrevCtlContext));
 }
 
 export function CertFindSubjectInCTL(
@@ -49341,7 +49738,7 @@ export function CertFindSubjectInCTL(
   pCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindSubjectInCTL(dwEncodingType, dwSubjectType, util.toPointer(pvSubject), util.toPointer(pCtlContext), dwFlags);
+  return libCRYPT32_dll.CertFindSubjectInCTL!(dwEncodingType, dwSubjectType, util.toPointer(pvSubject), util.toPointer(pCtlContext), dwFlags);
 }
 
 export function CertFindCTLInStore(
@@ -49352,7 +49749,7 @@ export function CertFindCTLInStore(
   pvFindPara: Deno.PointerValue | Uint8Array /* ptr */,
   pPrevCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindCTLInStore(util.toPointer(hCertStore), dwMsgAndCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCtlContext));
+  return libCRYPT32_dll.CertFindCTLInStore!(util.toPointer(hCertStore), dwMsgAndCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevCtlContext));
 }
 
 export function CertAddEncodedCTLToStore(
@@ -49363,7 +49760,7 @@ export function CertAddEncodedCTLToStore(
   dwAddDisposition: number /* u32 */,
   ppCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCTLToStore(util.toPointer(hCertStore), dwMsgAndCertEncodingType, util.toPointer(pbCtlEncoded), cbCtlEncoded, dwAddDisposition, util.toPointer(ppCtlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCTLToStore!(util.toPointer(hCertStore), dwMsgAndCertEncodingType, util.toPointer(pbCtlEncoded), cbCtlEncoded, dwAddDisposition, util.toPointer(ppCtlContext)));
 }
 
 export function CertAddCTLContextToStore(
@@ -49372,7 +49769,7 @@ export function CertAddCTLContextToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCTLContextToStore(util.toPointer(hCertStore), util.toPointer(pCtlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCTLContextToStore!(util.toPointer(hCertStore), util.toPointer(pCtlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertSerializeCTLStoreElement(
@@ -49381,13 +49778,13 @@ export function CertSerializeCTLStoreElement(
   pbElement: Deno.PointerValue | Uint8Array /* ptr */,
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCTLStoreElement(util.toPointer(pCtlContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSerializeCTLStoreElement!(util.toPointer(pCtlContext), dwFlags, util.toPointer(pbElement), util.toPointer(pcbElement)));
 }
 
 export function CertDeleteCTLFromStore(
   pCtlContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCTLFromStore(util.toPointer(pCtlContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertDeleteCTLFromStore!(util.toPointer(pCtlContext)));
 }
 
 export function CertAddCertificateLinkToStore(
@@ -49396,7 +49793,7 @@ export function CertAddCertificateLinkToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCertificateLinkToStore(util.toPointer(hCertStore), util.toPointer(pCertContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCertificateLinkToStore!(util.toPointer(hCertStore), util.toPointer(pCertContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertAddCRLLinkToStore(
@@ -49405,7 +49802,7 @@ export function CertAddCRLLinkToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCRLLinkToStore(util.toPointer(hCertStore), util.toPointer(pCrlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCRLLinkToStore!(util.toPointer(hCertStore), util.toPointer(pCrlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertAddCTLLinkToStore(
@@ -49414,7 +49811,7 @@ export function CertAddCTLLinkToStore(
   dwAddDisposition: number /* u32 */,
   ppStoreContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddCTLLinkToStore(util.toPointer(hCertStore), util.toPointer(pCtlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddCTLLinkToStore!(util.toPointer(hCertStore), util.toPointer(pCtlContext), dwAddDisposition, util.toPointer(ppStoreContext)));
 }
 
 export function CertAddStoreToCollection(
@@ -49423,14 +49820,14 @@ export function CertAddStoreToCollection(
   dwUpdateFlags: number /* u32 */,
   dwPriority: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddStoreToCollection(util.toPointer(hCollectionStore), util.toPointer(hSiblingStore), dwUpdateFlags, dwPriority));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddStoreToCollection!(util.toPointer(hCollectionStore), util.toPointer(hSiblingStore), dwUpdateFlags, dwPriority));
 }
 
 export function CertRemoveStoreFromCollection(
   hCollectionStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
   hSiblingStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertRemoveStoreFromCollection(util.toPointer(hCollectionStore), util.toPointer(hSiblingStore));
+  return libCRYPT32_dll.CertRemoveStoreFromCollection!(util.toPointer(hCollectionStore), util.toPointer(hSiblingStore));
 }
 
 export function CertControlStore(
@@ -49439,7 +49836,7 @@ export function CertControlStore(
   dwCtrlType: number /* u32 */,
   pvCtrlPara: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertControlStore(util.toPointer(hCertStore), dwFlags, dwCtrlType, util.toPointer(pvCtrlPara)));
+  return util.boolFromFfi(libCRYPT32_dll.CertControlStore!(util.toPointer(hCertStore), dwFlags, dwCtrlType, util.toPointer(pvCtrlPara)));
 }
 
 export function CertSetStoreProperty(
@@ -49448,7 +49845,7 @@ export function CertSetStoreProperty(
   dwFlags: number /* u32 */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetStoreProperty(util.toPointer(hCertStore), dwPropId, dwFlags, util.toPointer(pvData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetStoreProperty!(util.toPointer(hCertStore), dwPropId, dwFlags, util.toPointer(pvData)));
 }
 
 export function CertGetStoreProperty(
@@ -49457,7 +49854,7 @@ export function CertGetStoreProperty(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetStoreProperty(util.toPointer(hCertStore), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetStoreProperty!(util.toPointer(hCertStore), dwPropId, util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CertCreateContext(
@@ -49468,7 +49865,7 @@ export function CertCreateContext(
   dwFlags: number /* u32 */,
   pCreatePara: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertCreateContext(dwContextType, dwEncodingType, util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pCreatePara));
+  return libCRYPT32_dll.CertCreateContext!(dwContextType, dwEncodingType, util.toPointer(pbEncoded), cbEncoded, dwFlags, util.toPointer(pCreatePara));
 }
 
 export function CertRegisterSystemStore(
@@ -49477,7 +49874,7 @@ export function CertRegisterSystemStore(
   pStoreInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertRegisterSystemStore(util.toPointer(pvSystemStore), dwFlags, util.toPointer(pStoreInfo), util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPT32_dll.CertRegisterSystemStore!(util.toPointer(pvSystemStore), dwFlags, util.toPointer(pStoreInfo), util.toPointer(pvReserved)));
 }
 
 export function CertRegisterPhysicalStore(
@@ -49487,14 +49884,14 @@ export function CertRegisterPhysicalStore(
   pStoreInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertRegisterPhysicalStore(util.toPointer(pvSystemStore), dwFlags, util.pwstrToFfi(pwszStoreName), util.toPointer(pStoreInfo), util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPT32_dll.CertRegisterPhysicalStore!(util.toPointer(pvSystemStore), dwFlags, util.pwstrToFfi(pwszStoreName), util.toPointer(pStoreInfo), util.toPointer(pvReserved)));
 }
 
 export function CertUnregisterSystemStore(
   pvSystemStore: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertUnregisterSystemStore(util.toPointer(pvSystemStore), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CertUnregisterSystemStore!(util.toPointer(pvSystemStore), dwFlags));
 }
 
 export function CertUnregisterPhysicalStore(
@@ -49502,7 +49899,7 @@ export function CertUnregisterPhysicalStore(
   dwFlags: number /* u32 */,
   pwszStoreName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertUnregisterPhysicalStore(util.toPointer(pvSystemStore), dwFlags, util.pwstrToFfi(pwszStoreName)));
+  return util.boolFromFfi(libCRYPT32_dll.CertUnregisterPhysicalStore!(util.toPointer(pvSystemStore), dwFlags, util.pwstrToFfi(pwszStoreName)));
 }
 
 export function CertEnumSystemStoreLocation(
@@ -49510,7 +49907,7 @@ export function CertEnumSystemStoreLocation(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CERT_ENUM_SYSTEM_STORE_LOCATION */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertEnumSystemStoreLocation(dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnum)));
+  return util.boolFromFfi(libCRYPT32_dll.CertEnumSystemStoreLocation!(dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnum)));
 }
 
 export function CertEnumSystemStore(
@@ -49519,7 +49916,7 @@ export function CertEnumSystemStore(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CERT_ENUM_SYSTEM_STORE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertEnumSystemStore(dwFlags, util.toPointer(pvSystemStoreLocationPara), util.toPointer(pvArg), util.toPointer(pfnEnum)));
+  return util.boolFromFfi(libCRYPT32_dll.CertEnumSystemStore!(dwFlags, util.toPointer(pvSystemStoreLocationPara), util.toPointer(pvArg), util.toPointer(pfnEnum)));
 }
 
 export function CertEnumPhysicalStore(
@@ -49528,7 +49925,7 @@ export function CertEnumPhysicalStore(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CERT_ENUM_PHYSICAL_STORE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertEnumPhysicalStore(util.toPointer(pvSystemStore), dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnum)));
+  return util.boolFromFfi(libCRYPT32_dll.CertEnumPhysicalStore!(util.toPointer(pvSystemStore), dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnum)));
 }
 
 export function CertGetEnhancedKeyUsage(
@@ -49537,28 +49934,28 @@ export function CertGetEnhancedKeyUsage(
   pUsage: Deno.PointerValue | Uint8Array /* ptr */,
   pcbUsage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetEnhancedKeyUsage(util.toPointer(pCertContext), dwFlags, util.toPointer(pUsage), util.toPointer(pcbUsage)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetEnhancedKeyUsage!(util.toPointer(pCertContext), dwFlags, util.toPointer(pUsage), util.toPointer(pcbUsage)));
 }
 
 export function CertSetEnhancedKeyUsage(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
   pUsage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSetEnhancedKeyUsage(util.toPointer(pCertContext), util.toPointer(pUsage)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSetEnhancedKeyUsage!(util.toPointer(pCertContext), util.toPointer(pUsage)));
 }
 
 export function CertAddEnhancedKeyUsageIdentifier(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
   pszUsageIdentifier: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEnhancedKeyUsageIdentifier(util.toPointer(pCertContext), util.pstrToFfi(pszUsageIdentifier)));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEnhancedKeyUsageIdentifier!(util.toPointer(pCertContext), util.pstrToFfi(pszUsageIdentifier)));
 }
 
 export function CertRemoveEnhancedKeyUsageIdentifier(
   pCertContext: Deno.PointerValue | Uint8Array /* ptr */,
   pszUsageIdentifier: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertRemoveEnhancedKeyUsageIdentifier(util.toPointer(pCertContext), util.pstrToFfi(pszUsageIdentifier)));
+  return util.boolFromFfi(libCRYPT32_dll.CertRemoveEnhancedKeyUsageIdentifier!(util.toPointer(pCertContext), util.pstrToFfi(pszUsageIdentifier)));
 }
 
 export function CertGetValidUsages(
@@ -49568,7 +49965,7 @@ export function CertGetValidUsages(
   rghOIDs: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOIDs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetValidUsages(cCerts, util.toPointer(rghCerts), util.toPointer(cNumOIDs), util.toPointer(rghOIDs), util.toPointer(pcbOIDs)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetValidUsages!(cCerts, util.toPointer(rghCerts), util.toPointer(cNumOIDs), util.toPointer(rghOIDs), util.toPointer(pcbOIDs)));
 }
 
 export function CryptMsgGetAndVerifySigner(
@@ -49579,7 +49976,7 @@ export function CryptMsgGetAndVerifySigner(
   ppSigner: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSignerIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgGetAndVerifySigner(util.toPointer(hCryptMsg), cSignerStore, util.toPointer(rghSignerStore), dwFlags, util.toPointer(ppSigner), util.toPointer(pdwSignerIndex)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgGetAndVerifySigner!(util.toPointer(hCryptMsg), cSignerStore, util.toPointer(rghSignerStore), dwFlags, util.toPointer(ppSigner), util.toPointer(pdwSignerIndex)));
 }
 
 export function CryptMsgSignCTL(
@@ -49591,7 +49988,7 @@ export function CryptMsgSignCTL(
   pbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgSignCTL(dwMsgEncodingType, util.toPointer(pbCtlContent), cbCtlContent, util.toPointer(pSignInfo), dwFlags, util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgSignCTL!(dwMsgEncodingType, util.toPointer(pbCtlContent), cbCtlContent, util.toPointer(pSignInfo), dwFlags, util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
 }
 
 export function CryptMsgEncodeAndSignCTL(
@@ -49602,7 +49999,7 @@ export function CryptMsgEncodeAndSignCTL(
   pbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptMsgEncodeAndSignCTL(dwMsgEncodingType, util.toPointer(pCtlInfo), util.toPointer(pSignInfo), dwFlags, util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptMsgEncodeAndSignCTL!(dwMsgEncodingType, util.toPointer(pCtlInfo), util.toPointer(pSignInfo), dwFlags, util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
 }
 
 export function CertFindSubjectInSortedCTL(
@@ -49612,7 +50009,7 @@ export function CertFindSubjectInSortedCTL(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   pEncodedAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertFindSubjectInSortedCTL(util.toPointer(pSubjectIdentifier), util.toPointer(pCtlContext), dwFlags, util.toPointer(pvReserved), util.toPointer(pEncodedAttributes)));
+  return util.boolFromFfi(libCRYPT32_dll.CertFindSubjectInSortedCTL!(util.toPointer(pSubjectIdentifier), util.toPointer(pCtlContext), dwFlags, util.toPointer(pvReserved), util.toPointer(pEncodedAttributes)));
 }
 
 export function CertEnumSubjectInSortedCTL(
@@ -49621,7 +50018,7 @@ export function CertEnumSubjectInSortedCTL(
   pSubjectIdentifier: Deno.PointerValue | Uint8Array /* ptr */,
   pEncodedAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertEnumSubjectInSortedCTL(util.toPointer(pCtlContext), util.toPointer(ppvNextSubject), util.toPointer(pSubjectIdentifier), util.toPointer(pEncodedAttributes)));
+  return util.boolFromFfi(libCRYPT32_dll.CertEnumSubjectInSortedCTL!(util.toPointer(pCtlContext), util.toPointer(ppvNextSubject), util.toPointer(pSubjectIdentifier), util.toPointer(pEncodedAttributes)));
 }
 
 export function CertVerifyCTLUsage(
@@ -49633,7 +50030,7 @@ export function CertVerifyCTLUsage(
   pVerifyUsagePara: Deno.PointerValue | Uint8Array /* ptr */,
   pVerifyUsageStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCTLUsage(dwEncodingType, dwSubjectType, util.toPointer(pvSubject), util.toPointer(pSubjectUsage), dwFlags, util.toPointer(pVerifyUsagePara), util.toPointer(pVerifyUsageStatus)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCTLUsage!(dwEncodingType, dwSubjectType, util.toPointer(pvSubject), util.toPointer(pSubjectUsage), dwFlags, util.toPointer(pVerifyUsagePara), util.toPointer(pVerifyUsageStatus)));
 }
 
 export function CertVerifyRevocation(
@@ -49645,14 +50042,14 @@ export function CertVerifyRevocation(
   pRevPara: Deno.PointerValue | Uint8Array /* ptr */,
   pRevStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifyRevocation(dwEncodingType, dwRevType, cContext, util.toPointer(rgpvContext), dwFlags, util.toPointer(pRevPara), util.toPointer(pRevStatus)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifyRevocation!(dwEncodingType, dwRevType, cContext, util.toPointer(rgpvContext), dwFlags, util.toPointer(pRevPara), util.toPointer(pRevStatus)));
 }
 
 export function CertCompareIntegerBlob(
   pInt1: Deno.PointerValue | Uint8Array /* ptr */,
   pInt2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCompareIntegerBlob(util.toPointer(pInt1), util.toPointer(pInt2)));
+  return util.boolFromFfi(libCRYPT32_dll.CertCompareIntegerBlob!(util.toPointer(pInt1), util.toPointer(pInt2)));
 }
 
 export function CertCompareCertificate(
@@ -49660,7 +50057,7 @@ export function CertCompareCertificate(
   pCertId1: Deno.PointerValue | Uint8Array /* ptr */,
   pCertId2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCompareCertificate(dwCertEncodingType, util.toPointer(pCertId1), util.toPointer(pCertId2)));
+  return util.boolFromFfi(libCRYPT32_dll.CertCompareCertificate!(dwCertEncodingType, util.toPointer(pCertId1), util.toPointer(pCertId2)));
 }
 
 export function CertCompareCertificateName(
@@ -49668,7 +50065,7 @@ export function CertCompareCertificateName(
   pCertName1: Deno.PointerValue | Uint8Array /* ptr */,
   pCertName2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCompareCertificateName(dwCertEncodingType, util.toPointer(pCertName1), util.toPointer(pCertName2)));
+  return util.boolFromFfi(libCRYPT32_dll.CertCompareCertificateName!(dwCertEncodingType, util.toPointer(pCertName1), util.toPointer(pCertName2)));
 }
 
 export function CertIsRDNAttrsInCertificateName(
@@ -49677,7 +50074,7 @@ export function CertIsRDNAttrsInCertificateName(
   pCertName: Deno.PointerValue | Uint8Array /* ptr */,
   pRDN: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertIsRDNAttrsInCertificateName(dwCertEncodingType, dwFlags, util.toPointer(pCertName), util.toPointer(pRDN)));
+  return util.boolFromFfi(libCRYPT32_dll.CertIsRDNAttrsInCertificateName!(dwCertEncodingType, dwFlags, util.toPointer(pCertName), util.toPointer(pRDN)));
 }
 
 export function CertComparePublicKeyInfo(
@@ -49685,14 +50082,14 @@ export function CertComparePublicKeyInfo(
   pPublicKey1: Deno.PointerValue | Uint8Array /* ptr */,
   pPublicKey2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertComparePublicKeyInfo(dwCertEncodingType, util.toPointer(pPublicKey1), util.toPointer(pPublicKey2)));
+  return util.boolFromFfi(libCRYPT32_dll.CertComparePublicKeyInfo!(dwCertEncodingType, util.toPointer(pPublicKey1), util.toPointer(pPublicKey2)));
 }
 
 export function CertGetPublicKeyLength(
   dwCertEncodingType: number /* u32 */,
   pPublicKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertGetPublicKeyLength(dwCertEncodingType, util.toPointer(pPublicKey));
+  return libCRYPT32_dll.CertGetPublicKeyLength!(dwCertEncodingType, util.toPointer(pPublicKey));
 }
 
 export function CryptVerifyCertificateSignature(
@@ -49702,7 +50099,7 @@ export function CryptVerifyCertificateSignature(
   cbEncoded: number /* u32 */,
   pPublicKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyCertificateSignature(util.toPointer(hCryptProv), dwCertEncodingType, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pPublicKey)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyCertificateSignature!(util.toPointer(hCryptProv), dwCertEncodingType, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pPublicKey)));
 }
 
 export function CryptVerifyCertificateSignatureEx(
@@ -49715,7 +50112,7 @@ export function CryptVerifyCertificateSignatureEx(
   dwFlags: CRYPT_VERIFY_CERT_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_VERIFY_CERT_FLAGS */,
   pvExtra: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyCertificateSignatureEx(util.toPointer(hCryptProv), dwCertEncodingType, dwSubjectType, util.toPointer(pvSubject), dwIssuerType, util.toPointer(pvIssuer), dwFlags, util.toPointer(pvExtra)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyCertificateSignatureEx!(util.toPointer(hCryptProv), dwCertEncodingType, dwSubjectType, util.toPointer(pvSubject), dwIssuerType, util.toPointer(pvIssuer), dwFlags, util.toPointer(pvExtra)));
 }
 
 export function CertIsStrongHashToSign(
@@ -49723,7 +50120,7 @@ export function CertIsStrongHashToSign(
   pwszCNGHashAlgid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSigningCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertIsStrongHashToSign(util.toPointer(pStrongSignPara), util.pwstrToFfi(pwszCNGHashAlgid), util.toPointer(pSigningCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CertIsStrongHashToSign!(util.toPointer(pStrongSignPara), util.pwstrToFfi(pwszCNGHashAlgid), util.toPointer(pSigningCert)));
 }
 
 export function CryptHashToBeSigned(
@@ -49734,7 +50131,7 @@ export function CryptHashToBeSigned(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptHashToBeSigned(util.toPointer(hCryptProv), dwCertEncodingType, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptHashToBeSigned!(util.toPointer(hCryptProv), dwCertEncodingType, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptHashCertificate(
@@ -49746,7 +50143,7 @@ export function CryptHashCertificate(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptHashCertificate(util.toPointer(hCryptProv), Algid, dwFlags, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptHashCertificate!(util.toPointer(hCryptProv), Algid, dwFlags, util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptHashCertificate2(
@@ -49758,7 +50155,7 @@ export function CryptHashCertificate2(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptHashCertificate2(util.pwstrToFfi(pwszCNGHashAlgid), dwFlags, util.toPointer(pvReserved), util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptHashCertificate2!(util.pwstrToFfi(pwszCNGHashAlgid), dwFlags, util.toPointer(pvReserved), util.toPointer(pbEncoded), cbEncoded, util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptSignCertificate(
@@ -49772,7 +50169,7 @@ export function CryptSignCertificate(
   pbSignature: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSignature: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSignCertificate(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.toPointer(pbEncodedToBeSigned), cbEncodedToBeSigned, util.toPointer(pSignatureAlgorithm), util.toPointer(pvHashAuxInfo), util.toPointer(pbSignature), util.toPointer(pcbSignature)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSignCertificate!(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.toPointer(pbEncodedToBeSigned), cbEncodedToBeSigned, util.toPointer(pSignatureAlgorithm), util.toPointer(pvHashAuxInfo), util.toPointer(pbSignature), util.toPointer(pcbSignature)));
 }
 
 export function CryptSignAndEncodeCertificate(
@@ -49786,28 +50183,28 @@ export function CryptSignAndEncodeCertificate(
   pbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSignAndEncodeCertificate(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), util.toPointer(pSignatureAlgorithm), util.toPointer(pvHashAuxInfo), util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSignAndEncodeCertificate!(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.pstrToFfi(lpszStructType), util.toPointer(pvStructInfo), util.toPointer(pSignatureAlgorithm), util.toPointer(pvHashAuxInfo), util.toPointer(pbEncoded), util.toPointer(pcbEncoded)));
 }
 
 export function CertVerifyTimeValidity(
   pTimeToVerify: Deno.PointerValue | Uint8Array /* ptr */,
   pCertInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCRYPT32_dll.CertVerifyTimeValidity(util.toPointer(pTimeToVerify), util.toPointer(pCertInfo));
+  return libCRYPT32_dll.CertVerifyTimeValidity!(util.toPointer(pTimeToVerify), util.toPointer(pCertInfo));
 }
 
 export function CertVerifyCRLTimeValidity(
   pTimeToVerify: Deno.PointerValue | Uint8Array /* ptr */,
   pCrlInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCRYPT32_dll.CertVerifyCRLTimeValidity(util.toPointer(pTimeToVerify), util.toPointer(pCrlInfo));
+  return libCRYPT32_dll.CertVerifyCRLTimeValidity!(util.toPointer(pTimeToVerify), util.toPointer(pCrlInfo));
 }
 
 export function CertVerifyValidityNesting(
   pSubjectInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pIssuerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifyValidityNesting(util.toPointer(pSubjectInfo), util.toPointer(pIssuerInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifyValidityNesting!(util.toPointer(pSubjectInfo), util.toPointer(pIssuerInfo)));
 }
 
 export function CertVerifyCRLRevocation(
@@ -49816,19 +50213,19 @@ export function CertVerifyCRLRevocation(
   cCrlInfo: number /* u32 */,
   rgpCrlInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCRLRevocation(dwCertEncodingType, util.toPointer(pCertId), cCrlInfo, util.toPointer(rgpCrlInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCRLRevocation!(dwCertEncodingType, util.toPointer(pCertId), cCrlInfo, util.toPointer(rgpCrlInfo)));
 }
 
 export function CertAlgIdToOID(
   dwAlgId: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libCRYPT32_dll.CertAlgIdToOID(dwAlgId));
+  return util.pstrFromFfi(libCRYPT32_dll.CertAlgIdToOID!(dwAlgId));
 }
 
 export function CertOIDToAlgId(
   pszObjId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertOIDToAlgId(util.pstrToFfi(pszObjId));
+  return libCRYPT32_dll.CertOIDToAlgId!(util.pstrToFfi(pszObjId));
 }
 
 export function CertFindExtension(
@@ -49836,7 +50233,7 @@ export function CertFindExtension(
   cExtensions: number /* u32 */,
   rgExtensions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindExtension(util.pstrToFfi(pszObjId), cExtensions, util.toPointer(rgExtensions));
+  return libCRYPT32_dll.CertFindExtension!(util.pstrToFfi(pszObjId), cExtensions, util.toPointer(rgExtensions));
 }
 
 export function CertFindAttribute(
@@ -49844,14 +50241,14 @@ export function CertFindAttribute(
   cAttr: number /* u32 */,
   rgAttr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindAttribute(util.pstrToFfi(pszObjId), cAttr, util.toPointer(rgAttr));
+  return libCRYPT32_dll.CertFindAttribute!(util.pstrToFfi(pszObjId), cAttr, util.toPointer(rgAttr));
 }
 
 export function CertFindRDNAttr(
   pszObjId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindRDNAttr(util.pstrToFfi(pszObjId), util.toPointer(pName));
+  return libCRYPT32_dll.CertFindRDNAttr!(util.pstrToFfi(pszObjId), util.toPointer(pName));
 }
 
 export function CertGetIntendedKeyUsage(
@@ -49860,7 +50257,7 @@ export function CertGetIntendedKeyUsage(
   pbKeyUsage: Deno.PointerValue | Uint8Array /* ptr */,
   cbKeyUsage: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetIntendedKeyUsage(dwCertEncodingType, util.toPointer(pCertInfo), util.toPointer(pbKeyUsage), cbKeyUsage));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetIntendedKeyUsage!(dwCertEncodingType, util.toPointer(pCertInfo), util.toPointer(pbKeyUsage), cbKeyUsage));
 }
 
 export function CryptInstallDefaultContext(
@@ -49871,7 +50268,7 @@ export function CryptInstallDefaultContext(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   phDefaultContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptInstallDefaultContext(hCryptProv, dwDefaultType, util.toPointer(pvDefaultPara), dwFlags, util.toPointer(pvReserved), util.toPointer(phDefaultContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptInstallDefaultContext!(hCryptProv, dwDefaultType, util.toPointer(pvDefaultPara), dwFlags, util.toPointer(pvReserved), util.toPointer(phDefaultContext)));
 }
 
 export function CryptUninstallDefaultContext(
@@ -49879,7 +50276,7 @@ export function CryptUninstallDefaultContext(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUninstallDefaultContext(util.toPointer(hDefaultContext), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUninstallDefaultContext!(util.toPointer(hDefaultContext), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptExportPublicKeyInfo(
@@ -49889,7 +50286,7 @@ export function CryptExportPublicKeyInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcbInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfo(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(pcbInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfo!(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(pcbInfo)));
 }
 
 export function CryptExportPublicKeyInfoEx(
@@ -49902,7 +50299,7 @@ export function CryptExportPublicKeyInfoEx(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcbInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfoEx(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.pstrToFfi(pszPublicKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pInfo), util.toPointer(pcbInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfoEx!(util.toPointer(hCryptProvOrNCryptKey), dwKeySpec, dwCertEncodingType, util.pstrToFfi(pszPublicKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pInfo), util.toPointer(pcbInfo)));
 }
 
 export function CryptExportPublicKeyInfoFromBCryptKeyHandle(
@@ -49914,7 +50311,7 @@ export function CryptExportPublicKeyInfoFromBCryptKeyHandle(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pcbInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfoFromBCryptKeyHandle(util.toPointer(hBCryptKey), dwCertEncodingType, util.pstrToFfi(pszPublicKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pInfo), util.toPointer(pcbInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptExportPublicKeyInfoFromBCryptKeyHandle!(util.toPointer(hBCryptKey), dwCertEncodingType, util.pstrToFfi(pszPublicKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pInfo), util.toPointer(pcbInfo)));
 }
 
 export function CryptImportPublicKeyInfo(
@@ -49923,7 +50320,7 @@ export function CryptImportPublicKeyInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfo(hCryptProv, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(phKey)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfo!(hCryptProv, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(phKey)));
 }
 
 export function CryptImportPublicKeyInfoEx(
@@ -49935,7 +50332,7 @@ export function CryptImportPublicKeyInfoEx(
   pvAuxInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfoEx(hCryptProv, dwCertEncodingType, util.toPointer(pInfo), aiKeyAlg, dwFlags, util.toPointer(pvAuxInfo), util.toPointer(phKey)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfoEx!(hCryptProv, dwCertEncodingType, util.toPointer(pInfo), aiKeyAlg, dwFlags, util.toPointer(pvAuxInfo), util.toPointer(phKey)));
 }
 
 export function CryptImportPublicKeyInfoEx2(
@@ -49945,7 +50342,7 @@ export function CryptImportPublicKeyInfoEx2(
   pvAuxInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfoEx2(dwCertEncodingType, util.toPointer(pInfo), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(phKey)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptImportPublicKeyInfoEx2!(dwCertEncodingType, util.toPointer(pInfo), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(phKey)));
 }
 
 export function CryptAcquireCertificatePrivateKey(
@@ -49956,7 +50353,7 @@ export function CryptAcquireCertificatePrivateKey(
   pdwKeySpec: Deno.PointerValue | Uint8Array /* ptr */,
   pfCallerFreeProvOrNCryptKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptAcquireCertificatePrivateKey(util.toPointer(pCert), dwFlags, util.toPointer(pvParameters), util.toPointer(phCryptProvOrNCryptKey), util.toPointer(pdwKeySpec), util.toPointer(pfCallerFreeProvOrNCryptKey)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptAcquireCertificatePrivateKey!(util.toPointer(pCert), dwFlags, util.toPointer(pvParameters), util.toPointer(phCryptProvOrNCryptKey), util.toPointer(pdwKeySpec), util.toPointer(pfCallerFreeProvOrNCryptKey)));
 }
 
 export function CryptFindCertificateKeyProvInfo(
@@ -49964,7 +50361,7 @@ export function CryptFindCertificateKeyProvInfo(
   dwFlags: CRYPT_FIND_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_FIND_FLAGS */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptFindCertificateKeyProvInfo(util.toPointer(pCert), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptFindCertificateKeyProvInfo!(util.toPointer(pCert), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptImportPKCS8(
@@ -49973,7 +50370,7 @@ export function CryptImportPKCS8(
   phCryptProv: Deno.PointerValue | Uint8Array /* ptr */,
   pvAuxInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptImportPKCS8(util.toPointer(sPrivateKeyAndParams), dwFlags, util.toPointer(phCryptProv), util.toPointer(pvAuxInfo)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptImportPKCS8!(util.toPointer(sPrivateKeyAndParams), dwFlags, util.toPointer(phCryptProv), util.toPointer(pvAuxInfo)));
 }
 
 export function CryptExportPKCS8(
@@ -49985,7 +50382,7 @@ export function CryptExportPKCS8(
   pbPrivateKeyBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPrivateKeyBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptExportPKCS8(hCryptProv, dwKeySpec, util.pstrToFfi(pszPrivateKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pbPrivateKeyBlob), util.toPointer(pcbPrivateKeyBlob)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptExportPKCS8!(hCryptProv, dwKeySpec, util.pstrToFfi(pszPrivateKeyObjId), dwFlags, util.toPointer(pvAuxInfo), util.toPointer(pbPrivateKeyBlob), util.toPointer(pcbPrivateKeyBlob)));
 }
 
 export function CryptHashPublicKeyInfo(
@@ -49997,7 +50394,7 @@ export function CryptHashPublicKeyInfo(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptHashPublicKeyInfo(util.toPointer(hCryptProv), Algid, dwFlags, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptHashPublicKeyInfo!(util.toPointer(hCryptProv), Algid, dwFlags, dwCertEncodingType, util.toPointer(pInfo), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CertRDNValueToStrA(
@@ -50006,7 +50403,7 @@ export function CertRDNValueToStrA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   csz: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertRDNValueToStrA(dwValueType, util.toPointer(pValue), util.pstrToFfi(psz), csz);
+  return libCRYPT32_dll.CertRDNValueToStrA!(dwValueType, util.toPointer(pValue), util.pstrToFfi(psz), csz);
 }
 
 export function CertRDNValueToStrW(
@@ -50015,7 +50412,7 @@ export function CertRDNValueToStrW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   csz: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertRDNValueToStrW(dwValueType, util.toPointer(pValue), util.pwstrToFfi(psz), csz);
+  return libCRYPT32_dll.CertRDNValueToStrW!(dwValueType, util.toPointer(pValue), util.pwstrToFfi(psz), csz);
 }
 
 export function CertNameToStrA(
@@ -50025,7 +50422,7 @@ export function CertNameToStrA(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   csz: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertNameToStrA(dwCertEncodingType, util.toPointer(pName), dwStrType, util.pstrToFfi(psz), csz);
+  return libCRYPT32_dll.CertNameToStrA!(dwCertEncodingType, util.toPointer(pName), dwStrType, util.pstrToFfi(psz), csz);
 }
 
 export function CertNameToStrW(
@@ -50035,7 +50432,7 @@ export function CertNameToStrW(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   csz: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertNameToStrW(dwCertEncodingType, util.toPointer(pName), dwStrType, util.pwstrToFfi(psz), csz);
+  return libCRYPT32_dll.CertNameToStrW!(dwCertEncodingType, util.toPointer(pName), dwStrType, util.pwstrToFfi(psz), csz);
 }
 
 export function CertStrToNameA(
@@ -50047,7 +50444,7 @@ export function CertStrToNameA(
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   ppszError: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertStrToNameA(dwCertEncodingType, util.pstrToFfi(pszX500), dwStrType, util.toPointer(pvReserved), util.toPointer(pbEncoded), util.toPointer(pcbEncoded), util.toPointer(ppszError)));
+  return util.boolFromFfi(libCRYPT32_dll.CertStrToNameA!(dwCertEncodingType, util.pstrToFfi(pszX500), dwStrType, util.toPointer(pvReserved), util.toPointer(pbEncoded), util.toPointer(pcbEncoded), util.toPointer(ppszError)));
 }
 
 export function CertStrToNameW(
@@ -50059,7 +50456,7 @@ export function CertStrToNameW(
   pcbEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   ppszError: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertStrToNameW(dwCertEncodingType, util.pwstrToFfi(pszX500), dwStrType, util.toPointer(pvReserved), util.toPointer(pbEncoded), util.toPointer(pcbEncoded), util.toPointer(ppszError)));
+  return util.boolFromFfi(libCRYPT32_dll.CertStrToNameW!(dwCertEncodingType, util.pwstrToFfi(pszX500), dwStrType, util.toPointer(pvReserved), util.toPointer(pbEncoded), util.toPointer(pcbEncoded), util.toPointer(ppszError)));
 }
 
 export function CertGetNameStringA(
@@ -50070,7 +50467,7 @@ export function CertGetNameStringA(
   pszNameString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchNameString: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertGetNameStringA(util.toPointer(pCertContext), dwType, dwFlags, util.toPointer(pvTypePara), util.pstrToFfi(pszNameString), cchNameString);
+  return libCRYPT32_dll.CertGetNameStringA!(util.toPointer(pCertContext), dwType, dwFlags, util.toPointer(pvTypePara), util.pstrToFfi(pszNameString), cchNameString);
 }
 
 export function CertGetNameStringW(
@@ -50081,7 +50478,7 @@ export function CertGetNameStringW(
   pszNameString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchNameString: number /* u32 */,
 ): number /* u32 */ {
-  return libCRYPT32_dll.CertGetNameStringW(util.toPointer(pCertContext), dwType, dwFlags, util.toPointer(pvTypePara), util.pwstrToFfi(pszNameString), cchNameString);
+  return libCRYPT32_dll.CertGetNameStringW!(util.toPointer(pCertContext), dwType, dwFlags, util.toPointer(pvTypePara), util.pwstrToFfi(pszNameString), cchNameString);
 }
 
 export function CryptSignMessage(
@@ -50093,7 +50490,7 @@ export function CryptSignMessage(
   pbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSignMessage(util.toPointer(pSignPara), util.boolToFfi(fDetachedSignature), cToBeSigned, util.toPointer(rgpbToBeSigned), util.toPointer(rgcbToBeSigned), util.toPointer(pbSignedBlob), util.toPointer(pcbSignedBlob)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSignMessage!(util.toPointer(pSignPara), util.boolToFfi(fDetachedSignature), cToBeSigned, util.toPointer(rgpbToBeSigned), util.toPointer(rgcbToBeSigned), util.toPointer(pbSignedBlob), util.toPointer(pcbSignedBlob)));
 }
 
 export function CryptVerifyMessageSignature(
@@ -50105,7 +50502,7 @@ export function CryptVerifyMessageSignature(
   pcbDecoded: Deno.PointerValue | Uint8Array /* ptr */,
   ppSignerCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageSignature(util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbSignedBlob), cbSignedBlob, util.toPointer(pbDecoded), util.toPointer(pcbDecoded), util.toPointer(ppSignerCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageSignature!(util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbSignedBlob), cbSignedBlob, util.toPointer(pbDecoded), util.toPointer(pcbDecoded), util.toPointer(ppSignerCert)));
 }
 
 export function CryptGetMessageSignerCount(
@@ -50113,7 +50510,7 @@ export function CryptGetMessageSignerCount(
   pbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   cbSignedBlob: number /* u32 */,
 ): number /* i32 */ {
-  return libCRYPT32_dll.CryptGetMessageSignerCount(dwMsgEncodingType, util.toPointer(pbSignedBlob), cbSignedBlob);
+  return libCRYPT32_dll.CryptGetMessageSignerCount!(dwMsgEncodingType, util.toPointer(pbSignedBlob), cbSignedBlob);
 }
 
 export function CryptGetMessageCertificates(
@@ -50123,7 +50520,7 @@ export function CryptGetMessageCertificates(
   pbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   cbSignedBlob: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.CryptGetMessageCertificates(dwMsgAndCertEncodingType, util.toPointer(hCryptProv), dwFlags, util.toPointer(pbSignedBlob), cbSignedBlob);
+  return libCRYPT32_dll.CryptGetMessageCertificates!(dwMsgAndCertEncodingType, util.toPointer(hCryptProv), dwFlags, util.toPointer(pbSignedBlob), cbSignedBlob);
 }
 
 export function CryptVerifyDetachedMessageSignature(
@@ -50136,7 +50533,7 @@ export function CryptVerifyDetachedMessageSignature(
   rgcbToBeSigned: Deno.PointerValue | Uint8Array /* ptr */,
   ppSignerCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyDetachedMessageSignature(util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbDetachedSignBlob), cbDetachedSignBlob, cToBeSigned, util.toPointer(rgpbToBeSigned), util.toPointer(rgcbToBeSigned), util.toPointer(ppSignerCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyDetachedMessageSignature!(util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbDetachedSignBlob), cbDetachedSignBlob, cToBeSigned, util.toPointer(rgpbToBeSigned), util.toPointer(rgcbToBeSigned), util.toPointer(ppSignerCert)));
 }
 
 export function CryptEncryptMessage(
@@ -50148,7 +50545,7 @@ export function CryptEncryptMessage(
   pbEncryptedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbEncryptedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEncryptMessage(util.toPointer(pEncryptPara), cRecipientCert, util.toPointer(rgpRecipientCert), util.toPointer(pbToBeEncrypted), cbToBeEncrypted, util.toPointer(pbEncryptedBlob), util.toPointer(pcbEncryptedBlob)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEncryptMessage!(util.toPointer(pEncryptPara), cRecipientCert, util.toPointer(rgpRecipientCert), util.toPointer(pbToBeEncrypted), cbToBeEncrypted, util.toPointer(pbEncryptedBlob), util.toPointer(pcbEncryptedBlob)));
 }
 
 export function CryptDecryptMessage(
@@ -50159,7 +50556,7 @@ export function CryptDecryptMessage(
   pcbDecrypted: Deno.PointerValue | Uint8Array /* ptr */,
   ppXchgCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptDecryptMessage(util.toPointer(pDecryptPara), util.toPointer(pbEncryptedBlob), cbEncryptedBlob, util.toPointer(pbDecrypted), util.toPointer(pcbDecrypted), util.toPointer(ppXchgCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptDecryptMessage!(util.toPointer(pDecryptPara), util.toPointer(pbEncryptedBlob), cbEncryptedBlob, util.toPointer(pbDecrypted), util.toPointer(pcbDecrypted), util.toPointer(ppXchgCert)));
 }
 
 export function CryptSignAndEncryptMessage(
@@ -50172,7 +50569,7 @@ export function CryptSignAndEncryptMessage(
   pbSignedAndEncryptedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSignedAndEncryptedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSignAndEncryptMessage(util.toPointer(pSignPara), util.toPointer(pEncryptPara), cRecipientCert, util.toPointer(rgpRecipientCert), util.toPointer(pbToBeSignedAndEncrypted), cbToBeSignedAndEncrypted, util.toPointer(pbSignedAndEncryptedBlob), util.toPointer(pcbSignedAndEncryptedBlob)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSignAndEncryptMessage!(util.toPointer(pSignPara), util.toPointer(pEncryptPara), cRecipientCert, util.toPointer(rgpRecipientCert), util.toPointer(pbToBeSignedAndEncrypted), cbToBeSignedAndEncrypted, util.toPointer(pbSignedAndEncryptedBlob), util.toPointer(pcbSignedAndEncryptedBlob)));
 }
 
 export function CryptDecryptAndVerifyMessageSignature(
@@ -50186,7 +50583,7 @@ export function CryptDecryptAndVerifyMessageSignature(
   ppXchgCert: Deno.PointerValue | Uint8Array /* ptr */,
   ppSignerCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptDecryptAndVerifyMessageSignature(util.toPointer(pDecryptPara), util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbEncryptedBlob), cbEncryptedBlob, util.toPointer(pbDecrypted), util.toPointer(pcbDecrypted), util.toPointer(ppXchgCert), util.toPointer(ppSignerCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptDecryptAndVerifyMessageSignature!(util.toPointer(pDecryptPara), util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbEncryptedBlob), cbEncryptedBlob, util.toPointer(pbDecrypted), util.toPointer(pcbDecrypted), util.toPointer(ppXchgCert), util.toPointer(ppSignerCert)));
 }
 
 export function CryptDecodeMessage(
@@ -50204,7 +50601,7 @@ export function CryptDecodeMessage(
   ppXchgCert: Deno.PointerValue | Uint8Array /* ptr */,
   ppSignerCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeMessage(dwMsgTypeFlags, util.toPointer(pDecryptPara), util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbEncodedBlob), cbEncodedBlob, dwPrevInnerContentType, util.toPointer(pdwMsgType), util.toPointer(pdwInnerContentType), util.toPointer(pbDecoded), util.toPointer(pcbDecoded), util.toPointer(ppXchgCert), util.toPointer(ppSignerCert)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptDecodeMessage!(dwMsgTypeFlags, util.toPointer(pDecryptPara), util.toPointer(pVerifyPara), dwSignerIndex, util.toPointer(pbEncodedBlob), cbEncodedBlob, dwPrevInnerContentType, util.toPointer(pdwMsgType), util.toPointer(pdwInnerContentType), util.toPointer(pbDecoded), util.toPointer(pcbDecoded), util.toPointer(ppXchgCert), util.toPointer(ppSignerCert)));
 }
 
 export function CryptHashMessage(
@@ -50218,7 +50615,7 @@ export function CryptHashMessage(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptHashMessage(util.toPointer(pHashPara), util.boolToFfi(fDetachedHash), cToBeHashed, util.toPointer(rgpbToBeHashed), util.toPointer(rgcbToBeHashed), util.toPointer(pbHashedBlob), util.toPointer(pcbHashedBlob), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptHashMessage!(util.toPointer(pHashPara), util.boolToFfi(fDetachedHash), cToBeHashed, util.toPointer(rgpbToBeHashed), util.toPointer(rgcbToBeHashed), util.toPointer(pbHashedBlob), util.toPointer(pcbHashedBlob), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptVerifyMessageHash(
@@ -50230,7 +50627,7 @@ export function CryptVerifyMessageHash(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageHash(util.toPointer(pHashPara), util.toPointer(pbHashedBlob), cbHashedBlob, util.toPointer(pbToBeHashed), util.toPointer(pcbToBeHashed), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageHash!(util.toPointer(pHashPara), util.toPointer(pbHashedBlob), cbHashedBlob, util.toPointer(pbToBeHashed), util.toPointer(pcbToBeHashed), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptVerifyDetachedMessageHash(
@@ -50243,7 +50640,7 @@ export function CryptVerifyDetachedMessageHash(
   pbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbComputedHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyDetachedMessageHash(util.toPointer(pHashPara), util.toPointer(pbDetachedHashBlob), cbDetachedHashBlob, cToBeHashed, util.toPointer(rgpbToBeHashed), util.toPointer(rgcbToBeHashed), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyDetachedMessageHash!(util.toPointer(pHashPara), util.toPointer(pbDetachedHashBlob), cbDetachedHashBlob, cToBeHashed, util.toPointer(rgpbToBeHashed), util.toPointer(rgcbToBeHashed), util.toPointer(pbComputedHash), util.toPointer(pcbComputedHash)));
 }
 
 export function CryptSignMessageWithKey(
@@ -50253,7 +50650,7 @@ export function CryptSignMessageWithKey(
   pbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSignedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSignMessageWithKey(util.toPointer(pSignPara), util.toPointer(pbToBeSigned), cbToBeSigned, util.toPointer(pbSignedBlob), util.toPointer(pcbSignedBlob)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSignMessageWithKey!(util.toPointer(pSignPara), util.toPointer(pbToBeSigned), cbToBeSigned, util.toPointer(pbSignedBlob), util.toPointer(pcbSignedBlob)));
 }
 
 export function CryptVerifyMessageSignatureWithKey(
@@ -50264,21 +50661,21 @@ export function CryptVerifyMessageSignatureWithKey(
   pbDecoded: Deno.PointerValue | Uint8Array /* ptr */,
   pcbDecoded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageSignatureWithKey(util.toPointer(pVerifyPara), util.toPointer(pPublicKeyInfo), util.toPointer(pbSignedBlob), cbSignedBlob, util.toPointer(pbDecoded), util.toPointer(pcbDecoded)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyMessageSignatureWithKey!(util.toPointer(pVerifyPara), util.toPointer(pPublicKeyInfo), util.toPointer(pbSignedBlob), cbSignedBlob, util.toPointer(pbDecoded), util.toPointer(pcbDecoded)));
 }
 
 export function CertOpenSystemStoreA(
   hProv: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */,
   szSubsystemProtocol: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.CertOpenSystemStoreA(util.toPointer(hProv), util.pstrToFfi(szSubsystemProtocol));
+  return libCRYPT32_dll.CertOpenSystemStoreA!(util.toPointer(hProv), util.pstrToFfi(szSubsystemProtocol));
 }
 
 export function CertOpenSystemStoreW(
   hProv: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCRYPTPROV_LEGACY */,
   szSubsystemProtocol: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.CertOpenSystemStoreW(util.toPointer(hProv), util.pwstrToFfi(szSubsystemProtocol));
+  return libCRYPT32_dll.CertOpenSystemStoreW!(util.toPointer(hProv), util.pwstrToFfi(szSubsystemProtocol));
 }
 
 export function CertAddEncodedCertificateToSystemStoreA(
@@ -50286,7 +50683,7 @@ export function CertAddEncodedCertificateToSystemStoreA(
   pbCertEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   cbCertEncoded: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToSystemStoreA(util.pstrToFfi(szCertStoreName), util.toPointer(pbCertEncoded), cbCertEncoded));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToSystemStoreA!(util.pstrToFfi(szCertStoreName), util.toPointer(pbCertEncoded), cbCertEncoded));
 }
 
 export function CertAddEncodedCertificateToSystemStoreW(
@@ -50294,7 +50691,7 @@ export function CertAddEncodedCertificateToSystemStoreW(
   pbCertEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   cbCertEncoded: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToSystemStoreW(util.pwstrToFfi(szCertStoreName), util.toPointer(pbCertEncoded), cbCertEncoded));
+  return util.boolFromFfi(libCRYPT32_dll.CertAddEncodedCertificateToSystemStoreW!(util.pwstrToFfi(szCertStoreName), util.toPointer(pbCertEncoded), cbCertEncoded));
 }
 
 export function FindCertsByIssuer(
@@ -50306,7 +50703,7 @@ export function FindCertsByIssuer(
   pwszPurpose: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwKeySpec: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWINTRUST_dll.FindCertsByIssuer(util.toPointer(pCertChains), util.toPointer(pcbCertChains), util.toPointer(pcCertChains), util.toPointer(pbEncodedIssuerName), cbEncodedIssuerName, util.pwstrToFfi(pwszPurpose), dwKeySpec);
+  return libWINTRUST_dll.FindCertsByIssuer!(util.toPointer(pCertChains), util.toPointer(pcbCertChains), util.toPointer(pcCertChains), util.toPointer(pbEncodedIssuerName), cbEncodedIssuerName, util.pwstrToFfi(pwszPurpose), dwKeySpec);
 }
 
 export function CryptQueryObject(
@@ -50322,33 +50719,33 @@ export function CryptQueryObject(
   phMsg: Deno.PointerValue | Uint8Array /* ptr */,
   ppvContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptQueryObject(dwObjectType, util.toPointer(pvObject), dwExpectedContentTypeFlags, dwExpectedFormatTypeFlags, dwFlags, util.toPointer(pdwMsgAndCertEncodingType), util.toPointer(pdwContentType), util.toPointer(pdwFormatType), util.toPointer(phCertStore), util.toPointer(phMsg), util.toPointer(ppvContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptQueryObject!(dwObjectType, util.toPointer(pvObject), dwExpectedContentTypeFlags, dwExpectedFormatTypeFlags, dwFlags, util.toPointer(pdwMsgAndCertEncodingType), util.toPointer(pdwContentType), util.toPointer(pdwFormatType), util.toPointer(phCertStore), util.toPointer(phMsg), util.toPointer(ppvContext)));
 }
 
 export function CryptMemAlloc(
   cbSize: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptMemAlloc(cbSize);
+  return libCRYPT32_dll.CryptMemAlloc!(cbSize);
 }
 
 export function CryptMemRealloc(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CryptMemRealloc(util.toPointer(pv), cbSize);
+  return libCRYPT32_dll.CryptMemRealloc!(util.toPointer(pv), cbSize);
 }
 
 export function CryptMemFree(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CryptMemFree(util.toPointer(pv));
+  return libCRYPT32_dll.CryptMemFree!(util.toPointer(pv));
 }
 
 export function CryptCreateAsyncHandle(
   dwFlags: number /* u32 */,
   phAsync: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptCreateAsyncHandle(dwFlags, util.toPointer(phAsync)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptCreateAsyncHandle!(dwFlags, util.toPointer(phAsync)));
 }
 
 export function CryptSetAsyncParam(
@@ -50357,7 +50754,7 @@ export function CryptSetAsyncParam(
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   pfnFree: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_ASYNC_PARAM_FREE_FUNC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSetAsyncParam(util.toPointer(hAsync), util.pstrToFfi(pszParamOid), util.toPointer(pvParam), util.toPointer(pfnFree)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSetAsyncParam!(util.toPointer(hAsync), util.pstrToFfi(pszParamOid), util.toPointer(pvParam), util.toPointer(pfnFree)));
 }
 
 export function CryptGetAsyncParam(
@@ -50366,13 +50763,13 @@ export function CryptGetAsyncParam(
   ppvParam: Deno.PointerValue | Uint8Array /* ptr */,
   ppfnFree: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetAsyncParam(util.toPointer(hAsync), util.pstrToFfi(pszParamOid), util.toPointer(ppvParam), util.toPointer(ppfnFree)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetAsyncParam!(util.toPointer(hAsync), util.pstrToFfi(pszParamOid), util.toPointer(ppvParam), util.toPointer(ppfnFree)));
 }
 
 export function CryptCloseAsyncHandle(
   hAsync: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCRYPTASYNC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptCloseAsyncHandle(util.toPointer(hAsync)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptCloseAsyncHandle!(util.toPointer(hAsync)));
 }
 
 export function CryptRetrieveObjectByUrlA(
@@ -50386,7 +50783,7 @@ export function CryptRetrieveObjectByUrlA(
   pvVerify: Deno.PointerValue | Uint8Array /* ptr */,
   pAuxInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTNET_dll.CryptRetrieveObjectByUrlA(util.pstrToFfi(pszUrl), util.pstrToFfi(pszObjectOid), dwRetrievalFlags, dwTimeout, util.toPointer(ppvObject), util.toPointer(hAsyncRetrieve), util.toPointer(pCredentials), util.toPointer(pvVerify), util.toPointer(pAuxInfo)));
+  return util.boolFromFfi(libCRYPTNET_dll.CryptRetrieveObjectByUrlA!(util.pstrToFfi(pszUrl), util.pstrToFfi(pszObjectOid), dwRetrievalFlags, dwTimeout, util.toPointer(ppvObject), util.toPointer(hAsyncRetrieve), util.toPointer(pCredentials), util.toPointer(pvVerify), util.toPointer(pAuxInfo)));
 }
 
 export function CryptRetrieveObjectByUrlW(
@@ -50400,7 +50797,7 @@ export function CryptRetrieveObjectByUrlW(
   pvVerify: Deno.PointerValue | Uint8Array /* ptr */,
   pAuxInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTNET_dll.CryptRetrieveObjectByUrlW(util.pwstrToFfi(pszUrl), util.pstrToFfi(pszObjectOid), dwRetrievalFlags, dwTimeout, util.toPointer(ppvObject), util.toPointer(hAsyncRetrieve), util.toPointer(pCredentials), util.toPointer(pvVerify), util.toPointer(pAuxInfo)));
+  return util.boolFromFfi(libCRYPTNET_dll.CryptRetrieveObjectByUrlW!(util.pwstrToFfi(pszUrl), util.pstrToFfi(pszObjectOid), dwRetrievalFlags, dwTimeout, util.toPointer(ppvObject), util.toPointer(hAsyncRetrieve), util.toPointer(pCredentials), util.toPointer(pvVerify), util.toPointer(pAuxInfo)));
 }
 
 export function CryptInstallCancelRetrieval(
@@ -50409,14 +50806,14 @@ export function CryptInstallCancelRetrieval(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTNET_dll.CryptInstallCancelRetrieval(util.toPointer(pfnCancel), util.toPointer(pvArg), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPTNET_dll.CryptInstallCancelRetrieval!(util.toPointer(pfnCancel), util.toPointer(pvArg), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptUninstallCancelRetrieval(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTNET_dll.CryptUninstallCancelRetrieval(dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPTNET_dll.CryptUninstallCancelRetrieval!(dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptGetObjectUrl(
@@ -50429,7 +50826,7 @@ export function CryptGetObjectUrl(
   pcbUrlInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTNET_dll.CryptGetObjectUrl(util.pstrToFfi(pszUrlOid), util.toPointer(pvPara), dwFlags, util.toPointer(pUrlArray), util.toPointer(pcbUrlArray), util.toPointer(pUrlInfo), util.toPointer(pcbUrlInfo), util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPTNET_dll.CryptGetObjectUrl!(util.pstrToFfi(pszUrlOid), util.toPointer(pvPara), dwFlags, util.toPointer(pUrlArray), util.toPointer(pcbUrlArray), util.toPointer(pUrlInfo), util.toPointer(pcbUrlInfo), util.toPointer(pvReserved)));
 }
 
 export function CertCreateSelfSignCertificate(
@@ -50442,7 +50839,7 @@ export function CertCreateSelfSignCertificate(
   pEndTime: Deno.PointerValue | Uint8Array /* ptr */,
   pExtensions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertCreateSelfSignCertificate(util.toPointer(hCryptProvOrNCryptKey), util.toPointer(pSubjectIssuerBlob), dwFlags, util.toPointer(pKeyProvInfo), util.toPointer(pSignatureAlgorithm), util.toPointer(pStartTime), util.toPointer(pEndTime), util.toPointer(pExtensions));
+  return libCRYPT32_dll.CertCreateSelfSignCertificate!(util.toPointer(hCryptProvOrNCryptKey), util.toPointer(pSubjectIssuerBlob), dwFlags, util.toPointer(pKeyProvInfo), util.toPointer(pSignatureAlgorithm), util.toPointer(pStartTime), util.toPointer(pEndTime), util.toPointer(pExtensions));
 }
 
 export function CryptGetKeyIdentifierProperty(
@@ -50454,7 +50851,7 @@ export function CryptGetKeyIdentifierProperty(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptGetKeyIdentifierProperty(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvData), util.toPointer(pcbData)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptGetKeyIdentifierProperty!(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvData), util.toPointer(pcbData)));
 }
 
 export function CryptSetKeyIdentifierProperty(
@@ -50465,7 +50862,7 @@ export function CryptSetKeyIdentifierProperty(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSetKeyIdentifierProperty(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvData)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSetKeyIdentifierProperty!(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvData)));
 }
 
 export function CryptEnumKeyIdentifierProperties(
@@ -50477,7 +50874,7 @@ export function CryptEnumKeyIdentifierProperties(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_ENUM_KEYID_PROP */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptEnumKeyIdentifierProperties(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvArg), util.toPointer(pfnEnum)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptEnumKeyIdentifierProperties!(util.toPointer(pKeyIdentifier), dwPropId, dwFlags, util.pwstrToFfi(pwszComputerName), util.toPointer(pvReserved), util.toPointer(pvArg), util.toPointer(pfnEnum)));
 }
 
 export function CryptCreateKeyIdentifierFromCSP(
@@ -50490,26 +50887,26 @@ export function CryptCreateKeyIdentifierFromCSP(
   pbHash: Deno.PointerValue | Uint8Array /* ptr */,
   pcbHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptCreateKeyIdentifierFromCSP(dwCertEncodingType, util.pstrToFfi(pszPubKeyOID), util.toPointer(pPubKeyStruc), cbPubKeyStruc, dwFlags, util.toPointer(pvReserved), util.toPointer(pbHash), util.toPointer(pcbHash)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptCreateKeyIdentifierFromCSP!(dwCertEncodingType, util.pstrToFfi(pszPubKeyOID), util.toPointer(pPubKeyStruc), cbPubKeyStruc, dwFlags, util.toPointer(pvReserved), util.toPointer(pbHash), util.toPointer(pcbHash)));
 }
 
 export function CertCreateCertificateChainEngine(
   pConfig: Deno.PointerValue | Uint8Array /* ptr */,
   phChainEngine: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertCreateCertificateChainEngine(util.toPointer(pConfig), util.toPointer(phChainEngine)));
+  return util.boolFromFfi(libCRYPT32_dll.CertCreateCertificateChainEngine!(util.toPointer(pConfig), util.toPointer(phChainEngine)));
 }
 
 export function CertFreeCertificateChainEngine(
   hChainEngine: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTCHAINENGINE */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertFreeCertificateChainEngine(util.toPointer(hChainEngine));
+  return libCRYPT32_dll.CertFreeCertificateChainEngine!(util.toPointer(hChainEngine));
 }
 
 export function CertResyncCertificateChainEngine(
   hChainEngine: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTCHAINENGINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertResyncCertificateChainEngine(util.toPointer(hChainEngine)));
+  return util.boolFromFfi(libCRYPT32_dll.CertResyncCertificateChainEngine!(util.toPointer(hChainEngine)));
 }
 
 export function CertGetCertificateChain(
@@ -50522,19 +50919,19 @@ export function CertGetCertificateChain(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppChainContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertGetCertificateChain(util.toPointer(hChainEngine), util.toPointer(pCertContext), util.toPointer(pTime), util.toPointer(hAdditionalStore), util.toPointer(pChainPara), dwFlags, util.toPointer(pvReserved), util.toPointer(ppChainContext)));
+  return util.boolFromFfi(libCRYPT32_dll.CertGetCertificateChain!(util.toPointer(hChainEngine), util.toPointer(pCertContext), util.toPointer(pTime), util.toPointer(hAdditionalStore), util.toPointer(pChainPara), dwFlags, util.toPointer(pvReserved), util.toPointer(ppChainContext)));
 }
 
 export function CertFreeCertificateChain(
   pChainContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertFreeCertificateChain(util.toPointer(pChainContext));
+  return libCRYPT32_dll.CertFreeCertificateChain!(util.toPointer(pChainContext));
 }
 
 export function CertDuplicateCertificateChain(
   pChainContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertDuplicateCertificateChain(util.toPointer(pChainContext));
+  return libCRYPT32_dll.CertDuplicateCertificateChain!(util.toPointer(pChainContext));
 }
 
 export function CertFindChainInStore(
@@ -50545,7 +50942,7 @@ export function CertFindChainInStore(
   pvFindPara: Deno.PointerValue | Uint8Array /* ptr */,
   pPrevChainContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertFindChainInStore(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevChainContext));
+  return libCRYPT32_dll.CertFindChainInStore!(util.toPointer(hCertStore), dwCertEncodingType, dwFindFlags, dwFindType, util.toPointer(pvFindPara), util.toPointer(pPrevChainContext));
 }
 
 export function CertVerifyCertificateChainPolicy(
@@ -50554,7 +50951,7 @@ export function CertVerifyCertificateChainPolicy(
   pPolicyPara: Deno.PointerValue | Uint8Array /* ptr */,
   pPolicyStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCertificateChainPolicy(util.pstrToFfi(pszPolicyOID), util.toPointer(pChainContext), util.toPointer(pPolicyPara), util.toPointer(pPolicyStatus)));
+  return util.boolFromFfi(libCRYPT32_dll.CertVerifyCertificateChainPolicy!(util.pstrToFfi(pszPolicyOID), util.toPointer(pChainContext), util.toPointer(pPolicyPara), util.toPointer(pPolicyStatus)));
 }
 
 export function CryptStringToBinaryA(
@@ -50566,7 +50963,7 @@ export function CryptStringToBinaryA(
   pdwSkip: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptStringToBinaryA(util.pstrToFfi(pszString), cchString, dwFlags, util.toPointer(pbBinary), util.toPointer(pcbBinary), util.toPointer(pdwSkip), util.toPointer(pdwFlags)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptStringToBinaryA!(util.pstrToFfi(pszString), cchString, dwFlags, util.toPointer(pbBinary), util.toPointer(pcbBinary), util.toPointer(pdwSkip), util.toPointer(pdwFlags)));
 }
 
 export function CryptStringToBinaryW(
@@ -50578,7 +50975,7 @@ export function CryptStringToBinaryW(
   pdwSkip: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptStringToBinaryW(util.pwstrToFfi(pszString), cchString, dwFlags, util.toPointer(pbBinary), util.toPointer(pcbBinary), util.toPointer(pdwSkip), util.toPointer(pdwFlags)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptStringToBinaryW!(util.pwstrToFfi(pszString), cchString, dwFlags, util.toPointer(pbBinary), util.toPointer(pcbBinary), util.toPointer(pdwSkip), util.toPointer(pdwFlags)));
 }
 
 export function CryptBinaryToStringA(
@@ -50588,7 +50985,7 @@ export function CryptBinaryToStringA(
   pszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchString: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptBinaryToStringA(util.toPointer(pbBinary), cbBinary, dwFlags, util.pstrToFfi(pszString), util.toPointer(pcchString)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptBinaryToStringA!(util.toPointer(pbBinary), cbBinary, dwFlags, util.pstrToFfi(pszString), util.toPointer(pcchString)));
 }
 
 export function CryptBinaryToStringW(
@@ -50598,7 +50995,7 @@ export function CryptBinaryToStringW(
   pszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchString: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptBinaryToStringW(util.toPointer(pbBinary), cbBinary, dwFlags, util.pwstrToFfi(pszString), util.toPointer(pcchString)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptBinaryToStringW!(util.toPointer(pbBinary), cbBinary, dwFlags, util.pwstrToFfi(pszString), util.toPointer(pcchString)));
 }
 
 export function PFXImportCertStore(
@@ -50606,13 +51003,13 @@ export function PFXImportCertStore(
   szPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: CRYPT_KEY_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_KEY_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */ {
-  return libCRYPT32_dll.PFXImportCertStore(util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags);
+  return libCRYPT32_dll.PFXImportCertStore!(util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags);
 }
 
 export function PFXIsPFXBlob(
   pPFX: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.PFXIsPFXBlob(util.toPointer(pPFX)));
+  return util.boolFromFfi(libCRYPT32_dll.PFXIsPFXBlob!(util.toPointer(pPFX)));
 }
 
 export function PFXVerifyPassword(
@@ -50620,7 +51017,7 @@ export function PFXVerifyPassword(
   szPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.PFXVerifyPassword(util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.PFXVerifyPassword!(util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags));
 }
 
 export function PFXExportCertStoreEx(
@@ -50630,7 +51027,7 @@ export function PFXExportCertStoreEx(
   pvPara: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.PFXExportCertStoreEx(util.toPointer(hStore), util.toPointer(pPFX), util.pwstrToFfi(szPassword), util.toPointer(pvPara), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.PFXExportCertStoreEx!(util.toPointer(hStore), util.toPointer(pPFX), util.pwstrToFfi(szPassword), util.toPointer(pvPara), dwFlags));
 }
 
 export function PFXExportCertStore(
@@ -50639,7 +51036,7 @@ export function PFXExportCertStore(
   szPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.PFXExportCertStore(util.toPointer(hStore), util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.PFXExportCertStore!(util.toPointer(hStore), util.toPointer(pPFX), util.pwstrToFfi(szPassword), dwFlags));
 }
 
 export function CertOpenServerOcspResponse(
@@ -50647,20 +51044,20 @@ export function CertOpenServerOcspResponse(
   dwFlags: number /* u32 */,
   pOpenPara: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertOpenServerOcspResponse(util.toPointer(pChainContext), dwFlags, util.toPointer(pOpenPara));
+  return libCRYPT32_dll.CertOpenServerOcspResponse!(util.toPointer(pChainContext), dwFlags, util.toPointer(pOpenPara));
 }
 
 export function CertAddRefServerOcspResponse(
   hServerOcspResponse: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertAddRefServerOcspResponse(util.toPointer(hServerOcspResponse));
+  return libCRYPT32_dll.CertAddRefServerOcspResponse!(util.toPointer(hServerOcspResponse));
 }
 
 export function CertCloseServerOcspResponse(
   hServerOcspResponse: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertCloseServerOcspResponse(util.toPointer(hServerOcspResponse), dwFlags);
+  return libCRYPT32_dll.CertCloseServerOcspResponse!(util.toPointer(hServerOcspResponse), dwFlags);
 }
 
 export function CertGetServerOcspResponseContext(
@@ -50668,19 +51065,19 @@ export function CertGetServerOcspResponseContext(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPT32_dll.CertGetServerOcspResponseContext(util.toPointer(hServerOcspResponse), dwFlags, util.toPointer(pvReserved));
+  return libCRYPT32_dll.CertGetServerOcspResponseContext!(util.toPointer(hServerOcspResponse), dwFlags, util.toPointer(pvReserved));
 }
 
 export function CertAddRefServerOcspResponseContext(
   pServerOcspResponseContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertAddRefServerOcspResponseContext(util.toPointer(pServerOcspResponseContext));
+  return libCRYPT32_dll.CertAddRefServerOcspResponseContext!(util.toPointer(pServerOcspResponseContext));
 }
 
 export function CertFreeServerOcspResponseContext(
   pServerOcspResponseContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertFreeServerOcspResponseContext(util.toPointer(pServerOcspResponseContext));
+  return libCRYPT32_dll.CertFreeServerOcspResponseContext!(util.toPointer(pServerOcspResponseContext));
 }
 
 export function CertRetrieveLogoOrBiometricInfo(
@@ -50694,7 +51091,7 @@ export function CertRetrieveLogoOrBiometricInfo(
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
   ppwszMimeType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertRetrieveLogoOrBiometricInfo(util.toPointer(pCertContext), util.pstrToFfi(lpszLogoOrBiometricType), dwRetrievalFlags, dwTimeout, dwFlags, util.toPointer(pvReserved), util.toPointer(ppbData), util.toPointer(pcbData), util.toPointer(ppwszMimeType)));
+  return util.boolFromFfi(libCRYPT32_dll.CertRetrieveLogoOrBiometricInfo!(util.toPointer(pCertContext), util.pstrToFfi(lpszLogoOrBiometricType), dwRetrievalFlags, dwTimeout, dwFlags, util.toPointer(pvReserved), util.toPointer(ppbData), util.toPointer(pcbData), util.toPointer(ppwszMimeType)));
 }
 
 export function CertSelectCertificateChains(
@@ -50707,13 +51104,13 @@ export function CertSelectCertificateChains(
   pcSelection: Deno.PointerValue | Uint8Array /* ptr */,
   pprgpSelection: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertSelectCertificateChains(util.toPointer(pSelectionContext), dwFlags, util.toPointer(pChainParameters), cCriteria, util.toPointer(rgpCriteria), util.toPointer(hStore), util.toPointer(pcSelection), util.toPointer(pprgpSelection)));
+  return util.boolFromFfi(libCRYPT32_dll.CertSelectCertificateChains!(util.toPointer(pSelectionContext), dwFlags, util.toPointer(pChainParameters), cCriteria, util.toPointer(rgpCriteria), util.toPointer(hStore), util.toPointer(pcSelection), util.toPointer(pprgpSelection)));
 }
 
 export function CertFreeCertificateChainList(
   prgpSelection: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCRYPT32_dll.CertFreeCertificateChainList(util.toPointer(prgpSelection));
+  return libCRYPT32_dll.CertFreeCertificateChainList!(util.toPointer(prgpSelection));
 }
 
 export function CryptRetrieveTimeStamp(
@@ -50728,7 +51125,7 @@ export function CryptRetrieveTimeStamp(
   ppTsSigner: Deno.PointerValue | Uint8Array /* ptr */,
   phStore: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptRetrieveTimeStamp(util.pwstrToFfi(wszUrl), dwRetrievalFlags, dwTimeout, util.pstrToFfi(pszHashId), util.toPointer(pPara), util.toPointer(pbData), cbData, util.toPointer(ppTsContext), util.toPointer(ppTsSigner), util.toPointer(phStore)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptRetrieveTimeStamp!(util.pwstrToFfi(wszUrl), dwRetrievalFlags, dwTimeout, util.pstrToFfi(pszHashId), util.toPointer(pPara), util.toPointer(pbData), cbData, util.toPointer(ppTsContext), util.toPointer(ppTsSigner), util.toPointer(phStore)));
 }
 
 export function CryptVerifyTimeStampSignature(
@@ -50741,7 +51138,7 @@ export function CryptVerifyTimeStampSignature(
   ppTsSigner: Deno.PointerValue | Uint8Array /* ptr */,
   phStore: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyTimeStampSignature(util.toPointer(pbTSContentInfo), cbTSContentInfo, util.toPointer(pbData), cbData, util.toPointer(hAdditionalStore), util.toPointer(ppTsContext), util.toPointer(ppTsSigner), util.toPointer(phStore)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptVerifyTimeStampSignature!(util.toPointer(pbTSContentInfo), cbTSContentInfo, util.toPointer(pbData), cbData, util.toPointer(hAdditionalStore), util.toPointer(ppTsContext), util.toPointer(ppTsSigner), util.toPointer(phStore)));
 }
 
 export function CertIsWeakHash(
@@ -50752,7 +51149,7 @@ export function CertIsWeakHash(
   pTimeStamp: Deno.PointerValue | Uint8Array /* ptr */,
   pwszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CertIsWeakHash(dwHashUseType, util.pwstrToFfi(pwszCNGHashAlgid), dwChainFlags, util.toPointer(pSignerChainContext), util.toPointer(pTimeStamp), util.pwstrToFfi(pwszFileName)));
+  return util.boolFromFfi(libCRYPT32_dll.CertIsWeakHash!(dwHashUseType, util.pwstrToFfi(pwszCNGHashAlgid), dwChainFlags, util.toPointer(pSignerChainContext), util.toPointer(pTimeStamp), util.pwstrToFfi(pwszFileName)));
 }
 
 export function CryptProtectData(
@@ -50764,7 +51161,7 @@ export function CryptProtectData(
   dwFlags: number /* u32 */,
   pDataOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptProtectData(util.toPointer(pDataIn), util.pwstrToFfi(szDataDescr), util.toPointer(pOptionalEntropy), util.toPointer(pvReserved), util.toPointer(pPromptStruct), dwFlags, util.toPointer(pDataOut)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptProtectData!(util.toPointer(pDataIn), util.pwstrToFfi(szDataDescr), util.toPointer(pOptionalEntropy), util.toPointer(pvReserved), util.toPointer(pPromptStruct), dwFlags, util.toPointer(pDataOut)));
 }
 
 export function CryptUnprotectData(
@@ -50776,7 +51173,7 @@ export function CryptUnprotectData(
   dwFlags: number /* u32 */,
   pDataOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUnprotectData(util.toPointer(pDataIn), util.toPointer(ppszDataDescr), util.toPointer(pOptionalEntropy), util.toPointer(pvReserved), util.toPointer(pPromptStruct), dwFlags, util.toPointer(pDataOut)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUnprotectData!(util.toPointer(pDataIn), util.toPointer(ppszDataDescr), util.toPointer(pOptionalEntropy), util.toPointer(pvReserved), util.toPointer(pPromptStruct), dwFlags, util.toPointer(pDataOut)));
 }
 
 export function CryptUpdateProtectedState(
@@ -50786,7 +51183,7 @@ export function CryptUpdateProtectedState(
   pdwSuccessCount: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFailureCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUpdateProtectedState(util.toPointer(pOldSid), util.pwstrToFfi(pwszOldPassword), dwFlags, util.toPointer(pdwSuccessCount), util.toPointer(pdwFailureCount)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUpdateProtectedState!(util.toPointer(pOldSid), util.pwstrToFfi(pwszOldPassword), dwFlags, util.toPointer(pdwSuccessCount), util.toPointer(pdwFailureCount)));
 }
 
 export function CryptProtectMemory(
@@ -50794,7 +51191,7 @@ export function CryptProtectMemory(
   cbDataIn: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptProtectMemory(util.toPointer(pDataIn), cbDataIn, dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CryptProtectMemory!(util.toPointer(pDataIn), cbDataIn, dwFlags));
 }
 
 export function CryptUnprotectMemory(
@@ -50802,7 +51199,7 @@ export function CryptUnprotectMemory(
   cbDataIn: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptUnprotectMemory(util.toPointer(pDataIn), cbDataIn, dwFlags));
+  return util.boolFromFfi(libCRYPT32_dll.CryptUnprotectMemory!(util.toPointer(pDataIn), cbDataIn, dwFlags));
 }
 
 export function NCryptRegisterProtectionDescriptorName(
@@ -50810,7 +51207,7 @@ export function NCryptRegisterProtectionDescriptorName(
   pwszDescriptorString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptRegisterProtectionDescriptorName(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszDescriptorString), dwFlags);
+  return libncrypt_dll.NCryptRegisterProtectionDescriptorName!(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszDescriptorString), dwFlags);
 }
 
 export function NCryptQueryProtectionDescriptorName(
@@ -50819,7 +51216,7 @@ export function NCryptQueryProtectionDescriptorName(
   pcDescriptorString: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptQueryProtectionDescriptorName(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszDescriptorString), util.toPointer(pcDescriptorString), dwFlags);
+  return libncrypt_dll.NCryptQueryProtectionDescriptorName!(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszDescriptorString), util.toPointer(pcDescriptorString), dwFlags);
 }
 
 export function NCryptCreateProtectionDescriptor(
@@ -50827,13 +51224,13 @@ export function NCryptCreateProtectionDescriptor(
   dwFlags: number /* u32 */,
   phDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptCreateProtectionDescriptor(util.pwstrToFfi(pwszDescriptorString), dwFlags, util.toPointer(phDescriptor));
+  return libncrypt_dll.NCryptCreateProtectionDescriptor!(util.pwstrToFfi(pwszDescriptorString), dwFlags, util.toPointer(phDescriptor));
 }
 
 export function NCryptCloseProtectionDescriptor(
   hDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.NCRYPT_DESCRIPTOR_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptCloseProtectionDescriptor(util.toPointer(hDescriptor));
+  return libncrypt_dll.NCryptCloseProtectionDescriptor!(util.toPointer(hDescriptor));
 }
 
 export function NCryptGetProtectionDescriptorInfo(
@@ -50842,7 +51239,7 @@ export function NCryptGetProtectionDescriptorInfo(
   dwInfoType: number /* u32 */,
   ppvInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptGetProtectionDescriptorInfo(util.toPointer(hDescriptor), util.toPointer(pMemPara), dwInfoType, util.toPointer(ppvInfo));
+  return libncrypt_dll.NCryptGetProtectionDescriptorInfo!(util.toPointer(hDescriptor), util.toPointer(pMemPara), dwInfoType, util.toPointer(ppvInfo));
 }
 
 export function NCryptProtectSecret(
@@ -50855,7 +51252,7 @@ export function NCryptProtectSecret(
   ppbProtectedBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbProtectedBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptProtectSecret(util.toPointer(hDescriptor), dwFlags, util.toPointer(pbData), cbData, util.toPointer(pMemPara), (hWnd), util.toPointer(ppbProtectedBlob), util.toPointer(pcbProtectedBlob));
+  return libncrypt_dll.NCryptProtectSecret!(util.toPointer(hDescriptor), dwFlags, util.toPointer(pbData), cbData, util.toPointer(pMemPara), (hWnd), util.toPointer(ppbProtectedBlob), util.toPointer(pcbProtectedBlob));
 }
 
 export function NCryptUnprotectSecret(
@@ -50868,7 +51265,7 @@ export function NCryptUnprotectSecret(
   ppbData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptUnprotectSecret(util.toPointer(phDescriptor), dwFlags, util.toPointer(pbProtectedBlob), cbProtectedBlob, util.toPointer(pMemPara), (hWnd), util.toPointer(ppbData), util.toPointer(pcbData));
+  return libncrypt_dll.NCryptUnprotectSecret!(util.toPointer(phDescriptor), dwFlags, util.toPointer(pbProtectedBlob), cbProtectedBlob, util.toPointer(pMemPara), (hWnd), util.toPointer(ppbData), util.toPointer(pcbData));
 }
 
 export function NCryptStreamOpenToProtect(
@@ -50878,7 +51275,7 @@ export function NCryptStreamOpenToProtect(
   pStreamInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptStreamOpenToProtect(util.toPointer(hDescriptor), dwFlags, (hWnd), util.toPointer(pStreamInfo), util.toPointer(phStream));
+  return libncrypt_dll.NCryptStreamOpenToProtect!(util.toPointer(hDescriptor), dwFlags, (hWnd), util.toPointer(pStreamInfo), util.toPointer(phStream));
 }
 
 export function NCryptStreamOpenToUnprotect(
@@ -50887,7 +51284,7 @@ export function NCryptStreamOpenToUnprotect(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   phStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptStreamOpenToUnprotect(util.toPointer(pStreamInfo), dwFlags, (hWnd), util.toPointer(phStream));
+  return libncrypt_dll.NCryptStreamOpenToUnprotect!(util.toPointer(pStreamInfo), dwFlags, (hWnd), util.toPointer(phStream));
 }
 
 export function NCryptStreamOpenToUnprotectEx(
@@ -50896,7 +51293,7 @@ export function NCryptStreamOpenToUnprotectEx(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   phStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptStreamOpenToUnprotectEx(util.toPointer(pStreamInfo), dwFlags, (hWnd), util.toPointer(phStream));
+  return libncrypt_dll.NCryptStreamOpenToUnprotectEx!(util.toPointer(pStreamInfo), dwFlags, (hWnd), util.toPointer(phStream));
 }
 
 export function NCryptStreamUpdate(
@@ -50905,25 +51302,25 @@ export function NCryptStreamUpdate(
   cbData: bigint | number /* usize */,
   fFinal: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptStreamUpdate(util.toPointer(hStream), util.toPointer(pbData), cbData, util.boolToFfi(fFinal));
+  return libncrypt_dll.NCryptStreamUpdate!(util.toPointer(hStream), util.toPointer(pbData), cbData, util.boolToFfi(fFinal));
 }
 
 export function NCryptStreamClose(
   hStream: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.NCRYPT_STREAM_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libncrypt_dll.NCryptStreamClose(util.toPointer(hStream));
+  return libncrypt_dll.NCryptStreamClose!(util.toPointer(hStream));
 }
 
 export function CryptXmlClose(
   hCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlClose(util.toPointer(hCryptXml));
+  return libCRYPTXML_dll.CryptXmlClose!(util.toPointer(hCryptXml));
 }
 
 export function CryptXmlGetTransforms(
   ppConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetTransforms(util.toPointer(ppConfig));
+  return libCRYPTXML_dll.CryptXmlGetTransforms!(util.toPointer(ppConfig));
 }
 
 export function CryptXmlOpenToEncode(
@@ -50935,7 +51332,7 @@ export function CryptXmlOpenToEncode(
   pEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   phSignature: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlOpenToEncode(util.toPointer(pConfig), dwFlags, util.pwstrToFfi(wszId), util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(phSignature));
+  return libCRYPTXML_dll.CryptXmlOpenToEncode!(util.toPointer(pConfig), dwFlags, util.pwstrToFfi(wszId), util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(phSignature));
 }
 
 export function CryptXmlOpenToDecode(
@@ -50946,7 +51343,7 @@ export function CryptXmlOpenToDecode(
   pEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   phCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlOpenToDecode(util.toPointer(pConfig), dwFlags, util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(phCryptXml));
+  return libCRYPTXML_dll.CryptXmlOpenToDecode!(util.toPointer(pConfig), dwFlags, util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(phCryptXml));
 }
 
 export function CryptXmlAddObject(
@@ -50957,7 +51354,7 @@ export function CryptXmlAddObject(
   pEncoded: Deno.PointerValue | Uint8Array /* ptr */,
   ppObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlAddObject(util.toPointer(hSignatureOrObject), dwFlags, util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(ppObject));
+  return libCRYPTXML_dll.CryptXmlAddObject!(util.toPointer(hSignatureOrObject), dwFlags, util.toPointer(rgProperty), cProperty, util.toPointer(pEncoded), util.toPointer(ppObject));
 }
 
 export function CryptXmlCreateReference(
@@ -50971,7 +51368,7 @@ export function CryptXmlCreateReference(
   rgTransform: Deno.PointerValue | Uint8Array /* ptr */,
   phReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlCreateReference(util.toPointer(hCryptXml), dwFlags, util.pwstrToFfi(wszId), util.pwstrToFfi(wszURI), util.pwstrToFfi(wszType), util.toPointer(pDigestMethod), cTransform, util.toPointer(rgTransform), util.toPointer(phReference));
+  return libCRYPTXML_dll.CryptXmlCreateReference!(util.toPointer(hCryptXml), dwFlags, util.pwstrToFfi(wszId), util.pwstrToFfi(wszURI), util.pwstrToFfi(wszType), util.toPointer(pDigestMethod), cTransform, util.toPointer(rgTransform), util.toPointer(phReference));
 }
 
 export function CryptXmlDigestReference(
@@ -50979,7 +51376,7 @@ export function CryptXmlDigestReference(
   dwFlags: number /* u32 */,
   pDataProviderIn: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlDigestReference(util.toPointer(hReference), dwFlags, util.toPointer(pDataProviderIn));
+  return libCRYPTXML_dll.CryptXmlDigestReference!(util.toPointer(hReference), dwFlags, util.toPointer(pDataProviderIn));
 }
 
 export function CryptXmlSetHMACSecret(
@@ -50987,7 +51384,7 @@ export function CryptXmlSetHMACSecret(
   pbSecret: Deno.PointerValue | Uint8Array /* ptr */,
   cbSecret: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlSetHMACSecret(util.toPointer(hSignature), util.toPointer(pbSecret), cbSecret);
+  return libCRYPTXML_dll.CryptXmlSetHMACSecret!(util.toPointer(hSignature), util.toPointer(pbSecret), cbSecret);
 }
 
 export function CryptXmlSign(
@@ -51000,7 +51397,7 @@ export function CryptXmlSign(
   pSignatureMethod: Deno.PointerValue | Uint8Array /* ptr */,
   pCanonicalization: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlSign(util.toPointer(hSignature), util.toPointer(hKey), dwKeySpec, dwFlags, dwKeyInfoSpec, util.toPointer(pvKeyInfoSpec), util.toPointer(pSignatureMethod), util.toPointer(pCanonicalization));
+  return libCRYPTXML_dll.CryptXmlSign!(util.toPointer(hSignature), util.toPointer(hKey), dwKeySpec, dwFlags, dwKeyInfoSpec, util.toPointer(pvKeyInfoSpec), util.toPointer(pSignatureMethod), util.toPointer(pCanonicalization));
 }
 
 export function CryptXmlImportPublicKey(
@@ -51008,7 +51405,7 @@ export function CryptXmlImportPublicKey(
   pKeyValue: Deno.PointerValue | Uint8Array /* ptr */,
   phKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlImportPublicKey(dwFlags, util.toPointer(pKeyValue), util.toPointer(phKey));
+  return libCRYPTXML_dll.CryptXmlImportPublicKey!(dwFlags, util.toPointer(pKeyValue), util.toPointer(phKey));
 }
 
 export function CryptXmlVerifySignature(
@@ -51016,35 +51413,35 @@ export function CryptXmlVerifySignature(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.BCRYPT_KEY_HANDLE */,
   dwFlags: CRYPT_XML_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_XML_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlVerifySignature(util.toPointer(hSignature), util.toPointer(hKey), dwFlags);
+  return libCRYPTXML_dll.CryptXmlVerifySignature!(util.toPointer(hSignature), util.toPointer(hKey), dwFlags);
 }
 
 export function CryptXmlGetDocContext(
   hCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
   ppStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetDocContext(util.toPointer(hCryptXml), util.toPointer(ppStruct));
+  return libCRYPTXML_dll.CryptXmlGetDocContext!(util.toPointer(hCryptXml), util.toPointer(ppStruct));
 }
 
 export function CryptXmlGetSignature(
   hCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
   ppStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetSignature(util.toPointer(hCryptXml), util.toPointer(ppStruct));
+  return libCRYPTXML_dll.CryptXmlGetSignature!(util.toPointer(hCryptXml), util.toPointer(ppStruct));
 }
 
 export function CryptXmlGetReference(
   hCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
   ppStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetReference(util.toPointer(hCryptXml), util.toPointer(ppStruct));
+  return libCRYPTXML_dll.CryptXmlGetReference!(util.toPointer(hCryptXml), util.toPointer(ppStruct));
 }
 
 export function CryptXmlGetStatus(
   hCryptXml: Deno.PointerValue | Uint8Array /* ptr */,
   pStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetStatus(util.toPointer(hCryptXml), util.toPointer(pStatus));
+  return libCRYPTXML_dll.CryptXmlGetStatus!(util.toPointer(hCryptXml), util.toPointer(pStatus));
 }
 
 export function CryptXmlEncode(
@@ -51055,7 +51452,7 @@ export function CryptXmlEncode(
   pvCallbackState: Deno.PointerValue | Uint8Array /* ptr */,
   pfnWrite: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_XML_WRITE_CALLBACK */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlEncode(util.toPointer(hCryptXml), dwCharset, util.toPointer(rgProperty), cProperty, util.toPointer(pvCallbackState), util.toPointer(pfnWrite));
+  return libCRYPTXML_dll.CryptXmlEncode!(util.toPointer(hCryptXml), dwCharset, util.toPointer(rgProperty), cProperty, util.toPointer(pvCallbackState), util.toPointer(pfnWrite));
 }
 
 export function CryptXmlGetAlgorithmInfo(
@@ -51063,7 +51460,7 @@ export function CryptXmlGetAlgorithmInfo(
   dwFlags: CRYPT_XML_FLAGS /* Windows.Win32.Security.Cryptography.CRYPT_XML_FLAGS */,
   ppAlgInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlGetAlgorithmInfo(util.toPointer(pXmlAlgorithm), dwFlags, util.toPointer(ppAlgInfo));
+  return libCRYPTXML_dll.CryptXmlGetAlgorithmInfo!(util.toPointer(pXmlAlgorithm), dwFlags, util.toPointer(ppAlgInfo));
 }
 
 export function CryptXmlFindAlgorithmInfo(
@@ -51072,7 +51469,7 @@ export function CryptXmlFindAlgorithmInfo(
   dwGroupId: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPTXML_dll.CryptXmlFindAlgorithmInfo(dwFindByType, util.toPointer(pvFindBy), dwGroupId, dwFlags);
+  return libCRYPTXML_dll.CryptXmlFindAlgorithmInfo!(dwFindByType, util.toPointer(pvFindBy), dwGroupId, dwFlags);
 }
 
 export function CryptXmlEnumAlgorithmInfo(
@@ -51081,7 +51478,7 @@ export function CryptXmlEnumAlgorithmInfo(
   pvArg: Deno.PointerValue | Uint8Array /* ptr */,
   pfnEnumAlgInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.PFN_CRYPT_XML_ENUM_ALG_INFO */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTXML_dll.CryptXmlEnumAlgorithmInfo(dwGroupId, dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumAlgInfo));
+  return libCRYPTXML_dll.CryptXmlEnumAlgorithmInfo!(dwGroupId, dwFlags, util.toPointer(pvArg), util.toPointer(pfnEnumAlgInfo));
 }
 
 export function GetToken(
@@ -51090,17 +51487,17 @@ export function GetToken(
   securityToken: Deno.PointerValue | Uint8Array /* ptr */,
   phProofTokenCrypto: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.GetToken(cPolicyChain, util.toPointer(pPolicyChain), util.toPointer(securityToken), util.toPointer(phProofTokenCrypto));
+  return libinfocardapi_dll.GetToken!(cPolicyChain, util.toPointer(pPolicyChain), util.toPointer(securityToken), util.toPointer(phProofTokenCrypto));
 }
 
 export function ManageCardSpace(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.ManageCardSpace();
+  return libinfocardapi_dll.ManageCardSpace!();
 }
 
 export function ImportInformationCard(
   fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.ImportInformationCard(util.pwstrToFfi(fileName));
+  return libinfocardapi_dll.ImportInformationCard!(util.pwstrToFfi(fileName));
 }
 
 export function Encrypt(
@@ -51111,7 +51508,7 @@ export function Encrypt(
   pcbOutData: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.Encrypt(util.toPointer(hCrypto), util.boolToFfi(fOAEP), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
+  return libinfocardapi_dll.Encrypt!(util.toPointer(hCrypto), util.boolToFfi(fOAEP), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
 }
 
 export function Decrypt(
@@ -51122,7 +51519,7 @@ export function Decrypt(
   pcbOutData: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.Decrypt(util.toPointer(hCrypto), util.boolToFfi(fOAEP), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
+  return libinfocardapi_dll.Decrypt!(util.toPointer(hCrypto), util.boolToFfi(fOAEP), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
 }
 
 export function SignHash(
@@ -51133,7 +51530,7 @@ export function SignHash(
   pcbSig: Deno.PointerValue | Uint8Array /* ptr */,
   ppSig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.SignHash(util.toPointer(hCrypto), cbHash, util.toPointer(pHash), util.pwstrToFfi(hashAlgOid), util.toPointer(pcbSig), util.toPointer(ppSig));
+  return libinfocardapi_dll.SignHash!(util.toPointer(hCrypto), cbHash, util.toPointer(pHash), util.pwstrToFfi(hashAlgOid), util.toPointer(pcbSig), util.toPointer(ppSig));
 }
 
 export function VerifyHash(
@@ -51145,7 +51542,7 @@ export function VerifyHash(
   pSig: Deno.PointerValue | Uint8Array /* ptr */,
   pfVerified: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.VerifyHash(util.toPointer(hCrypto), cbHash, util.toPointer(pHash), util.pwstrToFfi(hashAlgOid), cbSig, util.toPointer(pSig), util.toPointer(pfVerified));
+  return libinfocardapi_dll.VerifyHash!(util.toPointer(hCrypto), cbHash, util.toPointer(pHash), util.pwstrToFfi(hashAlgOid), cbSig, util.toPointer(pSig), util.toPointer(pfVerified));
 }
 
 export function GetCryptoTransform(
@@ -51158,14 +51555,14 @@ export function GetCryptoTransform(
   pIV: Deno.PointerValue | Uint8Array /* ptr */,
   pphTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.GetCryptoTransform(util.toPointer(hSymmetricCrypto), mode, padding, feedbackSize, direction, cbIV, util.toPointer(pIV), util.toPointer(pphTransform));
+  return libinfocardapi_dll.GetCryptoTransform!(util.toPointer(hSymmetricCrypto), mode, padding, feedbackSize, direction, cbIV, util.toPointer(pIV), util.toPointer(pphTransform));
 }
 
 export function GetKeyedHash(
   hSymmetricCrypto: Deno.PointerValue | Uint8Array /* ptr */,
   pphHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.GetKeyedHash(util.toPointer(hSymmetricCrypto), util.toPointer(pphHash));
+  return libinfocardapi_dll.GetKeyedHash!(util.toPointer(hSymmetricCrypto), util.toPointer(pphHash));
 }
 
 export function TransformBlock(
@@ -51175,7 +51572,7 @@ export function TransformBlock(
   pcbOutData: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.TransformBlock(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
+  return libinfocardapi_dll.TransformBlock!(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
 }
 
 export function TransformFinalBlock(
@@ -51185,7 +51582,7 @@ export function TransformFinalBlock(
   pcbOutData: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.TransformFinalBlock(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
+  return libinfocardapi_dll.TransformFinalBlock!(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
 }
 
 export function HashCore(
@@ -51193,7 +51590,7 @@ export function HashCore(
   cbInData: number /* u32 */,
   pInData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.HashCore(util.toPointer(hCrypto), cbInData, util.toPointer(pInData));
+  return libinfocardapi_dll.HashCore!(util.toPointer(hCrypto), cbInData, util.toPointer(pInData));
 }
 
 export function HashFinal(
@@ -51203,19 +51600,19 @@ export function HashFinal(
   pcbOutData: Deno.PointerValue | Uint8Array /* ptr */,
   ppOutData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.HashFinal(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
+  return libinfocardapi_dll.HashFinal!(util.toPointer(hCrypto), cbInData, util.toPointer(pInData), util.toPointer(pcbOutData), util.toPointer(ppOutData));
 }
 
 export function FreeToken(
   pAllocMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libinfocardapi_dll.FreeToken(util.toPointer(pAllocMemory)));
+  return util.boolFromFfi(libinfocardapi_dll.FreeToken!(util.toPointer(pAllocMemory)));
 }
 
 export function CloseCryptoHandle(
   hCrypto: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.CloseCryptoHandle(util.toPointer(hCrypto));
+  return libinfocardapi_dll.CloseCryptoHandle!(util.toPointer(hCrypto));
 }
 
 export function GenerateDerivedKey(
@@ -51230,7 +51627,7 @@ export function GenerateDerivedKey(
   pcbKey: Deno.PointerValue | Uint8Array /* ptr */,
   ppKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.GenerateDerivedKey(util.toPointer(hCrypto), cbLabel, util.toPointer(pLabel), cbNonce, util.toPointer(pNonce), derivedKeyLength, offset, util.pwstrToFfi(algId), util.toPointer(pcbKey), util.toPointer(ppKey));
+  return libinfocardapi_dll.GenerateDerivedKey!(util.toPointer(hCrypto), cbLabel, util.toPointer(pLabel), cbNonce, util.toPointer(pNonce), derivedKeyLength, offset, util.pwstrToFfi(algId), util.toPointer(pcbKey), util.toPointer(ppKey));
 }
 
 export function GetBrowserToken(
@@ -51239,6 +51636,6 @@ export function GetBrowserToken(
   pcbToken: Deno.PointerValue | Uint8Array /* ptr */,
   ppToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libinfocardapi_dll.GetBrowserToken(dwParamType, util.toPointer(pParam), util.toPointer(pcbToken), util.toPointer(ppToken));
+  return libinfocardapi_dll.GetBrowserToken!(dwParamType, util.toPointer(pParam), util.toPointer(pcbToken), util.toPointer(ppToken));
 }
 

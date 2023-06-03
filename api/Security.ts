@@ -117924,486 +117924,607 @@ try {
     AccessCheck: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckAndAuditAlarmW: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByType: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeResultList: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeAndAuditAlarmW: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeResultListAndAuditAlarmW: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeResultListAndAuditAlarmByHandleW: {
       parameters: ["buffer", "pointer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessAllowedAce: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessAllowedAceEx: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessAllowedObjectAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessDeniedAce: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessDeniedAceEx: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAccessDeniedObjectAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddAce: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AddAuditAccessAce: {
       parameters: ["pointer", "u32", "u32", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     AddAuditAccessAceEx: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     AddAuditAccessObjectAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     AddMandatoryAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AdjustTokenGroups: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AdjustTokenPrivileges: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AllocateAndInitializeSid: {
       parameters: ["pointer", "u8", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AllocateLocallyUniqueId: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AreAllAccessesGranted: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     AreAnyAccessesGranted: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CheckTokenMembership: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertToAutoInheritPrivateObjectSecurity: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CopySid: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePrivateObjectSecurity: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePrivateObjectSecurityEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePrivateObjectSecurityWithMultipleInheritance: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateRestrictedToken: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateWellKnownSid: {
       parameters: ["i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EqualDomainSid: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteAce: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     DestroyPrivateObjectSecurity: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DuplicateToken: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DuplicateTokenEx: {
       parameters: ["pointer", "u32", "pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EqualPrefixSid: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EqualSid: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindFirstFreeAce: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FreeSid: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAce: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAclInformation: {
       parameters: ["pointer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetFileSecurityW: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetKernelObjectSecurity: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetLengthSid: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetPrivateObjectSecurity: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSecurityDescriptorControl: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSecurityDescriptorDacl: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSecurityDescriptorGroup: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSecurityDescriptorLength: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetSecurityDescriptorOwner: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSecurityDescriptorRMControl: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetSecurityDescriptorSacl: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSidIdentifierAuthority: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetSidLengthRequired: {
       parameters: ["u8"],
       result: "u32",
+      optional: true,
     },
     GetSidSubAuthority: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetSidSubAuthorityCount: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetTokenInformation: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowsAccountDomainSid: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImpersonateAnonymousToken: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImpersonateLoggedOnUser: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImpersonateSelf: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     InitializeAcl: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InitializeSecurityDescriptor: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InitializeSid: {
       parameters: ["pointer", "pointer", "u8"],
       result: "i32",
+      optional: true,
     },
     IsTokenRestricted: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsValidAcl: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsValidSecurityDescriptor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsValidSid: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsWellKnownSid: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     MakeAbsoluteSD: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MakeSelfRelativeSD: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MapGenericMask: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     ObjectCloseAuditAlarmW: {
       parameters: ["buffer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ObjectDeleteAuditAlarmW: {
       parameters: ["buffer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ObjectOpenAuditAlarmW: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "u32", "pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ObjectPrivilegeAuditAlarmW: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     PrivilegeCheck: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PrivilegedServiceAuditAlarmW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     QuerySecurityAccessMask: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     RevertToSelf: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SetAclInformation: {
       parameters: ["pointer", "pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetFileSecurityW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetKernelObjectSecurity: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetPrivateObjectSecurity: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetPrivateObjectSecurityEx: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetSecurityAccessMask: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     SetSecurityDescriptorControl: {
       parameters: ["pointer", "u16", "u16"],
       result: "i32",
+      optional: true,
     },
     SetSecurityDescriptorDacl: {
       parameters: ["pointer", "i32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetSecurityDescriptorGroup: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetSecurityDescriptorOwner: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetSecurityDescriptorRMControl: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetSecurityDescriptorSacl: {
       parameters: ["pointer", "i32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetTokenInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AccessCheckAndAuditAlarmA: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeAndAuditAlarmA: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeResultListAndAuditAlarmA: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AccessCheckByTypeResultListAndAuditAlarmByHandleA: {
       parameters: ["buffer", "pointer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "i32", "u32", "pointer", "u32", "pointer", "i32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ObjectOpenAuditAlarmA: {
       parameters: ["buffer", "pointer", "buffer", "buffer", "pointer", "pointer", "u32", "u32", "pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ObjectPrivilegeAuditAlarmA: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ObjectCloseAuditAlarmA: {
       parameters: ["buffer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ObjectDeleteAuditAlarmA: {
       parameters: ["buffer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     PrivilegedServiceAuditAlarmA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     AddConditionalAce: {
       parameters: ["pointer", "u32", "u32", "u8", "u32", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetFileSecurityA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetFileSecurityA: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupAccountSidA: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupAccountSidW: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupAccountNameA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupAccountNameW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeValueA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeValueW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeNameA: {
       parameters: ["buffer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeNameW: {
       parameters: ["buffer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeDisplayNameA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LookupPrivilegeDisplayNameW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LogonUserA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     LogonUserW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     LogonUserExA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LogonUserExW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -118413,30 +118534,37 @@ try {
     AddResourceAttributeAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddScopedPolicyIDAce: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CheckTokenCapability: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAppContainerAce: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CheckTokenMembershipEx: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetCachedSigningLevel: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCachedSigningLevel: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -118446,6 +118574,7 @@ try {
     DeriveCapabilitySidsFromName: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -118455,10 +118584,12 @@ try {
     RtlNormalizeSecurityDescriptor: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlConvertSidToUnicodeString: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -118468,10 +118599,12 @@ try {
     SetUserObjectSecurity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUserObjectSecurity: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -118488,7 +118621,7 @@ export function AccessCheck(
   GrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheck(util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheck!(util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
 }
 
 export function AccessCheckAndAuditAlarmW(
@@ -118504,7 +118637,7 @@ export function AccessCheckAndAuditAlarmW(
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByType(
@@ -118520,7 +118653,7 @@ export function AccessCheckByType(
   GrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByType(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByType!(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccess), util.toPointer(AccessStatus)));
 }
 
 export function AccessCheckByTypeResultList(
@@ -118536,7 +118669,7 @@ export function AccessCheckByTypeResultList(
   GrantedAccessList: Deno.PointerValue | Uint8Array /* ptr */,
   AccessStatusList: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultList(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultList!(util.toPointer(pSecurityDescriptor), util.toPointer(PrincipalSelfSid), util.toPointer(ClientToken), DesiredAccess, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.toPointer(PrivilegeSet), util.toPointer(PrivilegeSetLength), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList)));
 }
 
 export function AccessCheckByTypeAndAuditAlarmW(
@@ -118557,7 +118690,7 @@ export function AccessCheckByTypeAndAuditAlarmW(
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmW(
@@ -118578,7 +118711,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmW(
   AccessStatusList: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmByHandleW(
@@ -118600,7 +118733,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleW(
   AccessStatusList: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccessList), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AddAccessAllowedAce(
@@ -118609,7 +118742,7 @@ export function AddAccessAllowedAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAce!(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessAllowedAceEx(
@@ -118619,7 +118752,7 @@ export function AddAccessAllowedAceEx(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedAceEx!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessAllowedObjectAce(
@@ -118631,7 +118764,7 @@ export function AddAccessAllowedObjectAce(
   InheritedObjectTypeGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessAllowedObjectAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedAce(
@@ -118640,7 +118773,7 @@ export function AddAccessDeniedAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAce(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAce!(util.toPointer(pAcl), dwAceRevision, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedAceEx(
@@ -118650,7 +118783,7 @@ export function AddAccessDeniedAceEx(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedAceEx!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AddAccessDeniedObjectAce(
@@ -118662,7 +118795,7 @@ export function AddAccessDeniedObjectAce(
   InheritedObjectTypeGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAccessDeniedObjectAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid)));
 }
 
 export function AddAce(
@@ -118672,7 +118805,7 @@ export function AddAce(
   pAceList: Deno.PointerValue | Uint8Array /* ptr */,
   nAceListLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAce(util.toPointer(pAcl), dwAceRevision, dwStartingAceIndex, util.toPointer(pAceList), nAceListLength));
+  return util.boolFromFfi(libADVAPI32_dll.AddAce!(util.toPointer(pAcl), dwAceRevision, dwStartingAceIndex, util.toPointer(pAceList), nAceListLength));
 }
 
 export function AddAuditAccessAce(
@@ -118683,7 +118816,7 @@ export function AddAuditAccessAce(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAce(util.toPointer(pAcl), dwAceRevision, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAce!(util.toPointer(pAcl), dwAceRevision, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddAuditAccessAceEx(
@@ -118695,7 +118828,7 @@ export function AddAuditAccessAceEx(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAceEx(util.toPointer(pAcl), dwAceRevision, AceFlags, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessAceEx!(util.toPointer(pAcl), dwAceRevision, AceFlags, dwAccessMask, util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddAuditAccessObjectAce(
@@ -118709,7 +118842,7 @@ export function AddAuditAccessObjectAce(
   bAuditSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
   bAuditFailure: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessObjectAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
+  return util.boolFromFfi(libADVAPI32_dll.AddAuditAccessObjectAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(ObjectTypeGuid), util.toPointer(InheritedObjectTypeGuid), util.toPointer(pSid), util.boolToFfi(bAuditSuccess), util.boolToFfi(bAuditFailure)));
 }
 
 export function AddMandatoryAce(
@@ -118719,7 +118852,7 @@ export function AddMandatoryAce(
   MandatoryPolicy: number /* u32 */,
   pLabelSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddMandatoryAce(util.toPointer(pAcl), dwAceRevision, AceFlags, MandatoryPolicy, util.toPointer(pLabelSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AddMandatoryAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, MandatoryPolicy, util.toPointer(pLabelSid)));
 }
 
 export function AddResourceAttributeAce(
@@ -118731,7 +118864,7 @@ export function AddResourceAttributeAce(
   pAttributeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.AddResourceAttributeAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid), util.toPointer(pAttributeInfo), util.toPointer(pReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.AddResourceAttributeAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid), util.toPointer(pAttributeInfo), util.toPointer(pReturnLength)));
 }
 
 export function AddScopedPolicyIDAce(
@@ -118741,7 +118874,7 @@ export function AddScopedPolicyIDAce(
   AccessMask: number /* u32 */,
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.AddScopedPolicyIDAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
+  return util.boolFromFfi(libKERNEL32_dll.AddScopedPolicyIDAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AccessMask, util.toPointer(pSid)));
 }
 
 export function AdjustTokenGroups(
@@ -118752,7 +118885,7 @@ export function AdjustTokenGroups(
   PreviousState: Deno.PointerValue | Uint8Array /* ptr */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenGroups(util.toPointer(TokenHandle), util.boolToFfi(ResetToDefault), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenGroups!(util.toPointer(TokenHandle), util.boolToFfi(ResetToDefault), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
 }
 
 export function AdjustTokenPrivileges(
@@ -118763,7 +118896,7 @@ export function AdjustTokenPrivileges(
   PreviousState: Deno.PointerValue | Uint8Array /* ptr */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenPrivileges(util.toPointer(TokenHandle), util.boolToFfi(DisableAllPrivileges), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AdjustTokenPrivileges!(util.toPointer(TokenHandle), util.boolToFfi(DisableAllPrivileges), util.toPointer(NewState), BufferLength, util.toPointer(PreviousState), util.toPointer(ReturnLength)));
 }
 
 export function AllocateAndInitializeSid(
@@ -118779,27 +118912,27 @@ export function AllocateAndInitializeSid(
   nSubAuthority7: number /* u32 */,
   pSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AllocateAndInitializeSid(util.toPointer(pIdentifierAuthority), nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.AllocateAndInitializeSid!(util.toPointer(pIdentifierAuthority), nSubAuthorityCount, nSubAuthority0, nSubAuthority1, nSubAuthority2, nSubAuthority3, nSubAuthority4, nSubAuthority5, nSubAuthority6, nSubAuthority7, util.toPointer(pSid)));
 }
 
 export function AllocateLocallyUniqueId(
   Luid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AllocateLocallyUniqueId(util.toPointer(Luid)));
+  return util.boolFromFfi(libADVAPI32_dll.AllocateLocallyUniqueId!(util.toPointer(Luid)));
 }
 
 export function AreAllAccessesGranted(
   GrantedAccess: number /* u32 */,
   DesiredAccess: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AreAllAccessesGranted(GrantedAccess, DesiredAccess));
+  return util.boolFromFfi(libADVAPI32_dll.AreAllAccessesGranted!(GrantedAccess, DesiredAccess));
 }
 
 export function AreAnyAccessesGranted(
   GrantedAccess: number /* u32 */,
   DesiredAccess: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AreAnyAccessesGranted(GrantedAccess, DesiredAccess));
+  return util.boolFromFfi(libADVAPI32_dll.AreAnyAccessesGranted!(GrantedAccess, DesiredAccess));
 }
 
 export function CheckTokenMembership(
@@ -118807,7 +118940,7 @@ export function CheckTokenMembership(
   SidToCheck: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   IsMember: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CheckTokenMembership(util.toPointer(TokenHandle), util.toPointer(SidToCheck), util.toPointer(IsMember)));
+  return util.boolFromFfi(libADVAPI32_dll.CheckTokenMembership!(util.toPointer(TokenHandle), util.toPointer(SidToCheck), util.toPointer(IsMember)));
 }
 
 export function CheckTokenCapability(
@@ -118815,7 +118948,7 @@ export function CheckTokenCapability(
   CapabilitySidToCheck: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   HasCapability: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CheckTokenCapability(util.toPointer(TokenHandle), util.toPointer(CapabilitySidToCheck), util.toPointer(HasCapability)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckTokenCapability!(util.toPointer(TokenHandle), util.toPointer(CapabilitySidToCheck), util.toPointer(HasCapability)));
 }
 
 export function GetAppContainerAce(
@@ -118824,7 +118957,7 @@ export function GetAppContainerAce(
   AppContainerAce: Deno.PointerValue | Uint8Array /* ptr */,
   AppContainerAceIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetAppContainerAce(util.toPointer(Acl), StartingAceIndex, util.toPointer(AppContainerAce), util.toPointer(AppContainerAceIndex)));
+  return util.boolFromFfi(libKERNEL32_dll.GetAppContainerAce!(util.toPointer(Acl), StartingAceIndex, util.toPointer(AppContainerAce), util.toPointer(AppContainerAceIndex)));
 }
 
 export function CheckTokenMembershipEx(
@@ -118833,7 +118966,7 @@ export function CheckTokenMembershipEx(
   Flags: number /* u32 */,
   IsMember: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CheckTokenMembershipEx(util.toPointer(TokenHandle), util.toPointer(SidToCheck), Flags, util.toPointer(IsMember)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckTokenMembershipEx!(util.toPointer(TokenHandle), util.toPointer(SidToCheck), Flags, util.toPointer(IsMember)));
 }
 
 export function ConvertToAutoInheritPrivateObjectSecurity(
@@ -118844,7 +118977,7 @@ export function ConvertToAutoInheritPrivateObjectSecurity(
   IsDirectoryObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ConvertToAutoInheritPrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CurrentSecurityDescriptor), util.toPointer(NewSecurityDescriptor), util.toPointer(ObjectType), util.toPointer(IsDirectoryObject), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.ConvertToAutoInheritPrivateObjectSecurity!(util.toPointer(ParentDescriptor), util.toPointer(CurrentSecurityDescriptor), util.toPointer(NewSecurityDescriptor), util.toPointer(ObjectType), util.toPointer(IsDirectoryObject), util.toPointer(GenericMapping)));
 }
 
 export function CopySid(
@@ -118852,7 +118985,7 @@ export function CopySid(
   pDestinationSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   pSourceSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CopySid(nDestinationSidLength, util.toPointer(pDestinationSid), util.toPointer(pSourceSid)));
+  return util.boolFromFfi(libADVAPI32_dll.CopySid!(nDestinationSidLength, util.toPointer(pDestinationSid), util.toPointer(pSourceSid)));
 }
 
 export function CreatePrivateObjectSecurity(
@@ -118863,7 +118996,7 @@ export function CreatePrivateObjectSecurity(
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurity(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.boolToFfi(IsDirectoryObject), util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurity!(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.boolToFfi(IsDirectoryObject), util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreatePrivateObjectSecurityEx(
@@ -118876,7 +119009,7 @@ export function CreatePrivateObjectSecurityEx(
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityEx(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectType), util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityEx!(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectType), util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreatePrivateObjectSecurityWithMultipleInheritance(
@@ -118890,7 +119023,7 @@ export function CreatePrivateObjectSecurityWithMultipleInheritance(
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityWithMultipleInheritance(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectTypes), GuidCount, util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
+  return util.boolFromFfi(libADVAPI32_dll.CreatePrivateObjectSecurityWithMultipleInheritance!(util.toPointer(ParentDescriptor), util.toPointer(CreatorDescriptor), util.toPointer(NewDescriptor), util.toPointer(ObjectTypes), GuidCount, util.boolToFfi(IsContainerObject), AutoInheritFlags, util.toPointer(Token), util.toPointer(GenericMapping)));
 }
 
 export function CreateRestrictedToken(
@@ -118904,7 +119037,7 @@ export function CreateRestrictedToken(
   SidsToRestrict: Deno.PointerValue | Uint8Array /* ptr */,
   NewTokenHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateRestrictedToken(util.toPointer(ExistingTokenHandle), Flags, DisableSidCount, util.toPointer(SidsToDisable), DeletePrivilegeCount, util.toPointer(PrivilegesToDelete), RestrictedSidCount, util.toPointer(SidsToRestrict), util.toPointer(NewTokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateRestrictedToken!(util.toPointer(ExistingTokenHandle), Flags, DisableSidCount, util.toPointer(SidsToDisable), DeletePrivilegeCount, util.toPointer(PrivilegesToDelete), RestrictedSidCount, util.toPointer(SidsToRestrict), util.toPointer(NewTokenHandle)));
 }
 
 export function CreateWellKnownSid(
@@ -118913,7 +119046,7 @@ export function CreateWellKnownSid(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   cbSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateWellKnownSid(WellKnownSidType, util.toPointer(DomainSid), util.toPointer(pSid), util.toPointer(cbSid)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateWellKnownSid!(WellKnownSidType, util.toPointer(DomainSid), util.toPointer(pSid), util.toPointer(cbSid)));
 }
 
 export function EqualDomainSid(
@@ -118921,20 +119054,20 @@ export function EqualDomainSid(
   pSid2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   pfEqual: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EqualDomainSid(util.toPointer(pSid1), util.toPointer(pSid2), util.toPointer(pfEqual)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualDomainSid!(util.toPointer(pSid1), util.toPointer(pSid2), util.toPointer(pfEqual)));
 }
 
 export function DeleteAce(
   pAcl: Deno.PointerValue | Uint8Array /* ptr */,
   dwAceIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.DeleteAce(util.toPointer(pAcl), dwAceIndex));
+  return util.boolFromFfi(libADVAPI32_dll.DeleteAce!(util.toPointer(pAcl), dwAceIndex));
 }
 
 export function DestroyPrivateObjectSecurity(
   ObjectDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.DestroyPrivateObjectSecurity(util.toPointer(ObjectDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.DestroyPrivateObjectSecurity!(util.toPointer(ObjectDescriptor)));
 }
 
 export function DuplicateToken(
@@ -118942,7 +119075,7 @@ export function DuplicateToken(
   ImpersonationLevel: SECURITY_IMPERSONATION_LEVEL /* Windows.Win32.Security.SECURITY_IMPERSONATION_LEVEL */,
   DuplicateTokenHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.DuplicateToken(util.toPointer(ExistingTokenHandle), ImpersonationLevel, util.toPointer(DuplicateTokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.DuplicateToken!(util.toPointer(ExistingTokenHandle), ImpersonationLevel, util.toPointer(DuplicateTokenHandle)));
 }
 
 export function DuplicateTokenEx(
@@ -118953,34 +119086,34 @@ export function DuplicateTokenEx(
   TokenType: TOKEN_TYPE /* Windows.Win32.Security.TOKEN_TYPE */,
   phNewToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.DuplicateTokenEx(util.toPointer(hExistingToken), dwDesiredAccess, util.toPointer(lpTokenAttributes), ImpersonationLevel, TokenType, util.toPointer(phNewToken)));
+  return util.boolFromFfi(libADVAPI32_dll.DuplicateTokenEx!(util.toPointer(hExistingToken), dwDesiredAccess, util.toPointer(lpTokenAttributes), ImpersonationLevel, TokenType, util.toPointer(phNewToken)));
 }
 
 export function EqualPrefixSid(
   pSid1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   pSid2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EqualPrefixSid(util.toPointer(pSid1), util.toPointer(pSid2)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualPrefixSid!(util.toPointer(pSid1), util.toPointer(pSid2)));
 }
 
 export function EqualSid(
   pSid1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   pSid2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.EqualSid(util.toPointer(pSid1), util.toPointer(pSid2)));
+  return util.boolFromFfi(libADVAPI32_dll.EqualSid!(util.toPointer(pSid1), util.toPointer(pSid2)));
 }
 
 export function FindFirstFreeAce(
   pAcl: Deno.PointerValue | Uint8Array /* ptr */,
   pAce: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.FindFirstFreeAce(util.toPointer(pAcl), util.toPointer(pAce)));
+  return util.boolFromFfi(libADVAPI32_dll.FindFirstFreeAce!(util.toPointer(pAcl), util.toPointer(pAce)));
 }
 
 export function FreeSid(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.FreeSid(util.toPointer(pSid));
+  return libADVAPI32_dll.FreeSid!(util.toPointer(pSid));
 }
 
 export function GetAce(
@@ -118988,7 +119121,7 @@ export function GetAce(
   dwAceIndex: number /* u32 */,
   pAce: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetAce(util.toPointer(pAcl), dwAceIndex, util.toPointer(pAce)));
+  return util.boolFromFfi(libADVAPI32_dll.GetAce!(util.toPointer(pAcl), dwAceIndex, util.toPointer(pAce)));
 }
 
 export function GetAclInformation(
@@ -118997,7 +119130,7 @@ export function GetAclInformation(
   nAclInformationLength: number /* u32 */,
   dwAclInformationClass: ACL_INFORMATION_CLASS /* Windows.Win32.Security.ACL_INFORMATION_CLASS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
+  return util.boolFromFfi(libADVAPI32_dll.GetAclInformation!(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
 }
 
 export function GetFileSecurityW(
@@ -119007,7 +119140,7 @@ export function GetFileSecurityW(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityW(util.pwstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityW!(util.pwstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function GetKernelObjectSecurity(
@@ -119017,13 +119150,13 @@ export function GetKernelObjectSecurity(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetKernelObjectSecurity(util.toPointer(Handle), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetKernelObjectSecurity!(util.toPointer(Handle), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function GetLengthSid(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetLengthSid(util.toPointer(pSid));
+  return libADVAPI32_dll.GetLengthSid!(util.toPointer(pSid));
 }
 
 export function GetPrivateObjectSecurity(
@@ -119033,7 +119166,7 @@ export function GetPrivateObjectSecurity(
   DescriptorLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetPrivateObjectSecurity(util.toPointer(ObjectDescriptor), SecurityInformation, util.toPointer(ResultantDescriptor), DescriptorLength, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.GetPrivateObjectSecurity!(util.toPointer(ObjectDescriptor), SecurityInformation, util.toPointer(ResultantDescriptor), DescriptorLength, util.toPointer(ReturnLength)));
 }
 
 export function GetSecurityDescriptorControl(
@@ -119041,7 +119174,7 @@ export function GetSecurityDescriptorControl(
   pControl: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwRevision: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), util.toPointer(pControl), util.toPointer(lpdwRevision)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorControl!(util.toPointer(pSecurityDescriptor), util.toPointer(pControl), util.toPointer(lpdwRevision)));
 }
 
 export function GetSecurityDescriptorDacl(
@@ -119050,7 +119183,7 @@ export function GetSecurityDescriptorDacl(
   pDacl: Deno.PointerValue | Uint8Array /* ptr */,
   lpbDaclDefaulted: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbDaclPresent), util.toPointer(pDacl), util.toPointer(lpbDaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorDacl!(util.toPointer(pSecurityDescriptor), util.toPointer(lpbDaclPresent), util.toPointer(pDacl), util.toPointer(lpbDaclDefaulted)));
 }
 
 export function GetSecurityDescriptorGroup(
@@ -119058,13 +119191,13 @@ export function GetSecurityDescriptorGroup(
   pGroup: Deno.PointerValue | Uint8Array /* ptr */,
   lpbGroupDefaulted: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.toPointer(lpbGroupDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorGroup!(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.toPointer(lpbGroupDefaulted)));
 }
 
 export function GetSecurityDescriptorLength(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetSecurityDescriptorLength(util.toPointer(pSecurityDescriptor));
+  return libADVAPI32_dll.GetSecurityDescriptorLength!(util.toPointer(pSecurityDescriptor));
 }
 
 export function GetSecurityDescriptorOwner(
@@ -119072,14 +119205,14 @@ export function GetSecurityDescriptorOwner(
   pOwner: Deno.PointerValue | Uint8Array /* ptr */,
   lpbOwnerDefaulted: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.toPointer(lpbOwnerDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorOwner!(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.toPointer(lpbOwnerDefaulted)));
 }
 
 export function GetSecurityDescriptorRMControl(
   SecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   RMControl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
+  return libADVAPI32_dll.GetSecurityDescriptorRMControl!(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
 }
 
 export function GetSecurityDescriptorSacl(
@@ -119088,32 +119221,32 @@ export function GetSecurityDescriptorSacl(
   pSacl: Deno.PointerValue | Uint8Array /* ptr */,
   lpbSaclDefaulted: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.toPointer(lpbSaclPresent), util.toPointer(pSacl), util.toPointer(lpbSaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.GetSecurityDescriptorSacl!(util.toPointer(pSecurityDescriptor), util.toPointer(lpbSaclPresent), util.toPointer(pSacl), util.toPointer(lpbSaclDefaulted)));
 }
 
 export function GetSidIdentifierAuthority(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.GetSidIdentifierAuthority(util.toPointer(pSid));
+  return libADVAPI32_dll.GetSidIdentifierAuthority!(util.toPointer(pSid));
 }
 
 export function GetSidLengthRequired(
   nSubAuthorityCount: number /* u8 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetSidLengthRequired(nSubAuthorityCount);
+  return libADVAPI32_dll.GetSidLengthRequired!(nSubAuthorityCount);
 }
 
 export function GetSidSubAuthority(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   nSubAuthority: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.GetSidSubAuthority(util.toPointer(pSid), nSubAuthority);
+  return libADVAPI32_dll.GetSidSubAuthority!(util.toPointer(pSid), nSubAuthority);
 }
 
 export function GetSidSubAuthorityCount(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.GetSidSubAuthorityCount(util.toPointer(pSid));
+  return libADVAPI32_dll.GetSidSubAuthorityCount!(util.toPointer(pSid));
 }
 
 export function GetTokenInformation(
@@ -119123,7 +119256,7 @@ export function GetTokenInformation(
   TokenInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.GetTokenInformation!(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength, util.toPointer(ReturnLength)));
 }
 
 export function GetWindowsAccountDomainSid(
@@ -119131,25 +119264,25 @@ export function GetWindowsAccountDomainSid(
   pDomainSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   cbDomainSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetWindowsAccountDomainSid(util.toPointer(pSid), util.toPointer(pDomainSid), util.toPointer(cbDomainSid)));
+  return util.boolFromFfi(libADVAPI32_dll.GetWindowsAccountDomainSid!(util.toPointer(pSid), util.toPointer(pDomainSid), util.toPointer(cbDomainSid)));
 }
 
 export function ImpersonateAnonymousToken(
   ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ImpersonateAnonymousToken(util.toPointer(ThreadHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateAnonymousToken!(util.toPointer(ThreadHandle)));
 }
 
 export function ImpersonateLoggedOnUser(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ImpersonateLoggedOnUser(util.toPointer(hToken)));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateLoggedOnUser!(util.toPointer(hToken)));
 }
 
 export function ImpersonateSelf(
   ImpersonationLevel: SECURITY_IMPERSONATION_LEVEL /* Windows.Win32.Security.SECURITY_IMPERSONATION_LEVEL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ImpersonateSelf(ImpersonationLevel));
+  return util.boolFromFfi(libADVAPI32_dll.ImpersonateSelf!(ImpersonationLevel));
 }
 
 export function InitializeAcl(
@@ -119157,14 +119290,14 @@ export function InitializeAcl(
   nAclLength: number /* u32 */,
   dwAclRevision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitializeAcl(util.toPointer(pAcl), nAclLength, dwAclRevision));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeAcl!(util.toPointer(pAcl), nAclLength, dwAclRevision));
 }
 
 export function InitializeSecurityDescriptor(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   dwRevision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitializeSecurityDescriptor(util.toPointer(pSecurityDescriptor), dwRevision));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeSecurityDescriptor!(util.toPointer(pSecurityDescriptor), dwRevision));
 }
 
 export function InitializeSid(
@@ -119172,38 +119305,38 @@ export function InitializeSid(
   pIdentifierAuthority: Deno.PointerValue | Uint8Array /* ptr */,
   nSubAuthorityCount: number /* u8 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.InitializeSid(util.toPointer(Sid), util.toPointer(pIdentifierAuthority), nSubAuthorityCount));
+  return util.boolFromFfi(libADVAPI32_dll.InitializeSid!(util.toPointer(Sid), util.toPointer(pIdentifierAuthority), nSubAuthorityCount));
 }
 
 export function IsTokenRestricted(
   TokenHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsTokenRestricted(util.toPointer(TokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.IsTokenRestricted!(util.toPointer(TokenHandle)));
 }
 
 export function IsValidAcl(
   pAcl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsValidAcl(util.toPointer(pAcl)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidAcl!(util.toPointer(pAcl)));
 }
 
 export function IsValidSecurityDescriptor(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsValidSecurityDescriptor(util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidSecurityDescriptor!(util.toPointer(pSecurityDescriptor)));
 }
 
 export function IsValidSid(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsValidSid(util.toPointer(pSid)));
+  return util.boolFromFfi(libADVAPI32_dll.IsValidSid!(util.toPointer(pSid)));
 }
 
 export function IsWellKnownSid(
   pSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   WellKnownSidType: WELL_KNOWN_SID_TYPE /* Windows.Win32.Security.WELL_KNOWN_SID_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.IsWellKnownSid(util.toPointer(pSid), WellKnownSidType));
+  return util.boolFromFfi(libADVAPI32_dll.IsWellKnownSid!(util.toPointer(pSid), WellKnownSidType));
 }
 
 export function MakeAbsoluteSD(
@@ -119219,7 +119352,7 @@ export function MakeAbsoluteSD(
   pPrimaryGroup: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   lpdwPrimaryGroupSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.MakeAbsoluteSD(util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(lpdwAbsoluteSecurityDescriptorSize), util.toPointer(pDacl), util.toPointer(lpdwDaclSize), util.toPointer(pSacl), util.toPointer(lpdwSaclSize), util.toPointer(pOwner), util.toPointer(lpdwOwnerSize), util.toPointer(pPrimaryGroup), util.toPointer(lpdwPrimaryGroupSize)));
+  return util.boolFromFfi(libADVAPI32_dll.MakeAbsoluteSD!(util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(lpdwAbsoluteSecurityDescriptorSize), util.toPointer(pDacl), util.toPointer(lpdwDaclSize), util.toPointer(pSacl), util.toPointer(lpdwSaclSize), util.toPointer(pOwner), util.toPointer(lpdwOwnerSize), util.toPointer(pPrimaryGroup), util.toPointer(lpdwPrimaryGroupSize)));
 }
 
 export function MakeSelfRelativeSD(
@@ -119227,14 +119360,14 @@ export function MakeSelfRelativeSD(
   pSelfRelativeSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.MakeSelfRelativeSD(util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libADVAPI32_dll.MakeSelfRelativeSD!(util.toPointer(pAbsoluteSecurityDescriptor), util.toPointer(pSelfRelativeSecurityDescriptor), util.toPointer(lpdwBufferLength)));
 }
 
 export function MapGenericMask(
   AccessMask: Deno.PointerValue | Uint8Array /* ptr */,
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.MapGenericMask(util.toPointer(AccessMask), util.toPointer(GenericMapping));
+  return libADVAPI32_dll.MapGenericMask!(util.toPointer(AccessMask), util.toPointer(GenericMapping));
 }
 
 export function ObjectCloseAuditAlarmW(
@@ -119242,7 +119375,7 @@ export function ObjectCloseAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectDeleteAuditAlarmW(
@@ -119250,7 +119383,7 @@ export function ObjectDeleteAuditAlarmW(
   HandleId: Deno.PointerValue | Uint8Array /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectOpenAuditAlarmW(
@@ -119267,7 +119400,7 @@ export function ObjectOpenAuditAlarmW(
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
   GenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.pwstrToFfi(ObjectTypeName), util.pwstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
 }
 
 export function ObjectPrivilegeAuditAlarmW(
@@ -119278,7 +119411,7 @@ export function ObjectPrivilegeAuditAlarmW(
   Privileges: Deno.PointerValue | Uint8Array /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmW(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function PrivilegeCheck(
@@ -119286,7 +119419,7 @@ export function PrivilegeCheck(
   RequiredPrivileges: Deno.PointerValue | Uint8Array /* ptr */,
   pfResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.PrivilegeCheck(util.toPointer(ClientToken), util.toPointer(RequiredPrivileges), util.toPointer(pfResult)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegeCheck!(util.toPointer(ClientToken), util.toPointer(RequiredPrivileges), util.toPointer(pfResult)));
 }
 
 export function PrivilegedServiceAuditAlarmW(
@@ -119296,18 +119429,18 @@ export function PrivilegedServiceAuditAlarmW(
   Privileges: Deno.PointerValue | Uint8Array /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmW(util.pwstrToFfi(SubsystemName), util.pwstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmW!(util.pwstrToFfi(SubsystemName), util.pwstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function QuerySecurityAccessMask(
   SecurityInformation: number /* u32 */,
   DesiredAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.QuerySecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
+  return libADVAPI32_dll.QuerySecurityAccessMask!(SecurityInformation, util.toPointer(DesiredAccess));
 }
 
 export function RevertToSelf(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.RevertToSelf());
+  return util.boolFromFfi(libADVAPI32_dll.RevertToSelf!());
 }
 
 export function SetAclInformation(
@@ -119316,7 +119449,7 @@ export function SetAclInformation(
   nAclInformationLength: number /* u32 */,
   dwAclInformationClass: ACL_INFORMATION_CLASS /* Windows.Win32.Security.ACL_INFORMATION_CLASS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetAclInformation(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
+  return util.boolFromFfi(libADVAPI32_dll.SetAclInformation!(util.toPointer(pAcl), util.toPointer(pAclInformation), nAclInformationLength, dwAclInformationClass));
 }
 
 export function SetFileSecurityW(
@@ -119324,7 +119457,7 @@ export function SetFileSecurityW(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityW(util.pwstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityW!(util.pwstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function SetKernelObjectSecurity(
@@ -119332,7 +119465,7 @@ export function SetKernelObjectSecurity(
   SecurityInformation: number /* u32 */,
   SecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetKernelObjectSecurity(util.toPointer(Handle), SecurityInformation, util.toPointer(SecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetKernelObjectSecurity!(util.toPointer(Handle), SecurityInformation, util.toPointer(SecurityDescriptor)));
 }
 
 export function SetPrivateObjectSecurity(
@@ -119342,7 +119475,7 @@ export function SetPrivateObjectSecurity(
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurity(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), util.toPointer(GenericMapping), util.toPointer(Token)));
+  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurity!(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), util.toPointer(GenericMapping), util.toPointer(Token)));
 }
 
 export function SetPrivateObjectSecurityEx(
@@ -119353,14 +119486,14 @@ export function SetPrivateObjectSecurityEx(
   GenericMapping: Deno.PointerValue | Uint8Array /* ptr */,
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurityEx(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), AutoInheritFlags, util.toPointer(GenericMapping), util.toPointer(Token)));
+  return util.boolFromFfi(libADVAPI32_dll.SetPrivateObjectSecurityEx!(SecurityInformation, util.toPointer(ModificationDescriptor), util.toPointer(ObjectsSecurityDescriptor), AutoInheritFlags, util.toPointer(GenericMapping), util.toPointer(Token)));
 }
 
 export function SetSecurityAccessMask(
   SecurityInformation: number /* u32 */,
   DesiredAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.SetSecurityAccessMask(SecurityInformation, util.toPointer(DesiredAccess));
+  return libADVAPI32_dll.SetSecurityAccessMask!(SecurityInformation, util.toPointer(DesiredAccess));
 }
 
 export function SetSecurityDescriptorControl(
@@ -119368,7 +119501,7 @@ export function SetSecurityDescriptorControl(
   ControlBitsOfInterest: number /* u16 */,
   ControlBitsToSet: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorControl(util.toPointer(pSecurityDescriptor), ControlBitsOfInterest, ControlBitsToSet));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorControl!(util.toPointer(pSecurityDescriptor), ControlBitsOfInterest, ControlBitsToSet));
 }
 
 export function SetSecurityDescriptorDacl(
@@ -119377,7 +119510,7 @@ export function SetSecurityDescriptorDacl(
   pDacl: Deno.PointerValue | Uint8Array /* ptr */,
   bDaclDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorDacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bDaclPresent), util.toPointer(pDacl), util.boolToFfi(bDaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorDacl!(util.toPointer(pSecurityDescriptor), util.boolToFfi(bDaclPresent), util.toPointer(pDacl), util.boolToFfi(bDaclDefaulted)));
 }
 
 export function SetSecurityDescriptorGroup(
@@ -119385,7 +119518,7 @@ export function SetSecurityDescriptorGroup(
   pGroup: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   bGroupDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorGroup(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.boolToFfi(bGroupDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorGroup!(util.toPointer(pSecurityDescriptor), util.toPointer(pGroup), util.boolToFfi(bGroupDefaulted)));
 }
 
 export function SetSecurityDescriptorOwner(
@@ -119393,14 +119526,14 @@ export function SetSecurityDescriptorOwner(
   pOwner: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   bOwnerDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorOwner(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.boolToFfi(bOwnerDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorOwner!(util.toPointer(pSecurityDescriptor), util.toPointer(pOwner), util.boolToFfi(bOwnerDefaulted)));
 }
 
 export function SetSecurityDescriptorRMControl(
   SecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   RMControl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.SetSecurityDescriptorRMControl(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
+  return libADVAPI32_dll.SetSecurityDescriptorRMControl!(util.toPointer(SecurityDescriptor), util.toPointer(RMControl));
 }
 
 export function SetSecurityDescriptorSacl(
@@ -119409,7 +119542,7 @@ export function SetSecurityDescriptorSacl(
   pSacl: Deno.PointerValue | Uint8Array /* ptr */,
   bSaclDefaulted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorSacl(util.toPointer(pSecurityDescriptor), util.boolToFfi(bSaclPresent), util.toPointer(pSacl), util.boolToFfi(bSaclDefaulted)));
+  return util.boolFromFfi(libADVAPI32_dll.SetSecurityDescriptorSacl!(util.toPointer(pSecurityDescriptor), util.boolToFfi(bSaclPresent), util.toPointer(pSacl), util.boolToFfi(bSaclDefaulted)));
 }
 
 export function SetTokenInformation(
@@ -119418,7 +119551,7 @@ export function SetTokenInformation(
   TokenInformation: Deno.PointerValue | Uint8Array /* ptr */,
   TokenInformationLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetTokenInformation(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength));
+  return util.boolFromFfi(libADVAPI32_dll.SetTokenInformation!(util.toPointer(TokenHandle), TokenInformationClass, util.toPointer(TokenInformation), TokenInformationLength));
 }
 
 export function SetCachedSigningLevel(
@@ -119427,7 +119560,7 @@ export function SetCachedSigningLevel(
   Flags: number /* u32 */,
   TargetFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetCachedSigningLevel(util.toPointer(SourceFiles), SourceFileCount, Flags, util.toPointer(TargetFile)));
+  return util.boolFromFfi(libKERNEL32_dll.SetCachedSigningLevel!(util.toPointer(SourceFiles), SourceFileCount, Flags, util.toPointer(TargetFile)));
 }
 
 export function GetCachedSigningLevel(
@@ -119438,7 +119571,7 @@ export function GetCachedSigningLevel(
   ThumbprintSize: Deno.PointerValue | Uint8Array /* ptr */,
   ThumbprintAlgorithm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetCachedSigningLevel(util.toPointer(File), util.toPointer(Flags), util.toPointer(SigningLevel), util.toPointer(Thumbprint), util.toPointer(ThumbprintSize), util.toPointer(ThumbprintAlgorithm)));
+  return util.boolFromFfi(libKERNEL32_dll.GetCachedSigningLevel!(util.toPointer(File), util.toPointer(Flags), util.toPointer(SigningLevel), util.toPointer(Thumbprint), util.toPointer(ThumbprintSize), util.toPointer(ThumbprintAlgorithm)));
 }
 
 export function DeriveCapabilitySidsFromName(
@@ -119448,7 +119581,7 @@ export function DeriveCapabilitySidsFromName(
   CapabilitySids: Deno.PointerValue | Uint8Array /* ptr */,
   CapabilitySidCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_security_base_l1_2_2_dll.DeriveCapabilitySidsFromName(util.pwstrToFfi(CapName), util.toPointer(CapabilityGroupSids), util.toPointer(CapabilityGroupSidCount), util.toPointer(CapabilitySids), util.toPointer(CapabilitySidCount)));
+  return util.boolFromFfi(libapi_ms_win_security_base_l1_2_2_dll.DeriveCapabilitySidsFromName!(util.pwstrToFfi(CapName), util.toPointer(CapabilityGroupSids), util.toPointer(CapabilityGroupSidCount), util.toPointer(CapabilitySids), util.toPointer(CapabilitySidCount)));
 }
 
 export function RtlNormalizeSecurityDescriptor(
@@ -119458,7 +119591,7 @@ export function RtlNormalizeSecurityDescriptor(
   NewSecurityDescriptorLength: Deno.PointerValue | Uint8Array /* ptr */,
   CheckOnly: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libntdll_dll.RtlNormalizeSecurityDescriptor(util.toPointer(SecurityDescriptor), SecurityDescriptorLength, util.toPointer(NewSecurityDescriptor), util.toPointer(NewSecurityDescriptorLength), util.toPointer(CheckOnly));
+  return libntdll_dll.RtlNormalizeSecurityDescriptor!(util.toPointer(SecurityDescriptor), SecurityDescriptorLength, util.toPointer(NewSecurityDescriptor), util.toPointer(NewSecurityDescriptorLength), util.toPointer(CheckOnly));
 }
 
 export function SetUserObjectSecurity(
@@ -119466,7 +119599,7 @@ export function SetUserObjectSecurity(
   pSIRequested: Deno.PointerValue | Uint8Array /* ptr */,
   pSID: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID)));
+  return util.boolFromFfi(libUSER32_dll.SetUserObjectSecurity!(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID)));
 }
 
 export function GetUserObjectSecurity(
@@ -119476,7 +119609,7 @@ export function GetUserObjectSecurity(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetUserObjectSecurity(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libUSER32_dll.GetUserObjectSecurity!(util.toPointer(hObj), util.toPointer(pSIRequested), util.toPointer(pSID), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function AccessCheckAndAuditAlarmA(
@@ -119492,7 +119625,7 @@ export function AccessCheckAndAuditAlarmA(
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckAndAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), DesiredAccess, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeAndAuditAlarmA(
@@ -119513,7 +119646,7 @@ export function AccessCheckByTypeAndAuditAlarmA(
   AccessStatus: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeAndAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatus), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmA(
@@ -119534,7 +119667,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmA(
   AccessStatusList: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function AccessCheckByTypeResultListAndAuditAlarmByHandleA(
@@ -119556,7 +119689,7 @@ export function AccessCheckByTypeResultListAndAuditAlarmByHandleA(
   AccessStatusList: Deno.PointerValue | Uint8Array /* ptr */,
   pfGenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.AccessCheckByTypeResultListAndAuditAlarmByHandleA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(SecurityDescriptor), util.toPointer(PrincipalSelfSid), DesiredAccess, AuditType, Flags, util.toPointer(ObjectTypeList), ObjectTypeListLength, util.toPointer(GenericMapping), util.boolToFfi(ObjectCreation), util.toPointer(GrantedAccess), util.toPointer(AccessStatusList), util.toPointer(pfGenerateOnClose)));
 }
 
 export function ObjectOpenAuditAlarmA(
@@ -119573,7 +119706,7 @@ export function ObjectOpenAuditAlarmA(
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
   GenerateOnClose: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectOpenAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.pstrToFfi(ObjectTypeName), util.pstrToFfi(ObjectName), util.toPointer(pSecurityDescriptor), util.toPointer(ClientToken), DesiredAccess, GrantedAccess, util.toPointer(Privileges), util.boolToFfi(ObjectCreation), util.boolToFfi(AccessGranted), util.toPointer(GenerateOnClose)));
 }
 
 export function ObjectPrivilegeAuditAlarmA(
@@ -119584,7 +119717,7 @@ export function ObjectPrivilegeAuditAlarmA(
   Privileges: Deno.PointerValue | Uint8Array /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectPrivilegeAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.toPointer(ClientToken), DesiredAccess, util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function ObjectCloseAuditAlarmA(
@@ -119592,7 +119725,7 @@ export function ObjectCloseAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectCloseAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function ObjectDeleteAuditAlarmA(
@@ -119600,7 +119733,7 @@ export function ObjectDeleteAuditAlarmA(
   HandleId: Deno.PointerValue | Uint8Array /* ptr */,
   GenerateOnClose: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmA(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
+  return util.boolFromFfi(libADVAPI32_dll.ObjectDeleteAuditAlarmA!(util.pstrToFfi(SubsystemName), util.toPointer(HandleId), util.boolToFfi(GenerateOnClose)));
 }
 
 export function PrivilegedServiceAuditAlarmA(
@@ -119610,7 +119743,7 @@ export function PrivilegedServiceAuditAlarmA(
   Privileges: Deno.PointerValue | Uint8Array /* ptr */,
   AccessGranted: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmA(util.pstrToFfi(SubsystemName), util.pstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
+  return util.boolFromFfi(libADVAPI32_dll.PrivilegedServiceAuditAlarmA!(util.pstrToFfi(SubsystemName), util.pstrToFfi(ServiceName), util.toPointer(ClientToken), util.toPointer(Privileges), util.boolToFfi(AccessGranted)));
 }
 
 export function AddConditionalAce(
@@ -119623,7 +119756,7 @@ export function AddConditionalAce(
   ConditionStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.AddConditionalAce(util.toPointer(pAcl), dwAceRevision, AceFlags, AceType, AccessMask, util.toPointer(pSid), util.pwstrToFfi(ConditionStr), util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libADVAPI32_dll.AddConditionalAce!(util.toPointer(pAcl), dwAceRevision, AceFlags, AceType, AccessMask, util.toPointer(pSid), util.pwstrToFfi(ConditionStr), util.toPointer(ReturnLength)));
 }
 
 export function SetFileSecurityA(
@@ -119631,7 +119764,7 @@ export function SetFileSecurityA(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityA(util.pstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libADVAPI32_dll.SetFileSecurityA!(util.pstrToFfi(lpFileName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function GetFileSecurityA(
@@ -119641,7 +119774,7 @@ export function GetFileSecurityA(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityA(util.pstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libADVAPI32_dll.GetFileSecurityA!(util.pstrToFfi(lpFileName), RequestedInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function LookupAccountSidA(
@@ -119653,7 +119786,7 @@ export function LookupAccountSidA(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   peUse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidA(util.pstrToFfi(lpSystemName), util.toPointer(Sid), util.pstrToFfi(Name), util.toPointer(cchName), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidA!(util.pstrToFfi(lpSystemName), util.toPointer(Sid), util.pstrToFfi(Name), util.toPointer(cchName), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountSidW(
@@ -119665,7 +119798,7 @@ export function LookupAccountSidW(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   peUse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidW(util.pwstrToFfi(lpSystemName), util.toPointer(Sid), util.pwstrToFfi(Name), util.toPointer(cchName), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountSidW!(util.pwstrToFfi(lpSystemName), util.toPointer(Sid), util.pwstrToFfi(Name), util.toPointer(cchName), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountNameA(
@@ -119677,7 +119810,7 @@ export function LookupAccountNameA(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   peUse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameA!(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupAccountNameW(
@@ -119689,7 +119822,7 @@ export function LookupAccountNameW(
   cchReferencedDomainName: Deno.PointerValue | Uint8Array /* ptr */,
   peUse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupAccountNameW!(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpAccountName), util.toPointer(Sid), util.toPointer(cbSid), util.pwstrToFfi(ReferencedDomainName), util.toPointer(cchReferencedDomainName), util.toPointer(peUse)));
 }
 
 export function LookupPrivilegeValueA(
@@ -119697,7 +119830,7 @@ export function LookupPrivilegeValueA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.toPointer(lpLuid)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueA!(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.toPointer(lpLuid)));
 }
 
 export function LookupPrivilegeValueW(
@@ -119705,7 +119838,7 @@ export function LookupPrivilegeValueW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.toPointer(lpLuid)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeValueW!(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.toPointer(lpLuid)));
 }
 
 export function LookupPrivilegeNameA(
@@ -119714,7 +119847,7 @@ export function LookupPrivilegeNameA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameA(util.pstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pstrToFfi(lpName), util.toPointer(cchName)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameA!(util.pstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pstrToFfi(lpName), util.toPointer(cchName)));
 }
 
 export function LookupPrivilegeNameW(
@@ -119723,7 +119856,7 @@ export function LookupPrivilegeNameW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameW(util.pwstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pwstrToFfi(lpName), util.toPointer(cchName)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeNameW!(util.pwstrToFfi(lpSystemName), util.toPointer(lpLuid), util.pwstrToFfi(lpName), util.toPointer(cchName)));
 }
 
 export function LookupPrivilegeDisplayNameA(
@@ -119733,7 +119866,7 @@ export function LookupPrivilegeDisplayNameA(
   cchDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   lpLanguageId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameA(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.pstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameA!(util.pstrToFfi(lpSystemName), util.pstrToFfi(lpName), util.pstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
 }
 
 export function LookupPrivilegeDisplayNameW(
@@ -119743,7 +119876,7 @@ export function LookupPrivilegeDisplayNameW(
   cchDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   lpLanguageId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameW(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.pwstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
+  return util.boolFromFfi(libADVAPI32_dll.LookupPrivilegeDisplayNameW!(util.pwstrToFfi(lpSystemName), util.pwstrToFfi(lpName), util.pwstrToFfi(lpDisplayName), util.toPointer(cchDisplayName), util.toPointer(lpLanguageId)));
 }
 
 export function LogonUserA(
@@ -119754,7 +119887,7 @@ export function LogonUserA(
   dwLogonProvider: LOGON32_PROVIDER /* Windows.Win32.Security.LOGON32_PROVIDER */,
   phToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LogonUserA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserA!(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
 }
 
 export function LogonUserW(
@@ -119765,7 +119898,7 @@ export function LogonUserW(
   dwLogonProvider: LOGON32_PROVIDER /* Windows.Win32.Security.LOGON32_PROVIDER */,
   phToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LogonUserW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserW!(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken)));
 }
 
 export function LogonUserExA(
@@ -119780,7 +119913,7 @@ export function LogonUserExA(
   pdwProfileLength: Deno.PointerValue | Uint8Array /* ptr */,
   pQuotaLimits: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LogonUserExA(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserExA!(util.pstrToFfi(lpszUsername), util.pstrToFfi(lpszDomain), util.pstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
 }
 
 export function LogonUserExW(
@@ -119795,7 +119928,7 @@ export function LogonUserExW(
   pdwProfileLength: Deno.PointerValue | Uint8Array /* ptr */,
   pQuotaLimits: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.LogonUserExW(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
+  return util.boolFromFfi(libADVAPI32_dll.LogonUserExW!(util.pwstrToFfi(lpszUsername), util.pwstrToFfi(lpszDomain), util.pwstrToFfi(lpszPassword), dwLogonType, dwLogonProvider, util.toPointer(phToken), util.toPointer(ppLogonSid), util.toPointer(ppProfileBuffer), util.toPointer(pdwProfileLength), util.toPointer(pQuotaLimits)));
 }
 
 export function RtlConvertSidToUnicodeString(
@@ -119803,6 +119936,6 @@ export function RtlConvertSidToUnicodeString(
   Sid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
   AllocateDestinationString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.RtlConvertSidToUnicodeString(util.toPointer(UnicodeString), util.toPointer(Sid), util.toPointer(AllocateDestinationString));
+  return libntdll_dll.RtlConvertSidToUnicodeString!(util.toPointer(UnicodeString), util.toPointer(Sid), util.toPointer(AllocateDestinationString));
 }
 

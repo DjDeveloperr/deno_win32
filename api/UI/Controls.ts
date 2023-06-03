@@ -41336,442 +41336,552 @@ try {
     CreatePropertySheetPageA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreatePropertySheetPageW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyPropertySheetPage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PropertySheetA: {
       parameters: ["pointer"],
       result: "isize",
+      optional: true,
     },
     PropertySheetW: {
       parameters: ["pointer"],
       result: "isize",
+      optional: true,
     },
     InitCommonControls: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     InitCommonControlsEx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_Create: {
       parameters: ["i32", "i32", "u32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ImageList_Destroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_GetImageCount: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_SetImageCount: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageList_Add: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_ReplaceIcon: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_SetBkColor: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_GetBkColor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_SetOverlayImage: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_Draw: {
       parameters: ["pointer", "i32", "pointer", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageList_Replace: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_AddMasked: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_DrawEx: {
       parameters: ["pointer", "i32", "pointer", "i32", "i32", "i32", "i32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageList_DrawIndirect: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_Remove: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_GetIcon: {
       parameters: ["pointer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ImageList_LoadImageA: {
       parameters: ["pointer", "buffer", "i32", "i32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ImageList_LoadImageW: {
       parameters: ["pointer", "buffer", "i32", "i32", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ImageList_Copy: {
       parameters: ["pointer", "i32", "pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageList_BeginDrag: {
       parameters: ["pointer", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_EndDrag: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     ImageList_DragEnter: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_DragLeave: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_DragMove: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_SetDragCursorImage: {
       parameters: ["pointer", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_DragShowNolock: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_GetDragImage: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_Read: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_Write: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_ReadEx: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_WriteEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageList_GetIconSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_SetIconSize: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_GetImageInfo: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageList_Merge: {
       parameters: ["pointer", "i32", "pointer", "i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ImageList_Duplicate: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     HIMAGELIST_QueryInterface: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateToolbarEx: {
       parameters: ["pointer", "u32", "u32", "i32", "pointer", "usize", "pointer", "i32", "i32", "i32", "i32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateMappedBitmap: {
       parameters: ["pointer", "isize", "u32", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DrawStatusTextA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "void",
+      optional: true,
     },
     DrawStatusTextW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "void",
+      optional: true,
     },
     CreateStatusWindowA: {
       parameters: ["i32", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateStatusWindowW: {
       parameters: ["i32", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     MenuHelp: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     ShowHideMenuCtl: {
       parameters: ["pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetEffectiveClientRect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     MakeDragList: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DrawInsert: {
       parameters: ["pointer", "pointer", "i32"],
       result: "void",
+      optional: true,
     },
     LBItemFromPt: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CreateUpDownControl: {
       parameters: ["u32", "i32", "i32", "i32", "i32", "pointer", "i32", "pointer", "pointer", "i32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     TaskDialogIndirect: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TaskDialog: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitMUILanguage: {
       parameters: ["u16"],
       result: "void",
+      optional: true,
     },
     GetMUILanguage: {
       parameters: [],
       result: "u16",
+      optional: true,
     },
     DSA_Create: {
       parameters: ["i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DSA_Destroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DSA_DestroyCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     DSA_DeleteItem: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     DSA_DeleteAllItems: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DSA_EnumCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     DSA_InsertItem: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DSA_GetItemPtr: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DSA_GetItem: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DSA_SetItem: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DSA_Clone: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DSA_GetSize: {
       parameters: ["pointer"],
       result: "u64",
+      optional: true,
     },
     DSA_Sort: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_Create: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     DPA_CreateEx: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DPA_Clone: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DPA_Destroy: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_DestroyCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     DPA_DeletePtr: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DPA_DeleteAllPtrs: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_EnumCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     DPA_Grow: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     DPA_InsertPtr: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_SetPtr: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_GetPtr: {
       parameters: ["pointer", "isize"],
       result: "pointer",
+      optional: true,
     },
     DPA_GetPtrIndex: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_GetSize: {
       parameters: ["pointer"],
       result: "u64",
+      optional: true,
     },
     DPA_Sort: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_LoadStream: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DPA_SaveStream: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DPA_Merge: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DPA_Search: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     Str_SetPtrW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FlatSB_EnableScrollBar: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_ShowScrollBar: {
       parameters: ["pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_GetScrollRange: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlatSB_GetScrollInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlatSB_GetScrollPos: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_GetScrollProp: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlatSB_SetScrollPos: {
       parameters: ["pointer", "u32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_SetScrollInfo: {
       parameters: ["pointer", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_SetScrollRange: {
       parameters: ["pointer", "u32", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     FlatSB_SetScrollProp: {
       parameters: ["pointer", "i32", "isize", "i32"],
       result: "i32",
+      optional: true,
     },
     InitializeFlatSB: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UninitializeFlatSB: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadIconMetric: {
       parameters: ["pointer", "buffer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadIconWithScaleDown: {
       parameters: ["pointer", "buffer", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DrawShadowText: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ImageList_CoCreateInstance: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -41781,150 +41891,187 @@ try {
     BeginPanningFeedback: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UpdatePanningFeedback: {
       parameters: ["pointer", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     EndPanningFeedback: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     DrawThemeText: {
       parameters: ["isize", "pointer", "i32", "i32", "buffer", "i32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeBackgroundRegion: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeTextExtent: {
       parameters: ["isize", "pointer", "i32", "i32", "buffer", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeTextMetrics: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HitTestThemeBackground: {
       parameters: ["isize", "pointer", "i32", "i32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeEdge: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeIcon: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     IsThemeBackgroundPartiallyTransparent: {
       parameters: ["isize", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetThemeString: {
       parameters: ["isize", "i32", "i32", "i32", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetThemeBool: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeIntList: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemePropertyOrigin: {
       parameters: ["isize", "i32", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeFilename: {
       parameters: ["isize", "i32", "i32", "u32", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetThemeSysColor: {
       parameters: ["isize", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetThemeSysColorBrush: {
       parameters: ["isize", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetThemeSysBool: {
       parameters: ["isize", "u32"],
       result: "i32",
+      optional: true,
     },
     GetThemeSysSize: {
       parameters: ["isize", "i32"],
       result: "i32",
+      optional: true,
     },
     GetThemeSysFont: {
       parameters: ["isize", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeSysString: {
       parameters: ["isize", "u32", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetThemeSysInt: {
       parameters: ["isize", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EnableThemeDialogTexture: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     IsThemeDialogTextureEnabled: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetThemeAppProperties: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     GetThemeDocumentationProperty: {
       parameters: ["buffer", "buffer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     EnableTheming: {
       parameters: ["i32"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeParentBackgroundEx: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetBufferedPaintTargetRect: {
       parameters: ["isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetBufferedPaintTargetDC: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     GetBufferedPaintDC: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintSetAlpha: {
       parameters: ["isize", "pointer", "u8"],
       result: "pointer",
+      optional: true,
     },
     BeginBufferedAnimation: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     EndBufferedAnimation: {
       parameters: ["isize", "i32"],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintRenderAnimation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThemeTransitionDuration: {
       parameters: ["isize", "i32", "i32", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -41934,158 +42081,197 @@ try {
     GetThemeAnimationProperty: {
       parameters: ["isize", "i32", "i32", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeAnimationTransform: {
       parameters: ["isize", "i32", "i32", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeTimingFunction: {
       parameters: ["isize", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OpenThemeData: {
       parameters: ["pointer", "buffer"],
       result: "isize",
+      optional: true,
     },
     OpenThemeDataEx: {
       parameters: ["pointer", "buffer", "u32"],
       result: "isize",
+      optional: true,
     },
     CloseThemeData: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeBackground: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeBackgroundEx: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeBackgroundContentRect: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeBackgroundExtent: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemePartSize: {
       parameters: ["isize", "pointer", "i32", "i32", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsThemePartDefined: {
       parameters: ["isize", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetThemeColor: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeMetric: {
       parameters: ["isize", "pointer", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeInt: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeEnumValue: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemePosition: {
       parameters: ["isize", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeFont: {
       parameters: ["isize", "pointer", "i32", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeRect: {
       parameters: ["isize", "i32", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeMargins: {
       parameters: ["isize", "pointer", "i32", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetWindowTheme: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     IsThemeActive: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     IsAppThemed: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetWindowTheme: {
       parameters: ["pointer"],
       result: "isize",
+      optional: true,
     },
     GetThemeAppProperties: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetCurrentThemeName: {
       parameters: ["buffer", "i32", "buffer", "i32", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeParentBackground: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetWindowThemeAttribute: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     DrawThemeTextEx: {
       parameters: ["isize", "pointer", "i32", "i32", "buffer", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeBitmap: {
       parameters: ["isize", "i32", "i32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetThemeStream: {
       parameters: ["isize", "i32", "i32", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintInit: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintUnInit: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     BeginBufferedPaint: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     EndBufferedPaint: {
       parameters: ["isize", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetBufferedPaintBits: {
       parameters: ["isize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintClear: {
       parameters: ["isize", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BufferedPaintStopAllAnimations: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     IsCompositionActive: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -42095,114 +42281,142 @@ try {
     CheckDlgButton: {
       parameters: ["pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     CheckRadioButton: {
       parameters: ["pointer", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     IsDlgButtonChecked: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     IsCharLowerW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CreateSyntheticPointerDevice: {
       parameters: ["i32", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DestroySyntheticPointerDevice: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RegisterTouchHitTestingWindow: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EvaluateProximityToRect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EvaluateProximityToPolygon: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PackTouchHitTestingProximityEvaluation: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetWindowFeedbackSetting: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetWindowFeedbackSetting: {
       parameters: ["pointer", "i32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetScrollPos: {
       parameters: ["pointer", "u32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetScrollRange: {
       parameters: ["pointer", "u32", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     ShowScrollBar: {
       parameters: ["pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     EnableScrollBar: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DlgDirListA: {
       parameters: ["pointer", "buffer", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     DlgDirListW: {
       parameters: ["pointer", "buffer", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     DlgDirSelectExA: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     DlgDirSelectExW: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     DlgDirListComboBoxA: {
       parameters: ["pointer", "buffer", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     DlgDirListComboBoxW: {
       parameters: ["pointer", "buffer", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     DlgDirSelectComboBoxExA: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     DlgDirSelectComboBoxExW: {
       parameters: ["pointer", "buffer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetScrollInfo: {
       parameters: ["pointer", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetComboBoxInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetListBoxInfo: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterPointerDeviceNotifications: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -42212,41 +42426,41 @@ try {
 export function CreatePropertySheetPageA(
   constPropSheetPagePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return libCOMCTL32_dll.CreatePropertySheetPageA(util.toPointer(constPropSheetPagePointer));
+  return libCOMCTL32_dll.CreatePropertySheetPageA!(util.toPointer(constPropSheetPagePointer));
 }
 
 export function CreatePropertySheetPageW(
   constPropSheetPagePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */ {
-  return libCOMCTL32_dll.CreatePropertySheetPageW(util.toPointer(constPropSheetPagePointer));
+  return libCOMCTL32_dll.CreatePropertySheetPageW!(util.toPointer(constPropSheetPagePointer));
 }
 
 export function DestroyPropertySheetPage(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HPROPSHEETPAGE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DestroyPropertySheetPage(util.toPointer(param0)));
+  return util.boolFromFfi(libCOMCTL32_dll.DestroyPropertySheetPage!(util.toPointer(param0)));
 }
 
 export function PropertySheetA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libCOMCTL32_dll.PropertySheetA(util.toPointer(param0));
+  return libCOMCTL32_dll.PropertySheetA!(util.toPointer(param0));
 }
 
 export function PropertySheetW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libCOMCTL32_dll.PropertySheetW(util.toPointer(param0));
+  return libCOMCTL32_dll.PropertySheetW!(util.toPointer(param0));
 }
 
 export function InitCommonControls(): void /* void */ {
-  return libCOMCTL32_dll.InitCommonControls();
+  return libCOMCTL32_dll.InitCommonControls!();
 }
 
 export function InitCommonControlsEx(
   picce: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.InitCommonControlsEx(util.toPointer(picce)));
+  return util.boolFromFfi(libCOMCTL32_dll.InitCommonControlsEx!(util.toPointer(picce)));
 }
 
 export function ImageList_Create(
@@ -42256,26 +42470,26 @@ export function ImageList_Create(
   cInitial: number /* i32 */,
   cGrow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_Create(cx, cy, flags, cInitial, cGrow);
+  return libCOMCTL32_dll.ImageList_Create!(cx, cy, flags, cInitial, cGrow);
 }
 
 export function ImageList_Destroy(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Destroy(util.toPointer(himl)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Destroy!(util.toPointer(himl)));
 }
 
 export function ImageList_GetImageCount(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.ImageList_GetImageCount(util.toPointer(himl));
+  return libCOMCTL32_dll.ImageList_GetImageCount!(util.toPointer(himl));
 }
 
 export function ImageList_SetImageCount(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   uNewCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetImageCount(util.toPointer(himl), uNewCount));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetImageCount!(util.toPointer(himl), uNewCount));
 }
 
 export function ImageList_Add(
@@ -42283,7 +42497,7 @@ export function ImageList_Add(
   hbmImage: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   hbmMask: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.ImageList_Add(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(hbmMask));
+  return libCOMCTL32_dll.ImageList_Add!(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(hbmMask));
 }
 
 export function ImageList_ReplaceIcon(
@@ -42291,20 +42505,20 @@ export function ImageList_ReplaceIcon(
   i: number /* i32 */,
   hicon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.ImageList_ReplaceIcon(util.toPointer(himl), i, util.toPointer(hicon));
+  return libCOMCTL32_dll.ImageList_ReplaceIcon!(util.toPointer(himl), i, util.toPointer(hicon));
 }
 
 export function ImageList_SetBkColor(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   clrBk: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
-  return libCOMCTL32_dll.ImageList_SetBkColor(util.toPointer(himl), util.toPointer(clrBk));
+  return libCOMCTL32_dll.ImageList_SetBkColor!(util.toPointer(himl), util.toPointer(clrBk));
 }
 
 export function ImageList_GetBkColor(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
-  return libCOMCTL32_dll.ImageList_GetBkColor(util.toPointer(himl));
+  return libCOMCTL32_dll.ImageList_GetBkColor!(util.toPointer(himl));
 }
 
 export function ImageList_SetOverlayImage(
@@ -42312,7 +42526,7 @@ export function ImageList_SetOverlayImage(
   iImage: number /* i32 */,
   iOverlay: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetOverlayImage(util.toPointer(himl), iImage, iOverlay));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetOverlayImage!(util.toPointer(himl), iImage, iOverlay));
 }
 
 export function ImageList_Draw(
@@ -42323,7 +42537,7 @@ export function ImageList_Draw(
   y: number /* i32 */,
   fStyle: IMAGE_LIST_DRAW_STYLE /* Windows.Win32.UI.Controls.IMAGE_LIST_DRAW_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Draw(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, fStyle));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Draw!(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, fStyle));
 }
 
 export function ImageList_Replace(
@@ -42332,7 +42546,7 @@ export function ImageList_Replace(
   hbmImage: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   hbmMask: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Replace(util.toPointer(himl), i, util.toPointer(hbmImage), util.toPointer(hbmMask)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Replace!(util.toPointer(himl), i, util.toPointer(hbmImage), util.toPointer(hbmMask)));
 }
 
 export function ImageList_AddMasked(
@@ -42340,7 +42554,7 @@ export function ImageList_AddMasked(
   hbmImage: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   crMask: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.ImageList_AddMasked(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(crMask));
+  return libCOMCTL32_dll.ImageList_AddMasked!(util.toPointer(himl), util.toPointer(hbmImage), util.toPointer(crMask));
 }
 
 export function ImageList_DrawEx(
@@ -42355,20 +42569,20 @@ export function ImageList_DrawEx(
   rgbFg: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */,
   fStyle: IMAGE_LIST_DRAW_STYLE /* Windows.Win32.UI.Controls.IMAGE_LIST_DRAW_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawEx(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, dx, dy, util.toPointer(rgbBk), util.toPointer(rgbFg), fStyle));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawEx!(util.toPointer(himl), i, util.toPointer(hdcDst), x, y, dx, dy, util.toPointer(rgbBk), util.toPointer(rgbFg), fStyle));
 }
 
 export function ImageList_DrawIndirect(
   pimldp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawIndirect(util.toPointer(pimldp)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DrawIndirect!(util.toPointer(pimldp)));
 }
 
 export function ImageList_Remove(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   i: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Remove(util.toPointer(himl), i));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Remove!(util.toPointer(himl), i));
 }
 
 export function ImageList_GetIcon(
@@ -42376,7 +42590,7 @@ export function ImageList_GetIcon(
   i: number /* i32 */,
   flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libCOMCTL32_dll.ImageList_GetIcon(util.toPointer(himl), i, flags);
+  return libCOMCTL32_dll.ImageList_GetIcon!(util.toPointer(himl), i, flags);
 }
 
 export function ImageList_LoadImageA(
@@ -42388,7 +42602,7 @@ export function ImageList_LoadImageA(
   uType: number /* u32 */,
   uFlags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_LoadImageA(util.toPointer(hi), util.pstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags);
+  return libCOMCTL32_dll.ImageList_LoadImageA!(util.toPointer(hi), util.pstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags);
 }
 
 export function ImageList_LoadImageW(
@@ -42400,7 +42614,7 @@ export function ImageList_LoadImageW(
   uType: number /* u32 */,
   uFlags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_LoadImageW(util.toPointer(hi), util.pwstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags);
+  return libCOMCTL32_dll.ImageList_LoadImageW!(util.toPointer(hi), util.pwstrToFfi(lpbmp), cx, cGrow, util.toPointer(crMask), uType, uFlags);
 }
 
 export function ImageList_Copy(
@@ -42410,7 +42624,7 @@ export function ImageList_Copy(
   iSrc: number /* i32 */,
   uFlags: IMAGE_LIST_COPY_FLAGS /* Windows.Win32.UI.Controls.IMAGE_LIST_COPY_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Copy(util.toPointer(himlDst), iDst, util.toPointer(himlSrc), iSrc, uFlags));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Copy!(util.toPointer(himlDst), iDst, util.toPointer(himlSrc), iSrc, uFlags));
 }
 
 export function ImageList_BeginDrag(
@@ -42419,11 +42633,11 @@ export function ImageList_BeginDrag(
   dxHotspot: number /* i32 */,
   dyHotspot: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_BeginDrag(util.toPointer(himlTrack), iTrack, dxHotspot, dyHotspot));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_BeginDrag!(util.toPointer(himlTrack), iTrack, dxHotspot, dyHotspot));
 }
 
 export function ImageList_EndDrag(): void /* void */ {
-  return libCOMCTL32_dll.ImageList_EndDrag();
+  return libCOMCTL32_dll.ImageList_EndDrag!();
 }
 
 export function ImageList_DragEnter(
@@ -42431,20 +42645,20 @@ export function ImageList_DragEnter(
   x: number /* i32 */,
   y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragEnter((hwndLock), x, y));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragEnter!((hwndLock), x, y));
 }
 
 export function ImageList_DragLeave(
   hwndLock: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragLeave((hwndLock)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragLeave!((hwndLock)));
 }
 
 export function ImageList_DragMove(
   x: number /* i32 */,
   y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragMove(x, y));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragMove!(x, y));
 }
 
 export function ImageList_SetDragCursorImage(
@@ -42453,33 +42667,33 @@ export function ImageList_SetDragCursorImage(
   dxHotspot: number /* i32 */,
   dyHotspot: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetDragCursorImage(util.toPointer(himlDrag), iDrag, dxHotspot, dyHotspot));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetDragCursorImage!(util.toPointer(himlDrag), iDrag, dxHotspot, dyHotspot));
 }
 
 export function ImageList_DragShowNolock(
   fShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragShowNolock(util.boolToFfi(fShow)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_DragShowNolock!(util.boolToFfi(fShow)));
 }
 
 export function ImageList_GetDragImage(
   ppt: Deno.PointerValue | Uint8Array /* ptr */,
   pptHotspot: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_GetDragImage(util.toPointer(ppt), util.toPointer(pptHotspot));
+  return libCOMCTL32_dll.ImageList_GetDragImage!(util.toPointer(ppt), util.toPointer(pptHotspot));
 }
 
 export function ImageList_Read(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_Read(util.toPointer(pstm));
+  return libCOMCTL32_dll.ImageList_Read!(util.toPointer(pstm));
 }
 
 export function ImageList_Write(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Write(util.toPointer(himl), util.toPointer(pstm)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_Write!(util.toPointer(himl), util.toPointer(pstm)));
 }
 
 export function ImageList_ReadEx(
@@ -42488,7 +42702,7 @@ export function ImageList_ReadEx(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.ImageList_ReadEx(dwFlags, util.toPointer(pstm), util.toPointer(riid), util.toPointer(ppv));
+  return libCOMCTL32_dll.ImageList_ReadEx!(dwFlags, util.toPointer(pstm), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function ImageList_WriteEx(
@@ -42496,7 +42710,7 @@ export function ImageList_WriteEx(
   dwFlags: IMAGE_LIST_WRITE_STREAM_FLAGS /* Windows.Win32.UI.Controls.IMAGE_LIST_WRITE_STREAM_FLAGS */,
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.ImageList_WriteEx(util.toPointer(himl), dwFlags, util.toPointer(pstm));
+  return libCOMCTL32_dll.ImageList_WriteEx!(util.toPointer(himl), dwFlags, util.toPointer(pstm));
 }
 
 export function ImageList_GetIconSize(
@@ -42504,7 +42718,7 @@ export function ImageList_GetIconSize(
   cx: Deno.PointerValue | Uint8Array /* ptr */,
   cy: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetIconSize(util.toPointer(himl), util.toPointer(cx), util.toPointer(cy)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetIconSize!(util.toPointer(himl), util.toPointer(cx), util.toPointer(cy)));
 }
 
 export function ImageList_SetIconSize(
@@ -42512,7 +42726,7 @@ export function ImageList_SetIconSize(
   cx: number /* i32 */,
   cy: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetIconSize(util.toPointer(himl), cx, cy));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_SetIconSize!(util.toPointer(himl), cx, cy));
 }
 
 export function ImageList_GetImageInfo(
@@ -42520,7 +42734,7 @@ export function ImageList_GetImageInfo(
   i: number /* i32 */,
   pImageInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetImageInfo(util.toPointer(himl), i, util.toPointer(pImageInfo)));
+  return util.boolFromFfi(libCOMCTL32_dll.ImageList_GetImageInfo!(util.toPointer(himl), i, util.toPointer(pImageInfo)));
 }
 
 export function ImageList_Merge(
@@ -42531,13 +42745,13 @@ export function ImageList_Merge(
   dx: number /* i32 */,
   dy: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_Merge(util.toPointer(himl1), i1, util.toPointer(himl2), i2, dx, dy);
+  return libCOMCTL32_dll.ImageList_Merge!(util.toPointer(himl1), i1, util.toPointer(himl2), i2, dx, dy);
 }
 
 export function ImageList_Duplicate(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */ {
-  return libCOMCTL32_dll.ImageList_Duplicate(util.toPointer(himl));
+  return libCOMCTL32_dll.ImageList_Duplicate!(util.toPointer(himl));
 }
 
 export function HIMAGELIST_QueryInterface(
@@ -42545,7 +42759,7 @@ export function HIMAGELIST_QueryInterface(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.HIMAGELIST_QueryInterface(util.toPointer(himl), util.toPointer(riid), util.toPointer(ppv));
+  return libCOMCTL32_dll.HIMAGELIST_QueryInterface!(util.toPointer(himl), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function CreateToolbarEx(
@@ -42563,7 +42777,7 @@ export function CreateToolbarEx(
   dyBitmap: number /* i32 */,
   uStructSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMCTL32_dll.CreateToolbarEx((hwnd), ws, wID, nBitmaps, util.toPointer(hBMInst), wBMID, util.toPointer(lpButtons), iNumButtons, dxButton, dyButton, dxBitmap, dyBitmap, uStructSize));
+  return (libCOMCTL32_dll.CreateToolbarEx!((hwnd), ws, wID, nBitmaps, util.toPointer(hBMInst), wBMID, util.toPointer(lpButtons), iNumButtons, dxButton, dyButton, dxBitmap, dyBitmap, uStructSize));
 }
 
 export function CreateMappedBitmap(
@@ -42573,7 +42787,7 @@ export function CreateMappedBitmap(
   lpColorMap: Deno.PointerValue | Uint8Array /* ptr */,
   iNumMaps: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */ {
-  return libCOMCTL32_dll.CreateMappedBitmap(util.toPointer(hInstance), idBitmap, wFlags, util.toPointer(lpColorMap), iNumMaps);
+  return libCOMCTL32_dll.CreateMappedBitmap!(util.toPointer(hInstance), idBitmap, wFlags, util.toPointer(lpColorMap), iNumMaps);
 }
 
 export function DrawStatusTextA(
@@ -42582,7 +42796,7 @@ export function DrawStatusTextA(
   pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DrawStatusTextA(util.toPointer(hDC), util.toPointer(lprc), util.pstrToFfi(pszText), uFlags);
+  return libCOMCTL32_dll.DrawStatusTextA!(util.toPointer(hDC), util.toPointer(lprc), util.pstrToFfi(pszText), uFlags);
 }
 
 export function DrawStatusTextW(
@@ -42591,7 +42805,7 @@ export function DrawStatusTextW(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uFlags: number /* u32 */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DrawStatusTextW(util.toPointer(hDC), util.toPointer(lprc), util.pwstrToFfi(pszText), uFlags);
+  return libCOMCTL32_dll.DrawStatusTextW!(util.toPointer(hDC), util.toPointer(lprc), util.pwstrToFfi(pszText), uFlags);
 }
 
 export function CreateStatusWindowA(
@@ -42600,7 +42814,7 @@ export function CreateStatusWindowA(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMCTL32_dll.CreateStatusWindowA(style, util.pstrToFfi(lpszText), (hwndParent), wID));
+  return (libCOMCTL32_dll.CreateStatusWindowA!(style, util.pstrToFfi(lpszText), (hwndParent), wID));
 }
 
 export function CreateStatusWindowW(
@@ -42609,7 +42823,7 @@ export function CreateStatusWindowW(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   wID: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMCTL32_dll.CreateStatusWindowW(style, util.pwstrToFfi(lpszText), (hwndParent), wID));
+  return (libCOMCTL32_dll.CreateStatusWindowW!(style, util.pwstrToFfi(lpszText), (hwndParent), wID));
 }
 
 export function MenuHelp(
@@ -42621,7 +42835,7 @@ export function MenuHelp(
   hwndStatus: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpwIDs: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.MenuHelp(uMsg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(hMainMenu), util.toPointer(hInst), (hwndStatus), util.toPointer(lpwIDs));
+  return libCOMCTL32_dll.MenuHelp!(uMsg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(hMainMenu), util.toPointer(hInst), (hwndStatus), util.toPointer(lpwIDs));
 }
 
 export function ShowHideMenuCtl(
@@ -42629,7 +42843,7 @@ export function ShowHideMenuCtl(
   uFlags: bigint | number /* usize */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.ShowHideMenuCtl((hWnd), uFlags, util.toPointer(lpInfo)));
+  return util.boolFromFfi(libCOMCTL32_dll.ShowHideMenuCtl!((hWnd), uFlags, util.toPointer(lpInfo)));
 }
 
 export function GetEffectiveClientRect(
@@ -42637,13 +42851,13 @@ export function GetEffectiveClientRect(
   lprc: Deno.PointerValue | Uint8Array /* ptr */,
   lpInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.GetEffectiveClientRect((hWnd), util.toPointer(lprc), util.toPointer(lpInfo));
+  return libCOMCTL32_dll.GetEffectiveClientRect!((hWnd), util.toPointer(lprc), util.toPointer(lpInfo));
 }
 
 export function MakeDragList(
   hLB: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.MakeDragList((hLB)));
+  return util.boolFromFfi(libCOMCTL32_dll.MakeDragList!((hLB)));
 }
 
 export function DrawInsert(
@@ -42651,7 +42865,7 @@ export function DrawInsert(
   hLB: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nItem: number /* i32 */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DrawInsert((handParent), (hLB), nItem);
+  return libCOMCTL32_dll.DrawInsert!((handParent), (hLB), nItem);
 }
 
 export function LBItemFromPt(
@@ -42659,7 +42873,7 @@ export function LBItemFromPt(
   pt: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
   bAutoScroll: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.LBItemFromPt((hLB), util.toPointer(pt), util.boolToFfi(bAutoScroll));
+  return libCOMCTL32_dll.LBItemFromPt!((hLB), util.toPointer(pt), util.boolToFfi(bAutoScroll));
 }
 
 export function CreateUpDownControl(
@@ -42676,7 +42890,7 @@ export function CreateUpDownControl(
   nLower: number /* i32 */,
   nPos: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libCOMCTL32_dll.CreateUpDownControl(dwStyle, x, y, cx, cy, (hParent), nID, util.toPointer(hInst), (hBuddy), nUpper, nLower, nPos));
+  return (libCOMCTL32_dll.CreateUpDownControl!(dwStyle, x, y, cx, cy, (hParent), nID, util.toPointer(hInst), (hBuddy), nUpper, nLower, nPos));
 }
 
 export function TaskDialogIndirect(
@@ -42685,7 +42899,7 @@ export function TaskDialogIndirect(
   pnRadioButton: Deno.PointerValue | Uint8Array /* ptr */,
   pfVerificationFlagChecked: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.TaskDialogIndirect(util.toPointer(pTaskConfig), util.toPointer(pnButton), util.toPointer(pnRadioButton), util.toPointer(pfVerificationFlagChecked));
+  return libCOMCTL32_dll.TaskDialogIndirect!(util.toPointer(pTaskConfig), util.toPointer(pnButton), util.toPointer(pnRadioButton), util.toPointer(pfVerificationFlagChecked));
 }
 
 export function TaskDialog(
@@ -42698,30 +42912,30 @@ export function TaskDialog(
   pszIcon: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pnButton: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.TaskDialog((hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszWindowTitle), util.pwstrToFfi(pszMainInstruction), util.pwstrToFfi(pszContent), dwCommonButtons, util.pwstrToFfi(pszIcon), util.toPointer(pnButton));
+  return libCOMCTL32_dll.TaskDialog!((hwndOwner), util.toPointer(hInstance), util.pwstrToFfi(pszWindowTitle), util.pwstrToFfi(pszMainInstruction), util.pwstrToFfi(pszContent), dwCommonButtons, util.pwstrToFfi(pszIcon), util.toPointer(pnButton));
 }
 
 export function InitMUILanguage(
   uiLang: number /* u16 */,
 ): void /* void */ {
-  return libCOMCTL32_dll.InitMUILanguage(uiLang);
+  return libCOMCTL32_dll.InitMUILanguage!(uiLang);
 }
 
 export function GetMUILanguage(): number /* u16 */ {
-  return libCOMCTL32_dll.GetMUILanguage();
+  return libCOMCTL32_dll.GetMUILanguage!();
 }
 
 export function DSA_Create(
   cbItem: number /* i32 */,
   cItemGrow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */ {
-  return libCOMCTL32_dll.DSA_Create(cbItem, cItemGrow);
+  return libCOMCTL32_dll.DSA_Create!(cbItem, cItemGrow);
 }
 
 export function DSA_Destroy(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_Destroy(util.toPointer(hdsa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_Destroy!(util.toPointer(hdsa)));
 }
 
 export function DSA_DestroyCallback(
@@ -42729,20 +42943,20 @@ export function DSA_DestroyCallback(
   pfnCB: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DSA_DestroyCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DSA_DestroyCallback!(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DSA_DeleteItem(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
   i: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteItem(util.toPointer(hdsa), i));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteItem!(util.toPointer(hdsa), i));
 }
 
 export function DSA_DeleteAllItems(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteAllItems(util.toPointer(hdsa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_DeleteAllItems!(util.toPointer(hdsa)));
 }
 
 export function DSA_EnumCallback(
@@ -42750,7 +42964,7 @@ export function DSA_EnumCallback(
   pfnCB: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DSA_EnumCallback(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DSA_EnumCallback!(util.toPointer(hdsa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DSA_InsertItem(
@@ -42758,14 +42972,14 @@ export function DSA_InsertItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.DSA_InsertItem(util.toPointer(hdsa), i, util.toPointer(pitem));
+  return libCOMCTL32_dll.DSA_InsertItem!(util.toPointer(hdsa), i, util.toPointer(pitem));
 }
 
 export function DSA_GetItemPtr(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
   i: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCOMCTL32_dll.DSA_GetItemPtr(util.toPointer(hdsa), i);
+  return libCOMCTL32_dll.DSA_GetItemPtr!(util.toPointer(hdsa), i);
 }
 
 export function DSA_GetItem(
@@ -42773,7 +42987,7 @@ export function DSA_GetItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_GetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_GetItem!(util.toPointer(hdsa), i, util.toPointer(pitem)));
 }
 
 export function DSA_SetItem(
@@ -42781,19 +42995,19 @@ export function DSA_SetItem(
   i: number /* i32 */,
   pitem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_SetItem(util.toPointer(hdsa), i, util.toPointer(pitem)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_SetItem!(util.toPointer(hdsa), i, util.toPointer(pitem)));
 }
 
 export function DSA_Clone(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */ {
-  return libCOMCTL32_dll.DSA_Clone(util.toPointer(hdsa));
+  return libCOMCTL32_dll.DSA_Clone!(util.toPointer(hdsa));
 }
 
 export function DSA_GetSize(
   hdsa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDSA */,
 ): bigint | number /* u64 */ {
-  return libCOMCTL32_dll.DSA_GetSize(util.toPointer(hdsa));
+  return libCOMCTL32_dll.DSA_GetSize!(util.toPointer(hdsa));
 }
 
 export function DSA_Sort(
@@ -42801,33 +43015,33 @@ export function DSA_Sort(
   pfnCompare: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDACOMPARE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DSA_Sort(util.toPointer(pdsa), util.toPointer(pfnCompare), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DSA_Sort!(util.toPointer(pdsa), util.toPointer(pfnCompare), util.toPointer(lParam)));
 }
 
 export function DPA_Create(
   cItemGrow: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */ {
-  return libCOMCTL32_dll.DPA_Create(cItemGrow);
+  return libCOMCTL32_dll.DPA_Create!(cItemGrow);
 }
 
 export function DPA_CreateEx(
   cpGrow: number /* i32 */,
   hheap: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */ {
-  return libCOMCTL32_dll.DPA_CreateEx(cpGrow, util.toPointer(hheap));
+  return libCOMCTL32_dll.DPA_CreateEx!(cpGrow, util.toPointer(hheap));
 }
 
 export function DPA_Clone(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
   hdpaNew: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */ {
-  return libCOMCTL32_dll.DPA_Clone(util.toPointer(hdpa), util.toPointer(hdpaNew));
+  return libCOMCTL32_dll.DPA_Clone!(util.toPointer(hdpa), util.toPointer(hdpaNew));
 }
 
 export function DPA_Destroy(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_Destroy(util.toPointer(hdpa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Destroy!(util.toPointer(hdpa)));
 }
 
 export function DPA_DestroyCallback(
@@ -42835,20 +43049,20 @@ export function DPA_DestroyCallback(
   pfnCB: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DPA_DestroyCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DPA_DestroyCallback!(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DPA_DeletePtr(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
   i: number /* i32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCOMCTL32_dll.DPA_DeletePtr(util.toPointer(hdpa), i);
+  return libCOMCTL32_dll.DPA_DeletePtr!(util.toPointer(hdpa), i);
 }
 
 export function DPA_DeleteAllPtrs(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_DeleteAllPtrs(util.toPointer(hdpa)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_DeleteAllPtrs!(util.toPointer(hdpa)));
 }
 
 export function DPA_EnumCallback(
@@ -42856,14 +43070,14 @@ export function DPA_EnumCallback(
   pfnCB: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDAENUMCALLBACK */,
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libCOMCTL32_dll.DPA_EnumCallback(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
+  return libCOMCTL32_dll.DPA_EnumCallback!(util.toPointer(hdpa), util.toPointer(pfnCB), util.toPointer(pData));
 }
 
 export function DPA_Grow(
   pdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
   cp: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_Grow(util.toPointer(pdpa), cp));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Grow!(util.toPointer(pdpa), cp));
 }
 
 export function DPA_InsertPtr(
@@ -42871,7 +43085,7 @@ export function DPA_InsertPtr(
   i: number /* i32 */,
   p: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.DPA_InsertPtr(util.toPointer(hdpa), i, util.toPointer(p));
+  return libCOMCTL32_dll.DPA_InsertPtr!(util.toPointer(hdpa), i, util.toPointer(p));
 }
 
 export function DPA_SetPtr(
@@ -42879,27 +43093,27 @@ export function DPA_SetPtr(
   i: number /* i32 */,
   p: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_SetPtr(util.toPointer(hdpa), i, util.toPointer(p)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_SetPtr!(util.toPointer(hdpa), i, util.toPointer(p)));
 }
 
 export function DPA_GetPtr(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
   i: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
-  return libCOMCTL32_dll.DPA_GetPtr(util.toPointer(hdpa), i);
+  return libCOMCTL32_dll.DPA_GetPtr!(util.toPointer(hdpa), i);
 }
 
 export function DPA_GetPtrIndex(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
   p: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.DPA_GetPtrIndex(util.toPointer(hdpa), util.toPointer(p));
+  return libCOMCTL32_dll.DPA_GetPtrIndex!(util.toPointer(hdpa), util.toPointer(p));
 }
 
 export function DPA_GetSize(
   hdpa: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HDPA */,
 ): bigint | number /* u64 */ {
-  return libCOMCTL32_dll.DPA_GetSize(util.toPointer(hdpa));
+  return libCOMCTL32_dll.DPA_GetSize!(util.toPointer(hdpa));
 }
 
 export function DPA_Sort(
@@ -42907,7 +43121,7 @@ export function DPA_Sort(
   pfnCompare: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDACOMPARE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_Sort(util.toPointer(hdpa), util.toPointer(pfnCompare), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Sort!(util.toPointer(hdpa), util.toPointer(pfnCompare), util.toPointer(lParam)));
 }
 
 export function DPA_LoadStream(
@@ -42916,7 +43130,7 @@ export function DPA_LoadStream(
   pstream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pvInstData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.DPA_LoadStream(util.toPointer(phdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData));
+  return libCOMCTL32_dll.DPA_LoadStream!(util.toPointer(phdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData));
 }
 
 export function DPA_SaveStream(
@@ -42925,7 +43139,7 @@ export function DPA_SaveStream(
   pstream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pvInstData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.DPA_SaveStream(util.toPointer(hdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData));
+  return libCOMCTL32_dll.DPA_SaveStream!(util.toPointer(hdpa), util.toPointer(pfn), util.toPointer(pstream), util.toPointer(pvInstData));
 }
 
 export function DPA_Merge(
@@ -42936,7 +43150,7 @@ export function DPA_Merge(
   pfnMerge: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.PFNDPAMERGE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.DPA_Merge(util.toPointer(hdpaDest), util.toPointer(hdpaSrc), dwFlags, util.toPointer(pfnCompare), util.toPointer(pfnMerge), util.toPointer(lParam)));
+  return util.boolFromFfi(libCOMCTL32_dll.DPA_Merge!(util.toPointer(hdpaDest), util.toPointer(hdpaSrc), dwFlags, util.toPointer(pfnCompare), util.toPointer(pfnMerge), util.toPointer(lParam)));
 }
 
 export function DPA_Search(
@@ -42947,14 +43161,14 @@ export function DPA_Search(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   options: number /* u32 */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.DPA_Search(util.toPointer(hdpa), util.toPointer(pFind), iStart, util.toPointer(pfnCompare), util.toPointer(lParam), options);
+  return libCOMCTL32_dll.DPA_Search!(util.toPointer(hdpa), util.toPointer(pFind), iStart, util.toPointer(pfnCompare), util.toPointer(lParam), options);
 }
 
 export function Str_SetPtrW(
   ppsz: Deno.PointerValue | Uint8Array /* ptr */,
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.Str_SetPtrW(util.toPointer(ppsz), util.pwstrToFfi(psz)));
+  return util.boolFromFfi(libCOMCTL32_dll.Str_SetPtrW!(util.toPointer(ppsz), util.pwstrToFfi(psz)));
 }
 
 export function FlatSB_EnableScrollBar(
@@ -42962,7 +43176,7 @@ export function FlatSB_EnableScrollBar(
   param1: number /* i32 */,
   param2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_EnableScrollBar((param0), param1, param2));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_EnableScrollBar!((param0), param1, param2));
 }
 
 export function FlatSB_ShowScrollBar(
@@ -42970,7 +43184,7 @@ export function FlatSB_ShowScrollBar(
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   param2: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_ShowScrollBar((param0), code, util.boolToFfi(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_ShowScrollBar!((param0), code, util.boolToFfi(param2)));
 }
 
 export function FlatSB_GetScrollRange(
@@ -42979,7 +43193,7 @@ export function FlatSB_GetScrollRange(
   param2: Deno.PointerValue | Uint8Array /* ptr */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollRange((param0), code, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollRange!((param0), code, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function FlatSB_GetScrollInfo(
@@ -42987,14 +43201,14 @@ export function FlatSB_GetScrollInfo(
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollInfo((param0), code, util.toPointer(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollInfo!((param0), code, util.toPointer(param2)));
 }
 
 export function FlatSB_GetScrollPos(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   code: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.FlatSB_GetScrollPos((param0), code);
+  return libCOMCTL32_dll.FlatSB_GetScrollPos!((param0), code);
 }
 
 export function FlatSB_GetScrollProp(
@@ -43002,7 +43216,7 @@ export function FlatSB_GetScrollProp(
   propIndex: WSB_PROP /* Windows.Win32.UI.Controls.WSB_PROP */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollProp((param0), propIndex, util.toPointer(param2)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_GetScrollProp!((param0), propIndex, util.toPointer(param2)));
 }
 
 export function FlatSB_SetScrollPos(
@@ -43011,7 +43225,7 @@ export function FlatSB_SetScrollPos(
   pos: number /* i32 */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.FlatSB_SetScrollPos((param0), code, pos, util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollPos!((param0), code, pos, util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollInfo(
@@ -43020,7 +43234,7 @@ export function FlatSB_SetScrollInfo(
   psi: Deno.PointerValue | Uint8Array /* ptr */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.FlatSB_SetScrollInfo((param0), code, util.toPointer(psi), util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollInfo!((param0), code, util.toPointer(psi), util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollRange(
@@ -43030,7 +43244,7 @@ export function FlatSB_SetScrollRange(
   max: number /* i32 */,
   fRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.FlatSB_SetScrollRange((param0), code, min, max, util.boolToFfi(fRedraw));
+  return libCOMCTL32_dll.FlatSB_SetScrollRange!((param0), code, min, max, util.boolToFfi(fRedraw));
 }
 
 export function FlatSB_SetScrollProp(
@@ -43039,19 +43253,19 @@ export function FlatSB_SetScrollProp(
   newValue: bigint | number /* isize */,
   param3: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_SetScrollProp((param0), index, newValue, util.boolToFfi(param3)));
+  return util.boolFromFfi(libCOMCTL32_dll.FlatSB_SetScrollProp!((param0), index, newValue, util.boolToFfi(param3)));
 }
 
 export function InitializeFlatSB(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll.InitializeFlatSB((param0)));
+  return util.boolFromFfi(libCOMCTL32_dll.InitializeFlatSB!((param0)));
 }
 
 export function UninitializeFlatSB(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.UninitializeFlatSB((param0));
+  return libCOMCTL32_dll.UninitializeFlatSB!((param0));
 }
 
 export function LoadIconMetric(
@@ -43060,7 +43274,7 @@ export function LoadIconMetric(
   lims: _LI_METRIC /* Windows.Win32.UI.Controls._LI_METRIC */,
   phico: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.LoadIconMetric(util.toPointer(hinst), util.pwstrToFfi(pszName), lims, util.toPointer(phico));
+  return libCOMCTL32_dll.LoadIconMetric!(util.toPointer(hinst), util.pwstrToFfi(pszName), lims, util.toPointer(phico));
 }
 
 export function LoadIconWithScaleDown(
@@ -43070,7 +43284,7 @@ export function LoadIconWithScaleDown(
   cy: number /* i32 */,
   phico: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.LoadIconWithScaleDown(util.toPointer(hinst), util.pwstrToFfi(pszName), cx, cy, util.toPointer(phico));
+  return libCOMCTL32_dll.LoadIconWithScaleDown!(util.toPointer(hinst), util.pwstrToFfi(pszName), cx, cy, util.toPointer(phico));
 }
 
 export function DrawShadowText(
@@ -43084,7 +43298,7 @@ export function DrawShadowText(
   ixOffset: number /* i32 */,
   iyOffset: number /* i32 */,
 ): number /* i32 */ {
-  return libCOMCTL32_dll.DrawShadowText(util.toPointer(hdc), util.pwstrToFfi(pszText), cch, util.toPointer(prc), dwFlags, util.toPointer(crText), util.toPointer(crShadow), ixOffset, iyOffset);
+  return libCOMCTL32_dll.DrawShadowText!(util.toPointer(hdc), util.pwstrToFfi(pszText), cch, util.toPointer(prc), dwFlags, util.toPointer(crText), util.toPointer(crShadow), ixOffset, iyOffset);
 }
 
 export function ImageList_CoCreateInstance(
@@ -43093,13 +43307,13 @@ export function ImageList_CoCreateInstance(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCOMCTL32_dll.ImageList_CoCreateInstance(util.toPointer(rclsid), util.toPointer(punkOuter), util.toPointer(riid), util.toPointer(ppv));
+  return libCOMCTL32_dll.ImageList_CoCreateInstance!(util.toPointer(rclsid), util.toPointer(punkOuter), util.toPointer(riid), util.toPointer(ppv));
 }
 
 export function BeginPanningFeedback(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.BeginPanningFeedback((hwnd)));
+  return util.boolFromFfi(libUxTheme_dll.BeginPanningFeedback!((hwnd)));
 }
 
 export function UpdatePanningFeedback(
@@ -43108,14 +43322,14 @@ export function UpdatePanningFeedback(
   lTotalOverpanOffsetY: number /* i32 */,
   fInInertia: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.UpdatePanningFeedback((hwnd), lTotalOverpanOffsetX, lTotalOverpanOffsetY, util.boolToFfi(fInInertia)));
+  return util.boolFromFfi(libUxTheme_dll.UpdatePanningFeedback!((hwnd), lTotalOverpanOffsetX, lTotalOverpanOffsetY, util.boolToFfi(fInInertia)));
 }
 
 export function EndPanningFeedback(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   fAnimateBack: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.EndPanningFeedback((hwnd), util.boolToFfi(fAnimateBack)));
+  return util.boolFromFfi(libUxTheme_dll.EndPanningFeedback!((hwnd), util.boolToFfi(fAnimateBack)));
 }
 
 export function GetThemeAnimationProperty(
@@ -43127,7 +43341,7 @@ export function GetThemeAnimationProperty(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeAnimationProperty(hTheme, iStoryboardId, iTargetId, eProperty, util.toPointer(pvProperty), cbSize, util.toPointer(pcbSizeOut));
+  return libUXTHEME_dll.GetThemeAnimationProperty!(hTheme, iStoryboardId, iTargetId, eProperty, util.toPointer(pvProperty), cbSize, util.toPointer(pcbSizeOut));
 }
 
 export function GetThemeAnimationTransform(
@@ -43139,7 +43353,7 @@ export function GetThemeAnimationTransform(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeAnimationTransform(hTheme, iStoryboardId, iTargetId, dwTransformIndex, util.toPointer(pTransform), cbSize, util.toPointer(pcbSizeOut));
+  return libUXTHEME_dll.GetThemeAnimationTransform!(hTheme, iStoryboardId, iTargetId, dwTransformIndex, util.toPointer(pTransform), cbSize, util.toPointer(pcbSizeOut));
 }
 
 export function GetThemeTimingFunction(
@@ -43149,14 +43363,14 @@ export function GetThemeTimingFunction(
   cbSize: number /* u32 */,
   pcbSizeOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeTimingFunction(hTheme, iTimingFunctionId, util.toPointer(pTimingFunction), cbSize, util.toPointer(pcbSizeOut));
+  return libUXTHEME_dll.GetThemeTimingFunction!(hTheme, iTimingFunctionId, util.toPointer(pTimingFunction), cbSize, util.toPointer(pcbSizeOut));
 }
 
 export function OpenThemeData(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): bigint | number /* isize */ {
-  return libUXTHEME_dll.OpenThemeData((hwnd), util.pwstrToFfi(pszClassList));
+  return libUXTHEME_dll.OpenThemeData!((hwnd), util.pwstrToFfi(pszClassList));
 }
 
 export function OpenThemeDataEx(
@@ -43164,13 +43378,13 @@ export function OpenThemeDataEx(
   pszClassList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: OPEN_THEME_DATA_FLAGS /* Windows.Win32.UI.Controls.OPEN_THEME_DATA_FLAGS */,
 ): bigint | number /* isize */ {
-  return libUXTHEME_dll.OpenThemeDataEx((hwnd), util.pwstrToFfi(pszClassList), dwFlags);
+  return libUXTHEME_dll.OpenThemeDataEx!((hwnd), util.pwstrToFfi(pszClassList), dwFlags);
 }
 
 export function CloseThemeData(
   hTheme: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.CloseThemeData(hTheme);
+  return libUXTHEME_dll.CloseThemeData!(hTheme);
 }
 
 export function DrawThemeBackground(
@@ -43181,7 +43395,7 @@ export function DrawThemeBackground(
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
   pClipRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.DrawThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pClipRect));
+  return libUXTHEME_dll.DrawThemeBackground!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pClipRect));
 }
 
 export function DrawThemeBackgroundEx(
@@ -43192,7 +43406,7 @@ export function DrawThemeBackgroundEx(
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.DrawThemeBackgroundEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pOptions));
+  return libUXTHEME_dll.DrawThemeBackgroundEx!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pOptions));
 }
 
 export function DrawThemeText(
@@ -43206,7 +43420,7 @@ export function DrawThemeText(
   dwTextFlags2: number /* u32 */,
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.DrawThemeText(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, dwTextFlags2, util.toPointer(pRect));
+  return libUxTheme_dll.DrawThemeText!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, dwTextFlags2, util.toPointer(pRect));
 }
 
 export function GetThemeBackgroundContentRect(
@@ -43217,7 +43431,7 @@ export function GetThemeBackgroundContentRect(
   pBoundingRect: Deno.PointerValue | Uint8Array /* ptr */,
   pContentRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeBackgroundContentRect(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pBoundingRect), util.toPointer(pContentRect));
+  return libUXTHEME_dll.GetThemeBackgroundContentRect!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pBoundingRect), util.toPointer(pContentRect));
 }
 
 export function GetThemeBackgroundExtent(
@@ -43228,7 +43442,7 @@ export function GetThemeBackgroundExtent(
   pContentRect: Deno.PointerValue | Uint8Array /* ptr */,
   pExtentRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeBackgroundExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pContentRect), util.toPointer(pExtentRect));
+  return libUXTHEME_dll.GetThemeBackgroundExtent!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pContentRect), util.toPointer(pExtentRect));
 }
 
 export function GetThemeBackgroundRegion(
@@ -43239,7 +43453,7 @@ export function GetThemeBackgroundRegion(
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
   pRegion: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeBackgroundRegion(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pRegion));
+  return libUxTheme_dll.GetThemeBackgroundRegion!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(pRegion));
 }
 
 export function GetThemePartSize(
@@ -43251,7 +43465,7 @@ export function GetThemePartSize(
   eSize: THEMESIZE /* Windows.Win32.UI.Controls.THEMESIZE */,
   psz: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemePartSize(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(prc), eSize, util.toPointer(psz));
+  return libUXTHEME_dll.GetThemePartSize!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(prc), eSize, util.toPointer(psz));
 }
 
 export function GetThemeTextExtent(
@@ -43265,7 +43479,7 @@ export function GetThemeTextExtent(
   pBoundingRect: Deno.PointerValue | Uint8Array /* ptr */,
   pExtentRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeTextExtent(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchCharCount, dwTextFlags, util.toPointer(pBoundingRect), util.toPointer(pExtentRect));
+  return libUxTheme_dll.GetThemeTextExtent!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchCharCount, dwTextFlags, util.toPointer(pBoundingRect), util.toPointer(pExtentRect));
 }
 
 export function GetThemeTextMetrics(
@@ -43275,7 +43489,7 @@ export function GetThemeTextMetrics(
   iStateId: number /* i32 */,
   ptm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeTextMetrics(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(ptm));
+  return libUxTheme_dll.GetThemeTextMetrics!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(ptm));
 }
 
 export function HitTestThemeBackground(
@@ -43289,7 +43503,7 @@ export function HitTestThemeBackground(
   ptTest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
   pwHitTestCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.HitTestThemeBackground(hTheme, util.toPointer(hdc), iPartId, iStateId, dwOptions, util.toPointer(pRect), util.toPointer(hrgn), util.toPointer(ptTest), util.toPointer(pwHitTestCode));
+  return libUxTheme_dll.HitTestThemeBackground!(hTheme, util.toPointer(hdc), iPartId, iStateId, dwOptions, util.toPointer(pRect), util.toPointer(hrgn), util.toPointer(ptTest), util.toPointer(pwHitTestCode));
 }
 
 export function DrawThemeEdge(
@@ -43302,7 +43516,7 @@ export function DrawThemeEdge(
   uFlags: DRAW_EDGE_FLAGS /* Windows.Win32.Graphics.Gdi.DRAW_EDGE_FLAGS */,
   pContentRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.DrawThemeEdge(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pDestRect), uEdge, uFlags, util.toPointer(pContentRect));
+  return libUxTheme_dll.DrawThemeEdge!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pDestRect), uEdge, uFlags, util.toPointer(pContentRect));
 }
 
 export function DrawThemeIcon(
@@ -43314,7 +43528,7 @@ export function DrawThemeIcon(
   himl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HIMAGELIST */,
   iImageIndex: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.DrawThemeIcon(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(himl), iImageIndex);
+  return libUxTheme_dll.DrawThemeIcon!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.toPointer(pRect), util.toPointer(himl), iImageIndex);
 }
 
 export function IsThemePartDefined(
@@ -43322,7 +43536,7 @@ export function IsThemePartDefined(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME_dll.IsThemePartDefined(hTheme, iPartId, iStateId));
+  return util.boolFromFfi(libUXTHEME_dll.IsThemePartDefined!(hTheme, iPartId, iStateId));
 }
 
 export function IsThemeBackgroundPartiallyTransparent(
@@ -43330,7 +43544,7 @@ export function IsThemeBackgroundPartiallyTransparent(
   iPartId: number /* i32 */,
   iStateId: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.IsThemeBackgroundPartiallyTransparent(hTheme, iPartId, iStateId));
+  return util.boolFromFfi(libUxTheme_dll.IsThemeBackgroundPartiallyTransparent!(hTheme, iPartId, iStateId));
 }
 
 export function GetThemeColor(
@@ -43340,7 +43554,7 @@ export function GetThemeColor(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pColor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeColor(hTheme, iPartId, iStateId, iPropId, util.toPointer(pColor));
+  return libUXTHEME_dll.GetThemeColor!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pColor));
 }
 
 export function GetThemeMetric(
@@ -43351,7 +43565,7 @@ export function GetThemeMetric(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeMetric(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(piVal));
+  return libUXTHEME_dll.GetThemeMetric!(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(piVal));
 }
 
 export function GetThemeString(
@@ -43362,7 +43576,7 @@ export function GetThemeString(
   pszBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeString(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszBuff), cchMaxBuffChars);
+  return libUxTheme_dll.GetThemeString!(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszBuff), cchMaxBuffChars);
 }
 
 export function GetThemeBool(
@@ -43372,7 +43586,7 @@ export function GetThemeBool(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pfVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeBool(hTheme, iPartId, iStateId, iPropId, util.toPointer(pfVal));
+  return libUxTheme_dll.GetThemeBool!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pfVal));
 }
 
 export function GetThemeInt(
@@ -43382,7 +43596,7 @@ export function GetThemeInt(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeInt(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal));
+  return libUXTHEME_dll.GetThemeInt!(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal));
 }
 
 export function GetThemeEnumValue(
@@ -43392,7 +43606,7 @@ export function GetThemeEnumValue(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeEnumValue(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal));
+  return libUXTHEME_dll.GetThemeEnumValue!(hTheme, iPartId, iStateId, iPropId, util.toPointer(piVal));
 }
 
 export function GetThemePosition(
@@ -43402,7 +43616,7 @@ export function GetThemePosition(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemePosition(hTheme, iPartId, iStateId, iPropId, util.toPointer(pPoint));
+  return libUXTHEME_dll.GetThemePosition!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pPoint));
 }
 
 export function GetThemeFont(
@@ -43413,7 +43627,7 @@ export function GetThemeFont(
   iPropId: number /* i32 */,
   pFont: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeFont(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(pFont));
+  return libUXTHEME_dll.GetThemeFont!(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(pFont));
 }
 
 export function GetThemeRect(
@@ -43423,7 +43637,7 @@ export function GetThemeRect(
   iPropId: number /* i32 */,
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeRect(hTheme, iPartId, iStateId, iPropId, util.toPointer(pRect));
+  return libUXTHEME_dll.GetThemeRect!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pRect));
 }
 
 export function GetThemeMargins(
@@ -43435,7 +43649,7 @@ export function GetThemeMargins(
   prc: Deno.PointerValue | Uint8Array /* ptr */,
   pMargins: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeMargins(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(prc), util.toPointer(pMargins));
+  return libUXTHEME_dll.GetThemeMargins!(hTheme, util.toPointer(hdc), iPartId, iStateId, iPropId, util.toPointer(prc), util.toPointer(pMargins));
 }
 
 export function GetThemeIntList(
@@ -43445,7 +43659,7 @@ export function GetThemeIntList(
   iPropId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   pIntList: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeIntList(hTheme, iPartId, iStateId, iPropId, util.toPointer(pIntList));
+  return libUxTheme_dll.GetThemeIntList!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pIntList));
 }
 
 export function GetThemePropertyOrigin(
@@ -43455,7 +43669,7 @@ export function GetThemePropertyOrigin(
   iPropId: number /* i32 */,
   pOrigin: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemePropertyOrigin(hTheme, iPartId, iStateId, iPropId, util.toPointer(pOrigin));
+  return libUxTheme_dll.GetThemePropertyOrigin!(hTheme, iPartId, iStateId, iPropId, util.toPointer(pOrigin));
 }
 
 export function SetWindowTheme(
@@ -43463,7 +43677,7 @@ export function SetWindowTheme(
   pszSubAppName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszSubIdList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.SetWindowTheme((hwnd), util.pwstrToFfi(pszSubAppName), util.pwstrToFfi(pszSubIdList));
+  return libUXTHEME_dll.SetWindowTheme!((hwnd), util.pwstrToFfi(pszSubAppName), util.pwstrToFfi(pszSubIdList));
 }
 
 export function GetThemeFilename(
@@ -43474,35 +43688,35 @@ export function GetThemeFilename(
   pszThemeFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxBuffChars: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeFilename(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszThemeFileName), cchMaxBuffChars);
+  return libUxTheme_dll.GetThemeFilename!(hTheme, iPartId, iStateId, iPropId, util.pwstrToFfi(pszThemeFileName), cchMaxBuffChars);
 }
 
 export function GetThemeSysColor(
   hTheme: bigint | number /* isize */,
   iColorId: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.COLORREF */ {
-  return libUxTheme_dll.GetThemeSysColor(hTheme, iColorId);
+  return libUxTheme_dll.GetThemeSysColor!(hTheme, iColorId);
 }
 
 export function GetThemeSysColorBrush(
   hTheme: bigint | number /* isize */,
   iColorId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBRUSH */ {
-  return libUxTheme_dll.GetThemeSysColorBrush(hTheme, iColorId);
+  return libUxTheme_dll.GetThemeSysColorBrush!(hTheme, iColorId);
 }
 
 export function GetThemeSysBool(
   hTheme: bigint | number /* isize */,
   iBoolId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.GetThemeSysBool(hTheme, iBoolId));
+  return util.boolFromFfi(libUxTheme_dll.GetThemeSysBool!(hTheme, iBoolId));
 }
 
 export function GetThemeSysSize(
   hTheme: bigint | number /* isize */,
   iSizeId: number /* i32 */,
 ): number /* i32 */ {
-  return libUxTheme_dll.GetThemeSysSize(hTheme, iSizeId);
+  return libUxTheme_dll.GetThemeSysSize!(hTheme, iSizeId);
 }
 
 export function GetThemeSysFont(
@@ -43510,7 +43724,7 @@ export function GetThemeSysFont(
   iFontId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   plf: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeSysFont(hTheme, iFontId, util.toPointer(plf));
+  return libUxTheme_dll.GetThemeSysFont!(hTheme, iFontId, util.toPointer(plf));
 }
 
 export function GetThemeSysString(
@@ -43519,7 +43733,7 @@ export function GetThemeSysString(
   pszStringBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxStringChars: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeSysString(hTheme, iStringId, util.pwstrToFfi(pszStringBuff), cchMaxStringChars);
+  return libUxTheme_dll.GetThemeSysString!(hTheme, iStringId, util.pwstrToFfi(pszStringBuff), cchMaxStringChars);
 }
 
 export function GetThemeSysInt(
@@ -43527,44 +43741,44 @@ export function GetThemeSysInt(
   iIntId: THEME_PROPERTY_SYMBOL_ID /* Windows.Win32.UI.Controls.THEME_PROPERTY_SYMBOL_ID */,
   piValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeSysInt(hTheme, iIntId, util.toPointer(piValue));
+  return libUxTheme_dll.GetThemeSysInt!(hTheme, iIntId, util.toPointer(piValue));
 }
 
 export function IsThemeActive(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME_dll.IsThemeActive());
+  return util.boolFromFfi(libUXTHEME_dll.IsThemeActive!());
 }
 
 export function IsAppThemed(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME_dll.IsAppThemed());
+  return util.boolFromFfi(libUXTHEME_dll.IsAppThemed!());
 }
 
 export function GetWindowTheme(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): bigint | number /* isize */ {
-  return libUXTHEME_dll.GetWindowTheme((hwnd));
+  return libUXTHEME_dll.GetWindowTheme!((hwnd));
 }
 
 export function EnableThemeDialogTexture(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.EnableThemeDialogTexture((hwnd), dwFlags);
+  return libUxTheme_dll.EnableThemeDialogTexture!((hwnd), dwFlags);
 }
 
 export function IsThemeDialogTextureEnabled(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.IsThemeDialogTextureEnabled((hwnd)));
+  return util.boolFromFfi(libUxTheme_dll.IsThemeDialogTextureEnabled!((hwnd)));
 }
 
 export function GetThemeAppProperties(): SET_THEME_APP_PROPERTIES_FLAGS /* Windows.Win32.UI.Controls.SET_THEME_APP_PROPERTIES_FLAGS */ {
-  return libUXTHEME_dll.GetThemeAppProperties();
+  return libUXTHEME_dll.GetThemeAppProperties!();
 }
 
 export function SetThemeAppProperties(
   dwFlags: SET_THEME_APP_PROPERTIES_FLAGS /* Windows.Win32.UI.Controls.SET_THEME_APP_PROPERTIES_FLAGS */,
 ): void /* void */ {
-  return libUxTheme_dll.SetThemeAppProperties(dwFlags);
+  return libUxTheme_dll.SetThemeAppProperties!(dwFlags);
 }
 
 export function GetCurrentThemeName(
@@ -43575,7 +43789,7 @@ export function GetCurrentThemeName(
   pszSizeBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxSizeChars: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetCurrentThemeName(util.pwstrToFfi(pszThemeFileName), cchMaxNameChars, util.pwstrToFfi(pszColorBuff), cchMaxColorChars, util.pwstrToFfi(pszSizeBuff), cchMaxSizeChars);
+  return libUXTHEME_dll.GetCurrentThemeName!(util.pwstrToFfi(pszThemeFileName), cchMaxNameChars, util.pwstrToFfi(pszColorBuff), cchMaxColorChars, util.pwstrToFfi(pszSizeBuff), cchMaxSizeChars);
 }
 
 export function GetThemeDocumentationProperty(
@@ -43584,7 +43798,7 @@ export function GetThemeDocumentationProperty(
   pszValueBuff: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxValChars: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeDocumentationProperty(util.pwstrToFfi(pszThemeName), util.pwstrToFfi(pszPropertyName), util.pwstrToFfi(pszValueBuff), cchMaxValChars);
+  return libUxTheme_dll.GetThemeDocumentationProperty!(util.pwstrToFfi(pszThemeName), util.pwstrToFfi(pszPropertyName), util.pwstrToFfi(pszValueBuff), cchMaxValChars);
 }
 
 export function DrawThemeParentBackground(
@@ -43592,13 +43806,13 @@ export function DrawThemeParentBackground(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.DrawThemeParentBackground((hwnd), util.toPointer(hdc), util.toPointer(prc));
+  return libUXTHEME_dll.DrawThemeParentBackground!((hwnd), util.toPointer(hdc), util.toPointer(prc));
 }
 
 export function EnableTheming(
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.EnableTheming(util.boolToFfi(fEnable));
+  return libUxTheme_dll.EnableTheming!(util.boolToFfi(fEnable));
 }
 
 export function DrawThemeParentBackgroundEx(
@@ -43607,7 +43821,7 @@ export function DrawThemeParentBackgroundEx(
   dwFlags: DRAW_THEME_PARENT_BACKGROUND_FLAGS /* Windows.Win32.UI.Controls.DRAW_THEME_PARENT_BACKGROUND_FLAGS */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.DrawThemeParentBackgroundEx((hwnd), util.toPointer(hdc), dwFlags, util.toPointer(prc));
+  return libUxTheme_dll.DrawThemeParentBackgroundEx!((hwnd), util.toPointer(hdc), dwFlags, util.toPointer(prc));
 }
 
 export function SetWindowThemeAttribute(
@@ -43616,7 +43830,7 @@ export function SetWindowThemeAttribute(
   pvAttribute: Deno.PointerValue | Uint8Array /* ptr */,
   cbAttribute: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.SetWindowThemeAttribute((hwnd), eAttribute, util.toPointer(pvAttribute), cbAttribute);
+  return libUXTHEME_dll.SetWindowThemeAttribute!((hwnd), eAttribute, util.toPointer(pvAttribute), cbAttribute);
 }
 
 export function DrawThemeTextEx(
@@ -43630,7 +43844,7 @@ export function DrawThemeTextEx(
   pRect: Deno.PointerValue | Uint8Array /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.DrawThemeTextEx(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, util.toPointer(pRect), util.toPointer(pOptions));
+  return libUXTHEME_dll.DrawThemeTextEx!(hTheme, util.toPointer(hdc), iPartId, iStateId, util.pwstrToFfi(pszText), cchText, dwTextFlags, util.toPointer(pRect), util.toPointer(pOptions));
 }
 
 export function GetThemeBitmap(
@@ -43641,7 +43855,7 @@ export function GetThemeBitmap(
   dwFlags: GET_THEME_BITMAP_FLAGS /* Windows.Win32.UI.Controls.GET_THEME_BITMAP_FLAGS */,
   phBitmap: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeBitmap(hTheme, iPartId, iStateId, iPropId, dwFlags, util.toPointer(phBitmap));
+  return libUXTHEME_dll.GetThemeBitmap!(hTheme, iPartId, iStateId, iPropId, dwFlags, util.toPointer(phBitmap));
 }
 
 export function GetThemeStream(
@@ -43653,15 +43867,15 @@ export function GetThemeStream(
   pcbStream: Deno.PointerValue | Uint8Array /* ptr */,
   hInst: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetThemeStream(hTheme, iPartId, iStateId, iPropId, util.toPointer(ppvStream), util.toPointer(pcbStream), util.toPointer(hInst));
+  return libUXTHEME_dll.GetThemeStream!(hTheme, iPartId, iStateId, iPropId, util.toPointer(ppvStream), util.toPointer(pcbStream), util.toPointer(hInst));
 }
 
 export function BufferedPaintInit(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.BufferedPaintInit();
+  return libUXTHEME_dll.BufferedPaintInit!();
 }
 
 export function BufferedPaintUnInit(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.BufferedPaintUnInit();
+  return libUXTHEME_dll.BufferedPaintUnInit!();
 }
 
 export function BeginBufferedPaint(
@@ -43671,33 +43885,33 @@ export function BeginBufferedPaint(
   pPaintParams: Deno.PointerValue | Uint8Array /* ptr */,
   phdc: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libUXTHEME_dll.BeginBufferedPaint(util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(phdc));
+  return libUXTHEME_dll.BeginBufferedPaint!(util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(phdc));
 }
 
 export function EndBufferedPaint(
   hBufferedPaint: bigint | number /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.EndBufferedPaint(hBufferedPaint, util.boolToFfi(fUpdateTarget));
+  return libUXTHEME_dll.EndBufferedPaint!(hBufferedPaint, util.boolToFfi(fUpdateTarget));
 }
 
 export function GetBufferedPaintTargetRect(
   hBufferedPaint: bigint | number /* isize */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetBufferedPaintTargetRect(hBufferedPaint, util.toPointer(prc));
+  return libUxTheme_dll.GetBufferedPaintTargetRect!(hBufferedPaint, util.toPointer(prc));
 }
 
 export function GetBufferedPaintTargetDC(
   hBufferedPaint: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return libUxTheme_dll.GetBufferedPaintTargetDC(hBufferedPaint);
+  return libUxTheme_dll.GetBufferedPaintTargetDC!(hBufferedPaint);
 }
 
 export function GetBufferedPaintDC(
   hBufferedPaint: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return libUxTheme_dll.GetBufferedPaintDC(hBufferedPaint);
+  return libUxTheme_dll.GetBufferedPaintDC!(hBufferedPaint);
 }
 
 export function GetBufferedPaintBits(
@@ -43705,14 +43919,14 @@ export function GetBufferedPaintBits(
   ppbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pcxRow: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.GetBufferedPaintBits(hBufferedPaint, util.toPointer(ppbBuffer), util.toPointer(pcxRow));
+  return libUXTHEME_dll.GetBufferedPaintBits!(hBufferedPaint, util.toPointer(ppbBuffer), util.toPointer(pcxRow));
 }
 
 export function BufferedPaintClear(
   hBufferedPaint: bigint | number /* isize */,
   prc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.BufferedPaintClear(hBufferedPaint, util.toPointer(prc));
+  return libUXTHEME_dll.BufferedPaintClear!(hBufferedPaint, util.toPointer(prc));
 }
 
 export function BufferedPaintSetAlpha(
@@ -43720,13 +43934,13 @@ export function BufferedPaintSetAlpha(
   prc: Deno.PointerValue | Uint8Array /* ptr */,
   alpha: number /* u8 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.BufferedPaintSetAlpha(hBufferedPaint, util.toPointer(prc), alpha);
+  return libUxTheme_dll.BufferedPaintSetAlpha!(hBufferedPaint, util.toPointer(prc), alpha);
 }
 
 export function BufferedPaintStopAllAnimations(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUXTHEME_dll.BufferedPaintStopAllAnimations((hwnd));
+  return libUXTHEME_dll.BufferedPaintStopAllAnimations!((hwnd));
 }
 
 export function BeginBufferedAnimation(
@@ -43739,25 +43953,25 @@ export function BeginBufferedAnimation(
   phdcFrom: Deno.PointerValue | Uint8Array /* ptr */,
   phdcTo: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libUxTheme_dll.BeginBufferedAnimation((hwnd), util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(pAnimationParams), util.toPointer(phdcFrom), util.toPointer(phdcTo));
+  return libUxTheme_dll.BeginBufferedAnimation!((hwnd), util.toPointer(hdcTarget), util.toPointer(prcTarget), dwFormat, util.toPointer(pPaintParams), util.toPointer(pAnimationParams), util.toPointer(phdcFrom), util.toPointer(phdcTo));
 }
 
 export function EndBufferedAnimation(
   hbpAnimation: bigint | number /* isize */,
   fUpdateTarget: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.EndBufferedAnimation(hbpAnimation, util.boolToFfi(fUpdateTarget));
+  return libUxTheme_dll.EndBufferedAnimation!(hbpAnimation, util.boolToFfi(fUpdateTarget));
 }
 
 export function BufferedPaintRenderAnimation(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hdcTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUxTheme_dll.BufferedPaintRenderAnimation((hwnd), util.toPointer(hdcTarget)));
+  return util.boolFromFfi(libUxTheme_dll.BufferedPaintRenderAnimation!((hwnd), util.toPointer(hdcTarget)));
 }
 
 export function IsCompositionActive(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUXTHEME_dll.IsCompositionActive());
+  return util.boolFromFfi(libUXTHEME_dll.IsCompositionActive!());
 }
 
 export function GetThemeTransitionDuration(
@@ -43768,7 +43982,7 @@ export function GetThemeTransitionDuration(
   iPropId: number /* i32 */,
   pdwDuration: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libUxTheme_dll.GetThemeTransitionDuration(hTheme, iPartId, iStateIdFrom, iStateIdTo, iPropId, util.toPointer(pdwDuration));
+  return libUxTheme_dll.GetThemeTransitionDuration!(hTheme, iPartId, iStateIdFrom, iStateIdTo, iPropId, util.toPointer(pdwDuration));
 }
 
 export function CheckDlgButton(
@@ -43776,7 +43990,7 @@ export function CheckDlgButton(
   nIDButton: number /* i32 */,
   uCheck: DLG_BUTTON_CHECK_STATE /* Windows.Win32.UI.Controls.DLG_BUTTON_CHECK_STATE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CheckDlgButton((hDlg), nIDButton, uCheck));
+  return util.boolFromFfi(libUSER32_dll.CheckDlgButton!((hDlg), nIDButton, uCheck));
 }
 
 export function CheckRadioButton(
@@ -43785,20 +43999,20 @@ export function CheckRadioButton(
   nIDLastButton: number /* i32 */,
   nIDCheckButton: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CheckRadioButton((hDlg), nIDFirstButton, nIDLastButton, nIDCheckButton));
+  return util.boolFromFfi(libUSER32_dll.CheckRadioButton!((hDlg), nIDFirstButton, nIDLastButton, nIDCheckButton));
 }
 
 export function IsDlgButtonChecked(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIDButton: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.IsDlgButtonChecked((hDlg), nIDButton);
+  return libUSER32_dll.IsDlgButtonChecked!((hDlg), nIDButton);
 }
 
 export function IsCharLowerW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharLowerW(util.toPointer(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharLowerW!(util.toPointer(ch)));
 }
 
 export function CreateSyntheticPointerDevice(
@@ -43806,20 +44020,20 @@ export function CreateSyntheticPointerDevice(
   maxCount: number /* u32 */,
   mode: POINTER_FEEDBACK_MODE /* Windows.Win32.UI.Controls.POINTER_FEEDBACK_MODE */,
 ): Deno.PointerValue /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */ {
-  return libUSER32_dll.CreateSyntheticPointerDevice(pointerType, maxCount, mode);
+  return libUSER32_dll.CreateSyntheticPointerDevice!(pointerType, maxCount, mode);
 }
 
 export function DestroySyntheticPointerDevice(
   device: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Controls.HSYNTHETICPOINTERDEVICE */,
 ): void /* void */ {
-  return libUSER32_dll.DestroySyntheticPointerDevice(util.toPointer(device));
+  return libUSER32_dll.DestroySyntheticPointerDevice!(util.toPointer(device));
 }
 
 export function RegisterTouchHitTestingWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   value: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterTouchHitTestingWindow((hwnd), value));
+  return util.boolFromFfi(libUSER32_dll.RegisterTouchHitTestingWindow!((hwnd), value));
 }
 
 export function EvaluateProximityToRect(
@@ -43827,7 +44041,7 @@ export function EvaluateProximityToRect(
   pHitTestingInput: Deno.PointerValue | Uint8Array /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToRect(util.toPointer(controlBoundingBox), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
+  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToRect!(util.toPointer(controlBoundingBox), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
 }
 
 export function EvaluateProximityToPolygon(
@@ -43836,14 +44050,14 @@ export function EvaluateProximityToPolygon(
   pHitTestingInput: Deno.PointerValue | Uint8Array /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToPolygon(numVertices, util.toPointer(controlPolygon), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
+  return util.boolFromFfi(libUSER32_dll.EvaluateProximityToPolygon!(numVertices, util.toPointer(controlPolygon), util.toPointer(pHitTestingInput), util.toPointer(pProximityEval)));
 }
 
 export function PackTouchHitTestingProximityEvaluation(
   pHitTestingInput: Deno.PointerValue | Uint8Array /* ptr */,
   pProximityEval: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.PackTouchHitTestingProximityEvaluation(util.toPointer(pHitTestingInput), util.toPointer(pProximityEval));
+  return libUSER32_dll.PackTouchHitTestingProximityEvaluation!(util.toPointer(pHitTestingInput), util.toPointer(pProximityEval));
 }
 
 export function GetWindowFeedbackSetting(
@@ -43853,7 +44067,7 @@ export function GetWindowFeedbackSetting(
   pSize: Deno.PointerValue | Uint8Array /* ptr */,
   config: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetWindowFeedbackSetting((hwnd), feedback, dwFlags, util.toPointer(pSize), util.toPointer(config)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowFeedbackSetting!((hwnd), feedback, dwFlags, util.toPointer(pSize), util.toPointer(config)));
 }
 
 export function SetWindowFeedbackSetting(
@@ -43863,7 +44077,7 @@ export function SetWindowFeedbackSetting(
   size: number /* u32 */,
   configuration: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowFeedbackSetting((hwnd), feedback, dwFlags, size, util.toPointer(configuration)));
+  return util.boolFromFfi(libUSER32_dll.SetWindowFeedbackSetting!((hwnd), feedback, dwFlags, size, util.toPointer(configuration)));
 }
 
 export function SetScrollPos(
@@ -43872,7 +44086,7 @@ export function SetScrollPos(
   nPos: number /* i32 */,
   bRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32_dll.SetScrollPos((hWnd), nBar, nPos, util.boolToFfi(bRedraw));
+  return libUSER32_dll.SetScrollPos!((hWnd), nBar, nPos, util.boolToFfi(bRedraw));
 }
 
 export function SetScrollRange(
@@ -43882,7 +44096,7 @@ export function SetScrollRange(
   nMaxPos: number /* i32 */,
   bRedraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetScrollRange((hWnd), nBar, nMinPos, nMaxPos, util.boolToFfi(bRedraw)));
+  return util.boolFromFfi(libUSER32_dll.SetScrollRange!((hWnd), nBar, nMinPos, nMaxPos, util.boolToFfi(bRedraw)));
 }
 
 export function ShowScrollBar(
@@ -43890,7 +44104,7 @@ export function ShowScrollBar(
   wBar: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   bShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShowScrollBar((hWnd), wBar, util.boolToFfi(bShow)));
+  return util.boolFromFfi(libUSER32_dll.ShowScrollBar!((hWnd), wBar, util.boolToFfi(bShow)));
 }
 
 export function EnableScrollBar(
@@ -43898,7 +44112,7 @@ export function EnableScrollBar(
   wSBflags: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   wArrows: ENABLE_SCROLL_BAR_ARROWS /* Windows.Win32.UI.Controls.ENABLE_SCROLL_BAR_ARROWS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnableScrollBar((hWnd), wSBflags, wArrows));
+  return util.boolFromFfi(libUSER32_dll.EnableScrollBar!((hWnd), wSBflags, wArrows));
 }
 
 export function DlgDirListA(
@@ -43908,7 +44122,7 @@ export function DlgDirListA(
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32_dll.DlgDirListA((hDlg), util.pstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
+  return libUSER32_dll.DlgDirListA!((hDlg), util.pstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
 }
 
 export function DlgDirListW(
@@ -43918,7 +44132,7 @@ export function DlgDirListW(
   nIDStaticPath: number /* i32 */,
   uFileType: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32_dll.DlgDirListW((hDlg), util.pwstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
+  return libUSER32_dll.DlgDirListW!((hDlg), util.pwstrToFfi(lpPathSpec), nIDListBox, nIDStaticPath, uFileType);
 }
 
 export function DlgDirSelectExA(
@@ -43927,7 +44141,7 @@ export function DlgDirSelectExA(
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExA((hwndDlg), util.pstrToFfi(lpString), chCount, idListBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExA!((hwndDlg), util.pstrToFfi(lpString), chCount, idListBox));
 }
 
 export function DlgDirSelectExW(
@@ -43936,7 +44150,7 @@ export function DlgDirSelectExW(
   chCount: number /* i32 */,
   idListBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExW((hwndDlg), util.pwstrToFfi(lpString), chCount, idListBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectExW!((hwndDlg), util.pwstrToFfi(lpString), chCount, idListBox));
 }
 
 export function DlgDirListComboBoxA(
@@ -43946,7 +44160,7 @@ export function DlgDirListComboBoxA(
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32_dll.DlgDirListComboBoxA((hDlg), util.pstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
+  return libUSER32_dll.DlgDirListComboBoxA!((hDlg), util.pstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
 }
 
 export function DlgDirListComboBoxW(
@@ -43956,7 +44170,7 @@ export function DlgDirListComboBoxW(
   nIDStaticPath: number /* i32 */,
   uFiletype: DLG_DIR_LIST_FILE_TYPE /* Windows.Win32.UI.Controls.DLG_DIR_LIST_FILE_TYPE */,
 ): number /* i32 */ {
-  return libUSER32_dll.DlgDirListComboBoxW((hDlg), util.pwstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
+  return libUSER32_dll.DlgDirListComboBoxW!((hDlg), util.pwstrToFfi(lpPathSpec), nIDComboBox, nIDStaticPath, uFiletype);
 }
 
 export function DlgDirSelectComboBoxExA(
@@ -43965,7 +44179,7 @@ export function DlgDirSelectComboBoxExA(
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExA((hwndDlg), util.pstrToFfi(lpString), cchOut, idComboBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExA!((hwndDlg), util.pstrToFfi(lpString), cchOut, idComboBox));
 }
 
 export function DlgDirSelectComboBoxExW(
@@ -43974,7 +44188,7 @@ export function DlgDirSelectComboBoxExW(
   cchOut: number /* i32 */,
   idComboBox: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExW((hwndDlg), util.pwstrToFfi(lpString), cchOut, idComboBox));
+  return util.boolFromFfi(libUSER32_dll.DlgDirSelectComboBoxExW!((hwndDlg), util.pwstrToFfi(lpString), cchOut, idComboBox));
 }
 
 export function SetScrollInfo(
@@ -43983,26 +44197,26 @@ export function SetScrollInfo(
   lpsi: Deno.PointerValue | Uint8Array /* ptr */,
   redraw: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32_dll.SetScrollInfo((hwnd), nBar, util.toPointer(lpsi), util.boolToFfi(redraw));
+  return libUSER32_dll.SetScrollInfo!((hwnd), nBar, util.toPointer(lpsi), util.boolToFfi(redraw));
 }
 
 export function GetComboBoxInfo(
   hwndCombo: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pcbi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetComboBoxInfo((hwndCombo), util.toPointer(pcbi)));
+  return util.boolFromFfi(libUSER32_dll.GetComboBoxInfo!((hwndCombo), util.toPointer(pcbi)));
 }
 
 export function GetListBoxInfo(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetListBoxInfo((hwnd));
+  return libUSER32_dll.GetListBoxInfo!((hwnd));
 }
 
 export function RegisterPointerDeviceNotifications(
   window: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   notifyRange: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterPointerDeviceNotifications((window), util.boolToFfi(notifyRange)));
+  return util.boolFromFfi(libUSER32_dll.RegisterPointerDeviceNotifications!((window), util.boolToFfi(notifyRange)));
 }
 

@@ -2312,38 +2312,47 @@ try {
     WICConvertBitmapSource: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICCreateBitmapFromSection: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICCreateBitmapFromSectionEx: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICMapGuidToShortName: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICMapShortNameToGuid: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICMapSchemaToName: {
       parameters: ["pointer", "buffer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICMatchMetadataContent: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICSerializeMetadataContent: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WICGetMetadataContentSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2355,7 +2364,7 @@ export function WICConvertBitmapSource(
   pISrc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Imaging.IWICBitmapSource */,
   ppIDst: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICConvertBitmapSource(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst));
+  return libWindowsCodecs_dll.WICConvertBitmapSource!(util.toPointer(dstFormat), util.toPointer(pISrc), util.toPointer(ppIDst));
 }
 
 export function WICCreateBitmapFromSection(
@@ -2367,7 +2376,7 @@ export function WICCreateBitmapFromSection(
   offset: number /* u32 */,
   ppIBitmap: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICCreateBitmapFromSection(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap));
+  return libWindowsCodecs_dll.WICCreateBitmapFromSection!(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, util.toPointer(ppIBitmap));
 }
 
 export function WICCreateBitmapFromSectionEx(
@@ -2380,7 +2389,7 @@ export function WICCreateBitmapFromSectionEx(
   desiredAccessLevel: WICSectionAccessLevel /* Windows.Win32.Graphics.Imaging.WICSectionAccessLevel */,
   ppIBitmap: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICCreateBitmapFromSectionEx(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap));
+  return libWindowsCodecs_dll.WICCreateBitmapFromSectionEx!(width, height, util.toPointer(pixelFormat), util.toPointer(hSection), stride, offset, desiredAccessLevel, util.toPointer(ppIBitmap));
 }
 
 export function WICMapGuidToShortName(
@@ -2389,14 +2398,14 @@ export function WICMapGuidToShortName(
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICMapGuidToShortName(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
+  return libWindowsCodecs_dll.WICMapGuidToShortName!(util.toPointer(guid), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
 }
 
 export function WICMapShortNameToGuid(
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pguid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICMapShortNameToGuid(util.pwstrToFfi(wzName), util.toPointer(pguid));
+  return libWindowsCodecs_dll.WICMapShortNameToGuid!(util.pwstrToFfi(wzName), util.toPointer(pguid));
 }
 
 export function WICMapSchemaToName(
@@ -2406,7 +2415,7 @@ export function WICMapSchemaToName(
   wzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICMapSchemaToName(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
+  return libWindowsCodecs_dll.WICMapSchemaToName!(util.toPointer(guidMetadataFormat), util.pwstrToFfi(pwzSchema), cchName, util.pwstrToFfi(wzName), util.toPointer(pcchActual));
 }
 
 export function WICMatchMetadataContent(
@@ -2415,7 +2424,7 @@ export function WICMatchMetadataContent(
   pIStream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pguidMetadataFormat: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICMatchMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat));
+  return libWindowsCodecs_dll.WICMatchMetadataContent!(util.toPointer(guidContainerFormat), util.toPointer(pguidVendor), util.toPointer(pIStream), util.toPointer(pguidMetadataFormat));
 }
 
 export function WICSerializeMetadataContent(
@@ -2424,7 +2433,7 @@ export function WICSerializeMetadataContent(
   dwPersistOptions: number /* u32 */,
   pIStream: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICSerializeMetadataContent(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream));
+  return libWindowsCodecs_dll.WICSerializeMetadataContent!(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), dwPersistOptions, util.toPointer(pIStream));
 }
 
 export function WICGetMetadataContentSize(
@@ -2432,6 +2441,6 @@ export function WICGetMetadataContentSize(
   pIWriter: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Imaging.IWICMetadataWriter */,
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindowsCodecs_dll.WICGetMetadataContentSize(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize));
+  return libWindowsCodecs_dll.WICGetMetadataContentSize!(util.toPointer(guidContainerFormat), util.toPointer(pIWriter), util.toPointer(pcbSize));
 }
 

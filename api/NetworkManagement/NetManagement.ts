@@ -27944,530 +27944,662 @@ try {
     NetUserAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserEnum: {
       parameters: ["buffer", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetUserGetGroups: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserSetGroups: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetUserGetLocalGroups: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserModalsGet: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserModalsSet: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUserChangePassword: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetGroupAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGroupAddUser: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetGroupEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGroupGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGroupSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGroupDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetGroupDelUser: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetGroupGetUsers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGroupSetUsers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupAddMember: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupDelMember: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupGetMembers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupSetMembers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupAddMembers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetLocalGroupDelMembers: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetQueryDisplayInformation: {
       parameters: ["buffer", "u32", "u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGetDisplayInformationIndex: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAccessAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAccessEnum: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAccessGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAccessSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAccessDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetAccessGetUserPerms: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetValidatePasswordPolicy: {
       parameters: ["buffer", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetValidatePasswordPolicyFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     NetGetDCName: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGetAnyDCName: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     I_NetLogonControl2: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAddServiceAccount: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NetRemoveServiceAccount: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NetEnumerateServiceAccounts: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NetIsServiceAccount: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NetQueryServiceAccount: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NetAlertRaise: {
       parameters: ["buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetAlertRaiseEx: {
       parameters: ["buffer", "pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetMessageNameAdd: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetMessageNameEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetMessageNameGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetMessageNameDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetMessageBufferSend: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetRemoteTOD: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetRemoteComputerSupports: {
       parameters: ["buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplGetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplSetInfo: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirSetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirLock: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetReplExportDirUnlock: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirAdd: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirLock: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetReplImportDirUnlock: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetServerEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerGetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerSetInfo: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerDiskEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerComputerNameAdd: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetServerComputerNameDel: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetServerTransportAdd: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerTransportAddEx: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerTransportDel: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServerTransportEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServiceControl: {
       parameters: ["buffer", "buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServiceEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServiceGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetServiceInstall: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUseAdd: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUseDel: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetUseEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetUseGetInfo: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaGetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaSetInfo: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaUserGetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaUserSetInfo: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaUserEnum: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaTransportAdd: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetWkstaTransportDel: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetWkstaTransportEnum: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetApiBufferAllocate: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetApiBufferFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     NetApiBufferReallocate: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetApiBufferSize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetErrorLogClear: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetErrorLogRead: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetErrorLogWrite: {
       parameters: ["pointer", "u32", "buffer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetConfigGet: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetConfigGetAll: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetConfigSet: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetAuditClear: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetAuditRead: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAuditWrite: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetJoinDomain: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetUnjoinDomain: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetRenameMachineInDomain: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetValidateName: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     NetGetJoinableOUs: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetAddAlternateComputerName: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetRemoveAlternateComputerName: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetSetPrimaryComputerName: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     NetEnumerateComputerNames: {
       parameters: ["buffer", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetProvisionComputerAccount: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetRequestOfflineDomainJoin: {
       parameters: ["pointer", "u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     NetCreateProvisioningPackage: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetRequestProvisioningPackageInstall: {
       parameters: ["pointer", "u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetGetAadJoinInformation: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NetFreeAadJoinInformation: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NetGetJoinInformation: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetScheduleJobAdd: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetScheduleJobDel: {
       parameters: ["buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     NetScheduleJobEnum: {
       parameters: ["buffer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetScheduleJobGetInfo: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -28477,10 +28609,12 @@ try {
     GetNetScheduleAccountInformation: {
       parameters: ["buffer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SetNetScheduleAccountInformation: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -28490,166 +28624,207 @@ try {
     TraceRegisterExA: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     TraceDeregisterA: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     TraceDeregisterExA: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     TraceGetConsoleA: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TracePrintfA: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TracePrintfExA: {
       parameters: ["u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TraceVprintfExA: {
       parameters: ["u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TracePutsExA: {
       parameters: ["u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TraceDumpExA: {
       parameters: ["u32", "u32", "pointer", "u32", "u32", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TraceRegisterExW: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     TraceDeregisterW: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     TraceDeregisterExW: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     TraceGetConsoleW: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TracePrintfW: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TracePrintfExW: {
       parameters: ["u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TraceVprintfExW: {
       parameters: ["u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TracePutsExW: {
       parameters: ["u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TraceDumpExW: {
       parameters: ["u32", "u32", "pointer", "u32", "u32", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     LogErrorA: {
       parameters: ["u32", "u32", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     LogEventA: {
       parameters: ["u32", "u32", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     LogErrorW: {
       parameters: ["u32", "u32", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     LogEventW: {
       parameters: ["u32", "u32", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     RouterLogRegisterA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     RouterLogDeregisterA: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventA: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     RouterLogEventDataA: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventStringA: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "u32"],
       result: "void",
+      optional: true,
     },
     RouterLogEventExA: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventValistExA: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer", "pointer"],
       result: "void",
+      optional: true,
     },
     RouterGetErrorStringA: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RouterLogRegisterW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     RouterLogDeregisterW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventW: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     RouterLogEventDataW: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventStringW: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "u32"],
       result: "void",
+      optional: true,
     },
     RouterLogEventExW: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer"],
       result: "void",
+      optional: true,
     },
     RouterLogEventValistExW: {
       parameters: ["pointer", "u32", "u32", "u32", "buffer", "pointer"],
       result: "void",
+      optional: true,
     },
     RouterGetErrorStringW: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RouterAssert: {
       parameters: ["buffer", "buffer", "u32", "buffer"],
       result: "void",
+      optional: true,
     },
     MprSetupProtocolEnum: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MprSetupProtocolFree: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -28662,7 +28837,7 @@ export function NetUserAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetUserAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetUserEnum(
@@ -28675,7 +28850,7 @@ export function NetUserEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserEnum(util.pwstrToFfi(servername), level, filter, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetUserEnum!(util.pwstrToFfi(servername), level, filter, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetUserGetInfo(
@@ -28684,7 +28859,7 @@ export function NetUserGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetUserGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(bufptr));
 }
 
 export function NetUserSetInfo(
@@ -28694,14 +28869,14 @@ export function NetUserSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetUserSetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetUserDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserDel(util.pwstrToFfi(servername), util.pwstrToFfi(username));
+  return libNETAPI32_dll.NetUserDel!(util.pwstrToFfi(servername), util.pwstrToFfi(username));
 }
 
 export function NetUserGetGroups(
@@ -28713,7 +28888,7 @@ export function NetUserGetGroups(
   entriesread: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserGetGroups(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries));
+  return libNETAPI32_dll.NetUserGetGroups!(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries));
 }
 
 export function NetUserSetGroups(
@@ -28723,7 +28898,7 @@ export function NetUserSetGroups(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   num_entries: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserSetGroups(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(buf), num_entries);
+  return libNETAPI32_dll.NetUserSetGroups!(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, util.toPointer(buf), num_entries);
 }
 
 export function NetUserGetLocalGroups(
@@ -28736,7 +28911,7 @@ export function NetUserGetLocalGroups(
   entriesread: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserGetLocalGroups(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, flags, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries));
+  return libNETAPI32_dll.NetUserGetLocalGroups!(util.pwstrToFfi(servername), util.pwstrToFfi(username), level, flags, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries));
 }
 
 export function NetUserModalsGet(
@@ -28744,7 +28919,7 @@ export function NetUserModalsGet(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserModalsGet(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetUserModalsGet!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetUserModalsSet(
@@ -28753,7 +28928,7 @@ export function NetUserModalsSet(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserModalsSet(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetUserModalsSet!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetUserChangePassword(
@@ -28762,7 +28937,7 @@ export function NetUserChangePassword(
   oldpassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   newpassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUserChangePassword(util.pwstrToFfi(domainname), util.pwstrToFfi(username), util.pwstrToFfi(oldpassword), util.pwstrToFfi(newpassword));
+  return libNETAPI32_dll.NetUserChangePassword!(util.pwstrToFfi(domainname), util.pwstrToFfi(username), util.pwstrToFfi(oldpassword), util.pwstrToFfi(newpassword));
 }
 
 export function NetGroupAdd(
@@ -28771,7 +28946,7 @@ export function NetGroupAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetGroupAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetGroupAddUser(
@@ -28779,7 +28954,7 @@ export function NetGroupAddUser(
   GroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupAddUser(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(username));
+  return libNETAPI32_dll.NetGroupAddUser!(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(username));
 }
 
 export function NetGroupEnum(
@@ -28791,7 +28966,7 @@ export function NetGroupEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetGroupEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetGroupGetInfo(
@@ -28800,7 +28975,7 @@ export function NetGroupGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetGroupGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr));
 }
 
 export function NetGroupSetInfo(
@@ -28810,14 +28985,14 @@ export function NetGroupSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetGroupSetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetGroupDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupDel(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
+  return libNETAPI32_dll.NetGroupDel!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
 }
 
 export function NetGroupDelUser(
@@ -28825,7 +29000,7 @@ export function NetGroupDelUser(
   GroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Username: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupDelUser(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(Username));
+  return libNETAPI32_dll.NetGroupDelUser!(util.pwstrToFfi(servername), util.pwstrToFfi(GroupName), util.pwstrToFfi(Username));
 }
 
 export function NetGroupGetUsers(
@@ -28838,7 +29013,7 @@ export function NetGroupGetUsers(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupGetUsers(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(ResumeHandle));
+  return libNETAPI32_dll.NetGroupGetUsers!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(ResumeHandle));
 }
 
 export function NetGroupSetUsers(
@@ -28848,7 +29023,7 @@ export function NetGroupSetUsers(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGroupSetUsers(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
+  return libNETAPI32_dll.NetGroupSetUsers!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
 }
 
 export function NetLocalGroupAdd(
@@ -28857,7 +29032,7 @@ export function NetLocalGroupAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetLocalGroupAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetLocalGroupAddMember(
@@ -28865,7 +29040,7 @@ export function NetLocalGroupAddMember(
   groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   membersid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupAddMember(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
+  return libNETAPI32_dll.NetLocalGroupAddMember!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
 }
 
 export function NetLocalGroupEnum(
@@ -28877,7 +29052,7 @@ export function NetLocalGroupEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetLocalGroupEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetLocalGroupGetInfo(
@@ -28886,7 +29061,7 @@ export function NetLocalGroupGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetLocalGroupGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(bufptr));
 }
 
 export function NetLocalGroupSetInfo(
@@ -28896,14 +29071,14 @@ export function NetLocalGroupSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetLocalGroupSetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetLocalGroupDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupDel(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
+  return libNETAPI32_dll.NetLocalGroupDel!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname));
 }
 
 export function NetLocalGroupDelMember(
@@ -28911,7 +29086,7 @@ export function NetLocalGroupDelMember(
   groupname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   membersid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupDelMember(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
+  return libNETAPI32_dll.NetLocalGroupDelMember!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), util.toPointer(membersid));
 }
 
 export function NetLocalGroupGetMembers(
@@ -28924,7 +29099,7 @@ export function NetLocalGroupGetMembers(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupGetMembers(util.pwstrToFfi(servername), util.pwstrToFfi(localgroupname), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetLocalGroupGetMembers!(util.pwstrToFfi(servername), util.pwstrToFfi(localgroupname), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetLocalGroupSetMembers(
@@ -28934,7 +29109,7 @@ export function NetLocalGroupSetMembers(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupSetMembers(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
+  return libNETAPI32_dll.NetLocalGroupSetMembers!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
 }
 
 export function NetLocalGroupAddMembers(
@@ -28944,7 +29119,7 @@ export function NetLocalGroupAddMembers(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupAddMembers(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
+  return libNETAPI32_dll.NetLocalGroupAddMembers!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
 }
 
 export function NetLocalGroupDelMembers(
@@ -28954,7 +29129,7 @@ export function NetLocalGroupDelMembers(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   totalentries: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetLocalGroupDelMembers(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
+  return libNETAPI32_dll.NetLocalGroupDelMembers!(util.pwstrToFfi(servername), util.pwstrToFfi(groupname), level, util.toPointer(buf), totalentries);
 }
 
 export function NetQueryDisplayInformation(
@@ -28966,7 +29141,7 @@ export function NetQueryDisplayInformation(
   ReturnedEntryCount: Deno.PointerValue | Uint8Array /* ptr */,
   SortedBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetQueryDisplayInformation(util.pwstrToFfi(ServerName), Level, Index, EntriesRequested, PreferredMaximumLength, util.toPointer(ReturnedEntryCount), util.toPointer(SortedBuffer));
+  return libNETAPI32_dll.NetQueryDisplayInformation!(util.pwstrToFfi(ServerName), Level, Index, EntriesRequested, PreferredMaximumLength, util.toPointer(ReturnedEntryCount), util.toPointer(SortedBuffer));
 }
 
 export function NetGetDisplayInformationIndex(
@@ -28975,7 +29150,7 @@ export function NetGetDisplayInformationIndex(
   Prefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Index: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGetDisplayInformationIndex(util.pwstrToFfi(ServerName), Level, util.pwstrToFfi(Prefix), util.toPointer(Index));
+  return libNETAPI32_dll.NetGetDisplayInformationIndex!(util.pwstrToFfi(ServerName), Level, util.pwstrToFfi(Prefix), util.toPointer(Index));
 }
 
 export function NetAccessAdd(
@@ -28984,7 +29159,7 @@ export function NetAccessAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetAccessAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetAccessEnum(
@@ -28998,7 +29173,7 @@ export function NetAccessEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessEnum(util.pwstrToFfi(servername), util.pwstrToFfi(BasePath), Recursive, level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetAccessEnum!(util.pwstrToFfi(servername), util.pwstrToFfi(BasePath), Recursive, level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetAccessGetInfo(
@@ -29007,7 +29182,7 @@ export function NetAccessGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(resource), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetAccessGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(resource), level, util.toPointer(bufptr));
 }
 
 export function NetAccessSetInfo(
@@ -29017,14 +29192,14 @@ export function NetAccessSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(resource), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetAccessSetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(resource), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetAccessDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessDel(util.pwstrToFfi(servername), util.pwstrToFfi(resource));
+  return libNETAPI32_dll.NetAccessDel!(util.pwstrToFfi(servername), util.pwstrToFfi(resource));
 }
 
 export function NetAccessGetUserPerms(
@@ -29033,7 +29208,7 @@ export function NetAccessGetUserPerms(
   resource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Perms: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAccessGetUserPerms(util.pwstrToFfi(servername), util.pwstrToFfi(UGname), util.pwstrToFfi(resource), util.toPointer(Perms));
+  return libNETAPI32_dll.NetAccessGetUserPerms!(util.pwstrToFfi(servername), util.pwstrToFfi(UGname), util.pwstrToFfi(resource), util.toPointer(Perms));
 }
 
 export function NetValidatePasswordPolicy(
@@ -29043,13 +29218,13 @@ export function NetValidatePasswordPolicy(
   InputArg: Deno.PointerValue | Uint8Array /* ptr */,
   OutputArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetValidatePasswordPolicy(util.pwstrToFfi(ServerName), util.toPointer(Qualifier), ValidationType, util.toPointer(InputArg), util.toPointer(OutputArg));
+  return libNETAPI32_dll.NetValidatePasswordPolicy!(util.pwstrToFfi(ServerName), util.toPointer(Qualifier), ValidationType, util.toPointer(InputArg), util.toPointer(OutputArg));
 }
 
 export function NetValidatePasswordPolicyFree(
   OutputArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetValidatePasswordPolicyFree(util.toPointer(OutputArg));
+  return libNETAPI32_dll.NetValidatePasswordPolicyFree!(util.toPointer(OutputArg));
 }
 
 export function NetGetDCName(
@@ -29057,7 +29232,7 @@ export function NetGetDCName(
   DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGetDCName(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
+  return libNETAPI32_dll.NetGetDCName!(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
 }
 
 export function NetGetAnyDCName(
@@ -29065,7 +29240,7 @@ export function NetGetAnyDCName(
   DomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGetAnyDCName(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
+  return libNETAPI32_dll.NetGetAnyDCName!(util.pwstrToFfi(ServerName), util.pwstrToFfi(DomainName), util.toPointer(Buffer));
 }
 
 export function I_NetLogonControl2(
@@ -29075,7 +29250,7 @@ export function I_NetLogonControl2(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.I_NetLogonControl2(util.pwstrToFfi(ServerName), FunctionCode, QueryLevel, util.toPointer(Data), util.toPointer(Buffer));
+  return libNETAPI32_dll.I_NetLogonControl2!(util.pwstrToFfi(ServerName), FunctionCode, QueryLevel, util.toPointer(Data), util.toPointer(Buffer));
 }
 
 export function NetAddServiceAccount(
@@ -29084,7 +29259,7 @@ export function NetAddServiceAccount(
   Password: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libNETAPI32_dll.NetAddServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.pwstrToFfi(Password), Flags);
+  return libNETAPI32_dll.NetAddServiceAccount!(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.pwstrToFfi(Password), Flags);
 }
 
 export function NetRemoveServiceAccount(
@@ -29092,7 +29267,7 @@ export function NetRemoveServiceAccount(
   AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libNETAPI32_dll.NetRemoveServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), Flags);
+  return libNETAPI32_dll.NetRemoveServiceAccount!(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), Flags);
 }
 
 export function NetEnumerateServiceAccounts(
@@ -29101,7 +29276,7 @@ export function NetEnumerateServiceAccounts(
   AccountsCount: Deno.PointerValue | Uint8Array /* ptr */,
   Accounts: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libNETAPI32_dll.NetEnumerateServiceAccounts(util.pwstrToFfi(ServerName), Flags, util.toPointer(AccountsCount), util.toPointer(Accounts));
+  return libNETAPI32_dll.NetEnumerateServiceAccounts!(util.pwstrToFfi(ServerName), Flags, util.toPointer(AccountsCount), util.toPointer(Accounts));
 }
 
 export function NetIsServiceAccount(
@@ -29109,7 +29284,7 @@ export function NetIsServiceAccount(
   AccountName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   IsService: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libNETAPI32_dll.NetIsServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.toPointer(IsService));
+  return libNETAPI32_dll.NetIsServiceAccount!(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), util.toPointer(IsService));
 }
 
 export function NetQueryServiceAccount(
@@ -29118,7 +29293,7 @@ export function NetQueryServiceAccount(
   InfoLevel: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libNETAPI32_dll.NetQueryServiceAccount(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), InfoLevel, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetQueryServiceAccount!(util.pwstrToFfi(ServerName), util.pwstrToFfi(AccountName), InfoLevel, util.toPointer(Buffer));
 }
 
 export function NetAlertRaise(
@@ -29126,7 +29301,7 @@ export function NetAlertRaise(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAlertRaise(util.pwstrToFfi(AlertType), util.toPointer(Buffer), BufferSize);
+  return libNETAPI32_dll.NetAlertRaise!(util.pwstrToFfi(AlertType), util.toPointer(Buffer), BufferSize);
 }
 
 export function NetAlertRaiseEx(
@@ -29135,14 +29310,14 @@ export function NetAlertRaiseEx(
   VariableInfoSize: number /* u32 */,
   ServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAlertRaiseEx(util.pwstrToFfi(AlertType), util.toPointer(VariableInfo), VariableInfoSize, util.pwstrToFfi(ServiceName));
+  return libNETAPI32_dll.NetAlertRaiseEx!(util.pwstrToFfi(AlertType), util.toPointer(VariableInfo), VariableInfoSize, util.pwstrToFfi(ServiceName));
 }
 
 export function NetMessageNameAdd(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetMessageNameAdd(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
+  return libNETAPI32_dll.NetMessageNameAdd!(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
 }
 
 export function NetMessageNameEnum(
@@ -29154,7 +29329,7 @@ export function NetMessageNameEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetMessageNameEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetMessageNameEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetMessageNameGetInfo(
@@ -29163,14 +29338,14 @@ export function NetMessageNameGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetMessageNameGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(msgname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetMessageNameGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(msgname), level, util.toPointer(bufptr));
 }
 
 export function NetMessageNameDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   msgname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetMessageNameDel(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
+  return libNETAPI32_dll.NetMessageNameDel!(util.pwstrToFfi(servername), util.pwstrToFfi(msgname));
 }
 
 export function NetMessageBufferSend(
@@ -29180,14 +29355,14 @@ export function NetMessageBufferSend(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   buflen: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetMessageBufferSend(util.pwstrToFfi(servername), util.pwstrToFfi(msgname), util.pwstrToFfi(fromname), util.toPointer(buf), buflen);
+  return libNETAPI32_dll.NetMessageBufferSend!(util.pwstrToFfi(servername), util.pwstrToFfi(msgname), util.pwstrToFfi(fromname), util.toPointer(buf), buflen);
 }
 
 export function NetRemoteTOD(
   UncServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   BufferPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRemoteTOD(util.pwstrToFfi(UncServerName), util.toPointer(BufferPtr));
+  return libNETAPI32_dll.NetRemoteTOD!(util.pwstrToFfi(UncServerName), util.toPointer(BufferPtr));
 }
 
 export function NetRemoteComputerSupports(
@@ -29195,7 +29370,7 @@ export function NetRemoteComputerSupports(
   OptionsWanted: NET_REMOTE_COMPUTER_SUPPORTS_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_REMOTE_COMPUTER_SUPPORTS_OPTIONS */,
   OptionsSupported: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRemoteComputerSupports(util.pwstrToFfi(UncServerName), OptionsWanted, util.toPointer(OptionsSupported));
+  return libNETAPI32_dll.NetRemoteComputerSupports!(util.pwstrToFfi(UncServerName), OptionsWanted, util.toPointer(OptionsSupported));
 }
 
 export function NetReplGetInfo(
@@ -29203,7 +29378,7 @@ export function NetReplGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplGetInfo(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetReplGetInfo!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetReplSetInfo(
@@ -29212,7 +29387,7 @@ export function NetReplSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplSetInfo(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetReplSetInfo!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetReplExportDirAdd(
@@ -29221,14 +29396,14 @@ export function NetReplExportDirAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetReplExportDirAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetReplExportDirDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirDel(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
+  return libNETAPI32_dll.NetReplExportDirDel!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplExportDirEnum(
@@ -29240,7 +29415,7 @@ export function NetReplExportDirEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetReplExportDirEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetReplExportDirGetInfo(
@@ -29249,7 +29424,7 @@ export function NetReplExportDirGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetReplExportDirGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(bufptr));
 }
 
 export function NetReplExportDirSetInfo(
@@ -29259,14 +29434,14 @@ export function NetReplExportDirSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirSetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetReplExportDirSetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetReplExportDirLock(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirLock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
+  return libNETAPI32_dll.NetReplExportDirLock!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplExportDirUnlock(
@@ -29274,7 +29449,7 @@ export function NetReplExportDirUnlock(
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   unlockforce: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplExportDirUnlock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
+  return libNETAPI32_dll.NetReplExportDirUnlock!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
 }
 
 export function NetReplImportDirAdd(
@@ -29283,14 +29458,14 @@ export function NetReplImportDirAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirAdd(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetReplImportDirAdd!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetReplImportDirDel(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirDel(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
+  return libNETAPI32_dll.NetReplImportDirDel!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplImportDirEnum(
@@ -29302,7 +29477,7 @@ export function NetReplImportDirEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetReplImportDirEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetReplImportDirGetInfo(
@@ -29311,14 +29486,14 @@ export function NetReplImportDirGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetReplImportDirGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), level, util.toPointer(bufptr));
 }
 
 export function NetReplImportDirLock(
   servername: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirLock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
+  return libNETAPI32_dll.NetReplImportDirLock!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname));
 }
 
 export function NetReplImportDirUnlock(
@@ -29326,7 +29501,7 @@ export function NetReplImportDirUnlock(
   dirname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   unlockforce: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetReplImportDirUnlock(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
+  return libNETAPI32_dll.NetReplImportDirUnlock!(util.pwstrToFfi(servername), util.pwstrToFfi(dirname), unlockforce);
 }
 
 export function NetServerEnum(
@@ -29340,7 +29515,7 @@ export function NetServerEnum(
   domain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), servertype, util.pwstrToFfi(domain), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetServerEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), servertype, util.pwstrToFfi(domain), util.toPointer(resume_handle));
 }
 
 export function NetServerGetInfo(
@@ -29348,7 +29523,7 @@ export function NetServerGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerGetInfo(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServerGetInfo!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetServerSetInfo(
@@ -29357,7 +29532,7 @@ export function NetServerSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   ParmError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerSetInfo(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(ParmError));
+  return libNETAPI32_dll.NetServerSetInfo!(util.pwstrToFfi(servername), level, util.toPointer(buf), util.toPointer(ParmError));
 }
 
 export function NetServerDiskEnum(
@@ -29369,7 +29544,7 @@ export function NetServerDiskEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerDiskEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetServerDiskEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetServerComputerNameAdd(
@@ -29377,14 +29552,14 @@ export function NetServerComputerNameAdd(
   EmulatedDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EmulatedServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerComputerNameAdd(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedDomainName), util.pwstrToFfi(EmulatedServerName));
+  return libNETAPI32_dll.NetServerComputerNameAdd!(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedDomainName), util.pwstrToFfi(EmulatedServerName));
 }
 
 export function NetServerComputerNameDel(
   ServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   EmulatedServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerComputerNameDel(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedServerName));
+  return libNETAPI32_dll.NetServerComputerNameDel!(util.pwstrToFfi(ServerName), util.pwstrToFfi(EmulatedServerName));
 }
 
 export function NetServerTransportAdd(
@@ -29392,7 +29567,7 @@ export function NetServerTransportAdd(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerTransportAdd(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServerTransportAdd!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetServerTransportAddEx(
@@ -29400,7 +29575,7 @@ export function NetServerTransportAddEx(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerTransportAddEx(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServerTransportAddEx!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetServerTransportDel(
@@ -29408,7 +29583,7 @@ export function NetServerTransportDel(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerTransportDel(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServerTransportDel!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetServerTransportEnum(
@@ -29420,7 +29595,7 @@ export function NetServerTransportEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServerTransportEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetServerTransportEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetServiceControl(
@@ -29430,7 +29605,7 @@ export function NetServiceControl(
   arg: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServiceControl(util.pwstrToFfi(servername), util.pwstrToFfi(service), opcode, arg, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServiceControl!(util.pwstrToFfi(servername), util.pwstrToFfi(service), opcode, arg, util.toPointer(bufptr));
 }
 
 export function NetServiceEnum(
@@ -29442,7 +29617,7 @@ export function NetServiceEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServiceEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetServiceEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetServiceGetInfo(
@@ -29451,7 +29626,7 @@ export function NetServiceGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServiceGetInfo(util.pwstrToFfi(servername), util.pwstrToFfi(service), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServiceGetInfo!(util.pwstrToFfi(servername), util.pwstrToFfi(service), level, util.toPointer(bufptr));
 }
 
 export function NetServiceInstall(
@@ -29461,7 +29636,7 @@ export function NetServiceInstall(
   argv: Deno.PointerValue | Uint8Array /* ptr */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetServiceInstall(util.pwstrToFfi(servername), util.pwstrToFfi(service), argc, util.toPointer(argv), util.toPointer(bufptr));
+  return libNETAPI32_dll.NetServiceInstall!(util.pwstrToFfi(servername), util.pwstrToFfi(service), argc, util.toPointer(argv), util.toPointer(bufptr));
 }
 
 export function NetUseAdd(
@@ -29470,7 +29645,7 @@ export function NetUseAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUseAdd(util.toPointer(servername), LevelFlags, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetUseAdd!(util.toPointer(servername), LevelFlags, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetUseDel(
@@ -29478,7 +29653,7 @@ export function NetUseDel(
   UseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ForceLevelFlags: FORCE_LEVEL_FLAGS /* Windows.Win32.NetworkManagement.NetManagement.FORCE_LEVEL_FLAGS */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUseDel(util.pwstrToFfi(UncServerName), util.pwstrToFfi(UseName), ForceLevelFlags);
+  return libNETAPI32_dll.NetUseDel!(util.pwstrToFfi(UncServerName), util.pwstrToFfi(UseName), ForceLevelFlags);
 }
 
 export function NetUseEnum(
@@ -29490,7 +29665,7 @@ export function NetUseEnum(
   TotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUseEnum(util.pwstrToFfi(UncServerName), LevelFlags, util.toPointer(BufPtr), PreferedMaximumSize, util.toPointer(EntriesRead), util.toPointer(TotalEntries), util.toPointer(ResumeHandle));
+  return libNETAPI32_dll.NetUseEnum!(util.pwstrToFfi(UncServerName), LevelFlags, util.toPointer(BufPtr), PreferedMaximumSize, util.toPointer(EntriesRead), util.toPointer(TotalEntries), util.toPointer(ResumeHandle));
 }
 
 export function NetUseGetInfo(
@@ -29499,7 +29674,7 @@ export function NetUseGetInfo(
   LevelFlags: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUseGetInfo(util.pwstrToFfi(UncServerName), util.pwstrToFfi(UseName), LevelFlags, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetUseGetInfo!(util.pwstrToFfi(UncServerName), util.pwstrToFfi(UseName), LevelFlags, util.toPointer(bufptr));
 }
 
 export function NetWkstaGetInfo(
@@ -29507,7 +29682,7 @@ export function NetWkstaGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaGetInfo(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetWkstaGetInfo!(util.pwstrToFfi(servername), level, util.toPointer(bufptr));
 }
 
 export function NetWkstaSetInfo(
@@ -29516,7 +29691,7 @@ export function NetWkstaSetInfo(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaSetInfo(util.pwstrToFfi(servername), level, util.toPointer(buffer), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetWkstaSetInfo!(util.pwstrToFfi(servername), level, util.toPointer(buffer), util.toPointer(parm_err));
 }
 
 export function NetWkstaUserGetInfo(
@@ -29524,7 +29699,7 @@ export function NetWkstaUserGetInfo(
   level: number /* u32 */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaUserGetInfo(util.pwstrToFfi(reserved), level, util.toPointer(bufptr));
+  return libNETAPI32_dll.NetWkstaUserGetInfo!(util.pwstrToFfi(reserved), level, util.toPointer(bufptr));
 }
 
 export function NetWkstaUserSetInfo(
@@ -29533,7 +29708,7 @@ export function NetWkstaUserSetInfo(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaUserSetInfo(util.pwstrToFfi(reserved), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetWkstaUserSetInfo!(util.pwstrToFfi(reserved), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetWkstaUserEnum(
@@ -29545,7 +29720,7 @@ export function NetWkstaUserEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resumehandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaUserEnum(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
+  return libNETAPI32_dll.NetWkstaUserEnum!(util.pwstrToFfi(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resumehandle));
 }
 
 export function NetWkstaTransportAdd(
@@ -29554,7 +29729,7 @@ export function NetWkstaTransportAdd(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   parm_err: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaTransportAdd(util.toPointer(servername), level, util.toPointer(buf), util.toPointer(parm_err));
+  return libNETAPI32_dll.NetWkstaTransportAdd!(util.toPointer(servername), level, util.toPointer(buf), util.toPointer(parm_err));
 }
 
 export function NetWkstaTransportDel(
@@ -29562,7 +29737,7 @@ export function NetWkstaTransportDel(
   transportname: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ucond: FORCE_LEVEL_FLAGS /* Windows.Win32.NetworkManagement.NetManagement.FORCE_LEVEL_FLAGS */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaTransportDel(util.pwstrToFfi(servername), util.pwstrToFfi(transportname), ucond);
+  return libNETAPI32_dll.NetWkstaTransportDel!(util.pwstrToFfi(servername), util.pwstrToFfi(transportname), ucond);
 }
 
 export function NetWkstaTransportEnum(
@@ -29574,20 +29749,20 @@ export function NetWkstaTransportEnum(
   totalentries: Deno.PointerValue | Uint8Array /* ptr */,
   resume_handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetWkstaTransportEnum(util.toPointer(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
+  return libNETAPI32_dll.NetWkstaTransportEnum!(util.toPointer(servername), level, util.toPointer(bufptr), prefmaxlen, util.toPointer(entriesread), util.toPointer(totalentries), util.toPointer(resume_handle));
 }
 
 export function NetApiBufferAllocate(
   ByteCount: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetApiBufferAllocate(ByteCount, util.toPointer(Buffer));
+  return libNETAPI32_dll.NetApiBufferAllocate!(ByteCount, util.toPointer(Buffer));
 }
 
 export function NetApiBufferFree(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetApiBufferFree(util.toPointer(Buffer));
+  return libNETAPI32_dll.NetApiBufferFree!(util.toPointer(Buffer));
 }
 
 export function NetApiBufferReallocate(
@@ -29595,14 +29770,14 @@ export function NetApiBufferReallocate(
   NewByteCount: number /* u32 */,
   NewBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetApiBufferReallocate(util.toPointer(OldBuffer), NewByteCount, util.toPointer(NewBuffer));
+  return libNETAPI32_dll.NetApiBufferReallocate!(util.toPointer(OldBuffer), NewByteCount, util.toPointer(NewBuffer));
 }
 
 export function NetApiBufferSize(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   ByteCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetApiBufferSize(util.toPointer(Buffer), util.toPointer(ByteCount));
+  return libNETAPI32_dll.NetApiBufferSize!(util.toPointer(Buffer), util.toPointer(ByteCount));
 }
 
 export function NetErrorLogClear(
@@ -29610,7 +29785,7 @@ export function NetErrorLogClear(
   BackupFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetErrorLogClear(util.pwstrToFfi(UncServerName), util.pwstrToFfi(BackupFile), util.toPointer(Reserved));
+  return libNETAPI32_dll.NetErrorLogClear!(util.pwstrToFfi(UncServerName), util.pwstrToFfi(BackupFile), util.toPointer(Reserved));
 }
 
 export function NetErrorLogRead(
@@ -29626,7 +29801,7 @@ export function NetErrorLogRead(
   BytesRead: Deno.PointerValue | Uint8Array /* ptr */,
   TotalAvailable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetErrorLogRead(util.pwstrToFfi(UncServerName), util.pwstrToFfi(Reserved1), util.toPointer(ErrorLogHandle), Offset, util.toPointer(Reserved2), Reserved3, OffsetFlag, util.toPointer(BufPtr), PrefMaxSize, util.toPointer(BytesRead), util.toPointer(TotalAvailable));
+  return libNETAPI32_dll.NetErrorLogRead!(util.pwstrToFfi(UncServerName), util.pwstrToFfi(Reserved1), util.toPointer(ErrorLogHandle), Offset, util.toPointer(Reserved2), Reserved3, OffsetFlag, util.toPointer(BufPtr), PrefMaxSize, util.toPointer(BytesRead), util.toPointer(TotalAvailable));
 }
 
 export function NetErrorLogWrite(
@@ -29639,7 +29814,7 @@ export function NetErrorLogWrite(
   StrCount: number /* u32 */,
   Reserved2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetErrorLogWrite(util.toPointer(Reserved1), Code, util.pwstrToFfi(Component), util.toPointer(Buffer), NumBytes, util.toPointer(MsgBuf), StrCount, util.toPointer(Reserved2));
+  return libNETAPI32_dll.NetErrorLogWrite!(util.toPointer(Reserved1), Code, util.pwstrToFfi(Component), util.toPointer(Buffer), NumBytes, util.toPointer(MsgBuf), StrCount, util.toPointer(Reserved2));
 }
 
 export function NetConfigGet(
@@ -29648,7 +29823,7 @@ export function NetConfigGet(
   parameter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetConfigGet(util.pwstrToFfi(server), util.pwstrToFfi(component), util.pwstrToFfi(parameter), util.toPointer(bufptr));
+  return libNETAPI32_dll.NetConfigGet!(util.pwstrToFfi(server), util.pwstrToFfi(component), util.pwstrToFfi(parameter), util.toPointer(bufptr));
 }
 
 export function NetConfigGetAll(
@@ -29656,7 +29831,7 @@ export function NetConfigGetAll(
   component: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bufptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetConfigGetAll(util.pwstrToFfi(server), util.pwstrToFfi(component), util.toPointer(bufptr));
+  return libNETAPI32_dll.NetConfigGetAll!(util.pwstrToFfi(server), util.pwstrToFfi(component), util.toPointer(bufptr));
 }
 
 export function NetConfigSet(
@@ -29668,7 +29843,7 @@ export function NetConfigSet(
   buf: Deno.PointerValue | Uint8Array /* ptr */,
   reserved3: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetConfigSet(util.pwstrToFfi(server), util.pwstrToFfi(reserved1), util.pwstrToFfi(component), level, reserved2, util.toPointer(buf), reserved3);
+  return libNETAPI32_dll.NetConfigSet!(util.pwstrToFfi(server), util.pwstrToFfi(reserved1), util.pwstrToFfi(component), level, reserved2, util.toPointer(buf), reserved3);
 }
 
 export function NetAuditClear(
@@ -29676,7 +29851,7 @@ export function NetAuditClear(
   backupfile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAuditClear(util.pwstrToFfi(server), util.pwstrToFfi(backupfile), util.pwstrToFfi(service));
+  return libNETAPI32_dll.NetAuditClear!(util.pwstrToFfi(server), util.pwstrToFfi(backupfile), util.pwstrToFfi(service));
 }
 
 export function NetAuditRead(
@@ -29692,7 +29867,7 @@ export function NetAuditRead(
   bytesread: Deno.PointerValue | Uint8Array /* ptr */,
   totalavailable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAuditRead(util.pwstrToFfi(server), util.pwstrToFfi(service), util.toPointer(auditloghandle), offset, util.toPointer(reserved1), reserved2, offsetflag, util.toPointer(bufptr), prefmaxlen, util.toPointer(bytesread), util.toPointer(totalavailable));
+  return libNETAPI32_dll.NetAuditRead!(util.pwstrToFfi(server), util.pwstrToFfi(service), util.toPointer(auditloghandle), offset, util.toPointer(reserved1), reserved2, offsetflag, util.toPointer(bufptr), prefmaxlen, util.toPointer(bytesread), util.toPointer(totalavailable));
 }
 
 export function NetAuditWrite(
@@ -29702,7 +29877,7 @@ export function NetAuditWrite(
   service: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAuditWrite(type, util.toPointer(buf), numbytes, util.pwstrToFfi(service), util.toPointer(reserved));
+  return libNETAPI32_dll.NetAuditWrite!(type, util.toPointer(buf), numbytes, util.pwstrToFfi(service), util.toPointer(reserved));
 }
 
 export function NetJoinDomain(
@@ -29713,7 +29888,7 @@ export function NetJoinDomain(
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fJoinOptions: NET_JOIN_DOMAIN_JOIN_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_JOIN_DOMAIN_JOIN_OPTIONS */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetJoinDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpMachineAccountOU), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fJoinOptions);
+  return libNETAPI32_dll.NetJoinDomain!(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpMachineAccountOU), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fJoinOptions);
 }
 
 export function NetUnjoinDomain(
@@ -29722,7 +29897,7 @@ export function NetUnjoinDomain(
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUnjoinOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetUnjoinDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fUnjoinOptions);
+  return libNETAPI32_dll.NetUnjoinDomain!(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fUnjoinOptions);
 }
 
 export function NetRenameMachineInDomain(
@@ -29732,7 +29907,7 @@ export function NetRenameMachineInDomain(
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fRenameOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRenameMachineInDomain(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpNewMachineName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fRenameOptions);
+  return libNETAPI32_dll.NetRenameMachineInDomain!(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpNewMachineName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), fRenameOptions);
 }
 
 export function NetValidateName(
@@ -29742,7 +29917,7 @@ export function NetValidateName(
   lpPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NameType: NETSETUP_NAME_TYPE /* Windows.Win32.NetworkManagement.NetManagement.NETSETUP_NAME_TYPE */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetValidateName(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), NameType);
+  return libNETAPI32_dll.NetValidateName!(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpName), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), NameType);
 }
 
 export function NetGetJoinableOUs(
@@ -29753,7 +29928,7 @@ export function NetGetJoinableOUs(
   OUCount: Deno.PointerValue | Uint8Array /* ptr */,
   OUs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGetJoinableOUs(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), util.toPointer(OUCount), util.toPointer(OUs));
+  return libNETAPI32_dll.NetGetJoinableOUs!(util.pwstrToFfi(lpServer), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpAccount), util.pwstrToFfi(lpPassword), util.toPointer(OUCount), util.toPointer(OUs));
 }
 
 export function NetAddAlternateComputerName(
@@ -29763,7 +29938,7 @@ export function NetAddAlternateComputerName(
   DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetAddAlternateComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
+  return libNETAPI32_dll.NetAddAlternateComputerName!(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetRemoveAlternateComputerName(
@@ -29773,7 +29948,7 @@ export function NetRemoveAlternateComputerName(
   DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRemoveAlternateComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
+  return libNETAPI32_dll.NetRemoveAlternateComputerName!(util.pwstrToFfi(Server), util.pwstrToFfi(AlternateName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetSetPrimaryComputerName(
@@ -29783,7 +29958,7 @@ export function NetSetPrimaryComputerName(
   DomainAccountPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetSetPrimaryComputerName(util.pwstrToFfi(Server), util.pwstrToFfi(PrimaryName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
+  return libNETAPI32_dll.NetSetPrimaryComputerName!(util.pwstrToFfi(Server), util.pwstrToFfi(PrimaryName), util.pwstrToFfi(DomainAccount), util.pwstrToFfi(DomainAccountPassword), Reserved);
 }
 
 export function NetEnumerateComputerNames(
@@ -29793,7 +29968,7 @@ export function NetEnumerateComputerNames(
   EntryCount: Deno.PointerValue | Uint8Array /* ptr */,
   ComputerNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetEnumerateComputerNames(util.pwstrToFfi(Server), NameType, Reserved, util.toPointer(EntryCount), util.toPointer(ComputerNames));
+  return libNETAPI32_dll.NetEnumerateComputerNames!(util.pwstrToFfi(Server), NameType, Reserved, util.toPointer(EntryCount), util.toPointer(ComputerNames));
 }
 
 export function NetProvisionComputerAccount(
@@ -29806,7 +29981,7 @@ export function NetProvisionComputerAccount(
   pdwProvisionBinDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   pProvisionTextData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetProvisionComputerAccount(util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMachineAccountOU), util.pwstrToFfi(lpDcName), dwOptions, util.toPointer(pProvisionBinData), util.toPointer(pdwProvisionBinDataSize), util.toPointer(pProvisionTextData));
+  return libNETAPI32_dll.NetProvisionComputerAccount!(util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpMachineName), util.pwstrToFfi(lpMachineAccountOU), util.pwstrToFfi(lpDcName), dwOptions, util.toPointer(pProvisionBinData), util.toPointer(pdwProvisionBinDataSize), util.toPointer(pProvisionTextData));
 }
 
 export function NetRequestOfflineDomainJoin(
@@ -29815,7 +29990,7 @@ export function NetRequestOfflineDomainJoin(
   dwOptions: NET_REQUEST_PROVISION_OPTIONS /* Windows.Win32.NetworkManagement.NetManagement.NET_REQUEST_PROVISION_OPTIONS */,
   lpWindowsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRequestOfflineDomainJoin(util.toPointer(pProvisionBinData), cbProvisionBinDataSize, dwOptions, util.pwstrToFfi(lpWindowsPath));
+  return libNETAPI32_dll.NetRequestOfflineDomainJoin!(util.toPointer(pProvisionBinData), cbProvisionBinDataSize, dwOptions, util.pwstrToFfi(lpWindowsPath));
 }
 
 export function NetCreateProvisioningPackage(
@@ -29824,7 +29999,7 @@ export function NetCreateProvisioningPackage(
   pdwPackageBinDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   ppPackageTextData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetCreateProvisioningPackage(util.toPointer(pProvisioningParams), util.toPointer(ppPackageBinData), util.toPointer(pdwPackageBinDataSize), util.toPointer(ppPackageTextData));
+  return libNETAPI32_dll.NetCreateProvisioningPackage!(util.toPointer(pProvisioningParams), util.toPointer(ppPackageBinData), util.toPointer(pdwPackageBinDataSize), util.toPointer(ppPackageTextData));
 }
 
 export function NetRequestProvisioningPackageInstall(
@@ -29834,20 +30009,20 @@ export function NetRequestProvisioningPackageInstall(
   lpWindowsPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetRequestProvisioningPackageInstall(util.toPointer(pPackageBinData), dwPackageBinDataSize, dwProvisionOptions, util.pwstrToFfi(lpWindowsPath), util.toPointer(pvReserved));
+  return libNETAPI32_dll.NetRequestProvisioningPackageInstall!(util.toPointer(pPackageBinData), dwPackageBinDataSize, dwProvisionOptions, util.pwstrToFfi(lpWindowsPath), util.toPointer(pvReserved));
 }
 
 export function NetGetAadJoinInformation(
   pcszTenantId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppJoinInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libNETAPI32_dll.NetGetAadJoinInformation(util.pwstrToFfi(pcszTenantId), util.toPointer(ppJoinInfo));
+  return libNETAPI32_dll.NetGetAadJoinInformation!(util.pwstrToFfi(pcszTenantId), util.toPointer(ppJoinInfo));
 }
 
 export function NetFreeAadJoinInformation(
   pJoinInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNETAPI32_dll.NetFreeAadJoinInformation(util.toPointer(pJoinInfo));
+  return libNETAPI32_dll.NetFreeAadJoinInformation!(util.toPointer(pJoinInfo));
 }
 
 export function NetGetJoinInformation(
@@ -29855,7 +30030,7 @@ export function NetGetJoinInformation(
   lpNameBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetGetJoinInformation(util.pwstrToFfi(lpServer), util.toPointer(lpNameBuffer), util.toPointer(BufferType));
+  return libNETAPI32_dll.NetGetJoinInformation!(util.pwstrToFfi(lpServer), util.toPointer(lpNameBuffer), util.toPointer(BufferType));
 }
 
 export function GetNetScheduleAccountInformation(
@@ -29863,7 +30038,7 @@ export function GetNetScheduleAccountInformation(
   ccAccount: number /* u32 */,
   wszAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmstask_dll.GetNetScheduleAccountInformation(util.pwstrToFfi(pwszServerName), ccAccount, util.pwstrToFfi(wszAccount));
+  return libmstask_dll.GetNetScheduleAccountInformation!(util.pwstrToFfi(pwszServerName), ccAccount, util.pwstrToFfi(wszAccount));
 }
 
 export function SetNetScheduleAccountInformation(
@@ -29871,7 +30046,7 @@ export function SetNetScheduleAccountInformation(
   pwszAccount: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmstask_dll.SetNetScheduleAccountInformation(util.pwstrToFfi(pwszServerName), util.pwstrToFfi(pwszAccount), util.pwstrToFfi(pwszPassword));
+  return libmstask_dll.SetNetScheduleAccountInformation!(util.pwstrToFfi(pwszServerName), util.pwstrToFfi(pwszAccount), util.pwstrToFfi(pwszPassword));
 }
 
 export function NetScheduleJobAdd(
@@ -29879,7 +30054,7 @@ export function NetScheduleJobAdd(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   JobId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetScheduleJobAdd(util.pwstrToFfi(Servername), util.toPointer(Buffer), util.toPointer(JobId));
+  return libNETAPI32_dll.NetScheduleJobAdd!(util.pwstrToFfi(Servername), util.toPointer(Buffer), util.toPointer(JobId));
 }
 
 export function NetScheduleJobDel(
@@ -29887,7 +30062,7 @@ export function NetScheduleJobDel(
   MinJobId: number /* u32 */,
   MaxJobId: number /* u32 */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetScheduleJobDel(util.pwstrToFfi(Servername), MinJobId, MaxJobId);
+  return libNETAPI32_dll.NetScheduleJobDel!(util.pwstrToFfi(Servername), MinJobId, MaxJobId);
 }
 
 export function NetScheduleJobEnum(
@@ -29898,7 +30073,7 @@ export function NetScheduleJobEnum(
   TotalEntries: Deno.PointerValue | Uint8Array /* ptr */,
   ResumeHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetScheduleJobEnum(util.pwstrToFfi(Servername), util.toPointer(PointerToBuffer), PrefferedMaximumLength, util.toPointer(EntriesRead), util.toPointer(TotalEntries), util.toPointer(ResumeHandle));
+  return libNETAPI32_dll.NetScheduleJobEnum!(util.pwstrToFfi(Servername), util.toPointer(PointerToBuffer), PrefferedMaximumLength, util.toPointer(EntriesRead), util.toPointer(TotalEntries), util.toPointer(ResumeHandle));
 }
 
 export function NetScheduleJobGetInfo(
@@ -29906,41 +30081,41 @@ export function NetScheduleJobGetInfo(
   JobId: number /* u32 */,
   PointerToBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.NetScheduleJobGetInfo(util.pwstrToFfi(Servername), JobId, util.toPointer(PointerToBuffer));
+  return libNETAPI32_dll.NetScheduleJobGetInfo!(util.pwstrToFfi(Servername), JobId, util.toPointer(PointerToBuffer));
 }
 
 export function TraceRegisterExA(
   lpszCallerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceRegisterExA(util.pstrToFfi(lpszCallerName), dwFlags);
+  return librtutils_dll.TraceRegisterExA!(util.pstrToFfi(lpszCallerName), dwFlags);
 }
 
 export function TraceDeregisterA(
   dwTraceID: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDeregisterA(dwTraceID);
+  return librtutils_dll.TraceDeregisterA!(dwTraceID);
 }
 
 export function TraceDeregisterExA(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDeregisterExA(dwTraceID, dwFlags);
+  return librtutils_dll.TraceDeregisterExA!(dwTraceID, dwFlags);
 }
 
 export function TraceGetConsoleA(
   dwTraceID: number /* u32 */,
   lphConsole: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceGetConsoleA(dwTraceID, util.toPointer(lphConsole));
+  return librtutils_dll.TraceGetConsoleA!(dwTraceID, util.toPointer(lphConsole));
 }
 
 export function TracePrintfA(
   dwTraceID: number /* u32 */,
   lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePrintfA(dwTraceID, util.pstrToFfi(lpszFormat));
+  return librtutils_dll.TracePrintfA!(dwTraceID, util.pstrToFfi(lpszFormat));
 }
 
 export function TracePrintfExA(
@@ -29948,7 +30123,7 @@ export function TracePrintfExA(
   dwFlags: number /* u32 */,
   lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePrintfExA(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat));
+  return librtutils_dll.TracePrintfExA!(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat));
 }
 
 export function TraceVprintfExA(
@@ -29957,7 +30132,7 @@ export function TraceVprintfExA(
   lpszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceVprintfExA(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat), util.toPointer(arglist));
+  return librtutils_dll.TraceVprintfExA!(dwTraceID, dwFlags, util.pstrToFfi(lpszFormat), util.toPointer(arglist));
 }
 
 export function TracePutsExA(
@@ -29965,7 +30140,7 @@ export function TracePutsExA(
   dwFlags: number /* u32 */,
   lpszString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePutsExA(dwTraceID, dwFlags, util.pstrToFfi(lpszString));
+  return librtutils_dll.TracePutsExA!(dwTraceID, dwFlags, util.pstrToFfi(lpszString));
 }
 
 export function TraceDumpExA(
@@ -29977,41 +30152,41 @@ export function TraceDumpExA(
   bAddressPrefix: boolean /* Windows.Win32.Foundation.BOOL */,
   lpszPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDumpExA(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pstrToFfi(lpszPrefix));
+  return librtutils_dll.TraceDumpExA!(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pstrToFfi(lpszPrefix));
 }
 
 export function TraceRegisterExW(
   lpszCallerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceRegisterExW(util.pwstrToFfi(lpszCallerName), dwFlags);
+  return librtutils_dll.TraceRegisterExW!(util.pwstrToFfi(lpszCallerName), dwFlags);
 }
 
 export function TraceDeregisterW(
   dwTraceID: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDeregisterW(dwTraceID);
+  return librtutils_dll.TraceDeregisterW!(dwTraceID);
 }
 
 export function TraceDeregisterExW(
   dwTraceID: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDeregisterExW(dwTraceID, dwFlags);
+  return librtutils_dll.TraceDeregisterExW!(dwTraceID, dwFlags);
 }
 
 export function TraceGetConsoleW(
   dwTraceID: number /* u32 */,
   lphConsole: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceGetConsoleW(dwTraceID, util.toPointer(lphConsole));
+  return librtutils_dll.TraceGetConsoleW!(dwTraceID, util.toPointer(lphConsole));
 }
 
 export function TracePrintfW(
   dwTraceID: number /* u32 */,
   lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePrintfW(dwTraceID, util.pwstrToFfi(lpszFormat));
+  return librtutils_dll.TracePrintfW!(dwTraceID, util.pwstrToFfi(lpszFormat));
 }
 
 export function TracePrintfExW(
@@ -30019,7 +30194,7 @@ export function TracePrintfExW(
   dwFlags: number /* u32 */,
   lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePrintfExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat));
+  return librtutils_dll.TracePrintfExW!(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat));
 }
 
 export function TraceVprintfExW(
@@ -30028,7 +30203,7 @@ export function TraceVprintfExW(
   lpszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceVprintfExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat), util.toPointer(arglist));
+  return librtutils_dll.TraceVprintfExW!(dwTraceID, dwFlags, util.pwstrToFfi(lpszFormat), util.toPointer(arglist));
 }
 
 export function TracePutsExW(
@@ -30036,7 +30211,7 @@ export function TracePutsExW(
   dwFlags: number /* u32 */,
   lpszString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TracePutsExW(dwTraceID, dwFlags, util.pwstrToFfi(lpszString));
+  return librtutils_dll.TracePutsExW!(dwTraceID, dwFlags, util.pwstrToFfi(lpszString));
 }
 
 export function TraceDumpExW(
@@ -30048,7 +30223,7 @@ export function TraceDumpExW(
   bAddressPrefix: boolean /* Windows.Win32.Foundation.BOOL */,
   lpszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return librtutils_dll.TraceDumpExW(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pwstrToFfi(lpszPrefix));
+  return librtutils_dll.TraceDumpExW!(dwTraceID, dwFlags, util.toPointer(lpbBytes), dwByteCount, dwGroupSize, util.boolToFfi(bAddressPrefix), util.pwstrToFfi(lpszPrefix));
 }
 
 export function LogErrorA(
@@ -30057,7 +30232,7 @@ export function LogErrorA(
   plpwsSubStrings: Deno.PointerValue | Uint8Array /* ptr */,
   dwErrorCode: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.LogErrorA(dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings), dwErrorCode);
+  return librtutils_dll.LogErrorA!(dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings), dwErrorCode);
 }
 
 export function LogEventA(
@@ -30066,7 +30241,7 @@ export function LogEventA(
   cNumberOfSubStrings: number /* u32 */,
   plpwsSubStrings: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.LogEventA(wEventType, dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings));
+  return librtutils_dll.LogEventA!(wEventType, dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings));
 }
 
 export function LogErrorW(
@@ -30075,7 +30250,7 @@ export function LogErrorW(
   plpwsSubStrings: Deno.PointerValue | Uint8Array /* ptr */,
   dwErrorCode: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.LogErrorW(dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings), dwErrorCode);
+  return librtutils_dll.LogErrorW!(dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings), dwErrorCode);
 }
 
 export function LogEventW(
@@ -30084,19 +30259,19 @@ export function LogEventW(
   cNumberOfSubStrings: number /* u32 */,
   plpwsSubStrings: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.LogEventW(wEventType, dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings));
+  return librtutils_dll.LogEventW!(wEventType, dwMessageId, cNumberOfSubStrings, util.toPointer(plpwsSubStrings));
 }
 
 export function RouterLogRegisterA(
   lpszSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return librtutils_dll.RouterLogRegisterA(util.pstrToFfi(lpszSource));
+  return librtutils_dll.RouterLogRegisterA!(util.pstrToFfi(lpszSource));
 }
 
 export function RouterLogDeregisterA(
   hLogHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogDeregisterA(util.toPointer(hLogHandle));
+  return librtutils_dll.RouterLogDeregisterA!(util.toPointer(hLogHandle));
 }
 
 export function RouterLogEventA(
@@ -30107,7 +30282,7 @@ export function RouterLogEventA(
   plpszSubStringArray: Deno.PointerValue | Uint8Array /* ptr */,
   dwErrorCode: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventA(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode);
+  return librtutils_dll.RouterLogEventA!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode);
 }
 
 export function RouterLogEventDataA(
@@ -30119,7 +30294,7 @@ export function RouterLogEventDataA(
   dwDataBytes: number /* u32 */,
   lpDataBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventDataA(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwDataBytes, util.toPointer(lpDataBytes));
+  return librtutils_dll.RouterLogEventDataA!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwDataBytes, util.toPointer(lpDataBytes));
 }
 
 export function RouterLogEventStringA(
@@ -30131,7 +30306,7 @@ export function RouterLogEventStringA(
   dwErrorCode: number /* u32 */,
   dwErrorIndex: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventStringA(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode, dwErrorIndex);
+  return librtutils_dll.RouterLogEventStringA!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode, dwErrorIndex);
 }
 
 export function RouterLogEventExA(
@@ -30141,7 +30316,7 @@ export function RouterLogEventExA(
   dwMessageId: number /* u32 */,
   ptszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventExA(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat));
+  return librtutils_dll.RouterLogEventExA!(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat));
 }
 
 export function RouterLogEventValistExA(
@@ -30152,26 +30327,26 @@ export function RouterLogEventValistExA(
   ptszFormat: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventValistExA(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat), util.toPointer(arglist));
+  return librtutils_dll.RouterLogEventValistExA!(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pstrToFfi(ptszFormat), util.toPointer(arglist));
 }
 
 export function RouterGetErrorStringA(
   dwErrorCode: number /* u32 */,
   lplpszErrorString: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.RouterGetErrorStringA(dwErrorCode, util.toPointer(lplpszErrorString));
+  return librtutils_dll.RouterGetErrorStringA!(dwErrorCode, util.toPointer(lplpszErrorString));
 }
 
 export function RouterLogRegisterW(
   lpszSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return librtutils_dll.RouterLogRegisterW(util.pwstrToFfi(lpszSource));
+  return librtutils_dll.RouterLogRegisterW!(util.pwstrToFfi(lpszSource));
 }
 
 export function RouterLogDeregisterW(
   hLogHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogDeregisterW(util.toPointer(hLogHandle));
+  return librtutils_dll.RouterLogDeregisterW!(util.toPointer(hLogHandle));
 }
 
 export function RouterLogEventW(
@@ -30182,7 +30357,7 @@ export function RouterLogEventW(
   plpszSubStringArray: Deno.PointerValue | Uint8Array /* ptr */,
   dwErrorCode: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventW(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode);
+  return librtutils_dll.RouterLogEventW!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode);
 }
 
 export function RouterLogEventDataW(
@@ -30194,7 +30369,7 @@ export function RouterLogEventDataW(
   dwDataBytes: number /* u32 */,
   lpDataBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventDataW(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwDataBytes, util.toPointer(lpDataBytes));
+  return librtutils_dll.RouterLogEventDataW!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwDataBytes, util.toPointer(lpDataBytes));
 }
 
 export function RouterLogEventStringW(
@@ -30206,7 +30381,7 @@ export function RouterLogEventStringW(
   dwErrorCode: number /* u32 */,
   dwErrorIndex: number /* u32 */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventStringW(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode, dwErrorIndex);
+  return librtutils_dll.RouterLogEventStringW!(util.toPointer(hLogHandle), dwEventType, dwMessageId, dwSubStringCount, util.toPointer(plpszSubStringArray), dwErrorCode, dwErrorIndex);
 }
 
 export function RouterLogEventExW(
@@ -30216,7 +30391,7 @@ export function RouterLogEventExW(
   dwMessageId: number /* u32 */,
   ptszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventExW(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat));
+  return librtutils_dll.RouterLogEventExW!(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat));
 }
 
 export function RouterLogEventValistExW(
@@ -30227,14 +30402,14 @@ export function RouterLogEventValistExW(
   ptszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return librtutils_dll.RouterLogEventValistExW(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat), util.toPointer(arglist));
+  return librtutils_dll.RouterLogEventValistExW!(util.toPointer(hLogHandle), dwEventType, dwErrorCode, dwMessageId, util.pwstrToFfi(ptszFormat), util.toPointer(arglist));
 }
 
 export function RouterGetErrorStringW(
   dwErrorCode: number /* u32 */,
   lplpwszErrorString: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.RouterGetErrorStringW(dwErrorCode, util.toPointer(lplpwszErrorString));
+  return librtutils_dll.RouterGetErrorStringW!(dwErrorCode, util.toPointer(lplpwszErrorString));
 }
 
 export function RouterAssert(
@@ -30243,7 +30418,7 @@ export function RouterAssert(
   dwLineNumber: number /* u32 */,
   pszMessage: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return librtutils_dll.RouterAssert(util.pstrToFfi(pszFailedAssertion), util.pstrToFfi(pszFileName), dwLineNumber, util.pstrToFfi(pszMessage));
+  return librtutils_dll.RouterAssert!(util.pstrToFfi(pszFailedAssertion), util.pstrToFfi(pszFileName), dwLineNumber, util.pstrToFfi(pszMessage));
 }
 
 export function MprSetupProtocolEnum(
@@ -30251,12 +30426,12 @@ export function MprSetupProtocolEnum(
   lplpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwEntriesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.MprSetupProtocolEnum(dwTransportId, util.toPointer(lplpBuffer), util.toPointer(lpdwEntriesRead));
+  return librtutils_dll.MprSetupProtocolEnum!(dwTransportId, util.toPointer(lplpBuffer), util.toPointer(lpdwEntriesRead));
 }
 
 export function MprSetupProtocolFree(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return librtutils_dll.MprSetupProtocolFree(util.toPointer(lpBuffer));
+  return librtutils_dll.MprSetupProtocolFree!(util.toPointer(lpBuffer));
 }
 

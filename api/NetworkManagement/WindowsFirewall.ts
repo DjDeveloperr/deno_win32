@@ -1059,34 +1059,42 @@ try {
     NetworkIsolationSetupAppContainerBinaries: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     NetworkIsolationRegisterForAppContainerChanges: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationUnregisterForAppContainerChanges: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationFreeAppContainers: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationEnumAppContainers: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationGetAppContainerConfig: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationSetAppContainerConfig: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NetworkIsolationDiagnoseConnectFailureAndGetInfo: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1102,7 +1110,7 @@ export function NetworkIsolationSetupAppContainerBinaries(
   binaries: Deno.PointerValue | Uint8Array /* ptr */,
   binariesCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetupAppContainerBinaries(util.toPointer(applicationContainerSid), util.pwstrToFfi(packageFullName), util.pwstrToFfi(packageFolder), util.pwstrToFfi(displayName), util.boolToFfi(bBinariesFullyComputed), util.toPointer(binaries), binariesCount);
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetupAppContainerBinaries!(util.toPointer(applicationContainerSid), util.pwstrToFfi(packageFullName), util.pwstrToFfi(packageFolder), util.pwstrToFfi(displayName), util.boolToFfi(bBinariesFullyComputed), util.toPointer(binaries), binariesCount);
 }
 
 export function NetworkIsolationRegisterForAppContainerChanges(
@@ -1111,19 +1119,19 @@ export function NetworkIsolationRegisterForAppContainerChanges(
   context: Deno.PointerValue | Uint8Array /* ptr */,
   registrationObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationRegisterForAppContainerChanges(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(registrationObject));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationRegisterForAppContainerChanges!(flags, util.toPointer(callback), util.toPointer(context), util.toPointer(registrationObject));
 }
 
 export function NetworkIsolationUnregisterForAppContainerChanges(
   registrationObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationUnregisterForAppContainerChanges(util.toPointer(registrationObject));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationUnregisterForAppContainerChanges!(util.toPointer(registrationObject));
 }
 
 export function NetworkIsolationFreeAppContainers(
   pPublicAppCs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationFreeAppContainers(util.toPointer(pPublicAppCs));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationFreeAppContainers!(util.toPointer(pPublicAppCs));
 }
 
 export function NetworkIsolationEnumAppContainers(
@@ -1131,27 +1139,27 @@ export function NetworkIsolationEnumAppContainers(
   pdwNumPublicAppCs: Deno.PointerValue | Uint8Array /* ptr */,
   ppPublicAppCs: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationEnumAppContainers(Flags, util.toPointer(pdwNumPublicAppCs), util.toPointer(ppPublicAppCs));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationEnumAppContainers!(Flags, util.toPointer(pdwNumPublicAppCs), util.toPointer(ppPublicAppCs));
 }
 
 export function NetworkIsolationGetAppContainerConfig(
   pdwNumPublicAppCs: Deno.PointerValue | Uint8Array /* ptr */,
   appContainerSids: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationGetAppContainerConfig(util.toPointer(pdwNumPublicAppCs), util.toPointer(appContainerSids));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationGetAppContainerConfig!(util.toPointer(pdwNumPublicAppCs), util.toPointer(appContainerSids));
 }
 
 export function NetworkIsolationSetAppContainerConfig(
   dwNumPublicAppCs: number /* u32 */,
   appContainerSids: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetAppContainerConfig(dwNumPublicAppCs, util.toPointer(appContainerSids));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationSetAppContainerConfig!(dwNumPublicAppCs, util.toPointer(appContainerSids));
 }
 
 export function NetworkIsolationDiagnoseConnectFailureAndGetInfo(
   wszServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   netIsoError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationDiagnoseConnectFailureAndGetInfo(util.pwstrToFfi(wszServerName), util.toPointer(netIsoError));
+  return libapi_ms_win_net_isolation_l1_1_0_dll.NetworkIsolationDiagnoseConnectFailureAndGetInfo!(util.pwstrToFfi(wszServerName), util.toPointer(netIsoError));
 }
 

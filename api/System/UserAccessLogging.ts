@@ -207,18 +207,22 @@ try {
     UalStart: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     UalStop: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     UalInstrument: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     UalRegisterProduct: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -228,19 +232,19 @@ try {
 export function UalStart(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libualapi_dll.UalStart(util.toPointer(Data));
+  return libualapi_dll.UalStart!(util.toPointer(Data));
 }
 
 export function UalStop(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libualapi_dll.UalStop(util.toPointer(Data));
+  return libualapi_dll.UalStop!(util.toPointer(Data));
 }
 
 export function UalInstrument(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libualapi_dll.UalInstrument(util.toPointer(Data));
+  return libualapi_dll.UalInstrument!(util.toPointer(Data));
 }
 
 export function UalRegisterProduct(
@@ -248,6 +252,6 @@ export function UalRegisterProduct(
   wszRoleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wszGuid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libualapi_dll.UalRegisterProduct(util.pwstrToFfi(wszProductName), util.pwstrToFfi(wszRoleName), util.pwstrToFfi(wszGuid));
+  return libualapi_dll.UalRegisterProduct!(util.pwstrToFfi(wszProductName), util.pwstrToFfi(wszRoleName), util.pwstrToFfi(wszGuid));
 }
 

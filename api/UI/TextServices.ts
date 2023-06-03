@@ -2166,14 +2166,17 @@ try {
     DoMsCtfMonitor: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitLocalMsCtfMonitor: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     UninitLocalMsCtfMonitor: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2184,16 +2187,16 @@ export function DoMsCtfMonitor(
   dwFlags: number /* u32 */,
   hEventForServiceStop: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libMsCtfMonitor_dll.DoMsCtfMonitor(dwFlags, util.toPointer(hEventForServiceStop)));
+  return util.boolFromFfi(libMsCtfMonitor_dll.DoMsCtfMonitor!(dwFlags, util.toPointer(hEventForServiceStop)));
 }
 
 export function InitLocalMsCtfMonitor(
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMsCtfMonitor_dll.InitLocalMsCtfMonitor(dwFlags);
+  return libMsCtfMonitor_dll.InitLocalMsCtfMonitor!(dwFlags);
 }
 
 export function UninitLocalMsCtfMonitor(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMsCtfMonitor_dll.UninitLocalMsCtfMonitor();
+  return libMsCtfMonitor_dll.UninitLocalMsCtfMonitor!();
 }
 

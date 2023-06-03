@@ -277,62 +277,77 @@ try {
     EcOpenSubscriptionEnum: {
       parameters: ["u32"],
       result: "isize",
+      optional: true,
     },
     EcEnumNextSubscription: {
       parameters: ["isize", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcOpenSubscription: {
       parameters: ["buffer", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     EcSetSubscriptionProperty: {
       parameters: ["isize", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcGetSubscriptionProperty: {
       parameters: ["isize", "i32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcSaveSubscription: {
       parameters: ["isize", "u32"],
       result: "i32",
+      optional: true,
     },
     EcDeleteSubscription: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     EcGetObjectArraySize: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcSetObjectArrayProperty: {
       parameters: ["isize", "i32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcGetObjectArrayProperty: {
       parameters: ["isize", "i32", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcInsertObjectArrayElement: {
       parameters: ["isize", "u32"],
       result: "i32",
+      optional: true,
     },
     EcRemoveObjectArrayElement: {
       parameters: ["isize", "u32"],
       result: "i32",
+      optional: true,
     },
     EcGetSubscriptionRunTimeStatus: {
       parameters: ["buffer", "i32", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EcRetrySubscription: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     EcClose: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -342,7 +357,7 @@ try {
 export function EcOpenSubscriptionEnum(
   Flags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libWecApi_dll.EcOpenSubscriptionEnum(Flags);
+  return libWecApi_dll.EcOpenSubscriptionEnum!(Flags);
 }
 
 export function EcEnumNextSubscription(
@@ -351,7 +366,7 @@ export function EcEnumNextSubscription(
   SubscriptionNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SubscriptionNameBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcEnumNextSubscription(SubscriptionEnum, SubscriptionNameBufferSize, util.pwstrToFfi(SubscriptionNameBuffer), util.toPointer(SubscriptionNameBufferUsed)));
+  return util.boolFromFfi(libWecApi_dll.EcEnumNextSubscription!(SubscriptionEnum, SubscriptionNameBufferSize, util.pwstrToFfi(SubscriptionNameBuffer), util.toPointer(SubscriptionNameBufferUsed)));
 }
 
 export function EcOpenSubscription(
@@ -359,7 +374,7 @@ export function EcOpenSubscription(
   AccessMask: number /* u32 */,
   Flags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libWecApi_dll.EcOpenSubscription(util.pwstrToFfi(SubscriptionName), AccessMask, Flags);
+  return libWecApi_dll.EcOpenSubscription!(util.pwstrToFfi(SubscriptionName), AccessMask, Flags);
 }
 
 export function EcSetSubscriptionProperty(
@@ -368,7 +383,7 @@ export function EcSetSubscriptionProperty(
   Flags: number /* u32 */,
   PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcSetSubscriptionProperty(Subscription, PropertyId, Flags, util.toPointer(PropertyValue)));
+  return util.boolFromFfi(libWecApi_dll.EcSetSubscriptionProperty!(Subscription, PropertyId, Flags, util.toPointer(PropertyValue)));
 }
 
 export function EcGetSubscriptionProperty(
@@ -379,28 +394,28 @@ export function EcGetSubscriptionProperty(
   PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionProperty(Subscription, PropertyId, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionProperty!(Subscription, PropertyId, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EcSaveSubscription(
   Subscription: bigint | number /* isize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcSaveSubscription(Subscription, Flags));
+  return util.boolFromFfi(libWecApi_dll.EcSaveSubscription!(Subscription, Flags));
 }
 
 export function EcDeleteSubscription(
   SubscriptionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcDeleteSubscription(util.pwstrToFfi(SubscriptionName), Flags));
+  return util.boolFromFfi(libWecApi_dll.EcDeleteSubscription!(util.pwstrToFfi(SubscriptionName), Flags));
 }
 
 export function EcGetObjectArraySize(
   ObjectArray: bigint | number /* isize */,
   ObjectArraySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcGetObjectArraySize(ObjectArray, util.toPointer(ObjectArraySize)));
+  return util.boolFromFfi(libWecApi_dll.EcGetObjectArraySize!(ObjectArray, util.toPointer(ObjectArraySize)));
 }
 
 export function EcSetObjectArrayProperty(
@@ -410,7 +425,7 @@ export function EcSetObjectArrayProperty(
   Flags: number /* u32 */,
   PropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcSetObjectArrayProperty(ObjectArray, PropertyId, ArrayIndex, Flags, util.toPointer(PropertyValue)));
+  return util.boolFromFfi(libWecApi_dll.EcSetObjectArrayProperty!(ObjectArray, PropertyId, ArrayIndex, Flags, util.toPointer(PropertyValue)));
 }
 
 export function EcGetObjectArrayProperty(
@@ -422,21 +437,21 @@ export function EcGetObjectArrayProperty(
   PropertyValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   PropertyValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcGetObjectArrayProperty(ObjectArray, PropertyId, ArrayIndex, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
+  return util.boolFromFfi(libWecApi_dll.EcGetObjectArrayProperty!(ObjectArray, PropertyId, ArrayIndex, Flags, PropertyValueBufferSize, util.toPointer(PropertyValueBuffer), util.toPointer(PropertyValueBufferUsed)));
 }
 
 export function EcInsertObjectArrayElement(
   ObjectArray: bigint | number /* isize */,
   ArrayIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcInsertObjectArrayElement(ObjectArray, ArrayIndex));
+  return util.boolFromFfi(libWecApi_dll.EcInsertObjectArrayElement!(ObjectArray, ArrayIndex));
 }
 
 export function EcRemoveObjectArrayElement(
   ObjectArray: bigint | number /* isize */,
   ArrayIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcRemoveObjectArrayElement(ObjectArray, ArrayIndex));
+  return util.boolFromFfi(libWecApi_dll.EcRemoveObjectArrayElement!(ObjectArray, ArrayIndex));
 }
 
 export function EcGetSubscriptionRunTimeStatus(
@@ -448,7 +463,7 @@ export function EcGetSubscriptionRunTimeStatus(
   StatusValueBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   StatusValueBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionRunTimeStatus(util.pwstrToFfi(SubscriptionName), StatusInfoId, util.pwstrToFfi(EventSourceName), Flags, StatusValueBufferSize, util.toPointer(StatusValueBuffer), util.toPointer(StatusValueBufferUsed)));
+  return util.boolFromFfi(libWecApi_dll.EcGetSubscriptionRunTimeStatus!(util.pwstrToFfi(SubscriptionName), StatusInfoId, util.pwstrToFfi(EventSourceName), Flags, StatusValueBufferSize, util.toPointer(StatusValueBuffer), util.toPointer(StatusValueBufferUsed)));
 }
 
 export function EcRetrySubscription(
@@ -456,12 +471,12 @@ export function EcRetrySubscription(
   EventSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcRetrySubscription(util.pwstrToFfi(SubscriptionName), util.pwstrToFfi(EventSourceName), Flags));
+  return util.boolFromFfi(libWecApi_dll.EcRetrySubscription!(util.pwstrToFfi(SubscriptionName), util.pwstrToFfi(EventSourceName), Flags));
 }
 
 export function EcClose(
   Object: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWecApi_dll.EcClose(Object));
+  return util.boolFromFfi(libWecApi_dll.EcClose!(Object));
 }
 

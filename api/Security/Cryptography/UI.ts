@@ -4558,42 +4558,52 @@ try {
     CryptUIDlgViewContext: {
       parameters: ["u32", "pointer", "pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIDlgSelectCertificateFromStore: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CertSelectionGetSerializedBlob: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CryptUIDlgCertMgr: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIWizDigitalSign: {
       parameters: ["u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIWizFreeDigitalSignContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIDlgViewCertificateW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIDlgViewCertificateA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIWizExport: {
       parameters: ["u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptUIWizImport: {
       parameters: ["u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4608,7 +4618,7 @@ export function CryptUIDlgViewContext(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewContext(dwContextType, util.toPointer(pvContext), (hwnd), util.pwstrToFfi(pwszTitle), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewContext!(dwContextType, util.toPointer(pvContext), (hwnd), util.pwstrToFfi(pwszTitle), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function CryptUIDlgSelectCertificateFromStore(
@@ -4620,7 +4630,7 @@ export function CryptUIDlgSelectCertificateFromStore(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCRYPTUI_dll.CryptUIDlgSelectCertificateFromStore(util.toPointer(hCertStore), (hwnd), util.pwstrToFfi(pwszTitle), util.pwstrToFfi(pwszDisplayString), dwDontUseColumn, dwFlags, util.toPointer(pvReserved));
+  return libCRYPTUI_dll.CryptUIDlgSelectCertificateFromStore!(util.toPointer(hCertStore), (hwnd), util.pwstrToFfi(pwszTitle), util.pwstrToFfi(pwszDisplayString), dwDontUseColumn, dwFlags, util.toPointer(pvReserved));
 }
 
 export function CertSelectionGetSerializedBlob(
@@ -4628,13 +4638,13 @@ export function CertSelectionGetSerializedBlob(
   ppOutBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pulOutBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libCRYPTUI_dll.CertSelectionGetSerializedBlob(util.toPointer(pcsi), util.toPointer(ppOutBuffer), util.toPointer(pulOutBufferSize));
+  return libCRYPTUI_dll.CertSelectionGetSerializedBlob!(util.toPointer(pcsi), util.toPointer(ppOutBuffer), util.toPointer(pulOutBufferSize));
 }
 
 export function CryptUIDlgCertMgr(
   pCryptUICertMgr: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgCertMgr(util.toPointer(pCryptUICertMgr)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgCertMgr!(util.toPointer(pCryptUICertMgr)));
 }
 
 export function CryptUIWizDigitalSign(
@@ -4644,27 +4654,27 @@ export function CryptUIWizDigitalSign(
   pDigitalSignInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppSignContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizDigitalSign(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pDigitalSignInfo), util.toPointer(ppSignContext)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizDigitalSign!(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pDigitalSignInfo), util.toPointer(ppSignContext)));
 }
 
 export function CryptUIWizFreeDigitalSignContext(
   pSignContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizFreeDigitalSignContext(util.toPointer(pSignContext)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizFreeDigitalSignContext!(util.toPointer(pSignContext)));
 }
 
 export function CryptUIDlgViewCertificateW(
   pCertViewInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pfPropertiesChanged: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateW(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateW!(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
 }
 
 export function CryptUIDlgViewCertificateA(
   pCertViewInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pfPropertiesChanged: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateA(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIDlgViewCertificateA!(util.toPointer(pCertViewInfo), util.toPointer(pfPropertiesChanged)));
 }
 
 export function CryptUIWizExport(
@@ -4674,7 +4684,7 @@ export function CryptUIWizExport(
   pExportInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pvoid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizExport(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pExportInfo), util.toPointer(pvoid)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizExport!(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pExportInfo), util.toPointer(pvoid)));
 }
 
 export function CryptUIWizImport(
@@ -4684,6 +4694,6 @@ export function CryptUIWizImport(
   pImportSrc: Deno.PointerValue | Uint8Array /* ptr */,
   hDestCertStore: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.Cryptography.HCERTSTORE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizImport(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pImportSrc), util.toPointer(hDestCertStore)));
+  return util.boolFromFfi(libCRYPTUI_dll.CryptUIWizImport!(dwFlags, (hwndParent), util.pwstrToFfi(pwszWizardTitle), util.toPointer(pImportSrc), util.toPointer(hDestCertStore)));
 }
 

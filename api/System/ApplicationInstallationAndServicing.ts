@@ -6536,1058 +6536,1322 @@ try {
     MsiCloseHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiCloseAllHandles: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     MsiSetInternalUI: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiSetExternalUIA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MsiSetExternalUIW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MsiSetExternalUIRecord: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnableLogA: {
       parameters: ["i32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiEnableLogW: {
       parameters: ["i32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiQueryProductStateA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     MsiQueryProductStateW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     MsiGetProductInfoA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductInfoW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductInfoExA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductInfoExW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiInstallProductA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiInstallProductW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureProductA: {
       parameters: ["buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureProductW: {
       parameters: ["buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureProductExA: {
       parameters: ["buffer", "i32", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureProductExW: {
       parameters: ["buffer", "i32", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiReinstallProductA: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiReinstallProductW: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseProductExA: {
       parameters: ["buffer", "buffer", "buffer", "u16", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseProductExW: {
       parameters: ["buffer", "buffer", "buffer", "u16", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseProductA: {
       parameters: ["buffer", "buffer", "buffer", "u16"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseProductW: {
       parameters: ["buffer", "buffer", "buffer", "u16"],
       result: "u32",
+      optional: true,
     },
     MsiProcessAdvertiseScriptA: {
       parameters: ["buffer", "buffer", "pointer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiProcessAdvertiseScriptW: {
       parameters: ["buffer", "buffer", "pointer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseScriptA: {
       parameters: ["buffer", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiAdvertiseScriptW: {
       parameters: ["buffer", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductInfoFromScriptA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductInfoFromScriptW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductCodeA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductCodeW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetUserInfoA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiGetUserInfoW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiCollectUserInfoA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     MsiCollectUserInfoW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     MsiApplyPatchA: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiApplyPatchW: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchInfoA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchInfoW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumPatchesA: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumPatchesW: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiRemovePatchesA: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiRemovePatchesW: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiExtractPatchXMLDataA: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiExtractPatchXMLDataW: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchInfoExA: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchInfoExW: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiApplyMultiplePatchesA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiApplyMultiplePatchesW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDeterminePatchSequenceA: {
       parameters: ["buffer", "buffer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDeterminePatchSequenceW: {
       parameters: ["buffer", "buffer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDetermineApplicablePatchesA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDetermineApplicablePatchesW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumPatchesExA: {
       parameters: ["buffer", "buffer", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumPatchesExW: {
       parameters: ["buffer", "buffer", "u32", "u32", "u32", "buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiQueryFeatureStateA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiQueryFeatureStateW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiQueryFeatureStateExA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiQueryFeatureStateExW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiUseFeatureA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiUseFeatureW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiUseFeatureExA: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     MsiUseFeatureExW: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     MsiGetFeatureUsageA: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureUsageW: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureFeatureA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiConfigureFeatureW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiReinstallFeatureA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiReinstallFeatureW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiProvideComponentA: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideComponentW: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideQualifiedComponentA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideQualifiedComponentW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideQualifiedComponentExA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideQualifiedComponentExW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetComponentPathA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiGetComponentPathW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiGetComponentPathExA: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiGetComponentPathExW: {
       parameters: ["buffer", "buffer", "buffer", "i32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiProvideAssemblyA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiProvideAssemblyW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiQueryComponentStateA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiQueryComponentStateW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumProductsA: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumProductsW: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumProductsExA: {
       parameters: ["buffer", "buffer", "u32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumProductsExW: {
       parameters: ["buffer", "buffer", "u32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumRelatedProductsA: {
       parameters: ["buffer", "u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumRelatedProductsW: {
       parameters: ["buffer", "u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumFeaturesA: {
       parameters: ["buffer", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumFeaturesW: {
       parameters: ["buffer", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentsA: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentsW: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentsExA: {
       parameters: ["buffer", "u32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentsExW: {
       parameters: ["buffer", "u32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumClientsA: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumClientsW: {
       parameters: ["buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumClientsExA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumClientsExW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentQualifiersA: {
       parameters: ["buffer", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentQualifiersW: {
       parameters: ["buffer", "u32", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenProductA: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenProductW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenPackageA: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenPackageW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenPackageExA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenPackageExW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchFileListA: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPatchFileListW: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductPropertyA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetProductPropertyW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiVerifyPackageA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     MsiVerifyPackageW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureInfoA: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureInfoW: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiInstallMissingComponentA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiInstallMissingComponentW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiInstallMissingFileA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiInstallMissingFileW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiLocateComponentA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiLocateComponentW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiSourceListClearAllA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearAllW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddSourceA: {
       parameters: ["buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddSourceW: {
       parameters: ["buffer", "buffer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListForceResolutionA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListForceResolutionW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddSourceExA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddSourceExW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddMediaDiskA: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListAddMediaDiskW: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearSourceA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearSourceW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearMediaDiskA: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearMediaDiskW: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearAllExA: {
       parameters: ["buffer", "buffer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListClearAllExW: {
       parameters: ["buffer", "buffer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListForceResolutionExA: {
       parameters: ["buffer", "buffer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListForceResolutionExW: {
       parameters: ["buffer", "buffer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListSetInfoA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListSetInfoW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListGetInfoA: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListGetInfoW: {
       parameters: ["buffer", "buffer", "i32", "u32", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListEnumSourcesA: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListEnumSourcesW: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListEnumMediaDisksA: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSourceListEnumMediaDisksW: {
       parameters: ["buffer", "buffer", "i32", "u32", "u32", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFileVersionA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFileVersionW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFileHashA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFileHashW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFileSignatureInformationA: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MsiGetFileSignatureInformationW: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MsiGetShortcutTargetA: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetShortcutTargetW: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiIsProductElevatedA: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiIsProductElevatedW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiNotifySidChangeA: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiNotifySidChangeW: {
       parameters: ["buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiBeginTransactionA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiBeginTransactionW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEndTransaction: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     MsiJoinTransaction: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseOpenViewA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseOpenViewW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiViewGetErrorA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiViewGetErrorW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiViewExecute: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiViewFetch: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiViewModify: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiViewGetColumnInfo: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiViewClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseGetPrimaryKeysA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseGetPrimaryKeysW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseIsTablePersistentA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiDatabaseIsTablePersistentW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiGetSummaryInformationA: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetSummaryInformationW: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoGetPropertyCount: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoSetPropertyA: {
       parameters: ["pointer", "u32", "u32", "i32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoSetPropertyW: {
       parameters: ["pointer", "u32", "u32", "i32", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoGetPropertyA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoGetPropertyW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSummaryInfoPersist: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenDatabaseA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiOpenDatabaseW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseImportA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseImportW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseExportA: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseExportW: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseMergeA: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseMergeW: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseGenerateTransformA: {
       parameters: ["pointer", "pointer", "buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseGenerateTransformW: {
       parameters: ["pointer", "pointer", "buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseApplyTransformA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseApplyTransformW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiCreateTransformSummaryInfoA: {
       parameters: ["pointer", "pointer", "buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiCreateTransformSummaryInfoW: {
       parameters: ["pointer", "pointer", "buffer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiDatabaseCommit: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetDatabaseState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MsiCreateRecord: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     MsiRecordIsNull: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     MsiRecordDataSize: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiRecordSetInteger: {
       parameters: ["pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiRecordSetStringA: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordSetStringW: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordGetInteger: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     MsiRecordGetStringA: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordGetStringW: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordGetFieldCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordSetStreamA: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordSetStreamW: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordReadStream: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiRecordClearData: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetActiveDatabase: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MsiSetPropertyA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSetPropertyW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPropertyA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetPropertyW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetLanguage: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     MsiGetMode: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     MsiSetMode: {
       parameters: ["pointer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiFormatRecordA: {
       parameters: ["pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiFormatRecordW: {
       parameters: ["pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiDoActionA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiDoActionW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSequenceA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiSequenceW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiProcessMessage: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MsiEvaluateConditionA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiEvaluateConditionW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     MsiGetFeatureStateA: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureStateW: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSetFeatureStateA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiSetFeatureStateW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiSetFeatureAttributesA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiSetFeatureAttributesW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     MsiGetComponentStateA: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetComponentStateW: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSetComponentStateA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiSetComponentStateW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureCostA: {
       parameters: ["pointer", "buffer", "i32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureCostW: {
       parameters: ["pointer", "buffer", "i32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentCostsA: {
       parameters: ["pointer", "buffer", "u32", "i32", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnumComponentCostsW: {
       parameters: ["pointer", "buffer", "u32", "i32", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSetInstallLevel: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureValidStatesA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetFeatureValidStatesW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetSourcePathA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetSourcePathW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetTargetPathA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiGetTargetPathW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiSetTargetPathA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiSetTargetPathW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiVerifyDiskSpace: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     MsiEnableUIPreview: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MsiPreviewDialogA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiPreviewDialogW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiPreviewBillboardA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiPreviewBillboardW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     MsiGetLastErrorRecord: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7597,18 +7861,22 @@ try {
     SfcGetNextProtectedFile: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SfcIsFileProtected: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SfcIsKeyProtected: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SfpVerifyFile: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7618,38 +7886,47 @@ try {
     CreatePatchFileA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePatchFileW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePatchFileByHandles: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePatchFileExA: {
       parameters: ["u32", "pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePatchFileExW: {
       parameters: ["u32", "pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreatePatchFileByHandlesEx: {
       parameters: ["u32", "pointer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ExtractPatchHeaderToFileA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ExtractPatchHeaderToFileW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ExtractPatchHeaderToFileByHandles: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7659,66 +7936,82 @@ try {
     TestApplyPatchToFileA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     TestApplyPatchToFileW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     TestApplyPatchToFileByHandles: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     TestApplyPatchToFileByBuffers: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileA: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileW: {
       parameters: ["buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileByHandles: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileExA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileExW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileByHandlesEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyPatchToFileByBuffers: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetFilePatchSignatureA: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetFilePatchSignatureW: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetFilePatchSignatureByHandle: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetFilePatchSignatureByBuffer: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer", "u32", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     NormalizeFileForPatchSignature: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7728,66 +8021,82 @@ try {
     GetDeltaInfoB: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDeltaInfoA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDeltaInfoW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyDeltaGetReverseB: {
       parameters: ["i64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyDeltaB: {
       parameters: ["i64", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ApplyDeltaProvidedB: {
       parameters: ["i64", "pointer", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     ApplyDeltaA: {
       parameters: ["i64", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ApplyDeltaW: {
       parameters: ["i64", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CreateDeltaB: {
       parameters: ["i64", "i64", "i64", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateDeltaA: {
       parameters: ["i64", "i64", "i64", "buffer", "buffer", "buffer", "buffer", "pointer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     CreateDeltaW: {
       parameters: ["i64", "i64", "i64", "buffer", "buffer", "buffer", "buffer", "pointer", "pointer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetDeltaSignatureB: {
       parameters: ["i64", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDeltaSignatureA: {
       parameters: ["i64", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDeltaSignatureW: {
       parameters: ["i64", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeltaNormalizeProvidedB: {
       parameters: ["i64", "i64", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     DeltaFree: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7797,54 +8106,67 @@ try {
     CreateActCtxA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateActCtxW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     AddRefActCtx: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ReleaseActCtx: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ZombifyActCtx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ActivateActCtx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeactivateActCtx: {
       parameters: ["u32", "usize"],
       result: "i32",
+      optional: true,
     },
     GetCurrentActCtx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FindActCtxSectionStringA: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindActCtxSectionStringW: {
       parameters: ["u32", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindActCtxSectionGuid: {
       parameters: ["u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryActCtxW: {
       parameters: ["u32", "pointer", "pointer", "u32", "pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryActCtxSettingsW: {
       parameters: ["u32", "pointer", "buffer", "buffer", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7854,18 +8176,18 @@ try {
 export function MsiCloseHandle(
   hAny: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiCloseHandle(util.toPointer(hAny));
+  return libmsi_dll.MsiCloseHandle!(util.toPointer(hAny));
 }
 
 export function MsiCloseAllHandles(): number /* u32 */ {
-  return libmsi_dll.MsiCloseAllHandles();
+  return libmsi_dll.MsiCloseAllHandles!();
 }
 
 export function MsiSetInternalUI(
   dwUILevel: INSTALLUILEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUILEVEL */,
   phWnd: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLUILEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUILEVEL */ {
-  return libmsi_dll.MsiSetInternalUI(dwUILevel, util.toPointer(phWnd));
+  return libmsi_dll.MsiSetInternalUI!(dwUILevel, util.toPointer(phWnd));
 }
 
 export function MsiSetExternalUIA(
@@ -7873,7 +8195,7 @@ export function MsiSetExternalUIA(
   dwMessageFilter: number /* u32 */,
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERA */ {
-  return libmsi_dll.MsiSetExternalUIA(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
+  return libmsi_dll.MsiSetExternalUIA!(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
 }
 
 export function MsiSetExternalUIW(
@@ -7881,7 +8203,7 @@ export function MsiSetExternalUIW(
   dwMessageFilter: number /* u32 */,
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLUI_HANDLERW */ {
-  return libmsi_dll.MsiSetExternalUIW(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
+  return libmsi_dll.MsiSetExternalUIW!(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext));
 }
 
 export function MsiSetExternalUIRecord(
@@ -7890,7 +8212,7 @@ export function MsiSetExternalUIRecord(
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   ppuiPrevHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PINSTALLUI_HANDLER_RECORD */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetExternalUIRecord(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext), util.toPointer(ppuiPrevHandler));
+  return libmsi_dll.MsiSetExternalUIRecord!(util.toPointer(puiHandler), dwMessageFilter, util.toPointer(pvContext), util.toPointer(ppuiPrevHandler));
 }
 
 export function MsiEnableLogA(
@@ -7898,7 +8220,7 @@ export function MsiEnableLogA(
   szLogFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwLogAttributes: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnableLogA(dwLogMode, util.pstrToFfi(szLogFile), dwLogAttributes);
+  return libmsi_dll.MsiEnableLogA!(dwLogMode, util.pstrToFfi(szLogFile), dwLogAttributes);
 }
 
 export function MsiEnableLogW(
@@ -7906,19 +8228,19 @@ export function MsiEnableLogW(
   szLogFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwLogAttributes: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnableLogW(dwLogMode, util.pwstrToFfi(szLogFile), dwLogAttributes);
+  return libmsi_dll.MsiEnableLogW!(dwLogMode, util.pwstrToFfi(szLogFile), dwLogAttributes);
 }
 
 export function MsiQueryProductStateA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiQueryProductStateA(util.pstrToFfi(szProduct));
+  return libmsi_dll.MsiQueryProductStateA!(util.pstrToFfi(szProduct));
 }
 
 export function MsiQueryProductStateW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiQueryProductStateW(util.pwstrToFfi(szProduct));
+  return libmsi_dll.MsiQueryProductStateW!(util.pwstrToFfi(szProduct));
 }
 
 export function MsiGetProductInfoA(
@@ -7927,7 +8249,7 @@ export function MsiGetProductInfoA(
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoA(util.pstrToFfi(szProduct), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetProductInfoA!(util.pstrToFfi(szProduct), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetProductInfoW(
@@ -7936,7 +8258,7 @@ export function MsiGetProductInfoW(
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetProductInfoW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetProductInfoExA(
@@ -7947,7 +8269,7 @@ export function MsiGetProductInfoExA(
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiGetProductInfoExA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
 }
 
 export function MsiGetProductInfoExW(
@@ -7958,21 +8280,21 @@ export function MsiGetProductInfoExW(
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiGetProductInfoExW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
 }
 
 export function MsiInstallProductA(
   szPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallProductA(util.pstrToFfi(szPackagePath), util.pstrToFfi(szCommandLine));
+  return libmsi_dll.MsiInstallProductA!(util.pstrToFfi(szPackagePath), util.pstrToFfi(szCommandLine));
 }
 
 export function MsiInstallProductW(
   szPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallProductW(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szCommandLine));
+  return libmsi_dll.MsiInstallProductW!(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szCommandLine));
 }
 
 export function MsiConfigureProductA(
@@ -7980,7 +8302,7 @@ export function MsiConfigureProductA(
   iInstallLevel: INSTALLLEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLLEVEL */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureProductA(util.pstrToFfi(szProduct), iInstallLevel, eInstallState);
+  return libmsi_dll.MsiConfigureProductA!(util.pstrToFfi(szProduct), iInstallLevel, eInstallState);
 }
 
 export function MsiConfigureProductW(
@@ -7988,7 +8310,7 @@ export function MsiConfigureProductW(
   iInstallLevel: INSTALLLEVEL /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLLEVEL */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureProductW(util.pwstrToFfi(szProduct), iInstallLevel, eInstallState);
+  return libmsi_dll.MsiConfigureProductW!(util.pwstrToFfi(szProduct), iInstallLevel, eInstallState);
 }
 
 export function MsiConfigureProductExA(
@@ -7997,7 +8319,7 @@ export function MsiConfigureProductExA(
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   szCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureProductExA(util.pstrToFfi(szProduct), iInstallLevel, eInstallState, util.pstrToFfi(szCommandLine));
+  return libmsi_dll.MsiConfigureProductExA!(util.pstrToFfi(szProduct), iInstallLevel, eInstallState, util.pstrToFfi(szCommandLine));
 }
 
 export function MsiConfigureProductExW(
@@ -8006,21 +8328,21 @@ export function MsiConfigureProductExW(
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   szCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureProductExW(util.pwstrToFfi(szProduct), iInstallLevel, eInstallState, util.pwstrToFfi(szCommandLine));
+  return libmsi_dll.MsiConfigureProductExW!(util.pwstrToFfi(szProduct), iInstallLevel, eInstallState, util.pwstrToFfi(szCommandLine));
 }
 
 export function MsiReinstallProductA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szReinstallMode: REINSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.REINSTALLMODE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiReinstallProductA(util.pstrToFfi(szProduct), szReinstallMode);
+  return libmsi_dll.MsiReinstallProductA!(util.pstrToFfi(szProduct), szReinstallMode);
 }
 
 export function MsiReinstallProductW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szReinstallMode: REINSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.REINSTALLMODE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiReinstallProductW(util.pwstrToFfi(szProduct), szReinstallMode);
+  return libmsi_dll.MsiReinstallProductW!(util.pwstrToFfi(szProduct), szReinstallMode);
 }
 
 export function MsiAdvertiseProductExA(
@@ -8031,7 +8353,7 @@ export function MsiAdvertiseProductExA(
   dwPlatform: number /* u32 */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseProductExA(util.pstrToFfi(szPackagePath), util.pstrToFfi(szScriptfilePath), util.pstrToFfi(szTransforms), lgidLanguage, dwPlatform, dwOptions);
+  return libmsi_dll.MsiAdvertiseProductExA!(util.pstrToFfi(szPackagePath), util.pstrToFfi(szScriptfilePath), util.pstrToFfi(szTransforms), lgidLanguage, dwPlatform, dwOptions);
 }
 
 export function MsiAdvertiseProductExW(
@@ -8042,7 +8364,7 @@ export function MsiAdvertiseProductExW(
   dwPlatform: number /* u32 */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseProductExW(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szScriptfilePath), util.pwstrToFfi(szTransforms), lgidLanguage, dwPlatform, dwOptions);
+  return libmsi_dll.MsiAdvertiseProductExW!(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szScriptfilePath), util.pwstrToFfi(szTransforms), lgidLanguage, dwPlatform, dwOptions);
 }
 
 export function MsiAdvertiseProductA(
@@ -8051,7 +8373,7 @@ export function MsiAdvertiseProductA(
   szTransforms: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lgidLanguage: number /* u16 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseProductA(util.pstrToFfi(szPackagePath), util.pstrToFfi(szScriptfilePath), util.pstrToFfi(szTransforms), lgidLanguage);
+  return libmsi_dll.MsiAdvertiseProductA!(util.pstrToFfi(szPackagePath), util.pstrToFfi(szScriptfilePath), util.pstrToFfi(szTransforms), lgidLanguage);
 }
 
 export function MsiAdvertiseProductW(
@@ -8060,7 +8382,7 @@ export function MsiAdvertiseProductW(
   szTransforms: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lgidLanguage: number /* u16 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseProductW(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szScriptfilePath), util.pwstrToFfi(szTransforms), lgidLanguage);
+  return libmsi_dll.MsiAdvertiseProductW!(util.pwstrToFfi(szPackagePath), util.pwstrToFfi(szScriptfilePath), util.pwstrToFfi(szTransforms), lgidLanguage);
 }
 
 export function MsiProcessAdvertiseScriptA(
@@ -8070,7 +8392,7 @@ export function MsiProcessAdvertiseScriptA(
   fShortcuts: boolean /* Windows.Win32.Foundation.BOOL */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProcessAdvertiseScriptA(util.pstrToFfi(szScriptFile), util.pstrToFfi(szIconFolder), util.toPointer(hRegData), util.boolToFfi(fShortcuts), util.boolToFfi(fRemoveItems));
+  return libmsi_dll.MsiProcessAdvertiseScriptA!(util.pstrToFfi(szScriptFile), util.pstrToFfi(szIconFolder), util.toPointer(hRegData), util.boolToFfi(fShortcuts), util.boolToFfi(fRemoveItems));
 }
 
 export function MsiProcessAdvertiseScriptW(
@@ -8080,7 +8402,7 @@ export function MsiProcessAdvertiseScriptW(
   fShortcuts: boolean /* Windows.Win32.Foundation.BOOL */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProcessAdvertiseScriptW(util.pwstrToFfi(szScriptFile), util.pwstrToFfi(szIconFolder), util.toPointer(hRegData), util.boolToFfi(fShortcuts), util.boolToFfi(fRemoveItems));
+  return libmsi_dll.MsiProcessAdvertiseScriptW!(util.pwstrToFfi(szScriptFile), util.pwstrToFfi(szIconFolder), util.toPointer(hRegData), util.boolToFfi(fShortcuts), util.boolToFfi(fRemoveItems));
 }
 
 export function MsiAdvertiseScriptA(
@@ -8089,7 +8411,7 @@ export function MsiAdvertiseScriptA(
   phRegData: Deno.PointerValue | Uint8Array /* ptr */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseScriptA(util.pstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
+  return libmsi_dll.MsiAdvertiseScriptA!(util.pstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
 }
 
 export function MsiAdvertiseScriptW(
@@ -8098,7 +8420,7 @@ export function MsiAdvertiseScriptW(
   phRegData: Deno.PointerValue | Uint8Array /* ptr */,
   fRemoveItems: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiAdvertiseScriptW(util.pwstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
+  return libmsi_dll.MsiAdvertiseScriptW!(util.pwstrToFfi(szScriptFile), dwFlags, util.toPointer(phRegData), util.boolToFfi(fRemoveItems));
 }
 
 export function MsiGetProductInfoFromScriptA(
@@ -8111,7 +8433,7 @@ export function MsiGetProductInfoFromScriptA(
   lpPackageBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPackageBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoFromScriptA(util.pstrToFfi(szScriptFile), util.pstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
+  return libmsi_dll.MsiGetProductInfoFromScriptA!(util.pstrToFfi(szScriptFile), util.pstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
 }
 
 export function MsiGetProductInfoFromScriptW(
@@ -8124,21 +8446,21 @@ export function MsiGetProductInfoFromScriptW(
   lpPackageBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPackageBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductInfoFromScriptW(util.pwstrToFfi(szScriptFile), util.pwstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pwstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pwstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
+  return libmsi_dll.MsiGetProductInfoFromScriptW!(util.pwstrToFfi(szScriptFile), util.pwstrToFfi(lpProductBuf39), util.toPointer(plgidLanguage), util.toPointer(pdwVersion), util.pwstrToFfi(lpNameBuf), util.toPointer(pcchNameBuf), util.pwstrToFfi(lpPackageBuf), util.toPointer(pcchPackageBuf));
 }
 
 export function MsiGetProductCodeA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpBuf39: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductCodeA(util.pstrToFfi(szComponent), util.pstrToFfi(lpBuf39));
+  return libmsi_dll.MsiGetProductCodeA!(util.pstrToFfi(szComponent), util.pstrToFfi(lpBuf39));
 }
 
 export function MsiGetProductCodeW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpBuf39: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductCodeW(util.pwstrToFfi(szComponent), util.pwstrToFfi(lpBuf39));
+  return libmsi_dll.MsiGetProductCodeW!(util.pwstrToFfi(szComponent), util.pwstrToFfi(lpBuf39));
 }
 
 export function MsiGetUserInfoA(
@@ -8150,7 +8472,7 @@ export function MsiGetUserInfoA(
   lpSerialBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchSerialBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): USERINFOSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.USERINFOSTATE */ {
-  return libmsi_dll.MsiGetUserInfoA(util.pstrToFfi(szProduct), util.pstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
+  return libmsi_dll.MsiGetUserInfoA!(util.pstrToFfi(szProduct), util.pstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
 }
 
 export function MsiGetUserInfoW(
@@ -8162,19 +8484,19 @@ export function MsiGetUserInfoW(
   lpSerialBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSerialBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): USERINFOSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.USERINFOSTATE */ {
-  return libmsi_dll.MsiGetUserInfoW(util.pwstrToFfi(szProduct), util.pwstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pwstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pwstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
+  return libmsi_dll.MsiGetUserInfoW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(lpUserNameBuf), util.toPointer(pcchUserNameBuf), util.pwstrToFfi(lpOrgNameBuf), util.toPointer(pcchOrgNameBuf), util.pwstrToFfi(lpSerialBuf), util.toPointer(pcchSerialBuf));
 }
 
 export function MsiCollectUserInfoA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiCollectUserInfoA(util.pstrToFfi(szProduct));
+  return libmsi_dll.MsiCollectUserInfoA!(util.pstrToFfi(szProduct));
 }
 
 export function MsiCollectUserInfoW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiCollectUserInfoW(util.pwstrToFfi(szProduct));
+  return libmsi_dll.MsiCollectUserInfoW!(util.pwstrToFfi(szProduct));
 }
 
 export function MsiApplyPatchA(
@@ -8183,7 +8505,7 @@ export function MsiApplyPatchA(
   eInstallType: INSTALLTYPE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLTYPE */,
   szCommandLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiApplyPatchA(util.pstrToFfi(szPatchPackage), util.pstrToFfi(szInstallPackage), eInstallType, util.pstrToFfi(szCommandLine));
+  return libmsi_dll.MsiApplyPatchA!(util.pstrToFfi(szPatchPackage), util.pstrToFfi(szInstallPackage), eInstallType, util.pstrToFfi(szCommandLine));
 }
 
 export function MsiApplyPatchW(
@@ -8192,7 +8514,7 @@ export function MsiApplyPatchW(
   eInstallType: INSTALLTYPE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLTYPE */,
   szCommandLine: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiApplyPatchW(util.pwstrToFfi(szPatchPackage), util.pwstrToFfi(szInstallPackage), eInstallType, util.pwstrToFfi(szCommandLine));
+  return libmsi_dll.MsiApplyPatchW!(util.pwstrToFfi(szPatchPackage), util.pwstrToFfi(szInstallPackage), eInstallType, util.pwstrToFfi(szCommandLine));
 }
 
 export function MsiGetPatchInfoA(
@@ -8201,7 +8523,7 @@ export function MsiGetPatchInfoA(
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchInfoA(util.pstrToFfi(szPatch), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetPatchInfoA!(util.pstrToFfi(szPatch), util.pstrToFfi(szAttribute), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetPatchInfoW(
@@ -8210,7 +8532,7 @@ export function MsiGetPatchInfoW(
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchInfoW(util.pwstrToFfi(szPatch), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetPatchInfoW!(util.pwstrToFfi(szPatch), util.pwstrToFfi(szAttribute), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiEnumPatchesA(
@@ -8220,7 +8542,7 @@ export function MsiEnumPatchesA(
   lpTransformsBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchTransformsBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumPatchesA(util.pstrToFfi(szProduct), iPatchIndex, util.pstrToFfi(lpPatchBuf), util.pstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
+  return libmsi_dll.MsiEnumPatchesA!(util.pstrToFfi(szProduct), iPatchIndex, util.pstrToFfi(lpPatchBuf), util.pstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
 }
 
 export function MsiEnumPatchesW(
@@ -8230,7 +8552,7 @@ export function MsiEnumPatchesW(
   lpTransformsBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchTransformsBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumPatchesW(util.pwstrToFfi(szProduct), iPatchIndex, util.pwstrToFfi(lpPatchBuf), util.pwstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
+  return libmsi_dll.MsiEnumPatchesW!(util.pwstrToFfi(szProduct), iPatchIndex, util.pwstrToFfi(lpPatchBuf), util.pwstrToFfi(lpTransformsBuf), util.toPointer(pcchTransformsBuf));
 }
 
 export function MsiRemovePatchesA(
@@ -8239,7 +8561,7 @@ export function MsiRemovePatchesA(
   eUninstallType: INSTALLTYPE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLTYPE */,
   szPropertyList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRemovePatchesA(util.pstrToFfi(szPatchList), util.pstrToFfi(szProductCode), eUninstallType, util.pstrToFfi(szPropertyList));
+  return libmsi_dll.MsiRemovePatchesA!(util.pstrToFfi(szPatchList), util.pstrToFfi(szProductCode), eUninstallType, util.pstrToFfi(szPropertyList));
 }
 
 export function MsiRemovePatchesW(
@@ -8248,7 +8570,7 @@ export function MsiRemovePatchesW(
   eUninstallType: INSTALLTYPE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLTYPE */,
   szPropertyList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRemovePatchesW(util.pwstrToFfi(szPatchList), util.pwstrToFfi(szProductCode), eUninstallType, util.pwstrToFfi(szPropertyList));
+  return libmsi_dll.MsiRemovePatchesW!(util.pwstrToFfi(szPatchList), util.pwstrToFfi(szProductCode), eUninstallType, util.pwstrToFfi(szPropertyList));
 }
 
 export function MsiExtractPatchXMLDataA(
@@ -8257,7 +8579,7 @@ export function MsiExtractPatchXMLDataA(
   szXMLData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchXMLData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiExtractPatchXMLDataA(util.pstrToFfi(szPatchPath), dwReserved, util.pstrToFfi(szXMLData), util.toPointer(pcchXMLData));
+  return libmsi_dll.MsiExtractPatchXMLDataA!(util.pstrToFfi(szPatchPath), dwReserved, util.pstrToFfi(szXMLData), util.toPointer(pcchXMLData));
 }
 
 export function MsiExtractPatchXMLDataW(
@@ -8266,7 +8588,7 @@ export function MsiExtractPatchXMLDataW(
   szXMLData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchXMLData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiExtractPatchXMLDataW(util.pwstrToFfi(szPatchPath), dwReserved, util.pwstrToFfi(szXMLData), util.toPointer(pcchXMLData));
+  return libmsi_dll.MsiExtractPatchXMLDataW!(util.pwstrToFfi(szPatchPath), dwReserved, util.pwstrToFfi(szXMLData), util.toPointer(pcchXMLData));
 }
 
 export function MsiGetPatchInfoExA(
@@ -8278,7 +8600,7 @@ export function MsiGetPatchInfoExA(
   lpValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchInfoExA(util.pstrToFfi(szPatchCode), util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(lpValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiGetPatchInfoExA!(util.pstrToFfi(szPatchCode), util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szProperty), util.pstrToFfi(lpValue), util.toPointer(pcchValue));
 }
 
 export function MsiGetPatchInfoExW(
@@ -8290,7 +8612,7 @@ export function MsiGetPatchInfoExW(
   lpValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchInfoExW(util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiGetPatchInfoExW!(util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValue), util.toPointer(pcchValue));
 }
 
 export function MsiApplyMultiplePatchesA(
@@ -8298,7 +8620,7 @@ export function MsiApplyMultiplePatchesA(
   szProductCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szPropertiesList: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiApplyMultiplePatchesA(util.pstrToFfi(szPatchPackages), util.pstrToFfi(szProductCode), util.pstrToFfi(szPropertiesList));
+  return libmsi_dll.MsiApplyMultiplePatchesA!(util.pstrToFfi(szPatchPackages), util.pstrToFfi(szProductCode), util.pstrToFfi(szPropertiesList));
 }
 
 export function MsiApplyMultiplePatchesW(
@@ -8306,7 +8628,7 @@ export function MsiApplyMultiplePatchesW(
   szProductCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szPropertiesList: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiApplyMultiplePatchesW(util.pwstrToFfi(szPatchPackages), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szPropertiesList));
+  return libmsi_dll.MsiApplyMultiplePatchesW!(util.pwstrToFfi(szPatchPackages), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szPropertiesList));
 }
 
 export function MsiDeterminePatchSequenceA(
@@ -8316,7 +8638,7 @@ export function MsiDeterminePatchSequenceA(
   cPatchInfo: number /* u32 */,
   pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDeterminePatchSequenceA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
+  return libmsi_dll.MsiDeterminePatchSequenceA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
 }
 
 export function MsiDeterminePatchSequenceW(
@@ -8326,7 +8648,7 @@ export function MsiDeterminePatchSequenceW(
   cPatchInfo: number /* u32 */,
   pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDeterminePatchSequenceW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
+  return libmsi_dll.MsiDeterminePatchSequenceW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, cPatchInfo, util.toPointer(pPatchInfo));
 }
 
 export function MsiDetermineApplicablePatchesA(
@@ -8334,7 +8656,7 @@ export function MsiDetermineApplicablePatchesA(
   cPatchInfo: number /* u32 */,
   pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDetermineApplicablePatchesA(util.pstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
+  return libmsi_dll.MsiDetermineApplicablePatchesA!(util.pstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
 }
 
 export function MsiDetermineApplicablePatchesW(
@@ -8342,7 +8664,7 @@ export function MsiDetermineApplicablePatchesW(
   cPatchInfo: number /* u32 */,
   pPatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDetermineApplicablePatchesW(util.pwstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
+  return libmsi_dll.MsiDetermineApplicablePatchesW!(util.pwstrToFfi(szProductPackagePath), cPatchInfo, util.toPointer(pPatchInfo));
 }
 
 export function MsiEnumPatchesExA(
@@ -8357,7 +8679,7 @@ export function MsiEnumPatchesExA(
   szTargetUserSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchTargetUserSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumPatchesExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pstrToFfi(szPatchCode), util.pstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
+  return libmsi_dll.MsiEnumPatchesExA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pstrToFfi(szPatchCode), util.pstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
 }
 
 export function MsiEnumPatchesExW(
@@ -8372,21 +8694,21 @@ export function MsiEnumPatchesExW(
   szTargetUserSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchTargetUserSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumPatchesExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pwstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
+  return libmsi_dll.MsiEnumPatchesExW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwFilter, dwIndex, util.pwstrToFfi(szPatchCode), util.pwstrToFfi(szTargetProductCode), util.toPointer(pdwTargetProductContext), util.pwstrToFfi(szTargetUserSid), util.toPointer(pcchTargetUserSid));
 }
 
 export function MsiQueryFeatureStateA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiQueryFeatureStateA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature));
+  return libmsi_dll.MsiQueryFeatureStateA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature));
 }
 
 export function MsiQueryFeatureStateW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiQueryFeatureStateW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature));
+  return libmsi_dll.MsiQueryFeatureStateW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature));
 }
 
 export function MsiQueryFeatureStateExA(
@@ -8396,7 +8718,7 @@ export function MsiQueryFeatureStateExA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiQueryFeatureStateExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szFeature), util.toPointer(pdwState));
+  return libmsi_dll.MsiQueryFeatureStateExA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szFeature), util.toPointer(pdwState));
 }
 
 export function MsiQueryFeatureStateExW(
@@ -8406,21 +8728,21 @@ export function MsiQueryFeatureStateExW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiQueryFeatureStateExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szFeature), util.toPointer(pdwState));
+  return libmsi_dll.MsiQueryFeatureStateExW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szFeature), util.toPointer(pdwState));
 }
 
 export function MsiUseFeatureA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiUseFeatureA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature));
+  return libmsi_dll.MsiUseFeatureA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature));
 }
 
 export function MsiUseFeatureW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiUseFeatureW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature));
+  return libmsi_dll.MsiUseFeatureW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature));
 }
 
 export function MsiUseFeatureExA(
@@ -8429,7 +8751,7 @@ export function MsiUseFeatureExA(
   dwInstallMode: number /* u32 */,
   dwReserved: number /* u32 */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiUseFeatureExA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), dwInstallMode, dwReserved);
+  return libmsi_dll.MsiUseFeatureExA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), dwInstallMode, dwReserved);
 }
 
 export function MsiUseFeatureExW(
@@ -8438,7 +8760,7 @@ export function MsiUseFeatureExW(
   dwInstallMode: number /* u32 */,
   dwReserved: number /* u32 */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiUseFeatureExW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), dwInstallMode, dwReserved);
+  return libmsi_dll.MsiUseFeatureExW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), dwInstallMode, dwReserved);
 }
 
 export function MsiGetFeatureUsageA(
@@ -8447,7 +8769,7 @@ export function MsiGetFeatureUsageA(
   pdwUseCount: Deno.PointerValue | Uint8Array /* ptr */,
   pwDateUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureUsageA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
+  return libmsi_dll.MsiGetFeatureUsageA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
 }
 
 export function MsiGetFeatureUsageW(
@@ -8456,7 +8778,7 @@ export function MsiGetFeatureUsageW(
   pdwUseCount: Deno.PointerValue | Uint8Array /* ptr */,
   pwDateUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureUsageW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
+  return libmsi_dll.MsiGetFeatureUsageW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.toPointer(pdwUseCount), util.toPointer(pwDateUsed));
 }
 
 export function MsiConfigureFeatureA(
@@ -8464,7 +8786,7 @@ export function MsiConfigureFeatureA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureFeatureA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), eInstallState);
+  return libmsi_dll.MsiConfigureFeatureA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), eInstallState);
 }
 
 export function MsiConfigureFeatureW(
@@ -8472,7 +8794,7 @@ export function MsiConfigureFeatureW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiConfigureFeatureW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), eInstallState);
+  return libmsi_dll.MsiConfigureFeatureW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), eInstallState);
 }
 
 export function MsiReinstallFeatureA(
@@ -8480,7 +8802,7 @@ export function MsiReinstallFeatureA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReinstallMode: REINSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.REINSTALLMODE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiReinstallFeatureA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), dwReinstallMode);
+  return libmsi_dll.MsiReinstallFeatureA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), dwReinstallMode);
 }
 
 export function MsiReinstallFeatureW(
@@ -8488,7 +8810,7 @@ export function MsiReinstallFeatureW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReinstallMode: REINSTALLMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.REINSTALLMODE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiReinstallFeatureW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), dwReinstallMode);
+  return libmsi_dll.MsiReinstallFeatureW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), dwReinstallMode);
 }
 
 export function MsiProvideComponentA(
@@ -8499,7 +8821,7 @@ export function MsiProvideComponentA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideComponentA(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.pstrToFfi(szComponent), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideComponentA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFeature), util.pstrToFfi(szComponent), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideComponentW(
@@ -8510,7 +8832,7 @@ export function MsiProvideComponentW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideComponentW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.pwstrToFfi(szComponent), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideComponentW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFeature), util.pwstrToFfi(szComponent), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideQualifiedComponentA(
@@ -8520,7 +8842,7 @@ export function MsiProvideQualifiedComponentA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideQualifiedComponentA(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideQualifiedComponentA!(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideQualifiedComponentW(
@@ -8530,7 +8852,7 @@ export function MsiProvideQualifiedComponentW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideQualifiedComponentW(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideQualifiedComponentW!(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideQualifiedComponentExA(
@@ -8543,7 +8865,7 @@ export function MsiProvideQualifiedComponentExA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideQualifiedComponentExA(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(szProduct), dwUnused1, dwUnused2, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideQualifiedComponentExA!(util.pstrToFfi(szCategory), util.pstrToFfi(szQualifier), dwInstallMode, util.pstrToFfi(szProduct), dwUnused1, dwUnused2, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideQualifiedComponentExW(
@@ -8556,7 +8878,7 @@ export function MsiProvideQualifiedComponentExW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideQualifiedComponentExW(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(szProduct), dwUnused1, dwUnused2, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideQualifiedComponentExW!(util.pwstrToFfi(szCategory), util.pwstrToFfi(szQualifier), dwInstallMode, util.pwstrToFfi(szProduct), dwUnused1, dwUnused2, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetComponentPathA(
@@ -8565,7 +8887,7 @@ export function MsiGetComponentPathA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiGetComponentPathA(util.pstrToFfi(szProduct), util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiGetComponentPathA!(util.pstrToFfi(szProduct), util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
 
 export function MsiGetComponentPathW(
@@ -8574,7 +8896,7 @@ export function MsiGetComponentPathW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiGetComponentPathW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiGetComponentPathW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
 
 export function MsiGetComponentPathExA(
@@ -8585,7 +8907,7 @@ export function MsiGetComponentPathExA(
   lpOutPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchOutPathBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiGetComponentPathExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szComponentCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
+  return libmsi_dll.MsiGetComponentPathExA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szComponentCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
 }
 
 export function MsiGetComponentPathExW(
@@ -8596,7 +8918,7 @@ export function MsiGetComponentPathExW(
   lpOutPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchOutPathBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiGetComponentPathExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szComponentCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
+  return libmsi_dll.MsiGetComponentPathExW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szComponentCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(lpOutPathBuffer), util.toPointer(pcchOutPathBuffer));
 }
 
 export function MsiProvideAssemblyA(
@@ -8607,7 +8929,7 @@ export function MsiProvideAssemblyA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideAssemblyA(util.pstrToFfi(szAssemblyName), util.pstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideAssemblyA!(util.pstrToFfi(szAssemblyName), util.pstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiProvideAssemblyW(
@@ -8618,7 +8940,7 @@ export function MsiProvideAssemblyW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiProvideAssemblyW(util.pwstrToFfi(szAssemblyName), util.pwstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiProvideAssemblyW!(util.pwstrToFfi(szAssemblyName), util.pwstrToFfi(szAppContext), dwInstallMode, dwAssemblyInfo, util.pwstrToFfi(lpPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiQueryComponentStateA(
@@ -8628,7 +8950,7 @@ export function MsiQueryComponentStateA(
   szComponentCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiQueryComponentStateA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szComponentCode), util.toPointer(pdwState));
+  return libmsi_dll.MsiQueryComponentStateA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, util.pstrToFfi(szComponentCode), util.toPointer(pdwState));
 }
 
 export function MsiQueryComponentStateW(
@@ -8638,21 +8960,21 @@ export function MsiQueryComponentStateW(
   szComponentCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiQueryComponentStateW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szComponentCode), util.toPointer(pdwState));
+  return libmsi_dll.MsiQueryComponentStateW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, util.pwstrToFfi(szComponentCode), util.toPointer(pdwState));
 }
 
 export function MsiEnumProductsA(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumProductsA(iProductIndex, util.pstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumProductsA!(iProductIndex, util.pstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumProductsW(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumProductsW(iProductIndex, util.pwstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumProductsW!(iProductIndex, util.pwstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumProductsExA(
@@ -8665,7 +8987,7 @@ export function MsiEnumProductsExA(
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumProductsExA(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumProductsExA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumProductsExW(
@@ -8678,7 +9000,7 @@ export function MsiEnumProductsExW(
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumProductsExW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumProductsExW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledProductCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumRelatedProductsA(
@@ -8687,7 +9009,7 @@ export function MsiEnumRelatedProductsA(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumRelatedProductsA(util.pstrToFfi(lpUpgradeCode), dwReserved, iProductIndex, util.pstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumRelatedProductsA!(util.pstrToFfi(lpUpgradeCode), dwReserved, iProductIndex, util.pstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumRelatedProductsW(
@@ -8696,7 +9018,7 @@ export function MsiEnumRelatedProductsW(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumRelatedProductsW(util.pwstrToFfi(lpUpgradeCode), dwReserved, iProductIndex, util.pwstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumRelatedProductsW!(util.pwstrToFfi(lpUpgradeCode), dwReserved, iProductIndex, util.pwstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumFeaturesA(
@@ -8705,7 +9027,7 @@ export function MsiEnumFeaturesA(
   lpFeatureBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpParentBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumFeaturesA(util.pstrToFfi(szProduct), iFeatureIndex, util.pstrToFfi(lpFeatureBuf), util.pstrToFfi(lpParentBuf));
+  return libmsi_dll.MsiEnumFeaturesA!(util.pstrToFfi(szProduct), iFeatureIndex, util.pstrToFfi(lpFeatureBuf), util.pstrToFfi(lpParentBuf));
 }
 
 export function MsiEnumFeaturesW(
@@ -8714,21 +9036,21 @@ export function MsiEnumFeaturesW(
   lpFeatureBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpParentBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumFeaturesW(util.pwstrToFfi(szProduct), iFeatureIndex, util.pwstrToFfi(lpFeatureBuf), util.pwstrToFfi(lpParentBuf));
+  return libmsi_dll.MsiEnumFeaturesW!(util.pwstrToFfi(szProduct), iFeatureIndex, util.pwstrToFfi(lpFeatureBuf), util.pwstrToFfi(lpParentBuf));
 }
 
 export function MsiEnumComponentsA(
   iComponentIndex: number /* u32 */,
   lpComponentBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentsA(iComponentIndex, util.pstrToFfi(lpComponentBuf));
+  return libmsi_dll.MsiEnumComponentsA!(iComponentIndex, util.pstrToFfi(lpComponentBuf));
 }
 
 export function MsiEnumComponentsW(
   iComponentIndex: number /* u32 */,
   lpComponentBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentsW(iComponentIndex, util.pwstrToFfi(lpComponentBuf));
+  return libmsi_dll.MsiEnumComponentsW!(iComponentIndex, util.pwstrToFfi(lpComponentBuf));
 }
 
 export function MsiEnumComponentsExA(
@@ -8740,7 +9062,7 @@ export function MsiEnumComponentsExA(
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentsExA(util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumComponentsExA!(util.pstrToFfi(szUserSid), dwContext, dwIndex, util.pstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumComponentsExW(
@@ -8752,7 +9074,7 @@ export function MsiEnumComponentsExW(
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentsExW(util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumComponentsExW!(util.pwstrToFfi(szUserSid), dwContext, dwIndex, util.pwstrToFfi(szInstalledComponentCode), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumClientsA(
@@ -8760,7 +9082,7 @@ export function MsiEnumClientsA(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumClientsA(util.pstrToFfi(szComponent), iProductIndex, util.pstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumClientsA!(util.pstrToFfi(szComponent), iProductIndex, util.pstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumClientsW(
@@ -8768,7 +9090,7 @@ export function MsiEnumClientsW(
   iProductIndex: number /* u32 */,
   lpProductBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumClientsW(util.pwstrToFfi(szComponent), iProductIndex, util.pwstrToFfi(lpProductBuf));
+  return libmsi_dll.MsiEnumClientsW!(util.pwstrToFfi(szComponent), iProductIndex, util.pwstrToFfi(lpProductBuf));
 }
 
 export function MsiEnumClientsExA(
@@ -8781,7 +9103,7 @@ export function MsiEnumClientsExA(
   szSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumClientsExA(util.pstrToFfi(szComponent), util.pstrToFfi(szUserSid), dwContext, dwProductIndex, util.pstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumClientsExA!(util.pstrToFfi(szComponent), util.pstrToFfi(szUserSid), dwContext, dwProductIndex, util.pstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumClientsExW(
@@ -8794,7 +9116,7 @@ export function MsiEnumClientsExW(
   szSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumClientsExW(util.pwstrToFfi(szComponent), util.pwstrToFfi(szUserSid), dwContext, dwProductIndex, util.pwstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
+  return libmsi_dll.MsiEnumClientsExW!(util.pwstrToFfi(szComponent), util.pwstrToFfi(szUserSid), dwContext, dwProductIndex, util.pwstrToFfi(szProductBuf), util.toPointer(pdwInstalledContext), util.pwstrToFfi(szSid), util.toPointer(pcchSid));
 }
 
 export function MsiEnumComponentQualifiersA(
@@ -8805,7 +9127,7 @@ export function MsiEnumComponentQualifiersA(
   lpApplicationDataBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchApplicationDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentQualifiersA(util.pstrToFfi(szComponent), iIndex, util.pstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
+  return libmsi_dll.MsiEnumComponentQualifiersA!(util.pstrToFfi(szComponent), iIndex, util.pstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
 }
 
 export function MsiEnumComponentQualifiersW(
@@ -8816,35 +9138,35 @@ export function MsiEnumComponentQualifiersW(
   lpApplicationDataBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchApplicationDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentQualifiersW(util.pwstrToFfi(szComponent), iIndex, util.pwstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pwstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
+  return libmsi_dll.MsiEnumComponentQualifiersW!(util.pwstrToFfi(szComponent), iIndex, util.pwstrToFfi(lpQualifierBuf), util.toPointer(pcchQualifierBuf), util.pwstrToFfi(lpApplicationDataBuf), util.toPointer(pcchApplicationDataBuf));
 }
 
 export function MsiOpenProductA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenProductA(util.pstrToFfi(szProduct), util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenProductA!(util.pstrToFfi(szProduct), util.toPointer(hProduct));
 }
 
 export function MsiOpenProductW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenProductW(util.pwstrToFfi(szProduct), util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenProductW!(util.pwstrToFfi(szProduct), util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageA(
   szPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenPackageA(util.pstrToFfi(szPackagePath), util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenPackageA!(util.pstrToFfi(szPackagePath), util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageW(
   szPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenPackageW(util.pwstrToFfi(szPackagePath), util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenPackageW!(util.pwstrToFfi(szPackagePath), util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageExA(
@@ -8852,7 +9174,7 @@ export function MsiOpenPackageExA(
   dwOptions: number /* u32 */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenPackageExA(util.pstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenPackageExA!(util.pstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
 }
 
 export function MsiOpenPackageExW(
@@ -8860,7 +9182,7 @@ export function MsiOpenPackageExW(
   dwOptions: number /* u32 */,
   hProduct: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenPackageExW(util.pwstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
+  return libmsi_dll.MsiOpenPackageExW!(util.pwstrToFfi(szPackagePath), dwOptions, util.toPointer(hProduct));
 }
 
 export function MsiGetPatchFileListA(
@@ -8869,7 +9191,7 @@ export function MsiGetPatchFileListA(
   pcFiles: Deno.PointerValue | Uint8Array /* ptr */,
   pphFileRecords: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchFileListA(util.pstrToFfi(szProductCode), util.pstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
+  return libmsi_dll.MsiGetPatchFileListA!(util.pstrToFfi(szProductCode), util.pstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
 }
 
 export function MsiGetPatchFileListW(
@@ -8878,7 +9200,7 @@ export function MsiGetPatchFileListW(
   pcFiles: Deno.PointerValue | Uint8Array /* ptr */,
   pphFileRecords: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPatchFileListW(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
+  return libmsi_dll.MsiGetPatchFileListW!(util.pwstrToFfi(szProductCode), util.pwstrToFfi(szPatchPackages), util.toPointer(pcFiles), util.toPointer(pphFileRecords));
 }
 
 export function MsiGetProductPropertyA(
@@ -8887,7 +9209,7 @@ export function MsiGetProductPropertyA(
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductPropertyA(util.toPointer(hProduct), util.pstrToFfi(szProperty), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetProductPropertyA!(util.toPointer(hProduct), util.pstrToFfi(szProperty), util.pstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetProductPropertyW(
@@ -8896,19 +9218,19 @@ export function MsiGetProductPropertyW(
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetProductPropertyW(util.toPointer(hProduct), util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetProductPropertyW!(util.toPointer(hProduct), util.pwstrToFfi(szProperty), util.pwstrToFfi(lpValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiVerifyPackageA(
   szPackagePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiVerifyPackageA(util.pstrToFfi(szPackagePath));
+  return libmsi_dll.MsiVerifyPackageA!(util.pstrToFfi(szPackagePath));
 }
 
 export function MsiVerifyPackageW(
   szPackagePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiVerifyPackageW(util.pwstrToFfi(szPackagePath));
+  return libmsi_dll.MsiVerifyPackageW!(util.pwstrToFfi(szPackagePath));
 }
 
 export function MsiGetFeatureInfoA(
@@ -8920,7 +9242,7 @@ export function MsiGetFeatureInfoA(
   lpHelpBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchHelpBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureInfoA(util.toPointer(hProduct), util.pstrToFfi(szFeature), util.toPointer(lpAttributes), util.pstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
+  return libmsi_dll.MsiGetFeatureInfoA!(util.toPointer(hProduct), util.pstrToFfi(szFeature), util.toPointer(lpAttributes), util.pstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
 }
 
 export function MsiGetFeatureInfoW(
@@ -8932,7 +9254,7 @@ export function MsiGetFeatureInfoW(
   lpHelpBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchHelpBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureInfoW(util.toPointer(hProduct), util.pwstrToFfi(szFeature), util.toPointer(lpAttributes), util.pwstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pwstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
+  return libmsi_dll.MsiGetFeatureInfoW!(util.toPointer(hProduct), util.pwstrToFfi(szFeature), util.toPointer(lpAttributes), util.pwstrToFfi(lpTitleBuf), util.toPointer(pcchTitleBuf), util.pwstrToFfi(lpHelpBuf), util.toPointer(pcchHelpBuf));
 }
 
 export function MsiInstallMissingComponentA(
@@ -8940,7 +9262,7 @@ export function MsiInstallMissingComponentA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallMissingComponentA(util.pstrToFfi(szProduct), util.pstrToFfi(szComponent), eInstallState);
+  return libmsi_dll.MsiInstallMissingComponentA!(util.pstrToFfi(szProduct), util.pstrToFfi(szComponent), eInstallState);
 }
 
 export function MsiInstallMissingComponentW(
@@ -8948,21 +9270,21 @@ export function MsiInstallMissingComponentW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eInstallState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallMissingComponentW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szComponent), eInstallState);
+  return libmsi_dll.MsiInstallMissingComponentW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szComponent), eInstallState);
 }
 
 export function MsiInstallMissingFileA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallMissingFileA(util.pstrToFfi(szProduct), util.pstrToFfi(szFile));
+  return libmsi_dll.MsiInstallMissingFileA!(util.pstrToFfi(szProduct), util.pstrToFfi(szFile));
 }
 
 export function MsiInstallMissingFileW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiInstallMissingFileW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFile));
+  return libmsi_dll.MsiInstallMissingFileW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szFile));
 }
 
 export function MsiLocateComponentA(
@@ -8970,7 +9292,7 @@ export function MsiLocateComponentA(
   lpPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiLocateComponentA(util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiLocateComponentA!(util.pstrToFfi(szComponent), util.pstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
 
 export function MsiLocateComponentW(
@@ -8978,7 +9300,7 @@ export function MsiLocateComponentW(
   lpPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */ {
-  return libmsi_dll.MsiLocateComponentW(util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiLocateComponentW!(util.pwstrToFfi(szComponent), util.pwstrToFfi(lpPathBuf), util.toPointer(pcchBuf));
 }
 
 export function MsiSourceListClearAllA(
@@ -8986,7 +9308,7 @@ export function MsiSourceListClearAllA(
   szUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearAllA(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved);
+  return libmsi_dll.MsiSourceListClearAllA!(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved);
 }
 
 export function MsiSourceListClearAllW(
@@ -8994,7 +9316,7 @@ export function MsiSourceListClearAllW(
   szUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearAllW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved);
+  return libmsi_dll.MsiSourceListClearAllW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved);
 }
 
 export function MsiSourceListAddSourceA(
@@ -9003,7 +9325,7 @@ export function MsiSourceListAddSourceA(
   dwReserved: number /* u32 */,
   szSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddSourceA(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved, util.pstrToFfi(szSource));
+  return libmsi_dll.MsiSourceListAddSourceA!(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved, util.pstrToFfi(szSource));
 }
 
 export function MsiSourceListAddSourceW(
@@ -9012,7 +9334,7 @@ export function MsiSourceListAddSourceW(
   dwReserved: number /* u32 */,
   szSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddSourceW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved, util.pwstrToFfi(szSource));
+  return libmsi_dll.MsiSourceListAddSourceW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved, util.pwstrToFfi(szSource));
 }
 
 export function MsiSourceListForceResolutionA(
@@ -9020,7 +9342,7 @@ export function MsiSourceListForceResolutionA(
   szUserName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListForceResolutionA(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved);
+  return libmsi_dll.MsiSourceListForceResolutionA!(util.pstrToFfi(szProduct), util.pstrToFfi(szUserName), dwReserved);
 }
 
 export function MsiSourceListForceResolutionW(
@@ -9028,7 +9350,7 @@ export function MsiSourceListForceResolutionW(
   szUserName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListForceResolutionW(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved);
+  return libmsi_dll.MsiSourceListForceResolutionW!(util.pwstrToFfi(szProduct), util.pwstrToFfi(szUserName), dwReserved);
 }
 
 export function MsiSourceListAddSourceExA(
@@ -9039,7 +9361,7 @@ export function MsiSourceListAddSourceExA(
   szSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddSourceExA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szSource), dwIndex);
+  return libmsi_dll.MsiSourceListAddSourceExA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szSource), dwIndex);
 }
 
 export function MsiSourceListAddSourceExW(
@@ -9050,7 +9372,7 @@ export function MsiSourceListAddSourceExW(
   szSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddSourceExW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szSource), dwIndex);
+  return libmsi_dll.MsiSourceListAddSourceExW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szSource), dwIndex);
 }
 
 export function MsiSourceListAddMediaDiskA(
@@ -9062,7 +9384,7 @@ export function MsiSourceListAddMediaDiskA(
   szVolumeLabel: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szDiskPrompt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddMediaDiskA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId, util.pstrToFfi(szVolumeLabel), util.pstrToFfi(szDiskPrompt));
+  return libmsi_dll.MsiSourceListAddMediaDiskA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId, util.pstrToFfi(szVolumeLabel), util.pstrToFfi(szDiskPrompt));
 }
 
 export function MsiSourceListAddMediaDiskW(
@@ -9074,7 +9396,7 @@ export function MsiSourceListAddMediaDiskW(
   szVolumeLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szDiskPrompt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListAddMediaDiskW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId, util.pwstrToFfi(szVolumeLabel), util.pwstrToFfi(szDiskPrompt));
+  return libmsi_dll.MsiSourceListAddMediaDiskW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId, util.pwstrToFfi(szVolumeLabel), util.pwstrToFfi(szDiskPrompt));
 }
 
 export function MsiSourceListClearSourceA(
@@ -9084,7 +9406,7 @@ export function MsiSourceListClearSourceA(
   dwOptions: number /* u32 */,
   szSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearSourceA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szSource));
+  return libmsi_dll.MsiSourceListClearSourceA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szSource));
 }
 
 export function MsiSourceListClearSourceW(
@@ -9094,7 +9416,7 @@ export function MsiSourceListClearSourceW(
   dwOptions: number /* u32 */,
   szSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearSourceW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szSource));
+  return libmsi_dll.MsiSourceListClearSourceW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szSource));
 }
 
 export function MsiSourceListClearMediaDiskA(
@@ -9104,7 +9426,7 @@ export function MsiSourceListClearMediaDiskA(
   dwOptions: number /* u32 */,
   dwDiskId: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearMediaDiskA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId);
+  return libmsi_dll.MsiSourceListClearMediaDiskA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId);
 }
 
 export function MsiSourceListClearMediaDiskW(
@@ -9114,7 +9436,7 @@ export function MsiSourceListClearMediaDiskW(
   dwOptions: number /* u32 */,
   dwDiskId: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearMediaDiskW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId);
+  return libmsi_dll.MsiSourceListClearMediaDiskW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwDiskId);
 }
 
 export function MsiSourceListClearAllExA(
@@ -9123,7 +9445,7 @@ export function MsiSourceListClearAllExA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearAllExA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions);
+  return libmsi_dll.MsiSourceListClearAllExA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions);
 }
 
 export function MsiSourceListClearAllExW(
@@ -9132,7 +9454,7 @@ export function MsiSourceListClearAllExW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListClearAllExW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions);
+  return libmsi_dll.MsiSourceListClearAllExW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions);
 }
 
 export function MsiSourceListForceResolutionExA(
@@ -9141,7 +9463,7 @@ export function MsiSourceListForceResolutionExA(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListForceResolutionExA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions);
+  return libmsi_dll.MsiSourceListForceResolutionExA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions);
 }
 
 export function MsiSourceListForceResolutionExW(
@@ -9150,7 +9472,7 @@ export function MsiSourceListForceResolutionExW(
   dwContext: MSIINSTALLCONTEXT /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIINSTALLCONTEXT */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListForceResolutionExW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions);
+  return libmsi_dll.MsiSourceListForceResolutionExW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions);
 }
 
 export function MsiSourceListSetInfoA(
@@ -9161,7 +9483,7 @@ export function MsiSourceListSetInfoA(
   szProperty: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListSetInfoA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szProperty), util.pstrToFfi(szValue));
+  return libmsi_dll.MsiSourceListSetInfoA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szProperty), util.pstrToFfi(szValue));
 }
 
 export function MsiSourceListSetInfoW(
@@ -9172,7 +9494,7 @@ export function MsiSourceListSetInfoW(
   szProperty: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListSetInfoW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue));
+  return libmsi_dll.MsiSourceListSetInfoW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue));
 }
 
 export function MsiSourceListGetInfoA(
@@ -9184,7 +9506,7 @@ export function MsiSourceListGetInfoA(
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListGetInfoA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiSourceListGetInfoA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, util.pstrToFfi(szProperty), util.pstrToFfi(szValue), util.toPointer(pcchValue));
 }
 
 export function MsiSourceListGetInfoW(
@@ -9196,7 +9518,7 @@ export function MsiSourceListGetInfoW(
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListGetInfoW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
+  return libmsi_dll.MsiSourceListGetInfoW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, util.pwstrToFfi(szProperty), util.pwstrToFfi(szValue), util.toPointer(pcchValue));
 }
 
 export function MsiSourceListEnumSourcesA(
@@ -9208,7 +9530,7 @@ export function MsiSourceListEnumSourcesA(
   szSource: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListEnumSourcesA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pstrToFfi(szSource), util.toPointer(pcchSource));
+  return libmsi_dll.MsiSourceListEnumSourcesA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pstrToFfi(szSource), util.toPointer(pcchSource));
 }
 
 export function MsiSourceListEnumSourcesW(
@@ -9220,7 +9542,7 @@ export function MsiSourceListEnumSourcesW(
   szSource: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListEnumSourcesW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pwstrToFfi(szSource), util.toPointer(pcchSource));
+  return libmsi_dll.MsiSourceListEnumSourcesW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.pwstrToFfi(szSource), util.toPointer(pcchSource));
 }
 
 export function MsiSourceListEnumMediaDisksA(
@@ -9235,7 +9557,7 @@ export function MsiSourceListEnumMediaDisksA(
   szDiskPrompt: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDiskPrompt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListEnumMediaDisksA(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
+  return libmsi_dll.MsiSourceListEnumMediaDisksA!(util.pstrToFfi(szProductCodeOrPatchCode), util.pstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
 }
 
 export function MsiSourceListEnumMediaDisksW(
@@ -9250,7 +9572,7 @@ export function MsiSourceListEnumMediaDisksW(
   szDiskPrompt: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDiskPrompt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSourceListEnumMediaDisksW(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pwstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pwstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
+  return libmsi_dll.MsiSourceListEnumMediaDisksW!(util.pwstrToFfi(szProductCodeOrPatchCode), util.pwstrToFfi(szUserSid), dwContext, dwOptions, dwIndex, util.toPointer(pdwDiskId), util.pwstrToFfi(szVolumeLabel), util.toPointer(pcchVolumeLabel), util.pwstrToFfi(szDiskPrompt), util.toPointer(pcchDiskPrompt));
 }
 
 export function MsiGetFileVersionA(
@@ -9260,7 +9582,7 @@ export function MsiGetFileVersionA(
   lpLangBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchLangBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFileVersionA(util.pstrToFfi(szFilePath), util.pstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
+  return libmsi_dll.MsiGetFileVersionA!(util.pstrToFfi(szFilePath), util.pstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
 }
 
 export function MsiGetFileVersionW(
@@ -9270,7 +9592,7 @@ export function MsiGetFileVersionW(
   lpLangBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchLangBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFileVersionW(util.pwstrToFfi(szFilePath), util.pwstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pwstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
+  return libmsi_dll.MsiGetFileVersionW!(util.pwstrToFfi(szFilePath), util.pwstrToFfi(lpVersionBuf), util.toPointer(pcchVersionBuf), util.pwstrToFfi(lpLangBuf), util.toPointer(pcchLangBuf));
 }
 
 export function MsiGetFileHashA(
@@ -9278,7 +9600,7 @@ export function MsiGetFileHashA(
   dwOptions: number /* u32 */,
   pHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFileHashA(util.pstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
+  return libmsi_dll.MsiGetFileHashA!(util.pstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
 }
 
 export function MsiGetFileHashW(
@@ -9286,7 +9608,7 @@ export function MsiGetFileHashW(
   dwOptions: number /* u32 */,
   pHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFileHashW(util.pwstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
+  return libmsi_dll.MsiGetFileHashW!(util.pwstrToFfi(szFilePath), dwOptions, util.toPointer(pHash));
 }
 
 export function MsiGetFileSignatureInformationA(
@@ -9296,7 +9618,7 @@ export function MsiGetFileSignatureInformationA(
   pbHashData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbHashData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsi_dll.MsiGetFileSignatureInformationA(util.pstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
+  return libmsi_dll.MsiGetFileSignatureInformationA!(util.pstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
 }
 
 export function MsiGetFileSignatureInformationW(
@@ -9306,7 +9628,7 @@ export function MsiGetFileSignatureInformationW(
   pbHashData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbHashData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmsi_dll.MsiGetFileSignatureInformationW(util.pwstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
+  return libmsi_dll.MsiGetFileSignatureInformationW!(util.pwstrToFfi(szSignedObjectPath), dwFlags, util.toPointer(ppcCertContext), util.toPointer(pbHashData), util.toPointer(pcbHashData));
 }
 
 export function MsiGetShortcutTargetA(
@@ -9315,7 +9637,7 @@ export function MsiGetShortcutTargetA(
   szFeatureId: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szComponentCode: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetShortcutTargetA(util.pstrToFfi(szShortcutPath), util.pstrToFfi(szProductCode), util.pstrToFfi(szFeatureId), util.pstrToFfi(szComponentCode));
+  return libmsi_dll.MsiGetShortcutTargetA!(util.pstrToFfi(szShortcutPath), util.pstrToFfi(szProductCode), util.pstrToFfi(szFeatureId), util.pstrToFfi(szComponentCode));
 }
 
 export function MsiGetShortcutTargetW(
@@ -9324,35 +9646,35 @@ export function MsiGetShortcutTargetW(
   szFeatureId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szComponentCode: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetShortcutTargetW(util.pwstrToFfi(szShortcutPath), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szFeatureId), util.pwstrToFfi(szComponentCode));
+  return libmsi_dll.MsiGetShortcutTargetW!(util.pwstrToFfi(szShortcutPath), util.pwstrToFfi(szProductCode), util.pwstrToFfi(szFeatureId), util.pwstrToFfi(szComponentCode));
 }
 
 export function MsiIsProductElevatedA(
   szProduct: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pfElevated: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiIsProductElevatedA(util.pstrToFfi(szProduct), util.toPointer(pfElevated));
+  return libmsi_dll.MsiIsProductElevatedA!(util.pstrToFfi(szProduct), util.toPointer(pfElevated));
 }
 
 export function MsiIsProductElevatedW(
   szProduct: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfElevated: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiIsProductElevatedW(util.pwstrToFfi(szProduct), util.toPointer(pfElevated));
+  return libmsi_dll.MsiIsProductElevatedW!(util.pwstrToFfi(szProduct), util.toPointer(pfElevated));
 }
 
 export function MsiNotifySidChangeA(
   pOldSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pNewSid: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiNotifySidChangeA(util.pstrToFfi(pOldSid), util.pstrToFfi(pNewSid));
+  return libmsi_dll.MsiNotifySidChangeA!(util.pstrToFfi(pOldSid), util.pstrToFfi(pNewSid));
 }
 
 export function MsiNotifySidChangeW(
   pOldSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pNewSid: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiNotifySidChangeW(util.pwstrToFfi(pOldSid), util.pwstrToFfi(pNewSid));
+  return libmsi_dll.MsiNotifySidChangeW!(util.pwstrToFfi(pOldSid), util.pwstrToFfi(pNewSid));
 }
 
 export function MsiBeginTransactionA(
@@ -9361,7 +9683,7 @@ export function MsiBeginTransactionA(
   phTransactionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiBeginTransactionA(util.pstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
+  return libmsi_dll.MsiBeginTransactionA!(util.pstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
 }
 
 export function MsiBeginTransactionW(
@@ -9370,13 +9692,13 @@ export function MsiBeginTransactionW(
   phTransactionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiBeginTransactionW(util.pwstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
+  return libmsi_dll.MsiBeginTransactionW!(util.pwstrToFfi(szName), dwTransactionAttributes, util.toPointer(phTransactionHandle), util.toPointer(phChangeOfOwnerEvent));
 }
 
 export function MsiEndTransaction(
   dwTransactionState: MSITRANSACTIONSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSACTIONSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEndTransaction(dwTransactionState);
+  return libmsi_dll.MsiEndTransaction!(dwTransactionState);
 }
 
 export function MsiJoinTransaction(
@@ -9384,7 +9706,7 @@ export function MsiJoinTransaction(
   dwTransactionAttributes: number /* u32 */,
   phChangeOfOwnerEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiJoinTransaction(util.toPointer(hTransactionHandle), dwTransactionAttributes, util.toPointer(phChangeOfOwnerEvent));
+  return libmsi_dll.MsiJoinTransaction!(util.toPointer(hTransactionHandle), dwTransactionAttributes, util.toPointer(phChangeOfOwnerEvent));
 }
 
 export function MsiDatabaseOpenViewA(
@@ -9392,7 +9714,7 @@ export function MsiDatabaseOpenViewA(
   szQuery: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phView: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseOpenViewA(util.toPointer(hDatabase), util.pstrToFfi(szQuery), util.toPointer(phView));
+  return libmsi_dll.MsiDatabaseOpenViewA!(util.toPointer(hDatabase), util.pstrToFfi(szQuery), util.toPointer(phView));
 }
 
 export function MsiDatabaseOpenViewW(
@@ -9400,7 +9722,7 @@ export function MsiDatabaseOpenViewW(
   szQuery: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phView: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseOpenViewW(util.toPointer(hDatabase), util.pwstrToFfi(szQuery), util.toPointer(phView));
+  return libmsi_dll.MsiDatabaseOpenViewW!(util.toPointer(hDatabase), util.pwstrToFfi(szQuery), util.toPointer(phView));
 }
 
 export function MsiViewGetErrorA(
@@ -9408,7 +9730,7 @@ export function MsiViewGetErrorA(
   szColumnNameBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): MSIDBERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBERROR */ {
-  return libmsi_dll.MsiViewGetErrorA(util.toPointer(hView), util.pstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiViewGetErrorA!(util.toPointer(hView), util.pstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
 }
 
 export function MsiViewGetErrorW(
@@ -9416,21 +9738,21 @@ export function MsiViewGetErrorW(
   szColumnNameBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): MSIDBERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBERROR */ {
-  return libmsi_dll.MsiViewGetErrorW(util.toPointer(hView), util.pwstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
+  return libmsi_dll.MsiViewGetErrorW!(util.toPointer(hView), util.pwstrToFfi(szColumnNameBuffer), util.toPointer(pcchBuf));
 }
 
 export function MsiViewExecute(
   hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiViewExecute(util.toPointer(hView), util.toPointer(hRecord));
+  return libmsi_dll.MsiViewExecute!(util.toPointer(hView), util.toPointer(hRecord));
 }
 
 export function MsiViewFetch(
   hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiViewFetch(util.toPointer(hView), util.toPointer(phRecord));
+  return libmsi_dll.MsiViewFetch!(util.toPointer(hView), util.toPointer(phRecord));
 }
 
 export function MsiViewModify(
@@ -9438,7 +9760,7 @@ export function MsiViewModify(
   eModifyMode: MSIMODIFY /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIMODIFY */,
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiViewModify(util.toPointer(hView), eModifyMode, util.toPointer(hRecord));
+  return libmsi_dll.MsiViewModify!(util.toPointer(hView), eModifyMode, util.toPointer(hRecord));
 }
 
 export function MsiViewGetColumnInfo(
@@ -9446,13 +9768,13 @@ export function MsiViewGetColumnInfo(
   eColumnInfo: MSICOLINFO /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICOLINFO */,
   phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiViewGetColumnInfo(util.toPointer(hView), eColumnInfo, util.toPointer(phRecord));
+  return libmsi_dll.MsiViewGetColumnInfo!(util.toPointer(hView), eColumnInfo, util.toPointer(phRecord));
 }
 
 export function MsiViewClose(
   hView: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiViewClose(util.toPointer(hView));
+  return libmsi_dll.MsiViewClose!(util.toPointer(hView));
 }
 
 export function MsiDatabaseGetPrimaryKeysA(
@@ -9460,7 +9782,7 @@ export function MsiDatabaseGetPrimaryKeysA(
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseGetPrimaryKeysA(util.toPointer(hDatabase), util.pstrToFfi(szTableName), util.toPointer(phRecord));
+  return libmsi_dll.MsiDatabaseGetPrimaryKeysA!(util.toPointer(hDatabase), util.pstrToFfi(szTableName), util.toPointer(phRecord));
 }
 
 export function MsiDatabaseGetPrimaryKeysW(
@@ -9468,21 +9790,21 @@ export function MsiDatabaseGetPrimaryKeysW(
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseGetPrimaryKeysW(util.toPointer(hDatabase), util.pwstrToFfi(szTableName), util.toPointer(phRecord));
+  return libmsi_dll.MsiDatabaseGetPrimaryKeysW!(util.toPointer(hDatabase), util.pwstrToFfi(szTableName), util.toPointer(phRecord));
 }
 
 export function MsiDatabaseIsTablePersistentA(
   hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
-  return libmsi_dll.MsiDatabaseIsTablePersistentA(util.toPointer(hDatabase), util.pstrToFfi(szTableName));
+  return libmsi_dll.MsiDatabaseIsTablePersistentA!(util.toPointer(hDatabase), util.pstrToFfi(szTableName));
 }
 
 export function MsiDatabaseIsTablePersistentW(
   hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
-  return libmsi_dll.MsiDatabaseIsTablePersistentW(util.toPointer(hDatabase), util.pwstrToFfi(szTableName));
+  return libmsi_dll.MsiDatabaseIsTablePersistentW!(util.toPointer(hDatabase), util.pwstrToFfi(szTableName));
 }
 
 export function MsiGetSummaryInformationA(
@@ -9491,7 +9813,7 @@ export function MsiGetSummaryInformationA(
   uiUpdateCount: number /* u32 */,
   phSummaryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetSummaryInformationA(util.toPointer(hDatabase), util.pstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
+  return libmsi_dll.MsiGetSummaryInformationA!(util.toPointer(hDatabase), util.pstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
 }
 
 export function MsiGetSummaryInformationW(
@@ -9500,14 +9822,14 @@ export function MsiGetSummaryInformationW(
   uiUpdateCount: number /* u32 */,
   phSummaryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetSummaryInformationW(util.toPointer(hDatabase), util.pwstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
+  return libmsi_dll.MsiGetSummaryInformationW!(util.toPointer(hDatabase), util.pwstrToFfi(szDatabasePath), uiUpdateCount, util.toPointer(phSummaryInfo));
 }
 
 export function MsiSummaryInfoGetPropertyCount(
   hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   puiPropertyCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoGetPropertyCount(util.toPointer(hSummaryInfo), util.toPointer(puiPropertyCount));
+  return libmsi_dll.MsiSummaryInfoGetPropertyCount!(util.toPointer(hSummaryInfo), util.toPointer(puiPropertyCount));
 }
 
 export function MsiSummaryInfoSetPropertyA(
@@ -9518,7 +9840,7 @@ export function MsiSummaryInfoSetPropertyA(
   pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoSetPropertyA(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pstrToFfi(szValue));
+  return libmsi_dll.MsiSummaryInfoSetPropertyA!(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pstrToFfi(szValue));
 }
 
 export function MsiSummaryInfoSetPropertyW(
@@ -9529,7 +9851,7 @@ export function MsiSummaryInfoSetPropertyW(
   pftValue: Deno.PointerValue | Uint8Array /* ptr */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoSetPropertyW(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pwstrToFfi(szValue));
+  return libmsi_dll.MsiSummaryInfoSetPropertyW!(util.toPointer(hSummaryInfo), uiProperty, uiDataType, iValue, util.toPointer(pftValue), util.pwstrToFfi(szValue));
 }
 
 export function MsiSummaryInfoGetPropertyA(
@@ -9541,7 +9863,7 @@ export function MsiSummaryInfoGetPropertyA(
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoGetPropertyA(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiSummaryInfoGetPropertyA!(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiSummaryInfoGetPropertyW(
@@ -9553,13 +9875,13 @@ export function MsiSummaryInfoGetPropertyW(
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoGetPropertyW(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiSummaryInfoGetPropertyW!(util.toPointer(hSummaryInfo), uiProperty, util.toPointer(puiDataType), util.toPointer(piValue), util.toPointer(pftValue), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiSummaryInfoPersist(
   hSummaryInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSummaryInfoPersist(util.toPointer(hSummaryInfo));
+  return libmsi_dll.MsiSummaryInfoPersist!(util.toPointer(hSummaryInfo));
 }
 
 export function MsiOpenDatabaseA(
@@ -9567,7 +9889,7 @@ export function MsiOpenDatabaseA(
   szPersist: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDatabase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenDatabaseA(util.pstrToFfi(szDatabasePath), util.pstrToFfi(szPersist), util.toPointer(phDatabase));
+  return libmsi_dll.MsiOpenDatabaseA!(util.pstrToFfi(szDatabasePath), util.pstrToFfi(szPersist), util.toPointer(phDatabase));
 }
 
 export function MsiOpenDatabaseW(
@@ -9575,7 +9897,7 @@ export function MsiOpenDatabaseW(
   szPersist: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDatabase: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiOpenDatabaseW(util.pwstrToFfi(szDatabasePath), util.pwstrToFfi(szPersist), util.toPointer(phDatabase));
+  return libmsi_dll.MsiOpenDatabaseW!(util.pwstrToFfi(szDatabasePath), util.pwstrToFfi(szPersist), util.toPointer(phDatabase));
 }
 
 export function MsiDatabaseImportA(
@@ -9583,7 +9905,7 @@ export function MsiDatabaseImportA(
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseImportA(util.toPointer(hDatabase), util.pstrToFfi(szFolderPath), util.pstrToFfi(szFileName));
+  return libmsi_dll.MsiDatabaseImportA!(util.toPointer(hDatabase), util.pstrToFfi(szFolderPath), util.pstrToFfi(szFileName));
 }
 
 export function MsiDatabaseImportW(
@@ -9591,7 +9913,7 @@ export function MsiDatabaseImportW(
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseImportW(util.toPointer(hDatabase), util.pwstrToFfi(szFolderPath), util.pwstrToFfi(szFileName));
+  return libmsi_dll.MsiDatabaseImportW!(util.toPointer(hDatabase), util.pwstrToFfi(szFolderPath), util.pwstrToFfi(szFileName));
 }
 
 export function MsiDatabaseExportA(
@@ -9600,7 +9922,7 @@ export function MsiDatabaseExportA(
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseExportA(util.toPointer(hDatabase), util.pstrToFfi(szTableName), util.pstrToFfi(szFolderPath), util.pstrToFfi(szFileName));
+  return libmsi_dll.MsiDatabaseExportA!(util.toPointer(hDatabase), util.pstrToFfi(szTableName), util.pstrToFfi(szFolderPath), util.pstrToFfi(szFileName));
 }
 
 export function MsiDatabaseExportW(
@@ -9609,7 +9931,7 @@ export function MsiDatabaseExportW(
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseExportW(util.toPointer(hDatabase), util.pwstrToFfi(szTableName), util.pwstrToFfi(szFolderPath), util.pwstrToFfi(szFileName));
+  return libmsi_dll.MsiDatabaseExportW!(util.toPointer(hDatabase), util.pwstrToFfi(szTableName), util.pwstrToFfi(szFolderPath), util.pwstrToFfi(szFileName));
 }
 
 export function MsiDatabaseMergeA(
@@ -9617,7 +9939,7 @@ export function MsiDatabaseMergeA(
   hDatabaseMerge: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseMergeA(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pstrToFfi(szTableName));
+  return libmsi_dll.MsiDatabaseMergeA!(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pstrToFfi(szTableName));
 }
 
 export function MsiDatabaseMergeW(
@@ -9625,7 +9947,7 @@ export function MsiDatabaseMergeW(
   hDatabaseMerge: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseMergeW(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pwstrToFfi(szTableName));
+  return libmsi_dll.MsiDatabaseMergeW!(util.toPointer(hDatabase), util.toPointer(hDatabaseMerge), util.pwstrToFfi(szTableName));
 }
 
 export function MsiDatabaseGenerateTransformA(
@@ -9635,7 +9957,7 @@ export function MsiDatabaseGenerateTransformA(
   iReserved1: number /* i32 */,
   iReserved2: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseGenerateTransformA(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pstrToFfi(szTransformFile), iReserved1, iReserved2);
+  return libmsi_dll.MsiDatabaseGenerateTransformA!(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pstrToFfi(szTransformFile), iReserved1, iReserved2);
 }
 
 export function MsiDatabaseGenerateTransformW(
@@ -9645,7 +9967,7 @@ export function MsiDatabaseGenerateTransformW(
   iReserved1: number /* i32 */,
   iReserved2: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseGenerateTransformW(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pwstrToFfi(szTransformFile), iReserved1, iReserved2);
+  return libmsi_dll.MsiDatabaseGenerateTransformW!(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pwstrToFfi(szTransformFile), iReserved1, iReserved2);
 }
 
 export function MsiDatabaseApplyTransformA(
@@ -9653,7 +9975,7 @@ export function MsiDatabaseApplyTransformA(
   szTransformFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseApplyTransformA(util.toPointer(hDatabase), util.pstrToFfi(szTransformFile), iErrorConditions);
+  return libmsi_dll.MsiDatabaseApplyTransformA!(util.toPointer(hDatabase), util.pstrToFfi(szTransformFile), iErrorConditions);
 }
 
 export function MsiDatabaseApplyTransformW(
@@ -9661,7 +9983,7 @@ export function MsiDatabaseApplyTransformW(
   szTransformFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseApplyTransformW(util.toPointer(hDatabase), util.pwstrToFfi(szTransformFile), iErrorConditions);
+  return libmsi_dll.MsiDatabaseApplyTransformW!(util.toPointer(hDatabase), util.pwstrToFfi(szTransformFile), iErrorConditions);
 }
 
 export function MsiCreateTransformSummaryInfoA(
@@ -9671,7 +9993,7 @@ export function MsiCreateTransformSummaryInfoA(
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
   iValidation: MSITRANSFORM_VALIDATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_VALIDATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiCreateTransformSummaryInfoA(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pstrToFfi(szTransformFile), iErrorConditions, iValidation);
+  return libmsi_dll.MsiCreateTransformSummaryInfoA!(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pstrToFfi(szTransformFile), iErrorConditions, iValidation);
 }
 
 export function MsiCreateTransformSummaryInfoW(
@@ -9681,39 +10003,39 @@ export function MsiCreateTransformSummaryInfoW(
   iErrorConditions: MSITRANSFORM_ERROR /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_ERROR */,
   iValidation: MSITRANSFORM_VALIDATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSITRANSFORM_VALIDATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiCreateTransformSummaryInfoW(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pwstrToFfi(szTransformFile), iErrorConditions, iValidation);
+  return libmsi_dll.MsiCreateTransformSummaryInfoW!(util.toPointer(hDatabase), util.toPointer(hDatabaseReference), util.pwstrToFfi(szTransformFile), iErrorConditions, iValidation);
 }
 
 export function MsiDatabaseCommit(
   hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDatabaseCommit(util.toPointer(hDatabase));
+  return libmsi_dll.MsiDatabaseCommit!(util.toPointer(hDatabase));
 }
 
 export function MsiGetDatabaseState(
   hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): MSIDBSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIDBSTATE */ {
-  return libmsi_dll.MsiGetDatabaseState(util.toPointer(hDatabase));
+  return libmsi_dll.MsiGetDatabaseState!(util.toPointer(hDatabase));
 }
 
 export function MsiCreateRecord(
   cParams: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return libmsi_dll.MsiCreateRecord(cParams);
+  return libmsi_dll.MsiCreateRecord!(cParams);
 }
 
 export function MsiRecordIsNull(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsi_dll.MsiRecordIsNull(util.toPointer(hRecord), iField));
+  return util.boolFromFfi(libmsi_dll.MsiRecordIsNull!(util.toPointer(hRecord), iField));
 }
 
 export function MsiRecordDataSize(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordDataSize(util.toPointer(hRecord), iField);
+  return libmsi_dll.MsiRecordDataSize!(util.toPointer(hRecord), iField);
 }
 
 export function MsiRecordSetInteger(
@@ -9721,7 +10043,7 @@ export function MsiRecordSetInteger(
   iField: number /* u32 */,
   iValue: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordSetInteger(util.toPointer(hRecord), iField, iValue);
+  return libmsi_dll.MsiRecordSetInteger!(util.toPointer(hRecord), iField, iValue);
 }
 
 export function MsiRecordSetStringA(
@@ -9729,7 +10051,7 @@ export function MsiRecordSetStringA(
   iField: number /* u32 */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordSetStringA(util.toPointer(hRecord), iField, util.pstrToFfi(szValue));
+  return libmsi_dll.MsiRecordSetStringA!(util.toPointer(hRecord), iField, util.pstrToFfi(szValue));
 }
 
 export function MsiRecordSetStringW(
@@ -9737,14 +10059,14 @@ export function MsiRecordSetStringW(
   iField: number /* u32 */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordSetStringW(util.toPointer(hRecord), iField, util.pwstrToFfi(szValue));
+  return libmsi_dll.MsiRecordSetStringW!(util.toPointer(hRecord), iField, util.pwstrToFfi(szValue));
 }
 
 export function MsiRecordGetInteger(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iField: number /* u32 */,
 ): number /* i32 */ {
-  return libmsi_dll.MsiRecordGetInteger(util.toPointer(hRecord), iField);
+  return libmsi_dll.MsiRecordGetInteger!(util.toPointer(hRecord), iField);
 }
 
 export function MsiRecordGetStringA(
@@ -9753,7 +10075,7 @@ export function MsiRecordGetStringA(
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordGetStringA(util.toPointer(hRecord), iField, util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiRecordGetStringA!(util.toPointer(hRecord), iField, util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiRecordGetStringW(
@@ -9762,13 +10084,13 @@ export function MsiRecordGetStringW(
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordGetStringW(util.toPointer(hRecord), iField, util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiRecordGetStringW!(util.toPointer(hRecord), iField, util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiRecordGetFieldCount(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordGetFieldCount(util.toPointer(hRecord));
+  return libmsi_dll.MsiRecordGetFieldCount!(util.toPointer(hRecord));
 }
 
 export function MsiRecordSetStreamA(
@@ -9776,7 +10098,7 @@ export function MsiRecordSetStreamA(
   iField: number /* u32 */,
   szFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordSetStreamA(util.toPointer(hRecord), iField, util.pstrToFfi(szFilePath));
+  return libmsi_dll.MsiRecordSetStreamA!(util.toPointer(hRecord), iField, util.pstrToFfi(szFilePath));
 }
 
 export function MsiRecordSetStreamW(
@@ -9784,7 +10106,7 @@ export function MsiRecordSetStreamW(
   iField: number /* u32 */,
   szFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordSetStreamW(util.toPointer(hRecord), iField, util.pwstrToFfi(szFilePath));
+  return libmsi_dll.MsiRecordSetStreamW!(util.toPointer(hRecord), iField, util.pwstrToFfi(szFilePath));
 }
 
 export function MsiRecordReadStream(
@@ -9793,19 +10115,19 @@ export function MsiRecordReadStream(
   szDataBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbDataBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordReadStream(util.toPointer(hRecord), iField, util.pstrToFfi(szDataBuf), util.toPointer(pcbDataBuf));
+  return libmsi_dll.MsiRecordReadStream!(util.toPointer(hRecord), iField, util.pstrToFfi(szDataBuf), util.toPointer(pcbDataBuf));
 }
 
 export function MsiRecordClearData(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiRecordClearData(util.toPointer(hRecord));
+  return libmsi_dll.MsiRecordClearData!(util.toPointer(hRecord));
 }
 
 export function MsiGetActiveDatabase(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return libmsi_dll.MsiGetActiveDatabase(util.toPointer(hInstall));
+  return libmsi_dll.MsiGetActiveDatabase!(util.toPointer(hInstall));
 }
 
 export function MsiSetPropertyA(
@@ -9813,7 +10135,7 @@ export function MsiSetPropertyA(
   szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetPropertyA(util.toPointer(hInstall), util.pstrToFfi(szName), util.pstrToFfi(szValue));
+  return libmsi_dll.MsiSetPropertyA!(util.toPointer(hInstall), util.pstrToFfi(szName), util.pstrToFfi(szValue));
 }
 
 export function MsiSetPropertyW(
@@ -9821,7 +10143,7 @@ export function MsiSetPropertyW(
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetPropertyW(util.toPointer(hInstall), util.pwstrToFfi(szName), util.pwstrToFfi(szValue));
+  return libmsi_dll.MsiSetPropertyW!(util.toPointer(hInstall), util.pwstrToFfi(szName), util.pwstrToFfi(szValue));
 }
 
 export function MsiGetPropertyA(
@@ -9830,7 +10152,7 @@ export function MsiGetPropertyA(
   szValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPropertyA(util.toPointer(hInstall), util.pstrToFfi(szName), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetPropertyA!(util.toPointer(hInstall), util.pstrToFfi(szName), util.pstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetPropertyW(
@@ -9839,20 +10161,20 @@ export function MsiGetPropertyW(
   szValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchValueBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetPropertyW(util.toPointer(hInstall), util.pwstrToFfi(szName), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
+  return libmsi_dll.MsiGetPropertyW!(util.toPointer(hInstall), util.pwstrToFfi(szName), util.pwstrToFfi(szValueBuf), util.toPointer(pcchValueBuf));
 }
 
 export function MsiGetLanguage(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u16 */ {
-  return libmsi_dll.MsiGetLanguage(util.toPointer(hInstall));
+  return libmsi_dll.MsiGetLanguage!(util.toPointer(hInstall));
 }
 
 export function MsiGetMode(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   eRunMode: MSIRUNMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIRUNMODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsi_dll.MsiGetMode(util.toPointer(hInstall), eRunMode));
+  return util.boolFromFfi(libmsi_dll.MsiGetMode!(util.toPointer(hInstall), eRunMode));
 }
 
 export function MsiSetMode(
@@ -9860,7 +10182,7 @@ export function MsiSetMode(
   eRunMode: MSIRUNMODE /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIRUNMODE */,
   fState: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetMode(util.toPointer(hInstall), eRunMode, util.boolToFfi(fState));
+  return libmsi_dll.MsiSetMode!(util.toPointer(hInstall), eRunMode, util.boolToFfi(fState));
 }
 
 export function MsiFormatRecordA(
@@ -9869,7 +10191,7 @@ export function MsiFormatRecordA(
   szResultBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchResultBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiFormatRecordA(util.toPointer(hInstall), util.toPointer(hRecord), util.pstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
+  return libmsi_dll.MsiFormatRecordA!(util.toPointer(hInstall), util.toPointer(hRecord), util.pstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
 }
 
 export function MsiFormatRecordW(
@@ -9878,21 +10200,21 @@ export function MsiFormatRecordW(
   szResultBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchResultBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiFormatRecordW(util.toPointer(hInstall), util.toPointer(hRecord), util.pwstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
+  return libmsi_dll.MsiFormatRecordW!(util.toPointer(hInstall), util.toPointer(hRecord), util.pwstrToFfi(szResultBuf), util.toPointer(pcchResultBuf));
 }
 
 export function MsiDoActionA(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szAction: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDoActionA(util.toPointer(hInstall), util.pstrToFfi(szAction));
+  return libmsi_dll.MsiDoActionA!(util.toPointer(hInstall), util.pstrToFfi(szAction));
 }
 
 export function MsiDoActionW(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szAction: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiDoActionW(util.toPointer(hInstall), util.pwstrToFfi(szAction));
+  return libmsi_dll.MsiDoActionW!(util.toPointer(hInstall), util.pwstrToFfi(szAction));
 }
 
 export function MsiSequenceA(
@@ -9900,7 +10222,7 @@ export function MsiSequenceA(
   szTable: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iSequenceMode: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSequenceA(util.toPointer(hInstall), util.pstrToFfi(szTable), iSequenceMode);
+  return libmsi_dll.MsiSequenceA!(util.toPointer(hInstall), util.pstrToFfi(szTable), iSequenceMode);
 }
 
 export function MsiSequenceW(
@@ -9908,7 +10230,7 @@ export function MsiSequenceW(
   szTable: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iSequenceMode: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSequenceW(util.toPointer(hInstall), util.pwstrToFfi(szTable), iSequenceMode);
+  return libmsi_dll.MsiSequenceW!(util.toPointer(hInstall), util.pwstrToFfi(szTable), iSequenceMode);
 }
 
 export function MsiProcessMessage(
@@ -9916,21 +10238,21 @@ export function MsiProcessMessage(
   eMessageType: INSTALLMESSAGE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLMESSAGE */,
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* i32 */ {
-  return libmsi_dll.MsiProcessMessage(util.toPointer(hInstall), eMessageType, util.toPointer(hRecord));
+  return libmsi_dll.MsiProcessMessage!(util.toPointer(hInstall), eMessageType, util.toPointer(hRecord));
 }
 
 export function MsiEvaluateConditionA(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szCondition: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
-  return libmsi_dll.MsiEvaluateConditionA(util.toPointer(hInstall), util.pstrToFfi(szCondition));
+  return libmsi_dll.MsiEvaluateConditionA!(util.toPointer(hInstall), util.pstrToFfi(szCondition));
 }
 
 export function MsiEvaluateConditionW(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szCondition: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): MSICONDITION /* Windows.Win32.System.ApplicationInstallationAndServicing.MSICONDITION */ {
-  return libmsi_dll.MsiEvaluateConditionW(util.toPointer(hInstall), util.pwstrToFfi(szCondition));
+  return libmsi_dll.MsiEvaluateConditionW!(util.toPointer(hInstall), util.pwstrToFfi(szCondition));
 }
 
 export function MsiGetFeatureStateA(
@@ -9939,7 +10261,7 @@ export function MsiGetFeatureStateA(
   piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
   piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureStateA(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
+  return libmsi_dll.MsiGetFeatureStateA!(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiGetFeatureStateW(
@@ -9948,7 +10270,7 @@ export function MsiGetFeatureStateW(
   piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
   piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureStateW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
+  return libmsi_dll.MsiGetFeatureStateW!(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiSetFeatureStateA(
@@ -9956,7 +10278,7 @@ export function MsiSetFeatureStateA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetFeatureStateA(util.toPointer(hInstall), util.pstrToFfi(szFeature), iState);
+  return libmsi_dll.MsiSetFeatureStateA!(util.toPointer(hInstall), util.pstrToFfi(szFeature), iState);
 }
 
 export function MsiSetFeatureStateW(
@@ -9964,7 +10286,7 @@ export function MsiSetFeatureStateW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetFeatureStateW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), iState);
+  return libmsi_dll.MsiSetFeatureStateW!(util.toPointer(hInstall), util.pwstrToFfi(szFeature), iState);
 }
 
 export function MsiSetFeatureAttributesA(
@@ -9972,7 +10294,7 @@ export function MsiSetFeatureAttributesA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwAttributes: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetFeatureAttributesA(util.toPointer(hInstall), util.pstrToFfi(szFeature), dwAttributes);
+  return libmsi_dll.MsiSetFeatureAttributesA!(util.toPointer(hInstall), util.pstrToFfi(szFeature), dwAttributes);
 }
 
 export function MsiSetFeatureAttributesW(
@@ -9980,7 +10302,7 @@ export function MsiSetFeatureAttributesW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwAttributes: number /* u32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetFeatureAttributesW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), dwAttributes);
+  return libmsi_dll.MsiSetFeatureAttributesW!(util.toPointer(hInstall), util.pwstrToFfi(szFeature), dwAttributes);
 }
 
 export function MsiGetComponentStateA(
@@ -9989,7 +10311,7 @@ export function MsiGetComponentStateA(
   piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
   piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetComponentStateA(util.toPointer(hInstall), util.pstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
+  return libmsi_dll.MsiGetComponentStateA!(util.toPointer(hInstall), util.pstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiGetComponentStateW(
@@ -9998,7 +10320,7 @@ export function MsiGetComponentStateW(
   piInstalled: Deno.PointerValue | Uint8Array /* ptr */,
   piAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetComponentStateW(util.toPointer(hInstall), util.pwstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
+  return libmsi_dll.MsiGetComponentStateW!(util.toPointer(hInstall), util.pwstrToFfi(szComponent), util.toPointer(piInstalled), util.toPointer(piAction));
 }
 
 export function MsiSetComponentStateA(
@@ -10006,7 +10328,7 @@ export function MsiSetComponentStateA(
   szComponent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetComponentStateA(util.toPointer(hInstall), util.pstrToFfi(szComponent), iState);
+  return libmsi_dll.MsiSetComponentStateA!(util.toPointer(hInstall), util.pstrToFfi(szComponent), iState);
 }
 
 export function MsiSetComponentStateW(
@@ -10014,7 +10336,7 @@ export function MsiSetComponentStateW(
   szComponent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetComponentStateW(util.toPointer(hInstall), util.pwstrToFfi(szComponent), iState);
+  return libmsi_dll.MsiSetComponentStateW!(util.toPointer(hInstall), util.pwstrToFfi(szComponent), iState);
 }
 
 export function MsiGetFeatureCostA(
@@ -10024,7 +10346,7 @@ export function MsiGetFeatureCostA(
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   piCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureCostA(util.toPointer(hInstall), util.pstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
+  return libmsi_dll.MsiGetFeatureCostA!(util.toPointer(hInstall), util.pstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
 }
 
 export function MsiGetFeatureCostW(
@@ -10034,7 +10356,7 @@ export function MsiGetFeatureCostW(
   iState: INSTALLSTATE /* Windows.Win32.System.ApplicationInstallationAndServicing.INSTALLSTATE */,
   piCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureCostW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
+  return libmsi_dll.MsiGetFeatureCostW!(util.toPointer(hInstall), util.pwstrToFfi(szFeature), iCostTree, iState, util.toPointer(piCost));
 }
 
 export function MsiEnumComponentCostsA(
@@ -10047,7 +10369,7 @@ export function MsiEnumComponentCostsA(
   piCost: Deno.PointerValue | Uint8Array /* ptr */,
   piTempCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentCostsA(util.toPointer(hInstall), util.pstrToFfi(szComponent), dwIndex, iState, util.pstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
+  return libmsi_dll.MsiEnumComponentCostsA!(util.toPointer(hInstall), util.pstrToFfi(szComponent), dwIndex, iState, util.pstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
 }
 
 export function MsiEnumComponentCostsW(
@@ -10060,14 +10382,14 @@ export function MsiEnumComponentCostsW(
   piCost: Deno.PointerValue | Uint8Array /* ptr */,
   piTempCost: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnumComponentCostsW(util.toPointer(hInstall), util.pwstrToFfi(szComponent), dwIndex, iState, util.pwstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
+  return libmsi_dll.MsiEnumComponentCostsW!(util.toPointer(hInstall), util.pwstrToFfi(szComponent), dwIndex, iState, util.pwstrToFfi(szDriveBuf), util.toPointer(pcchDriveBuf), util.toPointer(piCost), util.toPointer(piTempCost));
 }
 
 export function MsiSetInstallLevel(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   iInstallLevel: number /* i32 */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetInstallLevel(util.toPointer(hInstall), iInstallLevel);
+  return libmsi_dll.MsiSetInstallLevel!(util.toPointer(hInstall), iInstallLevel);
 }
 
 export function MsiGetFeatureValidStatesA(
@@ -10075,7 +10397,7 @@ export function MsiGetFeatureValidStatesA(
   szFeature: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpInstallStates: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureValidStatesA(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(lpInstallStates));
+  return libmsi_dll.MsiGetFeatureValidStatesA!(util.toPointer(hInstall), util.pstrToFfi(szFeature), util.toPointer(lpInstallStates));
 }
 
 export function MsiGetFeatureValidStatesW(
@@ -10083,7 +10405,7 @@ export function MsiGetFeatureValidStatesW(
   szFeature: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpInstallStates: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetFeatureValidStatesW(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(lpInstallStates));
+  return libmsi_dll.MsiGetFeatureValidStatesW!(util.toPointer(hInstall), util.pwstrToFfi(szFeature), util.toPointer(lpInstallStates));
 }
 
 export function MsiGetSourcePathA(
@@ -10092,7 +10414,7 @@ export function MsiGetSourcePathA(
   szPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetSourcePathA(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiGetSourcePathA!(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetSourcePathW(
@@ -10101,7 +10423,7 @@ export function MsiGetSourcePathW(
   szPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetSourcePathW(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiGetSourcePathW!(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetTargetPathA(
@@ -10110,7 +10432,7 @@ export function MsiGetTargetPathA(
   szPathBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetTargetPathA(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiGetTargetPathA!(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiGetTargetPathW(
@@ -10119,7 +10441,7 @@ export function MsiGetTargetPathW(
   szPathBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchPathBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiGetTargetPathW(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
+  return libmsi_dll.MsiGetTargetPathW!(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szPathBuf), util.toPointer(pcchPathBuf));
 }
 
 export function MsiSetTargetPathA(
@@ -10127,7 +10449,7 @@ export function MsiSetTargetPathA(
   szFolder: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szFolderPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetTargetPathA(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szFolderPath));
+  return libmsi_dll.MsiSetTargetPathA!(util.toPointer(hInstall), util.pstrToFfi(szFolder), util.pstrToFfi(szFolderPath));
 }
 
 export function MsiSetTargetPathW(
@@ -10135,34 +10457,34 @@ export function MsiSetTargetPathW(
   szFolder: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szFolderPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiSetTargetPathW(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szFolderPath));
+  return libmsi_dll.MsiSetTargetPathW!(util.toPointer(hInstall), util.pwstrToFfi(szFolder), util.pwstrToFfi(szFolderPath));
 }
 
 export function MsiVerifyDiskSpace(
   hInstall: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiVerifyDiskSpace(util.toPointer(hInstall));
+  return libmsi_dll.MsiVerifyDiskSpace!(util.toPointer(hInstall));
 }
 
 export function MsiEnableUIPreview(
   hDatabase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   phPreview: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiEnableUIPreview(util.toPointer(hDatabase), util.toPointer(phPreview));
+  return libmsi_dll.MsiEnableUIPreview!(util.toPointer(hDatabase), util.toPointer(phPreview));
 }
 
 export function MsiPreviewDialogA(
   hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDialogName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiPreviewDialogA(util.toPointer(hPreview), util.pstrToFfi(szDialogName));
+  return libmsi_dll.MsiPreviewDialogA!(util.toPointer(hPreview), util.pstrToFfi(szDialogName));
 }
 
 export function MsiPreviewDialogW(
   hPreview: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */,
   szDialogName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiPreviewDialogW(util.toPointer(hPreview), util.pwstrToFfi(szDialogName));
+  return libmsi_dll.MsiPreviewDialogW!(util.toPointer(hPreview), util.pwstrToFfi(szDialogName));
 }
 
 export function MsiPreviewBillboardA(
@@ -10170,7 +10492,7 @@ export function MsiPreviewBillboardA(
   szControlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   szBillboard: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiPreviewBillboardA(util.toPointer(hPreview), util.pstrToFfi(szControlName), util.pstrToFfi(szBillboard));
+  return libmsi_dll.MsiPreviewBillboardA!(util.toPointer(hPreview), util.pstrToFfi(szControlName), util.pstrToFfi(szBillboard));
 }
 
 export function MsiPreviewBillboardW(
@@ -10178,25 +10500,25 @@ export function MsiPreviewBillboardW(
   szControlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szBillboard: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libmsi_dll.MsiPreviewBillboardW(util.toPointer(hPreview), util.pwstrToFfi(szControlName), util.pwstrToFfi(szBillboard));
+  return libmsi_dll.MsiPreviewBillboardW!(util.toPointer(hPreview), util.pwstrToFfi(szControlName), util.pwstrToFfi(szBillboard));
 }
 
 export function MsiGetLastErrorRecord(): Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.MSIHANDLE */ {
-  return libmsi_dll.MsiGetLastErrorRecord();
+  return libmsi_dll.MsiGetLastErrorRecord!();
 }
 
 export function SfcGetNextProtectedFile(
   RpcHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ProtFileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SfcGetNextProtectedFile(util.toPointer(RpcHandle), util.toPointer(ProtFileData)));
+  return util.boolFromFfi(libsfc_dll.SfcGetNextProtectedFile!(util.toPointer(RpcHandle), util.toPointer(ProtFileData)));
 }
 
 export function SfcIsFileProtected(
   RpcHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ProtFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SfcIsFileProtected(util.toPointer(RpcHandle), util.pwstrToFfi(ProtFileName)));
+  return util.boolFromFfi(libsfc_dll.SfcIsFileProtected!(util.toPointer(RpcHandle), util.pwstrToFfi(ProtFileName)));
 }
 
 export function SfcIsKeyProtected(
@@ -10204,7 +10526,7 @@ export function SfcIsKeyProtected(
   SubKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   KeySam: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SfcIsKeyProtected(util.toPointer(KeyHandle), util.pwstrToFfi(SubKeyName), KeySam));
+  return util.boolFromFfi(libsfc_dll.SfcIsKeyProtected!(util.toPointer(KeyHandle), util.pwstrToFfi(SubKeyName), KeySam));
 }
 
 export function SfpVerifyFile(
@@ -10212,7 +10534,7 @@ export function SfpVerifyFile(
   pszError: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwErrSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SfpVerifyFile(util.pstrToFfi(pszFileName), util.pstrToFfi(pszError), dwErrSize));
+  return util.boolFromFfi(libsfc_dll.SfpVerifyFile!(util.pstrToFfi(pszFileName), util.pstrToFfi(pszError), dwErrSize));
 }
 
 export function CreatePatchFileA(
@@ -10222,7 +10544,7 @@ export function CreatePatchFileA(
   OptionFlags: number /* u32 */,
   OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileA(util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileA!(util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
 }
 
 export function CreatePatchFileW(
@@ -10232,7 +10554,7 @@ export function CreatePatchFileW(
   OptionFlags: number /* u32 */,
   OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileW(util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileW!(util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData)));
 }
 
 export function CreatePatchFileByHandles(
@@ -10242,7 +10564,7 @@ export function CreatePatchFileByHandles(
   OptionFlags: number /* u32 */,
   OptionData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandles(util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandles!(util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData)));
 }
 
 export function CreatePatchFileExA(
@@ -10255,7 +10577,7 @@ export function CreatePatchFileExA(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExA(OldFileCount, util.toPointer(OldFileInfoArray), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExA!(OldFileCount, util.toPointer(OldFileInfoArray), util.pstrToFfi(NewFileName), util.pstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function CreatePatchFileExW(
@@ -10268,7 +10590,7 @@ export function CreatePatchFileExW(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExW(OldFileCount, util.toPointer(OldFileInfoArray), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileExW!(OldFileCount, util.toPointer(OldFileInfoArray), util.pwstrToFfi(NewFileName), util.pwstrToFfi(PatchFileName), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function CreatePatchFileByHandlesEx(
@@ -10281,28 +10603,28 @@ export function CreatePatchFileByHandlesEx(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandlesEx(OldFileCount, util.toPointer(OldFileInfoArray), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatchc_dll.CreatePatchFileByHandlesEx!(OldFileCount, util.toPointer(OldFileInfoArray), util.toPointer(NewFileHandle), util.toPointer(PatchFileHandle), OptionFlags, util.toPointer(OptionData), util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ExtractPatchHeaderToFileA(
   PatchFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   PatchHeaderFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileA(util.pstrToFfi(PatchFileName), util.pstrToFfi(PatchHeaderFileName)));
+  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileA!(util.pstrToFfi(PatchFileName), util.pstrToFfi(PatchHeaderFileName)));
 }
 
 export function ExtractPatchHeaderToFileW(
   PatchFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   PatchHeaderFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileW(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(PatchHeaderFileName)));
+  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileW!(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(PatchHeaderFileName)));
 }
 
 export function ExtractPatchHeaderToFileByHandles(
   PatchFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   PatchHeaderFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(PatchHeaderFileHandle)));
+  return util.boolFromFfi(libmspatchc_dll.ExtractPatchHeaderToFileByHandles!(util.toPointer(PatchFileHandle), util.toPointer(PatchHeaderFileHandle)));
 }
 
 export function TestApplyPatchToFileA(
@@ -10310,7 +10632,7 @@ export function TestApplyPatchToFileA(
   OldFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileA(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileA!(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), ApplyOptionFlags));
 }
 
 export function TestApplyPatchToFileW(
@@ -10318,7 +10640,7 @@ export function TestApplyPatchToFileW(
   OldFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileW(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileW!(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), ApplyOptionFlags));
 }
 
 export function TestApplyPatchToFileByHandles(
@@ -10326,7 +10648,7 @@ export function TestApplyPatchToFileByHandles(
   OldFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByHandles!(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), ApplyOptionFlags));
 }
 
 export function TestApplyPatchToFileByBuffers(
@@ -10337,7 +10659,7 @@ export function TestApplyPatchToFileByBuffers(
   NewFileSize: Deno.PointerValue | Uint8Array /* ptr */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByBuffers(util.toPointer(PatchFileBuffer), PatchFileSize, util.toPointer(OldFileBuffer), OldFileSize, util.toPointer(NewFileSize), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.TestApplyPatchToFileByBuffers!(util.toPointer(PatchFileBuffer), PatchFileSize, util.toPointer(OldFileBuffer), OldFileSize, util.toPointer(NewFileSize), ApplyOptionFlags));
 }
 
 export function ApplyPatchToFileA(
@@ -10346,7 +10668,7 @@ export function ApplyPatchToFileA(
   NewFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileA(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileA!(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), ApplyOptionFlags));
 }
 
 export function ApplyPatchToFileW(
@@ -10355,7 +10677,7 @@ export function ApplyPatchToFileW(
   NewFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileW(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileW!(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), ApplyOptionFlags));
 }
 
 export function ApplyPatchToFileByHandles(
@@ -10364,7 +10686,7 @@ export function ApplyPatchToFileByHandles(
   NewFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ApplyOptionFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandles(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandles!(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags));
 }
 
 export function ApplyPatchToFileExA(
@@ -10375,7 +10697,7 @@ export function ApplyPatchToFileExA(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExA(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExA!(util.pstrToFfi(PatchFileName), util.pstrToFfi(OldFileName), util.pstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ApplyPatchToFileExW(
@@ -10386,7 +10708,7 @@ export function ApplyPatchToFileExW(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExW(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileExW!(util.pwstrToFfi(PatchFileName), util.pwstrToFfi(OldFileName), util.pwstrToFfi(NewFileName), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ApplyPatchToFileByHandlesEx(
@@ -10397,7 +10719,7 @@ export function ApplyPatchToFileByHandlesEx(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandlesEx(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByHandlesEx!(util.toPointer(PatchFileHandle), util.toPointer(OldFileHandle), util.toPointer(NewFileHandle), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function ApplyPatchToFileByBuffers(
@@ -10413,7 +10735,7 @@ export function ApplyPatchToFileByBuffers(
   ProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.PPATCH_PROGRESS_CALLBACK */,
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByBuffers(util.toPointer(PatchFileMapped), PatchFileSize, util.toPointer(OldFileMapped), OldFileSize, util.toPointer(NewFileBuffer), NewFileBufferSize, util.toPointer(NewFileActualSize), util.toPointer(NewFileTime), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
+  return util.boolFromFfi(libmspatcha_dll.ApplyPatchToFileByBuffers!(util.toPointer(PatchFileMapped), PatchFileSize, util.toPointer(OldFileMapped), OldFileSize, util.toPointer(NewFileBuffer), NewFileBufferSize, util.toPointer(NewFileActualSize), util.toPointer(NewFileTime), ApplyOptionFlags, util.toPointer(ProgressCallback), util.toPointer(CallbackContext)));
 }
 
 export function GetFilePatchSignatureA(
@@ -10427,7 +10749,7 @@ export function GetFilePatchSignatureA(
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureA(util.pstrToFfi(FileName), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
+  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureA!(util.pstrToFfi(FileName), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
 }
 
 export function GetFilePatchSignatureW(
@@ -10441,7 +10763,7 @@ export function GetFilePatchSignatureW(
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureW(util.pwstrToFfi(FileName), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pwstrToFfi(SignatureBuffer)));
+  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureW!(util.pwstrToFfi(FileName), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pwstrToFfi(SignatureBuffer)));
 }
 
 export function GetFilePatchSignatureByHandle(
@@ -10455,7 +10777,7 @@ export function GetFilePatchSignatureByHandle(
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureByHandle(util.toPointer(FileHandle), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
+  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureByHandle!(util.toPointer(FileHandle), OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
 }
 
 export function GetFilePatchSignatureByBuffer(
@@ -10470,7 +10792,7 @@ export function GetFilePatchSignatureByBuffer(
   SignatureBufferSize: number /* u32 */,
   SignatureBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureByBuffer(util.toPointer(FileBufferWritable), FileSize, OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
+  return util.boolFromFfi(libmspatcha_dll.GetFilePatchSignatureByBuffer!(util.toPointer(FileBufferWritable), FileSize, OptionFlags, util.toPointer(OptionData), IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray), SignatureBufferSize, util.pstrToFfi(SignatureBuffer)));
 }
 
 export function NormalizeFileForPatchSignature(
@@ -10485,28 +10807,28 @@ export function NormalizeFileForPatchSignature(
   RetainRangeCount: number /* u32 */,
   RetainRangeArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libmspatcha_dll.NormalizeFileForPatchSignature(util.toPointer(FileBuffer), FileSize, OptionFlags, util.toPointer(OptionData), NewFileCoffBase, NewFileCoffTime, IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray));
+  return libmspatcha_dll.NormalizeFileForPatchSignature!(util.toPointer(FileBuffer), FileSize, OptionFlags, util.toPointer(OptionData), NewFileCoffBase, NewFileCoffTime, IgnoreRangeCount, util.toPointer(IgnoreRangeArray), RetainRangeCount, util.toPointer(RetainRangeArray));
 }
 
 export function GetDeltaInfoB(
   Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoB(util.toPointer(Delta), util.toPointer(lpHeaderInfo)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoB!(util.toPointer(Delta), util.toPointer(lpHeaderInfo)));
 }
 
 export function GetDeltaInfoA(
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoA(util.pstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoA!(util.pstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
 }
 
 export function GetDeltaInfoW(
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHeaderInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoW(util.pwstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaInfoW!(util.pwstrToFfi(lpDeltaName), util.toPointer(lpHeaderInfo)));
 }
 
 export function ApplyDeltaGetReverseB(
@@ -10517,7 +10839,7 @@ export function ApplyDeltaGetReverseB(
   lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetReverse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaGetReverseB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpReverseFileTime), util.toPointer(lpTarget), util.toPointer(lpTargetReverse)));
+  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaGetReverseB!(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpReverseFileTime), util.toPointer(lpTarget), util.toPointer(lpTargetReverse)));
 }
 
 export function ApplyDeltaB(
@@ -10526,7 +10848,7 @@ export function ApplyDeltaB(
   Delta: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget)));
+  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaB!(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget)));
 }
 
 export function ApplyDeltaProvidedB(
@@ -10536,7 +10858,7 @@ export function ApplyDeltaProvidedB(
   lpTarget: Deno.PointerValue | Uint8Array /* ptr */,
   uTargetSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaProvidedB(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget), uTargetSize));
+  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaProvidedB!(ApplyFlags, util.toPointer(Source), util.toPointer(Delta), util.toPointer(lpTarget), uTargetSize));
 }
 
 export function ApplyDeltaA(
@@ -10545,7 +10867,7 @@ export function ApplyDeltaA(
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpTargetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaA(ApplyFlags, util.pstrToFfi(lpSourceName), util.pstrToFfi(lpDeltaName), util.pstrToFfi(lpTargetName)));
+  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaA!(ApplyFlags, util.pstrToFfi(lpSourceName), util.pstrToFfi(lpDeltaName), util.pstrToFfi(lpTargetName)));
 }
 
 export function ApplyDeltaW(
@@ -10554,7 +10876,7 @@ export function ApplyDeltaW(
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpTargetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaW(ApplyFlags, util.pwstrToFfi(lpSourceName), util.pwstrToFfi(lpDeltaName), util.pwstrToFfi(lpTargetName)));
+  return util.boolFromFfi(libmsdelta_dll.ApplyDeltaW!(ApplyFlags, util.pwstrToFfi(lpSourceName), util.pwstrToFfi(lpDeltaName), util.pwstrToFfi(lpTargetName)));
 }
 
 export function CreateDeltaB(
@@ -10570,7 +10892,7 @@ export function CreateDeltaB(
   HashAlgId: number /* u32 */,
   lpDelta: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.CreateDeltaB(FileTypeSet, SetFlags, ResetFlags, util.toPointer(Source), util.toPointer(Target), util.toPointer(SourceOptions), util.toPointer(TargetOptions), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.toPointer(lpDelta)));
+  return util.boolFromFfi(libmsdelta_dll.CreateDeltaB!(FileTypeSet, SetFlags, ResetFlags, util.toPointer(Source), util.toPointer(Target), util.toPointer(SourceOptions), util.toPointer(TargetOptions), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.toPointer(lpDelta)));
 }
 
 export function CreateDeltaA(
@@ -10586,7 +10908,7 @@ export function CreateDeltaA(
   HashAlgId: number /* u32 */,
   lpDeltaName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.CreateDeltaA(FileTypeSet, SetFlags, ResetFlags, util.pstrToFfi(lpSourceName), util.pstrToFfi(lpTargetName), util.pstrToFfi(lpSourceOptionsName), util.pstrToFfi(lpTargetOptionsName), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.pstrToFfi(lpDeltaName)));
+  return util.boolFromFfi(libmsdelta_dll.CreateDeltaA!(FileTypeSet, SetFlags, ResetFlags, util.pstrToFfi(lpSourceName), util.pstrToFfi(lpTargetName), util.pstrToFfi(lpSourceOptionsName), util.pstrToFfi(lpTargetOptionsName), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.pstrToFfi(lpDeltaName)));
 }
 
 export function CreateDeltaW(
@@ -10602,7 +10924,7 @@ export function CreateDeltaW(
   HashAlgId: number /* u32 */,
   lpDeltaName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.CreateDeltaW(FileTypeSet, SetFlags, ResetFlags, util.pwstrToFfi(lpSourceName), util.pwstrToFfi(lpTargetName), util.pwstrToFfi(lpSourceOptionsName), util.pwstrToFfi(lpTargetOptionsName), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.pwstrToFfi(lpDeltaName)));
+  return util.boolFromFfi(libmsdelta_dll.CreateDeltaW!(FileTypeSet, SetFlags, ResetFlags, util.pwstrToFfi(lpSourceName), util.pwstrToFfi(lpTargetName), util.pwstrToFfi(lpSourceOptionsName), util.pwstrToFfi(lpTargetOptionsName), util.toPointer(GlobalOptions), util.toPointer(lpTargetFileTime), HashAlgId, util.pwstrToFfi(lpDeltaName)));
 }
 
 export function GetDeltaSignatureB(
@@ -10611,7 +10933,7 @@ export function GetDeltaSignatureB(
   Source: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationInstallationAndServicing.DELTA_INPUT */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureB(FileTypeSet, HashAlgId, util.toPointer(Source), util.toPointer(lpHash)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureB!(FileTypeSet, HashAlgId, util.toPointer(Source), util.toPointer(lpHash)));
 }
 
 export function GetDeltaSignatureA(
@@ -10620,7 +10942,7 @@ export function GetDeltaSignatureA(
   lpSourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureA(FileTypeSet, HashAlgId, util.pstrToFfi(lpSourceName), util.toPointer(lpHash)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureA!(FileTypeSet, HashAlgId, util.pstrToFfi(lpSourceName), util.toPointer(lpHash)));
 }
 
 export function GetDeltaSignatureW(
@@ -10629,7 +10951,7 @@ export function GetDeltaSignatureW(
   lpSourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureW(FileTypeSet, HashAlgId, util.pwstrToFfi(lpSourceName), util.toPointer(lpHash)));
+  return util.boolFromFfi(libmsdelta_dll.GetDeltaSignatureW!(FileTypeSet, HashAlgId, util.pwstrToFfi(lpSourceName), util.toPointer(lpHash)));
 }
 
 export function DeltaNormalizeProvidedB(
@@ -10639,63 +10961,63 @@ export function DeltaNormalizeProvidedB(
   lpSource: Deno.PointerValue | Uint8Array /* ptr */,
   uSourceSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.DeltaNormalizeProvidedB(FileTypeSet, NormalizeFlags, util.toPointer(NormalizeOptions), util.toPointer(lpSource), uSourceSize));
+  return util.boolFromFfi(libmsdelta_dll.DeltaNormalizeProvidedB!(FileTypeSet, NormalizeFlags, util.toPointer(NormalizeOptions), util.toPointer(lpSource), uSourceSize));
 }
 
 export function DeltaFree(
   lpMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmsdelta_dll.DeltaFree(util.toPointer(lpMemory)));
+  return util.boolFromFfi(libmsdelta_dll.DeltaFree!(util.toPointer(lpMemory)));
 }
 
 export function CreateActCtxA(
   pActCtx: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateActCtxA(util.toPointer(pActCtx));
+  return libKERNEL32_dll.CreateActCtxA!(util.toPointer(pActCtx));
 }
 
 export function CreateActCtxW(
   pActCtx: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateActCtxW(util.toPointer(pActCtx));
+  return libKERNEL32_dll.CreateActCtxW!(util.toPointer(pActCtx));
 }
 
 export function AddRefActCtx(
   hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libKERNEL32_dll.AddRefActCtx(util.toPointer(hActCtx));
+  return libKERNEL32_dll.AddRefActCtx!(util.toPointer(hActCtx));
 }
 
 export function ReleaseActCtx(
   hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleaseActCtx(util.toPointer(hActCtx));
+  return libKERNEL32_dll.ReleaseActCtx!(util.toPointer(hActCtx));
 }
 
 export function ZombifyActCtx(
   hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ZombifyActCtx(util.toPointer(hActCtx)));
+  return util.boolFromFfi(libKERNEL32_dll.ZombifyActCtx!(util.toPointer(hActCtx)));
 }
 
 export function ActivateActCtx(
   hActCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpCookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ActivateActCtx(util.toPointer(hActCtx), util.toPointer(lpCookie)));
+  return util.boolFromFfi(libKERNEL32_dll.ActivateActCtx!(util.toPointer(hActCtx), util.toPointer(lpCookie)));
 }
 
 export function DeactivateActCtx(
   dwFlags: number /* u32 */,
   ulCookie: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeactivateActCtx(dwFlags, ulCookie));
+  return util.boolFromFfi(libKERNEL32_dll.DeactivateActCtx!(dwFlags, ulCookie));
 }
 
 export function GetCurrentActCtx(
   lphActCtx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetCurrentActCtx(util.toPointer(lphActCtx)));
+  return util.boolFromFfi(libKERNEL32_dll.GetCurrentActCtx!(util.toPointer(lphActCtx)));
 }
 
 export function FindActCtxSectionStringA(
@@ -10705,7 +11027,7 @@ export function FindActCtxSectionStringA(
   lpStringToFind: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringA(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringA!(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
 }
 
 export function FindActCtxSectionStringW(
@@ -10715,7 +11037,7 @@ export function FindActCtxSectionStringW(
   lpStringToFind: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringW(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pwstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionStringW!(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.pwstrToFfi(lpStringToFind), util.toPointer(ReturnedData)));
 }
 
 export function FindActCtxSectionGuid(
@@ -10725,7 +11047,7 @@ export function FindActCtxSectionGuid(
   lpGuidToFind: Deno.PointerValue | Uint8Array /* ptr */,
   ReturnedData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionGuid(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.toPointer(lpGuidToFind), util.toPointer(ReturnedData)));
+  return util.boolFromFfi(libKERNEL32_dll.FindActCtxSectionGuid!(dwFlags, util.toPointer(lpExtensionGuid), ulSectionId, util.toPointer(lpGuidToFind), util.toPointer(ReturnedData)));
 }
 
 export function QueryActCtxW(
@@ -10737,7 +11059,7 @@ export function QueryActCtxW(
   cbBuffer: bigint | number /* usize */,
   pcbWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryActCtxW(dwFlags, util.toPointer(hActCtx), util.toPointer(pvSubInstance), ulInfoClass, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbWrittenOrRequired)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryActCtxW!(dwFlags, util.toPointer(hActCtx), util.toPointer(pvSubInstance), ulInfoClass, util.toPointer(pvBuffer), cbBuffer, util.toPointer(pcbWrittenOrRequired)));
 }
 
 export function QueryActCtxSettingsW(
@@ -10749,6 +11071,6 @@ export function QueryActCtxSettingsW(
   dwBuffer: bigint | number /* usize */,
   pdwWrittenOrRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryActCtxSettingsW(dwFlags, util.toPointer(hActCtx), util.pwstrToFfi(settingsNameSpace), util.pwstrToFfi(settingName), util.pwstrToFfi(pvBuffer), dwBuffer, util.toPointer(pdwWrittenOrRequired)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryActCtxSettingsW!(dwFlags, util.toPointer(hActCtx), util.pwstrToFfi(settingsNameSpace), util.pwstrToFfi(settingName), util.pwstrToFfi(pvBuffer), dwBuffer, util.toPointer(pdwWrittenOrRequired)));
 }
 

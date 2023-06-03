@@ -6745,54 +6745,67 @@ try {
     D2D1CreateFactory: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D2D1MakeRotateMatrix: {
       parameters: ["f32", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     D2D1MakeSkewMatrix: {
       parameters: ["f32", "f32", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     D2D1IsMatrixInvertible: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     D2D1InvertMatrix: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     D2D1CreateDevice: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D2D1CreateDeviceContext: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D2D1ConvertColorSpace: {
       parameters: ["u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     D2D1SinCos: {
       parameters: ["f32", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     D2D1Tan: {
       parameters: ["f32"],
       result: "f32",
+      optional: true,
     },
     D2D1Vec3Length: {
       parameters: ["f32", "f32", "f32"],
       result: "f32",
+      optional: true,
     },
     D2D1ComputeMaximumScaleFactor: {
       parameters: ["pointer"],
       result: "f32",
+      optional: true,
     },
     D2D1GetGradientMeshInteriorPointsFromCoonsPatch: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6805,7 +6818,7 @@ export function D2D1CreateFactory(
   pFactoryOptions: Deno.PointerValue | Uint8Array /* ptr */,
   ppIFactory: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd2d1_dll.D2D1CreateFactory(factoryType, util.toPointer(riid), util.toPointer(pFactoryOptions), util.toPointer(ppIFactory));
+  return libd2d1_dll.D2D1CreateFactory!(factoryType, util.toPointer(riid), util.toPointer(pFactoryOptions), util.toPointer(ppIFactory));
 }
 
 export function D2D1MakeRotateMatrix(
@@ -6813,7 +6826,7 @@ export function D2D1MakeRotateMatrix(
   center: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct2D.Common.D2D_POINT_2F */,
   matrix: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libd2d1_dll.D2D1MakeRotateMatrix(angle, util.toPointer(center), util.toPointer(matrix));
+  return libd2d1_dll.D2D1MakeRotateMatrix!(angle, util.toPointer(center), util.toPointer(matrix));
 }
 
 export function D2D1MakeSkewMatrix(
@@ -6822,19 +6835,19 @@ export function D2D1MakeSkewMatrix(
   center: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Direct2D.Common.D2D_POINT_2F */,
   matrix: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libd2d1_dll.D2D1MakeSkewMatrix(angleX, angleY, util.toPointer(center), util.toPointer(matrix));
+  return libd2d1_dll.D2D1MakeSkewMatrix!(angleX, angleY, util.toPointer(center), util.toPointer(matrix));
 }
 
 export function D2D1IsMatrixInvertible(
   matrix: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd2d1_dll.D2D1IsMatrixInvertible(util.toPointer(matrix)));
+  return util.boolFromFfi(libd2d1_dll.D2D1IsMatrixInvertible!(util.toPointer(matrix)));
 }
 
 export function D2D1InvertMatrix(
   matrix: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libd2d1_dll.D2D1InvertMatrix(util.toPointer(matrix)));
+  return util.boolFromFfi(libd2d1_dll.D2D1InvertMatrix!(util.toPointer(matrix)));
 }
 
 export function D2D1CreateDevice(
@@ -6842,7 +6855,7 @@ export function D2D1CreateDevice(
   creationProperties: Deno.PointerValue | Uint8Array /* ptr */,
   d2dDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd2d1_dll.D2D1CreateDevice(util.toPointer(dxgiDevice), util.toPointer(creationProperties), util.toPointer(d2dDevice));
+  return libd2d1_dll.D2D1CreateDevice!(util.toPointer(dxgiDevice), util.toPointer(creationProperties), util.toPointer(d2dDevice));
 }
 
 export function D2D1CreateDeviceContext(
@@ -6850,7 +6863,7 @@ export function D2D1CreateDeviceContext(
   creationProperties: Deno.PointerValue | Uint8Array /* ptr */,
   d2dDeviceContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd2d1_dll.D2D1CreateDeviceContext(util.toPointer(dxgiSurface), util.toPointer(creationProperties), util.toPointer(d2dDeviceContext));
+  return libd2d1_dll.D2D1CreateDeviceContext!(util.toPointer(dxgiSurface), util.toPointer(creationProperties), util.toPointer(d2dDeviceContext));
 }
 
 export function D2D1ConvertColorSpace(
@@ -6858,7 +6871,7 @@ export function D2D1ConvertColorSpace(
   destinationColorSpace: D2D1_COLOR_SPACE /* Windows.Win32.Graphics.Direct2D.D2D1_COLOR_SPACE */,
   color: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Direct2D.Common.D2D1_COLOR_F */ {
-  return libd2d1_dll.D2D1ConvertColorSpace(sourceColorSpace, destinationColorSpace, util.toPointer(color));
+  return libd2d1_dll.D2D1ConvertColorSpace!(sourceColorSpace, destinationColorSpace, util.toPointer(color));
 }
 
 export function D2D1SinCos(
@@ -6866,13 +6879,13 @@ export function D2D1SinCos(
   s: Deno.PointerValue | Uint8Array /* ptr */,
   c: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libd2d1_dll.D2D1SinCos(angle, util.toPointer(s), util.toPointer(c));
+  return libd2d1_dll.D2D1SinCos!(angle, util.toPointer(s), util.toPointer(c));
 }
 
 export function D2D1Tan(
   angle: number /* f32 */,
 ): number /* f32 */ {
-  return libd2d1_dll.D2D1Tan(angle);
+  return libd2d1_dll.D2D1Tan!(angle);
 }
 
 export function D2D1Vec3Length(
@@ -6880,13 +6893,13 @@ export function D2D1Vec3Length(
   y: number /* f32 */,
   z: number /* f32 */,
 ): number /* f32 */ {
-  return libd2d1_dll.D2D1Vec3Length(x, y, z);
+  return libd2d1_dll.D2D1Vec3Length!(x, y, z);
 }
 
 export function D2D1ComputeMaximumScaleFactor(
   matrix: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* f32 */ {
-  return libd2d1_dll.D2D1ComputeMaximumScaleFactor(util.toPointer(matrix));
+  return libd2d1_dll.D2D1ComputeMaximumScaleFactor!(util.toPointer(matrix));
 }
 
 export function D2D1GetGradientMeshInteriorPointsFromCoonsPatch(
@@ -6907,6 +6920,6 @@ export function D2D1GetGradientMeshInteriorPointsFromCoonsPatch(
   pTensorPoint21: Deno.PointerValue | Uint8Array /* ptr */,
   pTensorPoint22: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libd2d1_dll.D2D1GetGradientMeshInteriorPointsFromCoonsPatch(util.toPointer(pPoint0), util.toPointer(pPoint1), util.toPointer(pPoint2), util.toPointer(pPoint3), util.toPointer(pPoint4), util.toPointer(pPoint5), util.toPointer(pPoint6), util.toPointer(pPoint7), util.toPointer(pPoint8), util.toPointer(pPoint9), util.toPointer(pPoint10), util.toPointer(pPoint11), util.toPointer(pTensorPoint11), util.toPointer(pTensorPoint12), util.toPointer(pTensorPoint21), util.toPointer(pTensorPoint22));
+  return libd2d1_dll.D2D1GetGradientMeshInteriorPointsFromCoonsPatch!(util.toPointer(pPoint0), util.toPointer(pPoint1), util.toPointer(pPoint2), util.toPointer(pPoint3), util.toPointer(pPoint4), util.toPointer(pPoint5), util.toPointer(pPoint6), util.toPointer(pPoint7), util.toPointer(pPoint8), util.toPointer(pPoint9), util.toPointer(pPoint10), util.toPointer(pPoint11), util.toPointer(pTensorPoint11), util.toPointer(pTensorPoint12), util.toPointer(pTensorPoint21), util.toPointer(pTensorPoint22));
 }
 

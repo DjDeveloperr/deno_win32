@@ -407,6 +407,7 @@ try {
     CreatePresentationFactory: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -418,6 +419,6 @@ export function CreatePresentationFactory(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   presentationFactory: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdcomp_dll.CreatePresentationFactory(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory));
+  return libdcomp_dll.CreatePresentationFactory!(util.toPointer(d3dDevice), util.toPointer(riid), util.toPointer(presentationFactory));
 }
 

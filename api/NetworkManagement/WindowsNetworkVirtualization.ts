@@ -2234,10 +2234,12 @@ try {
     WnvOpen: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     WnvRequestNotification: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2245,7 +2247,7 @@ try {
 // Symbols
 
 export function WnvOpen(): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwnvapi_dll.WnvOpen();
+  return libwnvapi_dll.WnvOpen!();
 }
 
 export function WnvRequestNotification(
@@ -2254,6 +2256,6 @@ export function WnvRequestNotification(
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
   BytesTransferred: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwnvapi_dll.WnvRequestNotification(util.toPointer(WnvHandle), util.toPointer(NotificationParam), util.toPointer(Overlapped), util.toPointer(BytesTransferred));
+  return libwnvapi_dll.WnvRequestNotification!(util.toPointer(WnvHandle), util.toPointer(NotificationParam), util.toPointer(Overlapped), util.toPointer(BytesTransferred));
 }
 

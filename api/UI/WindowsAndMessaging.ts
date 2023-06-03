@@ -11302,1558 +11302,1943 @@ try {
     LoadStringA: {
       parameters: ["pointer", "u32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     LoadStringW: {
       parameters: ["pointer", "u32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetWindowLongPtrA: {
       parameters: ["pointer", "i32"],
       result: "isize",
+      optional: true,
     },
     GetWindowLongPtrW: {
       parameters: ["pointer", "i32"],
       result: "isize",
+      optional: true,
     },
     SetWindowLongPtrA: {
       parameters: ["pointer", "i32", "isize"],
       result: "isize",
+      optional: true,
     },
     SetWindowLongPtrW: {
       parameters: ["pointer", "i32", "isize"],
       result: "isize",
+      optional: true,
     },
     GetClassLongPtrA: {
       parameters: ["pointer", "i32"],
       result: "usize",
+      optional: true,
     },
     GetClassLongPtrW: {
       parameters: ["pointer", "i32"],
       result: "usize",
+      optional: true,
     },
     SetClassLongPtrA: {
       parameters: ["pointer", "i32", "isize"],
       result: "usize",
+      optional: true,
     },
     SetClassLongPtrW: {
       parameters: ["pointer", "i32", "isize"],
       result: "usize",
+      optional: true,
     },
     wvsprintfA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     wvsprintfW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     wsprintfA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     wsprintfW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     IsHungAppWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DisableProcessWindowsGhosting: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     RegisterWindowMessageA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     RegisterWindowMessageW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     GetMessageA: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMessageW: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     TranslateMessage: {
       callback: true,
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DispatchMessageA: {
       callback: true,
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DispatchMessageW: {
       callback: true,
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetMessageQueue: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     PeekMessageA: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     PeekMessageW: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMessagePos: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetMessageTime: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetMessageExtraInfo: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     IsWow64Message: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SetMessageExtraInfo: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SendMessageA: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendMessageW: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendMessageTimeoutA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendMessageTimeoutW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendNotifyMessageA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SendNotifyMessageW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SendMessageCallbackA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     SendMessageCallbackW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     RegisterDeviceNotificationA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RegisterDeviceNotificationW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PostMessageA: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PostMessageW: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PostThreadMessageA: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PostThreadMessageW: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReplyMessage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WaitMessage: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     DefWindowProcA: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DefWindowProcW: {
       callback: true,
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PostQuitMessage: {
       callback: true,
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
     CallWindowProcA: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CallWindowProcW: {
       callback: true,
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InSendMessage: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InSendMessageEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterClassA: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     RegisterClassW: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     UnregisterClassA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UnregisterClassW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetClassInfoA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetClassInfoW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterClassExA: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     RegisterClassExW: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     GetClassInfoExA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetClassInfoExW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateWindowExA: {
       parameters: ["u32", "buffer", "buffer", "u32", "i32", "i32", "i32", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateWindowExW: {
       parameters: ["u32", "buffer", "buffer", "u32", "i32", "i32", "i32", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsMenu: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsChild: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DestroyWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ShowWindow: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AnimateWindow: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     UpdateLayeredWindow: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     UpdateLayeredWindowIndirect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetLayeredWindowAttributes: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetLayeredWindowAttributes: {
       parameters: ["pointer", "pointer", "u8", "u32"],
       result: "i32",
+      optional: true,
     },
     ShowWindowAsync: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     FlashWindow: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     FlashWindowEx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ShowOwnedPopups: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     OpenIcon: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CloseWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MoveWindow: {
       parameters: ["pointer", "i32", "i32", "i32", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetWindowPos: {
       parameters: ["pointer", "pointer", "i32", "i32", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetWindowPlacement: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetWindowPlacement: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowDisplayAffinity: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetWindowDisplayAffinity: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     BeginDeferWindowPos: {
       parameters: ["i32"],
       result: "isize",
+      optional: true,
     },
     DeferWindowPos: {
       parameters: ["isize", "pointer", "pointer", "i32", "i32", "i32", "i32", "u32"],
       result: "isize",
+      optional: true,
     },
     EndDeferWindowPos: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     IsWindowVisible: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsIconic: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AnyPopup: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     BringWindowToTop: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsZoomed: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CreateDialogParamA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateDialogParamW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateDialogIndirectParamA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateDialogIndirectParamW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DialogBoxParamA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     DialogBoxParamW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     DialogBoxIndirectParamA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     DialogBoxIndirectParamW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     EndDialog: {
       parameters: ["pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     GetDlgItem: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     SetDlgItemInt: {
       parameters: ["pointer", "i32", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetDlgItemInt: {
       parameters: ["pointer", "i32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SetDlgItemTextA: {
       parameters: ["pointer", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     SetDlgItemTextW: {
       parameters: ["pointer", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetDlgItemTextA: {
       parameters: ["pointer", "i32", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetDlgItemTextW: {
       parameters: ["pointer", "i32", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     SendDlgItemMessageA: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SendDlgItemMessageW: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetNextDlgGroupItem: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetNextDlgTabItem: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetDlgCtrlID: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetDialogBaseUnits: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     DefDlgProcA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DefDlgProcW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CallMsgFilterA: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CallMsgFilterW: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CharToOemA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CharToOemW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     OemToCharA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     OemToCharW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CharToOemBuffA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CharToOemBuffW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     OemToCharBuffA: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     OemToCharBuffW: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CharUpperA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharUpperW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharUpperBuffA: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CharUpperBuffW: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CharLowerA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharLowerW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharLowerBuffA: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CharLowerBuffW: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CharNextA: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharNextW: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     CharPrevA: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     CharPrevW: {
       parameters: ["buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     CharNextExA: {
       parameters: ["u16", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     CharPrevExA: {
       parameters: ["u16", "buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     IsCharAlphaA: {
       parameters: ["u8"],
       result: "i32",
+      optional: true,
     },
     IsCharAlphaW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsCharAlphaNumericA: {
       parameters: ["u8"],
       result: "i32",
+      optional: true,
     },
     IsCharAlphaNumericW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsCharUpperA: {
       parameters: ["u8"],
       result: "i32",
+      optional: true,
     },
     IsCharUpperW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IsCharLowerA: {
       parameters: ["u8"],
       result: "i32",
+      optional: true,
     },
     GetInputState: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetQueueStatus: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     MsgWaitForMultipleObjects: {
       parameters: ["u32", "pointer", "i32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MsgWaitForMultipleObjectsEx: {
       parameters: ["u32", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SetTimer: {
       parameters: ["pointer", "usize", "u32", "pointer"],
       result: "usize",
+      optional: true,
     },
     SetCoalescableTimer: {
       parameters: ["pointer", "usize", "u32", "pointer", "u32"],
       result: "usize",
+      optional: true,
     },
     KillTimer: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     IsWindowUnicode: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     LoadAcceleratorsA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadAcceleratorsW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateAcceleratorTableA: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     CreateAcceleratorTableW: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     DestroyAcceleratorTable: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CopyAcceleratorTableA: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CopyAcceleratorTableW: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     TranslateAcceleratorA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     TranslateAcceleratorW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSystemMetrics: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     LoadMenuA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadMenuW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadMenuIndirectA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadMenuIndirectW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMenu: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetMenu: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ChangeMenuA: {
       parameters: ["pointer", "u32", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ChangeMenuW: {
       parameters: ["pointer", "u32", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     HiliteMenuItem: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuStringA: {
       parameters: ["pointer", "u32", "buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuStringW: {
       parameters: ["pointer", "u32", "buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuState: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DrawMenuBar: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetSystemMenu: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     CreateMenu: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     CreatePopupMenu: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     DestroyMenu: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CheckMenuItem: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     EnableMenuItem: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetSubMenu: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetMenuItemID: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetMenuItemCount: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     InsertMenuA: {
       parameters: ["pointer", "u32", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     InsertMenuW: {
       parameters: ["pointer", "u32", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     AppendMenuA: {
       parameters: ["pointer", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     AppendMenuW: {
       parameters: ["pointer", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     ModifyMenuA: {
       parameters: ["pointer", "u32", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     ModifyMenuW: {
       parameters: ["pointer", "u32", "u32", "usize", "buffer"],
       result: "i32",
+      optional: true,
     },
     RemoveMenu: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DeleteMenu: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetMenuItemBitmaps: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuCheckMarkDimensions: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     TrackPopupMenu: {
       parameters: ["pointer", "u32", "i32", "i32", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     TrackPopupMenuEx: {
       parameters: ["pointer", "u32", "i32", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CalculatePopupWindowPosition: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMenuInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EndMenu: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InsertMenuItemA: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InsertMenuItemW: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuItemInfoA: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuItemInfoW: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMenuItemInfoA: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetMenuItemInfoW: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuDefaultItem: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SetMenuDefaultItem: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetMenuItemRect: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     MenuItemFromPoint: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DragObject: {
       parameters: ["pointer", "pointer", "u32", "usize", "pointer"],
       result: "u32",
+      optional: true,
     },
     DrawIcon: {
       parameters: ["pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetForegroundWindow: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     SwitchToThisWindow: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     SetForegroundWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AllowSetForegroundWindow: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     LockSetForegroundWindow: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     ScrollWindow: {
       parameters: ["pointer", "i32", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScrollDC: {
       parameters: ["pointer", "i32", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScrollWindowEx: {
       parameters: ["pointer", "i32", "i32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetScrollPos: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetScrollRange: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetPropA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetPropW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPropA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     GetPropW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     RemovePropA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     RemovePropW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     EnumPropsExA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPropsExW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPropsA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPropsW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetWindowTextA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SetWindowTextW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetWindowTextA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetWindowTextW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetWindowTextLengthA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowTextLengthW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClientRect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowRect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AdjustWindowRect: {
       parameters: ["pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     AdjustWindowRectEx: {
       parameters: ["pointer", "u32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     MessageBoxA: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     MessageBoxW: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     MessageBoxExA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     MessageBoxExW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     MessageBoxIndirectA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MessageBoxIndirectW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ShowCursor: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     SetCursorPos: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetPhysicalCursorPos: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetCursor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCursorPos: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetPhysicalCursorPos: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClipCursor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCursor: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     CreateCaret: {
       parameters: ["pointer", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetCaretBlinkTime: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetCaretBlinkTime: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     DestroyCaret: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     HideCaret: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ShowCaret: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetCaretPos: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetCaretPos: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     LogicalToPhysicalPoint: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PhysicalToLogicalPoint: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WindowFromPoint: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WindowFromPhysicalPoint: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ChildWindowFromPoint: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ClipCursor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ChildWindowFromPointEx: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetWindowWord: {
       parameters: ["pointer", "i32"],
       result: "u16",
+      optional: true,
     },
     SetWindowWord: {
       parameters: ["pointer", "i32", "u16"],
       result: "u16",
+      optional: true,
     },
     GetWindowLongA: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetWindowLongW: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetWindowLongA: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SetWindowLongW: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetClassWord: {
       parameters: ["pointer", "i32"],
       result: "u16",
+      optional: true,
     },
     SetClassWord: {
       parameters: ["pointer", "i32", "u16"],
       result: "u16",
+      optional: true,
     },
     GetClassLongA: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetClassLongW: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     SetClassLongA: {
       parameters: ["pointer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     SetClassLongW: {
       parameters: ["pointer", "i32", "i32"],
       result: "u32",
+      optional: true,
     },
     GetProcessDefaultLayout: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDefaultLayout: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     GetDesktopWindow: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetParent: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetParent: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EnumChildWindows: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindWindowA: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindWindowW: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindWindowExA: {
       parameters: ["pointer", "pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindWindowExW: {
       parameters: ["pointer", "pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     GetShellWindow: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     RegisterShellHookWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeregisterShellHookWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EnumWindows: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumThreadWindows: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetClassNameA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetClassNameW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetTopWindow: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetWindowThreadProcessId: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     IsGUIThread: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     GetLastActivePopup: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetWindow: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetWindowsHookA: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetWindowsHookW: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UnhookWindowsHook: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetWindowsHookExA: {
       parameters: ["i32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetWindowsHookExW: {
       parameters: ["i32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UnhookWindowsHookEx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CallNextHookEx: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CheckMenuRadioItem: {
       parameters: ["pointer", "u32", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     LoadCursorA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadCursorW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadCursorFromFileA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadCursorFromFileW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateCursor: {
       parameters: ["pointer", "i32", "i32", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyCursor: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetSystemCursor: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     LoadIconA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadIconW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PrivateExtractIconsA: {
       parameters: ["buffer", "i32", "i32", "i32", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     PrivateExtractIconsW: {
       parameters: ["buffer", "i32", "i32", "i32", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateIcon: {
       parameters: ["pointer", "i32", "i32", "u8", "u8", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyIcon: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     LookupIconIdFromDirectory: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     LookupIconIdFromDirectoryEx: {
       parameters: ["pointer", "i32", "i32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateIconFromResource: {
       parameters: ["pointer", "u32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateIconFromResourceEx: {
       parameters: ["pointer", "u32", "i32", "u32", "i32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadImageA: {
       parameters: ["pointer", "buffer", "u32", "i32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadImageW: {
       parameters: ["pointer", "buffer", "u32", "i32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CopyImage: {
       parameters: ["pointer", "u32", "i32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     DrawIconEx: {
       parameters: ["pointer", "i32", "i32", "pointer", "i32", "i32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateIconIndirect: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CopyIcon: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIconInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetIconInfoExA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetIconInfoExW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsDialogMessageA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsDialogMessageW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MapDialogRect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetScrollInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DefFrameProcA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DefFrameProcW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DefMDIChildProcA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DefMDIChildProcW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TranslateMDISysAccel: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ArrangeIconicWindows: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreateMDIWindowA: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32", "i32", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateMDIWindowW: {
       parameters: ["buffer", "buffer", "u32", "i32", "i32", "i32", "i32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     TileWindows: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u16",
+      optional: true,
     },
     CascadeWindows: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u16",
+      optional: true,
     },
     SystemParametersInfoA: {
       parameters: ["u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SystemParametersInfoW: {
       parameters: ["u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SoundSentry: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     SetDebugErrorLevel: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     InternalGetWindowText: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     CancelShutdown: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetGUIThreadInfo: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDPIAware: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     IsProcessDPIAware: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InheritWindowMonitor: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowModuleFileNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetWindowModuleFileNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetCursorInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetWindowInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetTitleBarInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetMenuBarInfo: {
       parameters: ["pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetScrollBarInfo: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAncestor: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RealChildWindowFromPoint: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RealGetWindowClassA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RealGetWindowClassW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetAltTabInfoA: {
       parameters: ["pointer", "i32", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetAltTabInfoW: {
       parameters: ["pointer", "i32", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ChangeWindowMessageFilter: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ChangeWindowMessageFilterEx: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12863,110 +13248,137 @@ try {
     CreateResourceIndexer: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyResourceIndexer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     IndexFilePath: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DestroyIndexedResults: {
       parameters: ["buffer", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     MrmCreateResourceIndexer: {
       parameters: ["buffer", "buffer", "i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceIndexerFromPreviousSchemaFile: {
       parameters: ["buffer", "i32", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceIndexerFromPreviousPriFile: {
       parameters: ["buffer", "i32", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceIndexerFromPreviousSchemaData: {
       parameters: ["buffer", "i32", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceIndexerFromPreviousPriData: {
       parameters: ["buffer", "i32", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceIndexerWithFlags: {
       parameters: ["buffer", "buffer", "i32", "buffer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmIndexString: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmIndexEmbeddedData: {
       parameters: ["pointer", "buffer", "pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmIndexFile: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmIndexFileAutoQualifiers: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmIndexResourceContainerAutoQualifiers: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceFile: {
       parameters: ["pointer", "i32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceFileWithChecksum: {
       parameters: ["pointer", "i32", "i32", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateResourceFileInMemory: {
       parameters: ["pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmPeekResourceIndexerMessages: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmDestroyIndexerAndMessages: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmFreeMemory: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmDumpPriFile: {
       parameters: ["buffer", "buffer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmDumpPriFileInMemory: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmDumpPriDataInMemory: {
       parameters: ["pointer", "u32", "pointer", "u32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateConfig: {
       parameters: ["i32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     MrmCreateConfigInMemory: {
       parameters: ["i32", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MrmGetPriFileContentChecksum: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12979,7 +13391,7 @@ export function LoadStringA(
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchBufferMax: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.LoadStringA(util.toPointer(hInstance), uID, util.pstrToFfi(lpBuffer), cchBufferMax);
+  return libUSER32_dll.LoadStringA!(util.toPointer(hInstance), uID, util.pstrToFfi(lpBuffer), cchBufferMax);
 }
 
 export function LoadStringW(
@@ -12988,21 +13400,21 @@ export function LoadStringW(
   lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferMax: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.LoadStringW(util.toPointer(hInstance), uID, util.pwstrToFfi(lpBuffer), cchBufferMax);
+  return libUSER32_dll.LoadStringW!(util.toPointer(hInstance), uID, util.pwstrToFfi(lpBuffer), cchBufferMax);
 }
 
 export function GetWindowLongPtrA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.GetWindowLongPtrA((hWnd), nIndex);
+  return libUSER32_dll.GetWindowLongPtrA!((hWnd), nIndex);
 }
 
 export function GetWindowLongPtrW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.GetWindowLongPtrW((hWnd), nIndex);
+  return libUSER32_dll.GetWindowLongPtrW!((hWnd), nIndex);
 }
 
 export function SetWindowLongPtrA(
@@ -13010,7 +13422,7 @@ export function SetWindowLongPtrA(
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
   dwNewLong: bigint | number /* isize */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.SetWindowLongPtrA((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetWindowLongPtrA!((hWnd), nIndex, dwNewLong);
 }
 
 export function SetWindowLongPtrW(
@@ -13018,21 +13430,21 @@ export function SetWindowLongPtrW(
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
   dwNewLong: bigint | number /* isize */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.SetWindowLongPtrW((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetWindowLongPtrW!((hWnd), nIndex, dwNewLong);
 }
 
 export function GetClassLongPtrA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.GetClassLongPtrA((hWnd), nIndex);
+  return libUSER32_dll.GetClassLongPtrA!((hWnd), nIndex);
 }
 
 export function GetClassLongPtrW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.GetClassLongPtrW((hWnd), nIndex);
+  return libUSER32_dll.GetClassLongPtrW!((hWnd), nIndex);
 }
 
 export function SetClassLongPtrA(
@@ -13040,7 +13452,7 @@ export function SetClassLongPtrA(
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
   dwNewLong: bigint | number /* isize */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.SetClassLongPtrA((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetClassLongPtrA!((hWnd), nIndex, dwNewLong);
 }
 
 export function SetClassLongPtrW(
@@ -13048,7 +13460,7 @@ export function SetClassLongPtrW(
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
   dwNewLong: bigint | number /* isize */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.SetClassLongPtrW((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetClassLongPtrW!((hWnd), nIndex, dwNewLong);
 }
 
 export function wvsprintfA(
@@ -13056,7 +13468,7 @@ export function wvsprintfA(
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.wvsprintfA(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(arglist));
+  return libUSER32_dll.wvsprintfA!(util.pstrToFfi(param0), util.pstrToFfi(param1), util.toPointer(arglist));
 }
 
 export function wvsprintfW(
@@ -13064,43 +13476,43 @@ export function wvsprintfW(
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   arglist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.wvsprintfW(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(arglist));
+  return libUSER32_dll.wvsprintfW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1), util.toPointer(arglist));
 }
 
 export function wsprintfA(
   param0: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libUSER32_dll.wsprintfA(util.pstrToFfi(param0), util.pstrToFfi(param1));
+  return libUSER32_dll.wsprintfA!(util.pstrToFfi(param0), util.pstrToFfi(param1));
 }
 
 export function wsprintfW(
   param0: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libUSER32_dll.wsprintfW(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
+  return libUSER32_dll.wsprintfW!(util.pwstrToFfi(param0), util.pwstrToFfi(param1));
 }
 
 export function IsHungAppWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsHungAppWindow((hwnd)));
+  return util.boolFromFfi(libUSER32_dll.IsHungAppWindow!((hwnd)));
 }
 
 export function DisableProcessWindowsGhosting(): void /* void */ {
-  return libUSER32_dll.DisableProcessWindowsGhosting();
+  return libUSER32_dll.DisableProcessWindowsGhosting!();
 }
 
 export function RegisterWindowMessageA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libUSER32_dll.RegisterWindowMessageA(util.pstrToFfi(lpString));
+  return libUSER32_dll.RegisterWindowMessageA!(util.pstrToFfi(lpString));
 }
 
 export function RegisterWindowMessageW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libUSER32_dll.RegisterWindowMessageW(util.pwstrToFfi(lpString));
+  return libUSER32_dll.RegisterWindowMessageW!(util.pwstrToFfi(lpString));
 }
 
 export function GetMessageA(
@@ -13109,7 +13521,7 @@ export function GetMessageA(
   wMsgFilterMin: number /* u32 */,
   wMsgFilterMax: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMessageA(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax));
+  return util.boolFromFfi(libUSER32_dll.GetMessageA!(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax));
 }
 
 export function GetMessageW(
@@ -13118,31 +13530,31 @@ export function GetMessageW(
   wMsgFilterMin: number /* u32 */,
   wMsgFilterMax: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMessageW(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax));
+  return util.boolFromFfi(libUSER32_dll.GetMessageW!(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax));
 }
 
 export function TranslateMessage(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.TranslateMessage(util.toPointer(lpMsg)));
+  return util.boolFromFfi(libUSER32_dll.TranslateMessage!(util.toPointer(lpMsg)));
 }
 
 export function DispatchMessageA(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DispatchMessageA(util.toPointer(lpMsg));
+  return libUSER32_dll.DispatchMessageA!(util.toPointer(lpMsg));
 }
 
 export function DispatchMessageW(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DispatchMessageW(util.toPointer(lpMsg));
+  return libUSER32_dll.DispatchMessageW!(util.toPointer(lpMsg));
 }
 
 export function SetMessageQueue(
   cMessagesMax: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMessageQueue(cMessagesMax));
+  return util.boolFromFfi(libUSER32_dll.SetMessageQueue!(cMessagesMax));
 }
 
 export function PeekMessageA(
@@ -13152,7 +13564,7 @@ export function PeekMessageA(
   wMsgFilterMax: number /* u32 */,
   wRemoveMsg: PEEK_MESSAGE_REMOVE_TYPE /* Windows.Win32.UI.WindowsAndMessaging.PEEK_MESSAGE_REMOVE_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PeekMessageA(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax, wRemoveMsg));
+  return util.boolFromFfi(libUSER32_dll.PeekMessageA!(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax, wRemoveMsg));
 }
 
 export function PeekMessageW(
@@ -13162,29 +13574,29 @@ export function PeekMessageW(
   wMsgFilterMax: number /* u32 */,
   wRemoveMsg: PEEK_MESSAGE_REMOVE_TYPE /* Windows.Win32.UI.WindowsAndMessaging.PEEK_MESSAGE_REMOVE_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PeekMessageW(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax, wRemoveMsg));
+  return util.boolFromFfi(libUSER32_dll.PeekMessageW!(util.toPointer(lpMsg), (hWnd), wMsgFilterMin, wMsgFilterMax, wRemoveMsg));
 }
 
 export function GetMessagePos(): number /* u32 */ {
-  return libUSER32_dll.GetMessagePos();
+  return libUSER32_dll.GetMessagePos!();
 }
 
 export function GetMessageTime(): number /* i32 */ {
-  return libUSER32_dll.GetMessageTime();
+  return libUSER32_dll.GetMessageTime!();
 }
 
 export function GetMessageExtraInfo(): Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */ {
-  return libUSER32_dll.GetMessageExtraInfo();
+  return libUSER32_dll.GetMessageExtraInfo!();
 }
 
 export function IsWow64Message(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsWow64Message());
+  return util.boolFromFfi(libUSER32_dll.IsWow64Message!());
 }
 
 export function SetMessageExtraInfo(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */ {
-  return libUSER32_dll.SetMessageExtraInfo(util.toPointer(lParam));
+  return libUSER32_dll.SetMessageExtraInfo!(util.toPointer(lParam));
 }
 
 export function SendMessageA(
@@ -13193,7 +13605,7 @@ export function SendMessageA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendMessageA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.SendMessageA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SendMessageW(
@@ -13202,7 +13614,7 @@ export function SendMessageW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendMessageW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.SendMessageW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SendMessageTimeoutA(
@@ -13214,7 +13626,7 @@ export function SendMessageTimeoutA(
   uTimeout: number /* u32 */,
   lpdwResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendMessageTimeoutA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), fuFlags, uTimeout, util.toPointer(lpdwResult));
+  return libUSER32_dll.SendMessageTimeoutA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), fuFlags, uTimeout, util.toPointer(lpdwResult));
 }
 
 export function SendMessageTimeoutW(
@@ -13226,7 +13638,7 @@ export function SendMessageTimeoutW(
   uTimeout: number /* u32 */,
   lpdwResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendMessageTimeoutW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), fuFlags, uTimeout, util.toPointer(lpdwResult));
+  return libUSER32_dll.SendMessageTimeoutW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), fuFlags, uTimeout, util.toPointer(lpdwResult));
 }
 
 export function SendNotifyMessageA(
@@ -13235,7 +13647,7 @@ export function SendNotifyMessageA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SendNotifyMessageA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.SendNotifyMessageA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function SendNotifyMessageW(
@@ -13244,7 +13656,7 @@ export function SendNotifyMessageW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SendNotifyMessageW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.SendNotifyMessageW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function SendMessageCallbackA(
@@ -13255,7 +13667,7 @@ export function SendMessageCallbackA(
   lpResultCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.SENDASYNCPROC */,
   dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SendMessageCallbackA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(lpResultCallBack), dwData));
+  return util.boolFromFfi(libUSER32_dll.SendMessageCallbackA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(lpResultCallBack), dwData));
 }
 
 export function SendMessageCallbackW(
@@ -13266,7 +13678,7 @@ export function SendMessageCallbackW(
   lpResultCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.SENDASYNCPROC */,
   dwData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SendMessageCallbackW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(lpResultCallBack), dwData));
+  return util.boolFromFfi(libUSER32_dll.SendMessageCallbackW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam), util.toPointer(lpResultCallBack), dwData));
 }
 
 export function RegisterDeviceNotificationA(
@@ -13274,7 +13686,7 @@ export function RegisterDeviceNotificationA(
   NotificationFilter: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: POWER_SETTING_REGISTER_NOTIFICATION_FLAGS /* Windows.Win32.System.Power.POWER_SETTING_REGISTER_NOTIFICATION_FLAGS */,
 ): Deno.PointerValue /* ptr */ {
-  return libUSER32_dll.RegisterDeviceNotificationA(util.toPointer(hRecipient), util.toPointer(NotificationFilter), Flags);
+  return libUSER32_dll.RegisterDeviceNotificationA!(util.toPointer(hRecipient), util.toPointer(NotificationFilter), Flags);
 }
 
 export function RegisterDeviceNotificationW(
@@ -13282,7 +13694,7 @@ export function RegisterDeviceNotificationW(
   NotificationFilter: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: POWER_SETTING_REGISTER_NOTIFICATION_FLAGS /* Windows.Win32.System.Power.POWER_SETTING_REGISTER_NOTIFICATION_FLAGS */,
 ): Deno.PointerValue /* ptr */ {
-  return libUSER32_dll.RegisterDeviceNotificationW(util.toPointer(hRecipient), util.toPointer(NotificationFilter), Flags);
+  return libUSER32_dll.RegisterDeviceNotificationW!(util.toPointer(hRecipient), util.toPointer(NotificationFilter), Flags);
 }
 
 export function PostMessageA(
@@ -13291,7 +13703,7 @@ export function PostMessageA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PostMessageA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.PostMessageA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function PostMessageW(
@@ -13300,7 +13712,7 @@ export function PostMessageW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PostMessageW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.PostMessageW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function PostThreadMessageA(
@@ -13309,7 +13721,7 @@ export function PostThreadMessageA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PostThreadMessageA(idThread, Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.PostThreadMessageA!(idThread, Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function PostThreadMessageW(
@@ -13318,17 +13730,17 @@ export function PostThreadMessageW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PostThreadMessageW(idThread, Msg, util.toPointer(wParam), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.PostThreadMessageW!(idThread, Msg, util.toPointer(wParam), util.toPointer(lParam)));
 }
 
 export function ReplyMessage(
   lResult: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ReplyMessage(util.toPointer(lResult)));
+  return util.boolFromFfi(libUSER32_dll.ReplyMessage!(util.toPointer(lResult)));
 }
 
 export function WaitMessage(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.WaitMessage());
+  return util.boolFromFfi(libUSER32_dll.WaitMessage!());
 }
 
 export function DefWindowProcA(
@@ -13337,7 +13749,7 @@ export function DefWindowProcA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefWindowProcA((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefWindowProcA!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function DefWindowProcW(
@@ -13346,13 +13758,13 @@ export function DefWindowProcW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefWindowProcW((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefWindowProcW!((hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function PostQuitMessage(
   nExitCode: number /* i32 */,
 ): void /* void */ {
-  return libUSER32_dll.PostQuitMessage(nExitCode);
+  return libUSER32_dll.PostQuitMessage!(nExitCode);
 }
 
 export function CallWindowProcA(
@@ -13362,7 +13774,7 @@ export function CallWindowProcA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.CallWindowProcA(util.toPointer(lpPrevWndFunc), (hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.CallWindowProcA!(util.toPointer(lpPrevWndFunc), (hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function CallWindowProcW(
@@ -13372,43 +13784,43 @@ export function CallWindowProcW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.CallWindowProcW(util.toPointer(lpPrevWndFunc), (hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.CallWindowProcW!(util.toPointer(lpPrevWndFunc), (hWnd), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function InSendMessage(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InSendMessage());
+  return util.boolFromFfi(libUSER32_dll.InSendMessage!());
 }
 
 export function InSendMessageEx(
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libUSER32_dll.InSendMessageEx(util.toPointer(lpReserved));
+  return libUSER32_dll.InSendMessageEx!(util.toPointer(lpReserved));
 }
 
 export function RegisterClassA(
   lpWndClass: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.RegisterClassA(util.toPointer(lpWndClass));
+  return libUSER32_dll.RegisterClassA!(util.toPointer(lpWndClass));
 }
 
 export function RegisterClassW(
   lpWndClass: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.RegisterClassW(util.toPointer(lpWndClass));
+  return libUSER32_dll.RegisterClassW!(util.toPointer(lpWndClass));
 }
 
 export function UnregisterClassA(
   lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterClassA(util.pstrToFfi(lpClassName), util.toPointer(hInstance)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterClassA!(util.pstrToFfi(lpClassName), util.toPointer(hInstance)));
 }
 
 export function UnregisterClassW(
   lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterClassW(util.pwstrToFfi(lpClassName), util.toPointer(hInstance)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterClassW!(util.pwstrToFfi(lpClassName), util.toPointer(hInstance)));
 }
 
 export function GetClassInfoA(
@@ -13416,7 +13828,7 @@ export function GetClassInfoA(
   lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpWndClass: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClassInfoA(util.toPointer(hInstance), util.pstrToFfi(lpClassName), util.toPointer(lpWndClass)));
+  return util.boolFromFfi(libUSER32_dll.GetClassInfoA!(util.toPointer(hInstance), util.pstrToFfi(lpClassName), util.toPointer(lpWndClass)));
 }
 
 export function GetClassInfoW(
@@ -13424,19 +13836,19 @@ export function GetClassInfoW(
   lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpWndClass: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClassInfoW(util.toPointer(hInstance), util.pwstrToFfi(lpClassName), util.toPointer(lpWndClass)));
+  return util.boolFromFfi(libUSER32_dll.GetClassInfoW!(util.toPointer(hInstance), util.pwstrToFfi(lpClassName), util.toPointer(lpWndClass)));
 }
 
 export function RegisterClassExA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.RegisterClassExA(util.toPointer(param0));
+  return libUSER32_dll.RegisterClassExA!(util.toPointer(param0));
 }
 
 export function RegisterClassExW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.RegisterClassExW(util.toPointer(param0));
+  return libUSER32_dll.RegisterClassExW!(util.toPointer(param0));
 }
 
 export function GetClassInfoExA(
@@ -13444,7 +13856,7 @@ export function GetClassInfoExA(
   lpszClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpwcx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClassInfoExA(util.toPointer(hInstance), util.pstrToFfi(lpszClass), util.toPointer(lpwcx)));
+  return util.boolFromFfi(libUSER32_dll.GetClassInfoExA!(util.toPointer(hInstance), util.pstrToFfi(lpszClass), util.toPointer(lpwcx)));
 }
 
 export function GetClassInfoExW(
@@ -13452,7 +13864,7 @@ export function GetClassInfoExW(
   lpszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpwcx: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClassInfoExW(util.toPointer(hInstance), util.pwstrToFfi(lpszClass), util.toPointer(lpwcx)));
+  return util.boolFromFfi(libUSER32_dll.GetClassInfoExW!(util.toPointer(hInstance), util.pwstrToFfi(lpszClass), util.toPointer(lpwcx)));
 }
 
 export function CreateWindowExA(
@@ -13469,7 +13881,7 @@ export function CreateWindowExA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateWindowExA(dwExStyle, util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hMenu), util.toPointer(hInstance), util.toPointer(lpParam)));
+  return (libUSER32_dll.CreateWindowExA!(dwExStyle, util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hMenu), util.toPointer(hInstance), util.toPointer(lpParam)));
 }
 
 export function CreateWindowExW(
@@ -13486,39 +13898,39 @@ export function CreateWindowExW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateWindowExW(dwExStyle, util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hMenu), util.toPointer(hInstance), util.toPointer(lpParam)));
+  return (libUSER32_dll.CreateWindowExW!(dwExStyle, util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hMenu), util.toPointer(hInstance), util.toPointer(lpParam)));
 }
 
 export function IsWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsWindow((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsWindow!((hWnd)));
 }
 
 export function IsMenu(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsMenu(util.toPointer(hMenu)));
+  return util.boolFromFfi(libUSER32_dll.IsMenu!(util.toPointer(hMenu)));
 }
 
 export function IsChild(
   hWndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsChild((hWndParent), (hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsChild!((hWndParent), (hWnd)));
 }
 
 export function DestroyWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyWindow((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.DestroyWindow!((hWnd)));
 }
 
 export function ShowWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nCmdShow: SHOW_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShowWindow((hWnd), nCmdShow));
+  return util.boolFromFfi(libUSER32_dll.ShowWindow!((hWnd), nCmdShow));
 }
 
 export function AnimateWindow(
@@ -13526,7 +13938,7 @@ export function AnimateWindow(
   dwTime: number /* u32 */,
   dwFlags: ANIMATE_WINDOW_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.ANIMATE_WINDOW_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AnimateWindow((hWnd), dwTime, dwFlags));
+  return util.boolFromFfi(libUSER32_dll.AnimateWindow!((hWnd), dwTime, dwFlags));
 }
 
 export function UpdateLayeredWindow(
@@ -13540,14 +13952,14 @@ export function UpdateLayeredWindow(
   pblend: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: UPDATE_LAYERED_WINDOW_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.UPDATE_LAYERED_WINDOW_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UpdateLayeredWindow((hWnd), util.toPointer(hdcDst), util.toPointer(pptDst), util.toPointer(psize), util.toPointer(hdcSrc), util.toPointer(pptSrc), util.toPointer(crKey), util.toPointer(pblend), dwFlags));
+  return util.boolFromFfi(libUSER32_dll.UpdateLayeredWindow!((hWnd), util.toPointer(hdcDst), util.toPointer(pptDst), util.toPointer(psize), util.toPointer(hdcSrc), util.toPointer(pptSrc), util.toPointer(crKey), util.toPointer(pblend), dwFlags));
 }
 
 export function UpdateLayeredWindowIndirect(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pULWInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UpdateLayeredWindowIndirect((hWnd), util.toPointer(pULWInfo)));
+  return util.boolFromFfi(libUSER32_dll.UpdateLayeredWindowIndirect!((hWnd), util.toPointer(pULWInfo)));
 }
 
 export function GetLayeredWindowAttributes(
@@ -13556,7 +13968,7 @@ export function GetLayeredWindowAttributes(
   pbAlpha: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetLayeredWindowAttributes((hwnd), util.toPointer(pcrKey), util.toPointer(pbAlpha), util.toPointer(pdwFlags)));
+  return util.boolFromFfi(libUSER32_dll.GetLayeredWindowAttributes!((hwnd), util.toPointer(pcrKey), util.toPointer(pbAlpha), util.toPointer(pdwFlags)));
 }
 
 export function SetLayeredWindowAttributes(
@@ -13565,46 +13977,46 @@ export function SetLayeredWindowAttributes(
   bAlpha: number /* u8 */,
   dwFlags: LAYERED_WINDOW_ATTRIBUTES_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.LAYERED_WINDOW_ATTRIBUTES_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetLayeredWindowAttributes((hwnd), util.toPointer(crKey), bAlpha, dwFlags));
+  return util.boolFromFfi(libUSER32_dll.SetLayeredWindowAttributes!((hwnd), util.toPointer(crKey), bAlpha, dwFlags));
 }
 
 export function ShowWindowAsync(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nCmdShow: SHOW_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShowWindowAsync((hWnd), nCmdShow));
+  return util.boolFromFfi(libUSER32_dll.ShowWindowAsync!((hWnd), nCmdShow));
 }
 
 export function FlashWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   bInvert: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.FlashWindow((hWnd), util.boolToFfi(bInvert)));
+  return util.boolFromFfi(libUSER32_dll.FlashWindow!((hWnd), util.boolToFfi(bInvert)));
 }
 
 export function FlashWindowEx(
   pfwi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.FlashWindowEx(util.toPointer(pfwi)));
+  return util.boolFromFfi(libUSER32_dll.FlashWindowEx!(util.toPointer(pfwi)));
 }
 
 export function ShowOwnedPopups(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   fShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShowOwnedPopups((hWnd), util.boolToFfi(fShow)));
+  return util.boolFromFfi(libUSER32_dll.ShowOwnedPopups!((hWnd), util.boolToFfi(fShow)));
 }
 
 export function OpenIcon(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.OpenIcon((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.OpenIcon!((hWnd)));
 }
 
 export function CloseWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CloseWindow((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.CloseWindow!((hWnd)));
 }
 
 export function MoveWindow(
@@ -13615,7 +14027,7 @@ export function MoveWindow(
   nHeight: number /* i32 */,
   bRepaint: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.MoveWindow((hWnd), X, Y, nWidth, nHeight, util.boolToFfi(bRepaint)));
+  return util.boolFromFfi(libUSER32_dll.MoveWindow!((hWnd), X, Y, nWidth, nHeight, util.boolToFfi(bRepaint)));
 }
 
 export function SetWindowPos(
@@ -13627,41 +14039,41 @@ export function SetWindowPos(
   cy: number /* i32 */,
   uFlags: SET_WINDOW_POS_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.SET_WINDOW_POS_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowPos((hWnd), (hWndInsertAfter), X, Y, cx, cy, uFlags));
+  return util.boolFromFfi(libUSER32_dll.SetWindowPos!((hWnd), (hWndInsertAfter), X, Y, cx, cy, uFlags));
 }
 
 export function GetWindowPlacement(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpwndpl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetWindowPlacement((hWnd), util.toPointer(lpwndpl)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowPlacement!((hWnd), util.toPointer(lpwndpl)));
 }
 
 export function SetWindowPlacement(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpwndpl: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowPlacement((hWnd), util.toPointer(lpwndpl)));
+  return util.boolFromFfi(libUSER32_dll.SetWindowPlacement!((hWnd), util.toPointer(lpwndpl)));
 }
 
 export function GetWindowDisplayAffinity(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pdwAffinity: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetWindowDisplayAffinity((hWnd), util.toPointer(pdwAffinity)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowDisplayAffinity!((hWnd), util.toPointer(pdwAffinity)));
 }
 
 export function SetWindowDisplayAffinity(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwAffinity: WINDOW_DISPLAY_AFFINITY /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_DISPLAY_AFFINITY */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowDisplayAffinity((hWnd), dwAffinity));
+  return util.boolFromFfi(libUSER32_dll.SetWindowDisplayAffinity!((hWnd), dwAffinity));
 }
 
 export function BeginDeferWindowPos(
   nNumWindows: number /* i32 */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.BeginDeferWindowPos(nNumWindows);
+  return libUSER32_dll.BeginDeferWindowPos!(nNumWindows);
 }
 
 export function DeferWindowPos(
@@ -13674,41 +14086,41 @@ export function DeferWindowPos(
   cy: number /* i32 */,
   uFlags: SET_WINDOW_POS_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.SET_WINDOW_POS_FLAGS */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.DeferWindowPos(hWinPosInfo, (hWnd), (hWndInsertAfter), x, y, cx, cy, uFlags);
+  return libUSER32_dll.DeferWindowPos!(hWinPosInfo, (hWnd), (hWndInsertAfter), x, y, cx, cy, uFlags);
 }
 
 export function EndDeferWindowPos(
   hWinPosInfo: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EndDeferWindowPos(hWinPosInfo));
+  return util.boolFromFfi(libUSER32_dll.EndDeferWindowPos!(hWinPosInfo));
 }
 
 export function IsWindowVisible(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsWindowVisible((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsWindowVisible!((hWnd)));
 }
 
 export function IsIconic(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsIconic((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsIconic!((hWnd)));
 }
 
 export function AnyPopup(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AnyPopup());
+  return util.boolFromFfi(libUSER32_dll.AnyPopup!());
 }
 
 export function BringWindowToTop(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.BringWindowToTop((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.BringWindowToTop!((hWnd)));
 }
 
 export function IsZoomed(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsZoomed((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsZoomed!((hWnd)));
 }
 
 export function CreateDialogParamA(
@@ -13718,7 +14130,7 @@ export function CreateDialogParamA(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateDialogParamA(util.toPointer(hInstance), util.pstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
+  return (libUSER32_dll.CreateDialogParamA!(util.toPointer(hInstance), util.pstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
 }
 
 export function CreateDialogParamW(
@@ -13728,7 +14140,7 @@ export function CreateDialogParamW(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateDialogParamW(util.toPointer(hInstance), util.pwstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
+  return (libUSER32_dll.CreateDialogParamW!(util.toPointer(hInstance), util.pwstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
 }
 
 export function CreateDialogIndirectParamA(
@@ -13738,7 +14150,7 @@ export function CreateDialogIndirectParamA(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateDialogIndirectParamA(util.toPointer(hInstance), util.toPointer(lpTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
+  return (libUSER32_dll.CreateDialogIndirectParamA!(util.toPointer(hInstance), util.toPointer(lpTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
 }
 
 export function CreateDialogIndirectParamW(
@@ -13748,7 +14160,7 @@ export function CreateDialogIndirectParamW(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateDialogIndirectParamW(util.toPointer(hInstance), util.toPointer(lpTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
+  return (libUSER32_dll.CreateDialogIndirectParamW!(util.toPointer(hInstance), util.toPointer(lpTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam)));
 }
 
 export function DialogBoxParamA(
@@ -13758,7 +14170,7 @@ export function DialogBoxParamA(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.DialogBoxParamA(util.toPointer(hInstance), util.pstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
+  return libUSER32_dll.DialogBoxParamA!(util.toPointer(hInstance), util.pstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
 }
 
 export function DialogBoxParamW(
@@ -13768,7 +14180,7 @@ export function DialogBoxParamW(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.DialogBoxParamW(util.toPointer(hInstance), util.pwstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
+  return libUSER32_dll.DialogBoxParamW!(util.toPointer(hInstance), util.pwstrToFfi(lpTemplateName), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
 }
 
 export function DialogBoxIndirectParamA(
@@ -13778,7 +14190,7 @@ export function DialogBoxIndirectParamA(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.DialogBoxIndirectParamA(util.toPointer(hInstance), util.toPointer(hDialogTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
+  return libUSER32_dll.DialogBoxIndirectParamA!(util.toPointer(hInstance), util.toPointer(hDialogTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
 }
 
 export function DialogBoxIndirectParamW(
@@ -13788,21 +14200,21 @@ export function DialogBoxIndirectParamW(
   lpDialogFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.DLGPROC */,
   dwInitParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): bigint | number /* isize */ {
-  return libUSER32_dll.DialogBoxIndirectParamW(util.toPointer(hInstance), util.toPointer(hDialogTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
+  return libUSER32_dll.DialogBoxIndirectParamW!(util.toPointer(hInstance), util.toPointer(hDialogTemplate), (hWndParent), util.toPointer(lpDialogFunc), util.toPointer(dwInitParam));
 }
 
 export function EndDialog(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nResult: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EndDialog((hDlg), nResult));
+  return util.boolFromFfi(libUSER32_dll.EndDialog!((hDlg), nResult));
 }
 
 export function GetDlgItem(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIDDlgItem: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetDlgItem((hDlg), nIDDlgItem));
+  return (libUSER32_dll.GetDlgItem!((hDlg), nIDDlgItem));
 }
 
 export function SetDlgItemInt(
@@ -13811,7 +14223,7 @@ export function SetDlgItemInt(
   uValue: number /* u32 */,
   bSigned: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDlgItemInt((hDlg), nIDDlgItem, uValue, util.boolToFfi(bSigned)));
+  return util.boolFromFfi(libUSER32_dll.SetDlgItemInt!((hDlg), nIDDlgItem, uValue, util.boolToFfi(bSigned)));
 }
 
 export function GetDlgItemInt(
@@ -13820,7 +14232,7 @@ export function GetDlgItemInt(
   lpTranslated: Deno.PointerValue | Uint8Array /* ptr */,
   bSigned: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetDlgItemInt((hDlg), nIDDlgItem, util.toPointer(lpTranslated), util.boolToFfi(bSigned));
+  return libUSER32_dll.GetDlgItemInt!((hDlg), nIDDlgItem, util.toPointer(lpTranslated), util.boolToFfi(bSigned));
 }
 
 export function SetDlgItemTextA(
@@ -13828,7 +14240,7 @@ export function SetDlgItemTextA(
   nIDDlgItem: number /* i32 */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDlgItemTextA((hDlg), nIDDlgItem, util.pstrToFfi(lpString)));
+  return util.boolFromFfi(libUSER32_dll.SetDlgItemTextA!((hDlg), nIDDlgItem, util.pstrToFfi(lpString)));
 }
 
 export function SetDlgItemTextW(
@@ -13836,7 +14248,7 @@ export function SetDlgItemTextW(
   nIDDlgItem: number /* i32 */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDlgItemTextW((hDlg), nIDDlgItem, util.pwstrToFfi(lpString)));
+  return util.boolFromFfi(libUSER32_dll.SetDlgItemTextW!((hDlg), nIDDlgItem, util.pwstrToFfi(lpString)));
 }
 
 export function GetDlgItemTextA(
@@ -13845,7 +14257,7 @@ export function GetDlgItemTextA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchMax: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetDlgItemTextA((hDlg), nIDDlgItem, util.pstrToFfi(lpString), cchMax);
+  return libUSER32_dll.GetDlgItemTextA!((hDlg), nIDDlgItem, util.pstrToFfi(lpString), cchMax);
 }
 
 export function GetDlgItemTextW(
@@ -13854,7 +14266,7 @@ export function GetDlgItemTextW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMax: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetDlgItemTextW((hDlg), nIDDlgItem, util.pwstrToFfi(lpString), cchMax);
+  return libUSER32_dll.GetDlgItemTextW!((hDlg), nIDDlgItem, util.pwstrToFfi(lpString), cchMax);
 }
 
 export function SendDlgItemMessageA(
@@ -13864,7 +14276,7 @@ export function SendDlgItemMessageA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendDlgItemMessageA((hDlg), nIDDlgItem, Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.SendDlgItemMessageA!((hDlg), nIDDlgItem, Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function SendDlgItemMessageW(
@@ -13874,7 +14286,7 @@ export function SendDlgItemMessageW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.SendDlgItemMessageW((hDlg), nIDDlgItem, Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.SendDlgItemMessageW!((hDlg), nIDDlgItem, Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function GetNextDlgGroupItem(
@@ -13882,7 +14294,7 @@ export function GetNextDlgGroupItem(
   hCtl: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   bPrevious: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetNextDlgGroupItem((hDlg), (hCtl), util.boolToFfi(bPrevious)));
+  return (libUSER32_dll.GetNextDlgGroupItem!((hDlg), (hCtl), util.boolToFfi(bPrevious)));
 }
 
 export function GetNextDlgTabItem(
@@ -13890,17 +14302,17 @@ export function GetNextDlgTabItem(
   hCtl: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   bPrevious: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetNextDlgTabItem((hDlg), (hCtl), util.boolToFfi(bPrevious)));
+  return (libUSER32_dll.GetNextDlgTabItem!((hDlg), (hCtl), util.boolToFfi(bPrevious)));
 }
 
 export function GetDlgCtrlID(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetDlgCtrlID((hWnd));
+  return libUSER32_dll.GetDlgCtrlID!((hWnd));
 }
 
 export function GetDialogBaseUnits(): number /* i32 */ {
-  return libUSER32_dll.GetDialogBaseUnits();
+  return libUSER32_dll.GetDialogBaseUnits!();
 }
 
 export function DefDlgProcA(
@@ -13909,7 +14321,7 @@ export function DefDlgProcA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefDlgProcA((hDlg), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefDlgProcA!((hDlg), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function DefDlgProcW(
@@ -13918,49 +14330,49 @@ export function DefDlgProcW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefDlgProcW((hDlg), Msg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefDlgProcW!((hDlg), Msg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function CallMsgFilterA(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
   nCode: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CallMsgFilterA(util.toPointer(lpMsg), nCode));
+  return util.boolFromFfi(libUSER32_dll.CallMsgFilterA!(util.toPointer(lpMsg), nCode));
 }
 
 export function CallMsgFilterW(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
   nCode: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CallMsgFilterW(util.toPointer(lpMsg), nCode));
+  return util.boolFromFfi(libUSER32_dll.CallMsgFilterW!(util.toPointer(lpMsg), nCode));
 }
 
 export function CharToOemA(
   pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CharToOemA(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
+  return util.boolFromFfi(libUSER32_dll.CharToOemA!(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function CharToOemW(
   pSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CharToOemW(util.pwstrToFfi(pSrc), util.pstrToFfi(pDst)));
+  return util.boolFromFfi(libUSER32_dll.CharToOemW!(util.pwstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function OemToCharA(
   pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.OemToCharA(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
+  return util.boolFromFfi(libUSER32_dll.OemToCharA!(util.pstrToFfi(pSrc), util.pstrToFfi(pDst)));
 }
 
 export function OemToCharW(
   pSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.OemToCharW(util.pstrToFfi(pSrc), util.pwstrToFfi(pDst)));
+  return util.boolFromFfi(libUSER32_dll.OemToCharW!(util.pstrToFfi(pSrc), util.pwstrToFfi(pDst)));
 }
 
 export function CharToOemBuffA(
@@ -13968,7 +14380,7 @@ export function CharToOemBuffA(
   lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CharToOemBuffA(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
+  return util.boolFromFfi(libUSER32_dll.CharToOemBuffA!(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function CharToOemBuffW(
@@ -13976,7 +14388,7 @@ export function CharToOemBuffW(
   lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CharToOemBuffW(util.pwstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
+  return util.boolFromFfi(libUSER32_dll.CharToOemBuffW!(util.pwstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function OemToCharBuffA(
@@ -13984,7 +14396,7 @@ export function OemToCharBuffA(
   lpszDst: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.OemToCharBuffA(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
+  return util.boolFromFfi(libUSER32_dll.OemToCharBuffA!(util.pstrToFfi(lpszSrc), util.pstrToFfi(lpszDst), cchDstLength));
 }
 
 export function OemToCharBuffW(
@@ -13992,85 +14404,85 @@ export function OemToCharBuffW(
   lpszDst: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchDstLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.OemToCharBuffW(util.pstrToFfi(lpszSrc), util.pwstrToFfi(lpszDst), cchDstLength));
+  return util.boolFromFfi(libUSER32_dll.OemToCharBuffW!(util.pstrToFfi(lpszSrc), util.pwstrToFfi(lpszDst), cchDstLength));
 }
 
 export function CharUpperA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharUpperA(util.pstrToFfi(lpsz)));
+  return util.pstrFromFfi(libUSER32_dll.CharUpperA!(util.pstrToFfi(lpsz)));
 }
 
 export function CharUpperW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libUSER32_dll.CharUpperW(util.pwstrToFfi(lpsz)));
+  return util.pwstrFromFfi(libUSER32_dll.CharUpperW!(util.pwstrToFfi(lpsz)));
 }
 
 export function CharUpperBuffA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.CharUpperBuffA(util.pstrToFfi(lpsz), cchLength);
+  return libUSER32_dll.CharUpperBuffA!(util.pstrToFfi(lpsz), cchLength);
 }
 
 export function CharUpperBuffW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.CharUpperBuffW(util.pwstrToFfi(lpsz), cchLength);
+  return libUSER32_dll.CharUpperBuffW!(util.pwstrToFfi(lpsz), cchLength);
 }
 
 export function CharLowerA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharLowerA(util.pstrToFfi(lpsz)));
+  return util.pstrFromFfi(libUSER32_dll.CharLowerA!(util.pstrToFfi(lpsz)));
 }
 
 export function CharLowerW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libUSER32_dll.CharLowerW(util.pwstrToFfi(lpsz)));
+  return util.pwstrFromFfi(libUSER32_dll.CharLowerW!(util.pwstrToFfi(lpsz)));
 }
 
 export function CharLowerBuffA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.CharLowerBuffA(util.pstrToFfi(lpsz), cchLength);
+  return libUSER32_dll.CharLowerBuffA!(util.pstrToFfi(lpsz), cchLength);
 }
 
 export function CharLowerBuffW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchLength: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.CharLowerBuffW(util.pwstrToFfi(lpsz), cchLength);
+  return libUSER32_dll.CharLowerBuffW!(util.pwstrToFfi(lpsz), cchLength);
 }
 
 export function CharNextA(
   lpsz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharNextA(util.pstrToFfi(lpsz)));
+  return util.pstrFromFfi(libUSER32_dll.CharNextA!(util.pstrToFfi(lpsz)));
 }
 
 export function CharNextW(
   lpsz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libUSER32_dll.CharNextW(util.pwstrToFfi(lpsz)));
+  return util.pwstrFromFfi(libUSER32_dll.CharNextW!(util.pwstrToFfi(lpsz)));
 }
 
 export function CharPrevA(
   lpszStart: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszCurrent: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharPrevA(util.pstrToFfi(lpszStart), util.pstrToFfi(lpszCurrent)));
+  return util.pstrFromFfi(libUSER32_dll.CharPrevA!(util.pstrToFfi(lpszStart), util.pstrToFfi(lpszCurrent)));
 }
 
 export function CharPrevW(
   lpszStart: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszCurrent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libUSER32_dll.CharPrevW(util.pwstrToFfi(lpszStart), util.pwstrToFfi(lpszCurrent)));
+  return util.pwstrFromFfi(libUSER32_dll.CharPrevW!(util.pwstrToFfi(lpszStart), util.pwstrToFfi(lpszCurrent)));
 }
 
 export function CharNextExA(
@@ -14078,7 +14490,7 @@ export function CharNextExA(
   lpCurrentChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharNextExA(CodePage, util.pstrToFfi(lpCurrentChar), dwFlags));
+  return util.pstrFromFfi(libUSER32_dll.CharNextExA!(CodePage, util.pstrToFfi(lpCurrentChar), dwFlags));
 }
 
 export function CharPrevExA(
@@ -14087,59 +14499,59 @@ export function CharPrevExA(
   lpCurrentChar: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libUSER32_dll.CharPrevExA(CodePage, util.pstrToFfi(lpStart), util.pstrToFfi(lpCurrentChar), dwFlags));
+  return util.pstrFromFfi(libUSER32_dll.CharPrevExA!(CodePage, util.pstrToFfi(lpStart), util.pstrToFfi(lpCurrentChar), dwFlags));
 }
 
 export function IsCharAlphaA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharAlphaA(util.charToFfi(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharAlphaA!(util.charToFfi(ch)));
 }
 
 export function IsCharAlphaW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharAlphaW(util.toPointer(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharAlphaW!(util.toPointer(ch)));
 }
 
 export function IsCharAlphaNumericA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharAlphaNumericA(util.charToFfi(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharAlphaNumericA!(util.charToFfi(ch)));
 }
 
 export function IsCharAlphaNumericW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharAlphaNumericW(util.toPointer(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharAlphaNumericW!(util.toPointer(ch)));
 }
 
 export function IsCharUpperA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharUpperA(util.charToFfi(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharUpperA!(util.charToFfi(ch)));
 }
 
 export function IsCharUpperW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharUpperW(util.toPointer(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharUpperW!(util.toPointer(ch)));
 }
 
 export function IsCharLowerA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsCharLowerA(util.charToFfi(ch)));
+  return util.boolFromFfi(libUSER32_dll.IsCharLowerA!(util.charToFfi(ch)));
 }
 
 export function GetInputState(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetInputState());
+  return util.boolFromFfi(libUSER32_dll.GetInputState!());
 }
 
 export function GetQueueStatus(
   flags: QUEUE_STATUS_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.QUEUE_STATUS_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetQueueStatus(flags);
+  return libUSER32_dll.GetQueueStatus!(flags);
 }
 
 export function MsgWaitForMultipleObjects(
@@ -14149,7 +14561,7 @@ export function MsgWaitForMultipleObjects(
   dwMilliseconds: number /* u32 */,
   dwWakeMask: QUEUE_STATUS_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.QUEUE_STATUS_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.MsgWaitForMultipleObjects(nCount, util.toPointer(pHandles), util.boolToFfi(fWaitAll), dwMilliseconds, dwWakeMask);
+  return libUSER32_dll.MsgWaitForMultipleObjects!(nCount, util.toPointer(pHandles), util.boolToFfi(fWaitAll), dwMilliseconds, dwWakeMask);
 }
 
 export function MsgWaitForMultipleObjectsEx(
@@ -14159,7 +14571,7 @@ export function MsgWaitForMultipleObjectsEx(
   dwWakeMask: QUEUE_STATUS_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.QUEUE_STATUS_FLAGS */,
   dwFlags: MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MSG_WAIT_FOR_MULTIPLE_OBJECTS_EX_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.MsgWaitForMultipleObjectsEx(nCount, util.toPointer(pHandles), dwMilliseconds, dwWakeMask, dwFlags);
+  return libUSER32_dll.MsgWaitForMultipleObjectsEx!(nCount, util.toPointer(pHandles), dwMilliseconds, dwWakeMask, dwFlags);
 }
 
 export function SetTimer(
@@ -14168,7 +14580,7 @@ export function SetTimer(
   uElapse: number /* u32 */,
   lpTimerFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.TIMERPROC */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.SetTimer((hWnd), nIDEvent, uElapse, util.toPointer(lpTimerFunc));
+  return libUSER32_dll.SetTimer!((hWnd), nIDEvent, uElapse, util.toPointer(lpTimerFunc));
 }
 
 export function SetCoalescableTimer(
@@ -14178,54 +14590,54 @@ export function SetCoalescableTimer(
   lpTimerFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.TIMERPROC */,
   uToleranceDelay: number /* u32 */,
 ): bigint | number /* usize */ {
-  return libUSER32_dll.SetCoalescableTimer((hWnd), nIDEvent, uElapse, util.toPointer(lpTimerFunc), uToleranceDelay);
+  return libUSER32_dll.SetCoalescableTimer!((hWnd), nIDEvent, uElapse, util.toPointer(lpTimerFunc), uToleranceDelay);
 }
 
 export function KillTimer(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   uIDEvent: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.KillTimer((hWnd), uIDEvent));
+  return util.boolFromFfi(libUSER32_dll.KillTimer!((hWnd), uIDEvent));
 }
 
 export function IsWindowUnicode(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsWindowUnicode((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsWindowUnicode!((hWnd)));
 }
 
 export function LoadAcceleratorsA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpTableName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
-  return libUSER32_dll.LoadAcceleratorsA(util.toPointer(hInstance), util.pstrToFfi(lpTableName));
+  return libUSER32_dll.LoadAcceleratorsA!(util.toPointer(hInstance), util.pstrToFfi(lpTableName));
 }
 
 export function LoadAcceleratorsW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpTableName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
-  return libUSER32_dll.LoadAcceleratorsW(util.toPointer(hInstance), util.pwstrToFfi(lpTableName));
+  return libUSER32_dll.LoadAcceleratorsW!(util.toPointer(hInstance), util.pwstrToFfi(lpTableName));
 }
 
 export function CreateAcceleratorTableA(
   paccel: Deno.PointerValue | Uint8Array /* ptr */,
   cAccel: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
-  return libUSER32_dll.CreateAcceleratorTableA(util.toPointer(paccel), cAccel);
+  return libUSER32_dll.CreateAcceleratorTableA!(util.toPointer(paccel), cAccel);
 }
 
 export function CreateAcceleratorTableW(
   paccel: Deno.PointerValue | Uint8Array /* ptr */,
   cAccel: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */ {
-  return libUSER32_dll.CreateAcceleratorTableW(util.toPointer(paccel), cAccel);
+  return libUSER32_dll.CreateAcceleratorTableW!(util.toPointer(paccel), cAccel);
 }
 
 export function DestroyAcceleratorTable(
   hAccel: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyAcceleratorTable(util.toPointer(hAccel)));
+  return util.boolFromFfi(libUSER32_dll.DestroyAcceleratorTable!(util.toPointer(hAccel)));
 }
 
 export function CopyAcceleratorTableA(
@@ -14233,7 +14645,7 @@ export function CopyAcceleratorTableA(
   lpAccelDst: Deno.PointerValue | Uint8Array /* ptr */,
   cAccelEntries: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.CopyAcceleratorTableA(util.toPointer(hAccelSrc), util.toPointer(lpAccelDst), cAccelEntries);
+  return libUSER32_dll.CopyAcceleratorTableA!(util.toPointer(hAccelSrc), util.toPointer(lpAccelDst), cAccelEntries);
 }
 
 export function CopyAcceleratorTableW(
@@ -14241,7 +14653,7 @@ export function CopyAcceleratorTableW(
   lpAccelDst: Deno.PointerValue | Uint8Array /* ptr */,
   cAccelEntries: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.CopyAcceleratorTableW(util.toPointer(hAccelSrc), util.toPointer(lpAccelDst), cAccelEntries);
+  return libUSER32_dll.CopyAcceleratorTableW!(util.toPointer(hAccelSrc), util.toPointer(lpAccelDst), cAccelEntries);
 }
 
 export function TranslateAcceleratorA(
@@ -14249,7 +14661,7 @@ export function TranslateAcceleratorA(
   hAccTable: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */,
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.TranslateAcceleratorA((hWnd), util.toPointer(hAccTable), util.toPointer(lpMsg));
+  return libUSER32_dll.TranslateAcceleratorA!((hWnd), util.toPointer(hAccTable), util.toPointer(lpMsg));
 }
 
 export function TranslateAcceleratorW(
@@ -14257,52 +14669,52 @@ export function TranslateAcceleratorW(
   hAccTable: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HACCEL */,
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.TranslateAcceleratorW((hWnd), util.toPointer(hAccTable), util.toPointer(lpMsg));
+  return libUSER32_dll.TranslateAcceleratorW!((hWnd), util.toPointer(hAccTable), util.toPointer(lpMsg));
 }
 
 export function GetSystemMetrics(
   nIndex: SYSTEM_METRICS_INDEX /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_METRICS_INDEX */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetSystemMetrics(nIndex);
+  return libUSER32_dll.GetSystemMetrics!(nIndex);
 }
 
 export function LoadMenuA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpMenuName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.LoadMenuA(util.toPointer(hInstance), util.pstrToFfi(lpMenuName));
+  return libUSER32_dll.LoadMenuA!(util.toPointer(hInstance), util.pstrToFfi(lpMenuName));
 }
 
 export function LoadMenuW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpMenuName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.LoadMenuW(util.toPointer(hInstance), util.pwstrToFfi(lpMenuName));
+  return libUSER32_dll.LoadMenuW!(util.toPointer(hInstance), util.pwstrToFfi(lpMenuName));
 }
 
 export function LoadMenuIndirectA(
   lpMenuTemplate: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.LoadMenuIndirectA(util.toPointer(lpMenuTemplate));
+  return libUSER32_dll.LoadMenuIndirectA!(util.toPointer(lpMenuTemplate));
 }
 
 export function LoadMenuIndirectW(
   lpMenuTemplate: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.LoadMenuIndirectW(util.toPointer(lpMenuTemplate));
+  return libUSER32_dll.LoadMenuIndirectW!(util.toPointer(lpMenuTemplate));
 }
 
 export function GetMenu(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.GetMenu((hWnd));
+  return libUSER32_dll.GetMenu!((hWnd));
 }
 
 export function SetMenu(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenu((hWnd), util.toPointer(hMenu)));
+  return util.boolFromFfi(libUSER32_dll.SetMenu!((hWnd), util.toPointer(hMenu)));
 }
 
 export function ChangeMenuA(
@@ -14312,7 +14724,7 @@ export function ChangeMenuA(
   cmdInsert: number /* u32 */,
   flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ChangeMenuA(util.toPointer(hMenu), cmd, util.pstrToFfi(lpszNewItem), cmdInsert, flags));
+  return util.boolFromFfi(libUSER32_dll.ChangeMenuA!(util.toPointer(hMenu), cmd, util.pstrToFfi(lpszNewItem), cmdInsert, flags));
 }
 
 export function ChangeMenuW(
@@ -14322,7 +14734,7 @@ export function ChangeMenuW(
   cmdInsert: number /* u32 */,
   flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ChangeMenuW(util.toPointer(hMenu), cmd, util.pwstrToFfi(lpszNewItem), cmdInsert, flags));
+  return util.boolFromFfi(libUSER32_dll.ChangeMenuW!(util.toPointer(hMenu), cmd, util.pwstrToFfi(lpszNewItem), cmdInsert, flags));
 }
 
 export function HiliteMenuItem(
@@ -14331,7 +14743,7 @@ export function HiliteMenuItem(
   uIDHiliteItem: number /* u32 */,
   uHilite: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.HiliteMenuItem((hWnd), util.toPointer(hMenu), uIDHiliteItem, uHilite));
+  return util.boolFromFfi(libUSER32_dll.HiliteMenuItem!((hWnd), util.toPointer(hMenu), uIDHiliteItem, uHilite));
 }
 
 export function GetMenuStringA(
@@ -14341,7 +14753,7 @@ export function GetMenuStringA(
   cchMax: number /* i32 */,
   flags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetMenuStringA(util.toPointer(hMenu), uIDItem, util.pstrToFfi(lpString), cchMax, flags);
+  return libUSER32_dll.GetMenuStringA!(util.toPointer(hMenu), uIDItem, util.pstrToFfi(lpString), cchMax, flags);
 }
 
 export function GetMenuStringW(
@@ -14351,7 +14763,7 @@ export function GetMenuStringW(
   cchMax: number /* i32 */,
   flags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetMenuStringW(util.toPointer(hMenu), uIDItem, util.pwstrToFfi(lpString), cchMax, flags);
+  return libUSER32_dll.GetMenuStringW!(util.toPointer(hMenu), uIDItem, util.pwstrToFfi(lpString), cchMax, flags);
 }
 
 export function GetMenuState(
@@ -14359,34 +14771,34 @@ export function GetMenuState(
   uId: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetMenuState(util.toPointer(hMenu), uId, uFlags);
+  return libUSER32_dll.GetMenuState!(util.toPointer(hMenu), uId, uFlags);
 }
 
 export function DrawMenuBar(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DrawMenuBar((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.DrawMenuBar!((hWnd)));
 }
 
 export function GetSystemMenu(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   bRevert: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.GetSystemMenu((hWnd), util.boolToFfi(bRevert));
+  return libUSER32_dll.GetSystemMenu!((hWnd), util.boolToFfi(bRevert));
 }
 
 export function CreateMenu(): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.CreateMenu();
+  return libUSER32_dll.CreateMenu!();
 }
 
 export function CreatePopupMenu(): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.CreatePopupMenu();
+  return libUSER32_dll.CreatePopupMenu!();
 }
 
 export function DestroyMenu(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyMenu(util.toPointer(hMenu)));
+  return util.boolFromFfi(libUSER32_dll.DestroyMenu!(util.toPointer(hMenu)));
 }
 
 export function CheckMenuItem(
@@ -14394,7 +14806,7 @@ export function CheckMenuItem(
   uIDCheckItem: number /* u32 */,
   uCheck: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.CheckMenuItem(util.toPointer(hMenu), uIDCheckItem, uCheck);
+  return libUSER32_dll.CheckMenuItem!(util.toPointer(hMenu), uIDCheckItem, uCheck);
 }
 
 export function EnableMenuItem(
@@ -14402,27 +14814,27 @@ export function EnableMenuItem(
   uIDEnableItem: number /* u32 */,
   uEnable: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnableMenuItem(util.toPointer(hMenu), uIDEnableItem, uEnable));
+  return util.boolFromFfi(libUSER32_dll.EnableMenuItem!(util.toPointer(hMenu), uIDEnableItem, uEnable));
 }
 
 export function GetSubMenu(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   nPos: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */ {
-  return libUSER32_dll.GetSubMenu(util.toPointer(hMenu), nPos);
+  return libUSER32_dll.GetSubMenu!(util.toPointer(hMenu), nPos);
 }
 
 export function GetMenuItemID(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   nPos: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetMenuItemID(util.toPointer(hMenu), nPos);
+  return libUSER32_dll.GetMenuItemID!(util.toPointer(hMenu), nPos);
 }
 
 export function GetMenuItemCount(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetMenuItemCount(util.toPointer(hMenu));
+  return libUSER32_dll.GetMenuItemCount!(util.toPointer(hMenu));
 }
 
 export function InsertMenuA(
@@ -14432,7 +14844,7 @@ export function InsertMenuA(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InsertMenuA(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.InsertMenuA!(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
 
 export function InsertMenuW(
@@ -14442,7 +14854,7 @@ export function InsertMenuW(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InsertMenuW(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.InsertMenuW!(util.toPointer(hMenu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
 
 export function AppendMenuA(
@@ -14451,7 +14863,7 @@ export function AppendMenuA(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AppendMenuA(util.toPointer(hMenu), uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.AppendMenuA!(util.toPointer(hMenu), uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
 
 export function AppendMenuW(
@@ -14460,7 +14872,7 @@ export function AppendMenuW(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AppendMenuW(util.toPointer(hMenu), uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.AppendMenuW!(util.toPointer(hMenu), uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
 
 export function ModifyMenuA(
@@ -14470,7 +14882,7 @@ export function ModifyMenuA(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ModifyMenuA(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.ModifyMenuA!(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pstrToFfi(lpNewItem)));
 }
 
 export function ModifyMenuW(
@@ -14480,7 +14892,7 @@ export function ModifyMenuW(
   uIDNewItem: bigint | number /* usize */,
   lpNewItem: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ModifyMenuW(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
+  return util.boolFromFfi(libUSER32_dll.ModifyMenuW!(util.toPointer(hMnu), uPosition, uFlags, uIDNewItem, util.pwstrToFfi(lpNewItem)));
 }
 
 export function RemoveMenu(
@@ -14488,7 +14900,7 @@ export function RemoveMenu(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RemoveMenu(util.toPointer(hMenu), uPosition, uFlags));
+  return util.boolFromFfi(libUSER32_dll.RemoveMenu!(util.toPointer(hMenu), uPosition, uFlags));
 }
 
 export function DeleteMenu(
@@ -14496,7 +14908,7 @@ export function DeleteMenu(
   uPosition: number /* u32 */,
   uFlags: MENU_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.MENU_ITEM_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DeleteMenu(util.toPointer(hMenu), uPosition, uFlags));
+  return util.boolFromFfi(libUSER32_dll.DeleteMenu!(util.toPointer(hMenu), uPosition, uFlags));
 }
 
 export function SetMenuItemBitmaps(
@@ -14506,11 +14918,11 @@ export function SetMenuItemBitmaps(
   hBitmapUnchecked: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
   hBitmapChecked: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBITMAP */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuItemBitmaps(util.toPointer(hMenu), uPosition, uFlags, util.toPointer(hBitmapUnchecked), util.toPointer(hBitmapChecked)));
+  return util.boolFromFfi(libUSER32_dll.SetMenuItemBitmaps!(util.toPointer(hMenu), uPosition, uFlags, util.toPointer(hBitmapUnchecked), util.toPointer(hBitmapChecked)));
 }
 
 export function GetMenuCheckMarkDimensions(): number /* i32 */ {
-  return libUSER32_dll.GetMenuCheckMarkDimensions();
+  return libUSER32_dll.GetMenuCheckMarkDimensions!();
 }
 
 export function TrackPopupMenu(
@@ -14522,7 +14934,7 @@ export function TrackPopupMenu(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   prcRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.TrackPopupMenu(util.toPointer(hMenu), uFlags, x, y, nReserved, (hWnd), util.toPointer(prcRect)));
+  return util.boolFromFfi(libUSER32_dll.TrackPopupMenu!(util.toPointer(hMenu), uFlags, x, y, nReserved, (hWnd), util.toPointer(prcRect)));
 }
 
 export function TrackPopupMenuEx(
@@ -14533,7 +14945,7 @@ export function TrackPopupMenuEx(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lptpm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.TrackPopupMenuEx(util.toPointer(hMenu), uFlags, x, y, (hwnd), util.toPointer(lptpm)));
+  return util.boolFromFfi(libUSER32_dll.TrackPopupMenuEx!(util.toPointer(hMenu), uFlags, x, y, (hwnd), util.toPointer(lptpm)));
 }
 
 export function CalculatePopupWindowPosition(
@@ -14543,25 +14955,25 @@ export function CalculatePopupWindowPosition(
   excludeRect: Deno.PointerValue | Uint8Array /* ptr */,
   popupWindowPosition: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CalculatePopupWindowPosition(util.toPointer(anchorPoint), util.toPointer(windowSize), flags, util.toPointer(excludeRect), util.toPointer(popupWindowPosition)));
+  return util.boolFromFfi(libUSER32_dll.CalculatePopupWindowPosition!(util.toPointer(anchorPoint), util.toPointer(windowSize), flags, util.toPointer(excludeRect), util.toPointer(popupWindowPosition)));
 }
 
 export function GetMenuInfo(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMenuInfo(util.toPointer(param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.GetMenuInfo!(util.toPointer(param0), util.toPointer(param1)));
 }
 
 export function SetMenuInfo(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuInfo(util.toPointer(param0), util.toPointer(param1)));
+  return util.boolFromFfi(libUSER32_dll.SetMenuInfo!(util.toPointer(param0), util.toPointer(param1)));
 }
 
 export function EndMenu(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EndMenu());
+  return util.boolFromFfi(libUSER32_dll.EndMenu!());
 }
 
 export function InsertMenuItemA(
@@ -14570,7 +14982,7 @@ export function InsertMenuItemA(
   fByPosition: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InsertMenuItemA(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmi)));
+  return util.boolFromFfi(libUSER32_dll.InsertMenuItemA!(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmi)));
 }
 
 export function InsertMenuItemW(
@@ -14579,7 +14991,7 @@ export function InsertMenuItemW(
   fByPosition: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InsertMenuItemW(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmi)));
+  return util.boolFromFfi(libUSER32_dll.InsertMenuItemW!(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmi)));
 }
 
 export function GetMenuItemInfoA(
@@ -14588,7 +15000,7 @@ export function GetMenuItemInfoA(
   fByPosition: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmii: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMenuItemInfoA(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmii)));
+  return util.boolFromFfi(libUSER32_dll.GetMenuItemInfoA!(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmii)));
 }
 
 export function GetMenuItemInfoW(
@@ -14597,7 +15009,7 @@ export function GetMenuItemInfoW(
   fByPosition: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmii: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMenuItemInfoW(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmii)));
+  return util.boolFromFfi(libUSER32_dll.GetMenuItemInfoW!(util.toPointer(hmenu), item, util.boolToFfi(fByPosition), util.toPointer(lpmii)));
 }
 
 export function SetMenuItemInfoA(
@@ -14606,7 +15018,7 @@ export function SetMenuItemInfoA(
   fByPositon: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmii: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuItemInfoA(util.toPointer(hmenu), item, util.boolToFfi(fByPositon), util.toPointer(lpmii)));
+  return util.boolFromFfi(libUSER32_dll.SetMenuItemInfoA!(util.toPointer(hmenu), item, util.boolToFfi(fByPositon), util.toPointer(lpmii)));
 }
 
 export function SetMenuItemInfoW(
@@ -14615,7 +15027,7 @@ export function SetMenuItemInfoW(
   fByPositon: boolean /* Windows.Win32.Foundation.BOOL */,
   lpmii: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuItemInfoW(util.toPointer(hmenu), item, util.boolToFfi(fByPositon), util.toPointer(lpmii)));
+  return util.boolFromFfi(libUSER32_dll.SetMenuItemInfoW!(util.toPointer(hmenu), item, util.boolToFfi(fByPositon), util.toPointer(lpmii)));
 }
 
 export function GetMenuDefaultItem(
@@ -14623,7 +15035,7 @@ export function GetMenuDefaultItem(
   fByPos: number /* u32 */,
   gmdiFlags: GET_MENU_DEFAULT_ITEM_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.GET_MENU_DEFAULT_ITEM_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetMenuDefaultItem(util.toPointer(hMenu), fByPos, gmdiFlags);
+  return libUSER32_dll.GetMenuDefaultItem!(util.toPointer(hMenu), fByPos, gmdiFlags);
 }
 
 export function SetMenuDefaultItem(
@@ -14631,7 +15043,7 @@ export function SetMenuDefaultItem(
   uItem: number /* u32 */,
   fByPos: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetMenuDefaultItem(util.toPointer(hMenu), uItem, fByPos));
+  return util.boolFromFfi(libUSER32_dll.SetMenuDefaultItem!(util.toPointer(hMenu), uItem, fByPos));
 }
 
 export function GetMenuItemRect(
@@ -14640,7 +15052,7 @@ export function GetMenuItemRect(
   uItem: number /* u32 */,
   lprcItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMenuItemRect((hWnd), util.toPointer(hMenu), uItem, util.toPointer(lprcItem)));
+  return util.boolFromFfi(libUSER32_dll.GetMenuItemRect!((hWnd), util.toPointer(hMenu), uItem, util.toPointer(lprcItem)));
 }
 
 export function MenuItemFromPoint(
@@ -14648,7 +15060,7 @@ export function MenuItemFromPoint(
   hMenu: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   ptScreen: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): number /* i32 */ {
-  return libUSER32_dll.MenuItemFromPoint((hWnd), util.toPointer(hMenu), util.toPointer(ptScreen));
+  return libUSER32_dll.MenuItemFromPoint!((hWnd), util.toPointer(hMenu), util.toPointer(ptScreen));
 }
 
 export function DragObject(
@@ -14658,7 +15070,7 @@ export function DragObject(
   data: bigint | number /* usize */,
   hcur: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */,
 ): number /* u32 */ {
-  return libUSER32_dll.DragObject((hwndParent), (hwndFrom), fmt, data, util.toPointer(hcur));
+  return libUSER32_dll.DragObject!((hwndParent), (hwndFrom), fmt, data, util.toPointer(hcur));
 }
 
 export function DrawIcon(
@@ -14667,36 +15079,36 @@ export function DrawIcon(
   Y: number /* i32 */,
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DrawIcon(util.toPointer(hDC), X, Y, util.toPointer(hIcon)));
+  return util.boolFromFfi(libUSER32_dll.DrawIcon!(util.toPointer(hDC), X, Y, util.toPointer(hIcon)));
 }
 
 export function GetForegroundWindow(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetForegroundWindow());
+  return (libUSER32_dll.GetForegroundWindow!());
 }
 
 export function SwitchToThisWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   fUnknown: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libUSER32_dll.SwitchToThisWindow((hwnd), util.boolToFfi(fUnknown));
+  return libUSER32_dll.SwitchToThisWindow!((hwnd), util.boolToFfi(fUnknown));
 }
 
 export function SetForegroundWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetForegroundWindow((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.SetForegroundWindow!((hWnd)));
 }
 
 export function AllowSetForegroundWindow(
   dwProcessId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AllowSetForegroundWindow(dwProcessId));
+  return util.boolFromFfi(libUSER32_dll.AllowSetForegroundWindow!(dwProcessId));
 }
 
 export function LockSetForegroundWindow(
   uLockCode: FOREGROUND_WINDOW_LOCK_CODE /* Windows.Win32.UI.WindowsAndMessaging.FOREGROUND_WINDOW_LOCK_CODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.LockSetForegroundWindow(uLockCode));
+  return util.boolFromFfi(libUSER32_dll.LockSetForegroundWindow!(uLockCode));
 }
 
 export function ScrollWindow(
@@ -14706,7 +15118,7 @@ export function ScrollWindow(
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
   lpClipRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ScrollWindow((hWnd), XAmount, YAmount, util.toPointer(lpRect), util.toPointer(lpClipRect)));
+  return util.boolFromFfi(libUSER32_dll.ScrollWindow!((hWnd), XAmount, YAmount, util.toPointer(lpRect), util.toPointer(lpClipRect)));
 }
 
 export function ScrollDC(
@@ -14718,7 +15130,7 @@ export function ScrollDC(
   hrgnUpdate: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HRGN */,
   lprcUpdate: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ScrollDC(util.toPointer(hDC), dx, dy, util.toPointer(lprcScroll), util.toPointer(lprcClip), util.toPointer(hrgnUpdate), util.toPointer(lprcUpdate)));
+  return util.boolFromFfi(libUSER32_dll.ScrollDC!(util.toPointer(hDC), dx, dy, util.toPointer(lprcScroll), util.toPointer(lprcClip), util.toPointer(hrgnUpdate), util.toPointer(lprcUpdate)));
 }
 
 export function ScrollWindowEx(
@@ -14731,14 +15143,14 @@ export function ScrollWindowEx(
   prcUpdate: Deno.PointerValue | Uint8Array /* ptr */,
   flags: SHOW_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.SHOW_WINDOW_CMD */,
 ): number /* i32 */ {
-  return libUSER32_dll.ScrollWindowEx((hWnd), dx, dy, util.toPointer(prcScroll), util.toPointer(prcClip), util.toPointer(hrgnUpdate), util.toPointer(prcUpdate), flags);
+  return libUSER32_dll.ScrollWindowEx!((hWnd), dx, dy, util.toPointer(prcScroll), util.toPointer(prcClip), util.toPointer(hrgnUpdate), util.toPointer(prcUpdate), flags);
 }
 
 export function GetScrollPos(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nBar: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetScrollPos((hWnd), nBar);
+  return libUSER32_dll.GetScrollPos!((hWnd), nBar);
 }
 
 export function GetScrollRange(
@@ -14747,7 +15159,7 @@ export function GetScrollRange(
   lpMinPos: Deno.PointerValue | Uint8Array /* ptr */,
   lpMaxPos: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetScrollRange((hWnd), nBar, util.toPointer(lpMinPos), util.toPointer(lpMaxPos)));
+  return util.boolFromFfi(libUSER32_dll.GetScrollRange!((hWnd), nBar, util.toPointer(lpMinPos), util.toPointer(lpMaxPos)));
 }
 
 export function SetPropA(
@@ -14755,7 +15167,7 @@ export function SetPropA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetPropA((hWnd), util.pstrToFfi(lpString), util.toPointer(hData)));
+  return util.boolFromFfi(libUSER32_dll.SetPropA!((hWnd), util.pstrToFfi(lpString), util.toPointer(hData)));
 }
 
 export function SetPropW(
@@ -14763,35 +15175,35 @@ export function SetPropW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetPropW((hWnd), util.pwstrToFfi(lpString), util.toPointer(hData)));
+  return util.boolFromFfi(libUSER32_dll.SetPropW!((hWnd), util.pwstrToFfi(lpString), util.toPointer(hData)));
 }
 
 export function GetPropA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.GetPropA((hWnd), util.pstrToFfi(lpString));
+  return libUSER32_dll.GetPropA!((hWnd), util.pstrToFfi(lpString));
 }
 
 export function GetPropW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.GetPropW((hWnd), util.pwstrToFfi(lpString));
+  return libUSER32_dll.GetPropW!((hWnd), util.pwstrToFfi(lpString));
 }
 
 export function RemovePropA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.RemovePropA((hWnd), util.pstrToFfi(lpString));
+  return libUSER32_dll.RemovePropA!((hWnd), util.pstrToFfi(lpString));
 }
 
 export function RemovePropW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.RemovePropW((hWnd), util.pwstrToFfi(lpString));
+  return libUSER32_dll.RemovePropW!((hWnd), util.pwstrToFfi(lpString));
 }
 
 export function EnumPropsExA(
@@ -14799,7 +15211,7 @@ export function EnumPropsExA(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.PROPENUMPROCEXA */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
-  return libUSER32_dll.EnumPropsExA((hWnd), util.toPointer(lpEnumFunc), util.toPointer(lParam));
+  return libUSER32_dll.EnumPropsExA!((hWnd), util.toPointer(lpEnumFunc), util.toPointer(lParam));
 }
 
 export function EnumPropsExW(
@@ -14807,35 +15219,35 @@ export function EnumPropsExW(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.PROPENUMPROCEXW */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
-  return libUSER32_dll.EnumPropsExW((hWnd), util.toPointer(lpEnumFunc), util.toPointer(lParam));
+  return libUSER32_dll.EnumPropsExW!((hWnd), util.toPointer(lpEnumFunc), util.toPointer(lParam));
 }
 
 export function EnumPropsA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.PROPENUMPROCA */,
 ): number /* i32 */ {
-  return libUSER32_dll.EnumPropsA((hWnd), util.toPointer(lpEnumFunc));
+  return libUSER32_dll.EnumPropsA!((hWnd), util.toPointer(lpEnumFunc));
 }
 
 export function EnumPropsW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.PROPENUMPROCW */,
 ): number /* i32 */ {
-  return libUSER32_dll.EnumPropsW((hWnd), util.toPointer(lpEnumFunc));
+  return libUSER32_dll.EnumPropsW!((hWnd), util.toPointer(lpEnumFunc));
 }
 
 export function SetWindowTextA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowTextA((hWnd), util.pstrToFfi(lpString)));
+  return util.boolFromFfi(libUSER32_dll.SetWindowTextA!((hWnd), util.pstrToFfi(lpString)));
 }
 
 export function SetWindowTextW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetWindowTextW((hWnd), util.pwstrToFfi(lpString)));
+  return util.boolFromFfi(libUSER32_dll.SetWindowTextW!((hWnd), util.pwstrToFfi(lpString)));
 }
 
 export function GetWindowTextA(
@@ -14843,7 +15255,7 @@ export function GetWindowTextA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowTextA((hWnd), util.pstrToFfi(lpString), nMaxCount);
+  return libUSER32_dll.GetWindowTextA!((hWnd), util.pstrToFfi(lpString), nMaxCount);
 }
 
 export function GetWindowTextW(
@@ -14851,33 +15263,33 @@ export function GetWindowTextW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowTextW((hWnd), util.pwstrToFfi(lpString), nMaxCount);
+  return libUSER32_dll.GetWindowTextW!((hWnd), util.pwstrToFfi(lpString), nMaxCount);
 }
 
 export function GetWindowTextLengthA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowTextLengthA((hWnd));
+  return libUSER32_dll.GetWindowTextLengthA!((hWnd));
 }
 
 export function GetWindowTextLengthW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowTextLengthW((hWnd));
+  return libUSER32_dll.GetWindowTextLengthW!((hWnd));
 }
 
 export function GetClientRect(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClientRect((hWnd), util.toPointer(lpRect)));
+  return util.boolFromFfi(libUSER32_dll.GetClientRect!((hWnd), util.toPointer(lpRect)));
 }
 
 export function GetWindowRect(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetWindowRect((hWnd), util.toPointer(lpRect)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowRect!((hWnd), util.toPointer(lpRect)));
 }
 
 export function AdjustWindowRect(
@@ -14885,7 +15297,7 @@ export function AdjustWindowRect(
   dwStyle: WINDOW_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_STYLE */,
   bMenu: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AdjustWindowRect(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu)));
+  return util.boolFromFfi(libUSER32_dll.AdjustWindowRect!(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu)));
 }
 
 export function AdjustWindowRectEx(
@@ -14894,7 +15306,7 @@ export function AdjustWindowRectEx(
   bMenu: boolean /* Windows.Win32.Foundation.BOOL */,
   dwExStyle: WINDOW_EX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_EX_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AdjustWindowRectEx(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle));
+  return util.boolFromFfi(libUSER32_dll.AdjustWindowRectEx!(util.toPointer(lpRect), dwStyle, util.boolToFfi(bMenu), dwExStyle));
 }
 
 export function MessageBoxA(
@@ -14903,7 +15315,7 @@ export function MessageBoxA(
   lpCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxA((hWnd), util.pstrToFfi(lpText), util.pstrToFfi(lpCaption), uType);
+  return libUSER32_dll.MessageBoxA!((hWnd), util.pstrToFfi(lpText), util.pstrToFfi(lpCaption), uType);
 }
 
 export function MessageBoxW(
@@ -14912,7 +15324,7 @@ export function MessageBoxW(
   lpCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxW((hWnd), util.pwstrToFfi(lpText), util.pwstrToFfi(lpCaption), uType);
+  return libUSER32_dll.MessageBoxW!((hWnd), util.pwstrToFfi(lpText), util.pwstrToFfi(lpCaption), uType);
 }
 
 export function MessageBoxExA(
@@ -14922,7 +15334,7 @@ export function MessageBoxExA(
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   wLanguageId: number /* u16 */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxExA((hWnd), util.pstrToFfi(lpText), util.pstrToFfi(lpCaption), uType, wLanguageId);
+  return libUSER32_dll.MessageBoxExA!((hWnd), util.pstrToFfi(lpText), util.pstrToFfi(lpCaption), uType, wLanguageId);
 }
 
 export function MessageBoxExW(
@@ -14932,67 +15344,67 @@ export function MessageBoxExW(
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
   wLanguageId: number /* u16 */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxExW((hWnd), util.pwstrToFfi(lpText), util.pwstrToFfi(lpCaption), uType, wLanguageId);
+  return libUSER32_dll.MessageBoxExW!((hWnd), util.pwstrToFfi(lpText), util.pwstrToFfi(lpCaption), uType, wLanguageId);
 }
 
 export function MessageBoxIndirectA(
   lpmbp: Deno.PointerValue | Uint8Array /* ptr */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxIndirectA(util.toPointer(lpmbp));
+  return libUSER32_dll.MessageBoxIndirectA!(util.toPointer(lpmbp));
 }
 
 export function MessageBoxIndirectW(
   lpmbp: Deno.PointerValue | Uint8Array /* ptr */,
 ): MESSAGEBOX_RESULT /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_RESULT */ {
-  return libUSER32_dll.MessageBoxIndirectW(util.toPointer(lpmbp));
+  return libUSER32_dll.MessageBoxIndirectW!(util.toPointer(lpmbp));
 }
 
 export function ShowCursor(
   bShow: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32_dll.ShowCursor(util.boolToFfi(bShow));
+  return libUSER32_dll.ShowCursor!(util.boolToFfi(bShow));
 }
 
 export function SetCursorPos(
   X: number /* i32 */,
   Y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetCursorPos(X, Y));
+  return util.boolFromFfi(libUSER32_dll.SetCursorPos!(X, Y));
 }
 
 export function SetPhysicalCursorPos(
   X: number /* i32 */,
   Y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetPhysicalCursorPos(X, Y));
+  return util.boolFromFfi(libUSER32_dll.SetPhysicalCursorPos!(X, Y));
 }
 
 export function SetCursor(
   hCursor: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.SetCursor(util.toPointer(hCursor));
+  return libUSER32_dll.SetCursor!(util.toPointer(hCursor));
 }
 
 export function GetCursorPos(
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetCursorPos(util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.GetCursorPos!(util.toPointer(lpPoint)));
 }
 
 export function GetPhysicalCursorPos(
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPhysicalCursorPos(util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.GetPhysicalCursorPos!(util.toPointer(lpPoint)));
 }
 
 export function GetClipCursor(
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetClipCursor(util.toPointer(lpRect)));
+  return util.boolFromFfi(libUSER32_dll.GetClipCursor!(util.toPointer(lpRect)));
 }
 
 export function GetCursor(): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.GetCursor();
+  return libUSER32_dll.GetCursor!();
 }
 
 export function CreateCaret(
@@ -15001,85 +15413,85 @@ export function CreateCaret(
   nWidth: number /* i32 */,
   nHeight: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CreateCaret((hWnd), util.toPointer(hBitmap), nWidth, nHeight));
+  return util.boolFromFfi(libUSER32_dll.CreateCaret!((hWnd), util.toPointer(hBitmap), nWidth, nHeight));
 }
 
 export function GetCaretBlinkTime(): number /* u32 */ {
-  return libUSER32_dll.GetCaretBlinkTime();
+  return libUSER32_dll.GetCaretBlinkTime!();
 }
 
 export function SetCaretBlinkTime(
   uMSeconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetCaretBlinkTime(uMSeconds));
+  return util.boolFromFfi(libUSER32_dll.SetCaretBlinkTime!(uMSeconds));
 }
 
 export function DestroyCaret(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyCaret());
+  return util.boolFromFfi(libUSER32_dll.DestroyCaret!());
 }
 
 export function HideCaret(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.HideCaret((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.HideCaret!((hWnd)));
 }
 
 export function ShowCaret(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ShowCaret((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.ShowCaret!((hWnd)));
 }
 
 export function SetCaretPos(
   X: number /* i32 */,
   Y: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetCaretPos(X, Y));
+  return util.boolFromFfi(libUSER32_dll.SetCaretPos!(X, Y));
 }
 
 export function GetCaretPos(
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetCaretPos(util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.GetCaretPos!(util.toPointer(lpPoint)));
 }
 
 export function LogicalToPhysicalPoint(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.LogicalToPhysicalPoint((hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.LogicalToPhysicalPoint!((hWnd), util.toPointer(lpPoint)));
 }
 
 export function PhysicalToLogicalPoint(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpPoint: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PhysicalToLogicalPoint((hWnd), util.toPointer(lpPoint)));
+  return util.boolFromFfi(libUSER32_dll.PhysicalToLogicalPoint!((hWnd), util.toPointer(lpPoint)));
 }
 
 export function WindowFromPoint(
   Point: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.WindowFromPoint(util.toPointer(Point)));
+  return (libUSER32_dll.WindowFromPoint!(util.toPointer(Point)));
 }
 
 export function WindowFromPhysicalPoint(
   Point: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.WindowFromPhysicalPoint(util.toPointer(Point)));
+  return (libUSER32_dll.WindowFromPhysicalPoint!(util.toPointer(Point)));
 }
 
 export function ChildWindowFromPoint(
   hWndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   Point: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.ChildWindowFromPoint((hWndParent), util.toPointer(Point)));
+  return (libUSER32_dll.ChildWindowFromPoint!((hWndParent), util.toPointer(Point)));
 }
 
 export function ClipCursor(
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ClipCursor(util.toPointer(lpRect)));
+  return util.boolFromFfi(libUSER32_dll.ClipCursor!(util.toPointer(lpRect)));
 }
 
 export function ChildWindowFromPointEx(
@@ -15087,14 +15499,14 @@ export function ChildWindowFromPointEx(
   pt: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
   flags: CWP_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.CWP_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.ChildWindowFromPointEx((hwnd), util.toPointer(pt), flags));
+  return (libUSER32_dll.ChildWindowFromPointEx!((hwnd), util.toPointer(pt), flags));
 }
 
 export function GetWindowWord(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: number /* i32 */,
 ): number /* u16 */ {
-  return libUSER32_dll.GetWindowWord((hWnd), nIndex);
+  return libUSER32_dll.GetWindowWord!((hWnd), nIndex);
 }
 
 export function SetWindowWord(
@@ -15102,21 +15514,21 @@ export function SetWindowWord(
   nIndex: number /* i32 */,
   wNewWord: number /* u16 */,
 ): number /* u16 */ {
-  return libUSER32_dll.SetWindowWord((hWnd), nIndex, wNewWord);
+  return libUSER32_dll.SetWindowWord!((hWnd), nIndex, wNewWord);
 }
 
 export function GetWindowLongA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowLongA((hWnd), nIndex);
+  return libUSER32_dll.GetWindowLongA!((hWnd), nIndex);
 }
 
 export function GetWindowLongW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetWindowLongW((hWnd), nIndex);
+  return libUSER32_dll.GetWindowLongW!((hWnd), nIndex);
 }
 
 export function SetWindowLongA(
@@ -15124,7 +15536,7 @@ export function SetWindowLongA(
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
   dwNewLong: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.SetWindowLongA((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetWindowLongA!((hWnd), nIndex, dwNewLong);
 }
 
 export function SetWindowLongW(
@@ -15132,14 +15544,14 @@ export function SetWindowLongW(
   nIndex: WINDOW_LONG_PTR_INDEX /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_LONG_PTR_INDEX */,
   dwNewLong: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.SetWindowLongW((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetWindowLongW!((hWnd), nIndex, dwNewLong);
 }
 
 export function GetClassWord(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: number /* i32 */,
 ): number /* u16 */ {
-  return libUSER32_dll.GetClassWord((hWnd), nIndex);
+  return libUSER32_dll.GetClassWord!((hWnd), nIndex);
 }
 
 export function SetClassWord(
@@ -15147,21 +15559,21 @@ export function SetClassWord(
   nIndex: number /* i32 */,
   wNewWord: number /* u16 */,
 ): number /* u16 */ {
-  return libUSER32_dll.SetClassWord((hWnd), nIndex, wNewWord);
+  return libUSER32_dll.SetClassWord!((hWnd), nIndex, wNewWord);
 }
 
 export function GetClassLongA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetClassLongA((hWnd), nIndex);
+  return libUSER32_dll.GetClassLongA!((hWnd), nIndex);
 }
 
 export function GetClassLongW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetClassLongW((hWnd), nIndex);
+  return libUSER32_dll.GetClassLongW!((hWnd), nIndex);
 }
 
 export function SetClassLongA(
@@ -15169,7 +15581,7 @@ export function SetClassLongA(
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
   dwNewLong: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.SetClassLongA((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetClassLongA!((hWnd), nIndex, dwNewLong);
 }
 
 export function SetClassLongW(
@@ -15177,36 +15589,36 @@ export function SetClassLongW(
   nIndex: GET_CLASS_LONG_INDEX /* Windows.Win32.UI.WindowsAndMessaging.GET_CLASS_LONG_INDEX */,
   dwNewLong: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.SetClassLongW((hWnd), nIndex, dwNewLong);
+  return libUSER32_dll.SetClassLongW!((hWnd), nIndex, dwNewLong);
 }
 
 export function GetProcessDefaultLayout(
   pdwDefaultLayout: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetProcessDefaultLayout(util.toPointer(pdwDefaultLayout)));
+  return util.boolFromFfi(libUSER32_dll.GetProcessDefaultLayout!(util.toPointer(pdwDefaultLayout)));
 }
 
 export function SetProcessDefaultLayout(
   dwDefaultLayout: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetProcessDefaultLayout(dwDefaultLayout));
+  return util.boolFromFfi(libUSER32_dll.SetProcessDefaultLayout!(dwDefaultLayout));
 }
 
 export function GetDesktopWindow(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetDesktopWindow());
+  return (libUSER32_dll.GetDesktopWindow!());
 }
 
 export function GetParent(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetParent((hWnd)));
+  return (libUSER32_dll.GetParent!((hWnd)));
 }
 
 export function SetParent(
   hWndChild: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hWndNewParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.SetParent((hWndChild), (hWndNewParent)));
+  return (libUSER32_dll.SetParent!((hWndChild), (hWndNewParent)));
 }
 
 export function EnumChildWindows(
@@ -15214,21 +15626,21 @@ export function EnumChildWindows(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.WNDENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnumChildWindows((hWndParent), util.toPointer(lpEnumFunc), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.EnumChildWindows!((hWndParent), util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function FindWindowA(
   lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpWindowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.FindWindowA(util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName)));
+  return (libUSER32_dll.FindWindowA!(util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName)));
 }
 
 export function FindWindowW(
   lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpWindowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.FindWindowW(util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName)));
+  return (libUSER32_dll.FindWindowW!(util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName)));
 }
 
 export function FindWindowExA(
@@ -15237,7 +15649,7 @@ export function FindWindowExA(
   lpszClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszWindow: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.FindWindowExA((hWndParent), (hWndChildAfter), util.pstrToFfi(lpszClass), util.pstrToFfi(lpszWindow)));
+  return (libUSER32_dll.FindWindowExA!((hWndParent), (hWndChildAfter), util.pstrToFfi(lpszClass), util.pstrToFfi(lpszWindow)));
 }
 
 export function FindWindowExW(
@@ -15246,30 +15658,30 @@ export function FindWindowExW(
   lpszClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszWindow: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.FindWindowExW((hWndParent), (hWndChildAfter), util.pwstrToFfi(lpszClass), util.pwstrToFfi(lpszWindow)));
+  return (libUSER32_dll.FindWindowExW!((hWndParent), (hWndChildAfter), util.pwstrToFfi(lpszClass), util.pwstrToFfi(lpszWindow)));
 }
 
 export function GetShellWindow(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetShellWindow());
+  return (libUSER32_dll.GetShellWindow!());
 }
 
 export function RegisterShellHookWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterShellHookWindow((hwnd)));
+  return util.boolFromFfi(libUSER32_dll.RegisterShellHookWindow!((hwnd)));
 }
 
 export function DeregisterShellHookWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DeregisterShellHookWindow((hwnd)));
+  return util.boolFromFfi(libUSER32_dll.DeregisterShellHookWindow!((hwnd)));
 }
 
 export function EnumWindows(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.WNDENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnumWindows(util.toPointer(lpEnumFunc), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.EnumWindows!(util.toPointer(lpEnumFunc), util.toPointer(lParam)));
 }
 
 export function EnumThreadWindows(
@@ -15277,7 +15689,7 @@ export function EnumThreadWindows(
   lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.WNDENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnumThreadWindows(dwThreadId, util.toPointer(lpfn), util.toPointer(lParam)));
+  return util.boolFromFfi(libUSER32_dll.EnumThreadWindows!(dwThreadId, util.toPointer(lpfn), util.toPointer(lParam)));
 }
 
 export function GetClassNameA(
@@ -15285,7 +15697,7 @@ export function GetClassNameA(
   lpClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetClassNameA((hWnd), util.pstrToFfi(lpClassName), nMaxCount);
+  return libUSER32_dll.GetClassNameA!((hWnd), util.pstrToFfi(lpClassName), nMaxCount);
 }
 
 export function GetClassNameW(
@@ -15293,60 +15705,60 @@ export function GetClassNameW(
   lpClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetClassNameW((hWnd), util.pwstrToFfi(lpClassName), nMaxCount);
+  return libUSER32_dll.GetClassNameW!((hWnd), util.pwstrToFfi(lpClassName), nMaxCount);
 }
 
 export function GetTopWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetTopWindow((hWnd)));
+  return (libUSER32_dll.GetTopWindow!((hWnd)));
 }
 
 export function GetWindowThreadProcessId(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpdwProcessId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetWindowThreadProcessId((hWnd), util.toPointer(lpdwProcessId));
+  return libUSER32_dll.GetWindowThreadProcessId!((hWnd), util.toPointer(lpdwProcessId));
 }
 
 export function IsGUIThread(
   bConvert: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsGUIThread(util.boolToFfi(bConvert)));
+  return util.boolFromFfi(libUSER32_dll.IsGUIThread!(util.boolToFfi(bConvert)));
 }
 
 export function GetLastActivePopup(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetLastActivePopup((hWnd)));
+  return (libUSER32_dll.GetLastActivePopup!((hWnd)));
 }
 
 export function GetWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   uCmd: GET_WINDOW_CMD /* Windows.Win32.UI.WindowsAndMessaging.GET_WINDOW_CMD */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetWindow((hWnd), uCmd));
+  return (libUSER32_dll.GetWindow!((hWnd), uCmd));
 }
 
 export function SetWindowsHookA(
   nFilterType: number /* i32 */,
   pfnFilterProc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HOOKPROC */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HHOOK */ {
-  return libUSER32_dll.SetWindowsHookA(nFilterType, util.toPointer(pfnFilterProc));
+  return libUSER32_dll.SetWindowsHookA!(nFilterType, util.toPointer(pfnFilterProc));
 }
 
 export function SetWindowsHookW(
   nFilterType: number /* i32 */,
   pfnFilterProc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HOOKPROC */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HHOOK */ {
-  return libUSER32_dll.SetWindowsHookW(nFilterType, util.toPointer(pfnFilterProc));
+  return libUSER32_dll.SetWindowsHookW!(nFilterType, util.toPointer(pfnFilterProc));
 }
 
 export function UnhookWindowsHook(
   nCode: number /* i32 */,
   pfnFilterProc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HOOKPROC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnhookWindowsHook(nCode, util.toPointer(pfnFilterProc)));
+  return util.boolFromFfi(libUSER32_dll.UnhookWindowsHook!(nCode, util.toPointer(pfnFilterProc)));
 }
 
 export function SetWindowsHookExA(
@@ -15355,7 +15767,7 @@ export function SetWindowsHookExA(
   hmod: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   dwThreadId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HHOOK */ {
-  return libUSER32_dll.SetWindowsHookExA(idHook, util.toPointer(lpfn), util.toPointer(hmod), dwThreadId);
+  return libUSER32_dll.SetWindowsHookExA!(idHook, util.toPointer(lpfn), util.toPointer(hmod), dwThreadId);
 }
 
 export function SetWindowsHookExW(
@@ -15364,13 +15776,13 @@ export function SetWindowsHookExW(
   hmod: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   dwThreadId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HHOOK */ {
-  return libUSER32_dll.SetWindowsHookExW(idHook, util.toPointer(lpfn), util.toPointer(hmod), dwThreadId);
+  return libUSER32_dll.SetWindowsHookExW!(idHook, util.toPointer(lpfn), util.toPointer(hmod), dwThreadId);
 }
 
 export function UnhookWindowsHookEx(
   hhk: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HHOOK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnhookWindowsHookEx(util.toPointer(hhk)));
+  return util.boolFromFfi(libUSER32_dll.UnhookWindowsHookEx!(util.toPointer(hhk)));
 }
 
 export function CallNextHookEx(
@@ -15379,7 +15791,7 @@ export function CallNextHookEx(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.CallNextHookEx(util.toPointer(hhk), nCode, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.CallNextHookEx!(util.toPointer(hhk), nCode, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function CheckMenuRadioItem(
@@ -15389,33 +15801,33 @@ export function CheckMenuRadioItem(
   check: number /* u32 */,
   flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CheckMenuRadioItem(util.toPointer(hmenu), first, last, check, flags));
+  return util.boolFromFfi(libUSER32_dll.CheckMenuRadioItem!(util.toPointer(hmenu), first, last, check, flags));
 }
 
 export function LoadCursorA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpCursorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.LoadCursorA(util.toPointer(hInstance), util.pstrToFfi(lpCursorName));
+  return libUSER32_dll.LoadCursorA!(util.toPointer(hInstance), util.pstrToFfi(lpCursorName));
 }
 
 export function LoadCursorW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpCursorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.LoadCursorW(util.toPointer(hInstance), util.pwstrToFfi(lpCursorName));
+  return libUSER32_dll.LoadCursorW!(util.toPointer(hInstance), util.pwstrToFfi(lpCursorName));
 }
 
 export function LoadCursorFromFileA(
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.LoadCursorFromFileA(util.pstrToFfi(lpFileName));
+  return libUSER32_dll.LoadCursorFromFileA!(util.pstrToFfi(lpFileName));
 }
 
 export function LoadCursorFromFileW(
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.LoadCursorFromFileW(util.pwstrToFfi(lpFileName));
+  return libUSER32_dll.LoadCursorFromFileW!(util.pwstrToFfi(lpFileName));
 }
 
 export function CreateCursor(
@@ -15427,34 +15839,34 @@ export function CreateCursor(
   pvANDPlane: Deno.PointerValue | Uint8Array /* ptr */,
   pvXORPlane: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libUSER32_dll.CreateCursor(util.toPointer(hInst), xHotSpot, yHotSpot, nWidth, nHeight, util.toPointer(pvANDPlane), util.toPointer(pvXORPlane));
+  return libUSER32_dll.CreateCursor!(util.toPointer(hInst), xHotSpot, yHotSpot, nWidth, nHeight, util.toPointer(pvANDPlane), util.toPointer(pvXORPlane));
 }
 
 export function DestroyCursor(
   hCursor: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyCursor(util.toPointer(hCursor)));
+  return util.boolFromFfi(libUSER32_dll.DestroyCursor!(util.toPointer(hCursor)));
 }
 
 export function SetSystemCursor(
   hcur: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */,
   id: SYSTEM_CURSOR_ID /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_CURSOR_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetSystemCursor(util.toPointer(hcur), id));
+  return util.boolFromFfi(libUSER32_dll.SetSystemCursor!(util.toPointer(hcur), id));
 }
 
 export function LoadIconA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpIconName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.LoadIconA(util.toPointer(hInstance), util.pstrToFfi(lpIconName));
+  return libUSER32_dll.LoadIconA!(util.toPointer(hInstance), util.pstrToFfi(lpIconName));
 }
 
 export function LoadIconW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpIconName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.LoadIconW(util.toPointer(hInstance), util.pwstrToFfi(lpIconName));
+  return libUSER32_dll.LoadIconW!(util.toPointer(hInstance), util.pwstrToFfi(lpIconName));
 }
 
 export function PrivateExtractIconsA(
@@ -15467,7 +15879,7 @@ export function PrivateExtractIconsA(
   nIcons: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.PrivateExtractIconsA(util.pstrToFfi(szFileName), nIconIndex, cxIcon, cyIcon, util.toPointer(phicon), util.toPointer(piconid), nIcons, flags);
+  return libUSER32_dll.PrivateExtractIconsA!(util.pstrToFfi(szFileName), nIconIndex, cxIcon, cyIcon, util.toPointer(phicon), util.toPointer(piconid), nIcons, flags);
 }
 
 export function PrivateExtractIconsW(
@@ -15480,7 +15892,7 @@ export function PrivateExtractIconsW(
   nIcons: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.PrivateExtractIconsW(util.pwstrToFfi(szFileName), nIconIndex, cxIcon, cyIcon, util.toPointer(phicon), util.toPointer(piconid), nIcons, flags);
+  return libUSER32_dll.PrivateExtractIconsW!(util.pwstrToFfi(szFileName), nIconIndex, cxIcon, cyIcon, util.toPointer(phicon), util.toPointer(piconid), nIcons, flags);
 }
 
 export function CreateIcon(
@@ -15492,20 +15904,20 @@ export function CreateIcon(
   lpbANDbits: Deno.PointerValue | Uint8Array /* ptr */,
   lpbXORbits: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.CreateIcon(util.toPointer(hInstance), nWidth, nHeight, cPlanes, cBitsPixel, util.toPointer(lpbANDbits), util.toPointer(lpbXORbits));
+  return libUSER32_dll.CreateIcon!(util.toPointer(hInstance), nWidth, nHeight, cPlanes, cBitsPixel, util.toPointer(lpbANDbits), util.toPointer(lpbXORbits));
 }
 
 export function DestroyIcon(
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DestroyIcon(util.toPointer(hIcon)));
+  return util.boolFromFfi(libUSER32_dll.DestroyIcon!(util.toPointer(hIcon)));
 }
 
 export function LookupIconIdFromDirectory(
   presbits: Deno.PointerValue | Uint8Array /* ptr */,
   fIcon: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* i32 */ {
-  return libUSER32_dll.LookupIconIdFromDirectory(util.toPointer(presbits), util.boolToFfi(fIcon));
+  return libUSER32_dll.LookupIconIdFromDirectory!(util.toPointer(presbits), util.boolToFfi(fIcon));
 }
 
 export function LookupIconIdFromDirectoryEx(
@@ -15515,7 +15927,7 @@ export function LookupIconIdFromDirectoryEx(
   cyDesired: number /* i32 */,
   Flags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): number /* i32 */ {
-  return libUSER32_dll.LookupIconIdFromDirectoryEx(util.toPointer(presbits), util.boolToFfi(fIcon), cxDesired, cyDesired, Flags);
+  return libUSER32_dll.LookupIconIdFromDirectoryEx!(util.toPointer(presbits), util.boolToFfi(fIcon), cxDesired, cyDesired, Flags);
 }
 
 export function CreateIconFromResource(
@@ -15524,7 +15936,7 @@ export function CreateIconFromResource(
   fIcon: boolean /* Windows.Win32.Foundation.BOOL */,
   dwVer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.CreateIconFromResource(util.toPointer(presbits), dwResSize, util.boolToFfi(fIcon), dwVer);
+  return libUSER32_dll.CreateIconFromResource!(util.toPointer(presbits), dwResSize, util.boolToFfi(fIcon), dwVer);
 }
 
 export function CreateIconFromResourceEx(
@@ -15536,7 +15948,7 @@ export function CreateIconFromResourceEx(
   cyDesired: number /* i32 */,
   Flags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.CreateIconFromResourceEx(util.toPointer(presbits), dwResSize, util.boolToFfi(fIcon), dwVer, cxDesired, cyDesired, Flags);
+  return libUSER32_dll.CreateIconFromResourceEx!(util.toPointer(presbits), dwResSize, util.boolToFfi(fIcon), dwVer, cxDesired, cyDesired, Flags);
 }
 
 export function LoadImageA(
@@ -15547,7 +15959,7 @@ export function LoadImageA(
   cy: number /* i32 */,
   fuLoad: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.LoadImageA(util.toPointer(hInst), util.pstrToFfi(name), type, cx, cy, fuLoad);
+  return libUSER32_dll.LoadImageA!(util.toPointer(hInst), util.pstrToFfi(name), type, cx, cy, fuLoad);
 }
 
 export function LoadImageW(
@@ -15558,7 +15970,7 @@ export function LoadImageW(
   cy: number /* i32 */,
   fuLoad: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.LoadImageW(util.toPointer(hInst), util.pwstrToFfi(name), type, cx, cy, fuLoad);
+  return libUSER32_dll.LoadImageW!(util.toPointer(hInst), util.pwstrToFfi(name), type, cx, cy, fuLoad);
 }
 
 export function CopyImage(
@@ -15568,7 +15980,7 @@ export function CopyImage(
   cy: number /* i32 */,
   flags: IMAGE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.IMAGE_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libUSER32_dll.CopyImage(util.toPointer(h), type, cx, cy, flags);
+  return libUSER32_dll.CopyImage!(util.toPointer(h), type, cx, cy, flags);
 }
 
 export function DrawIconEx(
@@ -15582,61 +15994,61 @@ export function DrawIconEx(
   hbrFlickerFreeDraw: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HBRUSH */,
   diFlags: DI_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.DI_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DrawIconEx(util.toPointer(hdc), xLeft, yTop, util.toPointer(hIcon), cxWidth, cyWidth, istepIfAniCur, util.toPointer(hbrFlickerFreeDraw), diFlags));
+  return util.boolFromFfi(libUSER32_dll.DrawIconEx!(util.toPointer(hdc), xLeft, yTop, util.toPointer(hIcon), cxWidth, cyWidth, istepIfAniCur, util.toPointer(hbrFlickerFreeDraw), diFlags));
 }
 
 export function CreateIconIndirect(
   piconinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.CreateIconIndirect(util.toPointer(piconinfo));
+  return libUSER32_dll.CreateIconIndirect!(util.toPointer(piconinfo));
 }
 
 export function CopyIcon(
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libUSER32_dll.CopyIcon(util.toPointer(hIcon));
+  return libUSER32_dll.CopyIcon!(util.toPointer(hIcon));
 }
 
 export function GetIconInfo(
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
   piconinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetIconInfo(util.toPointer(hIcon), util.toPointer(piconinfo)));
+  return util.boolFromFfi(libUSER32_dll.GetIconInfo!(util.toPointer(hIcon), util.toPointer(piconinfo)));
 }
 
 export function GetIconInfoExA(
   hicon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
   piconinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetIconInfoExA(util.toPointer(hicon), util.toPointer(piconinfo)));
+  return util.boolFromFfi(libUSER32_dll.GetIconInfoExA!(util.toPointer(hicon), util.toPointer(piconinfo)));
 }
 
 export function GetIconInfoExW(
   hicon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
   piconinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetIconInfoExW(util.toPointer(hicon), util.toPointer(piconinfo)));
+  return util.boolFromFfi(libUSER32_dll.GetIconInfoExW!(util.toPointer(hicon), util.toPointer(piconinfo)));
 }
 
 export function IsDialogMessageA(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsDialogMessageA((hDlg), util.toPointer(lpMsg)));
+  return util.boolFromFfi(libUSER32_dll.IsDialogMessageA!((hDlg), util.toPointer(lpMsg)));
 }
 
 export function IsDialogMessageW(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsDialogMessageW((hDlg), util.toPointer(lpMsg)));
+  return util.boolFromFfi(libUSER32_dll.IsDialogMessageW!((hDlg), util.toPointer(lpMsg)));
 }
 
 export function MapDialogRect(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.MapDialogRect((hDlg), util.toPointer(lpRect)));
+  return util.boolFromFfi(libUSER32_dll.MapDialogRect!((hDlg), util.toPointer(lpRect)));
 }
 
 export function GetScrollInfo(
@@ -15644,7 +16056,7 @@ export function GetScrollInfo(
   nBar: SCROLLBAR_CONSTANTS /* Windows.Win32.UI.WindowsAndMessaging.SCROLLBAR_CONSTANTS */,
   lpsi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetScrollInfo((hwnd), nBar, util.toPointer(lpsi)));
+  return util.boolFromFfi(libUSER32_dll.GetScrollInfo!((hwnd), nBar, util.toPointer(lpsi)));
 }
 
 export function DefFrameProcA(
@@ -15654,7 +16066,7 @@ export function DefFrameProcA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefFrameProcA((hWnd), (hWndMDIClient), uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefFrameProcA!((hWnd), (hWndMDIClient), uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function DefFrameProcW(
@@ -15664,7 +16076,7 @@ export function DefFrameProcW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefFrameProcW((hWnd), (hWndMDIClient), uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefFrameProcW!((hWnd), (hWndMDIClient), uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function DefMDIChildProcA(
@@ -15673,7 +16085,7 @@ export function DefMDIChildProcA(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefMDIChildProcA((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefMDIChildProcA!((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function DefMDIChildProcW(
@@ -15682,20 +16094,20 @@ export function DefMDIChildProcW(
   wParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefMDIChildProcW((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
+  return libUSER32_dll.DefMDIChildProcW!((hWnd), uMsg, util.toPointer(wParam), util.toPointer(lParam));
 }
 
 export function TranslateMDISysAccel(
   hWndClient: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.TranslateMDISysAccel((hWndClient), util.toPointer(lpMsg)));
+  return util.boolFromFfi(libUSER32_dll.TranslateMDISysAccel!((hWndClient), util.toPointer(lpMsg)));
 }
 
 export function ArrangeIconicWindows(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libUSER32_dll.ArrangeIconicWindows((hWnd));
+  return libUSER32_dll.ArrangeIconicWindows!((hWnd));
 }
 
 export function CreateMDIWindowA(
@@ -15710,7 +16122,7 @@ export function CreateMDIWindowA(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateMDIWindowA(util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hInstance), util.toPointer(lParam)));
+  return (libUSER32_dll.CreateMDIWindowA!(util.pstrToFfi(lpClassName), util.pstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hInstance), util.toPointer(lParam)));
 }
 
 export function CreateMDIWindowW(
@@ -15725,7 +16137,7 @@ export function CreateMDIWindowW(
   hInstance: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.CreateMDIWindowW(util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hInstance), util.toPointer(lParam)));
+  return (libUSER32_dll.CreateMDIWindowW!(util.pwstrToFfi(lpClassName), util.pwstrToFfi(lpWindowName), dwStyle, X, Y, nWidth, nHeight, (hWndParent), util.toPointer(hInstance), util.toPointer(lParam)));
 }
 
 export function TileWindows(
@@ -15735,7 +16147,7 @@ export function TileWindows(
   cKids: number /* u32 */,
   lpKids: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.TileWindows((hwndParent), wHow, util.toPointer(lpRect), cKids, util.toPointer(lpKids));
+  return libUSER32_dll.TileWindows!((hwndParent), wHow, util.toPointer(lpRect), cKids, util.toPointer(lpKids));
 }
 
 export function CascadeWindows(
@@ -15745,7 +16157,7 @@ export function CascadeWindows(
   cKids: number /* u32 */,
   lpKids: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libUSER32_dll.CascadeWindows((hwndParent), wHow, util.toPointer(lpRect), cKids, util.toPointer(lpKids));
+  return libUSER32_dll.CascadeWindows!((hwndParent), wHow, util.toPointer(lpRect), cKids, util.toPointer(lpKids));
 }
 
 export function SystemParametersInfoA(
@@ -15754,7 +16166,7 @@ export function SystemParametersInfoA(
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   fWinIni: SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoA(uiAction, uiParam, util.toPointer(pvParam), fWinIni));
+  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoA!(uiAction, uiParam, util.toPointer(pvParam), fWinIni));
 }
 
 export function SystemParametersInfoW(
@@ -15763,17 +16175,17 @@ export function SystemParametersInfoW(
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   fWinIni: SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.SYSTEM_PARAMETERS_INFO_UPDATE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoW(uiAction, uiParam, util.toPointer(pvParam), fWinIni));
+  return util.boolFromFfi(libUSER32_dll.SystemParametersInfoW!(uiAction, uiParam, util.toPointer(pvParam), fWinIni));
 }
 
 export function SoundSentry(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SoundSentry());
+  return util.boolFromFfi(libUSER32_dll.SoundSentry!());
 }
 
 export function SetDebugErrorLevel(
   dwLevel: number /* u32 */,
 ): void /* void */ {
-  return libUSER32_dll.SetDebugErrorLevel(dwLevel);
+  return libUSER32_dll.SetDebugErrorLevel!(dwLevel);
 }
 
 export function InternalGetWindowText(
@@ -15781,33 +16193,33 @@ export function InternalGetWindowText(
   pString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchMaxCount: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.InternalGetWindowText((hWnd), util.pwstrToFfi(pString), cchMaxCount);
+  return libUSER32_dll.InternalGetWindowText!((hWnd), util.pwstrToFfi(pString), cchMaxCount);
 }
 
 export function CancelShutdown(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.CancelShutdown());
+  return util.boolFromFfi(libUSER32_dll.CancelShutdown!());
 }
 
 export function GetGUIThreadInfo(
   idThread: number /* u32 */,
   pgui: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetGUIThreadInfo(idThread, util.toPointer(pgui)));
+  return util.boolFromFfi(libUSER32_dll.GetGUIThreadInfo!(idThread, util.toPointer(pgui)));
 }
 
 export function SetProcessDPIAware(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetProcessDPIAware());
+  return util.boolFromFfi(libUSER32_dll.SetProcessDPIAware!());
 }
 
 export function IsProcessDPIAware(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsProcessDPIAware());
+  return util.boolFromFfi(libUSER32_dll.IsProcessDPIAware!());
 }
 
 export function InheritWindowMonitor(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hwndInherit: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InheritWindowMonitor((hwnd), (hwndInherit)));
+  return util.boolFromFfi(libUSER32_dll.InheritWindowMonitor!((hwnd), (hwndInherit)));
 }
 
 export function GetWindowModuleFileNameA(
@@ -15815,7 +16227,7 @@ export function GetWindowModuleFileNameA(
   pszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchFileNameMax: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetWindowModuleFileNameA((hwnd), util.pstrToFfi(pszFileName), cchFileNameMax);
+  return libUSER32_dll.GetWindowModuleFileNameA!((hwnd), util.pstrToFfi(pszFileName), cchFileNameMax);
 }
 
 export function GetWindowModuleFileNameW(
@@ -15823,27 +16235,27 @@ export function GetWindowModuleFileNameW(
   pszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchFileNameMax: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetWindowModuleFileNameW((hwnd), util.pwstrToFfi(pszFileName), cchFileNameMax);
+  return libUSER32_dll.GetWindowModuleFileNameW!((hwnd), util.pwstrToFfi(pszFileName), cchFileNameMax);
 }
 
 export function GetCursorInfo(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetCursorInfo(util.toPointer(pci)));
+  return util.boolFromFfi(libUSER32_dll.GetCursorInfo!(util.toPointer(pci)));
 }
 
 export function GetWindowInfo(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pwi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetWindowInfo((hwnd), util.toPointer(pwi)));
+  return util.boolFromFfi(libUSER32_dll.GetWindowInfo!((hwnd), util.toPointer(pwi)));
 }
 
 export function GetTitleBarInfo(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pti: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetTitleBarInfo((hwnd), util.toPointer(pti)));
+  return util.boolFromFfi(libUSER32_dll.GetTitleBarInfo!((hwnd), util.toPointer(pti)));
 }
 
 export function GetMenuBarInfo(
@@ -15852,7 +16264,7 @@ export function GetMenuBarInfo(
   idItem: number /* i32 */,
   pmbi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetMenuBarInfo((hwnd), idObject, idItem, util.toPointer(pmbi)));
+  return util.boolFromFfi(libUSER32_dll.GetMenuBarInfo!((hwnd), idObject, idItem, util.toPointer(pmbi)));
 }
 
 export function GetScrollBarInfo(
@@ -15860,21 +16272,21 @@ export function GetScrollBarInfo(
   idObject: OBJECT_IDENTIFIER /* Windows.Win32.UI.WindowsAndMessaging.OBJECT_IDENTIFIER */,
   psbi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetScrollBarInfo((hwnd), idObject, util.toPointer(psbi)));
+  return util.boolFromFfi(libUSER32_dll.GetScrollBarInfo!((hwnd), idObject, util.toPointer(psbi)));
 }
 
 export function GetAncestor(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   gaFlags: GET_ANCESTOR_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.GET_ANCESTOR_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetAncestor((hwnd), gaFlags));
+  return (libUSER32_dll.GetAncestor!((hwnd), gaFlags));
 }
 
 export function RealChildWindowFromPoint(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ptParentClientCoords: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.RealChildWindowFromPoint((hwndParent), util.toPointer(ptParentClientCoords)));
+  return (libUSER32_dll.RealChildWindowFromPoint!((hwndParent), util.toPointer(ptParentClientCoords)));
 }
 
 export function RealGetWindowClassA(
@@ -15882,7 +16294,7 @@ export function RealGetWindowClassA(
   ptszClassName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchClassNameMax: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.RealGetWindowClassA((hwnd), util.pstrToFfi(ptszClassName), cchClassNameMax);
+  return libUSER32_dll.RealGetWindowClassA!((hwnd), util.pstrToFfi(ptszClassName), cchClassNameMax);
 }
 
 export function RealGetWindowClassW(
@@ -15890,7 +16302,7 @@ export function RealGetWindowClassW(
   ptszClassName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchClassNameMax: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.RealGetWindowClassW((hwnd), util.pwstrToFfi(ptszClassName), cchClassNameMax);
+  return libUSER32_dll.RealGetWindowClassW!((hwnd), util.pwstrToFfi(ptszClassName), cchClassNameMax);
 }
 
 export function GetAltTabInfoA(
@@ -15900,7 +16312,7 @@ export function GetAltTabInfoA(
   pszItemText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchItemText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetAltTabInfoA((hwnd), iItem, util.toPointer(pati), util.pstrToFfi(pszItemText), cchItemText));
+  return util.boolFromFfi(libUSER32_dll.GetAltTabInfoA!((hwnd), iItem, util.toPointer(pati), util.pstrToFfi(pszItemText), cchItemText));
 }
 
 export function GetAltTabInfoW(
@@ -15910,14 +16322,14 @@ export function GetAltTabInfoW(
   pszItemText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchItemText: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetAltTabInfoW((hwnd), iItem, util.toPointer(pati), util.pwstrToFfi(pszItemText), cchItemText));
+  return util.boolFromFfi(libUSER32_dll.GetAltTabInfoW!((hwnd), iItem, util.toPointer(pati), util.pwstrToFfi(pszItemText), cchItemText));
 }
 
 export function ChangeWindowMessageFilter(
   message: number /* u32 */,
   dwFlag: CHANGE_WINDOW_MESSAGE_FILTER_FLAGS /* Windows.Win32.UI.WindowsAndMessaging.CHANGE_WINDOW_MESSAGE_FILTER_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ChangeWindowMessageFilter(message, dwFlag));
+  return util.boolFromFfi(libUSER32_dll.ChangeWindowMessageFilter!(message, dwFlag));
 }
 
 export function ChangeWindowMessageFilterEx(
@@ -15926,7 +16338,7 @@ export function ChangeWindowMessageFilterEx(
   action: WINDOW_MESSAGE_FILTER_ACTION /* Windows.Win32.UI.WindowsAndMessaging.WINDOW_MESSAGE_FILTER_ACTION */,
   pChangeFilterStruct: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ChangeWindowMessageFilterEx((hwnd), message, action, util.toPointer(pChangeFilterStruct)));
+  return util.boolFromFfi(libUSER32_dll.ChangeWindowMessageFilterEx!((hwnd), message, action, util.toPointer(pChangeFilterStruct)));
 }
 
 export function CreateResourceIndexer(
@@ -15934,13 +16346,13 @@ export function CreateResourceIndexer(
   extensionDllPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppResourceIndexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.CreateResourceIndexer(util.pwstrToFfi(projectRoot), util.pwstrToFfi(extensionDllPath), util.toPointer(ppResourceIndexer));
+  return libMrmSupport_dll.CreateResourceIndexer!(util.pwstrToFfi(projectRoot), util.pwstrToFfi(extensionDllPath), util.toPointer(ppResourceIndexer));
 }
 
 export function DestroyResourceIndexer(
   resourceIndexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMrmSupport_dll.DestroyResourceIndexer(util.toPointer(resourceIndexer));
+  return libMrmSupport_dll.DestroyResourceIndexer!(util.toPointer(resourceIndexer));
 }
 
 export function IndexFilePath(
@@ -15950,7 +16362,7 @@ export function IndexFilePath(
   pQualifierCount: Deno.PointerValue | Uint8Array /* ptr */,
   ppQualifiers: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.IndexFilePath(util.toPointer(resourceIndexer), util.pwstrToFfi(filePath), util.toPointer(ppResourceUri), util.toPointer(pQualifierCount), util.toPointer(ppQualifiers));
+  return libMrmSupport_dll.IndexFilePath!(util.toPointer(resourceIndexer), util.pwstrToFfi(filePath), util.toPointer(ppResourceUri), util.toPointer(pQualifierCount), util.toPointer(ppQualifiers));
 }
 
 export function DestroyIndexedResults(
@@ -15958,7 +16370,7 @@ export function DestroyIndexedResults(
   qualifierCount: number /* u32 */,
   qualifiers: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMrmSupport_dll.DestroyIndexedResults(util.pwstrToFfi(resourceUri), qualifierCount, util.toPointer(qualifiers));
+  return libMrmSupport_dll.DestroyIndexedResults!(util.pwstrToFfi(resourceUri), qualifierCount, util.toPointer(qualifiers));
 }
 
 export function MrmCreateResourceIndexer(
@@ -15968,7 +16380,7 @@ export function MrmCreateResourceIndexer(
   defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexer(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexer!(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(indexer));
 }
 
 export function MrmCreateResourceIndexerFromPreviousSchemaFile(
@@ -15978,7 +16390,7 @@ export function MrmCreateResourceIndexerFromPreviousSchemaFile(
   schemaFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousSchemaFile(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(schemaFile), util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousSchemaFile!(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(schemaFile), util.toPointer(indexer));
 }
 
 export function MrmCreateResourceIndexerFromPreviousPriFile(
@@ -15988,7 +16400,7 @@ export function MrmCreateResourceIndexerFromPreviousPriFile(
   priFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousPriFile(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(priFile), util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousPriFile!(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(priFile), util.toPointer(indexer));
 }
 
 export function MrmCreateResourceIndexerFromPreviousSchemaData(
@@ -15999,7 +16411,7 @@ export function MrmCreateResourceIndexerFromPreviousSchemaData(
   schemaXmlSize: number /* u32 */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousSchemaData(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(schemaXmlData), schemaXmlSize, util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousSchemaData!(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(schemaXmlData), schemaXmlSize, util.toPointer(indexer));
 }
 
 export function MrmCreateResourceIndexerFromPreviousPriData(
@@ -16010,7 +16422,7 @@ export function MrmCreateResourceIndexerFromPreviousPriData(
   priSize: number /* u32 */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousPriData(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(priData), priSize, util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexerFromPreviousPriData!(util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(priData), priSize, util.toPointer(indexer));
 }
 
 export function MrmCreateResourceIndexerWithFlags(
@@ -16021,7 +16433,7 @@ export function MrmCreateResourceIndexerWithFlags(
   flags: MrmIndexerFlags /* Windows.Win32.UI.WindowsAndMessaging.MrmIndexerFlags */,
   indexer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceIndexerWithFlags(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), flags, util.toPointer(indexer));
+  return libMrmSupport_dll.MrmCreateResourceIndexerWithFlags!(util.pwstrToFfi(packageFamilyName), util.pwstrToFfi(projectRoot), platformVersion, util.pwstrToFfi(defaultQualifiers), flags, util.toPointer(indexer));
 }
 
 export function MrmIndexString(
@@ -16030,7 +16442,7 @@ export function MrmIndexString(
   resourceString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmIndexString(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(resourceString), util.pwstrToFfi(qualifiers));
+  return libMrmSupport_dll.MrmIndexString!(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(resourceString), util.pwstrToFfi(qualifiers));
 }
 
 export function MrmIndexEmbeddedData(
@@ -16040,7 +16452,7 @@ export function MrmIndexEmbeddedData(
   embeddedDataSize: number /* u32 */,
   qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmIndexEmbeddedData(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.toPointer(embeddedData), embeddedDataSize, util.pwstrToFfi(qualifiers));
+  return libMrmSupport_dll.MrmIndexEmbeddedData!(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.toPointer(embeddedData), embeddedDataSize, util.pwstrToFfi(qualifiers));
 }
 
 export function MrmIndexFile(
@@ -16049,21 +16461,21 @@ export function MrmIndexFile(
   filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   qualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmIndexFile(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(filePath), util.pwstrToFfi(qualifiers));
+  return libMrmSupport_dll.MrmIndexFile!(util.toPointer(indexer), util.pwstrToFfi(resourceUri), util.pwstrToFfi(filePath), util.pwstrToFfi(qualifiers));
 }
 
 export function MrmIndexFileAutoQualifiers(
   indexer: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
   filePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmIndexFileAutoQualifiers(util.toPointer(indexer), util.pwstrToFfi(filePath));
+  return libMrmSupport_dll.MrmIndexFileAutoQualifiers!(util.toPointer(indexer), util.pwstrToFfi(filePath));
 }
 
 export function MrmIndexResourceContainerAutoQualifiers(
   indexer: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
   containerPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmIndexResourceContainerAutoQualifiers(util.toPointer(indexer), util.pwstrToFfi(containerPath));
+  return libMrmSupport_dll.MrmIndexResourceContainerAutoQualifiers!(util.toPointer(indexer), util.pwstrToFfi(containerPath));
 }
 
 export function MrmCreateResourceFile(
@@ -16072,7 +16484,7 @@ export function MrmCreateResourceFile(
   packagingOptions: MrmPackagingOptions /* Windows.Win32.UI.WindowsAndMessaging.MrmPackagingOptions */,
   outputDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceFile(util.toPointer(indexer), packagingMode, packagingOptions, util.pwstrToFfi(outputDirectory));
+  return libMrmSupport_dll.MrmCreateResourceFile!(util.toPointer(indexer), packagingMode, packagingOptions, util.pwstrToFfi(outputDirectory));
 }
 
 export function MrmCreateResourceFileWithChecksum(
@@ -16082,7 +16494,7 @@ export function MrmCreateResourceFileWithChecksum(
   checksum: number /* u32 */,
   outputDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceFileWithChecksum(util.toPointer(indexer), packagingMode, packagingOptions, checksum, util.pwstrToFfi(outputDirectory));
+  return libMrmSupport_dll.MrmCreateResourceFileWithChecksum!(util.toPointer(indexer), packagingMode, packagingOptions, checksum, util.pwstrToFfi(outputDirectory));
 }
 
 export function MrmCreateResourceFileInMemory(
@@ -16092,7 +16504,7 @@ export function MrmCreateResourceFileInMemory(
   outputPriData: Deno.PointerValue | Uint8Array /* ptr */,
   outputPriSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateResourceFileInMemory(util.toPointer(indexer), packagingMode, packagingOptions, util.toPointer(outputPriData), util.toPointer(outputPriSize));
+  return libMrmSupport_dll.MrmCreateResourceFileInMemory!(util.toPointer(indexer), packagingMode, packagingOptions, util.toPointer(outputPriData), util.toPointer(outputPriSize));
 }
 
 export function MrmPeekResourceIndexerMessages(
@@ -16100,19 +16512,19 @@ export function MrmPeekResourceIndexerMessages(
   messages: Deno.PointerValue | Uint8Array /* ptr */,
   numMsgs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmPeekResourceIndexerMessages(util.toPointer(handle), util.toPointer(messages), util.toPointer(numMsgs));
+  return libMrmSupport_dll.MrmPeekResourceIndexerMessages!(util.toPointer(handle), util.toPointer(messages), util.toPointer(numMsgs));
 }
 
 export function MrmDestroyIndexerAndMessages(
   indexer: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.MrmResourceIndexerHandle */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmDestroyIndexerAndMessages(util.toPointer(indexer));
+  return libMrmSupport_dll.MrmDestroyIndexerAndMessages!(util.toPointer(indexer));
 }
 
 export function MrmFreeMemory(
   data: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmFreeMemory(util.toPointer(data));
+  return libMrmSupport_dll.MrmFreeMemory!(util.toPointer(data));
 }
 
 export function MrmDumpPriFile(
@@ -16121,7 +16533,7 @@ export function MrmDumpPriFile(
   dumpType: MrmDumpType /* Windows.Win32.UI.WindowsAndMessaging.MrmDumpType */,
   outputXmlFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmDumpPriFile(util.pwstrToFfi(indexFileName), util.pwstrToFfi(schemaPriFile), dumpType, util.pwstrToFfi(outputXmlFile));
+  return libMrmSupport_dll.MrmDumpPriFile!(util.pwstrToFfi(indexFileName), util.pwstrToFfi(schemaPriFile), dumpType, util.pwstrToFfi(outputXmlFile));
 }
 
 export function MrmDumpPriFileInMemory(
@@ -16131,7 +16543,7 @@ export function MrmDumpPriFileInMemory(
   outputXmlData: Deno.PointerValue | Uint8Array /* ptr */,
   outputXmlSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmDumpPriFileInMemory(util.pwstrToFfi(indexFileName), util.pwstrToFfi(schemaPriFile), dumpType, util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
+  return libMrmSupport_dll.MrmDumpPriFileInMemory!(util.pwstrToFfi(indexFileName), util.pwstrToFfi(schemaPriFile), dumpType, util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
 }
 
 export function MrmDumpPriDataInMemory(
@@ -16143,7 +16555,7 @@ export function MrmDumpPriDataInMemory(
   outputXmlData: Deno.PointerValue | Uint8Array /* ptr */,
   outputXmlSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmDumpPriDataInMemory(util.toPointer(inputPriData), inputPriSize, util.toPointer(schemaPriData), schemaPriSize, dumpType, util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
+  return libMrmSupport_dll.MrmDumpPriDataInMemory!(util.toPointer(inputPriData), inputPriSize, util.toPointer(schemaPriData), schemaPriSize, dumpType, util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
 }
 
 export function MrmCreateConfig(
@@ -16151,7 +16563,7 @@ export function MrmCreateConfig(
   defaultQualifiers: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   outputXmlFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateConfig(platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(outputXmlFile));
+  return libMrmSupport_dll.MrmCreateConfig!(platformVersion, util.pwstrToFfi(defaultQualifiers), util.pwstrToFfi(outputXmlFile));
 }
 
 export function MrmCreateConfigInMemory(
@@ -16160,13 +16572,13 @@ export function MrmCreateConfigInMemory(
   outputXmlData: Deno.PointerValue | Uint8Array /* ptr */,
   outputXmlSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmCreateConfigInMemory(platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
+  return libMrmSupport_dll.MrmCreateConfigInMemory!(platformVersion, util.pwstrToFfi(defaultQualifiers), util.toPointer(outputXmlData), util.toPointer(outputXmlSize));
 }
 
 export function MrmGetPriFileContentChecksum(
   priFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   checksum: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMrmSupport_dll.MrmGetPriFileContentChecksum(util.pwstrToFfi(priFile), util.toPointer(checksum));
+  return libMrmSupport_dll.MrmGetPriFileContentChecksum!(util.pwstrToFfi(priFile), util.toPointer(checksum));
 }
 

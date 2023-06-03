@@ -1437,142 +1437,177 @@ try {
     DdqCreateSession: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqCloseSession: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetSessionAccessLevel: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticDataAccessLevelAllowed: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordStats: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordPayload: {
       parameters: ["pointer", "i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordLocaleTags: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqFreeDiagnosticRecordLocaleTags: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordLocaleTagAtIndex: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordLocaleTagCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordProducers: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqFreeDiagnosticRecordProducers: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordProducerAtIndex: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordProducerCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordProducerCategories: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqFreeDiagnosticRecordProducerCategories: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordCategoryAtIndex: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordCategoryCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqIsDiagnosticRecordSampledIn: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordPage: {
       parameters: ["pointer", "pointer", "u32", "u32", "i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqFreeDiagnosticRecordPage: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordAtIndex: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticReportStoreReportCount: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqCancelDiagnosticRecordOperation: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticReport: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqFreeDiagnosticReport: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticReportAtIndex: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticReportCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqExtractDiagnosticReport: {
       parameters: ["pointer", "u32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordTagDistribution: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordBinaryDistribution: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetDiagnosticRecordSummary: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqSetTranscriptConfiguration: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DdqGetTranscriptConfiguration: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1583,26 +1618,26 @@ export function DdqCreateSession(
   accessLevel: DdqAccessLevel /* Windows.Win32.Security.DiagnosticDataQuery.DdqAccessLevel */,
   hSession: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqCreateSession(accessLevel, util.toPointer(hSession));
+  return libDiagnosticDataQuery_dll.DdqCreateSession!(accessLevel, util.toPointer(hSession));
 }
 
 export function DdqCloseSession(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqCloseSession(util.toPointer(hSession));
+  return libDiagnosticDataQuery_dll.DdqCloseSession!(util.toPointer(hSession));
 }
 
 export function DdqGetSessionAccessLevel(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   accessLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetSessionAccessLevel(util.toPointer(hSession), util.toPointer(accessLevel));
+  return libDiagnosticDataQuery_dll.DdqGetSessionAccessLevel!(util.toPointer(hSession), util.toPointer(accessLevel));
 }
 
 export function DdqGetDiagnosticDataAccessLevelAllowed(
   accessLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticDataAccessLevelAllowed(util.toPointer(accessLevel));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticDataAccessLevelAllowed!(util.toPointer(accessLevel));
 }
 
 export function DdqGetDiagnosticRecordStats(
@@ -1612,7 +1647,7 @@ export function DdqGetDiagnosticRecordStats(
   minRowId: Deno.PointerValue | Uint8Array /* ptr */,
   maxRowId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordStats(util.toPointer(hSession), util.toPointer(searchCriteria), util.toPointer(recordCount), util.toPointer(minRowId), util.toPointer(maxRowId));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordStats!(util.toPointer(hSession), util.toPointer(searchCriteria), util.toPointer(recordCount), util.toPointer(minRowId), util.toPointer(maxRowId));
 }
 
 export function DdqGetDiagnosticRecordPayload(
@@ -1620,7 +1655,7 @@ export function DdqGetDiagnosticRecordPayload(
   rowId: bigint | number /* i64 */,
   payload: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPayload(util.toPointer(hSession), rowId, util.toPointer(payload));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPayload!(util.toPointer(hSession), rowId, util.toPointer(payload));
 }
 
 export function DdqGetDiagnosticRecordLocaleTags(
@@ -1628,13 +1663,13 @@ export function DdqGetDiagnosticRecordLocaleTags(
   locale: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hTagDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTags(util.toPointer(hSession), util.pwstrToFfi(locale), util.toPointer(hTagDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTags!(util.toPointer(hSession), util.pwstrToFfi(locale), util.toPointer(hTagDescription));
 }
 
 export function DdqFreeDiagnosticRecordLocaleTags(
   hTagDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordLocaleTags(util.toPointer(hTagDescription));
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordLocaleTags!(util.toPointer(hTagDescription));
 }
 
 export function DdqGetDiagnosticRecordLocaleTagAtIndex(
@@ -1642,27 +1677,27 @@ export function DdqGetDiagnosticRecordLocaleTagAtIndex(
   index: number /* u32 */,
   tagDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagAtIndex(util.toPointer(hTagDescription), index, util.toPointer(tagDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagAtIndex!(util.toPointer(hTagDescription), index, util.toPointer(tagDescription));
 }
 
 export function DdqGetDiagnosticRecordLocaleTagCount(
   hTagDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_TAG_DESCRIPTION */,
   tagDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagCount(util.toPointer(hTagDescription), util.toPointer(tagDescriptionCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordLocaleTagCount!(util.toPointer(hTagDescription), util.toPointer(tagDescriptionCount));
 }
 
 export function DdqGetDiagnosticRecordProducers(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   hProducerDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducers(util.toPointer(hSession), util.toPointer(hProducerDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducers!(util.toPointer(hSession), util.toPointer(hProducerDescription));
 }
 
 export function DdqFreeDiagnosticRecordProducers(
   hProducerDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducers(util.toPointer(hProducerDescription));
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducers!(util.toPointer(hProducerDescription));
 }
 
 export function DdqGetDiagnosticRecordProducerAtIndex(
@@ -1670,14 +1705,14 @@ export function DdqGetDiagnosticRecordProducerAtIndex(
   index: number /* u32 */,
   producerDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerAtIndex(util.toPointer(hProducerDescription), index, util.toPointer(producerDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerAtIndex!(util.toPointer(hProducerDescription), index, util.toPointer(producerDescription));
 }
 
 export function DdqGetDiagnosticRecordProducerCount(
   hProducerDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_PRODUCER_DESCRIPTION */,
   producerDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCount(util.toPointer(hProducerDescription), util.toPointer(producerDescriptionCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCount!(util.toPointer(hProducerDescription), util.toPointer(producerDescriptionCount));
 }
 
 export function DdqGetDiagnosticRecordProducerCategories(
@@ -1685,13 +1720,13 @@ export function DdqGetDiagnosticRecordProducerCategories(
   producerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hCategoryDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCategories(util.toPointer(hSession), util.pwstrToFfi(producerName), util.toPointer(hCategoryDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordProducerCategories!(util.toPointer(hSession), util.pwstrToFfi(producerName), util.toPointer(hCategoryDescription));
 }
 
 export function DdqFreeDiagnosticRecordProducerCategories(
   hCategoryDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducerCategories(util.toPointer(hCategoryDescription));
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordProducerCategories!(util.toPointer(hCategoryDescription));
 }
 
 export function DdqGetDiagnosticRecordCategoryAtIndex(
@@ -1699,14 +1734,14 @@ export function DdqGetDiagnosticRecordCategoryAtIndex(
   index: number /* u32 */,
   categoryDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryAtIndex(util.toPointer(hCategoryDescription), index, util.toPointer(categoryDescription));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryAtIndex!(util.toPointer(hCategoryDescription), index, util.toPointer(categoryDescription));
 }
 
 export function DdqGetDiagnosticRecordCategoryCount(
   hCategoryDescription: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_EVENT_CATEGORY_DESCRIPTION */,
   categoryDescriptionCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryCount(util.toPointer(hCategoryDescription), util.toPointer(categoryDescriptionCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCategoryCount!(util.toPointer(hCategoryDescription), util.toPointer(categoryDescriptionCount));
 }
 
 export function DdqIsDiagnosticRecordSampledIn(
@@ -1720,7 +1755,7 @@ export function DdqIsDiagnosticRecordSampledIn(
   eventKeywords: Deno.PointerValue | Uint8Array /* ptr */,
   isSampledIn: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqIsDiagnosticRecordSampledIn(util.toPointer(hSession), util.toPointer(providerGroup), util.toPointer(providerId), util.pwstrToFfi(providerName), util.toPointer(eventId), util.pwstrToFfi(eventName), util.toPointer(eventVersion), util.toPointer(eventKeywords), util.toPointer(isSampledIn));
+  return libDiagnosticDataQuery_dll.DdqIsDiagnosticRecordSampledIn!(util.toPointer(hSession), util.toPointer(providerGroup), util.toPointer(providerId), util.pwstrToFfi(providerName), util.toPointer(eventId), util.pwstrToFfi(eventName), util.toPointer(eventVersion), util.toPointer(eventKeywords), util.toPointer(isSampledIn));
 }
 
 export function DdqGetDiagnosticRecordPage(
@@ -1731,13 +1766,13 @@ export function DdqGetDiagnosticRecordPage(
   baseRowId: bigint | number /* i64 */,
   hRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPage(util.toPointer(hSession), util.toPointer(searchCriteria), offset, pageRecordCount, baseRowId, util.toPointer(hRecord));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordPage!(util.toPointer(hSession), util.toPointer(searchCriteria), offset, pageRecordCount, baseRowId, util.toPointer(hRecord));
 }
 
 export function DdqFreeDiagnosticRecordPage(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordPage(util.toPointer(hRecord));
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticRecordPage!(util.toPointer(hRecord));
 }
 
 export function DdqGetDiagnosticRecordAtIndex(
@@ -1745,14 +1780,14 @@ export function DdqGetDiagnosticRecordAtIndex(
   index: number /* u32 */,
   record: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordAtIndex(util.toPointer(hRecord), index, util.toPointer(record));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordAtIndex!(util.toPointer(hRecord), index, util.toPointer(record));
 }
 
 export function DdqGetDiagnosticRecordCount(
   hRecord: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_RECORD */,
   recordCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCount(util.toPointer(hRecord), util.toPointer(recordCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordCount!(util.toPointer(hRecord), util.toPointer(recordCount));
 }
 
 export function DdqGetDiagnosticReportStoreReportCount(
@@ -1760,13 +1795,13 @@ export function DdqGetDiagnosticReportStoreReportCount(
   reportStoreType: number /* u32 */,
   reportCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportStoreReportCount(util.toPointer(hSession), reportStoreType, util.toPointer(reportCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportStoreReportCount!(util.toPointer(hSession), reportStoreType, util.toPointer(reportCount));
 }
 
 export function DdqCancelDiagnosticRecordOperation(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqCancelDiagnosticRecordOperation(util.toPointer(hSession));
+  return libDiagnosticDataQuery_dll.DdqCancelDiagnosticRecordOperation!(util.toPointer(hSession));
 }
 
 export function DdqGetDiagnosticReport(
@@ -1774,13 +1809,13 @@ export function DdqGetDiagnosticReport(
   reportStoreType: number /* u32 */,
   hReport: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReport(util.toPointer(hSession), reportStoreType, util.toPointer(hReport));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReport!(util.toPointer(hSession), reportStoreType, util.toPointer(hReport));
 }
 
 export function DdqFreeDiagnosticReport(
   hReport: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticReport(util.toPointer(hReport));
+  return libDiagnosticDataQuery_dll.DdqFreeDiagnosticReport!(util.toPointer(hReport));
 }
 
 export function DdqGetDiagnosticReportAtIndex(
@@ -1788,14 +1823,14 @@ export function DdqGetDiagnosticReportAtIndex(
   index: number /* u32 */,
   report: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportAtIndex(util.toPointer(hReport), index, util.toPointer(report));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportAtIndex!(util.toPointer(hReport), index, util.toPointer(report));
 }
 
 export function DdqGetDiagnosticReportCount(
   hReport: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_REPORT */,
   reportCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportCount(util.toPointer(hReport), util.toPointer(reportCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticReportCount!(util.toPointer(hReport), util.toPointer(reportCount));
 }
 
 export function DdqExtractDiagnosticReport(
@@ -1804,7 +1839,7 @@ export function DdqExtractDiagnosticReport(
   reportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   destinationPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqExtractDiagnosticReport(util.toPointer(hSession), reportStoreType, util.pwstrToFfi(reportKey), util.pwstrToFfi(destinationPath));
+  return libDiagnosticDataQuery_dll.DdqExtractDiagnosticReport!(util.toPointer(hSession), reportStoreType, util.pwstrToFfi(reportKey), util.pwstrToFfi(destinationPath));
 }
 
 export function DdqGetDiagnosticRecordTagDistribution(
@@ -1814,7 +1849,7 @@ export function DdqGetDiagnosticRecordTagDistribution(
   tagStats: Deno.PointerValue | Uint8Array /* ptr */,
   statCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordTagDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(tagStats), util.toPointer(statCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordTagDistribution!(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(tagStats), util.toPointer(statCount));
 }
 
 export function DdqGetDiagnosticRecordBinaryDistribution(
@@ -1825,7 +1860,7 @@ export function DdqGetDiagnosticRecordBinaryDistribution(
   binaryStats: Deno.PointerValue | Uint8Array /* ptr */,
   statCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordBinaryDistribution(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, topNBinaries, util.toPointer(binaryStats), util.toPointer(statCount));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordBinaryDistribution!(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, topNBinaries, util.toPointer(binaryStats), util.toPointer(statCount));
 }
 
 export function DdqGetDiagnosticRecordSummary(
@@ -1834,20 +1869,20 @@ export function DdqGetDiagnosticRecordSummary(
   producerNameCount: number /* u32 */,
   generalStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordSummary(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(generalStats));
+  return libDiagnosticDataQuery_dll.DdqGetDiagnosticRecordSummary!(util.toPointer(hSession), util.toPointer(producerNames), producerNameCount, util.toPointer(generalStats));
 }
 
 export function DdqSetTranscriptConfiguration(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   desiredConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqSetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(desiredConfig));
+  return libDiagnosticDataQuery_dll.DdqSetTranscriptConfiguration!(util.toPointer(hSession), util.toPointer(desiredConfig));
 }
 
 export function DdqGetTranscriptConfiguration(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.HDIAGNOSTIC_DATA_QUERY_SESSION */,
   currentConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libDiagnosticDataQuery_dll.DdqGetTranscriptConfiguration(util.toPointer(hSession), util.toPointer(currentConfig));
+  return libDiagnosticDataQuery_dll.DdqGetTranscriptConfiguration!(util.toPointer(hSession), util.toPointer(currentConfig));
 }
 

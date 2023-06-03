@@ -9614,1186 +9614,1482 @@ try {
     InternetTimeFromSystemTimeA: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetTimeFromSystemTimeW: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetTimeFromSystemTime: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetTimeToSystemTimeA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetTimeToSystemTimeW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetTimeToSystemTime: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetCrackUrlA: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetCrackUrlW: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetCreateUrlA: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetCreateUrlW: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetCanonicalizeUrlA: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetCanonicalizeUrlW: {
       parameters: ["buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetCombineUrlA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetCombineUrlW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetOpenA: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     InternetOpenW: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     InternetCloseHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     InternetConnectA: {
       parameters: ["pointer", "buffer", "u16", "buffer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     InternetConnectW: {
       parameters: ["pointer", "buffer", "u16", "buffer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     InternetOpenUrlA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     InternetOpenUrlW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     InternetReadFile: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetReadFileExA: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetReadFileExW: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetSetFilePointer: {
       parameters: ["pointer", "i32", "pointer", "u32", "usize"],
       result: "u32",
+      optional: true,
     },
     InternetWriteFile: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetQueryDataAvailable: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetFindNextFileA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetFindNextFileW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetQueryOptionA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetQueryOptionW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetSetOptionA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetOptionW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetOptionExA: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetOptionExW: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetLockRequestFile: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetUnlockRequestFile: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetLastResponseInfoA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetLastResponseInfoW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetSetStatusCallbackA: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InternetSetStatusCallbackW: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InternetSetStatusCallback: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FtpFindFirstFileA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     FtpFindFirstFileW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     FtpGetFileA: {
       parameters: ["pointer", "buffer", "buffer", "i32", "u32", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpGetFileW: {
       parameters: ["pointer", "buffer", "buffer", "i32", "u32", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpPutFileA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpPutFileW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpGetFileEx: {
       parameters: ["pointer", "buffer", "buffer", "i32", "u32", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpPutFileEx: {
       parameters: ["pointer", "buffer", "buffer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FtpDeleteFileA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpDeleteFileW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpRenameFileA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpRenameFileW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpOpenFileA: {
       parameters: ["pointer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     FtpOpenFileW: {
       parameters: ["pointer", "buffer", "u32", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     FtpCreateDirectoryA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpCreateDirectoryW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpRemoveDirectoryA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpRemoveDirectoryW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpSetCurrentDirectoryA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpSetCurrentDirectoryW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     FtpGetCurrentDirectoryA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FtpGetCurrentDirectoryW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FtpCommandA: {
       parameters: ["pointer", "i32", "u32", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     FtpCommandW: {
       parameters: ["pointer", "i32", "u32", "buffer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     FtpGetFileSize: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GopherCreateLocatorA: {
       parameters: ["buffer", "u16", "buffer", "buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GopherCreateLocatorW: {
       parameters: ["buffer", "u16", "buffer", "buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GopherGetLocatorTypeA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GopherGetLocatorTypeW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GopherFindFirstFileA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     GopherFindFirstFileW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     GopherOpenFileA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     GopherOpenFileW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     GopherGetAttributeA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     GopherGetAttributeW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     HttpOpenRequestA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     HttpOpenRequestW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     HttpAddRequestHeadersA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpAddRequestHeadersW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpSendRequestA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpSendRequestW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpSendRequestExA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     HttpSendRequestExW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     HttpEndRequestA: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     HttpEndRequestW: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     HttpQueryInfoA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     HttpQueryInfoW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetSetCookieA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     InternetSetCookieW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     InternetGetCookieA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetCookieW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetSetCookieExA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "usize"],
       result: "u32",
+      optional: true,
     },
     InternetSetCookieExW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "usize"],
       result: "u32",
+      optional: true,
     },
     InternetGetCookieExA: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetCookieExW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetFreeCookies: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     InternetGetCookieEx2: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     InternetSetCookieEx2: {
       parameters: ["buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     InternetAttemptConnect: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     InternetCheckConnectionA: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetCheckConnectionW: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ResumeSuspendedDownload: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetErrorDlg: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     InternetConfirmZoneCrossingA: {
       parameters: ["pointer", "buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     InternetConfirmZoneCrossingW: {
       parameters: ["pointer", "buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     InternetConfirmZoneCrossing: {
       parameters: ["pointer", "buffer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     CreateUrlCacheEntryA: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateUrlCacheEntryW: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     CommitUrlCacheEntryA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u32", "pointer", "u32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     CommitUrlCacheEntryW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u32", "buffer", "u32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     RetrieveUrlCacheEntryFileA: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RetrieveUrlCacheEntryFileW: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     UnlockUrlCacheEntryFileA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     UnlockUrlCacheEntryFileW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     UnlockUrlCacheEntryFile: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     RetrieveUrlCacheEntryStreamA: {
       parameters: ["buffer", "pointer", "pointer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     RetrieveUrlCacheEntryStreamW: {
       parameters: ["buffer", "pointer", "pointer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ReadUrlCacheEntryStream: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ReadUrlCacheEntryStreamEx: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UnlockUrlCacheEntryStream: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheEntryInfoA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheEntryInfoW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindFirstUrlCacheGroup: {
       parameters: ["u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindNextUrlCacheGroup: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheGroupAttributeA: {
       parameters: ["i64", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheGroupAttributeW: {
       parameters: ["i64", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheGroupAttributeA: {
       parameters: ["i64", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheGroupAttributeW: {
       parameters: ["i64", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheEntryInfoExA: {
       parameters: ["buffer", "pointer", "pointer", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheEntryInfoExW: {
       parameters: ["buffer", "pointer", "pointer", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheEntryInfoA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheEntryInfoW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateUrlCacheGroup: {
       parameters: ["u32", "pointer"],
       result: "i64",
+      optional: true,
     },
     DeleteUrlCacheGroup: {
       parameters: ["i64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheEntryGroupA: {
       parameters: ["buffer", "u32", "i64", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheEntryGroupW: {
       parameters: ["buffer", "u32", "i64", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheEntryGroup: {
       parameters: ["buffer", "u32", "i64", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindFirstUrlCacheEntryExA: {
       parameters: ["buffer", "u32", "u32", "i64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindFirstUrlCacheEntryExW: {
       parameters: ["buffer", "u32", "u32", "i64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindNextUrlCacheEntryExA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindNextUrlCacheEntryExW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindFirstUrlCacheEntryA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindFirstUrlCacheEntryW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindNextUrlCacheEntryA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindNextUrlCacheEntryW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindCloseUrlCache: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteUrlCacheEntryA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     DeleteUrlCacheEntryW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     DeleteUrlCacheEntry: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     InternetDialA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     InternetDialW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     InternetDial: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     InternetHangUp: {
       parameters: ["usize", "u32"],
       result: "u32",
+      optional: true,
     },
     InternetGoOnlineA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGoOnlineW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGoOnline: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetAutodial: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetAutodialHangup: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     InternetGetConnectedState: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGetConnectedStateExA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGetConnectedStateExW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DeleteWpadCacheForNetworks: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     InternetInitializeAutoProxyDll: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     DetectAutoProxyUrl: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateMD5SSOHash: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetConnectedStateEx: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetDialStateA: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetDialStateW: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetDialState: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetPerSiteCookieDecisionA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSetPerSiteCookieDecisionW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGetPerSiteCookieDecisionA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetPerSiteCookieDecisionW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetClearAllPerSiteCookieDecisions: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InternetEnumPerSiteCookieDecisionA: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetEnumPerSiteCookieDecisionW: {
       parameters: ["buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PrivacySetZonePreferenceW: {
       parameters: ["u32", "u32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     PrivacyGetZonePreferenceW: {
       parameters: ["u32", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpIsHostHstsEnabled: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     InternetAlgIdToStringA: {
       parameters: ["u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetAlgIdToStringW: {
       parameters: ["u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSecurityProtocolToStringA: {
       parameters: ["u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetSecurityProtocolToStringW: {
       parameters: ["u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetGetSecurityInfoByURLA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetSecurityInfoByURLW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetGetSecurityInfoByURL: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ShowSecurityInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ShowX509EncodedCertificate: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ShowClientAuthCerts: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ParseX509EncodedCertificateForListBoxEntry: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     InternetShowSecurityInfoByURLA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetShowSecurityInfoByURLW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetShowSecurityInfoByURL: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetFortezzaCommand: {
       parameters: ["u32", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetQueryFortezzaStatus: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetWriteFileExA: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     InternetWriteFileExW: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "i32",
+      optional: true,
     },
     FindP3PPolicySymbol: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     HttpGetServerCredentials: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpPushEnable: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpPushWait: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpPushClose: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     HttpCheckDavComplianceA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     HttpCheckDavComplianceW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsUrlCacheEntryExpiredA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsUrlCacheEntryExpiredW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateUrlCacheEntryExW: {
       parameters: ["buffer", "u32", "buffer", "buffer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheEntryBinaryBlob: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CommitUrlCacheEntryBinaryBlob: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateUrlCacheContainerA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateUrlCacheContainerW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteUrlCacheContainerA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     DeleteUrlCacheContainerW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     FindFirstUrlCacheContainerA: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FindFirstUrlCacheContainerW: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FindNextUrlCacheContainerA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindNextUrlCacheContainerW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FreeUrlCacheSpaceA: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     FreeUrlCacheSpaceW: {
       parameters: ["buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     UrlCacheFreeGlobalSpace: {
       parameters: ["u64", "u32"],
       result: "u32",
+      optional: true,
     },
     UrlCacheGetGlobalCacheSize: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetUrlCacheConfigInfoA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheConfigInfoW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheConfigInfoA: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheConfigInfoW: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     RunOnceUrlCache: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     DeleteIE3Cache: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     UpdateUrlCacheContentPath: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     RegisterUrlCacheNotification: {
       parameters: ["pointer", "u32", "i64", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetUrlCacheHeaderData: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUrlCacheHeaderData: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     IncrementUrlCacheHeaderData: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     LoadUrlCacheContent: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     AppCacheLookup: {
       parameters: ["buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheCheckManifest: {
       parameters: ["buffer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheGetDownloadList: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheFreeDownloadList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AppCacheFinalize: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheGetFallbackUrl: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheGetManifestUrl: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheDuplicateHandle: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheCloseHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AppCacheFreeGroupList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AppCacheGetGroupList: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheGetInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheDeleteGroup: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AppCacheFreeSpace: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheGetIEGroupList: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheDeleteIEGroup: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     AppCacheFreeIESpace: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AppCacheCreateAndCommitFile: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     HttpOpenDependencyHandle: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpCloseDependencyHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     HttpDuplicateDependencyHandle: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     HttpIndicatePageLoadComplete: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheFreeEntryInfo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     UrlCacheGetEntryInfo: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheCloseEntryHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     UrlCacheRetrieveEntryFile: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheReadEntryStream: {
       parameters: ["pointer", "u64", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheRetrieveEntryStream: {
       parameters: ["pointer", "buffer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheUpdateEntryExtraData: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     UrlCacheCreateContainer: {
       parameters: ["buffer", "buffer", "buffer", "u64", "u32"],
       result: "u32",
+      optional: true,
     },
     UrlCacheCheckEntriesExist: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheGetContentPaths: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheGetGlobalLimit: {
       parameters: ["i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheSetGlobalLimit: {
       parameters: ["i32", "u64"],
       result: "u32",
+      optional: true,
     },
     UrlCacheReloadSettings: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     UrlCacheContainerSetEntryMaximumAge: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     UrlCacheFindFirstEntry: {
       parameters: ["buffer", "u32", "u32", "i64", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheFindNextEntry: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UrlCacheServer: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     ReadGuidsForConnectedNetworks: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsHostInProxyBypassList: {
       parameters: ["i32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     InternetFreeProxyInfoList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     InternetGetProxyForUrl: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DoConnectoidsExist: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetDiskInfoA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PerformOperationOverUrlCacheA: {
       parameters: ["buffer", "u32", "u32", "i64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsProfilesEnabled: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InternalInternetGetCookie: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImportCookieFileA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ImportCookieFileW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ExportCookieFileA: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     ExportCookieFileW: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     IsDomainLegalCookieDomainA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     IsDomainLegalCookieDomainW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     HttpWebSocketCompleteUpgrade: {
       parameters: ["pointer", "usize"],
       result: "pointer",
+      optional: true,
     },
     HttpWebSocketSend: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpWebSocketReceive: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     HttpWebSocketClose: {
       parameters: ["pointer", "u16", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpWebSocketShutdown: {
       parameters: ["pointer", "u16", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     HttpWebSocketQueryCloseStatus: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InternetConvertUrlFromWireToWideChar: {
       parameters: ["buffer", "u32", "buffer", "u32", "u32", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -10806,7 +11102,7 @@ export function InternetTimeFromSystemTimeA(
   lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeA(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
+  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeA!(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
 }
 
 export function InternetTimeFromSystemTimeW(
@@ -10815,7 +11111,7 @@ export function InternetTimeFromSystemTimeW(
   lpszTime: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeW(util.toPointer(pst), dwRFC, util.pwstrToFfi(lpszTime), cbTime));
+  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTimeW!(util.toPointer(pst), dwRFC, util.pwstrToFfi(lpszTime), cbTime));
 }
 
 export function InternetTimeFromSystemTime(
@@ -10824,7 +11120,7 @@ export function InternetTimeFromSystemTime(
   lpszTime: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbTime: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTime(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
+  return util.boolFromFfi(libWININET_dll.InternetTimeFromSystemTime!(util.toPointer(pst), dwRFC, util.pstrToFfi(lpszTime), cbTime));
 }
 
 export function InternetTimeToSystemTimeA(
@@ -10832,7 +11128,7 @@ export function InternetTimeToSystemTimeA(
   pst: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTimeA(util.pstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTimeA!(util.pstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
 }
 
 export function InternetTimeToSystemTimeW(
@@ -10840,7 +11136,7 @@ export function InternetTimeToSystemTimeW(
   pst: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTimeW(util.pwstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTimeW!(util.pwstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
 }
 
 export function InternetTimeToSystemTime(
@@ -10848,7 +11144,7 @@ export function InternetTimeToSystemTime(
   pst: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTime(util.pstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetTimeToSystemTime!(util.pstrToFfi(lpszTime), util.toPointer(pst), dwReserved));
 }
 
 export function InternetCrackUrlA(
@@ -10857,7 +11153,7 @@ export function InternetCrackUrlA(
   dwFlags: WIN_HTTP_CREATE_URL_FLAGS /* Windows.Win32.Networking.WinHttp.WIN_HTTP_CREATE_URL_FLAGS */,
   lpUrlComponents: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCrackUrlA(util.pstrToFfi(lpszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
+  return util.boolFromFfi(libWININET_dll.InternetCrackUrlA!(util.pstrToFfi(lpszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
 }
 
 export function InternetCrackUrlW(
@@ -10866,7 +11162,7 @@ export function InternetCrackUrlW(
   dwFlags: WIN_HTTP_CREATE_URL_FLAGS /* Windows.Win32.Networking.WinHttp.WIN_HTTP_CREATE_URL_FLAGS */,
   lpUrlComponents: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCrackUrlW(util.pwstrToFfi(lpszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
+  return util.boolFromFfi(libWININET_dll.InternetCrackUrlW!(util.pwstrToFfi(lpszUrl), dwUrlLength, dwFlags, util.toPointer(lpUrlComponents)));
 }
 
 export function InternetCreateUrlA(
@@ -10875,7 +11171,7 @@ export function InternetCreateUrlA(
   lpszUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwUrlLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCreateUrlA(util.toPointer(lpUrlComponents), dwFlags, util.pstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
+  return util.boolFromFfi(libWININET_dll.InternetCreateUrlA!(util.toPointer(lpUrlComponents), dwFlags, util.pstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
 }
 
 export function InternetCreateUrlW(
@@ -10884,7 +11180,7 @@ export function InternetCreateUrlW(
   lpszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwUrlLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCreateUrlW(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
+  return util.boolFromFfi(libWININET_dll.InternetCreateUrlW!(util.toPointer(lpUrlComponents), dwFlags, util.pwstrToFfi(lpszUrl), util.toPointer(lpdwUrlLength)));
 }
 
 export function InternetCanonicalizeUrlA(
@@ -10893,7 +11189,7 @@ export function InternetCanonicalizeUrlA(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCanonicalizeUrlA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetCanonicalizeUrlA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
 }
 
 export function InternetCanonicalizeUrlW(
@@ -10902,7 +11198,7 @@ export function InternetCanonicalizeUrlW(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCanonicalizeUrlW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetCanonicalizeUrlW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
 }
 
 export function InternetCombineUrlA(
@@ -10912,7 +11208,7 @@ export function InternetCombineUrlA(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCombineUrlA(util.pstrToFfi(lpszBaseUrl), util.pstrToFfi(lpszRelativeUrl), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetCombineUrlA!(util.pstrToFfi(lpszBaseUrl), util.pstrToFfi(lpszRelativeUrl), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
 }
 
 export function InternetCombineUrlW(
@@ -10922,7 +11218,7 @@ export function InternetCombineUrlW(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCombineUrlW(util.pwstrToFfi(lpszBaseUrl), util.pwstrToFfi(lpszRelativeUrl), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetCombineUrlW!(util.pwstrToFfi(lpszBaseUrl), util.pwstrToFfi(lpszRelativeUrl), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength), dwFlags));
 }
 
 export function InternetOpenA(
@@ -10932,7 +11228,7 @@ export function InternetOpenA(
   lpszProxyBypass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetOpenA(util.pstrToFfi(lpszAgent), dwAccessType, util.pstrToFfi(lpszProxy), util.pstrToFfi(lpszProxyBypass), dwFlags);
+  return libWININET_dll.InternetOpenA!(util.pstrToFfi(lpszAgent), dwAccessType, util.pstrToFfi(lpszProxy), util.pstrToFfi(lpszProxyBypass), dwFlags);
 }
 
 export function InternetOpenW(
@@ -10942,13 +11238,13 @@ export function InternetOpenW(
   lpszProxyBypass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetOpenW(util.pwstrToFfi(lpszAgent), dwAccessType, util.pwstrToFfi(lpszProxy), util.pwstrToFfi(lpszProxyBypass), dwFlags);
+  return libWININET_dll.InternetOpenW!(util.pwstrToFfi(lpszAgent), dwAccessType, util.pwstrToFfi(lpszProxy), util.pwstrToFfi(lpszProxyBypass), dwFlags);
 }
 
 export function InternetCloseHandle(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCloseHandle(util.toPointer(hInternet)));
+  return util.boolFromFfi(libWININET_dll.InternetCloseHandle!(util.toPointer(hInternet)));
 }
 
 export function InternetConnectA(
@@ -10961,7 +11257,7 @@ export function InternetConnectA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetConnectA(util.toPointer(hInternet), util.pstrToFfi(lpszServerName), nServerPort, util.pstrToFfi(lpszUserName), util.pstrToFfi(lpszPassword), dwService, dwFlags, dwContext);
+  return libWININET_dll.InternetConnectA!(util.toPointer(hInternet), util.pstrToFfi(lpszServerName), nServerPort, util.pstrToFfi(lpszUserName), util.pstrToFfi(lpszPassword), dwService, dwFlags, dwContext);
 }
 
 export function InternetConnectW(
@@ -10974,7 +11270,7 @@ export function InternetConnectW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetConnectW(util.toPointer(hInternet), util.pwstrToFfi(lpszServerName), nServerPort, util.pwstrToFfi(lpszUserName), util.pwstrToFfi(lpszPassword), dwService, dwFlags, dwContext);
+  return libWININET_dll.InternetConnectW!(util.toPointer(hInternet), util.pwstrToFfi(lpszServerName), nServerPort, util.pwstrToFfi(lpszUserName), util.pwstrToFfi(lpszPassword), dwService, dwFlags, dwContext);
 }
 
 export function InternetOpenUrlA(
@@ -10985,7 +11281,7 @@ export function InternetOpenUrlA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetOpenUrlA(util.toPointer(hInternet), util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszHeaders), dwHeadersLength, dwFlags, dwContext);
+  return libWININET_dll.InternetOpenUrlA!(util.toPointer(hInternet), util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszHeaders), dwHeadersLength, dwFlags, dwContext);
 }
 
 export function InternetOpenUrlW(
@@ -10996,7 +11292,7 @@ export function InternetOpenUrlW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.InternetOpenUrlW(util.toPointer(hInternet), util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwFlags, dwContext);
+  return libWININET_dll.InternetOpenUrlW!(util.toPointer(hInternet), util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwFlags, dwContext);
 }
 
 export function InternetReadFile(
@@ -11005,7 +11301,7 @@ export function InternetReadFile(
   dwNumberOfBytesToRead: number /* u32 */,
   lpdwNumberOfBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetReadFile(util.toPointer(hFile), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead)));
+  return util.boolFromFfi(libWININET_dll.InternetReadFile!(util.toPointer(hFile), util.toPointer(lpBuffer), dwNumberOfBytesToRead, util.toPointer(lpdwNumberOfBytesRead)));
 }
 
 export function InternetReadFileExA(
@@ -11014,7 +11310,7 @@ export function InternetReadFileExA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetReadFileExA(util.toPointer(hFile), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.InternetReadFileExA!(util.toPointer(hFile), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function InternetReadFileExW(
@@ -11023,7 +11319,7 @@ export function InternetReadFileExW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetReadFileExW(util.toPointer(hFile), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.InternetReadFileExW!(util.toPointer(hFile), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function InternetSetFilePointer(
@@ -11033,7 +11329,7 @@ export function InternetSetFilePointer(
   dwMoveMethod: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetSetFilePointer(util.toPointer(hFile), lDistanceToMove, util.toPointer(lpDistanceToMoveHigh), dwMoveMethod, dwContext);
+  return libWININET_dll.InternetSetFilePointer!(util.toPointer(hFile), lDistanceToMove, util.toPointer(lpDistanceToMoveHigh), dwMoveMethod, dwContext);
 }
 
 export function InternetWriteFile(
@@ -11042,7 +11338,7 @@ export function InternetWriteFile(
   dwNumberOfBytesToWrite: number /* u32 */,
   lpdwNumberOfBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetWriteFile(util.toPointer(hFile), util.toPointer(lpBuffer), dwNumberOfBytesToWrite, util.toPointer(lpdwNumberOfBytesWritten)));
+  return util.boolFromFfi(libWININET_dll.InternetWriteFile!(util.toPointer(hFile), util.toPointer(lpBuffer), dwNumberOfBytesToWrite, util.toPointer(lpdwNumberOfBytesWritten)));
 }
 
 export function InternetQueryDataAvailable(
@@ -11051,21 +11347,21 @@ export function InternetQueryDataAvailable(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetQueryDataAvailable(util.toPointer(hFile), util.toPointer(lpdwNumberOfBytesAvailable), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.InternetQueryDataAvailable!(util.toPointer(hFile), util.toPointer(lpdwNumberOfBytesAvailable), dwFlags, dwContext));
 }
 
 export function InternetFindNextFileA(
   hFind: Deno.PointerValue | Uint8Array /* ptr */,
   lpvFindData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetFindNextFileA(util.toPointer(hFind), util.toPointer(lpvFindData)));
+  return util.boolFromFfi(libWININET_dll.InternetFindNextFileA!(util.toPointer(hFind), util.toPointer(lpvFindData)));
 }
 
 export function InternetFindNextFileW(
   hFind: Deno.PointerValue | Uint8Array /* ptr */,
   lpvFindData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetFindNextFileW(util.toPointer(hFind), util.toPointer(lpvFindData)));
+  return util.boolFromFfi(libWININET_dll.InternetFindNextFileW!(util.toPointer(hFind), util.toPointer(lpvFindData)));
 }
 
 export function InternetQueryOptionA(
@@ -11074,7 +11370,7 @@ export function InternetQueryOptionA(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetQueryOptionA(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.InternetQueryOptionA!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
 }
 
 export function InternetQueryOptionW(
@@ -11083,7 +11379,7 @@ export function InternetQueryOptionW(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetQueryOptionW(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.InternetQueryOptionW!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength)));
 }
 
 export function InternetSetOptionA(
@@ -11092,7 +11388,7 @@ export function InternetSetOptionA(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetOptionA(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
+  return util.boolFromFfi(libWININET_dll.InternetSetOptionA!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
 }
 
 export function InternetSetOptionW(
@@ -11101,7 +11397,7 @@ export function InternetSetOptionW(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetOptionW(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
+  return util.boolFromFfi(libWININET_dll.InternetSetOptionW!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength));
 }
 
 export function InternetSetOptionExA(
@@ -11111,7 +11407,7 @@ export function InternetSetOptionExA(
   dwBufferLength: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetOptionExA(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength, dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetSetOptionExA!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength, dwFlags));
 }
 
 export function InternetSetOptionExW(
@@ -11121,20 +11417,20 @@ export function InternetSetOptionExW(
   dwBufferLength: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetOptionExW(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength, dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetSetOptionExW!(util.toPointer(hInternet), dwOption, util.toPointer(lpBuffer), dwBufferLength, dwFlags));
 }
 
 export function InternetLockRequestFile(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   lphLockRequestInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetLockRequestFile(util.toPointer(hInternet), util.toPointer(lphLockRequestInfo)));
+  return util.boolFromFfi(libWININET_dll.InternetLockRequestFile!(util.toPointer(hInternet), util.toPointer(lphLockRequestInfo)));
 }
 
 export function InternetUnlockRequestFile(
   hLockRequestInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetUnlockRequestFile(util.toPointer(hLockRequestInfo)));
+  return util.boolFromFfi(libWININET_dll.InternetUnlockRequestFile!(util.toPointer(hLockRequestInfo)));
 }
 
 export function InternetGetLastResponseInfoA(
@@ -11142,7 +11438,7 @@ export function InternetGetLastResponseInfoA(
   lpszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoA(util.toPointer(lpdwError), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoA!(util.toPointer(lpdwError), util.pstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
 }
 
 export function InternetGetLastResponseInfoW(
@@ -11150,28 +11446,28 @@ export function InternetGetLastResponseInfoW(
   lpszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoW(util.toPointer(lpdwError), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.InternetGetLastResponseInfoW!(util.toPointer(lpdwError), util.pwstrToFfi(lpszBuffer), util.toPointer(lpdwBufferLength)));
 }
 
 export function InternetSetStatusCallbackA(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   lpfnInternetCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */,
 ): Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */ {
-  return libWININET_dll.InternetSetStatusCallbackA(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
+  return libWININET_dll.InternetSetStatusCallbackA!(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
 }
 
 export function InternetSetStatusCallbackW(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   lpfnInternetCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */,
 ): Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */ {
-  return libWININET_dll.InternetSetStatusCallbackW(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
+  return libWININET_dll.InternetSetStatusCallbackW!(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
 }
 
 export function InternetSetStatusCallback(
   hInternet: Deno.PointerValue | Uint8Array /* ptr */,
   lpfnInternetCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */,
 ): Deno.PointerValue /* Windows.Win32.Networking.WinInet.LPINTERNET_STATUS_CALLBACK */ {
-  return libWININET_dll.InternetSetStatusCallback(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
+  return libWININET_dll.InternetSetStatusCallback!(util.toPointer(hInternet), util.toPointer(lpfnInternetCallback));
 }
 
 export function FtpFindFirstFileA(
@@ -11181,7 +11477,7 @@ export function FtpFindFirstFileA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.FtpFindFirstFileA(util.toPointer(hConnect), util.pstrToFfi(lpszSearchFile), util.toPointer(lpFindFileData), dwFlags, dwContext);
+  return libWININET_dll.FtpFindFirstFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszSearchFile), util.toPointer(lpFindFileData), dwFlags, dwContext);
 }
 
 export function FtpFindFirstFileW(
@@ -11191,7 +11487,7 @@ export function FtpFindFirstFileW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.FtpFindFirstFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszSearchFile), util.toPointer(lpFindFileData), dwFlags, dwContext);
+  return libWININET_dll.FtpFindFirstFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszSearchFile), util.toPointer(lpFindFileData), dwFlags, dwContext);
 }
 
 export function FtpGetFileA(
@@ -11203,7 +11499,7 @@ export function FtpGetFileA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpGetFileA(util.toPointer(hConnect), util.pstrToFfi(lpszRemoteFile), util.pstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpGetFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszRemoteFile), util.pstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
 }
 
 export function FtpGetFileW(
@@ -11215,7 +11511,7 @@ export function FtpGetFileW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpGetFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszRemoteFile), util.pwstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpGetFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszRemoteFile), util.pwstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
 }
 
 export function FtpPutFileA(
@@ -11225,7 +11521,7 @@ export function FtpPutFileA(
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpPutFileA(util.toPointer(hConnect), util.pstrToFfi(lpszLocalFile), util.pstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpPutFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszLocalFile), util.pstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
 }
 
 export function FtpPutFileW(
@@ -11235,7 +11531,7 @@ export function FtpPutFileW(
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpPutFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszLocalFile), util.pwstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpPutFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszLocalFile), util.pwstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
 }
 
 export function FtpGetFileEx(
@@ -11247,7 +11543,7 @@ export function FtpGetFileEx(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpGetFileEx(util.toPointer(hFtpSession), util.pstrToFfi(lpszRemoteFile), util.pwstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpGetFileEx!(util.toPointer(hFtpSession), util.pstrToFfi(lpszRemoteFile), util.pwstrToFfi(lpszNewFile), util.boolToFfi(fFailIfExists), dwFlagsAndAttributes, dwFlags, dwContext));
 }
 
 export function FtpPutFileEx(
@@ -11257,21 +11553,21 @@ export function FtpPutFileEx(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpPutFileEx(util.toPointer(hFtpSession), util.pwstrToFfi(lpszLocalFile), util.pstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.FtpPutFileEx!(util.toPointer(hFtpSession), util.pwstrToFfi(lpszLocalFile), util.pstrToFfi(lpszNewRemoteFile), dwFlags, dwContext));
 }
 
 export function FtpDeleteFileA(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpDeleteFileA(util.toPointer(hConnect), util.pstrToFfi(lpszFileName)));
+  return util.boolFromFfi(libWININET_dll.FtpDeleteFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszFileName)));
 }
 
 export function FtpDeleteFileW(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpDeleteFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszFileName)));
+  return util.boolFromFfi(libWININET_dll.FtpDeleteFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszFileName)));
 }
 
 export function FtpRenameFileA(
@@ -11279,7 +11575,7 @@ export function FtpRenameFileA(
   lpszExisting: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpRenameFileA(util.toPointer(hConnect), util.pstrToFfi(lpszExisting), util.pstrToFfi(lpszNew)));
+  return util.boolFromFfi(libWININET_dll.FtpRenameFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszExisting), util.pstrToFfi(lpszNew)));
 }
 
 export function FtpRenameFileW(
@@ -11287,7 +11583,7 @@ export function FtpRenameFileW(
   lpszExisting: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpRenameFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszExisting), util.pwstrToFfi(lpszNew)));
+  return util.boolFromFfi(libWININET_dll.FtpRenameFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszExisting), util.pwstrToFfi(lpszNew)));
 }
 
 export function FtpOpenFileA(
@@ -11297,7 +11593,7 @@ export function FtpOpenFileA(
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.FtpOpenFileA(util.toPointer(hConnect), util.pstrToFfi(lpszFileName), dwAccess, dwFlags, dwContext);
+  return libWININET_dll.FtpOpenFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszFileName), dwAccess, dwFlags, dwContext);
 }
 
 export function FtpOpenFileW(
@@ -11307,49 +11603,49 @@ export function FtpOpenFileW(
   dwFlags: FTP_FLAGS /* Windows.Win32.Networking.WinInet.FTP_FLAGS */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.FtpOpenFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszFileName), dwAccess, dwFlags, dwContext);
+  return libWININET_dll.FtpOpenFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszFileName), dwAccess, dwFlags, dwContext);
 }
 
 export function FtpCreateDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryA!(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpCreateDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpCreateDirectoryW!(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpRemoveDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryA!(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpRemoveDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpRemoveDirectoryW!(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpSetCurrentDirectoryA(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryA!(util.toPointer(hConnect), util.pstrToFfi(lpszDirectory)));
 }
 
 export function FtpSetCurrentDirectoryW(
   hConnect: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpSetCurrentDirectoryW!(util.toPointer(hConnect), util.pwstrToFfi(lpszDirectory)));
 }
 
 export function FtpGetCurrentDirectoryA(
@@ -11357,7 +11653,7 @@ export function FtpGetCurrentDirectoryA(
   lpszCurrentDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwCurrentDirectory: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryA(util.toPointer(hConnect), util.pstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryA!(util.toPointer(hConnect), util.pstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
 }
 
 export function FtpGetCurrentDirectoryW(
@@ -11365,7 +11661,7 @@ export function FtpGetCurrentDirectoryW(
   lpszCurrentDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwCurrentDirectory: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryW(util.toPointer(hConnect), util.pwstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
+  return util.boolFromFfi(libWININET_dll.FtpGetCurrentDirectoryW!(util.toPointer(hConnect), util.pwstrToFfi(lpszCurrentDirectory), util.toPointer(lpdwCurrentDirectory)));
 }
 
 export function FtpCommandA(
@@ -11376,7 +11672,7 @@ export function FtpCommandA(
   dwContext: bigint | number /* usize */,
   phFtpCommand: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpCommandA(util.toPointer(hConnect), util.boolToFfi(fExpectResponse), dwFlags, util.pstrToFfi(lpszCommand), dwContext, util.toPointer(phFtpCommand)));
+  return util.boolFromFfi(libWININET_dll.FtpCommandA!(util.toPointer(hConnect), util.boolToFfi(fExpectResponse), dwFlags, util.pstrToFfi(lpszCommand), dwContext, util.toPointer(phFtpCommand)));
 }
 
 export function FtpCommandW(
@@ -11387,14 +11683,14 @@ export function FtpCommandW(
   dwContext: bigint | number /* usize */,
   phFtpCommand: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FtpCommandW(util.toPointer(hConnect), util.boolToFfi(fExpectResponse), dwFlags, util.pwstrToFfi(lpszCommand), dwContext, util.toPointer(phFtpCommand)));
+  return util.boolFromFfi(libWININET_dll.FtpCommandW!(util.toPointer(hConnect), util.boolToFfi(fExpectResponse), dwFlags, util.pwstrToFfi(lpszCommand), dwContext, util.toPointer(phFtpCommand)));
 }
 
 export function FtpGetFileSize(
   hFile: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.FtpGetFileSize(util.toPointer(hFile), util.toPointer(lpdwFileSizeHigh));
+  return libWININET_dll.FtpGetFileSize!(util.toPointer(hFile), util.toPointer(lpdwFileSizeHigh));
 }
 
 export function GopherCreateLocatorA(
@@ -11406,7 +11702,7 @@ export function GopherCreateLocatorA(
   lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherCreateLocatorA(util.pstrToFfi(lpszHost), nServerPort, util.pstrToFfi(lpszDisplayString), util.pstrToFfi(lpszSelectorString), dwGopherType, util.pstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.GopherCreateLocatorA!(util.pstrToFfi(lpszHost), nServerPort, util.pstrToFfi(lpszDisplayString), util.pstrToFfi(lpszSelectorString), dwGopherType, util.pstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
 }
 
 export function GopherCreateLocatorW(
@@ -11418,21 +11714,21 @@ export function GopherCreateLocatorW(
   lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherCreateLocatorW(util.pwstrToFfi(lpszHost), nServerPort, util.pwstrToFfi(lpszDisplayString), util.pwstrToFfi(lpszSelectorString), dwGopherType, util.pwstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
+  return util.boolFromFfi(libWININET_dll.GopherCreateLocatorW!(util.pwstrToFfi(lpszHost), nServerPort, util.pwstrToFfi(lpszDisplayString), util.pwstrToFfi(lpszSelectorString), dwGopherType, util.pwstrToFfi(lpszLocator), util.toPointer(lpdwBufferLength)));
 }
 
 export function GopherGetLocatorTypeA(
   lpszLocator: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwGopherType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeA(util.pstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
+  return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeA!(util.pstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
 }
 
 export function GopherGetLocatorTypeW(
   lpszLocator: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwGopherType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeW(util.pwstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
+  return util.boolFromFfi(libWININET_dll.GopherGetLocatorTypeW!(util.pwstrToFfi(lpszLocator), util.toPointer(lpdwGopherType)));
 }
 
 export function GopherFindFirstFileA(
@@ -11443,7 +11739,7 @@ export function GopherFindFirstFileA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.GopherFindFirstFileA(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszSearchString), util.toPointer(lpFindData), dwFlags, dwContext);
+  return libWININET_dll.GopherFindFirstFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszSearchString), util.toPointer(lpFindData), dwFlags, dwContext);
 }
 
 export function GopherFindFirstFileW(
@@ -11454,7 +11750,7 @@ export function GopherFindFirstFileW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.GopherFindFirstFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszSearchString), util.toPointer(lpFindData), dwFlags, dwContext);
+  return libWININET_dll.GopherFindFirstFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszSearchString), util.toPointer(lpFindData), dwFlags, dwContext);
 }
 
 export function GopherOpenFileA(
@@ -11464,7 +11760,7 @@ export function GopherOpenFileA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.GopherOpenFileA(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszView), dwFlags, dwContext);
+  return libWININET_dll.GopherOpenFileA!(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszView), dwFlags, dwContext);
 }
 
 export function GopherOpenFileW(
@@ -11474,7 +11770,7 @@ export function GopherOpenFileW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.GopherOpenFileW(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszView), dwFlags, dwContext);
+  return libWININET_dll.GopherOpenFileW!(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszView), dwFlags, dwContext);
 }
 
 export function GopherGetAttributeA(
@@ -11487,7 +11783,7 @@ export function GopherGetAttributeA(
   lpfnEnumerator: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.GOPHER_ATTRIBUTE_ENUMERATOR */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherGetAttributeA(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszAttributeName), util.toPointer(lpBuffer), dwBufferLength, util.toPointer(lpdwCharactersReturned), util.toPointer(lpfnEnumerator), dwContext));
+  return util.boolFromFfi(libWININET_dll.GopherGetAttributeA!(util.toPointer(hConnect), util.pstrToFfi(lpszLocator), util.pstrToFfi(lpszAttributeName), util.toPointer(lpBuffer), dwBufferLength, util.toPointer(lpdwCharactersReturned), util.toPointer(lpfnEnumerator), dwContext));
 }
 
 export function GopherGetAttributeW(
@@ -11500,7 +11796,7 @@ export function GopherGetAttributeW(
   lpfnEnumerator: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.GOPHER_ATTRIBUTE_ENUMERATOR */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GopherGetAttributeW(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszAttributeName), util.toPointer(lpBuffer), dwBufferLength, util.toPointer(lpdwCharactersReturned), util.toPointer(lpfnEnumerator), dwContext));
+  return util.boolFromFfi(libWININET_dll.GopherGetAttributeW!(util.toPointer(hConnect), util.pwstrToFfi(lpszLocator), util.pwstrToFfi(lpszAttributeName), util.toPointer(lpBuffer), dwBufferLength, util.toPointer(lpdwCharactersReturned), util.toPointer(lpfnEnumerator), dwContext));
 }
 
 export function HttpOpenRequestA(
@@ -11513,7 +11809,7 @@ export function HttpOpenRequestA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.HttpOpenRequestA(util.toPointer(hConnect), util.pstrToFfi(lpszVerb), util.pstrToFfi(lpszObjectName), util.pstrToFfi(lpszVersion), util.pstrToFfi(lpszReferrer), util.toPointer(lplpszAcceptTypes), dwFlags, dwContext);
+  return libWININET_dll.HttpOpenRequestA!(util.toPointer(hConnect), util.pstrToFfi(lpszVerb), util.pstrToFfi(lpszObjectName), util.pstrToFfi(lpszVersion), util.pstrToFfi(lpszReferrer), util.toPointer(lplpszAcceptTypes), dwFlags, dwContext);
 }
 
 export function HttpOpenRequestW(
@@ -11526,7 +11822,7 @@ export function HttpOpenRequestW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.HttpOpenRequestW(util.toPointer(hConnect), util.pwstrToFfi(lpszVerb), util.pwstrToFfi(lpszObjectName), util.pwstrToFfi(lpszVersion), util.pwstrToFfi(lpszReferrer), util.toPointer(lplpszAcceptTypes), dwFlags, dwContext);
+  return libWININET_dll.HttpOpenRequestW!(util.toPointer(hConnect), util.pwstrToFfi(lpszVerb), util.pwstrToFfi(lpszObjectName), util.pwstrToFfi(lpszVersion), util.pwstrToFfi(lpszReferrer), util.toPointer(lplpszAcceptTypes), dwFlags, dwContext);
 }
 
 export function HttpAddRequestHeadersA(
@@ -11535,7 +11831,7 @@ export function HttpAddRequestHeadersA(
   dwHeadersLength: number /* u32 */,
   dwModifiers: HTTP_ADDREQ_FLAG /* Windows.Win32.Networking.WinInet.HTTP_ADDREQ_FLAG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpAddRequestHeadersA(util.toPointer(hRequest), util.pstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
+  return util.boolFromFfi(libWININET_dll.HttpAddRequestHeadersA!(util.toPointer(hRequest), util.pstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
 }
 
 export function HttpAddRequestHeadersW(
@@ -11544,7 +11840,7 @@ export function HttpAddRequestHeadersW(
   dwHeadersLength: number /* u32 */,
   dwModifiers: HTTP_ADDREQ_FLAG /* Windows.Win32.Networking.WinInet.HTTP_ADDREQ_FLAG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpAddRequestHeadersW(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
+  return util.boolFromFfi(libWININET_dll.HttpAddRequestHeadersW!(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, dwModifiers));
 }
 
 export function HttpSendRequestA(
@@ -11554,7 +11850,7 @@ export function HttpSendRequestA(
   lpOptional: Deno.PointerValue | Uint8Array /* ptr */,
   dwOptionalLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpSendRequestA(util.toPointer(hRequest), util.pstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength));
+  return util.boolFromFfi(libWININET_dll.HttpSendRequestA!(util.toPointer(hRequest), util.pstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength));
 }
 
 export function HttpSendRequestW(
@@ -11564,7 +11860,7 @@ export function HttpSendRequestW(
   lpOptional: Deno.PointerValue | Uint8Array /* ptr */,
   dwOptionalLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpSendRequestW(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength));
+  return util.boolFromFfi(libWININET_dll.HttpSendRequestW!(util.toPointer(hRequest), util.pwstrToFfi(lpszHeaders), dwHeadersLength, util.toPointer(lpOptional), dwOptionalLength));
 }
 
 export function HttpSendRequestExA(
@@ -11574,7 +11870,7 @@ export function HttpSendRequestExA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpSendRequestExA(util.toPointer(hRequest), util.toPointer(lpBuffersIn), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.HttpSendRequestExA!(util.toPointer(hRequest), util.toPointer(lpBuffersIn), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function HttpSendRequestExW(
@@ -11584,7 +11880,7 @@ export function HttpSendRequestExW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpSendRequestExW(util.toPointer(hRequest), util.toPointer(lpBuffersIn), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.HttpSendRequestExW!(util.toPointer(hRequest), util.toPointer(lpBuffersIn), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function HttpEndRequestA(
@@ -11593,7 +11889,7 @@ export function HttpEndRequestA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpEndRequestA(util.toPointer(hRequest), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.HttpEndRequestA!(util.toPointer(hRequest), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function HttpEndRequestW(
@@ -11602,7 +11898,7 @@ export function HttpEndRequestW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpEndRequestW(util.toPointer(hRequest), util.toPointer(lpBuffersOut), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.HttpEndRequestW!(util.toPointer(hRequest), util.toPointer(lpBuffersOut), dwFlags, dwContext));
 }
 
 export function HttpQueryInfoA(
@@ -11612,7 +11908,7 @@ export function HttpQueryInfoA(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpQueryInfoA(util.toPointer(hRequest), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
+  return util.boolFromFfi(libWININET_dll.HttpQueryInfoA!(util.toPointer(hRequest), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
 }
 
 export function HttpQueryInfoW(
@@ -11622,7 +11918,7 @@ export function HttpQueryInfoW(
   lpdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpQueryInfoW(util.toPointer(hRequest), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
+  return util.boolFromFfi(libWININET_dll.HttpQueryInfoW!(util.toPointer(hRequest), dwInfoLevel, util.toPointer(lpBuffer), util.toPointer(lpdwBufferLength), util.toPointer(lpdwIndex)));
 }
 
 export function InternetSetCookieA(
@@ -11630,7 +11926,7 @@ export function InternetSetCookieA(
   lpszCookieName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetCookieA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData)));
+  return util.boolFromFfi(libWININET_dll.InternetSetCookieA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData)));
 }
 
 export function InternetSetCookieW(
@@ -11638,7 +11934,7 @@ export function InternetSetCookieW(
   lpszCookieName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetCookieW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData)));
+  return util.boolFromFfi(libWININET_dll.InternetSetCookieW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData)));
 }
 
 export function InternetGetCookieA(
@@ -11647,7 +11943,7 @@ export function InternetGetCookieA(
   lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetCookieA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
+  return util.boolFromFfi(libWININET_dll.InternetGetCookieA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
 }
 
 export function InternetGetCookieW(
@@ -11656,7 +11952,7 @@ export function InternetGetCookieW(
   lpszCookieData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetCookieW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
+  return util.boolFromFfi(libWININET_dll.InternetGetCookieW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), util.toPointer(lpdwSize)));
 }
 
 export function InternetSetCookieExA(
@@ -11666,7 +11962,7 @@ export function InternetSetCookieExA(
   dwFlags: number /* u32 */,
   dwReserved: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetSetCookieExA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), dwFlags, dwReserved);
+  return libWININET_dll.InternetSetCookieExA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), dwFlags, dwReserved);
 }
 
 export function InternetSetCookieExW(
@@ -11676,7 +11972,7 @@ export function InternetSetCookieExW(
   dwFlags: number /* u32 */,
   dwReserved: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetSetCookieExW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), dwFlags, dwReserved);
+  return libWININET_dll.InternetSetCookieExW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), dwFlags, dwReserved);
 }
 
 export function InternetGetCookieExA(
@@ -11687,7 +11983,7 @@ export function InternetGetCookieExA(
   dwFlags: INTERNET_COOKIE_FLAGS /* Windows.Win32.Networking.WinInet.INTERNET_COOKIE_FLAGS */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetCookieExA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwSize), dwFlags, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.InternetGetCookieExA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieName), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwSize), dwFlags, util.toPointer(lpReserved)));
 }
 
 export function InternetGetCookieExW(
@@ -11698,14 +11994,14 @@ export function InternetGetCookieExW(
   dwFlags: INTERNET_COOKIE_FLAGS /* Windows.Win32.Networking.WinInet.INTERNET_COOKIE_FLAGS */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetCookieExW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), util.toPointer(lpdwSize), dwFlags, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.InternetGetCookieExW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszCookieName), util.pwstrToFfi(lpszCookieData), util.toPointer(lpdwSize), dwFlags, util.toPointer(lpReserved)));
 }
 
 export function InternetFreeCookies(
   pCookies: Deno.PointerValue | Uint8Array /* ptr */,
   dwCookieCount: number /* u32 */,
 ): void /* void */ {
-  return libWININET_dll.InternetFreeCookies(util.toPointer(pCookies), dwCookieCount);
+  return libWININET_dll.InternetFreeCookies!(util.toPointer(pCookies), dwCookieCount);
 }
 
 export function InternetGetCookieEx2(
@@ -11715,7 +12011,7 @@ export function InternetGetCookieEx2(
   ppCookies: Deno.PointerValue | Uint8Array /* ptr */,
   pdwCookieCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetGetCookieEx2(util.pwstrToFfi(pcwszUrl), util.pwstrToFfi(pcwszCookieName), dwFlags, util.toPointer(ppCookies), util.toPointer(pdwCookieCount));
+  return libWININET_dll.InternetGetCookieEx2!(util.pwstrToFfi(pcwszUrl), util.pwstrToFfi(pcwszCookieName), dwFlags, util.toPointer(ppCookies), util.toPointer(pdwCookieCount));
 }
 
 export function InternetSetCookieEx2(
@@ -11725,13 +12021,13 @@ export function InternetSetCookieEx2(
   dwFlags: number /* u32 */,
   pdwCookieState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetSetCookieEx2(util.pwstrToFfi(pcwszUrl), util.toPointer(pCookie), util.pwstrToFfi(pcwszP3PPolicy), dwFlags, util.toPointer(pdwCookieState));
+  return libWININET_dll.InternetSetCookieEx2!(util.pwstrToFfi(pcwszUrl), util.toPointer(pCookie), util.pwstrToFfi(pcwszP3PPolicy), dwFlags, util.toPointer(pdwCookieState));
 }
 
 export function InternetAttemptConnect(
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetAttemptConnect(dwReserved);
+  return libWININET_dll.InternetAttemptConnect!(dwReserved);
 }
 
 export function InternetCheckConnectionA(
@@ -11739,7 +12035,7 @@ export function InternetCheckConnectionA(
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCheckConnectionA(util.pstrToFfi(lpszUrl), dwFlags, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetCheckConnectionA!(util.pstrToFfi(lpszUrl), dwFlags, dwReserved));
 }
 
 export function InternetCheckConnectionW(
@@ -11747,14 +12043,14 @@ export function InternetCheckConnectionW(
   dwFlags: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetCheckConnectionW(util.pwstrToFfi(lpszUrl), dwFlags, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetCheckConnectionW!(util.pwstrToFfi(lpszUrl), dwFlags, dwReserved));
 }
 
 export function ResumeSuspendedDownload(
   hRequest: Deno.PointerValue | Uint8Array /* ptr */,
   dwResultCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ResumeSuspendedDownload(util.toPointer(hRequest), dwResultCode));
+  return util.boolFromFfi(libWININET_dll.ResumeSuspendedDownload!(util.toPointer(hRequest), dwResultCode));
 }
 
 export function InternetErrorDlg(
@@ -11764,7 +12060,7 @@ export function InternetErrorDlg(
   dwFlags: number /* u32 */,
   lppvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetErrorDlg((hWnd), util.toPointer(hRequest), dwError, dwFlags, util.toPointer(lppvData));
+  return libWININET_dll.InternetErrorDlg!((hWnd), util.toPointer(hRequest), dwError, dwFlags, util.toPointer(lppvData));
 }
 
 export function InternetConfirmZoneCrossingA(
@@ -11773,7 +12069,7 @@ export function InternetConfirmZoneCrossingA(
   szUrlNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetConfirmZoneCrossingA((hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
+  return libWININET_dll.InternetConfirmZoneCrossingA!((hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
 }
 
 export function InternetConfirmZoneCrossingW(
@@ -11782,7 +12078,7 @@ export function InternetConfirmZoneCrossingW(
   szUrlNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetConfirmZoneCrossingW((hWnd), util.pwstrToFfi(szUrlPrev), util.pwstrToFfi(szUrlNew), util.boolToFfi(bPost));
+  return libWININET_dll.InternetConfirmZoneCrossingW!((hWnd), util.pwstrToFfi(szUrlPrev), util.pwstrToFfi(szUrlNew), util.boolToFfi(bPost));
 }
 
 export function InternetConfirmZoneCrossing(
@@ -11791,7 +12087,7 @@ export function InternetConfirmZoneCrossing(
   szUrlNew: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bPost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetConfirmZoneCrossing((hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
+  return libWININET_dll.InternetConfirmZoneCrossing!((hWnd), util.pstrToFfi(szUrlPrev), util.pstrToFfi(szUrlNew), util.boolToFfi(bPost));
 }
 
 export function CreateUrlCacheEntryA(
@@ -11801,7 +12097,7 @@ export function CreateUrlCacheEntryA(
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryA(util.pstrToFfi(lpszUrlName), dwExpectedFileSize, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszFileName), dwReserved));
+  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryA!(util.pstrToFfi(lpszUrlName), dwExpectedFileSize, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszFileName), dwReserved));
 }
 
 export function CreateUrlCacheEntryW(
@@ -11811,7 +12107,7 @@ export function CreateUrlCacheEntryW(
   lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryW(util.pwstrToFfi(lpszUrlName), dwExpectedFileSize, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszFileName), dwReserved));
+  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryW!(util.pwstrToFfi(lpszUrlName), dwExpectedFileSize, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszFileName), dwReserved));
 }
 
 export function CommitUrlCacheEntryA(
@@ -11825,7 +12121,7 @@ export function CommitUrlCacheEntryA(
   lpszFileExtension: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszOriginalUrl: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryA(util.pstrToFfi(lpszUrlName), util.pstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.toPointer(lpHeaderInfo), cchHeaderInfo, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszOriginalUrl)));
+  return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryA!(util.pstrToFfi(lpszUrlName), util.pstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.toPointer(lpHeaderInfo), cchHeaderInfo, util.pstrToFfi(lpszFileExtension), util.pstrToFfi(lpszOriginalUrl)));
 }
 
 export function CommitUrlCacheEntryW(
@@ -11839,7 +12135,7 @@ export function CommitUrlCacheEntryW(
   lpszFileExtension: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszOriginalUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryW(util.pwstrToFfi(lpszUrlName), util.pwstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.pwstrToFfi(lpszHeaderInfo), cchHeaderInfo, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszOriginalUrl)));
+  return util.boolFromFfi(libWININET_dll.CommitUrlCacheEntryW!(util.pwstrToFfi(lpszUrlName), util.pwstrToFfi(lpszLocalFileName), util.toPointer(ExpireTime), util.toPointer(LastModifiedTime), CacheEntryType, util.pwstrToFfi(lpszHeaderInfo), cchHeaderInfo, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszOriginalUrl)));
 }
 
 export function RetrieveUrlCacheEntryFileA(
@@ -11848,7 +12144,7 @@ export function RetrieveUrlCacheEntryFileA(
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.RetrieveUrlCacheEntryFileA(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), dwReserved));
+  return util.boolFromFfi(libWININET_dll.RetrieveUrlCacheEntryFileA!(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), dwReserved));
 }
 
 export function RetrieveUrlCacheEntryFileW(
@@ -11857,28 +12153,28 @@ export function RetrieveUrlCacheEntryFileW(
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.RetrieveUrlCacheEntryFileW(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), dwReserved));
+  return util.boolFromFfi(libWININET_dll.RetrieveUrlCacheEntryFileW!(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), dwReserved));
 }
 
 export function UnlockUrlCacheEntryFileA(
   lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileA(util.pstrToFfi(lpszUrlName), dwReserved));
+  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileA!(util.pstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function UnlockUrlCacheEntryFileW(
   lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileW(util.pwstrToFfi(lpszUrlName), dwReserved));
+  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFileW!(util.pwstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function UnlockUrlCacheEntryFile(
   lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFile(util.pstrToFfi(lpszUrlName), dwReserved));
+  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryFile!(util.pstrToFfi(lpszUrlName), dwReserved));
 }
 
 export function RetrieveUrlCacheEntryStreamA(
@@ -11888,7 +12184,7 @@ export function RetrieveUrlCacheEntryStreamA(
   fRandomRead: boolean /* Windows.Win32.Foundation.BOOL */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.RetrieveUrlCacheEntryStreamA(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.boolToFfi(fRandomRead), dwReserved);
+  return libWININET_dll.RetrieveUrlCacheEntryStreamA!(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.boolToFfi(fRandomRead), dwReserved);
 }
 
 export function RetrieveUrlCacheEntryStreamW(
@@ -11898,7 +12194,7 @@ export function RetrieveUrlCacheEntryStreamW(
   fRandomRead: boolean /* Windows.Win32.Foundation.BOOL */,
   dwReserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.RetrieveUrlCacheEntryStreamW(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.boolToFfi(fRandomRead), dwReserved);
+  return libWININET_dll.RetrieveUrlCacheEntryStreamW!(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.boolToFfi(fRandomRead), dwReserved);
 }
 
 export function ReadUrlCacheEntryStream(
@@ -11908,7 +12204,7 @@ export function ReadUrlCacheEntryStream(
   lpdwLen: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ReadUrlCacheEntryStream(util.toPointer(hUrlCacheStream), dwLocation, util.toPointer(lpBuffer), util.toPointer(lpdwLen), Reserved));
+  return util.boolFromFfi(libWININET_dll.ReadUrlCacheEntryStream!(util.toPointer(hUrlCacheStream), dwLocation, util.toPointer(lpBuffer), util.toPointer(lpdwLen), Reserved));
 }
 
 export function ReadUrlCacheEntryStreamEx(
@@ -11917,14 +12213,14 @@ export function ReadUrlCacheEntryStreamEx(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ReadUrlCacheEntryStreamEx(util.toPointer(hUrlCacheStream), qwLocation, util.toPointer(lpBuffer), util.toPointer(lpdwLen)));
+  return util.boolFromFfi(libWININET_dll.ReadUrlCacheEntryStreamEx!(util.toPointer(hUrlCacheStream), qwLocation, util.toPointer(lpBuffer), util.toPointer(lpdwLen)));
 }
 
 export function UnlockUrlCacheEntryStream(
   hUrlCacheStream: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Reserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryStream(util.toPointer(hUrlCacheStream), Reserved));
+  return util.boolFromFfi(libWININET_dll.UnlockUrlCacheEntryStream!(util.toPointer(hUrlCacheStream), Reserved));
 }
 
 export function GetUrlCacheEntryInfoA(
@@ -11932,7 +12228,7 @@ export function GetUrlCacheEntryInfoA(
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoA(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoA!(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
 }
 
 export function GetUrlCacheEntryInfoW(
@@ -11940,7 +12236,7 @@ export function GetUrlCacheEntryInfoW(
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoW(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoW!(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
 }
 
 export function FindFirstUrlCacheGroup(
@@ -11951,7 +12247,7 @@ export function FindFirstUrlCacheGroup(
   lpGroupId: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheGroup(dwFlags, dwFilter, util.toPointer(lpSearchCondition), dwSearchCondition, util.toPointer(lpGroupId), util.toPointer(lpReserved));
+  return libWININET_dll.FindFirstUrlCacheGroup!(dwFlags, dwFilter, util.toPointer(lpSearchCondition), dwSearchCondition, util.toPointer(lpGroupId), util.toPointer(lpReserved));
 }
 
 export function FindNextUrlCacheGroup(
@@ -11959,7 +12255,7 @@ export function FindNextUrlCacheGroup(
   lpGroupId: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheGroup(util.toPointer(hFind), util.toPointer(lpGroupId), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheGroup!(util.toPointer(hFind), util.toPointer(lpGroupId), util.toPointer(lpReserved)));
 }
 
 export function GetUrlCacheGroupAttributeA(
@@ -11970,7 +12266,7 @@ export function GetUrlCacheGroupAttributeA(
   lpcbGroupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheGroupAttributeA(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpcbGroupInfo), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheGroupAttributeA!(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpcbGroupInfo), util.toPointer(lpReserved)));
 }
 
 export function GetUrlCacheGroupAttributeW(
@@ -11981,7 +12277,7 @@ export function GetUrlCacheGroupAttributeW(
   lpcbGroupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheGroupAttributeW(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpcbGroupInfo), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheGroupAttributeW!(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpcbGroupInfo), util.toPointer(lpReserved)));
 }
 
 export function SetUrlCacheGroupAttributeA(
@@ -11991,7 +12287,7 @@ export function SetUrlCacheGroupAttributeA(
   lpGroupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheGroupAttributeA(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheGroupAttributeA!(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpReserved)));
 }
 
 export function SetUrlCacheGroupAttributeW(
@@ -12001,7 +12297,7 @@ export function SetUrlCacheGroupAttributeW(
   lpGroupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheGroupAttributeW(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheGroupAttributeW!(gid, dwFlags, dwAttributes, util.toPointer(lpGroupInfo), util.toPointer(lpReserved)));
 }
 
 export function GetUrlCacheEntryInfoExA(
@@ -12013,7 +12309,7 @@ export function GetUrlCacheEntryInfoExA(
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoExA(util.pstrToFfi(lpszUrl), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.pstrToFfi(lpszRedirectUrl), util.toPointer(lpcbRedirectUrl), util.toPointer(lpReserved), dwFlags));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoExA!(util.pstrToFfi(lpszUrl), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.pstrToFfi(lpszRedirectUrl), util.toPointer(lpcbRedirectUrl), util.toPointer(lpReserved), dwFlags));
 }
 
 export function GetUrlCacheEntryInfoExW(
@@ -12025,7 +12321,7 @@ export function GetUrlCacheEntryInfoExW(
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoExW(util.pwstrToFfi(lpszUrl), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.pwstrToFfi(lpszRedirectUrl), util.toPointer(lpcbRedirectUrl), util.toPointer(lpReserved), dwFlags));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheEntryInfoExW!(util.pwstrToFfi(lpszUrl), util.toPointer(lpCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.pwstrToFfi(lpszRedirectUrl), util.toPointer(lpcbRedirectUrl), util.toPointer(lpReserved), dwFlags));
 }
 
 export function SetUrlCacheEntryInfoA(
@@ -12033,7 +12329,7 @@ export function SetUrlCacheEntryInfoA(
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryInfoA(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryInfoA!(util.pstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), dwFieldControl));
 }
 
 export function SetUrlCacheEntryInfoW(
@@ -12041,14 +12337,14 @@ export function SetUrlCacheEntryInfoW(
   lpCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryInfoW(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryInfoW!(util.pwstrToFfi(lpszUrlName), util.toPointer(lpCacheEntryInfo), dwFieldControl));
 }
 
 export function CreateUrlCacheGroup(
   dwFlags: number /* u32 */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* i64 */ {
-  return libWININET_dll.CreateUrlCacheGroup(dwFlags, util.toPointer(lpReserved));
+  return libWININET_dll.CreateUrlCacheGroup!(dwFlags, util.toPointer(lpReserved));
 }
 
 export function DeleteUrlCacheGroup(
@@ -12056,7 +12352,7 @@ export function DeleteUrlCacheGroup(
   dwFlags: number /* u32 */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheGroup(GroupId, dwFlags, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheGroup!(GroupId, dwFlags, util.toPointer(lpReserved)));
 }
 
 export function SetUrlCacheEntryGroupA(
@@ -12067,7 +12363,7 @@ export function SetUrlCacheEntryGroupA(
   cbGroupAttributes: number /* u32 */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroupA(util.pstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroupA!(util.pstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
 }
 
 export function SetUrlCacheEntryGroupW(
@@ -12078,7 +12374,7 @@ export function SetUrlCacheEntryGroupW(
   cbGroupAttributes: number /* u32 */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroupW(util.pwstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroupW!(util.pwstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
 }
 
 export function SetUrlCacheEntryGroup(
@@ -12089,7 +12385,7 @@ export function SetUrlCacheEntryGroup(
   cbGroupAttributes: number /* u32 */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroup(util.pstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheEntryGroup!(util.pstrToFfi(lpszUrlName), dwFlags, GroupId, util.toPointer(pbGroupAttributes), cbGroupAttributes, util.toPointer(lpReserved)));
 }
 
 export function FindFirstUrlCacheEntryExA(
@@ -12103,7 +12399,7 @@ export function FindFirstUrlCacheEntryExA(
   lpcbGroupAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheEntryExA(util.pstrToFfi(lpszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved));
+  return libWININET_dll.FindFirstUrlCacheEntryExA!(util.pstrToFfi(lpszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved));
 }
 
 export function FindFirstUrlCacheEntryExW(
@@ -12117,7 +12413,7 @@ export function FindFirstUrlCacheEntryExW(
   lpcbGroupAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheEntryExW(util.pwstrToFfi(lpszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved));
+  return libWININET_dll.FindFirstUrlCacheEntryExW!(util.pwstrToFfi(lpszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved));
 }
 
 export function FindNextUrlCacheEntryExA(
@@ -12128,7 +12424,7 @@ export function FindNextUrlCacheEntryExA(
   lpcbGroupAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryExA(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryExA!(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved)));
 }
 
 export function FindNextUrlCacheEntryExW(
@@ -12139,7 +12435,7 @@ export function FindNextUrlCacheEntryExW(
   lpcbGroupAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   lpReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryExW(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryExW!(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo), util.toPointer(lpGroupAttributes), util.toPointer(lpcbGroupAttributes), util.toPointer(lpReserved)));
 }
 
 export function FindFirstUrlCacheEntryA(
@@ -12147,7 +12443,7 @@ export function FindFirstUrlCacheEntryA(
   lpFirstCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheEntryA(util.pstrToFfi(lpszUrlSearchPattern), util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo));
+  return libWININET_dll.FindFirstUrlCacheEntryA!(util.pstrToFfi(lpszUrlSearchPattern), util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo));
 }
 
 export function FindFirstUrlCacheEntryW(
@@ -12155,7 +12451,7 @@ export function FindFirstUrlCacheEntryW(
   lpFirstCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheEntryW(util.pwstrToFfi(lpszUrlSearchPattern), util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo));
+  return libWININET_dll.FindFirstUrlCacheEntryW!(util.pwstrToFfi(lpszUrlSearchPattern), util.toPointer(lpFirstCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo));
 }
 
 export function FindNextUrlCacheEntryA(
@@ -12163,7 +12459,7 @@ export function FindNextUrlCacheEntryA(
   lpNextCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryA(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryA!(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
 }
 
 export function FindNextUrlCacheEntryW(
@@ -12171,31 +12467,31 @@ export function FindNextUrlCacheEntryW(
   lpNextCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryW(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheEntryW!(util.toPointer(hEnumHandle), util.toPointer(lpNextCacheEntryInfo), util.toPointer(lpcbCacheEntryInfo)));
 }
 
 export function FindCloseUrlCache(
   hEnumHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindCloseUrlCache(util.toPointer(hEnumHandle)));
+  return util.boolFromFfi(libWININET_dll.FindCloseUrlCache!(util.toPointer(hEnumHandle)));
 }
 
 export function DeleteUrlCacheEntryA(
   lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryA(util.pstrToFfi(lpszUrlName)));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryA!(util.pstrToFfi(lpszUrlName)));
 }
 
 export function DeleteUrlCacheEntryW(
   lpszUrlName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryW(util.pwstrToFfi(lpszUrlName)));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntryW!(util.pwstrToFfi(lpszUrlName)));
 }
 
 export function DeleteUrlCacheEntry(
   lpszUrlName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntry(util.pstrToFfi(lpszUrlName)));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheEntry!(util.pstrToFfi(lpszUrlName)));
 }
 
 export function InternetDialA(
@@ -12205,7 +12501,7 @@ export function InternetDialA(
   lpdwConnection: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetDialA((hwndParent), util.pstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
+  return libWININET_dll.InternetDialA!((hwndParent), util.pstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
 }
 
 export function InternetDialW(
@@ -12215,7 +12511,7 @@ export function InternetDialW(
   lpdwConnection: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetDialW((hwndParent), util.pwstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
+  return libWININET_dll.InternetDialW!((hwndParent), util.pwstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
 }
 
 export function InternetDial(
@@ -12225,14 +12521,14 @@ export function InternetDial(
   lpdwConnection: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetDial((hwndParent), util.pstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
+  return libWININET_dll.InternetDial!((hwndParent), util.pstrToFfi(lpszConnectoid), dwFlags, util.toPointer(lpdwConnection), dwReserved);
 }
 
 export function InternetHangUp(
   dwConnection: bigint | number /* usize */,
   dwReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetHangUp(dwConnection, dwReserved);
+  return libWININET_dll.InternetHangUp!(dwConnection, dwReserved);
 }
 
 export function InternetGoOnlineA(
@@ -12240,7 +12536,7 @@ export function InternetGoOnlineA(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGoOnlineA(util.pstrToFfi(lpszURL), (hwndParent), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetGoOnlineA!(util.pstrToFfi(lpszURL), (hwndParent), dwFlags));
 }
 
 export function InternetGoOnlineW(
@@ -12248,7 +12544,7 @@ export function InternetGoOnlineW(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGoOnlineW(util.pwstrToFfi(lpszURL), (hwndParent), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetGoOnlineW!(util.pwstrToFfi(lpszURL), (hwndParent), dwFlags));
 }
 
 export function InternetGoOnline(
@@ -12256,27 +12552,27 @@ export function InternetGoOnline(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGoOnline(util.pstrToFfi(lpszURL), (hwndParent), dwFlags));
+  return util.boolFromFfi(libWININET_dll.InternetGoOnline!(util.pstrToFfi(lpszURL), (hwndParent), dwFlags));
 }
 
 export function InternetAutodial(
   dwFlags: INTERNET_AUTODIAL /* Windows.Win32.Networking.WinInet.INTERNET_AUTODIAL */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetAutodial(dwFlags, (hwndParent)));
+  return util.boolFromFfi(libWININET_dll.InternetAutodial!(dwFlags, (hwndParent)));
 }
 
 export function InternetAutodialHangup(
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetAutodialHangup(dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetAutodialHangup!(dwReserved));
 }
 
 export function InternetGetConnectedState(
   lpdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetConnectedState(util.toPointer(lpdwFlags), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetGetConnectedState!(util.toPointer(lpdwFlags), dwReserved));
 }
 
 export function InternetGetConnectedStateExA(
@@ -12285,7 +12581,7 @@ export function InternetGetConnectedStateExA(
   cchNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateExA(util.toPointer(lpdwFlags), util.pstrToFfi(lpszConnectionName), cchNameLen, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateExA!(util.toPointer(lpdwFlags), util.pstrToFfi(lpszConnectionName), cchNameLen, dwReserved));
 }
 
 export function InternetGetConnectedStateExW(
@@ -12294,19 +12590,19 @@ export function InternetGetConnectedStateExW(
   cchNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateExW(util.toPointer(lpdwFlags), util.pwstrToFfi(lpszConnectionName), cchNameLen, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateExW!(util.toPointer(lpdwFlags), util.pwstrToFfi(lpszConnectionName), cchNameLen, dwReserved));
 }
 
 export function DeleteWpadCacheForNetworks(
   param0: WPAD_CACHE_DELETE /* Windows.Win32.Networking.WinInet.WPAD_CACHE_DELETE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteWpadCacheForNetworks(param0));
+  return util.boolFromFfi(libWININET_dll.DeleteWpadCacheForNetworks!(param0));
 }
 
 export function InternetInitializeAutoProxyDll(
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetInitializeAutoProxyDll(dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetInitializeAutoProxyDll!(dwReserved));
 }
 
 export function DetectAutoProxyUrl(
@@ -12314,7 +12610,7 @@ export function DetectAutoProxyUrl(
   cchAutoProxyUrl: number /* u32 */,
   dwDetectFlags: PROXY_AUTO_DETECT_TYPE /* Windows.Win32.Networking.WinInet.PROXY_AUTO_DETECT_TYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DetectAutoProxyUrl(util.pstrToFfi(pszAutoProxyUrl), cchAutoProxyUrl, dwDetectFlags));
+  return util.boolFromFfi(libWININET_dll.DetectAutoProxyUrl!(util.pstrToFfi(pszAutoProxyUrl), cchAutoProxyUrl, dwDetectFlags));
 }
 
 export function CreateMD5SSOHash(
@@ -12323,7 +12619,7 @@ export function CreateMD5SSOHash(
   pwszTarget: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbHexHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateMD5SSOHash(util.pwstrToFfi(pszChallengeInfo), util.pwstrToFfi(pwszRealm), util.pwstrToFfi(pwszTarget), util.toPointer(pbHexHash)));
+  return util.boolFromFfi(libWININET_dll.CreateMD5SSOHash!(util.pwstrToFfi(pszChallengeInfo), util.pwstrToFfi(pwszRealm), util.pwstrToFfi(pwszTarget), util.toPointer(pbHexHash)));
 }
 
 export function InternetGetConnectedStateEx(
@@ -12332,7 +12628,7 @@ export function InternetGetConnectedStateEx(
   dwNameLen: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateEx(util.toPointer(lpdwFlags), util.pstrToFfi(lpszConnectionName), dwNameLen, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetGetConnectedStateEx!(util.toPointer(lpdwFlags), util.pstrToFfi(lpszConnectionName), dwNameLen, dwReserved));
 }
 
 export function InternetSetDialStateA(
@@ -12340,7 +12636,7 @@ export function InternetSetDialStateA(
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetDialStateA(util.pstrToFfi(lpszConnectoid), dwState, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetSetDialStateA!(util.pstrToFfi(lpszConnectoid), dwState, dwReserved));
 }
 
 export function InternetSetDialStateW(
@@ -12348,7 +12644,7 @@ export function InternetSetDialStateW(
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetDialStateW(util.pwstrToFfi(lpszConnectoid), dwState, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetSetDialStateW!(util.pwstrToFfi(lpszConnectoid), dwState, dwReserved));
 }
 
 export function InternetSetDialState(
@@ -12356,39 +12652,39 @@ export function InternetSetDialState(
   dwState: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetDialState(util.pstrToFfi(lpszConnectoid), dwState, dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetSetDialState!(util.pstrToFfi(lpszConnectoid), dwState, dwReserved));
 }
 
 export function InternetSetPerSiteCookieDecisionA(
   pchHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwDecision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionA(util.pstrToFfi(pchHostName), dwDecision));
+  return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionA!(util.pstrToFfi(pchHostName), dwDecision));
 }
 
 export function InternetSetPerSiteCookieDecisionW(
   pchHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDecision: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionW(util.pwstrToFfi(pchHostName), dwDecision));
+  return util.boolFromFfi(libWININET_dll.InternetSetPerSiteCookieDecisionW!(util.pwstrToFfi(pchHostName), dwDecision));
 }
 
 export function InternetGetPerSiteCookieDecisionA(
   pchHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionA(util.pstrToFfi(pchHostName), util.toPointer(pResult)));
+  return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionA!(util.pstrToFfi(pchHostName), util.toPointer(pResult)));
 }
 
 export function InternetGetPerSiteCookieDecisionW(
   pchHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionW(util.pwstrToFfi(pchHostName), util.toPointer(pResult)));
+  return util.boolFromFfi(libWININET_dll.InternetGetPerSiteCookieDecisionW!(util.pwstrToFfi(pchHostName), util.toPointer(pResult)));
 }
 
 export function InternetClearAllPerSiteCookieDecisions(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetClearAllPerSiteCookieDecisions());
+  return util.boolFromFfi(libWININET_dll.InternetClearAllPerSiteCookieDecisions!());
 }
 
 export function InternetEnumPerSiteCookieDecisionA(
@@ -12397,7 +12693,7 @@ export function InternetEnumPerSiteCookieDecisionA(
   pdwDecision: Deno.PointerValue | Uint8Array /* ptr */,
   dwIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetEnumPerSiteCookieDecisionA(util.pstrToFfi(pszSiteName), util.toPointer(pcSiteNameSize), util.toPointer(pdwDecision), dwIndex));
+  return util.boolFromFfi(libWININET_dll.InternetEnumPerSiteCookieDecisionA!(util.pstrToFfi(pszSiteName), util.toPointer(pcSiteNameSize), util.toPointer(pdwDecision), dwIndex));
 }
 
 export function InternetEnumPerSiteCookieDecisionW(
@@ -12406,7 +12702,7 @@ export function InternetEnumPerSiteCookieDecisionW(
   pdwDecision: Deno.PointerValue | Uint8Array /* ptr */,
   dwIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetEnumPerSiteCookieDecisionW(util.pwstrToFfi(pszSiteName), util.toPointer(pcSiteNameSize), util.toPointer(pdwDecision), dwIndex));
+  return util.boolFromFfi(libWININET_dll.InternetEnumPerSiteCookieDecisionW!(util.pwstrToFfi(pszSiteName), util.toPointer(pcSiteNameSize), util.toPointer(pdwDecision), dwIndex));
 }
 
 export function PrivacySetZonePreferenceW(
@@ -12415,7 +12711,7 @@ export function PrivacySetZonePreferenceW(
   dwTemplate: number /* u32 */,
   pszPreference: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWININET_dll.PrivacySetZonePreferenceW(dwZone, dwType, dwTemplate, util.pwstrToFfi(pszPreference));
+  return libWININET_dll.PrivacySetZonePreferenceW!(dwZone, dwType, dwTemplate, util.pwstrToFfi(pszPreference));
 }
 
 export function PrivacyGetZonePreferenceW(
@@ -12425,14 +12721,14 @@ export function PrivacyGetZonePreferenceW(
   pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwBufferLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.PrivacyGetZonePreferenceW(dwZone, dwType, util.toPointer(pdwTemplate), util.pwstrToFfi(pszBuffer), util.toPointer(pdwBufferLength));
+  return libWININET_dll.PrivacyGetZonePreferenceW!(dwZone, dwType, util.toPointer(pdwTemplate), util.pwstrToFfi(pszBuffer), util.toPointer(pdwBufferLength));
 }
 
 export function HttpIsHostHstsEnabled(
   pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfIsHsts: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpIsHostHstsEnabled(util.pwstrToFfi(pcwszUrl), util.toPointer(pfIsHsts));
+  return libWININET_dll.HttpIsHostHstsEnabled!(util.pwstrToFfi(pcwszUrl), util.toPointer(pfIsHsts));
 }
 
 export function InternetAlgIdToStringA(
@@ -12441,7 +12737,7 @@ export function InternetAlgIdToStringA(
   lpdwstrLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetAlgIdToStringA(ai, util.pstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetAlgIdToStringA!(ai, util.pstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
 }
 
 export function InternetAlgIdToStringW(
@@ -12450,7 +12746,7 @@ export function InternetAlgIdToStringW(
   lpdwstrLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetAlgIdToStringW(ai, util.pwstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetAlgIdToStringW!(ai, util.pwstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
 }
 
 export function InternetSecurityProtocolToStringA(
@@ -12459,7 +12755,7 @@ export function InternetSecurityProtocolToStringA(
   lpdwstrLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSecurityProtocolToStringA(dwProtocol, util.pstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetSecurityProtocolToStringA!(dwProtocol, util.pstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
 }
 
 export function InternetSecurityProtocolToStringW(
@@ -12468,7 +12764,7 @@ export function InternetSecurityProtocolToStringW(
   lpdwstrLength: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetSecurityProtocolToStringW(dwProtocol, util.pwstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetSecurityProtocolToStringW!(dwProtocol, util.pwstrToFfi(lpstr), util.toPointer(lpdwstrLength), dwReserved));
 }
 
 export function InternetGetSecurityInfoByURLA(
@@ -12476,7 +12772,7 @@ export function InternetGetSecurityInfoByURLA(
   ppCertChain: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURLA(util.pstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
+  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURLA!(util.pstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
 }
 
 export function InternetGetSecurityInfoByURLW(
@@ -12484,7 +12780,7 @@ export function InternetGetSecurityInfoByURLW(
   ppCertChain: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURLW(util.pwstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
+  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURLW!(util.pwstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
 }
 
 export function InternetGetSecurityInfoByURL(
@@ -12492,14 +12788,14 @@ export function InternetGetSecurityInfoByURL(
   ppCertChain: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSecureFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURL(util.pstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
+  return util.boolFromFfi(libWININET_dll.InternetGetSecurityInfoByURL!(util.pstrToFfi(lpszURL), util.toPointer(ppCertChain), util.toPointer(pdwSecureFlags)));
 }
 
 export function ShowSecurityInfo(
   hWndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pSecurityInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.ShowSecurityInfo((hWndParent), util.toPointer(pSecurityInfo));
+  return libWININET_dll.ShowSecurityInfo!((hWndParent), util.toPointer(pSecurityInfo));
 }
 
 export function ShowX509EncodedCertificate(
@@ -12507,13 +12803,13 @@ export function ShowX509EncodedCertificate(
   lpCert: Deno.PointerValue | Uint8Array /* ptr */,
   cbCert: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.ShowX509EncodedCertificate((hWndParent), util.toPointer(lpCert), cbCert);
+  return libWININET_dll.ShowX509EncodedCertificate!((hWndParent), util.toPointer(lpCert), cbCert);
 }
 
 export function ShowClientAuthCerts(
   hWndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libWININET_dll.ShowClientAuthCerts((hWndParent));
+  return libWININET_dll.ShowClientAuthCerts!((hWndParent));
 }
 
 export function ParseX509EncodedCertificateForListBoxEntry(
@@ -12522,28 +12818,28 @@ export function ParseX509EncodedCertificateForListBoxEntry(
   lpszListBoxEntry: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwListBoxEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.ParseX509EncodedCertificateForListBoxEntry(util.toPointer(lpCert), cbCert, util.pstrToFfi(lpszListBoxEntry), util.toPointer(lpdwListBoxEntry));
+  return libWININET_dll.ParseX509EncodedCertificateForListBoxEntry!(util.toPointer(lpCert), cbCert, util.pstrToFfi(lpszListBoxEntry), util.toPointer(lpdwListBoxEntry));
 }
 
 export function InternetShowSecurityInfoByURLA(
   lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLA(util.pstrToFfi(lpszURL), (hwndParent)));
+  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLA!(util.pstrToFfi(lpszURL), (hwndParent)));
 }
 
 export function InternetShowSecurityInfoByURLW(
   lpszURL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLW(util.pwstrToFfi(lpszURL), (hwndParent)));
+  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURLW!(util.pwstrToFfi(lpszURL), (hwndParent)));
 }
 
 export function InternetShowSecurityInfoByURL(
   lpszURL: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURL(util.pstrToFfi(lpszURL), (hwndParent)));
+  return util.boolFromFfi(libWININET_dll.InternetShowSecurityInfoByURL!(util.pstrToFfi(lpszURL), (hwndParent)));
 }
 
 export function InternetFortezzaCommand(
@@ -12551,14 +12847,14 @@ export function InternetFortezzaCommand(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwReserved: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetFortezzaCommand(dwCommand, (hwnd), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetFortezzaCommand!(dwCommand, (hwnd), dwReserved));
 }
 
 export function InternetQueryFortezzaStatus(
   pdwStatus: Deno.PointerValue | Uint8Array /* ptr */,
   dwReserved: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetQueryFortezzaStatus(util.toPointer(pdwStatus), dwReserved));
+  return util.boolFromFfi(libWININET_dll.InternetQueryFortezzaStatus!(util.toPointer(pdwStatus), dwReserved));
 }
 
 export function InternetWriteFileExA(
@@ -12567,7 +12863,7 @@ export function InternetWriteFileExA(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetWriteFileExA(util.toPointer(hFile), util.toPointer(lpBuffersIn), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.InternetWriteFileExA!(util.toPointer(hFile), util.toPointer(lpBuffersIn), dwFlags, dwContext));
 }
 
 export function InternetWriteFileExW(
@@ -12576,13 +12872,13 @@ export function InternetWriteFileExW(
   dwFlags: number /* u32 */,
   dwContext: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.InternetWriteFileExW(util.toPointer(hFile), util.toPointer(lpBuffersIn), dwFlags, dwContext));
+  return util.boolFromFfi(libWININET_dll.InternetWriteFileExW!(util.toPointer(hFile), util.toPointer(lpBuffersIn), dwFlags, dwContext));
 }
 
 export function FindP3PPolicySymbol(
   pszSymbol: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libWININET_dll.FindP3PPolicySymbol(util.pstrToFfi(pszSymbol));
+  return libWININET_dll.FindP3PPolicySymbol!(util.pstrToFfi(pszSymbol));
 }
 
 export function HttpGetServerCredentials(
@@ -12590,7 +12886,7 @@ export function HttpGetServerCredentials(
   ppwszUserName: Deno.PointerValue | Uint8Array /* ptr */,
   ppwszPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpGetServerCredentials(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszUserName), util.toPointer(ppwszPassword));
+  return libWININET_dll.HttpGetServerCredentials!(util.pwstrToFfi(pwszUrl), util.toPointer(ppwszUserName), util.toPointer(ppwszPassword));
 }
 
 export function HttpPushEnable(
@@ -12598,7 +12894,7 @@ export function HttpPushEnable(
   pTransportSetting: Deno.PointerValue | Uint8Array /* ptr */,
   phWait: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpPushEnable(util.toPointer(hRequest), util.toPointer(pTransportSetting), util.toPointer(phWait));
+  return libWININET_dll.HttpPushEnable!(util.toPointer(hRequest), util.toPointer(pTransportSetting), util.toPointer(phWait));
 }
 
 export function HttpPushWait(
@@ -12606,13 +12902,13 @@ export function HttpPushWait(
   eType: HTTP_PUSH_WAIT_TYPE /* Windows.Win32.Networking.WinInet.HTTP_PUSH_WAIT_TYPE */,
   pNotificationStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpPushWait(util.toPointer(hWait), eType, util.toPointer(pNotificationStatus));
+  return libWININET_dll.HttpPushWait!(util.toPointer(hWait), eType, util.toPointer(pNotificationStatus));
 }
 
 export function HttpPushClose(
   hWait: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.HTTP_PUSH_WAIT_HANDLE */,
 ): void /* void */ {
-  return libWININET_dll.HttpPushClose(util.toPointer(hWait));
+  return libWININET_dll.HttpPushClose!(util.toPointer(hWait));
 }
 
 export function HttpCheckDavComplianceA(
@@ -12622,7 +12918,7 @@ export function HttpCheckDavComplianceA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpCheckDavComplianceA(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszComplianceToken), util.toPointer(lpfFound), (hWnd), util.toPointer(lpvReserved)));
+  return util.boolFromFfi(libWININET_dll.HttpCheckDavComplianceA!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszComplianceToken), util.toPointer(lpfFound), (hWnd), util.toPointer(lpvReserved)));
 }
 
 export function HttpCheckDavComplianceW(
@@ -12632,7 +12928,7 @@ export function HttpCheckDavComplianceW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   lpvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpCheckDavComplianceW(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszComplianceToken), util.toPointer(lpfFound), (hWnd), util.toPointer(lpvReserved)));
+  return util.boolFromFfi(libWININET_dll.HttpCheckDavComplianceW!(util.pwstrToFfi(lpszUrl), util.pwstrToFfi(lpszComplianceToken), util.toPointer(lpfFound), (hWnd), util.toPointer(lpvReserved)));
 }
 
 export function IsUrlCacheEntryExpiredA(
@@ -12640,7 +12936,7 @@ export function IsUrlCacheEntryExpiredA(
   dwFlags: number /* u32 */,
   pftLastModified: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsUrlCacheEntryExpiredA(util.pstrToFfi(lpszUrlName), dwFlags, util.toPointer(pftLastModified)));
+  return util.boolFromFfi(libWININET_dll.IsUrlCacheEntryExpiredA!(util.pstrToFfi(lpszUrlName), dwFlags, util.toPointer(pftLastModified)));
 }
 
 export function IsUrlCacheEntryExpiredW(
@@ -12648,7 +12944,7 @@ export function IsUrlCacheEntryExpiredW(
   dwFlags: number /* u32 */,
   pftLastModified: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsUrlCacheEntryExpiredW(util.pwstrToFfi(lpszUrlName), dwFlags, util.toPointer(pftLastModified)));
+  return util.boolFromFfi(libWININET_dll.IsUrlCacheEntryExpiredW!(util.pwstrToFfi(lpszUrlName), dwFlags, util.toPointer(pftLastModified)));
 }
 
 export function CreateUrlCacheEntryExW(
@@ -12659,7 +12955,7 @@ export function CreateUrlCacheEntryExW(
   dwReserved: number /* u32 */,
   fPreserveIncomingFileName: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryExW(util.pwstrToFfi(lpszUrlName), dwExpectedFileSize, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszFileName), dwReserved, util.boolToFfi(fPreserveIncomingFileName)));
+  return util.boolFromFfi(libWININET_dll.CreateUrlCacheEntryExW!(util.pwstrToFfi(lpszUrlName), dwExpectedFileSize, util.pwstrToFfi(lpszFileExtension), util.pwstrToFfi(lpszFileName), dwReserved, util.boolToFfi(fPreserveIncomingFileName)));
 }
 
 export function GetUrlCacheEntryBinaryBlob(
@@ -12671,7 +12967,7 @@ export function GetUrlCacheEntryBinaryBlob(
   ppbBlob: Deno.PointerValue | Uint8Array /* ptr */,
   pcbBlob: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.GetUrlCacheEntryBinaryBlob(util.pwstrToFfi(pwszUrlName), util.toPointer(dwType), util.toPointer(pftExpireTime), util.toPointer(pftAccessTime), util.toPointer(pftModifiedTime), util.toPointer(ppbBlob), util.toPointer(pcbBlob));
+  return libWININET_dll.GetUrlCacheEntryBinaryBlob!(util.pwstrToFfi(pwszUrlName), util.toPointer(dwType), util.toPointer(pftExpireTime), util.toPointer(pftAccessTime), util.toPointer(pftModifiedTime), util.toPointer(ppbBlob), util.toPointer(pcbBlob));
 }
 
 export function CommitUrlCacheEntryBinaryBlob(
@@ -12682,7 +12978,7 @@ export function CommitUrlCacheEntryBinaryBlob(
   pbBlob: Deno.PointerValue | Uint8Array /* ptr */,
   cbBlob: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.CommitUrlCacheEntryBinaryBlob(util.pwstrToFfi(pwszUrlName), dwType, util.toPointer(ftExpireTime), util.toPointer(ftModifiedTime), util.toPointer(pbBlob), cbBlob);
+  return libWININET_dll.CommitUrlCacheEntryBinaryBlob!(util.pwstrToFfi(pwszUrlName), dwType, util.toPointer(ftExpireTime), util.toPointer(ftModifiedTime), util.toPointer(pbBlob), cbBlob);
 }
 
 export function CreateUrlCacheContainerA(
@@ -12695,7 +12991,7 @@ export function CreateUrlCacheContainerA(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateUrlCacheContainerA(util.pstrToFfi(Name), util.pstrToFfi(lpCachePrefix), util.pstrToFfi(lpszCachePath), KBCacheLimit, dwContainerType, dwOptions, util.toPointer(pvBuffer), util.toPointer(cbBuffer)));
+  return util.boolFromFfi(libWININET_dll.CreateUrlCacheContainerA!(util.pstrToFfi(Name), util.pstrToFfi(lpCachePrefix), util.pstrToFfi(lpszCachePath), KBCacheLimit, dwContainerType, dwOptions, util.toPointer(pvBuffer), util.toPointer(cbBuffer)));
 }
 
 export function CreateUrlCacheContainerW(
@@ -12708,21 +13004,21 @@ export function CreateUrlCacheContainerW(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.CreateUrlCacheContainerW(util.pwstrToFfi(Name), util.pwstrToFfi(lpCachePrefix), util.pwstrToFfi(lpszCachePath), KBCacheLimit, dwContainerType, dwOptions, util.toPointer(pvBuffer), util.toPointer(cbBuffer)));
+  return util.boolFromFfi(libWININET_dll.CreateUrlCacheContainerW!(util.pwstrToFfi(Name), util.pwstrToFfi(lpCachePrefix), util.pwstrToFfi(lpszCachePath), KBCacheLimit, dwContainerType, dwOptions, util.toPointer(pvBuffer), util.toPointer(cbBuffer)));
 }
 
 export function DeleteUrlCacheContainerA(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerA(util.pstrToFfi(Name), dwOptions));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerA!(util.pstrToFfi(Name), dwOptions));
 }
 
 export function DeleteUrlCacheContainerW(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwOptions: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerW(util.pwstrToFfi(Name), dwOptions));
+  return util.boolFromFfi(libWININET_dll.DeleteUrlCacheContainerW!(util.pwstrToFfi(Name), dwOptions));
 }
 
 export function FindFirstUrlCacheContainerA(
@@ -12731,7 +13027,7 @@ export function FindFirstUrlCacheContainerA(
   lpcbContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwOptions: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheContainerA(util.toPointer(pdwModified), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo), dwOptions);
+  return libWININET_dll.FindFirstUrlCacheContainerA!(util.toPointer(pdwModified), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo), dwOptions);
 }
 
 export function FindFirstUrlCacheContainerW(
@@ -12740,7 +13036,7 @@ export function FindFirstUrlCacheContainerW(
   lpcbContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwOptions: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWININET_dll.FindFirstUrlCacheContainerW(util.toPointer(pdwModified), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo), dwOptions);
+  return libWININET_dll.FindFirstUrlCacheContainerW!(util.toPointer(pdwModified), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo), dwOptions);
 }
 
 export function FindNextUrlCacheContainerA(
@@ -12748,7 +13044,7 @@ export function FindNextUrlCacheContainerA(
   lpContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheContainerA(util.toPointer(hEnumHandle), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheContainerA!(util.toPointer(hEnumHandle), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo)));
 }
 
 export function FindNextUrlCacheContainerW(
@@ -12756,7 +13052,7 @@ export function FindNextUrlCacheContainerW(
   lpContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbContainerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheContainerW(util.toPointer(hEnumHandle), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo)));
+  return util.boolFromFfi(libWININET_dll.FindNextUrlCacheContainerW!(util.toPointer(hEnumHandle), util.toPointer(lpContainerInfo), util.toPointer(lpcbContainerInfo)));
 }
 
 export function FreeUrlCacheSpaceA(
@@ -12764,7 +13060,7 @@ export function FreeUrlCacheSpaceA(
   dwSize: number /* u32 */,
   dwFilter: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FreeUrlCacheSpaceA(util.pstrToFfi(lpszCachePath), dwSize, dwFilter));
+  return util.boolFromFfi(libWININET_dll.FreeUrlCacheSpaceA!(util.pstrToFfi(lpszCachePath), dwSize, dwFilter));
 }
 
 export function FreeUrlCacheSpaceW(
@@ -12772,14 +13068,14 @@ export function FreeUrlCacheSpaceW(
   dwSize: number /* u32 */,
   dwFilter: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.FreeUrlCacheSpaceW(util.pwstrToFfi(lpszCachePath), dwSize, dwFilter));
+  return util.boolFromFfi(libWININET_dll.FreeUrlCacheSpaceW!(util.pwstrToFfi(lpszCachePath), dwSize, dwFilter));
 }
 
 export function UrlCacheFreeGlobalSpace(
   ullTargetSize: bigint | number /* u64 */,
   dwFilter: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheFreeGlobalSpace(ullTargetSize, dwFilter);
+  return libWININET_dll.UrlCacheFreeGlobalSpace!(ullTargetSize, dwFilter);
 }
 
 export function UrlCacheGetGlobalCacheSize(
@@ -12787,7 +13083,7 @@ export function UrlCacheGetGlobalCacheSize(
   pullSize: Deno.PointerValue | Uint8Array /* ptr */,
   pullLimit: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheGetGlobalCacheSize(dwFilter, util.toPointer(pullSize), util.toPointer(pullLimit));
+  return libWININET_dll.UrlCacheGetGlobalCacheSize!(dwFilter, util.toPointer(pullSize), util.toPointer(pullLimit));
 }
 
 export function GetUrlCacheConfigInfoA(
@@ -12795,7 +13091,7 @@ export function GetUrlCacheConfigInfoA(
   lpcbCacheConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: CACHE_CONFIG /* Windows.Win32.Networking.WinInet.CACHE_CONFIG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheConfigInfoA(util.toPointer(lpCacheConfigInfo), util.toPointer(lpcbCacheConfigInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheConfigInfoA!(util.toPointer(lpCacheConfigInfo), util.toPointer(lpcbCacheConfigInfo), dwFieldControl));
 }
 
 export function GetUrlCacheConfigInfoW(
@@ -12803,21 +13099,21 @@ export function GetUrlCacheConfigInfoW(
   lpcbCacheConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: CACHE_CONFIG /* Windows.Win32.Networking.WinInet.CACHE_CONFIG */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheConfigInfoW(util.toPointer(lpCacheConfigInfo), util.toPointer(lpcbCacheConfigInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheConfigInfoW!(util.toPointer(lpCacheConfigInfo), util.toPointer(lpcbCacheConfigInfo), dwFieldControl));
 }
 
 export function SetUrlCacheConfigInfoA(
   lpCacheConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheConfigInfoA(util.toPointer(lpCacheConfigInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheConfigInfoA!(util.toPointer(lpCacheConfigInfo), dwFieldControl));
 }
 
 export function SetUrlCacheConfigInfoW(
   lpCacheConfigInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFieldControl: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheConfigInfoW(util.toPointer(lpCacheConfigInfo), dwFieldControl));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheConfigInfoW!(util.toPointer(lpCacheConfigInfo), dwFieldControl));
 }
 
 export function RunOnceUrlCache(
@@ -12826,7 +13122,7 @@ export function RunOnceUrlCache(
   lpszCmd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nCmdShow: number /* i32 */,
 ): number /* u32 */ {
-  return libWININET_dll.RunOnceUrlCache((hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
+  return libWININET_dll.RunOnceUrlCache!((hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
 }
 
 export function DeleteIE3Cache(
@@ -12835,13 +13131,13 @@ export function DeleteIE3Cache(
   lpszCmd: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nCmdShow: number /* i32 */,
 ): number /* u32 */ {
-  return libWININET_dll.DeleteIE3Cache((hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
+  return libWININET_dll.DeleteIE3Cache!((hwnd), util.toPointer(hinst), util.pstrToFfi(lpszCmd), nCmdShow);
 }
 
 export function UpdateUrlCacheContentPath(
   szNewPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.UpdateUrlCacheContentPath(util.pstrToFfi(szNewPath)));
+  return util.boolFromFfi(libWININET_dll.UpdateUrlCacheContentPath!(util.pstrToFfi(szNewPath)));
 }
 
 export function RegisterUrlCacheNotification(
@@ -12851,32 +13147,32 @@ export function RegisterUrlCacheNotification(
   dwOpsFilter: number /* u32 */,
   dwReserved: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.RegisterUrlCacheNotification((hWnd), uMsg, gid, dwOpsFilter, dwReserved));
+  return util.boolFromFfi(libWININET_dll.RegisterUrlCacheNotification!((hWnd), uMsg, gid, dwOpsFilter, dwReserved));
 }
 
 export function GetUrlCacheHeaderData(
   nIdx: number /* u32 */,
   lpdwData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetUrlCacheHeaderData(nIdx, util.toPointer(lpdwData)));
+  return util.boolFromFfi(libWININET_dll.GetUrlCacheHeaderData!(nIdx, util.toPointer(lpdwData)));
 }
 
 export function SetUrlCacheHeaderData(
   nIdx: number /* u32 */,
   dwData: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.SetUrlCacheHeaderData(nIdx, dwData));
+  return util.boolFromFfi(libWININET_dll.SetUrlCacheHeaderData!(nIdx, dwData));
 }
 
 export function IncrementUrlCacheHeaderData(
   nIdx: number /* u32 */,
   lpdwData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IncrementUrlCacheHeaderData(nIdx, util.toPointer(lpdwData)));
+  return util.boolFromFfi(libWININET_dll.IncrementUrlCacheHeaderData!(nIdx, util.toPointer(lpdwData)));
 }
 
 export function LoadUrlCacheContent(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.LoadUrlCacheContent());
+  return util.boolFromFfi(libWININET_dll.LoadUrlCacheContent!());
 }
 
 export function AppCacheLookup(
@@ -12884,7 +13180,7 @@ export function AppCacheLookup(
   dwFlags: number /* u32 */,
   phAppCache: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheLookup(util.pwstrToFfi(pwszUrl), dwFlags, util.toPointer(phAppCache));
+  return libWININET_dll.AppCacheLookup!(util.pwstrToFfi(pwszUrl), dwFlags, util.toPointer(phAppCache));
 }
 
 export function AppCacheCheckManifest(
@@ -12897,20 +13193,20 @@ export function AppCacheCheckManifest(
   peState: Deno.PointerValue | Uint8Array /* ptr */,
   phNewAppCache: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheCheckManifest(util.pwstrToFfi(pwszMasterUrl), util.pwstrToFfi(pwszManifestUrl), util.toPointer(pbManifestData), dwManifestDataSize, util.toPointer(pbManifestResponseHeaders), dwManifestResponseHeadersSize, util.toPointer(peState), util.toPointer(phNewAppCache));
+  return libWININET_dll.AppCacheCheckManifest!(util.pwstrToFfi(pwszMasterUrl), util.pwstrToFfi(pwszManifestUrl), util.toPointer(pbManifestData), dwManifestDataSize, util.toPointer(pbManifestResponseHeaders), dwManifestResponseHeadersSize, util.toPointer(peState), util.toPointer(phNewAppCache));
 }
 
 export function AppCacheGetDownloadList(
   hAppCache: Deno.PointerValue | Uint8Array /* ptr */,
   pDownloadList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetDownloadList(util.toPointer(hAppCache), util.toPointer(pDownloadList));
+  return libWININET_dll.AppCacheGetDownloadList!(util.toPointer(hAppCache), util.toPointer(pDownloadList));
 }
 
 export function AppCacheFreeDownloadList(
   pDownloadList: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.AppCacheFreeDownloadList(util.toPointer(pDownloadList));
+  return libWININET_dll.AppCacheFreeDownloadList!(util.toPointer(pDownloadList));
 }
 
 export function AppCacheFinalize(
@@ -12919,7 +13215,7 @@ export function AppCacheFinalize(
   dwManifestDataSize: number /* u32 */,
   peState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheFinalize(util.toPointer(hAppCache), util.toPointer(pbManifestData), dwManifestDataSize, util.toPointer(peState));
+  return libWININET_dll.AppCacheFinalize!(util.toPointer(hAppCache), util.toPointer(pbManifestData), dwManifestDataSize, util.toPointer(peState));
 }
 
 export function AppCacheGetFallbackUrl(
@@ -12927,76 +13223,76 @@ export function AppCacheGetFallbackUrl(
   pwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszFallbackUrl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetFallbackUrl(util.toPointer(hAppCache), util.pwstrToFfi(pwszUrl), util.toPointer(ppwszFallbackUrl));
+  return libWININET_dll.AppCacheGetFallbackUrl!(util.toPointer(hAppCache), util.pwstrToFfi(pwszUrl), util.toPointer(ppwszFallbackUrl));
 }
 
 export function AppCacheGetManifestUrl(
   hAppCache: Deno.PointerValue | Uint8Array /* ptr */,
   ppwszManifestUrl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetManifestUrl(util.toPointer(hAppCache), util.toPointer(ppwszManifestUrl));
+  return libWININET_dll.AppCacheGetManifestUrl!(util.toPointer(hAppCache), util.toPointer(ppwszManifestUrl));
 }
 
 export function AppCacheDuplicateHandle(
   hAppCache: Deno.PointerValue | Uint8Array /* ptr */,
   phDuplicatedAppCache: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheDuplicateHandle(util.toPointer(hAppCache), util.toPointer(phDuplicatedAppCache));
+  return libWININET_dll.AppCacheDuplicateHandle!(util.toPointer(hAppCache), util.toPointer(phDuplicatedAppCache));
 }
 
 export function AppCacheCloseHandle(
   hAppCache: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.AppCacheCloseHandle(util.toPointer(hAppCache));
+  return libWININET_dll.AppCacheCloseHandle!(util.toPointer(hAppCache));
 }
 
 export function AppCacheFreeGroupList(
   pAppCacheGroupList: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.AppCacheFreeGroupList(util.toPointer(pAppCacheGroupList));
+  return libWININET_dll.AppCacheFreeGroupList!(util.toPointer(pAppCacheGroupList));
 }
 
 export function AppCacheGetGroupList(
   pAppCacheGroupList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetGroupList(util.toPointer(pAppCacheGroupList));
+  return libWININET_dll.AppCacheGetGroupList!(util.toPointer(pAppCacheGroupList));
 }
 
 export function AppCacheGetInfo(
   hAppCache: Deno.PointerValue | Uint8Array /* ptr */,
   pAppCacheInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetInfo(util.toPointer(hAppCache), util.toPointer(pAppCacheInfo));
+  return libWININET_dll.AppCacheGetInfo!(util.toPointer(hAppCache), util.toPointer(pAppCacheInfo));
 }
 
 export function AppCacheDeleteGroup(
   pwszManifestUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheDeleteGroup(util.pwstrToFfi(pwszManifestUrl));
+  return libWININET_dll.AppCacheDeleteGroup!(util.pwstrToFfi(pwszManifestUrl));
 }
 
 export function AppCacheFreeSpace(
   ftCutOff: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheFreeSpace(util.toPointer(ftCutOff));
+  return libWININET_dll.AppCacheFreeSpace!(util.toPointer(ftCutOff));
 }
 
 export function AppCacheGetIEGroupList(
   pAppCacheGroupList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheGetIEGroupList(util.toPointer(pAppCacheGroupList));
+  return libWININET_dll.AppCacheGetIEGroupList!(util.toPointer(pAppCacheGroupList));
 }
 
 export function AppCacheDeleteIEGroup(
   pwszManifestUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheDeleteIEGroup(util.pwstrToFfi(pwszManifestUrl));
+  return libWININET_dll.AppCacheDeleteIEGroup!(util.pwstrToFfi(pwszManifestUrl));
 }
 
 export function AppCacheFreeIESpace(
   ftCutOff: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.FILETIME */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheFreeIESpace(util.toPointer(ftCutOff));
+  return libWININET_dll.AppCacheFreeIESpace!(util.toPointer(ftCutOff));
 }
 
 export function AppCacheCreateAndCommitFile(
@@ -13006,7 +13302,7 @@ export function AppCacheCreateAndCommitFile(
   pbResponseHeaders: Deno.PointerValue | Uint8Array /* ptr */,
   dwResponseHeadersSize: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.AppCacheCreateAndCommitFile(util.toPointer(hAppCache), util.pwstrToFfi(pwszSourceFilePath), util.pwstrToFfi(pwszUrl), util.toPointer(pbResponseHeaders), dwResponseHeadersSize);
+  return libWININET_dll.AppCacheCreateAndCommitFile!(util.toPointer(hAppCache), util.pwstrToFfi(pwszSourceFilePath), util.pwstrToFfi(pwszUrl), util.toPointer(pbResponseHeaders), dwResponseHeadersSize);
 }
 
 export function HttpOpenDependencyHandle(
@@ -13014,32 +13310,32 @@ export function HttpOpenDependencyHandle(
   fBackground: boolean /* Windows.Win32.Foundation.BOOL */,
   phDependencyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpOpenDependencyHandle(util.toPointer(hRequestHandle), util.boolToFfi(fBackground), util.toPointer(phDependencyHandle));
+  return libWININET_dll.HttpOpenDependencyHandle!(util.toPointer(hRequestHandle), util.boolToFfi(fBackground), util.toPointer(phDependencyHandle));
 }
 
 export function HttpCloseDependencyHandle(
   hDependencyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.HttpCloseDependencyHandle(util.toPointer(hDependencyHandle));
+  return libWININET_dll.HttpCloseDependencyHandle!(util.toPointer(hDependencyHandle));
 }
 
 export function HttpDuplicateDependencyHandle(
   hDependencyHandle: Deno.PointerValue | Uint8Array /* ptr */,
   phDuplicatedDependencyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpDuplicateDependencyHandle(util.toPointer(hDependencyHandle), util.toPointer(phDuplicatedDependencyHandle));
+  return libWININET_dll.HttpDuplicateDependencyHandle!(util.toPointer(hDependencyHandle), util.toPointer(phDuplicatedDependencyHandle));
 }
 
 export function HttpIndicatePageLoadComplete(
   hDependencyHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.HttpIndicatePageLoadComplete(util.toPointer(hDependencyHandle));
+  return libWININET_dll.HttpIndicatePageLoadComplete!(util.toPointer(hDependencyHandle));
 }
 
 export function UrlCacheFreeEntryInfo(
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.UrlCacheFreeEntryInfo(util.toPointer(pCacheEntryInfo));
+  return libWININET_dll.UrlCacheFreeEntryInfo!(util.toPointer(pCacheEntryInfo));
 }
 
 export function UrlCacheGetEntryInfo(
@@ -13047,13 +13343,13 @@ export function UrlCacheGetEntryInfo(
   pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheGetEntryInfo(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pCacheEntryInfo));
+  return libWININET_dll.UrlCacheGetEntryInfo!(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pCacheEntryInfo));
 }
 
 export function UrlCacheCloseEntryHandle(
   hEntryFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.UrlCacheCloseEntryHandle(util.toPointer(hEntryFile));
+  return libWININET_dll.UrlCacheCloseEntryHandle!(util.toPointer(hEntryFile));
 }
 
 export function UrlCacheRetrieveEntryFile(
@@ -13062,7 +13358,7 @@ export function UrlCacheRetrieveEntryFile(
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phEntryFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheRetrieveEntryFile(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pCacheEntryInfo), util.toPointer(phEntryFile));
+  return libWININET_dll.UrlCacheRetrieveEntryFile!(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pCacheEntryInfo), util.toPointer(phEntryFile));
 }
 
 export function UrlCacheReadEntryStream(
@@ -13072,7 +13368,7 @@ export function UrlCacheReadEntryStream(
   dwBufferLen: number /* u32 */,
   pdwBufferLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheReadEntryStream(util.toPointer(hUrlCacheStream), ullLocation, util.toPointer(pBuffer), dwBufferLen, util.toPointer(pdwBufferLen));
+  return libWININET_dll.UrlCacheReadEntryStream!(util.toPointer(hUrlCacheStream), ullLocation, util.toPointer(pBuffer), dwBufferLen, util.toPointer(pdwBufferLen));
 }
 
 export function UrlCacheRetrieveEntryStream(
@@ -13082,7 +13378,7 @@ export function UrlCacheRetrieveEntryStream(
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phEntryStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheRetrieveEntryStream(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.boolToFfi(fRandomRead), util.toPointer(pCacheEntryInfo), util.toPointer(phEntryStream));
+  return libWININET_dll.UrlCacheRetrieveEntryStream!(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.boolToFfi(fRandomRead), util.toPointer(pCacheEntryInfo), util.toPointer(phEntryStream));
 }
 
 export function UrlCacheUpdateEntryExtraData(
@@ -13091,7 +13387,7 @@ export function UrlCacheUpdateEntryExtraData(
   pbExtraData: Deno.PointerValue | Uint8Array /* ptr */,
   cbExtraData: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheUpdateEntryExtraData(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pbExtraData), cbExtraData);
+  return libWININET_dll.UrlCacheUpdateEntryExtraData!(util.toPointer(hAppCache), util.pwstrToFfi(pcwszUrl), util.toPointer(pbExtraData), cbExtraData);
 }
 
 export function UrlCacheCreateContainer(
@@ -13101,7 +13397,7 @@ export function UrlCacheCreateContainer(
   ullLimit: bigint | number /* u64 */,
   dwOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheCreateContainer(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszPrefix), util.pwstrToFfi(pwszDirectory), ullLimit, dwOptions);
+  return libWININET_dll.UrlCacheCreateContainer!(util.pwstrToFfi(pwszName), util.pwstrToFfi(pwszPrefix), util.pwstrToFfi(pwszDirectory), ullLimit, dwOptions);
 }
 
 export function UrlCacheCheckEntriesExist(
@@ -13109,39 +13405,39 @@ export function UrlCacheCheckEntriesExist(
   cEntries: number /* u32 */,
   rgfExist: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheCheckEntriesExist(util.toPointer(rgpwszUrls), cEntries, util.toPointer(rgfExist));
+  return libWININET_dll.UrlCacheCheckEntriesExist!(util.toPointer(rgpwszUrls), cEntries, util.toPointer(rgfExist));
 }
 
 export function UrlCacheGetContentPaths(
   pppwszDirectories: Deno.PointerValue | Uint8Array /* ptr */,
   pcDirectories: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheGetContentPaths(util.toPointer(pppwszDirectories), util.toPointer(pcDirectories));
+  return libWININET_dll.UrlCacheGetContentPaths!(util.toPointer(pppwszDirectories), util.toPointer(pcDirectories));
 }
 
 export function UrlCacheGetGlobalLimit(
   limitType: URL_CACHE_LIMIT_TYPE /* Windows.Win32.Networking.WinInet.URL_CACHE_LIMIT_TYPE */,
   pullLimit: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheGetGlobalLimit(limitType, util.toPointer(pullLimit));
+  return libWININET_dll.UrlCacheGetGlobalLimit!(limitType, util.toPointer(pullLimit));
 }
 
 export function UrlCacheSetGlobalLimit(
   limitType: URL_CACHE_LIMIT_TYPE /* Windows.Win32.Networking.WinInet.URL_CACHE_LIMIT_TYPE */,
   ullLimit: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheSetGlobalLimit(limitType, ullLimit);
+  return libWININET_dll.UrlCacheSetGlobalLimit!(limitType, ullLimit);
 }
 
 export function UrlCacheReloadSettings(): number /* u32 */ {
-  return libWININET_dll.UrlCacheReloadSettings();
+  return libWININET_dll.UrlCacheReloadSettings!();
 }
 
 export function UrlCacheContainerSetEntryMaximumAge(
   pwszPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwEntryMaxAge: number /* u32 */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheContainerSetEntryMaximumAge(util.pwstrToFfi(pwszPrefix), dwEntryMaxAge);
+  return libWININET_dll.UrlCacheContainerSetEntryMaximumAge!(util.pwstrToFfi(pwszPrefix), dwEntryMaxAge);
 }
 
 export function UrlCacheFindFirstEntry(
@@ -13152,18 +13448,18 @@ export function UrlCacheFindFirstEntry(
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
   phFind: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheFindFirstEntry(util.pwstrToFfi(pwszPrefix), dwFlags, dwFilter, GroupId, util.toPointer(pCacheEntryInfo), util.toPointer(phFind));
+  return libWININET_dll.UrlCacheFindFirstEntry!(util.pwstrToFfi(pwszPrefix), dwFlags, dwFilter, GroupId, util.toPointer(pCacheEntryInfo), util.toPointer(phFind));
 }
 
 export function UrlCacheFindNextEntry(
   hFind: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCacheEntryInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.UrlCacheFindNextEntry(util.toPointer(hFind), util.toPointer(pCacheEntryInfo));
+  return libWININET_dll.UrlCacheFindNextEntry!(util.toPointer(hFind), util.toPointer(pCacheEntryInfo));
 }
 
 export function UrlCacheServer(): number /* u32 */ {
-  return libWININET_dll.UrlCacheServer();
+  return libWININET_dll.UrlCacheServer!();
 }
 
 export function ReadGuidsForConnectedNetworks(
@@ -13174,7 +13470,7 @@ export function ReadGuidsForConnectedNetworks(
   pcGatewayMacs: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ReadGuidsForConnectedNetworks(util.toPointer(pcNetworks), util.toPointer(pppwszNetworkGuids), util.toPointer(pppbstrNetworkNames), util.toPointer(pppwszGWMacs), util.toPointer(pcGatewayMacs), util.toPointer(pdwFlags)));
+  return util.boolFromFfi(libWININET_dll.ReadGuidsForConnectedNetworks!(util.toPointer(pcNetworks), util.toPointer(pppwszNetworkGuids), util.toPointer(pppbstrNetworkNames), util.toPointer(pppwszGWMacs), util.toPointer(pcGatewayMacs), util.toPointer(pdwFlags)));
 }
 
 export function IsHostInProxyBypassList(
@@ -13182,13 +13478,13 @@ export function IsHostInProxyBypassList(
   lpszHost: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchHost: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsHostInProxyBypassList(tScheme, util.pstrToFfi(lpszHost), cchHost));
+  return util.boolFromFfi(libWININET_dll.IsHostInProxyBypassList!(tScheme, util.pstrToFfi(lpszHost), cchHost));
 }
 
 export function InternetFreeProxyInfoList(
   pProxyInfoList: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWININET_dll.InternetFreeProxyInfoList(util.toPointer(pProxyInfoList));
+  return libWININET_dll.InternetFreeProxyInfoList!(util.toPointer(pProxyInfoList));
 }
 
 export function InternetGetProxyForUrl(
@@ -13196,11 +13492,11 @@ export function InternetGetProxyForUrl(
   pcwszUrl: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProxyInfoList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetGetProxyForUrl(util.toPointer(hInternet), util.pwstrToFfi(pcwszUrl), util.toPointer(pProxyInfoList));
+  return libWININET_dll.InternetGetProxyForUrl!(util.toPointer(hInternet), util.pwstrToFfi(pcwszUrl), util.toPointer(pProxyInfoList));
 }
 
 export function DoConnectoidsExist(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.DoConnectoidsExist());
+  return util.boolFromFfi(libWININET_dll.DoConnectoidsExist!());
 }
 
 export function GetDiskInfoA(
@@ -13209,7 +13505,7 @@ export function GetDiskInfoA(
   pdlAvail: Deno.PointerValue | Uint8Array /* ptr */,
   pdlTotal: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.GetDiskInfoA(util.pstrToFfi(pszPath), util.toPointer(pdwClusterSize), util.toPointer(pdlAvail), util.toPointer(pdlTotal)));
+  return util.boolFromFfi(libWININET_dll.GetDiskInfoA!(util.pstrToFfi(pszPath), util.toPointer(pdwClusterSize), util.toPointer(pdlAvail), util.toPointer(pdlTotal)));
 }
 
 export function PerformOperationOverUrlCacheA(
@@ -13223,11 +13519,11 @@ export function PerformOperationOverUrlCacheA(
   op: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.WinInet.CACHE_OPERATOR */,
   pOperatorData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.PerformOperationOverUrlCacheA(util.pstrToFfi(pszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(pReserved1), util.toPointer(pdwReserved2), util.toPointer(pReserved3), util.toPointer(op), util.toPointer(pOperatorData)));
+  return util.boolFromFfi(libWININET_dll.PerformOperationOverUrlCacheA!(util.pstrToFfi(pszUrlSearchPattern), dwFlags, dwFilter, GroupId, util.toPointer(pReserved1), util.toPointer(pdwReserved2), util.toPointer(pReserved3), util.toPointer(op), util.toPointer(pOperatorData)));
 }
 
 export function IsProfilesEnabled(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsProfilesEnabled());
+  return util.boolFromFfi(libWININET_dll.IsProfilesEnabled!());
 }
 
 export function InternalInternetGetCookie(
@@ -13235,54 +13531,54 @@ export function InternalInternetGetCookie(
   lpszCookieData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwDataSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternalInternetGetCookie(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwDataSize));
+  return libWININET_dll.InternalInternetGetCookie!(util.pstrToFfi(lpszUrl), util.pstrToFfi(lpszCookieData), util.toPointer(lpdwDataSize));
 }
 
 export function ImportCookieFileA(
   szFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ImportCookieFileA(util.pstrToFfi(szFilename)));
+  return util.boolFromFfi(libWININET_dll.ImportCookieFileA!(util.pstrToFfi(szFilename)));
 }
 
 export function ImportCookieFileW(
   szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ImportCookieFileW(util.pwstrToFfi(szFilename)));
+  return util.boolFromFfi(libWININET_dll.ImportCookieFileW!(util.pwstrToFfi(szFilename)));
 }
 
 export function ExportCookieFileA(
   szFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fAppend: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ExportCookieFileA(util.pstrToFfi(szFilename), util.boolToFfi(fAppend)));
+  return util.boolFromFfi(libWININET_dll.ExportCookieFileA!(util.pstrToFfi(szFilename), util.boolToFfi(fAppend)));
 }
 
 export function ExportCookieFileW(
   szFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fAppend: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.ExportCookieFileW(util.pwstrToFfi(szFilename), util.boolToFfi(fAppend)));
+  return util.boolFromFfi(libWININET_dll.ExportCookieFileW!(util.pwstrToFfi(szFilename), util.boolToFfi(fAppend)));
 }
 
 export function IsDomainLegalCookieDomainA(
   pchDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pchFullDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainA(util.pstrToFfi(pchDomain), util.pstrToFfi(pchFullDomain)));
+  return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainA!(util.pstrToFfi(pchDomain), util.pstrToFfi(pchFullDomain)));
 }
 
 export function IsDomainLegalCookieDomainW(
   pchDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pchFullDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainW(util.pwstrToFfi(pchDomain), util.pwstrToFfi(pchFullDomain)));
+  return util.boolFromFfi(libWININET_dll.IsDomainLegalCookieDomainW!(util.pwstrToFfi(pchDomain), util.pwstrToFfi(pchFullDomain)));
 }
 
 export function HttpWebSocketCompleteUpgrade(
   hRequest: Deno.PointerValue | Uint8Array /* ptr */,
   dwContext: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libWININET_dll.HttpWebSocketCompleteUpgrade(util.toPointer(hRequest), dwContext);
+  return libWININET_dll.HttpWebSocketCompleteUpgrade!(util.toPointer(hRequest), dwContext);
 }
 
 export function HttpWebSocketSend(
@@ -13291,7 +13587,7 @@ export function HttpWebSocketSend(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpWebSocketSend(util.toPointer(hWebSocket), BufferType, util.toPointer(pvBuffer), dwBufferLength));
+  return util.boolFromFfi(libWININET_dll.HttpWebSocketSend!(util.toPointer(hWebSocket), BufferType, util.toPointer(pvBuffer), dwBufferLength));
 }
 
 export function HttpWebSocketReceive(
@@ -13301,7 +13597,7 @@ export function HttpWebSocketReceive(
   pdwBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpWebSocketReceive(util.toPointer(hWebSocket), util.toPointer(pvBuffer), dwBufferLength, util.toPointer(pdwBytesRead), util.toPointer(pBufferType)));
+  return util.boolFromFfi(libWININET_dll.HttpWebSocketReceive!(util.toPointer(hWebSocket), util.toPointer(pvBuffer), dwBufferLength, util.toPointer(pdwBytesRead), util.toPointer(pBufferType)));
 }
 
 export function HttpWebSocketClose(
@@ -13310,7 +13606,7 @@ export function HttpWebSocketClose(
   pvReason: Deno.PointerValue | Uint8Array /* ptr */,
   dwReasonLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpWebSocketClose(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength));
+  return util.boolFromFfi(libWININET_dll.HttpWebSocketClose!(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength));
 }
 
 export function HttpWebSocketShutdown(
@@ -13319,7 +13615,7 @@ export function HttpWebSocketShutdown(
   pvReason: Deno.PointerValue | Uint8Array /* ptr */,
   dwReasonLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpWebSocketShutdown(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength));
+  return util.boolFromFfi(libWININET_dll.HttpWebSocketShutdown!(util.toPointer(hWebSocket), usStatus, util.toPointer(pvReason), dwReasonLength));
 }
 
 export function HttpWebSocketQueryCloseStatus(
@@ -13329,7 +13625,7 @@ export function HttpWebSocketQueryCloseStatus(
   dwReasonLength: number /* u32 */,
   pdwReasonLengthConsumed: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWININET_dll.HttpWebSocketQueryCloseStatus(util.toPointer(hWebSocket), util.toPointer(pusStatus), util.toPointer(pvReason), dwReasonLength, util.toPointer(pdwReasonLengthConsumed)));
+  return util.boolFromFfi(libWININET_dll.HttpWebSocketQueryCloseStatus!(util.toPointer(hWebSocket), util.toPointer(pusStatus), util.toPointer(pvReason), dwReasonLength, util.toPointer(pdwReasonLengthConsumed)));
 }
 
 export function InternetConvertUrlFromWireToWideChar(
@@ -13342,6 +13638,6 @@ export function InternetConvertUrlFromWireToWideChar(
   dwCodePageExtra: number /* u32 */,
   ppwszConvertedUrl: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWININET_dll.InternetConvertUrlFromWireToWideChar(util.pstrToFfi(pcszUrl), cchUrl, util.pwstrToFfi(pcwszBaseUrl), dwCodePageHost, dwCodePagePath, util.boolToFfi(fEncodePathExtra), dwCodePageExtra, util.toPointer(ppwszConvertedUrl));
+  return libWININET_dll.InternetConvertUrlFromWireToWideChar!(util.pstrToFfi(pcszUrl), cchUrl, util.pwstrToFfi(pcwszBaseUrl), dwCodePageHost, dwCodePagePath, util.boolToFfi(fEncodePathExtra), dwCodePageExtra, util.toPointer(ppwszConvertedUrl));
 }
 

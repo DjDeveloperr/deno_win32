@@ -8209,1062 +8209,1327 @@ try {
     GetProcessWorkingSetSize: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessWorkingSetSize: {
       parameters: ["pointer", "usize", "usize"],
       result: "i32",
+      optional: true,
     },
     FlsAlloc: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FlsGetValue: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     FlsSetValue: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlsFree: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     IsThreadAFiber: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     InitializeSRWLock: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ReleaseSRWLockExclusive: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ReleaseSRWLockShared: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AcquireSRWLockExclusive: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AcquireSRWLockShared: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     TryAcquireSRWLockExclusive: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     TryAcquireSRWLockShared: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeCriticalSection: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     EnterCriticalSection: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     LeaveCriticalSection: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     InitializeCriticalSectionAndSpinCount: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InitializeCriticalSectionEx: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetCriticalSectionSpinCount: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     TryEnterCriticalSection: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteCriticalSection: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     InitOnceInitialize: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     InitOnceExecuteOnce: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitOnceBeginInitialize: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitOnceComplete: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitializeConditionVariable: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WakeConditionVariable: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WakeAllConditionVariable: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SleepConditionVariableCS: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SleepConditionVariableSRW: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ResetEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ReleaseSemaphore: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReleaseMutex: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WaitForSingleObject: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SleepEx: {
       parameters: ["u32", "i32"],
       result: "u32",
+      optional: true,
     },
     WaitForSingleObjectEx: {
       parameters: ["pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     WaitForMultipleObjectsEx: {
       parameters: ["u32", "pointer", "i32", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     CreateMutexA: {
       parameters: ["pointer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateMutexW: {
       parameters: ["pointer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenMutexW: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateEventA: {
       parameters: ["pointer", "i32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateEventW: {
       parameters: ["pointer", "i32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenEventA: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenEventW: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenSemaphoreW: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenWaitableTimerW: {
       parameters: ["u32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     SetWaitableTimerEx: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetWaitableTimer: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CancelWaitableTimer: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CreateMutexExA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateMutexExW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateEventExA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateEventExW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateSemaphoreExW: {
       parameters: ["pointer", "i32", "i32", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateWaitableTimerExW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     EnterSynchronizationBarrier: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     InitializeSynchronizationBarrier: {
       parameters: ["pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     DeleteSynchronizationBarrier: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     Sleep: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     WaitForMultipleObjects: {
       parameters: ["u32", "pointer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateSemaphoreW: {
       parameters: ["pointer", "i32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateWaitableTimerW: {
       parameters: ["pointer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     InitializeSListHead: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     InterlockedPopEntrySList: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     InterlockedPushEntrySList: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InterlockedPushListSListEx: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     InterlockedFlushSList: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryDepthSList: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
     QueueUserAPC: {
       parameters: ["pointer", "pointer", "usize"],
       result: "u32",
+      optional: true,
     },
     QueueUserAPC2: {
       parameters: ["pointer", "pointer", "usize", "i32"],
       result: "i32",
+      optional: true,
     },
     GetProcessTimes: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentProcess: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetCurrentProcessId: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     ExitProcess: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     TerminateProcess: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetExitCodeProcess: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SwitchToThread: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     CreateThread: {
       parameters: ["pointer", "usize", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateRemoteThread: {
       parameters: ["pointer", "pointer", "usize", "pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentThread: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetCurrentThreadId: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     OpenThread: {
       parameters: ["u32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetThreadPriority: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetThreadPriorityBoost: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetThreadPriorityBoost: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThreadPriority: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ExitThread: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     TerminateThread: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetExitCodeThread: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SuspendThread: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResumeThread: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TlsAlloc: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     TlsGetValue: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     TlsSetValue: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     TlsFree: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     CreateProcessA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "i32", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProcessW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "i32", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessShutdownParameters: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessVersion: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     GetStartupInfoW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SetPriorityClass: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetPriorityClass: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetThreadStackGuarantee: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetProcessId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetThreadId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FlushProcessWriteBuffers: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     GetProcessIdOfThread: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     InitializeProcThreadAttributeList: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteProcThreadAttributeList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     UpdateProcThreadAttribute: {
       parameters: ["pointer", "u32", "usize", "pointer", "usize", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDynamicEHContinuationTargets: {
       parameters: ["pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDynamicEnforcedCetCompatibleRanges: {
       parameters: ["pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessAffinityUpdateMode: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     QueryProcessAffinityUpdateMode: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateRemoteThreadEx: {
       parameters: ["pointer", "pointer", "usize", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentThreadStackLimits: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     GetProcessMitigationPolicy: {
       parameters: ["pointer", "i32", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     SetProcessMitigationPolicy: {
       parameters: ["i32", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     GetThreadTimes: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenProcess: {
       parameters: ["u32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     IsProcessorFeaturePresent: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessHandleCount: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentProcessorNumber: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetThreadIdealProcessorEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThreadIdealProcessorEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentProcessorNumberEx: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     GetProcessPriorityBoost: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessPriorityBoost: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetThreadIOPendingFlag: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSystemTimes: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThreadInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetThreadInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     IsProcessCritical: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProtectedPolicy: {
       parameters: ["pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryProtectedPolicy: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadIdealProcessor: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SetProcessInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessDefaultCpuSets: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDefaultCpuSets: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetThreadSelectedCpuSets: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadSelectedCpuSets: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessShutdownParameters: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProcessDefaultCpuSetMasks: {
       parameters: ["pointer", "pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessDefaultCpuSetMasks: {
       parameters: ["pointer", "pointer", "u16"],
       result: "i32",
+      optional: true,
     },
     GetThreadSelectedCpuSetMasks: {
       parameters: ["pointer", "pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadSelectedCpuSetMasks: {
       parameters: ["pointer", "pointer", "u16"],
       result: "i32",
+      optional: true,
     },
     GetMachineTypeAttributes: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetThreadDescription: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     GetThreadDescription: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueueUserWorkItem: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     UnregisterWaitEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateTimerQueue: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     CreateTimerQueueTimer: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ChangeTimerQueueTimer: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DeleteTimerQueueTimer: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteTimerQueue: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteTimerQueueEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateThreadpool: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetThreadpoolThreadMaximum: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     SetThreadpoolThreadMinimum: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetThreadpoolStackInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryThreadpoolStackInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CloseThreadpool: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateThreadpoolCleanupGroup: {
       parameters: [],
       result: "isize",
+      optional: true,
     },
     CloseThreadpoolCleanupGroupMembers: {
       parameters: ["isize", "i32", "pointer"],
       result: "void",
+      optional: true,
     },
     CloseThreadpoolCleanupGroup: {
       parameters: ["isize"],
       result: "void",
+      optional: true,
     },
     SetEventWhenCallbackReturns: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     ReleaseSemaphoreWhenCallbackReturns: {
       parameters: ["pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     ReleaseMutexWhenCallbackReturns: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     LeaveCriticalSectionWhenCallbackReturns: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     FreeLibraryWhenCallbackReturns: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     CallbackMayRunLong: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DisassociateCurrentThreadFromCallback: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     TrySubmitThreadpoolCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateThreadpoolWork: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SubmitThreadpoolWork: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WaitForThreadpoolWorkCallbacks: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     CloseThreadpoolWork: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateThreadpoolTimer: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetThreadpoolTimer: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "void",
+      optional: true,
     },
     IsThreadpoolTimerSet: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WaitForThreadpoolTimerCallbacks: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     CloseThreadpoolTimer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateThreadpoolWait: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetThreadpoolWait: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     WaitForThreadpoolWaitCallbacks: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     CloseThreadpoolWait: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateThreadpoolIo: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StartThreadpoolIo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CancelThreadpoolIo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WaitForThreadpoolIoCallbacks: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     CloseThreadpoolIo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SetThreadpoolTimerEx: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetThreadpoolWaitEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsWow64Process: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsWow64Process2: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     Wow64SuspendThread: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreatePrivateNamespaceW: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenPrivateNamespaceW: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ClosePrivateNamespace: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateBoundaryDescriptorW: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AddSIDToBoundaryDescriptor: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteBoundaryDescriptor: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     GetNumaHighestNodeNumber: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaNodeProcessorMaskEx: {
       parameters: ["u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaNodeProcessorMask2: {
       parameters: ["u16", "pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaProximityNodeEx: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProcessGroupAffinity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThreadGroupAffinity: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadGroupAffinity: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProcessAffinityMask: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessAffinityMask: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     GetProcessIoCounters: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SwitchToFiber: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DeleteFiber: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ConvertFiberToThread: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     CreateFiberEx: {
       parameters: ["usize", "usize", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertThreadToFiberEx: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateFiber: {
       parameters: ["usize", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertThreadToFiber: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateUmsCompletionList: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DequeueUmsCompletionListItems: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetUmsCompletionListEvent: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ExecuteUmsThread: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     UmsThreadYield: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteUmsCompletionList: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCurrentUmsThread: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetNextUmsListItem: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryUmsThreadInformation: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetUmsThreadInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     DeleteUmsThreadContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CreateUmsThreadContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EnterUmsSchedulingMode: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetUmsSystemThreadInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadAffinityMask: {
       parameters: ["pointer", "usize"],
       result: "usize",
+      optional: true,
     },
     SetProcessDEPPolicy: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     GetProcessDEPPolicy: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PulseEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WinExec: {
       parameters: ["buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateSemaphoreA: {
       parameters: ["pointer", "i32", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateSemaphoreExA: {
       parameters: ["pointer", "i32", "i32", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     QueryFullProcessImageNameA: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QueryFullProcessImageNameW: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetStartupInfoA: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RegisterWaitForSingleObject: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     UnregisterWait: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetTimerQueueTimer: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     CreatePrivateNamespaceA: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenPrivateNamespaceA: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CreateBoundaryDescriptorA: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AddIntegrityLabelToBoundaryDescriptor: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetActiveProcessorGroupCount: {
       parameters: [],
       result: "u16",
+      optional: true,
     },
     GetMaximumProcessorGroupCount: {
       parameters: [],
       result: "u16",
+      optional: true,
     },
     GetActiveProcessorCount: {
       parameters: ["u16"],
       result: "u32",
+      optional: true,
     },
     GetMaximumProcessorCount: {
       parameters: ["u16"],
       result: "u32",
+      optional: true,
     },
     GetNumaProcessorNode: {
       parameters: ["u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaNodeNumberFromHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaProcessorNodeEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaNodeProcessorMask: {
       parameters: ["u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaAvailableMemoryNode: {
       parameters: ["u8", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaAvailableMemoryNodeEx: {
       parameters: ["u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNumaProximityNode: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9274,14 +9539,17 @@ try {
     WaitOnAddress: {
       parameters: ["pointer", "pointer", "usize", "u32"],
       result: "i32",
+      optional: true,
     },
     WakeByAddressSingle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WakeByAddressAll: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9291,30 +9559,37 @@ try {
     CreateProcessAsUserW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "i32", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadToken: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenProcessToken: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenThreadToken: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProcessAsUserA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "i32", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProcessWithLogonW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "buffer", "buffer", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProcessWithTokenW: {
       parameters: ["pointer", "u32", "buffer", "buffer", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9324,6 +9599,7 @@ try {
     Wow64SetThreadDefaultGuestMachine: {
       parameters: ["u16"],
       result: "u16",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9333,58 +9609,72 @@ try {
     AvSetMmThreadCharacteristicsA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AvSetMmThreadCharacteristicsW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AvSetMmMaxThreadCharacteristicsA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AvSetMmMaxThreadCharacteristicsW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AvRevertMmThreadCharacteristics: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AvSetMmThreadPriority: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     AvRtCreateThreadOrderingGroup: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AvRtCreateThreadOrderingGroupExA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     AvRtCreateThreadOrderingGroupExW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     AvRtJoinThreadOrderingGroup: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     AvRtWaitOnThreadOrderingGroup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AvRtLeaveThreadOrderingGroup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AvRtDeleteThreadOrderingGroup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AvQuerySystemResponsiveness: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9394,22 +9684,27 @@ try {
     AttachThreadInput: {
       parameters: ["u32", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     WaitForInputIdle: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetGuiResources: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     IsImmersiveProcess: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetProcessRestrictionExemption: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9419,14 +9714,17 @@ try {
     NtQueryInformationProcess: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtQueryInformationThread: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NtSetInformationThread: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9438,7 +9736,7 @@ export function GetProcessWorkingSetSize(
   lpMinimumWorkingSetSize: Deno.PointerValue | Uint8Array /* ptr */,
   lpMaximumWorkingSetSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessWorkingSetSize(util.toPointer(hProcess), util.toPointer(lpMinimumWorkingSetSize), util.toPointer(lpMaximumWorkingSetSize)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessWorkingSetSize!(util.toPointer(hProcess), util.toPointer(lpMinimumWorkingSetSize), util.toPointer(lpMaximumWorkingSetSize)));
 }
 
 export function SetProcessWorkingSetSize(
@@ -9446,103 +9744,103 @@ export function SetProcessWorkingSetSize(
   dwMinimumWorkingSetSize: bigint | number /* usize */,
   dwMaximumWorkingSetSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessWorkingSetSize(util.toPointer(hProcess), dwMinimumWorkingSetSize, dwMaximumWorkingSetSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessWorkingSetSize!(util.toPointer(hProcess), dwMinimumWorkingSetSize, dwMaximumWorkingSetSize));
 }
 
 export function FlsAlloc(
   lpCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PFLS_CALLBACK_FUNCTION */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.FlsAlloc(util.toPointer(lpCallback));
+  return libKERNEL32_dll.FlsAlloc!(util.toPointer(lpCallback));
 }
 
 export function FlsGetValue(
   dwFlsIndex: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.FlsGetValue(dwFlsIndex);
+  return libKERNEL32_dll.FlsGetValue!(dwFlsIndex);
 }
 
 export function FlsSetValue(
   dwFlsIndex: number /* u32 */,
   lpFlsData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FlsSetValue(dwFlsIndex, util.toPointer(lpFlsData)));
+  return util.boolFromFfi(libKERNEL32_dll.FlsSetValue!(dwFlsIndex, util.toPointer(lpFlsData)));
 }
 
 export function FlsFree(
   dwFlsIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FlsFree(dwFlsIndex));
+  return util.boolFromFfi(libKERNEL32_dll.FlsFree!(dwFlsIndex));
 }
 
 export function IsThreadAFiber(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsThreadAFiber());
+  return util.boolFromFfi(libKERNEL32_dll.IsThreadAFiber!());
 }
 
 export function InitializeSRWLock(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.InitializeSRWLock(util.toPointer(SRWLock));
+  return libKERNEL32_dll.InitializeSRWLock!(util.toPointer(SRWLock));
 }
 
 export function ReleaseSRWLockExclusive(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleaseSRWLockExclusive(util.toPointer(SRWLock));
+  return libKERNEL32_dll.ReleaseSRWLockExclusive!(util.toPointer(SRWLock));
 }
 
 export function ReleaseSRWLockShared(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleaseSRWLockShared(util.toPointer(SRWLock));
+  return libKERNEL32_dll.ReleaseSRWLockShared!(util.toPointer(SRWLock));
 }
 
 export function AcquireSRWLockExclusive(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.AcquireSRWLockExclusive(util.toPointer(SRWLock));
+  return libKERNEL32_dll.AcquireSRWLockExclusive!(util.toPointer(SRWLock));
 }
 
 export function AcquireSRWLockShared(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.AcquireSRWLockShared(util.toPointer(SRWLock));
+  return libKERNEL32_dll.AcquireSRWLockShared!(util.toPointer(SRWLock));
 }
 
 export function TryAcquireSRWLockExclusive(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.TryAcquireSRWLockExclusive(util.toPointer(SRWLock));
+  return libKERNEL32_dll.TryAcquireSRWLockExclusive!(util.toPointer(SRWLock));
 }
 
 export function TryAcquireSRWLockShared(
   SRWLock: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.TryAcquireSRWLockShared(util.toPointer(SRWLock));
+  return libKERNEL32_dll.TryAcquireSRWLockShared!(util.toPointer(SRWLock));
 }
 
 export function InitializeCriticalSection(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.InitializeCriticalSection(util.toPointer(lpCriticalSection));
+  return libKERNEL32_dll.InitializeCriticalSection!(util.toPointer(lpCriticalSection));
 }
 
 export function EnterCriticalSection(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.EnterCriticalSection(util.toPointer(lpCriticalSection));
+  return libKERNEL32_dll.EnterCriticalSection!(util.toPointer(lpCriticalSection));
 }
 
 export function LeaveCriticalSection(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.LeaveCriticalSection(util.toPointer(lpCriticalSection));
+  return libKERNEL32_dll.LeaveCriticalSection!(util.toPointer(lpCriticalSection));
 }
 
 export function InitializeCriticalSectionAndSpinCount(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
   dwSpinCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeCriticalSectionAndSpinCount(util.toPointer(lpCriticalSection), dwSpinCount));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeCriticalSectionAndSpinCount!(util.toPointer(lpCriticalSection), dwSpinCount));
 }
 
 export function InitializeCriticalSectionEx(
@@ -9550,32 +9848,32 @@ export function InitializeCriticalSectionEx(
   dwSpinCount: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeCriticalSectionEx(util.toPointer(lpCriticalSection), dwSpinCount, Flags));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeCriticalSectionEx!(util.toPointer(lpCriticalSection), dwSpinCount, Flags));
 }
 
 export function SetCriticalSectionSpinCount(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
   dwSpinCount: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SetCriticalSectionSpinCount(util.toPointer(lpCriticalSection), dwSpinCount);
+  return libKERNEL32_dll.SetCriticalSectionSpinCount!(util.toPointer(lpCriticalSection), dwSpinCount);
 }
 
 export function TryEnterCriticalSection(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TryEnterCriticalSection(util.toPointer(lpCriticalSection)));
+  return util.boolFromFfi(libKERNEL32_dll.TryEnterCriticalSection!(util.toPointer(lpCriticalSection)));
 }
 
 export function DeleteCriticalSection(
   lpCriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeleteCriticalSection(util.toPointer(lpCriticalSection));
+  return libKERNEL32_dll.DeleteCriticalSection!(util.toPointer(lpCriticalSection));
 }
 
 export function InitOnceInitialize(
   InitOnce: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.InitOnceInitialize(util.toPointer(InitOnce));
+  return libKERNEL32_dll.InitOnceInitialize!(util.toPointer(InitOnce));
 }
 
 export function InitOnceExecuteOnce(
@@ -9584,7 +9882,7 @@ export function InitOnceExecuteOnce(
   Parameter: Deno.PointerValue | Uint8Array /* ptr */,
   Context: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitOnceExecuteOnce(util.toPointer(InitOnce), util.toPointer(InitFn), util.toPointer(Parameter), util.toPointer(Context)));
+  return util.boolFromFfi(libKERNEL32_dll.InitOnceExecuteOnce!(util.toPointer(InitOnce), util.toPointer(InitFn), util.toPointer(Parameter), util.toPointer(Context)));
 }
 
 export function InitOnceBeginInitialize(
@@ -9593,7 +9891,7 @@ export function InitOnceBeginInitialize(
   fPending: Deno.PointerValue | Uint8Array /* ptr */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitOnceBeginInitialize(util.toPointer(lpInitOnce), dwFlags, util.toPointer(fPending), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.InitOnceBeginInitialize!(util.toPointer(lpInitOnce), dwFlags, util.toPointer(fPending), util.toPointer(lpContext)));
 }
 
 export function InitOnceComplete(
@@ -9601,25 +9899,25 @@ export function InitOnceComplete(
   dwFlags: number /* u32 */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitOnceComplete(util.toPointer(lpInitOnce), dwFlags, util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.InitOnceComplete!(util.toPointer(lpInitOnce), dwFlags, util.toPointer(lpContext)));
 }
 
 export function InitializeConditionVariable(
   ConditionVariable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.InitializeConditionVariable(util.toPointer(ConditionVariable));
+  return libKERNEL32_dll.InitializeConditionVariable!(util.toPointer(ConditionVariable));
 }
 
 export function WakeConditionVariable(
   ConditionVariable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.WakeConditionVariable(util.toPointer(ConditionVariable));
+  return libKERNEL32_dll.WakeConditionVariable!(util.toPointer(ConditionVariable));
 }
 
 export function WakeAllConditionVariable(
   ConditionVariable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.WakeAllConditionVariable(util.toPointer(ConditionVariable));
+  return libKERNEL32_dll.WakeAllConditionVariable!(util.toPointer(ConditionVariable));
 }
 
 export function SleepConditionVariableCS(
@@ -9627,7 +9925,7 @@ export function SleepConditionVariableCS(
   CriticalSection: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SleepConditionVariableCS(util.toPointer(ConditionVariable), util.toPointer(CriticalSection), dwMilliseconds));
+  return util.boolFromFfi(libKERNEL32_dll.SleepConditionVariableCS!(util.toPointer(ConditionVariable), util.toPointer(CriticalSection), dwMilliseconds));
 }
 
 export function SleepConditionVariableSRW(
@@ -9636,19 +9934,19 @@ export function SleepConditionVariableSRW(
   dwMilliseconds: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SleepConditionVariableSRW(util.toPointer(ConditionVariable), util.toPointer(SRWLock), dwMilliseconds, Flags));
+  return util.boolFromFfi(libKERNEL32_dll.SleepConditionVariableSRW!(util.toPointer(ConditionVariable), util.toPointer(SRWLock), dwMilliseconds, Flags));
 }
 
 export function SetEvent(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetEvent(util.toPointer(hEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.SetEvent!(util.toPointer(hEvent)));
 }
 
 export function ResetEvent(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ResetEvent(util.toPointer(hEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.ResetEvent!(util.toPointer(hEvent)));
 }
 
 export function ReleaseSemaphore(
@@ -9656,27 +9954,27 @@ export function ReleaseSemaphore(
   lReleaseCount: number /* i32 */,
   lpPreviousCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ReleaseSemaphore(util.toPointer(hSemaphore), lReleaseCount, util.toPointer(lpPreviousCount)));
+  return util.boolFromFfi(libKERNEL32_dll.ReleaseSemaphore!(util.toPointer(hSemaphore), lReleaseCount, util.toPointer(lpPreviousCount)));
 }
 
 export function ReleaseMutex(
   hMutex: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ReleaseMutex(util.toPointer(hMutex)));
+  return util.boolFromFfi(libKERNEL32_dll.ReleaseMutex!(util.toPointer(hMutex)));
 }
 
 export function WaitForSingleObject(
   hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwMilliseconds: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.WaitForSingleObject(util.toPointer(hHandle), dwMilliseconds);
+  return libKERNEL32_dll.WaitForSingleObject!(util.toPointer(hHandle), dwMilliseconds);
 }
 
 export function SleepEx(
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SleepEx(dwMilliseconds, util.boolToFfi(bAlertable));
+  return libKERNEL32_dll.SleepEx!(dwMilliseconds, util.boolToFfi(bAlertable));
 }
 
 export function WaitForSingleObjectEx(
@@ -9684,7 +9982,7 @@ export function WaitForSingleObjectEx(
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.WaitForSingleObjectEx(util.toPointer(hHandle), dwMilliseconds, util.boolToFfi(bAlertable));
+  return libKERNEL32_dll.WaitForSingleObjectEx!(util.toPointer(hHandle), dwMilliseconds, util.boolToFfi(bAlertable));
 }
 
 export function WaitForMultipleObjectsEx(
@@ -9694,7 +9992,7 @@ export function WaitForMultipleObjectsEx(
   dwMilliseconds: number /* u32 */,
   bAlertable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.WaitForMultipleObjectsEx(nCount, util.toPointer(lpHandles), util.boolToFfi(bWaitAll), dwMilliseconds, util.boolToFfi(bAlertable));
+  return libKERNEL32_dll.WaitForMultipleObjectsEx!(nCount, util.toPointer(lpHandles), util.boolToFfi(bWaitAll), dwMilliseconds, util.boolToFfi(bAlertable));
 }
 
 export function CreateMutexA(
@@ -9702,7 +10000,7 @@ export function CreateMutexA(
   bInitialOwner: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMutexA(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pstrToFfi(lpName));
+  return libKERNEL32_dll.CreateMutexA!(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pstrToFfi(lpName));
 }
 
 export function CreateMutexW(
@@ -9710,7 +10008,7 @@ export function CreateMutexW(
   bInitialOwner: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMutexW(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.CreateMutexW!(util.toPointer(lpMutexAttributes), util.boolToFfi(bInitialOwner), util.pwstrToFfi(lpName));
 }
 
 export function OpenMutexW(
@@ -9718,7 +10016,7 @@ export function OpenMutexW(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenMutexW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.OpenMutexW!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
 }
 
 export function CreateEventA(
@@ -9727,7 +10025,7 @@ export function CreateEventA(
   bInitialState: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateEventA(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pstrToFfi(lpName));
+  return libKERNEL32_dll.CreateEventA!(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pstrToFfi(lpName));
 }
 
 export function CreateEventW(
@@ -9736,7 +10034,7 @@ export function CreateEventW(
   bInitialState: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateEventW(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.CreateEventW!(util.toPointer(lpEventAttributes), util.boolToFfi(bManualReset), util.boolToFfi(bInitialState), util.pwstrToFfi(lpName));
 }
 
 export function OpenEventA(
@@ -9744,7 +10042,7 @@ export function OpenEventA(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenEventA(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
+  return libKERNEL32_dll.OpenEventA!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pstrToFfi(lpName));
 }
 
 export function OpenEventW(
@@ -9752,7 +10050,7 @@ export function OpenEventW(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenEventW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.OpenEventW!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
 }
 
 export function OpenSemaphoreW(
@@ -9760,7 +10058,7 @@ export function OpenSemaphoreW(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenSemaphoreW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.OpenSemaphoreW!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpName));
 }
 
 export function OpenWaitableTimerW(
@@ -9768,7 +10066,7 @@ export function OpenWaitableTimerW(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   lpTimerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenWaitableTimerW(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpTimerName));
+  return libKERNEL32_dll.OpenWaitableTimerW!(dwDesiredAccess, util.boolToFfi(bInheritHandle), util.pwstrToFfi(lpTimerName));
 }
 
 export function SetWaitableTimerEx(
@@ -9780,7 +10078,7 @@ export function SetWaitableTimerEx(
   WakeContext: Deno.PointerValue | Uint8Array /* ptr */,
   TolerableDelay: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetWaitableTimerEx(util.toPointer(hTimer), util.toPointer(lpDueTime), lPeriod, util.toPointer(pfnCompletionRoutine), util.toPointer(lpArgToCompletionRoutine), util.toPointer(WakeContext), TolerableDelay));
+  return util.boolFromFfi(libKERNEL32_dll.SetWaitableTimerEx!(util.toPointer(hTimer), util.toPointer(lpDueTime), lPeriod, util.toPointer(pfnCompletionRoutine), util.toPointer(lpArgToCompletionRoutine), util.toPointer(WakeContext), TolerableDelay));
 }
 
 export function SetWaitableTimer(
@@ -9791,13 +10089,13 @@ export function SetWaitableTimer(
   lpArgToCompletionRoutine: Deno.PointerValue | Uint8Array /* ptr */,
   fResume: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetWaitableTimer(util.toPointer(hTimer), util.toPointer(lpDueTime), lPeriod, util.toPointer(pfnCompletionRoutine), util.toPointer(lpArgToCompletionRoutine), util.boolToFfi(fResume)));
+  return util.boolFromFfi(libKERNEL32_dll.SetWaitableTimer!(util.toPointer(hTimer), util.toPointer(lpDueTime), lPeriod, util.toPointer(pfnCompletionRoutine), util.toPointer(lpArgToCompletionRoutine), util.boolToFfi(fResume)));
 }
 
 export function CancelWaitableTimer(
   hTimer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CancelWaitableTimer(util.toPointer(hTimer)));
+  return util.boolFromFfi(libKERNEL32_dll.CancelWaitableTimer!(util.toPointer(hTimer)));
 }
 
 export function CreateMutexExA(
@@ -9806,7 +10104,7 @@ export function CreateMutexExA(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMutexExA(util.toPointer(lpMutexAttributes), util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateMutexExA!(util.toPointer(lpMutexAttributes), util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function CreateMutexExW(
@@ -9815,7 +10113,7 @@ export function CreateMutexExW(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateMutexExW(util.toPointer(lpMutexAttributes), util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateMutexExW!(util.toPointer(lpMutexAttributes), util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function CreateEventExA(
@@ -9824,7 +10122,7 @@ export function CreateEventExA(
   dwFlags: CREATE_EVENT /* Windows.Win32.System.Threading.CREATE_EVENT */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateEventExA(util.toPointer(lpEventAttributes), util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateEventExA!(util.toPointer(lpEventAttributes), util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function CreateEventExW(
@@ -9833,7 +10131,7 @@ export function CreateEventExW(
   dwFlags: CREATE_EVENT /* Windows.Win32.System.Threading.CREATE_EVENT */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateEventExW(util.toPointer(lpEventAttributes), util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateEventExW!(util.toPointer(lpEventAttributes), util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function CreateSemaphoreExW(
@@ -9844,7 +10142,7 @@ export function CreateSemaphoreExW(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateSemaphoreExW(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateSemaphoreExW!(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pwstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function CreateWaitableTimerExW(
@@ -9853,14 +10151,14 @@ export function CreateWaitableTimerExW(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateWaitableTimerExW(util.toPointer(lpTimerAttributes), util.pwstrToFfi(lpTimerName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateWaitableTimerExW!(util.toPointer(lpTimerAttributes), util.pwstrToFfi(lpTimerName), dwFlags, dwDesiredAccess);
 }
 
 export function EnterSynchronizationBarrier(
   lpBarrier: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnterSynchronizationBarrier(util.toPointer(lpBarrier), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.EnterSynchronizationBarrier!(util.toPointer(lpBarrier), dwFlags));
 }
 
 export function InitializeSynchronizationBarrier(
@@ -9868,19 +10166,19 @@ export function InitializeSynchronizationBarrier(
   lTotalThreads: number /* i32 */,
   lSpinCount: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeSynchronizationBarrier(util.toPointer(lpBarrier), lTotalThreads, lSpinCount));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeSynchronizationBarrier!(util.toPointer(lpBarrier), lTotalThreads, lSpinCount));
 }
 
 export function DeleteSynchronizationBarrier(
   lpBarrier: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteSynchronizationBarrier(util.toPointer(lpBarrier)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteSynchronizationBarrier!(util.toPointer(lpBarrier)));
 }
 
 export function Sleep(
   dwMilliseconds: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.Sleep(dwMilliseconds);
+  return libKERNEL32_dll.Sleep!(dwMilliseconds);
 }
 
 export function WaitOnAddress(
@@ -9889,19 +10187,19 @@ export function WaitOnAddress(
   AddressSize: bigint | number /* usize */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_synch_l1_2_0_dll.WaitOnAddress(util.toPointer(Address), util.toPointer(CompareAddress), AddressSize, dwMilliseconds));
+  return util.boolFromFfi(libapi_ms_win_core_synch_l1_2_0_dll.WaitOnAddress!(util.toPointer(Address), util.toPointer(CompareAddress), AddressSize, dwMilliseconds));
 }
 
 export function WakeByAddressSingle(
   Address: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_synch_l1_2_0_dll.WakeByAddressSingle(util.toPointer(Address));
+  return libapi_ms_win_core_synch_l1_2_0_dll.WakeByAddressSingle!(util.toPointer(Address));
 }
 
 export function WakeByAddressAll(
   Address: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_synch_l1_2_0_dll.WakeByAddressAll(util.toPointer(Address));
+  return libapi_ms_win_core_synch_l1_2_0_dll.WakeByAddressAll!(util.toPointer(Address));
 }
 
 export function WaitForMultipleObjects(
@@ -9910,7 +10208,7 @@ export function WaitForMultipleObjects(
   bWaitAll: boolean /* Windows.Win32.Foundation.BOOL */,
   dwMilliseconds: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.WaitForMultipleObjects(nCount, util.toPointer(lpHandles), util.boolToFfi(bWaitAll), dwMilliseconds);
+  return libKERNEL32_dll.WaitForMultipleObjects!(nCount, util.toPointer(lpHandles), util.boolToFfi(bWaitAll), dwMilliseconds);
 }
 
 export function CreateSemaphoreW(
@@ -9919,7 +10217,7 @@ export function CreateSemaphoreW(
   lMaximumCount: number /* i32 */,
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateSemaphoreW(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pwstrToFfi(lpName));
+  return libKERNEL32_dll.CreateSemaphoreW!(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pwstrToFfi(lpName));
 }
 
 export function CreateWaitableTimerW(
@@ -9927,26 +10225,26 @@ export function CreateWaitableTimerW(
   bManualReset: boolean /* Windows.Win32.Foundation.BOOL */,
   lpTimerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateWaitableTimerW(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pwstrToFfi(lpTimerName));
+  return libKERNEL32_dll.CreateWaitableTimerW!(util.toPointer(lpTimerAttributes), util.boolToFfi(bManualReset), util.pwstrToFfi(lpTimerName));
 }
 
 export function InitializeSListHead(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.InitializeSListHead(util.toPointer(ListHead));
+  return libKERNEL32_dll.InitializeSListHead!(util.toPointer(ListHead));
 }
 
 export function InterlockedPopEntrySList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.InterlockedPopEntrySList(util.toPointer(ListHead));
+  return libKERNEL32_dll.InterlockedPopEntrySList!(util.toPointer(ListHead));
 }
 
 export function InterlockedPushEntrySList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
   ListEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.InterlockedPushEntrySList(util.toPointer(ListHead), util.toPointer(ListEntry));
+  return libKERNEL32_dll.InterlockedPushEntrySList!(util.toPointer(ListHead), util.toPointer(ListEntry));
 }
 
 export function InterlockedPushListSListEx(
@@ -9955,19 +10253,19 @@ export function InterlockedPushListSListEx(
   ListEnd: Deno.PointerValue | Uint8Array /* ptr */,
   Count: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.InterlockedPushListSListEx(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count);
+  return libKERNEL32_dll.InterlockedPushListSListEx!(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count);
 }
 
 export function InterlockedFlushSList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.InterlockedFlushSList(util.toPointer(ListHead));
+  return libKERNEL32_dll.InterlockedFlushSList!(util.toPointer(ListHead));
 }
 
 export function QueryDepthSList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libKERNEL32_dll.QueryDepthSList(util.toPointer(ListHead));
+  return libKERNEL32_dll.QueryDepthSList!(util.toPointer(ListHead));
 }
 
 export function QueueUserAPC(
@@ -9975,7 +10273,7 @@ export function QueueUserAPC(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwData: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.QueueUserAPC(util.toPointer(pfnAPC), util.toPointer(hThread), dwData);
+  return libKERNEL32_dll.QueueUserAPC!(util.toPointer(pfnAPC), util.toPointer(hThread), dwData);
 }
 
 export function QueueUserAPC2(
@@ -9984,7 +10282,7 @@ export function QueueUserAPC2(
   Data: bigint | number /* usize */,
   Flags: QUEUE_USER_APC_FLAGS /* Windows.Win32.System.Threading.QUEUE_USER_APC_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueueUserAPC2(util.toPointer(ApcRoutine), util.toPointer(Thread), Data, Flags));
+  return util.boolFromFfi(libKERNEL32_dll.QueueUserAPC2!(util.toPointer(ApcRoutine), util.toPointer(Thread), Data, Flags));
 }
 
 export function GetProcessTimes(
@@ -9994,39 +10292,39 @@ export function GetProcessTimes(
   lpKernelTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpUserTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessTimes(util.toPointer(hProcess), util.toPointer(lpCreationTime), util.toPointer(lpExitTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessTimes!(util.toPointer(hProcess), util.toPointer(lpCreationTime), util.toPointer(lpExitTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
 }
 
 export function GetCurrentProcess(): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.GetCurrentProcess();
+  return libKERNEL32_dll.GetCurrentProcess!();
 }
 
 export function GetCurrentProcessId(): number /* u32 */ {
-  return libKERNEL32_dll.GetCurrentProcessId();
+  return libKERNEL32_dll.GetCurrentProcessId!();
 }
 
 export function ExitProcess(
   uExitCode: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.ExitProcess(uExitCode);
+  return libKERNEL32_dll.ExitProcess!(uExitCode);
 }
 
 export function TerminateProcess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uExitCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TerminateProcess(util.toPointer(hProcess), uExitCode));
+  return util.boolFromFfi(libKERNEL32_dll.TerminateProcess!(util.toPointer(hProcess), uExitCode));
 }
 
 export function GetExitCodeProcess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpExitCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetExitCodeProcess(util.toPointer(hProcess), util.toPointer(lpExitCode)));
+  return util.boolFromFfi(libKERNEL32_dll.GetExitCodeProcess!(util.toPointer(hProcess), util.toPointer(lpExitCode)));
 }
 
 export function SwitchToThread(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SwitchToThread());
+  return util.boolFromFfi(libKERNEL32_dll.SwitchToThread!());
 }
 
 export function CreateThread(
@@ -10037,7 +10335,7 @@ export function CreateThread(
   dwCreationFlags: THREAD_CREATION_FLAGS /* Windows.Win32.System.Threading.THREAD_CREATION_FLAGS */,
   lpThreadId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateThread(util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpThreadId));
+  return libKERNEL32_dll.CreateThread!(util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpThreadId));
 }
 
 export function CreateRemoteThread(
@@ -10049,15 +10347,15 @@ export function CreateRemoteThread(
   dwCreationFlags: number /* u32 */,
   lpThreadId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateRemoteThread(util.toPointer(hProcess), util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpThreadId));
+  return libKERNEL32_dll.CreateRemoteThread!(util.toPointer(hProcess), util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpThreadId));
 }
 
 export function GetCurrentThread(): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.GetCurrentThread();
+  return libKERNEL32_dll.GetCurrentThread!();
 }
 
 export function GetCurrentThreadId(): number /* u32 */ {
-  return libKERNEL32_dll.GetCurrentThreadId();
+  return libKERNEL32_dll.GetCurrentThreadId!();
 }
 
 export function OpenThread(
@@ -10065,89 +10363,89 @@ export function OpenThread(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   dwThreadId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenThread(dwDesiredAccess, util.boolToFfi(bInheritHandle), dwThreadId);
+  return libKERNEL32_dll.OpenThread!(dwDesiredAccess, util.boolToFfi(bInheritHandle), dwThreadId);
 }
 
 export function SetThreadPriority(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   nPriority: THREAD_PRIORITY /* Windows.Win32.System.Threading.THREAD_PRIORITY */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadPriority(util.toPointer(hThread), nPriority));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadPriority!(util.toPointer(hThread), nPriority));
 }
 
 export function SetThreadPriorityBoost(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bDisablePriorityBoost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadPriorityBoost(util.toPointer(hThread), util.boolToFfi(bDisablePriorityBoost)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadPriorityBoost!(util.toPointer(hThread), util.boolToFfi(bDisablePriorityBoost)));
 }
 
 export function GetThreadPriorityBoost(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDisablePriorityBoost: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadPriorityBoost(util.toPointer(hThread), util.toPointer(pDisablePriorityBoost)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadPriorityBoost!(util.toPointer(hThread), util.toPointer(pDisablePriorityBoost)));
 }
 
 export function GetThreadPriority(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.GetThreadPriority(util.toPointer(hThread));
+  return libKERNEL32_dll.GetThreadPriority!(util.toPointer(hThread));
 }
 
 export function ExitThread(
   dwExitCode: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.ExitThread(dwExitCode);
+  return libKERNEL32_dll.ExitThread!(dwExitCode);
 }
 
 export function TerminateThread(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwExitCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TerminateThread(util.toPointer(hThread), dwExitCode));
+  return util.boolFromFfi(libKERNEL32_dll.TerminateThread!(util.toPointer(hThread), dwExitCode));
 }
 
 export function GetExitCodeThread(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpExitCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetExitCodeThread(util.toPointer(hThread), util.toPointer(lpExitCode)));
+  return util.boolFromFfi(libKERNEL32_dll.GetExitCodeThread!(util.toPointer(hThread), util.toPointer(lpExitCode)));
 }
 
 export function SuspendThread(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SuspendThread(util.toPointer(hThread));
+  return libKERNEL32_dll.SuspendThread!(util.toPointer(hThread));
 }
 
 export function ResumeThread(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.ResumeThread(util.toPointer(hThread));
+  return libKERNEL32_dll.ResumeThread!(util.toPointer(hThread));
 }
 
 export function TlsAlloc(): number /* u32 */ {
-  return libKERNEL32_dll.TlsAlloc();
+  return libKERNEL32_dll.TlsAlloc!();
 }
 
 export function TlsGetValue(
   dwTlsIndex: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.TlsGetValue(dwTlsIndex);
+  return libKERNEL32_dll.TlsGetValue!(dwTlsIndex);
 }
 
 export function TlsSetValue(
   dwTlsIndex: number /* u32 */,
   lpTlsValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TlsSetValue(dwTlsIndex, util.toPointer(lpTlsValue)));
+  return util.boolFromFfi(libKERNEL32_dll.TlsSetValue!(dwTlsIndex, util.toPointer(lpTlsValue)));
 }
 
 export function TlsFree(
   dwTlsIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TlsFree(dwTlsIndex));
+  return util.boolFromFfi(libKERNEL32_dll.TlsFree!(dwTlsIndex));
 }
 
 export function CreateProcessA(
@@ -10162,7 +10460,7 @@ export function CreateProcessA(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CreateProcessA(util.pstrToFfi(lpApplicationName), util.pstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateProcessA!(util.pstrToFfi(lpApplicationName), util.pstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function CreateProcessW(
@@ -10177,26 +10475,26 @@ export function CreateProcessW(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CreateProcessW(util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateProcessW!(util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function SetProcessShutdownParameters(
   dwLevel: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessShutdownParameters(dwLevel, dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessShutdownParameters!(dwLevel, dwFlags));
 }
 
 export function GetProcessVersion(
   ProcessId: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProcessVersion(ProcessId);
+  return libKERNEL32_dll.GetProcessVersion!(ProcessId);
 }
 
 export function GetStartupInfoW(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.GetStartupInfoW(util.toPointer(lpStartupInfo));
+  return libKERNEL32_dll.GetStartupInfoW!(util.toPointer(lpStartupInfo));
 }
 
 export function CreateProcessAsUserW(
@@ -10212,14 +10510,14 @@ export function CreateProcessAsUserW(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateProcessAsUserW(util.toPointer(hToken), util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateProcessAsUserW!(util.toPointer(hToken), util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function SetThreadToken(
   Thread: Deno.PointerValue | Uint8Array /* ptr */,
   Token: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.SetThreadToken(util.toPointer(Thread), util.toPointer(Token)));
+  return util.boolFromFfi(libADVAPI32_dll.SetThreadToken!(util.toPointer(Thread), util.toPointer(Token)));
 }
 
 export function OpenProcessToken(
@@ -10227,7 +10525,7 @@ export function OpenProcessToken(
   DesiredAccess: TOKEN_ACCESS_MASK /* Windows.Win32.Security.TOKEN_ACCESS_MASK */,
   TokenHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.OpenProcessToken(util.toPointer(ProcessHandle), DesiredAccess, util.toPointer(TokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.OpenProcessToken!(util.toPointer(ProcessHandle), DesiredAccess, util.toPointer(TokenHandle)));
 }
 
 export function OpenThreadToken(
@@ -10236,48 +10534,48 @@ export function OpenThreadToken(
   OpenAsSelf: boolean /* Windows.Win32.Foundation.BOOL */,
   TokenHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.OpenThreadToken(util.toPointer(ThreadHandle), DesiredAccess, util.boolToFfi(OpenAsSelf), util.toPointer(TokenHandle)));
+  return util.boolFromFfi(libADVAPI32_dll.OpenThreadToken!(util.toPointer(ThreadHandle), DesiredAccess, util.boolToFfi(OpenAsSelf), util.toPointer(TokenHandle)));
 }
 
 export function SetPriorityClass(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwPriorityClass: PROCESS_CREATION_FLAGS /* Windows.Win32.System.Threading.PROCESS_CREATION_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetPriorityClass(util.toPointer(hProcess), dwPriorityClass));
+  return util.boolFromFfi(libKERNEL32_dll.SetPriorityClass!(util.toPointer(hProcess), dwPriorityClass));
 }
 
 export function GetPriorityClass(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetPriorityClass(util.toPointer(hProcess));
+  return libKERNEL32_dll.GetPriorityClass!(util.toPointer(hProcess));
 }
 
 export function SetThreadStackGuarantee(
   StackSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadStackGuarantee(util.toPointer(StackSizeInBytes)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadStackGuarantee!(util.toPointer(StackSizeInBytes)));
 }
 
 export function GetProcessId(
   Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProcessId(util.toPointer(Process));
+  return libKERNEL32_dll.GetProcessId!(util.toPointer(Process));
 }
 
 export function GetThreadId(
   Thread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetThreadId(util.toPointer(Thread));
+  return libKERNEL32_dll.GetThreadId!(util.toPointer(Thread));
 }
 
 export function FlushProcessWriteBuffers(): void /* void */ {
-  return libKERNEL32_dll.FlushProcessWriteBuffers();
+  return libKERNEL32_dll.FlushProcessWriteBuffers!();
 }
 
 export function GetProcessIdOfThread(
   Thread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetProcessIdOfThread(util.toPointer(Thread));
+  return libKERNEL32_dll.GetProcessIdOfThread!(util.toPointer(Thread));
 }
 
 export function InitializeProcThreadAttributeList(
@@ -10286,13 +10584,13 @@ export function InitializeProcThreadAttributeList(
   dwFlags: number /* u32 */,
   lpSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeProcThreadAttributeList(util.toPointer(lpAttributeList), dwAttributeCount, dwFlags, util.toPointer(lpSize)));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeProcThreadAttributeList!(util.toPointer(lpAttributeList), dwAttributeCount, dwFlags, util.toPointer(lpSize)));
 }
 
 export function DeleteProcThreadAttributeList(
   lpAttributeList: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPPROC_THREAD_ATTRIBUTE_LIST */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeleteProcThreadAttributeList(util.toPointer(lpAttributeList));
+  return libKERNEL32_dll.DeleteProcThreadAttributeList!(util.toPointer(lpAttributeList));
 }
 
 export function UpdateProcThreadAttribute(
@@ -10304,7 +10602,7 @@ export function UpdateProcThreadAttribute(
   lpPreviousValue: Deno.PointerValue | Uint8Array /* ptr */,
   lpReturnSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UpdateProcThreadAttribute(util.toPointer(lpAttributeList), dwFlags, Attribute, util.toPointer(lpValue), cbSize, util.toPointer(lpPreviousValue), util.toPointer(lpReturnSize)));
+  return util.boolFromFfi(libKERNEL32_dll.UpdateProcThreadAttribute!(util.toPointer(lpAttributeList), dwFlags, Attribute, util.toPointer(lpValue), cbSize, util.toPointer(lpPreviousValue), util.toPointer(lpReturnSize)));
 }
 
 export function SetProcessDynamicEHContinuationTargets(
@@ -10312,7 +10610,7 @@ export function SetProcessDynamicEHContinuationTargets(
   NumberOfTargets: number /* u16 */,
   Targets: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessDynamicEHContinuationTargets(util.toPointer(Process), NumberOfTargets, util.toPointer(Targets)));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessDynamicEHContinuationTargets!(util.toPointer(Process), NumberOfTargets, util.toPointer(Targets)));
 }
 
 export function SetProcessDynamicEnforcedCetCompatibleRanges(
@@ -10320,21 +10618,21 @@ export function SetProcessDynamicEnforcedCetCompatibleRanges(
   NumberOfRanges: number /* u16 */,
   Ranges: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessDynamicEnforcedCetCompatibleRanges(util.toPointer(Process), NumberOfRanges, util.toPointer(Ranges)));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessDynamicEnforcedCetCompatibleRanges!(util.toPointer(Process), NumberOfRanges, util.toPointer(Ranges)));
 }
 
 export function SetProcessAffinityUpdateMode(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: PROCESS_AFFINITY_AUTO_UPDATE_FLAGS /* Windows.Win32.System.Threading.PROCESS_AFFINITY_AUTO_UPDATE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessAffinityUpdateMode(util.toPointer(hProcess), dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessAffinityUpdateMode!(util.toPointer(hProcess), dwFlags));
 }
 
 export function QueryProcessAffinityUpdateMode(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryProcessAffinityUpdateMode(util.toPointer(hProcess), util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryProcessAffinityUpdateMode!(util.toPointer(hProcess), util.toPointer(lpdwFlags)));
 }
 
 export function CreateRemoteThreadEx(
@@ -10347,14 +10645,14 @@ export function CreateRemoteThreadEx(
   lpAttributeList: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPPROC_THREAD_ATTRIBUTE_LIST */,
   lpThreadId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateRemoteThreadEx(util.toPointer(hProcess), util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpAttributeList), util.toPointer(lpThreadId));
+  return libKERNEL32_dll.CreateRemoteThreadEx!(util.toPointer(hProcess), util.toPointer(lpThreadAttributes), dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter), dwCreationFlags, util.toPointer(lpAttributeList), util.toPointer(lpThreadId));
 }
 
 export function GetCurrentThreadStackLimits(
   LowLimit: Deno.PointerValue | Uint8Array /* ptr */,
   HighLimit: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.GetCurrentThreadStackLimits(util.toPointer(LowLimit), util.toPointer(HighLimit));
+  return libKERNEL32_dll.GetCurrentThreadStackLimits!(util.toPointer(LowLimit), util.toPointer(HighLimit));
 }
 
 export function GetProcessMitigationPolicy(
@@ -10363,7 +10661,7 @@ export function GetProcessMitigationPolicy(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwLength: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessMitigationPolicy(util.toPointer(hProcess), MitigationPolicy, util.toPointer(lpBuffer), dwLength));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessMitigationPolicy!(util.toPointer(hProcess), MitigationPolicy, util.toPointer(lpBuffer), dwLength));
 }
 
 export function SetProcessMitigationPolicy(
@@ -10371,7 +10669,7 @@ export function SetProcessMitigationPolicy(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   dwLength: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessMitigationPolicy(MitigationPolicy, util.toPointer(lpBuffer), dwLength));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessMitigationPolicy!(MitigationPolicy, util.toPointer(lpBuffer), dwLength));
 }
 
 export function GetThreadTimes(
@@ -10381,7 +10679,7 @@ export function GetThreadTimes(
   lpKernelTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpUserTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadTimes(util.toPointer(hThread), util.toPointer(lpCreationTime), util.toPointer(lpExitTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadTimes!(util.toPointer(hThread), util.toPointer(lpCreationTime), util.toPointer(lpExitTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
 }
 
 export function OpenProcess(
@@ -10389,24 +10687,24 @@ export function OpenProcess(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   dwProcessId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.OpenProcess(dwDesiredAccess, util.boolToFfi(bInheritHandle), dwProcessId);
+  return libKERNEL32_dll.OpenProcess!(dwDesiredAccess, util.boolToFfi(bInheritHandle), dwProcessId);
 }
 
 export function IsProcessorFeaturePresent(
   ProcessorFeature: PROCESSOR_FEATURE_ID /* Windows.Win32.System.Threading.PROCESSOR_FEATURE_ID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsProcessorFeaturePresent(ProcessorFeature));
+  return util.boolFromFfi(libKERNEL32_dll.IsProcessorFeaturePresent!(ProcessorFeature));
 }
 
 export function GetProcessHandleCount(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwHandleCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessHandleCount(util.toPointer(hProcess), util.toPointer(pdwHandleCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessHandleCount!(util.toPointer(hProcess), util.toPointer(pdwHandleCount)));
 }
 
 export function GetCurrentProcessorNumber(): number /* u32 */ {
-  return libKERNEL32_dll.GetCurrentProcessorNumber();
+  return libKERNEL32_dll.GetCurrentProcessorNumber!();
 }
 
 export function SetThreadIdealProcessorEx(
@@ -10414,41 +10712,41 @@ export function SetThreadIdealProcessorEx(
   lpIdealProcessor: Deno.PointerValue | Uint8Array /* ptr */,
   lpPreviousIdealProcessor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadIdealProcessorEx(util.toPointer(hThread), util.toPointer(lpIdealProcessor), util.toPointer(lpPreviousIdealProcessor)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadIdealProcessorEx!(util.toPointer(hThread), util.toPointer(lpIdealProcessor), util.toPointer(lpPreviousIdealProcessor)));
 }
 
 export function GetThreadIdealProcessorEx(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpIdealProcessor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadIdealProcessorEx(util.toPointer(hThread), util.toPointer(lpIdealProcessor)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadIdealProcessorEx!(util.toPointer(hThread), util.toPointer(lpIdealProcessor)));
 }
 
 export function GetCurrentProcessorNumberEx(
   ProcNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.GetCurrentProcessorNumberEx(util.toPointer(ProcNumber));
+  return libKERNEL32_dll.GetCurrentProcessorNumberEx!(util.toPointer(ProcNumber));
 }
 
 export function GetProcessPriorityBoost(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDisablePriorityBoost: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessPriorityBoost(util.toPointer(hProcess), util.toPointer(pDisablePriorityBoost)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessPriorityBoost!(util.toPointer(hProcess), util.toPointer(pDisablePriorityBoost)));
 }
 
 export function SetProcessPriorityBoost(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   bDisablePriorityBoost: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessPriorityBoost(util.toPointer(hProcess), util.boolToFfi(bDisablePriorityBoost)));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessPriorityBoost!(util.toPointer(hProcess), util.boolToFfi(bDisablePriorityBoost)));
 }
 
 export function GetThreadIOPendingFlag(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpIOIsPending: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadIOPendingFlag(util.toPointer(hThread), util.toPointer(lpIOIsPending)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadIOPendingFlag!(util.toPointer(hThread), util.toPointer(lpIOIsPending)));
 }
 
 export function GetSystemTimes(
@@ -10456,7 +10754,7 @@ export function GetSystemTimes(
   lpKernelTime: Deno.PointerValue | Uint8Array /* ptr */,
   lpUserTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetSystemTimes(util.toPointer(lpIdleTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
+  return util.boolFromFfi(libKERNEL32_dll.GetSystemTimes!(util.toPointer(lpIdleTime), util.toPointer(lpKernelTime), util.toPointer(lpUserTime)));
 }
 
 export function GetThreadInformation(
@@ -10465,7 +10763,7 @@ export function GetThreadInformation(
   ThreadInformation: Deno.PointerValue | Uint8Array /* ptr */,
   ThreadInformationSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadInformation(util.toPointer(hThread), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadInformation!(util.toPointer(hThread), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationSize));
 }
 
 export function SetThreadInformation(
@@ -10474,14 +10772,14 @@ export function SetThreadInformation(
   ThreadInformation: Deno.PointerValue | Uint8Array /* ptr */,
   ThreadInformationSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadInformation(util.toPointer(hThread), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadInformation!(util.toPointer(hThread), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationSize));
 }
 
 export function IsProcessCritical(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Critical: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsProcessCritical(util.toPointer(hProcess), util.toPointer(Critical)));
+  return util.boolFromFfi(libKERNEL32_dll.IsProcessCritical!(util.toPointer(hProcess), util.toPointer(Critical)));
 }
 
 export function SetProtectedPolicy(
@@ -10489,21 +10787,21 @@ export function SetProtectedPolicy(
   PolicyValue: bigint | number /* usize */,
   OldPolicyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProtectedPolicy(util.toPointer(PolicyGuid), PolicyValue, util.toPointer(OldPolicyValue)));
+  return util.boolFromFfi(libKERNEL32_dll.SetProtectedPolicy!(util.toPointer(PolicyGuid), PolicyValue, util.toPointer(OldPolicyValue)));
 }
 
 export function QueryProtectedPolicy(
   PolicyGuid: Deno.PointerValue | Uint8Array /* ptr */,
   PolicyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryProtectedPolicy(util.toPointer(PolicyGuid), util.toPointer(PolicyValue)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryProtectedPolicy!(util.toPointer(PolicyGuid), util.toPointer(PolicyValue)));
 }
 
 export function SetThreadIdealProcessor(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwIdealProcessor: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SetThreadIdealProcessor(util.toPointer(hThread), dwIdealProcessor);
+  return libKERNEL32_dll.SetThreadIdealProcessor!(util.toPointer(hThread), dwIdealProcessor);
 }
 
 export function SetProcessInformation(
@@ -10512,7 +10810,7 @@ export function SetProcessInformation(
   ProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
   ProcessInformationSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessInformation(util.toPointer(hProcess), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationSize));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessInformation!(util.toPointer(hProcess), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationSize));
 }
 
 export function GetProcessInformation(
@@ -10521,7 +10819,7 @@ export function GetProcessInformation(
   ProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
   ProcessInformationSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessInformation(util.toPointer(hProcess), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationSize));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessInformation!(util.toPointer(hProcess), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationSize));
 }
 
 export function GetProcessDefaultCpuSets(
@@ -10530,7 +10828,7 @@ export function GetProcessDefaultCpuSets(
   CpuSetIdCount: number /* u32 */,
   RequiredIdCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessDefaultCpuSets(util.toPointer(Process), util.toPointer(CpuSetIds), CpuSetIdCount, util.toPointer(RequiredIdCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessDefaultCpuSets!(util.toPointer(Process), util.toPointer(CpuSetIds), CpuSetIdCount, util.toPointer(RequiredIdCount)));
 }
 
 export function SetProcessDefaultCpuSets(
@@ -10538,7 +10836,7 @@ export function SetProcessDefaultCpuSets(
   CpuSetIds: Deno.PointerValue | Uint8Array /* ptr */,
   CpuSetIdCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessDefaultCpuSets(util.toPointer(Process), util.toPointer(CpuSetIds), CpuSetIdCount));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessDefaultCpuSets!(util.toPointer(Process), util.toPointer(CpuSetIds), CpuSetIdCount));
 }
 
 export function GetThreadSelectedCpuSets(
@@ -10547,7 +10845,7 @@ export function GetThreadSelectedCpuSets(
   CpuSetIdCount: number /* u32 */,
   RequiredIdCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectedCpuSets(util.toPointer(Thread), util.toPointer(CpuSetIds), CpuSetIdCount, util.toPointer(RequiredIdCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectedCpuSets!(util.toPointer(Thread), util.toPointer(CpuSetIds), CpuSetIdCount, util.toPointer(RequiredIdCount)));
 }
 
 export function SetThreadSelectedCpuSets(
@@ -10555,7 +10853,7 @@ export function SetThreadSelectedCpuSets(
   CpuSetIds: Deno.PointerValue | Uint8Array /* ptr */,
   CpuSetIdCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadSelectedCpuSets(util.toPointer(Thread), util.toPointer(CpuSetIds), CpuSetIdCount));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadSelectedCpuSets!(util.toPointer(Thread), util.toPointer(CpuSetIds), CpuSetIdCount));
 }
 
 export function CreateProcessAsUserA(
@@ -10571,14 +10869,14 @@ export function CreateProcessAsUserA(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateProcessAsUserA(util.toPointer(hToken), util.pstrToFfi(lpApplicationName), util.pstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateProcessAsUserA!(util.toPointer(hToken), util.pstrToFfi(lpApplicationName), util.pstrToFfi(lpCommandLine), util.toPointer(lpProcessAttributes), util.toPointer(lpThreadAttributes), util.boolToFfi(bInheritHandles), dwCreationFlags, util.toPointer(lpEnvironment), util.pstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function GetProcessShutdownParameters(
   lpdwLevel: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessShutdownParameters(util.toPointer(lpdwLevel), util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessShutdownParameters!(util.toPointer(lpdwLevel), util.toPointer(lpdwFlags)));
 }
 
 export function GetProcessDefaultCpuSetMasks(
@@ -10587,7 +10885,7 @@ export function GetProcessDefaultCpuSetMasks(
   CpuSetMaskCount: number /* u16 */,
   RequiredMaskCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessDefaultCpuSetMasks(util.toPointer(Process), util.toPointer(CpuSetMasks), CpuSetMaskCount, util.toPointer(RequiredMaskCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessDefaultCpuSetMasks!(util.toPointer(Process), util.toPointer(CpuSetMasks), CpuSetMaskCount, util.toPointer(RequiredMaskCount)));
 }
 
 export function SetProcessDefaultCpuSetMasks(
@@ -10595,7 +10893,7 @@ export function SetProcessDefaultCpuSetMasks(
   CpuSetMasks: Deno.PointerValue | Uint8Array /* ptr */,
   CpuSetMaskCount: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessDefaultCpuSetMasks(util.toPointer(Process), util.toPointer(CpuSetMasks), CpuSetMaskCount));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessDefaultCpuSetMasks!(util.toPointer(Process), util.toPointer(CpuSetMasks), CpuSetMaskCount));
 }
 
 export function GetThreadSelectedCpuSetMasks(
@@ -10604,7 +10902,7 @@ export function GetThreadSelectedCpuSetMasks(
   CpuSetMaskCount: number /* u16 */,
   RequiredMaskCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectedCpuSetMasks(util.toPointer(Thread), util.toPointer(CpuSetMasks), CpuSetMaskCount, util.toPointer(RequiredMaskCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectedCpuSetMasks!(util.toPointer(Thread), util.toPointer(CpuSetMasks), CpuSetMaskCount, util.toPointer(RequiredMaskCount)));
 }
 
 export function SetThreadSelectedCpuSetMasks(
@@ -10612,28 +10910,28 @@ export function SetThreadSelectedCpuSetMasks(
   CpuSetMasks: Deno.PointerValue | Uint8Array /* ptr */,
   CpuSetMaskCount: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadSelectedCpuSetMasks(util.toPointer(Thread), util.toPointer(CpuSetMasks), CpuSetMaskCount));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadSelectedCpuSetMasks!(util.toPointer(Thread), util.toPointer(CpuSetMasks), CpuSetMaskCount));
 }
 
 export function GetMachineTypeAttributes(
   Machine: number /* u16 */,
   MachineTypeAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.GetMachineTypeAttributes(Machine, util.toPointer(MachineTypeAttributes));
+  return libKERNEL32_dll.GetMachineTypeAttributes!(Machine, util.toPointer(MachineTypeAttributes));
 }
 
 export function SetThreadDescription(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpThreadDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.SetThreadDescription(util.toPointer(hThread), util.pwstrToFfi(lpThreadDescription));
+  return libKERNEL32_dll.SetThreadDescription!(util.toPointer(hThread), util.pwstrToFfi(lpThreadDescription));
 }
 
 export function GetThreadDescription(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppszThreadDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.GetThreadDescription(util.toPointer(hThread), util.toPointer(ppszThreadDescription));
+  return libKERNEL32_dll.GetThreadDescription!(util.toPointer(hThread), util.toPointer(ppszThreadDescription));
 }
 
 export function QueueUserWorkItem(
@@ -10641,18 +10939,18 @@ export function QueueUserWorkItem(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: WORKER_THREAD_FLAGS /* Windows.Win32.System.Threading.WORKER_THREAD_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueueUserWorkItem(util.toPointer(Function), util.toPointer(Context), Flags));
+  return util.boolFromFfi(libKERNEL32_dll.QueueUserWorkItem!(util.toPointer(Function), util.toPointer(Context), Flags));
 }
 
 export function UnregisterWaitEx(
   WaitHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompletionEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UnregisterWaitEx(util.toPointer(WaitHandle), util.toPointer(CompletionEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.UnregisterWaitEx!(util.toPointer(WaitHandle), util.toPointer(CompletionEvent)));
 }
 
 export function CreateTimerQueue(): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateTimerQueue();
+  return libKERNEL32_dll.CreateTimerQueue!();
 }
 
 export function CreateTimerQueueTimer(
@@ -10664,7 +10962,7 @@ export function CreateTimerQueueTimer(
   Period: number /* u32 */,
   Flags: WORKER_THREAD_FLAGS /* Windows.Win32.System.Threading.WORKER_THREAD_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CreateTimerQueueTimer(util.toPointer(phNewTimer), util.toPointer(TimerQueue), util.toPointer(Callback), util.toPointer(Parameter), DueTime, Period, Flags));
+  return util.boolFromFfi(libKERNEL32_dll.CreateTimerQueueTimer!(util.toPointer(phNewTimer), util.toPointer(TimerQueue), util.toPointer(Callback), util.toPointer(Parameter), DueTime, Period, Flags));
 }
 
 export function ChangeTimerQueueTimer(
@@ -10673,7 +10971,7 @@ export function ChangeTimerQueueTimer(
   DueTime: number /* u32 */,
   Period: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ChangeTimerQueueTimer(util.toPointer(TimerQueue), util.toPointer(Timer), DueTime, Period));
+  return util.boolFromFfi(libKERNEL32_dll.ChangeTimerQueueTimer!(util.toPointer(TimerQueue), util.toPointer(Timer), DueTime, Period));
 }
 
 export function DeleteTimerQueueTimer(
@@ -10681,64 +10979,64 @@ export function DeleteTimerQueueTimer(
   Timer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompletionEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueueTimer(util.toPointer(TimerQueue), util.toPointer(Timer), util.toPointer(CompletionEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueueTimer!(util.toPointer(TimerQueue), util.toPointer(Timer), util.toPointer(CompletionEvent)));
 }
 
 export function DeleteTimerQueue(
   TimerQueue: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueue(util.toPointer(TimerQueue)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueue!(util.toPointer(TimerQueue)));
 }
 
 export function DeleteTimerQueueEx(
   TimerQueue: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompletionEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueueEx(util.toPointer(TimerQueue), util.toPointer(CompletionEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteTimerQueueEx!(util.toPointer(TimerQueue), util.toPointer(CompletionEvent)));
 }
 
 export function CreateThreadpool(
   reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */ {
-  return libKERNEL32_dll.CreateThreadpool(util.toPointer(reserved));
+  return libKERNEL32_dll.CreateThreadpool!(util.toPointer(reserved));
 }
 
 export function SetThreadpoolThreadMaximum(
   ptpp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */,
   cthrdMost: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.SetThreadpoolThreadMaximum(util.toPointer(ptpp), cthrdMost);
+  return libKERNEL32_dll.SetThreadpoolThreadMaximum!(util.toPointer(ptpp), cthrdMost);
 }
 
 export function SetThreadpoolThreadMinimum(
   ptpp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */,
   cthrdMic: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolThreadMinimum(util.toPointer(ptpp), cthrdMic));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolThreadMinimum!(util.toPointer(ptpp), cthrdMic));
 }
 
 export function SetThreadpoolStackInformation(
   ptpp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */,
   ptpsi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolStackInformation(util.toPointer(ptpp), util.toPointer(ptpsi)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolStackInformation!(util.toPointer(ptpp), util.toPointer(ptpsi)));
 }
 
 export function QueryThreadpoolStackInformation(
   ptpp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */,
   ptpsi: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryThreadpoolStackInformation(util.toPointer(ptpp), util.toPointer(ptpsi)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryThreadpoolStackInformation!(util.toPointer(ptpp), util.toPointer(ptpsi)));
 }
 
 export function CloseThreadpool(
   ptpp: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.PTP_POOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpool(util.toPointer(ptpp));
+  return libKERNEL32_dll.CloseThreadpool!(util.toPointer(ptpp));
 }
 
 export function CreateThreadpoolCleanupGroup(): bigint | number /* isize */ {
-  return libKERNEL32_dll.CreateThreadpoolCleanupGroup();
+  return libKERNEL32_dll.CreateThreadpoolCleanupGroup!();
 }
 
 export function CloseThreadpoolCleanupGroupMembers(
@@ -10746,20 +11044,20 @@ export function CloseThreadpoolCleanupGroupMembers(
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
   pvCleanupContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolCleanupGroupMembers(ptpcg, util.boolToFfi(fCancelPendingCallbacks), util.toPointer(pvCleanupContext));
+  return libKERNEL32_dll.CloseThreadpoolCleanupGroupMembers!(ptpcg, util.boolToFfi(fCancelPendingCallbacks), util.toPointer(pvCleanupContext));
 }
 
 export function CloseThreadpoolCleanupGroup(
   ptpcg: bigint | number /* isize */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolCleanupGroup(ptpcg);
+  return libKERNEL32_dll.CloseThreadpoolCleanupGroup!(ptpcg);
 }
 
 export function SetEventWhenCallbackReturns(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
   evt: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libKERNEL32_dll.SetEventWhenCallbackReturns(util.toPointer(pci), util.toPointer(evt));
+  return libKERNEL32_dll.SetEventWhenCallbackReturns!(util.toPointer(pci), util.toPointer(evt));
 }
 
 export function ReleaseSemaphoreWhenCallbackReturns(
@@ -10767,40 +11065,40 @@ export function ReleaseSemaphoreWhenCallbackReturns(
   sem: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   crel: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleaseSemaphoreWhenCallbackReturns(util.toPointer(pci), util.toPointer(sem), crel);
+  return libKERNEL32_dll.ReleaseSemaphoreWhenCallbackReturns!(util.toPointer(pci), util.toPointer(sem), crel);
 }
 
 export function ReleaseMutexWhenCallbackReturns(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
   mut: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libKERNEL32_dll.ReleaseMutexWhenCallbackReturns(util.toPointer(pci), util.toPointer(mut));
+  return libKERNEL32_dll.ReleaseMutexWhenCallbackReturns!(util.toPointer(pci), util.toPointer(mut));
 }
 
 export function LeaveCriticalSectionWhenCallbackReturns(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
   pcs: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.LeaveCriticalSectionWhenCallbackReturns(util.toPointer(pci), util.toPointer(pcs));
+  return libKERNEL32_dll.LeaveCriticalSectionWhenCallbackReturns!(util.toPointer(pci), util.toPointer(pcs));
 }
 
 export function FreeLibraryWhenCallbackReturns(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
   mod: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): void /* void */ {
-  return libKERNEL32_dll.FreeLibraryWhenCallbackReturns(util.toPointer(pci), util.toPointer(mod));
+  return libKERNEL32_dll.FreeLibraryWhenCallbackReturns!(util.toPointer(pci), util.toPointer(mod));
 }
 
 export function CallbackMayRunLong(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CallbackMayRunLong(util.toPointer(pci)));
+  return util.boolFromFfi(libKERNEL32_dll.CallbackMayRunLong!(util.toPointer(pci)));
 }
 
 export function DisassociateCurrentThreadFromCallback(
   pci: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.DisassociateCurrentThreadFromCallback(util.toPointer(pci));
+  return libKERNEL32_dll.DisassociateCurrentThreadFromCallback!(util.toPointer(pci));
 }
 
 export function TrySubmitThreadpoolCallback(
@@ -10808,7 +11106,7 @@ export function TrySubmitThreadpoolCallback(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pcbe: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.TrySubmitThreadpoolCallback(util.toPointer(pfns), util.toPointer(pv), util.toPointer(pcbe)));
+  return util.boolFromFfi(libKERNEL32_dll.TrySubmitThreadpoolCallback!(util.toPointer(pfns), util.toPointer(pv), util.toPointer(pcbe)));
 }
 
 export function CreateThreadpoolWork(
@@ -10816,26 +11114,26 @@ export function CreateThreadpoolWork(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pcbe: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateThreadpoolWork(util.toPointer(pfnwk), util.toPointer(pv), util.toPointer(pcbe));
+  return libKERNEL32_dll.CreateThreadpoolWork!(util.toPointer(pfnwk), util.toPointer(pv), util.toPointer(pcbe));
 }
 
 export function SubmitThreadpoolWork(
   pwk: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.SubmitThreadpoolWork(util.toPointer(pwk));
+  return libKERNEL32_dll.SubmitThreadpoolWork!(util.toPointer(pwk));
 }
 
 export function WaitForThreadpoolWorkCallbacks(
   pwk: Deno.PointerValue | Uint8Array /* ptr */,
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.WaitForThreadpoolWorkCallbacks(util.toPointer(pwk), util.boolToFfi(fCancelPendingCallbacks));
+  return libKERNEL32_dll.WaitForThreadpoolWorkCallbacks!(util.toPointer(pwk), util.boolToFfi(fCancelPendingCallbacks));
 }
 
 export function CloseThreadpoolWork(
   pwk: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolWork(util.toPointer(pwk));
+  return libKERNEL32_dll.CloseThreadpoolWork!(util.toPointer(pwk));
 }
 
 export function CreateThreadpoolTimer(
@@ -10843,7 +11141,7 @@ export function CreateThreadpoolTimer(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pcbe: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateThreadpoolTimer(util.toPointer(pfnti), util.toPointer(pv), util.toPointer(pcbe));
+  return libKERNEL32_dll.CreateThreadpoolTimer!(util.toPointer(pfnti), util.toPointer(pv), util.toPointer(pcbe));
 }
 
 export function SetThreadpoolTimer(
@@ -10852,26 +11150,26 @@ export function SetThreadpoolTimer(
   msPeriod: number /* u32 */,
   msWindowLength: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.SetThreadpoolTimer(util.toPointer(pti), util.toPointer(pftDueTime), msPeriod, msWindowLength);
+  return libKERNEL32_dll.SetThreadpoolTimer!(util.toPointer(pti), util.toPointer(pftDueTime), msPeriod, msWindowLength);
 }
 
 export function IsThreadpoolTimerSet(
   pti: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsThreadpoolTimerSet(util.toPointer(pti)));
+  return util.boolFromFfi(libKERNEL32_dll.IsThreadpoolTimerSet!(util.toPointer(pti)));
 }
 
 export function WaitForThreadpoolTimerCallbacks(
   pti: Deno.PointerValue | Uint8Array /* ptr */,
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.WaitForThreadpoolTimerCallbacks(util.toPointer(pti), util.boolToFfi(fCancelPendingCallbacks));
+  return libKERNEL32_dll.WaitForThreadpoolTimerCallbacks!(util.toPointer(pti), util.boolToFfi(fCancelPendingCallbacks));
 }
 
 export function CloseThreadpoolTimer(
   pti: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolTimer(util.toPointer(pti));
+  return libKERNEL32_dll.CloseThreadpoolTimer!(util.toPointer(pti));
 }
 
 export function CreateThreadpoolWait(
@@ -10879,7 +11177,7 @@ export function CreateThreadpoolWait(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pcbe: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateThreadpoolWait(util.toPointer(pfnwa), util.toPointer(pv), util.toPointer(pcbe));
+  return libKERNEL32_dll.CreateThreadpoolWait!(util.toPointer(pfnwa), util.toPointer(pv), util.toPointer(pcbe));
 }
 
 export function SetThreadpoolWait(
@@ -10887,20 +11185,20 @@ export function SetThreadpoolWait(
   h: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pftTimeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.SetThreadpoolWait(util.toPointer(pwa), util.toPointer(h), util.toPointer(pftTimeout));
+  return libKERNEL32_dll.SetThreadpoolWait!(util.toPointer(pwa), util.toPointer(h), util.toPointer(pftTimeout));
 }
 
 export function WaitForThreadpoolWaitCallbacks(
   pwa: Deno.PointerValue | Uint8Array /* ptr */,
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.WaitForThreadpoolWaitCallbacks(util.toPointer(pwa), util.boolToFfi(fCancelPendingCallbacks));
+  return libKERNEL32_dll.WaitForThreadpoolWaitCallbacks!(util.toPointer(pwa), util.boolToFfi(fCancelPendingCallbacks));
 }
 
 export function CloseThreadpoolWait(
   pwa: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolWait(util.toPointer(pwa));
+  return libKERNEL32_dll.CloseThreadpoolWait!(util.toPointer(pwa));
 }
 
 export function CreateThreadpoolIo(
@@ -10909,32 +11207,32 @@ export function CreateThreadpoolIo(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   pcbe: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateThreadpoolIo(util.toPointer(fl), util.toPointer(pfnio), util.toPointer(pv), util.toPointer(pcbe));
+  return libKERNEL32_dll.CreateThreadpoolIo!(util.toPointer(fl), util.toPointer(pfnio), util.toPointer(pv), util.toPointer(pcbe));
 }
 
 export function StartThreadpoolIo(
   pio: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.StartThreadpoolIo(util.toPointer(pio));
+  return libKERNEL32_dll.StartThreadpoolIo!(util.toPointer(pio));
 }
 
 export function CancelThreadpoolIo(
   pio: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CancelThreadpoolIo(util.toPointer(pio));
+  return libKERNEL32_dll.CancelThreadpoolIo!(util.toPointer(pio));
 }
 
 export function WaitForThreadpoolIoCallbacks(
   pio: Deno.PointerValue | Uint8Array /* ptr */,
   fCancelPendingCallbacks: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.WaitForThreadpoolIoCallbacks(util.toPointer(pio), util.boolToFfi(fCancelPendingCallbacks));
+  return libKERNEL32_dll.WaitForThreadpoolIoCallbacks!(util.toPointer(pio), util.boolToFfi(fCancelPendingCallbacks));
 }
 
 export function CloseThreadpoolIo(
   pio: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.CloseThreadpoolIo(util.toPointer(pio));
+  return libKERNEL32_dll.CloseThreadpoolIo!(util.toPointer(pio));
 }
 
 export function SetThreadpoolTimerEx(
@@ -10943,7 +11241,7 @@ export function SetThreadpoolTimerEx(
   msPeriod: number /* u32 */,
   msWindowLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolTimerEx(util.toPointer(pti), util.toPointer(pftDueTime), msPeriod, msWindowLength));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolTimerEx!(util.toPointer(pti), util.toPointer(pftDueTime), msPeriod, msWindowLength));
 }
 
 export function SetThreadpoolWaitEx(
@@ -10952,20 +11250,20 @@ export function SetThreadpoolWaitEx(
   pftTimeout: Deno.PointerValue | Uint8Array /* ptr */,
   Reserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolWaitEx(util.toPointer(pwa), util.toPointer(h), util.toPointer(pftTimeout), util.toPointer(Reserved)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadpoolWaitEx!(util.toPointer(pwa), util.toPointer(h), util.toPointer(pftTimeout), util.toPointer(Reserved)));
 }
 
 export function IsWow64Process(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Wow64Process: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsWow64Process(util.toPointer(hProcess), util.toPointer(Wow64Process)));
+  return util.boolFromFfi(libKERNEL32_dll.IsWow64Process!(util.toPointer(hProcess), util.toPointer(Wow64Process)));
 }
 
 export function Wow64SetThreadDefaultGuestMachine(
   Machine: number /* u16 */,
 ): number /* u16 */ {
-  return libapi_ms_win_core_wow64_l1_1_1_dll.Wow64SetThreadDefaultGuestMachine(Machine);
+  return libapi_ms_win_core_wow64_l1_1_1_dll.Wow64SetThreadDefaultGuestMachine!(Machine);
 }
 
 export function IsWow64Process2(
@@ -10973,13 +11271,13 @@ export function IsWow64Process2(
   pProcessMachine: Deno.PointerValue | Uint8Array /* ptr */,
   pNativeMachine: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsWow64Process2(util.toPointer(hProcess), util.toPointer(pProcessMachine), util.toPointer(pNativeMachine)));
+  return util.boolFromFfi(libKERNEL32_dll.IsWow64Process2!(util.toPointer(hProcess), util.toPointer(pProcessMachine), util.toPointer(pNativeMachine)));
 }
 
 export function Wow64SuspendThread(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.Wow64SuspendThread(util.toPointer(hThread));
+  return libKERNEL32_dll.Wow64SuspendThread!(util.toPointer(hThread));
 }
 
 export function CreatePrivateNamespaceW(
@@ -10987,54 +11285,54 @@ export function CreatePrivateNamespaceW(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpAliasPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.NamespaceHandle */ {
-  return libKERNEL32_dll.CreatePrivateNamespaceW(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix));
+  return libKERNEL32_dll.CreatePrivateNamespaceW!(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix));
 }
 
 export function OpenPrivateNamespaceW(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpAliasPrefix: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.NamespaceHandle */ {
-  return libKERNEL32_dll.OpenPrivateNamespaceW(util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix));
+  return libKERNEL32_dll.OpenPrivateNamespaceW!(util.toPointer(lpBoundaryDescriptor), util.pwstrToFfi(lpAliasPrefix));
 }
 
 export function ClosePrivateNamespace(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.NamespaceHandle */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.ClosePrivateNamespace(util.toPointer(Handle), Flags);
+  return libKERNEL32_dll.ClosePrivateNamespace!(util.toPointer(Handle), Flags);
 }
 
 export function CreateBoundaryDescriptorW(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.BoundaryDescriptorHandle */ {
-  return libKERNEL32_dll.CreateBoundaryDescriptorW(util.pwstrToFfi(Name), Flags);
+  return libKERNEL32_dll.CreateBoundaryDescriptorW!(util.pwstrToFfi(Name), Flags);
 }
 
 export function AddSIDToBoundaryDescriptor(
   BoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   RequiredSid: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.AddSIDToBoundaryDescriptor(util.toPointer(BoundaryDescriptor), util.toPointer(RequiredSid)));
+  return util.boolFromFfi(libKERNEL32_dll.AddSIDToBoundaryDescriptor!(util.toPointer(BoundaryDescriptor), util.toPointer(RequiredSid)));
 }
 
 export function DeleteBoundaryDescriptor(
   BoundaryDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.BoundaryDescriptorHandle */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeleteBoundaryDescriptor(util.toPointer(BoundaryDescriptor));
+  return libKERNEL32_dll.DeleteBoundaryDescriptor!(util.toPointer(BoundaryDescriptor));
 }
 
 export function GetNumaHighestNodeNumber(
   HighestNodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaHighestNodeNumber(util.toPointer(HighestNodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaHighestNodeNumber!(util.toPointer(HighestNodeNumber)));
 }
 
 export function GetNumaNodeProcessorMaskEx(
   Node: number /* u16 */,
   ProcessorMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMaskEx(Node, util.toPointer(ProcessorMask)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMaskEx!(Node, util.toPointer(ProcessorMask)));
 }
 
 export function GetNumaNodeProcessorMask2(
@@ -11043,14 +11341,14 @@ export function GetNumaNodeProcessorMask2(
   ProcessorMaskCount: number /* u16 */,
   RequiredMaskCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMask2(NodeNumber, util.toPointer(ProcessorMasks), ProcessorMaskCount, util.toPointer(RequiredMaskCount)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMask2!(NodeNumber, util.toPointer(ProcessorMasks), ProcessorMaskCount, util.toPointer(RequiredMaskCount)));
 }
 
 export function GetNumaProximityNodeEx(
   ProximityId: number /* u32 */,
   NodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaProximityNodeEx(ProximityId, util.toPointer(NodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaProximityNodeEx!(ProximityId, util.toPointer(NodeNumber)));
 }
 
 export function GetProcessGroupAffinity(
@@ -11058,14 +11356,14 @@ export function GetProcessGroupAffinity(
   GroupCount: Deno.PointerValue | Uint8Array /* ptr */,
   GroupArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessGroupAffinity(util.toPointer(hProcess), util.toPointer(GroupCount), util.toPointer(GroupArray)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessGroupAffinity!(util.toPointer(hProcess), util.toPointer(GroupCount), util.toPointer(GroupArray)));
 }
 
 export function GetThreadGroupAffinity(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   GroupAffinity: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadGroupAffinity(util.toPointer(hThread), util.toPointer(GroupAffinity)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadGroupAffinity!(util.toPointer(hThread), util.toPointer(GroupAffinity)));
 }
 
 export function SetThreadGroupAffinity(
@@ -11073,21 +11371,21 @@ export function SetThreadGroupAffinity(
   GroupAffinity: Deno.PointerValue | Uint8Array /* ptr */,
   PreviousGroupAffinity: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadGroupAffinity(util.toPointer(hThread), util.toPointer(GroupAffinity), util.toPointer(PreviousGroupAffinity)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadGroupAffinity!(util.toPointer(hThread), util.toPointer(GroupAffinity), util.toPointer(PreviousGroupAffinity)));
 }
 
 export function AvSetMmThreadCharacteristicsA(
   TaskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libAVRT_dll.AvSetMmThreadCharacteristicsA(util.pstrToFfi(TaskName), util.toPointer(TaskIndex));
+  return libAVRT_dll.AvSetMmThreadCharacteristicsA!(util.pstrToFfi(TaskName), util.toPointer(TaskIndex));
 }
 
 export function AvSetMmThreadCharacteristicsW(
   TaskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libAVRT_dll.AvSetMmThreadCharacteristicsW(util.pwstrToFfi(TaskName), util.toPointer(TaskIndex));
+  return libAVRT_dll.AvSetMmThreadCharacteristicsW!(util.pwstrToFfi(TaskName), util.toPointer(TaskIndex));
 }
 
 export function AvSetMmMaxThreadCharacteristicsA(
@@ -11095,7 +11393,7 @@ export function AvSetMmMaxThreadCharacteristicsA(
   SecondTask: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libAVRT_dll.AvSetMmMaxThreadCharacteristicsA(util.pstrToFfi(FirstTask), util.pstrToFfi(SecondTask), util.toPointer(TaskIndex));
+  return libAVRT_dll.AvSetMmMaxThreadCharacteristicsA!(util.pstrToFfi(FirstTask), util.pstrToFfi(SecondTask), util.toPointer(TaskIndex));
 }
 
 export function AvSetMmMaxThreadCharacteristicsW(
@@ -11103,20 +11401,20 @@ export function AvSetMmMaxThreadCharacteristicsW(
   SecondTask: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   TaskIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libAVRT_dll.AvSetMmMaxThreadCharacteristicsW(util.pwstrToFfi(FirstTask), util.pwstrToFfi(SecondTask), util.toPointer(TaskIndex));
+  return libAVRT_dll.AvSetMmMaxThreadCharacteristicsW!(util.pwstrToFfi(FirstTask), util.pwstrToFfi(SecondTask), util.toPointer(TaskIndex));
 }
 
 export function AvRevertMmThreadCharacteristics(
   AvrtHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRevertMmThreadCharacteristics(util.toPointer(AvrtHandle)));
+  return util.boolFromFfi(libAVRT_dll.AvRevertMmThreadCharacteristics!(util.toPointer(AvrtHandle)));
 }
 
 export function AvSetMmThreadPriority(
   AvrtHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Priority: AVRT_PRIORITY /* Windows.Win32.System.Threading.AVRT_PRIORITY */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvSetMmThreadPriority(util.toPointer(AvrtHandle), Priority));
+  return util.boolFromFfi(libAVRT_dll.AvSetMmThreadPriority!(util.toPointer(AvrtHandle), Priority));
 }
 
 export function AvRtCreateThreadOrderingGroup(
@@ -11125,7 +11423,7 @@ export function AvRtCreateThreadOrderingGroup(
   ThreadOrderingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   Timeout: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroup(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout)));
+  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroup!(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout)));
 }
 
 export function AvRtCreateThreadOrderingGroupExA(
@@ -11135,7 +11433,7 @@ export function AvRtCreateThreadOrderingGroupExA(
   Timeout: Deno.PointerValue | Uint8Array /* ptr */,
   TaskName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExA(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pstrToFfi(TaskName)));
+  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExA!(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pstrToFfi(TaskName)));
 }
 
 export function AvRtCreateThreadOrderingGroupExW(
@@ -11145,7 +11443,7 @@ export function AvRtCreateThreadOrderingGroupExW(
   Timeout: Deno.PointerValue | Uint8Array /* ptr */,
   TaskName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExW(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pwstrToFfi(TaskName)));
+  return util.boolFromFfi(libAVRT_dll.AvRtCreateThreadOrderingGroupExW!(util.toPointer(Context), util.toPointer(Period), util.toPointer(ThreadOrderingGuid), util.toPointer(Timeout), util.pwstrToFfi(TaskName)));
 }
 
 export function AvRtJoinThreadOrderingGroup(
@@ -11153,32 +11451,32 @@ export function AvRtJoinThreadOrderingGroup(
   ThreadOrderingGuid: Deno.PointerValue | Uint8Array /* ptr */,
   Before: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtJoinThreadOrderingGroup(util.toPointer(Context), util.toPointer(ThreadOrderingGuid), util.boolToFfi(Before)));
+  return util.boolFromFfi(libAVRT_dll.AvRtJoinThreadOrderingGroup!(util.toPointer(Context), util.toPointer(ThreadOrderingGuid), util.boolToFfi(Before)));
 }
 
 export function AvRtWaitOnThreadOrderingGroup(
   Context: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtWaitOnThreadOrderingGroup(util.toPointer(Context)));
+  return util.boolFromFfi(libAVRT_dll.AvRtWaitOnThreadOrderingGroup!(util.toPointer(Context)));
 }
 
 export function AvRtLeaveThreadOrderingGroup(
   Context: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtLeaveThreadOrderingGroup(util.toPointer(Context)));
+  return util.boolFromFfi(libAVRT_dll.AvRtLeaveThreadOrderingGroup!(util.toPointer(Context)));
 }
 
 export function AvRtDeleteThreadOrderingGroup(
   Context: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvRtDeleteThreadOrderingGroup(util.toPointer(Context)));
+  return util.boolFromFfi(libAVRT_dll.AvRtDeleteThreadOrderingGroup!(util.toPointer(Context)));
 }
 
 export function AvQuerySystemResponsiveness(
   AvrtHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SystemResponsivenessValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libAVRT_dll.AvQuerySystemResponsiveness(util.toPointer(AvrtHandle), util.toPointer(SystemResponsivenessValue)));
+  return util.boolFromFfi(libAVRT_dll.AvQuerySystemResponsiveness!(util.toPointer(AvrtHandle), util.toPointer(SystemResponsivenessValue)));
 }
 
 export function AttachThreadInput(
@@ -11186,33 +11484,33 @@ export function AttachThreadInput(
   idAttachTo: number /* u32 */,
   fAttach: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.AttachThreadInput(idAttach, idAttachTo, util.boolToFfi(fAttach)));
+  return util.boolFromFfi(libUSER32_dll.AttachThreadInput!(idAttach, idAttachTo, util.boolToFfi(fAttach)));
 }
 
 export function WaitForInputIdle(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.WaitForInputIdle(util.toPointer(hProcess), dwMilliseconds);
+  return libUSER32_dll.WaitForInputIdle!(util.toPointer(hProcess), dwMilliseconds);
 }
 
 export function GetGuiResources(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uiFlags: GET_GUI_RESOURCES_FLAGS /* Windows.Win32.System.Threading.GET_GUI_RESOURCES_FLAGS */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetGuiResources(util.toPointer(hProcess), uiFlags);
+  return libUSER32_dll.GetGuiResources!(util.toPointer(hProcess), uiFlags);
 }
 
 export function IsImmersiveProcess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsImmersiveProcess(util.toPointer(hProcess)));
+  return util.boolFromFfi(libUSER32_dll.IsImmersiveProcess!(util.toPointer(hProcess)));
 }
 
 export function SetProcessRestrictionExemption(
   fEnableExemption: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetProcessRestrictionExemption(util.boolToFfi(fEnableExemption)));
+  return util.boolFromFfi(libUSER32_dll.SetProcessRestrictionExemption!(util.boolToFfi(fEnableExemption)));
 }
 
 export function GetProcessAffinityMask(
@@ -11220,37 +11518,37 @@ export function GetProcessAffinityMask(
   lpProcessAffinityMask: Deno.PointerValue | Uint8Array /* ptr */,
   lpSystemAffinityMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessAffinityMask(util.toPointer(hProcess), util.toPointer(lpProcessAffinityMask), util.toPointer(lpSystemAffinityMask)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessAffinityMask!(util.toPointer(hProcess), util.toPointer(lpProcessAffinityMask), util.toPointer(lpSystemAffinityMask)));
 }
 
 export function SetProcessAffinityMask(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwProcessAffinityMask: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessAffinityMask(util.toPointer(hProcess), dwProcessAffinityMask));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessAffinityMask!(util.toPointer(hProcess), dwProcessAffinityMask));
 }
 
 export function GetProcessIoCounters(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpIoCounters: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessIoCounters(util.toPointer(hProcess), util.toPointer(lpIoCounters)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessIoCounters!(util.toPointer(hProcess), util.toPointer(lpIoCounters)));
 }
 
 export function SwitchToFiber(
   lpFiber: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.SwitchToFiber(util.toPointer(lpFiber));
+  return libKERNEL32_dll.SwitchToFiber!(util.toPointer(lpFiber));
 }
 
 export function DeleteFiber(
   lpFiber: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.DeleteFiber(util.toPointer(lpFiber));
+  return libKERNEL32_dll.DeleteFiber!(util.toPointer(lpFiber));
 }
 
 export function ConvertFiberToThread(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ConvertFiberToThread());
+  return util.boolFromFfi(libKERNEL32_dll.ConvertFiberToThread!());
 }
 
 export function CreateFiberEx(
@@ -11260,14 +11558,14 @@ export function CreateFiberEx(
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPFIBER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateFiberEx(dwStackCommitSize, dwStackReserveSize, dwFlags, util.toPointer(lpStartAddress), util.toPointer(lpParameter));
+  return libKERNEL32_dll.CreateFiberEx!(dwStackCommitSize, dwStackReserveSize, dwFlags, util.toPointer(lpStartAddress), util.toPointer(lpParameter));
 }
 
 export function ConvertThreadToFiberEx(
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.ConvertThreadToFiberEx(util.toPointer(lpParameter), dwFlags);
+  return libKERNEL32_dll.ConvertThreadToFiberEx!(util.toPointer(lpParameter), dwFlags);
 }
 
 export function CreateFiber(
@@ -11275,19 +11573,19 @@ export function CreateFiber(
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPFIBER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.CreateFiber(dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter));
+  return libKERNEL32_dll.CreateFiber!(dwStackSize, util.toPointer(lpStartAddress), util.toPointer(lpParameter));
 }
 
 export function ConvertThreadToFiber(
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.ConvertThreadToFiber(util.toPointer(lpParameter));
+  return libKERNEL32_dll.ConvertThreadToFiber!(util.toPointer(lpParameter));
 }
 
 export function CreateUmsCompletionList(
   UmsCompletionList: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CreateUmsCompletionList(util.toPointer(UmsCompletionList)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateUmsCompletionList!(util.toPointer(UmsCompletionList)));
 }
 
 export function DequeueUmsCompletionListItems(
@@ -11295,42 +11593,42 @@ export function DequeueUmsCompletionListItems(
   WaitTimeOut: number /* u32 */,
   UmsThreadList: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DequeueUmsCompletionListItems(util.toPointer(UmsCompletionList), WaitTimeOut, util.toPointer(UmsThreadList)));
+  return util.boolFromFfi(libKERNEL32_dll.DequeueUmsCompletionListItems!(util.toPointer(UmsCompletionList), WaitTimeOut, util.toPointer(UmsThreadList)));
 }
 
 export function GetUmsCompletionListEvent(
   UmsCompletionList: Deno.PointerValue | Uint8Array /* ptr */,
   UmsCompletionEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetUmsCompletionListEvent(util.toPointer(UmsCompletionList), util.toPointer(UmsCompletionEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.GetUmsCompletionListEvent!(util.toPointer(UmsCompletionList), util.toPointer(UmsCompletionEvent)));
 }
 
 export function ExecuteUmsThread(
   UmsThread: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ExecuteUmsThread(util.toPointer(UmsThread)));
+  return util.boolFromFfi(libKERNEL32_dll.ExecuteUmsThread!(util.toPointer(UmsThread)));
 }
 
 export function UmsThreadYield(
   SchedulerParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UmsThreadYield(util.toPointer(SchedulerParam)));
+  return util.boolFromFfi(libKERNEL32_dll.UmsThreadYield!(util.toPointer(SchedulerParam)));
 }
 
 export function DeleteUmsCompletionList(
   UmsCompletionList: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteUmsCompletionList(util.toPointer(UmsCompletionList)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteUmsCompletionList!(util.toPointer(UmsCompletionList)));
 }
 
 export function GetCurrentUmsThread(): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.GetCurrentUmsThread();
+  return libKERNEL32_dll.GetCurrentUmsThread!();
 }
 
 export function GetNextUmsListItem(
   UmsContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.GetNextUmsListItem(util.toPointer(UmsContext));
+  return libKERNEL32_dll.GetNextUmsListItem!(util.toPointer(UmsContext));
 }
 
 export function QueryUmsThreadInformation(
@@ -11340,7 +11638,7 @@ export function QueryUmsThreadInformation(
   UmsThreadInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryUmsThreadInformation(util.toPointer(UmsThread), UmsThreadInfoClass, util.toPointer(UmsThreadInformation), UmsThreadInformationLength, util.toPointer(ReturnLength)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryUmsThreadInformation!(util.toPointer(UmsThread), UmsThreadInfoClass, util.toPointer(UmsThreadInformation), UmsThreadInformationLength, util.toPointer(ReturnLength)));
 }
 
 export function SetUmsThreadInformation(
@@ -11349,45 +11647,45 @@ export function SetUmsThreadInformation(
   UmsThreadInformation: Deno.PointerValue | Uint8Array /* ptr */,
   UmsThreadInformationLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetUmsThreadInformation(util.toPointer(UmsThread), UmsThreadInfoClass, util.toPointer(UmsThreadInformation), UmsThreadInformationLength));
+  return util.boolFromFfi(libKERNEL32_dll.SetUmsThreadInformation!(util.toPointer(UmsThread), UmsThreadInfoClass, util.toPointer(UmsThreadInformation), UmsThreadInformationLength));
 }
 
 export function DeleteUmsThreadContext(
   UmsThread: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DeleteUmsThreadContext(util.toPointer(UmsThread)));
+  return util.boolFromFfi(libKERNEL32_dll.DeleteUmsThreadContext!(util.toPointer(UmsThread)));
 }
 
 export function CreateUmsThreadContext(
   lpUmsThread: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CreateUmsThreadContext(util.toPointer(lpUmsThread)));
+  return util.boolFromFfi(libKERNEL32_dll.CreateUmsThreadContext!(util.toPointer(lpUmsThread)));
 }
 
 export function EnterUmsSchedulingMode(
   SchedulerStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnterUmsSchedulingMode(util.toPointer(SchedulerStartupInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.EnterUmsSchedulingMode!(util.toPointer(SchedulerStartupInfo)));
 }
 
 export function GetUmsSystemThreadInformation(
   ThreadHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SystemThreadInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetUmsSystemThreadInformation(util.toPointer(ThreadHandle), util.toPointer(SystemThreadInfo)));
+  return util.boolFromFfi(libKERNEL32_dll.GetUmsSystemThreadInformation!(util.toPointer(ThreadHandle), util.toPointer(SystemThreadInfo)));
 }
 
 export function SetThreadAffinityMask(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwThreadAffinityMask: bigint | number /* usize */,
 ): bigint | number /* usize */ {
-  return libKERNEL32_dll.SetThreadAffinityMask(util.toPointer(hThread), dwThreadAffinityMask);
+  return libKERNEL32_dll.SetThreadAffinityMask!(util.toPointer(hThread), dwThreadAffinityMask);
 }
 
 export function SetProcessDEPPolicy(
   dwFlags: PROCESS_DEP_FLAGS /* Windows.Win32.System.Threading.PROCESS_DEP_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetProcessDEPPolicy(dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetProcessDEPPolicy!(dwFlags));
 }
 
 export function GetProcessDEPPolicy(
@@ -11395,20 +11693,20 @@ export function GetProcessDEPPolicy(
   lpFlags: Deno.PointerValue | Uint8Array /* ptr */,
   lpPermanent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetProcessDEPPolicy(util.toPointer(hProcess), util.toPointer(lpFlags), util.toPointer(lpPermanent)));
+  return util.boolFromFfi(libKERNEL32_dll.GetProcessDEPPolicy!(util.toPointer(hProcess), util.toPointer(lpFlags), util.toPointer(lpPermanent)));
 }
 
 export function PulseEvent(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.PulseEvent(util.toPointer(hEvent)));
+  return util.boolFromFfi(libKERNEL32_dll.PulseEvent!(util.toPointer(hEvent)));
 }
 
 export function WinExec(
   lpCmdLine: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uCmdShow: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.WinExec(util.pstrToFfi(lpCmdLine), uCmdShow);
+  return libKERNEL32_dll.WinExec!(util.pstrToFfi(lpCmdLine), uCmdShow);
 }
 
 export function CreateSemaphoreA(
@@ -11417,7 +11715,7 @@ export function CreateSemaphoreA(
   lMaximumCount: number /* i32 */,
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateSemaphoreA(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pstrToFfi(lpName));
+  return libKERNEL32_dll.CreateSemaphoreA!(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pstrToFfi(lpName));
 }
 
 export function CreateSemaphoreExA(
@@ -11428,7 +11726,7 @@ export function CreateSemaphoreExA(
   dwFlags: number /* u32 */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.CreateSemaphoreExA(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
+  return libKERNEL32_dll.CreateSemaphoreExA!(util.toPointer(lpSemaphoreAttributes), lInitialCount, lMaximumCount, util.pstrToFfi(lpName), dwFlags, dwDesiredAccess);
 }
 
 export function QueryFullProcessImageNameA(
@@ -11437,7 +11735,7 @@ export function QueryFullProcessImageNameA(
   lpExeName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameA(util.toPointer(hProcess), dwFlags, util.pstrToFfi(lpExeName), util.toPointer(lpdwSize)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameA!(util.toPointer(hProcess), dwFlags, util.pstrToFfi(lpExeName), util.toPointer(lpdwSize)));
 }
 
 export function QueryFullProcessImageNameW(
@@ -11446,13 +11744,13 @@ export function QueryFullProcessImageNameW(
   lpExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameW(util.toPointer(hProcess), dwFlags, util.pwstrToFfi(lpExeName), util.toPointer(lpdwSize)));
+  return util.boolFromFfi(libKERNEL32_dll.QueryFullProcessImageNameW!(util.toPointer(hProcess), dwFlags, util.pwstrToFfi(lpExeName), util.toPointer(lpdwSize)));
 }
 
 export function GetStartupInfoA(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.GetStartupInfoA(util.toPointer(lpStartupInfo));
+  return libKERNEL32_dll.GetStartupInfoA!(util.toPointer(lpStartupInfo));
 }
 
 export function CreateProcessWithLogonW(
@@ -11468,7 +11766,7 @@ export function CreateProcessWithLogonW(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateProcessWithLogonW(util.pwstrToFfi(lpUsername), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpPassword), dwLogonFlags, util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateProcessWithLogonW!(util.pwstrToFfi(lpUsername), util.pwstrToFfi(lpDomain), util.pwstrToFfi(lpPassword), dwLogonFlags, util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function CreateProcessWithTokenW(
@@ -11482,7 +11780,7 @@ export function CreateProcessWithTokenW(
   lpStartupInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpProcessInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.CreateProcessWithTokenW(util.toPointer(hToken), dwLogonFlags, util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
+  return util.boolFromFfi(libADVAPI32_dll.CreateProcessWithTokenW!(util.toPointer(hToken), dwLogonFlags, util.pwstrToFfi(lpApplicationName), util.pwstrToFfi(lpCommandLine), dwCreationFlags, util.toPointer(lpEnvironment), util.pwstrToFfi(lpCurrentDirectory), util.toPointer(lpStartupInfo), util.toPointer(lpProcessInformation)));
 }
 
 export function RegisterWaitForSingleObject(
@@ -11493,13 +11791,13 @@ export function RegisterWaitForSingleObject(
   dwMilliseconds: number /* u32 */,
   dwFlags: WORKER_THREAD_FLAGS /* Windows.Win32.System.Threading.WORKER_THREAD_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.RegisterWaitForSingleObject(util.toPointer(phNewWaitObject), util.toPointer(hObject), util.toPointer(Callback), util.toPointer(Context), dwMilliseconds, dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.RegisterWaitForSingleObject!(util.toPointer(phNewWaitObject), util.toPointer(hObject), util.toPointer(Callback), util.toPointer(Context), dwMilliseconds, dwFlags));
 }
 
 export function UnregisterWait(
   WaitHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UnregisterWait(util.toPointer(WaitHandle)));
+  return util.boolFromFfi(libKERNEL32_dll.UnregisterWait!(util.toPointer(WaitHandle)));
 }
 
 export function SetTimerQueueTimer(
@@ -11510,7 +11808,7 @@ export function SetTimerQueueTimer(
   Period: number /* u32 */,
   PreferIo: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.SetTimerQueueTimer(util.toPointer(TimerQueue), util.toPointer(Callback), util.toPointer(Parameter), DueTime, Period, util.boolToFfi(PreferIo));
+  return libKERNEL32_dll.SetTimerQueueTimer!(util.toPointer(TimerQueue), util.toPointer(Callback), util.toPointer(Parameter), DueTime, Period, util.boolToFfi(PreferIo));
 }
 
 export function CreatePrivateNamespaceA(
@@ -11518,97 +11816,97 @@ export function CreatePrivateNamespaceA(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpAliasPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.NamespaceHandle */ {
-  return libKERNEL32_dll.CreatePrivateNamespaceA(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix));
+  return libKERNEL32_dll.CreatePrivateNamespaceA!(util.toPointer(lpPrivateNamespaceAttributes), util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix));
 }
 
 export function OpenPrivateNamespaceA(
   lpBoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpAliasPrefix: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.NamespaceHandle */ {
-  return libKERNEL32_dll.OpenPrivateNamespaceA(util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix));
+  return libKERNEL32_dll.OpenPrivateNamespaceA!(util.toPointer(lpBoundaryDescriptor), util.pstrToFfi(lpAliasPrefix));
 }
 
 export function CreateBoundaryDescriptorA(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Threading.BoundaryDescriptorHandle */ {
-  return libKERNEL32_dll.CreateBoundaryDescriptorA(util.pstrToFfi(Name), Flags);
+  return libKERNEL32_dll.CreateBoundaryDescriptorA!(util.pstrToFfi(Name), Flags);
 }
 
 export function AddIntegrityLabelToBoundaryDescriptor(
   BoundaryDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   IntegrityLabel: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.PSID */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.AddIntegrityLabelToBoundaryDescriptor(util.toPointer(BoundaryDescriptor), util.toPointer(IntegrityLabel)));
+  return util.boolFromFfi(libKERNEL32_dll.AddIntegrityLabelToBoundaryDescriptor!(util.toPointer(BoundaryDescriptor), util.toPointer(IntegrityLabel)));
 }
 
 export function GetActiveProcessorGroupCount(): number /* u16 */ {
-  return libKERNEL32_dll.GetActiveProcessorGroupCount();
+  return libKERNEL32_dll.GetActiveProcessorGroupCount!();
 }
 
 export function GetMaximumProcessorGroupCount(): number /* u16 */ {
-  return libKERNEL32_dll.GetMaximumProcessorGroupCount();
+  return libKERNEL32_dll.GetMaximumProcessorGroupCount!();
 }
 
 export function GetActiveProcessorCount(
   GroupNumber: number /* u16 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetActiveProcessorCount(GroupNumber);
+  return libKERNEL32_dll.GetActiveProcessorCount!(GroupNumber);
 }
 
 export function GetMaximumProcessorCount(
   GroupNumber: number /* u16 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetMaximumProcessorCount(GroupNumber);
+  return libKERNEL32_dll.GetMaximumProcessorCount!(GroupNumber);
 }
 
 export function GetNumaProcessorNode(
   Processor: number /* u8 */,
   NodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaProcessorNode(Processor, util.toPointer(NodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaProcessorNode!(Processor, util.toPointer(NodeNumber)));
 }
 
 export function GetNumaNodeNumberFromHandle(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   NodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeNumberFromHandle(util.toPointer(hFile), util.toPointer(NodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeNumberFromHandle!(util.toPointer(hFile), util.toPointer(NodeNumber)));
 }
 
 export function GetNumaProcessorNodeEx(
   Processor: Deno.PointerValue | Uint8Array /* ptr */,
   NodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaProcessorNodeEx(util.toPointer(Processor), util.toPointer(NodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaProcessorNodeEx!(util.toPointer(Processor), util.toPointer(NodeNumber)));
 }
 
 export function GetNumaNodeProcessorMask(
   Node: number /* u8 */,
   ProcessorMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMask(Node, util.toPointer(ProcessorMask)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaNodeProcessorMask!(Node, util.toPointer(ProcessorMask)));
 }
 
 export function GetNumaAvailableMemoryNode(
   Node: number /* u8 */,
   AvailableBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaAvailableMemoryNode(Node, util.toPointer(AvailableBytes)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaAvailableMemoryNode!(Node, util.toPointer(AvailableBytes)));
 }
 
 export function GetNumaAvailableMemoryNodeEx(
   Node: number /* u16 */,
   AvailableBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaAvailableMemoryNodeEx(Node, util.toPointer(AvailableBytes)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaAvailableMemoryNodeEx!(Node, util.toPointer(AvailableBytes)));
 }
 
 export function GetNumaProximityNode(
   ProximityId: number /* u32 */,
   NodeNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetNumaProximityNode(ProximityId, util.toPointer(NodeNumber)));
+  return util.boolFromFfi(libKERNEL32_dll.GetNumaProximityNode!(ProximityId, util.toPointer(NodeNumber)));
 }
 
 export function NtQueryInformationProcess(
@@ -11618,7 +11916,7 @@ export function NtQueryInformationProcess(
   ProcessInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQueryInformationProcess(util.toPointer(ProcessHandle), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationLength, util.toPointer(ReturnLength));
+  return libntdll_dll.NtQueryInformationProcess!(util.toPointer(ProcessHandle), ProcessInformationClass, util.toPointer(ProcessInformation), ProcessInformationLength, util.toPointer(ReturnLength));
 }
 
 export function NtQueryInformationThread(
@@ -11628,7 +11926,7 @@ export function NtQueryInformationThread(
   ThreadInformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtQueryInformationThread(util.toPointer(ThreadHandle), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationLength, util.toPointer(ReturnLength));
+  return libntdll_dll.NtQueryInformationThread!(util.toPointer(ThreadHandle), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationLength, util.toPointer(ReturnLength));
 }
 
 export function NtSetInformationThread(
@@ -11637,6 +11935,6 @@ export function NtSetInformationThread(
   ThreadInformation: Deno.PointerValue | Uint8Array /* ptr */,
   ThreadInformationLength: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libntdll_dll.NtSetInformationThread(util.toPointer(ThreadHandle), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationLength);
+  return libntdll_dll.NtSetInformationThread!(util.toPointer(ThreadHandle), ThreadInformationClass, util.toPointer(ThreadInformation), ThreadInformationLength);
 }
 

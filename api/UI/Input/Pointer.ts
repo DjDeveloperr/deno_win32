@@ -943,114 +943,142 @@ try {
     GetUnpredictedMessagePos: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     InitializeTouchInjection: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     InjectTouchInput: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerType: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerCursorId: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerInfo: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerInfoHistory: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFrameInfo: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFrameInfoHistory: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerTouchInfo: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerTouchInfoHistory: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFrameTouchInfo: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFrameTouchInfoHistory: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerPenInfo: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerPenInfoHistory: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFramePenInfo: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerFramePenInfoHistory: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SkipPointerFrameMessages: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     InjectSyntheticPointerInput: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EnableMouseInPointer: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     IsMouseInPointerEnabled: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     GetPointerInputTransform: {
       parameters: ["u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerDevices: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerDevice: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerDeviceProperties: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerDeviceRects: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPointerDeviceCursors: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetRawPointerDeviceData: {
       parameters: ["u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1058,42 +1086,42 @@ try {
 // Symbols
 
 export function GetUnpredictedMessagePos(): number /* u32 */ {
-  return libUSER32_dll.GetUnpredictedMessagePos();
+  return libUSER32_dll.GetUnpredictedMessagePos!();
 }
 
 export function InitializeTouchInjection(
   maxCount: number /* u32 */,
   dwMode: TOUCH_FEEDBACK_MODE /* Windows.Win32.UI.Input.Pointer.TOUCH_FEEDBACK_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InitializeTouchInjection(maxCount, dwMode));
+  return util.boolFromFfi(libUSER32_dll.InitializeTouchInjection!(maxCount, dwMode));
 }
 
 export function InjectTouchInput(
   count: number /* u32 */,
   contacts: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InjectTouchInput(count, util.toPointer(contacts)));
+  return util.boolFromFfi(libUSER32_dll.InjectTouchInput!(count, util.toPointer(contacts)));
 }
 
 export function GetPointerType(
   pointerId: number /* u32 */,
   pointerType: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerType(pointerId, util.toPointer(pointerType)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerType!(pointerId, util.toPointer(pointerType)));
 }
 
 export function GetPointerCursorId(
   pointerId: number /* u32 */,
   cursorId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerCursorId(pointerId, util.toPointer(cursorId)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerCursorId!(pointerId, util.toPointer(cursorId)));
 }
 
 export function GetPointerInfo(
   pointerId: number /* u32 */,
   pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerInfo(pointerId, util.toPointer(pointerInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerInfo!(pointerId, util.toPointer(pointerInfo)));
 }
 
 export function GetPointerInfoHistory(
@@ -1101,7 +1129,7 @@ export function GetPointerInfoHistory(
   entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
   pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerFrameInfo(
@@ -1109,7 +1137,7 @@ export function GetPointerFrameInfo(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfo(pointerId, util.toPointer(pointerCount), util.toPointer(pointerInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfo!(pointerId, util.toPointer(pointerCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerFrameInfoHistory(
@@ -1118,14 +1146,14 @@ export function GetPointerFrameInfoHistory(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(pointerInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFrameInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(pointerInfo)));
 }
 
 export function GetPointerTouchInfo(
   pointerId: number /* u32 */,
   touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfo(pointerId, util.toPointer(touchInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfo!(pointerId, util.toPointer(touchInfo)));
 }
 
 export function GetPointerTouchInfoHistory(
@@ -1133,7 +1161,7 @@ export function GetPointerTouchInfoHistory(
   entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
   touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(touchInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerTouchInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerFrameTouchInfo(
@@ -1141,7 +1169,7 @@ export function GetPointerFrameTouchInfo(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfo(pointerId, util.toPointer(pointerCount), util.toPointer(touchInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfo!(pointerId, util.toPointer(pointerCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerFrameTouchInfoHistory(
@@ -1150,14 +1178,14 @@ export function GetPointerFrameTouchInfoHistory(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   touchInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(touchInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFrameTouchInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(touchInfo)));
 }
 
 export function GetPointerPenInfo(
   pointerId: number /* u32 */,
   penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerPenInfo(pointerId, util.toPointer(penInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerPenInfo!(pointerId, util.toPointer(penInfo)));
 }
 
 export function GetPointerPenInfoHistory(
@@ -1165,7 +1193,7 @@ export function GetPointerPenInfoHistory(
   entriesCount: Deno.PointerValue | Uint8Array /* ptr */,
   penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerPenInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(penInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerPenInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(penInfo)));
 }
 
 export function GetPointerFramePenInfo(
@@ -1173,7 +1201,7 @@ export function GetPointerFramePenInfo(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfo(pointerId, util.toPointer(pointerCount), util.toPointer(penInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfo!(pointerId, util.toPointer(pointerCount), util.toPointer(penInfo)));
 }
 
 export function GetPointerFramePenInfoHistory(
@@ -1182,13 +1210,13 @@ export function GetPointerFramePenInfoHistory(
   pointerCount: Deno.PointerValue | Uint8Array /* ptr */,
   penInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfoHistory(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(penInfo)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerFramePenInfoHistory!(pointerId, util.toPointer(entriesCount), util.toPointer(pointerCount), util.toPointer(penInfo)));
 }
 
 export function SkipPointerFrameMessages(
   pointerId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SkipPointerFrameMessages(pointerId));
+  return util.boolFromFfi(libUSER32_dll.SkipPointerFrameMessages!(pointerId));
 }
 
 export function InjectSyntheticPointerInput(
@@ -1196,17 +1224,17 @@ export function InjectSyntheticPointerInput(
   pointerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   count: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.InjectSyntheticPointerInput(util.toPointer(device), util.toPointer(pointerInfo), count));
+  return util.boolFromFfi(libUSER32_dll.InjectSyntheticPointerInput!(util.toPointer(device), util.toPointer(pointerInfo), count));
 }
 
 export function EnableMouseInPointer(
   fEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnableMouseInPointer(util.boolToFfi(fEnable)));
+  return util.boolFromFfi(libUSER32_dll.EnableMouseInPointer!(util.boolToFfi(fEnable)));
 }
 
 export function IsMouseInPointerEnabled(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsMouseInPointerEnabled());
+  return util.boolFromFfi(libUSER32_dll.IsMouseInPointerEnabled!());
 }
 
 export function GetPointerInputTransform(
@@ -1214,21 +1242,21 @@ export function GetPointerInputTransform(
   historyCount: number /* u32 */,
   inputTransform: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerInputTransform(pointerId, historyCount, util.toPointer(inputTransform)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerInputTransform!(pointerId, historyCount, util.toPointer(inputTransform)));
 }
 
 export function GetPointerDevices(
   deviceCount: Deno.PointerValue | Uint8Array /* ptr */,
   pointerDevices: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerDevices(util.toPointer(deviceCount), util.toPointer(pointerDevices)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerDevices!(util.toPointer(deviceCount), util.toPointer(pointerDevices)));
 }
 
 export function GetPointerDevice(
   device: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pointerDevice: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerDevice(util.toPointer(device), util.toPointer(pointerDevice)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerDevice!(util.toPointer(device), util.toPointer(pointerDevice)));
 }
 
 export function GetPointerDeviceProperties(
@@ -1236,7 +1264,7 @@ export function GetPointerDeviceProperties(
   propertyCount: Deno.PointerValue | Uint8Array /* ptr */,
   pointerProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceProperties(util.toPointer(device), util.toPointer(propertyCount), util.toPointer(pointerProperties)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceProperties!(util.toPointer(device), util.toPointer(propertyCount), util.toPointer(pointerProperties)));
 }
 
 export function GetPointerDeviceRects(
@@ -1244,7 +1272,7 @@ export function GetPointerDeviceRects(
   pointerDeviceRect: Deno.PointerValue | Uint8Array /* ptr */,
   displayRect: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceRects(util.toPointer(device), util.toPointer(pointerDeviceRect), util.toPointer(displayRect)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceRects!(util.toPointer(device), util.toPointer(pointerDeviceRect), util.toPointer(displayRect)));
 }
 
 export function GetPointerDeviceCursors(
@@ -1252,7 +1280,7 @@ export function GetPointerDeviceCursors(
   cursorCount: Deno.PointerValue | Uint8Array /* ptr */,
   deviceCursors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceCursors(util.toPointer(device), util.toPointer(cursorCount), util.toPointer(deviceCursors)));
+  return util.boolFromFfi(libUSER32_dll.GetPointerDeviceCursors!(util.toPointer(device), util.toPointer(cursorCount), util.toPointer(deviceCursors)));
 }
 
 export function GetRawPointerDeviceData(
@@ -1262,6 +1290,6 @@ export function GetRawPointerDeviceData(
   pProperties: Deno.PointerValue | Uint8Array /* ptr */,
   pValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetRawPointerDeviceData(pointerId, historyCount, propertiesCount, util.toPointer(pProperties), util.toPointer(pValues)));
+  return util.boolFromFfi(libUSER32_dll.GetRawPointerDeviceData!(pointerId, historyCount, propertiesCount, util.toPointer(pProperties), util.toPointer(pValues)));
 }
 

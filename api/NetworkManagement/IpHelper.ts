@@ -26222,786 +26222,982 @@ try {
     GetIfEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIfEntry2Ex: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIfTable2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIfTable2Ex: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIfStackTable: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetInvertedIfStackTable: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpInterfaceEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpInterfaceTable: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeIpInterfaceEntry: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NotifyIpInterfaceChange: {
       parameters: ["u16", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetIpInterfaceEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpNetworkConnectionBandwidthEstimates: {
       parameters: ["u32", "u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateUnicastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteUnicastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetUnicastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetUnicastIpAddressTable: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeUnicastIpAddressEntry: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NotifyUnicastIpAddressChange: {
       parameters: ["u16", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NotifyStableUnicastIpAddressTable: {
       parameters: ["u16", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetUnicastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateAnycastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteAnycastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAnycastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAnycastIpAddressTable: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMulticastIpAddressEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetMulticastIpAddressTable: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateIpForwardEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteIpForwardEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetBestRoute2: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpForwardEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpForwardTable2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeIpForwardEntry: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     NotifyRouteChange2: {
       parameters: ["u16", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetIpForwardEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FlushIpPathTable: {
       parameters: ["u16"],
       result: "pointer",
+      optional: true,
     },
     GetIpPathEntry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpPathTable: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateIpNetEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteIpNetEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FlushIpNetTable2: {
       parameters: ["u16", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetIpNetEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetIpNetTable2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ResolveIpNetEntry2: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetIpNetEntry2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     NotifyTeredoPortChange: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetTeredoPort: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CancelMibChangeNotify2: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FreeMibTable: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateSortedAddressPairs: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertCompartmentGuidToId: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertCompartmentIdToGuid: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceNameToLuidA: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceNameToLuidW: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceLuidToNameA: {
       parameters: ["pointer", "buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceLuidToNameW: {
       parameters: ["pointer", "buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceLuidToIndex: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceIndexToLuid: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceLuidToAlias: {
       parameters: ["pointer", "buffer", "usize"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceAliasToLuid: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceLuidToGuid: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertInterfaceGuidToLuid: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     if_nametoindex: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     if_indextoname: {
       parameters: ["u32", "buffer"],
       result: "buffer",
+      optional: true,
     },
     GetCurrentThreadCompartmentId: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetCurrentThreadCompartmentId: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentThreadCompartmentScope: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     SetCurrentThreadCompartmentScope: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     GetJobCompartmentId: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetJobCompartmentId: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetSessionCompartmentId: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     SetSessionCompartmentId: {
       parameters: ["u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetDefaultCompartmentId: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetNetworkInformation: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SetNetworkInformation: {
       parameters: ["pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ConvertLengthToIpv4Mask: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ConvertIpv4MaskToLength: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetDnsSettings: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FreeDnsSettings: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SetDnsSettings: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetInterfaceDnsSettings: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FreeInterfaceDnsSettings: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SetInterfaceDnsSettings: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetNetworkConnectivityHint: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetNetworkConnectivityHintForInterface: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     NotifyNetworkConnectivityHintChange: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IcmpCreateFile: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     Icmp6CreateFile: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     IcmpCloseHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     IcmpSendEcho: {
       parameters: ["pointer", "u32", "pointer", "u16", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     IcmpSendEcho2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer", "u16", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     IcmpSendEcho2Ex: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32", "pointer", "u16", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     Icmp6SendEcho2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u16", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     IcmpParseReplies: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     Icmp6ParseReplies: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetNumberOfInterfaces: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetIfEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetIfTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetIpAddrTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetIpNetTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetIpForwardTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetTcpTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetExtendedTcpTable: {
       parameters: ["pointer", "pointer", "i32", "u32", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     GetOwnerModuleFromTcpEntry: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetUdpTable: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetExtendedUdpTable: {
       parameters: ["pointer", "pointer", "i32", "u32", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     GetOwnerModuleFromUdpEntry: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetTcpTable2: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetTcp6Table: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetTcp6Table2: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetPerTcpConnectionEStats: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32", "pointer", "u32", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SetPerTcpConnectionEStats: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     GetPerTcp6ConnectionEStats: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32", "pointer", "u32", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SetPerTcp6ConnectionEStats: {
       parameters: ["pointer", "i32", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     GetOwnerModuleFromTcp6Entry: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetUdp6Table: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetOwnerModuleFromUdp6Entry: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetOwnerModuleFromPidAndInfo: {
       parameters: ["u32", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIpStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetIcmpStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetTcpStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetUdpStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetIpStatisticsEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetIpStatisticsEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetIcmpStatisticsEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetTcpStatisticsEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetUdpStatisticsEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetTcpStatisticsEx2: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetUdpStatisticsEx2: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SetIfEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreateIpForwardEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetIpForwardEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteIpForwardEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetIpStatistics: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetIpTTL: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     CreateIpNetEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SetIpNetEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteIpNetEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FlushIpNetTable: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     CreateProxyArpEntry: {
       parameters: ["u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DeleteProxyArpEntry: {
       parameters: ["u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SetTcpEntry: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetInterfaceInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetUniDirectionalAdapterInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NhpAllocateAndGetInterfaceInfoFromStack: {
       parameters: ["pointer", "pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetBestInterface: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetBestInterfaceEx: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetBestRoute: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     NotifyAddrChange: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     NotifyRouteChange: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CancelIPChangeNotify: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetAdapterIndex: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddIPAddress: {
       parameters: ["u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteIPAddress: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     GetNetworkParams: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetAdaptersInfo: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetAdapterOrderMap: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetAdaptersAddresses: {
       parameters: ["u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPerAdapterInfo: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetInterfaceActiveTimestampCapabilities: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetInterfaceSupportedTimestampCapabilities: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CaptureInterfaceHardwareCrossTimestamp: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterInterfaceTimestampConfigChange: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UnregisterInterfaceTimestampConfigChange: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     IpReleaseAddress: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     IpRenewAddress: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SendARP: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetRTTAndHopCount: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetFriendlyIfIndex: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     EnableRouter: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UnenableRouter: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DisableMediaSense: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RestoreMediaSense: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetIpErrorString: {
       parameters: ["u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResolveNeighbor: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreatePersistentTcpPortReservation: {
       parameters: ["u16", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreatePersistentUdpPortReservation: {
       parameters: ["u16", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     DeletePersistentTcpPortReservation: {
       parameters: ["u16", "u16"],
       result: "u32",
+      optional: true,
     },
     DeletePersistentUdpPortReservation: {
       parameters: ["u16", "u16"],
       result: "u32",
+      optional: true,
     },
     LookupPersistentTcpPortReservation: {
       parameters: ["u16", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     LookupPersistentUdpPortReservation: {
       parameters: ["u16", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfCreateInterface: {
       parameters: ["u32", "i32", "i32", "i32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfDeleteInterface: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PfAddFiltersToInterface: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfRemoveFiltersFromInterface: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfRemoveFilterHandles: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfUnBindInterface: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PfBindInterfaceToIndex: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfBindInterfaceToIPAddress: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfRebindFilters: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfAddGlobalFilterToInterface: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     PfRemoveGlobalFilterFromInterface: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     PfMakeLog: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PfSetLogBuffer: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PfDeleteLog: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     PfGetInterfaceStatistics: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     PfTestPacket: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27011,58 +27207,58 @@ try {
 export function GetIfEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIfEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIfEntry2!(util.toPointer(Row));
 }
 
 export function GetIfEntry2Ex(
   Level: MIB_IF_ENTRY_LEVEL /* Windows.Win32.NetworkManagement.IpHelper.MIB_IF_ENTRY_LEVEL */,
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIfEntry2Ex(Level, util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIfEntry2Ex!(Level, util.toPointer(Row));
 }
 
 export function GetIfTable2(
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIfTable2(util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIfTable2!(util.toPointer(Table));
 }
 
 export function GetIfTable2Ex(
   Level: MIB_IF_TABLE_LEVEL /* Windows.Win32.NetworkManagement.IpHelper.MIB_IF_TABLE_LEVEL */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIfTable2Ex(Level, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIfTable2Ex!(Level, util.toPointer(Table));
 }
 
 export function GetIfStackTable(
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIfStackTable(util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIfStackTable!(util.toPointer(Table));
 }
 
 export function GetInvertedIfStackTable(
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetInvertedIfStackTable(util.toPointer(Table));
+  return libIPHLPAPI_dll.GetInvertedIfStackTable!(util.toPointer(Table));
 }
 
 export function GetIpInterfaceEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpInterfaceEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIpInterfaceEntry!(util.toPointer(Row));
 }
 
 export function GetIpInterfaceTable(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpInterfaceTable(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIpInterfaceTable!(Family, util.toPointer(Table));
 }
 
 export function InitializeIpInterfaceEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.InitializeIpInterfaceEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.InitializeIpInterfaceEntry!(util.toPointer(Row));
 }
 
 export function NotifyIpInterfaceChange(
@@ -27072,13 +27268,13 @@ export function NotifyIpInterfaceChange(
   InitialNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyIpInterfaceChange(Family, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyIpInterfaceChange!(Family, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
 }
 
 export function SetIpInterfaceEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetIpInterfaceEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.SetIpInterfaceEntry!(util.toPointer(Row));
 }
 
 export function GetIpNetworkConnectionBandwidthEstimates(
@@ -27086,38 +27282,38 @@ export function GetIpNetworkConnectionBandwidthEstimates(
   AddressFamily: number /* u16 */,
   BandwidthEstimates: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpNetworkConnectionBandwidthEstimates(InterfaceIndex, AddressFamily, util.toPointer(BandwidthEstimates));
+  return libIPHLPAPI_dll.GetIpNetworkConnectionBandwidthEstimates!(InterfaceIndex, AddressFamily, util.toPointer(BandwidthEstimates));
 }
 
 export function CreateUnicastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CreateUnicastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.CreateUnicastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function DeleteUnicastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.DeleteUnicastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.DeleteUnicastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function GetUnicastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetUnicastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetUnicastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function GetUnicastIpAddressTable(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetUnicastIpAddressTable(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetUnicastIpAddressTable!(Family, util.toPointer(Table));
 }
 
 export function InitializeUnicastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.InitializeUnicastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.InitializeUnicastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function NotifyUnicastIpAddressChange(
@@ -27127,7 +27323,7 @@ export function NotifyUnicastIpAddressChange(
   InitialNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyUnicastIpAddressChange(Family, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyUnicastIpAddressChange!(Family, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
 }
 
 export function NotifyStableUnicastIpAddressTable(
@@ -27137,63 +27333,63 @@ export function NotifyStableUnicastIpAddressTable(
   CallerContext: Deno.PointerValue | Uint8Array /* ptr */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyStableUnicastIpAddressTable(Family, util.toPointer(Table), util.toPointer(CallerCallback), util.toPointer(CallerContext), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyStableUnicastIpAddressTable!(Family, util.toPointer(Table), util.toPointer(CallerCallback), util.toPointer(CallerContext), util.toPointer(NotificationHandle));
 }
 
 export function SetUnicastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetUnicastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.SetUnicastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function CreateAnycastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CreateAnycastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.CreateAnycastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function DeleteAnycastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.DeleteAnycastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.DeleteAnycastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function GetAnycastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetAnycastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetAnycastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function GetAnycastIpAddressTable(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetAnycastIpAddressTable(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetAnycastIpAddressTable!(Family, util.toPointer(Table));
 }
 
 export function GetMulticastIpAddressEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetMulticastIpAddressEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetMulticastIpAddressEntry!(util.toPointer(Row));
 }
 
 export function GetMulticastIpAddressTable(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetMulticastIpAddressTable(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetMulticastIpAddressTable!(Family, util.toPointer(Table));
 }
 
 export function CreateIpForwardEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CreateIpForwardEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.CreateIpForwardEntry2!(util.toPointer(Row));
 }
 
 export function DeleteIpForwardEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.DeleteIpForwardEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.DeleteIpForwardEntry2!(util.toPointer(Row));
 }
 
 export function GetBestRoute2(
@@ -27205,26 +27401,26 @@ export function GetBestRoute2(
   BestRoute: Deno.PointerValue | Uint8Array /* ptr */,
   BestSourceAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetBestRoute2(util.toPointer(InterfaceLuid), InterfaceIndex, util.toPointer(SourceAddress), util.toPointer(DestinationAddress), AddressSortOptions, util.toPointer(BestRoute), util.toPointer(BestSourceAddress));
+  return libIPHLPAPI_dll.GetBestRoute2!(util.toPointer(InterfaceLuid), InterfaceIndex, util.toPointer(SourceAddress), util.toPointer(DestinationAddress), AddressSortOptions, util.toPointer(BestRoute), util.toPointer(BestSourceAddress));
 }
 
 export function GetIpForwardEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpForwardEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIpForwardEntry2!(util.toPointer(Row));
 }
 
 export function GetIpForwardTable2(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpForwardTable2(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIpForwardTable2!(Family, util.toPointer(Table));
 }
 
 export function InitializeIpForwardEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.InitializeIpForwardEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.InitializeIpForwardEntry!(util.toPointer(Row));
 }
 
 export function NotifyRouteChange2(
@@ -27234,77 +27430,77 @@ export function NotifyRouteChange2(
   InitialNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyRouteChange2(AddressFamily, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyRouteChange2!(AddressFamily, util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
 }
 
 export function SetIpForwardEntry2(
   Route: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetIpForwardEntry2(util.toPointer(Route));
+  return libIPHLPAPI_dll.SetIpForwardEntry2!(util.toPointer(Route));
 }
 
 export function FlushIpPathTable(
   Family: number /* u16 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.FlushIpPathTable(Family);
+  return libIPHLPAPI_dll.FlushIpPathTable!(Family);
 }
 
 export function GetIpPathEntry(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpPathEntry(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIpPathEntry!(util.toPointer(Row));
 }
 
 export function GetIpPathTable(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpPathTable(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIpPathTable!(Family, util.toPointer(Table));
 }
 
 export function CreateIpNetEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CreateIpNetEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.CreateIpNetEntry2!(util.toPointer(Row));
 }
 
 export function DeleteIpNetEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.DeleteIpNetEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.DeleteIpNetEntry2!(util.toPointer(Row));
 }
 
 export function FlushIpNetTable2(
   Family: number /* u16 */,
   InterfaceIndex: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.FlushIpNetTable2(Family, InterfaceIndex);
+  return libIPHLPAPI_dll.FlushIpNetTable2!(Family, InterfaceIndex);
 }
 
 export function GetIpNetEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpNetEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.GetIpNetEntry2!(util.toPointer(Row));
 }
 
 export function GetIpNetTable2(
   Family: number /* u16 */,
   Table: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetIpNetTable2(Family, util.toPointer(Table));
+  return libIPHLPAPI_dll.GetIpNetTable2!(Family, util.toPointer(Table));
 }
 
 export function ResolveIpNetEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
   SourceAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ResolveIpNetEntry2(util.toPointer(Row), util.toPointer(SourceAddress));
+  return libIPHLPAPI_dll.ResolveIpNetEntry2!(util.toPointer(Row), util.toPointer(SourceAddress));
 }
 
 export function SetIpNetEntry2(
   Row: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetIpNetEntry2(util.toPointer(Row));
+  return libIPHLPAPI_dll.SetIpNetEntry2!(util.toPointer(Row));
 }
 
 export function NotifyTeredoPortChange(
@@ -27313,25 +27509,25 @@ export function NotifyTeredoPortChange(
   InitialNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyTeredoPortChange(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyTeredoPortChange!(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
 }
 
 export function GetTeredoPort(
   Port: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetTeredoPort(util.toPointer(Port));
+  return libIPHLPAPI_dll.GetTeredoPort!(util.toPointer(Port));
 }
 
 export function CancelMibChangeNotify2(
   NotificationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CancelMibChangeNotify2(util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.CancelMibChangeNotify2!(util.toPointer(NotificationHandle));
 }
 
 export function FreeMibTable(
   Memory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.FreeMibTable(util.toPointer(Memory));
+  return libIPHLPAPI_dll.FreeMibTable!(util.toPointer(Memory));
 }
 
 export function CreateSortedAddressPairs(
@@ -27343,35 +27539,35 @@ export function CreateSortedAddressPairs(
   SortedAddressPairList: Deno.PointerValue | Uint8Array /* ptr */,
   SortedAddressPairCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.CreateSortedAddressPairs(util.toPointer(SourceAddressList), SourceAddressCount, util.toPointer(DestinationAddressList), DestinationAddressCount, AddressSortOptions, util.toPointer(SortedAddressPairList), util.toPointer(SortedAddressPairCount));
+  return libIPHLPAPI_dll.CreateSortedAddressPairs!(util.toPointer(SourceAddressList), SourceAddressCount, util.toPointer(DestinationAddressList), DestinationAddressCount, AddressSortOptions, util.toPointer(SortedAddressPairList), util.toPointer(SortedAddressPairCount));
 }
 
 export function ConvertCompartmentGuidToId(
   CompartmentGuid: Deno.PointerValue | Uint8Array /* ptr */,
   CompartmentId: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertCompartmentGuidToId(util.toPointer(CompartmentGuid), util.toPointer(CompartmentId));
+  return libIPHLPAPI_dll.ConvertCompartmentGuidToId!(util.toPointer(CompartmentGuid), util.toPointer(CompartmentId));
 }
 
 export function ConvertCompartmentIdToGuid(
   CompartmentId: number /* u32 */,
   CompartmentGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertCompartmentIdToGuid(CompartmentId, util.toPointer(CompartmentGuid));
+  return libIPHLPAPI_dll.ConvertCompartmentIdToGuid!(CompartmentId, util.toPointer(CompartmentGuid));
 }
 
 export function ConvertInterfaceNameToLuidA(
   InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceNameToLuidA(util.pstrToFfi(InterfaceName), util.toPointer(InterfaceLuid));
+  return libIPHLPAPI_dll.ConvertInterfaceNameToLuidA!(util.pstrToFfi(InterfaceName), util.toPointer(InterfaceLuid));
 }
 
 export function ConvertInterfaceNameToLuidW(
   InterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceNameToLuidW(util.pwstrToFfi(InterfaceName), util.toPointer(InterfaceLuid));
+  return libIPHLPAPI_dll.ConvertInterfaceNameToLuidW!(util.pwstrToFfi(InterfaceName), util.toPointer(InterfaceLuid));
 }
 
 export function ConvertInterfaceLuidToNameA(
@@ -27379,7 +27575,7 @@ export function ConvertInterfaceLuidToNameA(
   InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Length: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceLuidToNameA(util.toPointer(InterfaceLuid), util.pstrToFfi(InterfaceName), Length);
+  return libIPHLPAPI_dll.ConvertInterfaceLuidToNameA!(util.toPointer(InterfaceLuid), util.pstrToFfi(InterfaceName), Length);
 }
 
 export function ConvertInterfaceLuidToNameW(
@@ -27387,21 +27583,21 @@ export function ConvertInterfaceLuidToNameW(
   InterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceLuidToNameW(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceName), Length);
+  return libIPHLPAPI_dll.ConvertInterfaceLuidToNameW!(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceName), Length);
 }
 
 export function ConvertInterfaceLuidToIndex(
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
   InterfaceIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceLuidToIndex(util.toPointer(InterfaceLuid), util.toPointer(InterfaceIndex));
+  return libIPHLPAPI_dll.ConvertInterfaceLuidToIndex!(util.toPointer(InterfaceLuid), util.toPointer(InterfaceIndex));
 }
 
 export function ConvertInterfaceIndexToLuid(
   InterfaceIndex: number /* u32 */,
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceIndexToLuid(InterfaceIndex, util.toPointer(InterfaceLuid));
+  return libIPHLPAPI_dll.ConvertInterfaceIndexToLuid!(InterfaceIndex, util.toPointer(InterfaceLuid));
 }
 
 export function ConvertInterfaceLuidToAlias(
@@ -27409,94 +27605,94 @@ export function ConvertInterfaceLuidToAlias(
   InterfaceAlias: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: bigint | number /* usize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceLuidToAlias(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceAlias), Length);
+  return libIPHLPAPI_dll.ConvertInterfaceLuidToAlias!(util.toPointer(InterfaceLuid), util.pwstrToFfi(InterfaceAlias), Length);
 }
 
 export function ConvertInterfaceAliasToLuid(
   InterfaceAlias: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceAliasToLuid(util.pwstrToFfi(InterfaceAlias), util.toPointer(InterfaceLuid));
+  return libIPHLPAPI_dll.ConvertInterfaceAliasToLuid!(util.pwstrToFfi(InterfaceAlias), util.toPointer(InterfaceLuid));
 }
 
 export function ConvertInterfaceLuidToGuid(
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
   InterfaceGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceLuidToGuid(util.toPointer(InterfaceLuid), util.toPointer(InterfaceGuid));
+  return libIPHLPAPI_dll.ConvertInterfaceLuidToGuid!(util.toPointer(InterfaceLuid), util.toPointer(InterfaceGuid));
 }
 
 export function ConvertInterfaceGuidToLuid(
   InterfaceGuid: Deno.PointerValue | Uint8Array /* ptr */,
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertInterfaceGuidToLuid(util.toPointer(InterfaceGuid), util.toPointer(InterfaceLuid));
+  return libIPHLPAPI_dll.ConvertInterfaceGuidToLuid!(util.toPointer(InterfaceGuid), util.toPointer(InterfaceLuid));
 }
 
 export function if_nametoindex(
   InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.if_nametoindex(util.pstrToFfi(InterfaceName));
+  return libIPHLPAPI_dll.if_nametoindex!(util.pstrToFfi(InterfaceName));
 }
 
 export function if_indextoname(
   InterfaceIndex: number /* u32 */,
   InterfaceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libIPHLPAPI_dll.if_indextoname(InterfaceIndex, util.pstrToFfi(InterfaceName)));
+  return util.pstrFromFfi(libIPHLPAPI_dll.if_indextoname!(InterfaceIndex, util.pstrToFfi(InterfaceName)));
 }
 
 export function GetCurrentThreadCompartmentId(): number /* u32 */ {
-  return libIPHLPAPI_dll.GetCurrentThreadCompartmentId();
+  return libIPHLPAPI_dll.GetCurrentThreadCompartmentId!();
 }
 
 export function SetCurrentThreadCompartmentId(
   CompartmentId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetCurrentThreadCompartmentId(CompartmentId);
+  return libIPHLPAPI_dll.SetCurrentThreadCompartmentId!(CompartmentId);
 }
 
 export function GetCurrentThreadCompartmentScope(
   CompartmentScope: Deno.PointerValue | Uint8Array /* ptr */,
   CompartmentId: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.GetCurrentThreadCompartmentScope(util.toPointer(CompartmentScope), util.toPointer(CompartmentId));
+  return libIPHLPAPI_dll.GetCurrentThreadCompartmentScope!(util.toPointer(CompartmentScope), util.toPointer(CompartmentId));
 }
 
 export function SetCurrentThreadCompartmentScope(
   CompartmentScope: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetCurrentThreadCompartmentScope(CompartmentScope);
+  return libIPHLPAPI_dll.SetCurrentThreadCompartmentScope!(CompartmentScope);
 }
 
 export function GetJobCompartmentId(
   JobHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetJobCompartmentId(util.toPointer(JobHandle));
+  return libIPHLPAPI_dll.GetJobCompartmentId!(util.toPointer(JobHandle));
 }
 
 export function SetJobCompartmentId(
   JobHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   CompartmentId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetJobCompartmentId(util.toPointer(JobHandle), CompartmentId);
+  return libIPHLPAPI_dll.SetJobCompartmentId!(util.toPointer(JobHandle), CompartmentId);
 }
 
 export function GetSessionCompartmentId(
   SessionId: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetSessionCompartmentId(SessionId);
+  return libIPHLPAPI_dll.GetSessionCompartmentId!(SessionId);
 }
 
 export function SetSessionCompartmentId(
   SessionId: number /* u32 */,
   CompartmentId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetSessionCompartmentId(SessionId, CompartmentId);
+  return libIPHLPAPI_dll.SetSessionCompartmentId!(SessionId, CompartmentId);
 }
 
 export function GetDefaultCompartmentId(): number /* u32 */ {
-  return libIPHLPAPI_dll.GetDefaultCompartmentId();
+  return libIPHLPAPI_dll.GetDefaultCompartmentId!();
 }
 
 export function GetNetworkInformation(
@@ -27506,7 +27702,7 @@ export function GetNetworkInformation(
   NetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Length: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetNetworkInformation(util.toPointer(NetworkGuid), util.toPointer(CompartmentId), util.toPointer(SiteId), util.pwstrToFfi(NetworkName), Length);
+  return libIPHLPAPI_dll.GetNetworkInformation!(util.toPointer(NetworkGuid), util.toPointer(CompartmentId), util.toPointer(SiteId), util.pwstrToFfi(NetworkName), Length);
 }
 
 export function SetNetworkInformation(
@@ -27514,72 +27710,72 @@ export function SetNetworkInformation(
   CompartmentId: number /* u32 */,
   NetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetNetworkInformation(util.toPointer(NetworkGuid), CompartmentId, util.pwstrToFfi(NetworkName));
+  return libIPHLPAPI_dll.SetNetworkInformation!(util.toPointer(NetworkGuid), CompartmentId, util.pwstrToFfi(NetworkName));
 }
 
 export function ConvertLengthToIpv4Mask(
   MaskLength: number /* u32 */,
   Mask: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertLengthToIpv4Mask(MaskLength, util.toPointer(Mask));
+  return libIPHLPAPI_dll.ConvertLengthToIpv4Mask!(MaskLength, util.toPointer(Mask));
 }
 
 export function ConvertIpv4MaskToLength(
   Mask: number /* u32 */,
   MaskLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.ConvertIpv4MaskToLength(Mask, util.toPointer(MaskLength));
+  return libIPHLPAPI_dll.ConvertIpv4MaskToLength!(Mask, util.toPointer(MaskLength));
 }
 
 export function GetDnsSettings(
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetDnsSettings(util.toPointer(Settings));
+  return libIPHLPAPI_dll.GetDnsSettings!(util.toPointer(Settings));
 }
 
 export function FreeDnsSettings(
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.FreeDnsSettings(util.toPointer(Settings));
+  return libIPHLPAPI_dll.FreeDnsSettings!(util.toPointer(Settings));
 }
 
 export function SetDnsSettings(
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetDnsSettings(util.toPointer(Settings));
+  return libIPHLPAPI_dll.SetDnsSettings!(util.toPointer(Settings));
 }
 
 export function GetInterfaceDnsSettings(
   Interface: Uint8Array | Deno.PointerValue /* System.Guid */,
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetInterfaceDnsSettings(util.toPointer(Interface), util.toPointer(Settings));
+  return libIPHLPAPI_dll.GetInterfaceDnsSettings!(util.toPointer(Interface), util.toPointer(Settings));
 }
 
 export function FreeInterfaceDnsSettings(
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.FreeInterfaceDnsSettings(util.toPointer(Settings));
+  return libIPHLPAPI_dll.FreeInterfaceDnsSettings!(util.toPointer(Settings));
 }
 
 export function SetInterfaceDnsSettings(
   Interface: Uint8Array | Deno.PointerValue /* System.Guid */,
   Settings: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.SetInterfaceDnsSettings(util.toPointer(Interface), util.toPointer(Settings));
+  return libIPHLPAPI_dll.SetInterfaceDnsSettings!(util.toPointer(Interface), util.toPointer(Settings));
 }
 
 export function GetNetworkConnectivityHint(
   ConnectivityHint: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetNetworkConnectivityHint(util.toPointer(ConnectivityHint));
+  return libIPHLPAPI_dll.GetNetworkConnectivityHint!(util.toPointer(ConnectivityHint));
 }
 
 export function GetNetworkConnectivityHintForInterface(
   InterfaceIndex: number /* u32 */,
   ConnectivityHint: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.GetNetworkConnectivityHintForInterface(InterfaceIndex, util.toPointer(ConnectivityHint));
+  return libIPHLPAPI_dll.GetNetworkConnectivityHintForInterface!(InterfaceIndex, util.toPointer(ConnectivityHint));
 }
 
 export function NotifyNetworkConnectivityHintChange(
@@ -27588,21 +27784,21 @@ export function NotifyNetworkConnectivityHintChange(
   InitialNotification: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */ {
-  return libIPHLPAPI_dll.NotifyNetworkConnectivityHintChange(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.NotifyNetworkConnectivityHintChange!(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(InitialNotification), util.toPointer(NotificationHandle));
 }
 
 export function IcmpCreateFile(): Deno.PointerValue /* Windows.Win32.NetworkManagement.IpHelper.IcmpHandle */ {
-  return libIPHLPAPI_dll.IcmpCreateFile();
+  return libIPHLPAPI_dll.IcmpCreateFile!();
 }
 
 export function Icmp6CreateFile(): Deno.PointerValue /* Windows.Win32.NetworkManagement.IpHelper.IcmpHandle */ {
-  return libIPHLPAPI_dll.Icmp6CreateFile();
+  return libIPHLPAPI_dll.Icmp6CreateFile!();
 }
 
 export function IcmpCloseHandle(
   IcmpHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.IpHelper.IcmpHandle */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIPHLPAPI_dll.IcmpCloseHandle(util.toPointer(IcmpHandle)));
+  return util.boolFromFfi(libIPHLPAPI_dll.IcmpCloseHandle!(util.toPointer(IcmpHandle)));
 }
 
 export function IcmpSendEcho(
@@ -27615,7 +27811,7 @@ export function IcmpSendEcho(
   ReplySize: number /* u32 */,
   Timeout: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IcmpSendEcho(util.toPointer(IcmpHandle), DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
+  return libIPHLPAPI_dll.IcmpSendEcho!(util.toPointer(IcmpHandle), DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
 }
 
 export function IcmpSendEcho2(
@@ -27631,7 +27827,7 @@ export function IcmpSendEcho2(
   ReplySize: number /* u32 */,
   Timeout: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IcmpSendEcho2(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
+  return libIPHLPAPI_dll.IcmpSendEcho2!(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
 }
 
 export function IcmpSendEcho2Ex(
@@ -27648,7 +27844,7 @@ export function IcmpSendEcho2Ex(
   ReplySize: number /* u32 */,
   Timeout: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IcmpSendEcho2Ex(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), SourceAddress, DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
+  return libIPHLPAPI_dll.IcmpSendEcho2Ex!(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), SourceAddress, DestinationAddress, util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
 }
 
 export function Icmp6SendEcho2(
@@ -27665,33 +27861,33 @@ export function Icmp6SendEcho2(
   ReplySize: number /* u32 */,
   Timeout: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.Icmp6SendEcho2(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(SourceAddress), util.toPointer(DestinationAddress), util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
+  return libIPHLPAPI_dll.Icmp6SendEcho2!(util.toPointer(IcmpHandle), util.toPointer(Event), util.toPointer(ApcRoutine), util.toPointer(ApcContext), util.toPointer(SourceAddress), util.toPointer(DestinationAddress), util.toPointer(RequestData), RequestSize, util.toPointer(RequestOptions), util.toPointer(ReplyBuffer), ReplySize, Timeout);
 }
 
 export function IcmpParseReplies(
   ReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ReplySize: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IcmpParseReplies(util.toPointer(ReplyBuffer), ReplySize);
+  return libIPHLPAPI_dll.IcmpParseReplies!(util.toPointer(ReplyBuffer), ReplySize);
 }
 
 export function Icmp6ParseReplies(
   ReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   ReplySize: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.Icmp6ParseReplies(util.toPointer(ReplyBuffer), ReplySize);
+  return libIPHLPAPI_dll.Icmp6ParseReplies!(util.toPointer(ReplyBuffer), ReplySize);
 }
 
 export function GetNumberOfInterfaces(
   pdwNumIf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetNumberOfInterfaces(util.toPointer(pdwNumIf));
+  return libIPHLPAPI_dll.GetNumberOfInterfaces!(util.toPointer(pdwNumIf));
 }
 
 export function GetIfEntry(
   pIfRow: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIfEntry(util.toPointer(pIfRow));
+  return libIPHLPAPI_dll.GetIfEntry!(util.toPointer(pIfRow));
 }
 
 export function GetIfTable(
@@ -27699,7 +27895,7 @@ export function GetIfTable(
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
   bOrder: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIfTable(util.toPointer(pIfTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
+  return libIPHLPAPI_dll.GetIfTable!(util.toPointer(pIfTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
 }
 
 export function GetIpAddrTable(
@@ -27707,7 +27903,7 @@ export function GetIpAddrTable(
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
   bOrder: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpAddrTable(util.toPointer(pIpAddrTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
+  return libIPHLPAPI_dll.GetIpAddrTable!(util.toPointer(pIpAddrTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
 }
 
 export function GetIpNetTable(
@@ -27715,7 +27911,7 @@ export function GetIpNetTable(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpNetTable(util.toPointer(IpNetTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetIpNetTable!(util.toPointer(IpNetTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetIpForwardTable(
@@ -27723,7 +27919,7 @@ export function GetIpForwardTable(
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
   bOrder: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpForwardTable(util.toPointer(pIpForwardTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
+  return libIPHLPAPI_dll.GetIpForwardTable!(util.toPointer(pIpForwardTable), util.toPointer(pdwSize), util.boolToFfi(bOrder));
 }
 
 export function GetTcpTable(
@@ -27731,7 +27927,7 @@ export function GetTcpTable(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcpTable(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetTcpTable!(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetExtendedTcpTable(
@@ -27742,7 +27938,7 @@ export function GetExtendedTcpTable(
   TableClass: TCP_TABLE_CLASS /* Windows.Win32.NetworkManagement.IpHelper.TCP_TABLE_CLASS */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetExtendedTcpTable(util.toPointer(pTcpTable), util.toPointer(pdwSize), util.boolToFfi(bOrder), ulAf, TableClass, Reserved);
+  return libIPHLPAPI_dll.GetExtendedTcpTable!(util.toPointer(pTcpTable), util.toPointer(pdwSize), util.boolToFfi(bOrder), ulAf, TableClass, Reserved);
 }
 
 export function GetOwnerModuleFromTcpEntry(
@@ -27751,7 +27947,7 @@ export function GetOwnerModuleFromTcpEntry(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetOwnerModuleFromTcpEntry(util.toPointer(pTcpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
+  return libIPHLPAPI_dll.GetOwnerModuleFromTcpEntry!(util.toPointer(pTcpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
 }
 
 export function GetUdpTable(
@@ -27759,7 +27955,7 @@ export function GetUdpTable(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUdpTable(util.toPointer(UdpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetUdpTable!(util.toPointer(UdpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetExtendedUdpTable(
@@ -27770,7 +27966,7 @@ export function GetExtendedUdpTable(
   TableClass: UDP_TABLE_CLASS /* Windows.Win32.NetworkManagement.IpHelper.UDP_TABLE_CLASS */,
   Reserved: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetExtendedUdpTable(util.toPointer(pUdpTable), util.toPointer(pdwSize), util.boolToFfi(bOrder), ulAf, TableClass, Reserved);
+  return libIPHLPAPI_dll.GetExtendedUdpTable!(util.toPointer(pUdpTable), util.toPointer(pdwSize), util.boolToFfi(bOrder), ulAf, TableClass, Reserved);
 }
 
 export function GetOwnerModuleFromUdpEntry(
@@ -27779,7 +27975,7 @@ export function GetOwnerModuleFromUdpEntry(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetOwnerModuleFromUdpEntry(util.toPointer(pUdpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
+  return libIPHLPAPI_dll.GetOwnerModuleFromUdpEntry!(util.toPointer(pUdpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
 }
 
 export function GetTcpTable2(
@@ -27787,7 +27983,7 @@ export function GetTcpTable2(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcpTable2(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetTcpTable2!(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetTcp6Table(
@@ -27795,7 +27991,7 @@ export function GetTcp6Table(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcp6Table(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetTcp6Table!(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetTcp6Table2(
@@ -27803,7 +27999,7 @@ export function GetTcp6Table2(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcp6Table2(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetTcp6Table2!(util.toPointer(TcpTable), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetPerTcpConnectionEStats(
@@ -27819,7 +28015,7 @@ export function GetPerTcpConnectionEStats(
   RodVersion: number /* u32 */,
   RodSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetPerTcpConnectionEStats(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, util.toPointer(Ros), RosVersion, RosSize, util.toPointer(Rod), RodVersion, RodSize);
+  return libIPHLPAPI_dll.GetPerTcpConnectionEStats!(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, util.toPointer(Ros), RosVersion, RosSize, util.toPointer(Rod), RodVersion, RodSize);
 }
 
 export function SetPerTcpConnectionEStats(
@@ -27830,7 +28026,7 @@ export function SetPerTcpConnectionEStats(
   RwSize: number /* u32 */,
   Offset: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetPerTcpConnectionEStats(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, Offset);
+  return libIPHLPAPI_dll.SetPerTcpConnectionEStats!(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, Offset);
 }
 
 export function GetPerTcp6ConnectionEStats(
@@ -27846,7 +28042,7 @@ export function GetPerTcp6ConnectionEStats(
   RodVersion: number /* u32 */,
   RodSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetPerTcp6ConnectionEStats(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, util.toPointer(Ros), RosVersion, RosSize, util.toPointer(Rod), RodVersion, RodSize);
+  return libIPHLPAPI_dll.GetPerTcp6ConnectionEStats!(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, util.toPointer(Ros), RosVersion, RosSize, util.toPointer(Rod), RodVersion, RodSize);
 }
 
 export function SetPerTcp6ConnectionEStats(
@@ -27857,7 +28053,7 @@ export function SetPerTcp6ConnectionEStats(
   RwSize: number /* u32 */,
   Offset: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetPerTcp6ConnectionEStats(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, Offset);
+  return libIPHLPAPI_dll.SetPerTcp6ConnectionEStats!(util.toPointer(Row), EstatsType, util.toPointer(Rw), RwVersion, RwSize, Offset);
 }
 
 export function GetOwnerModuleFromTcp6Entry(
@@ -27866,7 +28062,7 @@ export function GetOwnerModuleFromTcp6Entry(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetOwnerModuleFromTcp6Entry(util.toPointer(pTcpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
+  return libIPHLPAPI_dll.GetOwnerModuleFromTcp6Entry!(util.toPointer(pTcpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
 }
 
 export function GetUdp6Table(
@@ -27874,7 +28070,7 @@ export function GetUdp6Table(
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
   Order: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUdp6Table(util.toPointer(Udp6Table), util.toPointer(SizePointer), util.boolToFfi(Order));
+  return libIPHLPAPI_dll.GetUdp6Table!(util.toPointer(Udp6Table), util.toPointer(SizePointer), util.boolToFfi(Order));
 }
 
 export function GetOwnerModuleFromUdp6Entry(
@@ -27883,7 +28079,7 @@ export function GetOwnerModuleFromUdp6Entry(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetOwnerModuleFromUdp6Entry(util.toPointer(pUdpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
+  return libIPHLPAPI_dll.GetOwnerModuleFromUdp6Entry!(util.toPointer(pUdpEntry), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
 }
 
 export function GetOwnerModuleFromPidAndInfo(
@@ -27893,140 +28089,140 @@ export function GetOwnerModuleFromPidAndInfo(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetOwnerModuleFromPidAndInfo(ulPid, util.toPointer(pInfo), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
+  return libIPHLPAPI_dll.GetOwnerModuleFromPidAndInfo!(ulPid, util.toPointer(pInfo), Class, util.toPointer(pBuffer), util.toPointer(pdwSize));
 }
 
 export function GetIpStatistics(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpStatistics(util.toPointer(Statistics));
+  return libIPHLPAPI_dll.GetIpStatistics!(util.toPointer(Statistics));
 }
 
 export function GetIcmpStatistics(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIcmpStatistics(util.toPointer(Statistics));
+  return libIPHLPAPI_dll.GetIcmpStatistics!(util.toPointer(Statistics));
 }
 
 export function GetTcpStatistics(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcpStatistics(util.toPointer(Statistics));
+  return libIPHLPAPI_dll.GetTcpStatistics!(util.toPointer(Statistics));
 }
 
 export function GetUdpStatistics(
   Stats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUdpStatistics(util.toPointer(Stats));
+  return libIPHLPAPI_dll.GetUdpStatistics!(util.toPointer(Stats));
 }
 
 export function SetIpStatisticsEx(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIpStatisticsEx(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.SetIpStatisticsEx!(util.toPointer(Statistics), Family);
 }
 
 export function GetIpStatisticsEx(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: ADDRESS_FAMILY /* Windows.Win32.Networking.WinSock.ADDRESS_FAMILY */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpStatisticsEx(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetIpStatisticsEx!(util.toPointer(Statistics), Family);
 }
 
 export function GetIcmpStatisticsEx(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIcmpStatisticsEx(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetIcmpStatisticsEx!(util.toPointer(Statistics), Family);
 }
 
 export function GetTcpStatisticsEx(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: ADDRESS_FAMILY /* Windows.Win32.Networking.WinSock.ADDRESS_FAMILY */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcpStatisticsEx(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetTcpStatisticsEx!(util.toPointer(Statistics), Family);
 }
 
 export function GetUdpStatisticsEx(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: ADDRESS_FAMILY /* Windows.Win32.Networking.WinSock.ADDRESS_FAMILY */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUdpStatisticsEx(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetUdpStatisticsEx!(util.toPointer(Statistics), Family);
 }
 
 export function GetTcpStatisticsEx2(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: ADDRESS_FAMILY /* Windows.Win32.Networking.WinSock.ADDRESS_FAMILY */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetTcpStatisticsEx2(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetTcpStatisticsEx2!(util.toPointer(Statistics), Family);
 }
 
 export function GetUdpStatisticsEx2(
   Statistics: Deno.PointerValue | Uint8Array /* ptr */,
   Family: ADDRESS_FAMILY /* Windows.Win32.Networking.WinSock.ADDRESS_FAMILY */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUdpStatisticsEx2(util.toPointer(Statistics), Family);
+  return libIPHLPAPI_dll.GetUdpStatisticsEx2!(util.toPointer(Statistics), Family);
 }
 
 export function SetIfEntry(
   pIfRow: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIfEntry(util.toPointer(pIfRow));
+  return libIPHLPAPI_dll.SetIfEntry!(util.toPointer(pIfRow));
 }
 
 export function CreateIpForwardEntry(
   pRoute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CreateIpForwardEntry(util.toPointer(pRoute));
+  return libIPHLPAPI_dll.CreateIpForwardEntry!(util.toPointer(pRoute));
 }
 
 export function SetIpForwardEntry(
   pRoute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIpForwardEntry(util.toPointer(pRoute));
+  return libIPHLPAPI_dll.SetIpForwardEntry!(util.toPointer(pRoute));
 }
 
 export function DeleteIpForwardEntry(
   pRoute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeleteIpForwardEntry(util.toPointer(pRoute));
+  return libIPHLPAPI_dll.DeleteIpForwardEntry!(util.toPointer(pRoute));
 }
 
 export function SetIpStatistics(
   pIpStats: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIpStatistics(util.toPointer(pIpStats));
+  return libIPHLPAPI_dll.SetIpStatistics!(util.toPointer(pIpStats));
 }
 
 export function SetIpTTL(
   nTTL: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIpTTL(nTTL);
+  return libIPHLPAPI_dll.SetIpTTL!(nTTL);
 }
 
 export function CreateIpNetEntry(
   pArpEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CreateIpNetEntry(util.toPointer(pArpEntry));
+  return libIPHLPAPI_dll.CreateIpNetEntry!(util.toPointer(pArpEntry));
 }
 
 export function SetIpNetEntry(
   pArpEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetIpNetEntry(util.toPointer(pArpEntry));
+  return libIPHLPAPI_dll.SetIpNetEntry!(util.toPointer(pArpEntry));
 }
 
 export function DeleteIpNetEntry(
   pArpEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeleteIpNetEntry(util.toPointer(pArpEntry));
+  return libIPHLPAPI_dll.DeleteIpNetEntry!(util.toPointer(pArpEntry));
 }
 
 export function FlushIpNetTable(
   dwIfIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.FlushIpNetTable(dwIfIndex);
+  return libIPHLPAPI_dll.FlushIpNetTable!(dwIfIndex);
 }
 
 export function CreateProxyArpEntry(
@@ -28034,7 +28230,7 @@ export function CreateProxyArpEntry(
   dwMask: number /* u32 */,
   dwIfIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CreateProxyArpEntry(dwAddress, dwMask, dwIfIndex);
+  return libIPHLPAPI_dll.CreateProxyArpEntry!(dwAddress, dwMask, dwIfIndex);
 }
 
 export function DeleteProxyArpEntry(
@@ -28042,27 +28238,27 @@ export function DeleteProxyArpEntry(
   dwMask: number /* u32 */,
   dwIfIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeleteProxyArpEntry(dwAddress, dwMask, dwIfIndex);
+  return libIPHLPAPI_dll.DeleteProxyArpEntry!(dwAddress, dwMask, dwIfIndex);
 }
 
 export function SetTcpEntry(
   pTcpRow: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SetTcpEntry(util.toPointer(pTcpRow));
+  return libIPHLPAPI_dll.SetTcpEntry!(util.toPointer(pTcpRow));
 }
 
 export function GetInterfaceInfo(
   pIfTable: Deno.PointerValue | Uint8Array /* ptr */,
   dwOutBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetInterfaceInfo(util.toPointer(pIfTable), util.toPointer(dwOutBufLen));
+  return libIPHLPAPI_dll.GetInterfaceInfo!(util.toPointer(pIfTable), util.toPointer(dwOutBufLen));
 }
 
 export function GetUniDirectionalAdapterInfo(
   pIPIfInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwOutBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetUniDirectionalAdapterInfo(util.toPointer(pIPIfInfo), util.toPointer(dwOutBufLen));
+  return libIPHLPAPI_dll.GetUniDirectionalAdapterInfo!(util.toPointer(pIPIfInfo), util.toPointer(dwOutBufLen));
 }
 
 export function NhpAllocateAndGetInterfaceInfoFromStack(
@@ -28072,21 +28268,21 @@ export function NhpAllocateAndGetInterfaceInfoFromStack(
   hHeap: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.NhpAllocateAndGetInterfaceInfoFromStack(util.toPointer(ppTable), util.toPointer(pdwCount), util.boolToFfi(bOrder), util.toPointer(hHeap), dwFlags);
+  return libIPHLPAPI_dll.NhpAllocateAndGetInterfaceInfoFromStack!(util.toPointer(ppTable), util.toPointer(pdwCount), util.boolToFfi(bOrder), util.toPointer(hHeap), dwFlags);
 }
 
 export function GetBestInterface(
   dwDestAddr: number /* u32 */,
   pdwBestIfIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetBestInterface(dwDestAddr, util.toPointer(pdwBestIfIndex));
+  return libIPHLPAPI_dll.GetBestInterface!(dwDestAddr, util.toPointer(pdwBestIfIndex));
 }
 
 export function GetBestInterfaceEx(
   pDestAddr: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBestIfIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetBestInterfaceEx(util.toPointer(pDestAddr), util.toPointer(pdwBestIfIndex));
+  return libIPHLPAPI_dll.GetBestInterfaceEx!(util.toPointer(pDestAddr), util.toPointer(pdwBestIfIndex));
 }
 
 export function GetBestRoute(
@@ -28094,34 +28290,34 @@ export function GetBestRoute(
   dwSourceAddr: number /* u32 */,
   pBestRoute: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetBestRoute(dwDestAddr, dwSourceAddr, util.toPointer(pBestRoute));
+  return libIPHLPAPI_dll.GetBestRoute!(dwDestAddr, dwSourceAddr, util.toPointer(pBestRoute));
 }
 
 export function NotifyAddrChange(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
   overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.NotifyAddrChange(util.toPointer(Handle), util.toPointer(overlapped));
+  return libIPHLPAPI_dll.NotifyAddrChange!(util.toPointer(Handle), util.toPointer(overlapped));
 }
 
 export function NotifyRouteChange(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
   overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.NotifyRouteChange(util.toPointer(Handle), util.toPointer(overlapped));
+  return libIPHLPAPI_dll.NotifyRouteChange!(util.toPointer(Handle), util.toPointer(overlapped));
 }
 
 export function CancelIPChangeNotify(
   notifyOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIPHLPAPI_dll.CancelIPChangeNotify(util.toPointer(notifyOverlapped)));
+  return util.boolFromFfi(libIPHLPAPI_dll.CancelIPChangeNotify!(util.toPointer(notifyOverlapped)));
 }
 
 export function GetAdapterIndex(
   AdapterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   IfIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetAdapterIndex(util.pwstrToFfi(AdapterName), util.toPointer(IfIndex));
+  return libIPHLPAPI_dll.GetAdapterIndex!(util.pwstrToFfi(AdapterName), util.toPointer(IfIndex));
 }
 
 export function AddIPAddress(
@@ -28131,31 +28327,31 @@ export function AddIPAddress(
   NTEContext: Deno.PointerValue | Uint8Array /* ptr */,
   NTEInstance: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.AddIPAddress(Address, IpMask, IfIndex, util.toPointer(NTEContext), util.toPointer(NTEInstance));
+  return libIPHLPAPI_dll.AddIPAddress!(Address, IpMask, IfIndex, util.toPointer(NTEContext), util.toPointer(NTEInstance));
 }
 
 export function DeleteIPAddress(
   NTEContext: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeleteIPAddress(NTEContext);
+  return libIPHLPAPI_dll.DeleteIPAddress!(NTEContext);
 }
 
 export function GetNetworkParams(
   pFixedInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pOutBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libIPHLPAPI_dll.GetNetworkParams(util.toPointer(pFixedInfo), util.toPointer(pOutBufLen));
+  return libIPHLPAPI_dll.GetNetworkParams!(util.toPointer(pFixedInfo), util.toPointer(pOutBufLen));
 }
 
 export function GetAdaptersInfo(
   AdapterInfo: Deno.PointerValue | Uint8Array /* ptr */,
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetAdaptersInfo(util.toPointer(AdapterInfo), util.toPointer(SizePointer));
+  return libIPHLPAPI_dll.GetAdaptersInfo!(util.toPointer(AdapterInfo), util.toPointer(SizePointer));
 }
 
 export function GetAdapterOrderMap(): Deno.PointerValue /* ptr */ {
-  return libIPHLPAPI_dll.GetAdapterOrderMap();
+  return libIPHLPAPI_dll.GetAdapterOrderMap!();
 }
 
 export function GetAdaptersAddresses(
@@ -28165,7 +28361,7 @@ export function GetAdaptersAddresses(
   AdapterAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   SizePointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetAdaptersAddresses(Family, Flags, util.toPointer(Reserved), util.toPointer(AdapterAddresses), util.toPointer(SizePointer));
+  return libIPHLPAPI_dll.GetAdaptersAddresses!(Family, Flags, util.toPointer(Reserved), util.toPointer(AdapterAddresses), util.toPointer(SizePointer));
 }
 
 export function GetPerAdapterInfo(
@@ -28173,28 +28369,28 @@ export function GetPerAdapterInfo(
   pPerAdapterInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pOutBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetPerAdapterInfo(IfIndex, util.toPointer(pPerAdapterInfo), util.toPointer(pOutBufLen));
+  return libIPHLPAPI_dll.GetPerAdapterInfo!(IfIndex, util.toPointer(pPerAdapterInfo), util.toPointer(pOutBufLen));
 }
 
 export function GetInterfaceActiveTimestampCapabilities(
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
   TimestampCapabilites: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetInterfaceActiveTimestampCapabilities(util.toPointer(InterfaceLuid), util.toPointer(TimestampCapabilites));
+  return libIPHLPAPI_dll.GetInterfaceActiveTimestampCapabilities!(util.toPointer(InterfaceLuid), util.toPointer(TimestampCapabilites));
 }
 
 export function GetInterfaceSupportedTimestampCapabilities(
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
   TimestampCapabilites: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetInterfaceSupportedTimestampCapabilities(util.toPointer(InterfaceLuid), util.toPointer(TimestampCapabilites));
+  return libIPHLPAPI_dll.GetInterfaceSupportedTimestampCapabilities!(util.toPointer(InterfaceLuid), util.toPointer(TimestampCapabilites));
 }
 
 export function CaptureInterfaceHardwareCrossTimestamp(
   InterfaceLuid: Deno.PointerValue | Uint8Array /* ptr */,
   CrossTimestamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CaptureInterfaceHardwareCrossTimestamp(util.toPointer(InterfaceLuid), util.toPointer(CrossTimestamp));
+  return libIPHLPAPI_dll.CaptureInterfaceHardwareCrossTimestamp!(util.toPointer(InterfaceLuid), util.toPointer(CrossTimestamp));
 }
 
 export function RegisterInterfaceTimestampConfigChange(
@@ -28202,25 +28398,25 @@ export function RegisterInterfaceTimestampConfigChange(
   CallerContext: Deno.PointerValue | Uint8Array /* ptr */,
   NotificationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.RegisterInterfaceTimestampConfigChange(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.RegisterInterfaceTimestampConfigChange!(util.toPointer(Callback), util.toPointer(CallerContext), util.toPointer(NotificationHandle));
 }
 
 export function UnregisterInterfaceTimestampConfigChange(
   NotificationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.IpHelper.HIFTIMESTAMPCHANGE */,
 ): void /* void */ {
-  return libIPHLPAPI_dll.UnregisterInterfaceTimestampConfigChange(util.toPointer(NotificationHandle));
+  return libIPHLPAPI_dll.UnregisterInterfaceTimestampConfigChange!(util.toPointer(NotificationHandle));
 }
 
 export function IpReleaseAddress(
   AdapterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IpReleaseAddress(util.toPointer(AdapterInfo));
+  return libIPHLPAPI_dll.IpReleaseAddress!(util.toPointer(AdapterInfo));
 }
 
 export function IpRenewAddress(
   AdapterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.IpRenewAddress(util.toPointer(AdapterInfo));
+  return libIPHLPAPI_dll.IpRenewAddress!(util.toPointer(AdapterInfo));
 }
 
 export function SendARP(
@@ -28229,7 +28425,7 @@ export function SendARP(
   pMacAddr: Deno.PointerValue | Uint8Array /* ptr */,
   PhyAddrLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.SendARP(DestIP, SrcIP, util.toPointer(pMacAddr), util.toPointer(PhyAddrLen));
+  return libIPHLPAPI_dll.SendARP!(DestIP, SrcIP, util.toPointer(pMacAddr), util.toPointer(PhyAddrLen));
 }
 
 export function GetRTTAndHopCount(
@@ -28238,41 +28434,41 @@ export function GetRTTAndHopCount(
   MaxHops: number /* u32 */,
   RTT: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIPHLPAPI_dll.GetRTTAndHopCount(DestIpAddress, util.toPointer(HopCount), MaxHops, util.toPointer(RTT)));
+  return util.boolFromFfi(libIPHLPAPI_dll.GetRTTAndHopCount!(DestIpAddress, util.toPointer(HopCount), MaxHops, util.toPointer(RTT)));
 }
 
 export function GetFriendlyIfIndex(
   IfIndex: number /* u32 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetFriendlyIfIndex(IfIndex);
+  return libIPHLPAPI_dll.GetFriendlyIfIndex!(IfIndex);
 }
 
 export function EnableRouter(
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.EnableRouter(util.toPointer(pHandle), util.toPointer(pOverlapped));
+  return libIPHLPAPI_dll.EnableRouter!(util.toPointer(pHandle), util.toPointer(pOverlapped));
 }
 
 export function UnenableRouter(
   pOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwEnableCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.UnenableRouter(util.toPointer(pOverlapped), util.toPointer(lpdwEnableCount));
+  return libIPHLPAPI_dll.UnenableRouter!(util.toPointer(pOverlapped), util.toPointer(lpdwEnableCount));
 }
 
 export function DisableMediaSense(
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pOverLapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DisableMediaSense(util.toPointer(pHandle), util.toPointer(pOverLapped));
+  return libIPHLPAPI_dll.DisableMediaSense!(util.toPointer(pHandle), util.toPointer(pOverLapped));
 }
 
 export function RestoreMediaSense(
   pOverlapped: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwEnableCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.RestoreMediaSense(util.toPointer(pOverlapped), util.toPointer(lpdwEnableCount));
+  return libIPHLPAPI_dll.RestoreMediaSense!(util.toPointer(pOverlapped), util.toPointer(lpdwEnableCount));
 }
 
 export function GetIpErrorString(
@@ -28280,7 +28476,7 @@ export function GetIpErrorString(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.GetIpErrorString(ErrorCode, util.pwstrToFfi(Buffer), util.toPointer(Size));
+  return libIPHLPAPI_dll.GetIpErrorString!(ErrorCode, util.pwstrToFfi(Buffer), util.toPointer(Size));
 }
 
 export function ResolveNeighbor(
@@ -28288,7 +28484,7 @@ export function ResolveNeighbor(
   PhysicalAddress: Deno.PointerValue | Uint8Array /* ptr */,
   PhysicalAddressLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.ResolveNeighbor(util.toPointer(NetworkAddress), util.toPointer(PhysicalAddress), util.toPointer(PhysicalAddressLength));
+  return libIPHLPAPI_dll.ResolveNeighbor!(util.toPointer(NetworkAddress), util.toPointer(PhysicalAddress), util.toPointer(PhysicalAddressLength));
 }
 
 export function CreatePersistentTcpPortReservation(
@@ -28296,7 +28492,7 @@ export function CreatePersistentTcpPortReservation(
   NumberOfPorts: number /* u16 */,
   Token: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CreatePersistentTcpPortReservation(StartPort, NumberOfPorts, util.toPointer(Token));
+  return libIPHLPAPI_dll.CreatePersistentTcpPortReservation!(StartPort, NumberOfPorts, util.toPointer(Token));
 }
 
 export function CreatePersistentUdpPortReservation(
@@ -28304,21 +28500,21 @@ export function CreatePersistentUdpPortReservation(
   NumberOfPorts: number /* u16 */,
   Token: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.CreatePersistentUdpPortReservation(StartPort, NumberOfPorts, util.toPointer(Token));
+  return libIPHLPAPI_dll.CreatePersistentUdpPortReservation!(StartPort, NumberOfPorts, util.toPointer(Token));
 }
 
 export function DeletePersistentTcpPortReservation(
   StartPort: number /* u16 */,
   NumberOfPorts: number /* u16 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeletePersistentTcpPortReservation(StartPort, NumberOfPorts);
+  return libIPHLPAPI_dll.DeletePersistentTcpPortReservation!(StartPort, NumberOfPorts);
 }
 
 export function DeletePersistentUdpPortReservation(
   StartPort: number /* u16 */,
   NumberOfPorts: number /* u16 */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.DeletePersistentUdpPortReservation(StartPort, NumberOfPorts);
+  return libIPHLPAPI_dll.DeletePersistentUdpPortReservation!(StartPort, NumberOfPorts);
 }
 
 export function LookupPersistentTcpPortReservation(
@@ -28326,7 +28522,7 @@ export function LookupPersistentTcpPortReservation(
   NumberOfPorts: number /* u16 */,
   Token: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.LookupPersistentTcpPortReservation(StartPort, NumberOfPorts, util.toPointer(Token));
+  return libIPHLPAPI_dll.LookupPersistentTcpPortReservation!(StartPort, NumberOfPorts, util.toPointer(Token));
 }
 
 export function LookupPersistentUdpPortReservation(
@@ -28334,7 +28530,7 @@ export function LookupPersistentUdpPortReservation(
   NumberOfPorts: number /* u16 */,
   Token: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.LookupPersistentUdpPortReservation(StartPort, NumberOfPorts, util.toPointer(Token));
+  return libIPHLPAPI_dll.LookupPersistentUdpPortReservation!(StartPort, NumberOfPorts, util.toPointer(Token));
 }
 
 export function PfCreateInterface(
@@ -28345,13 +28541,13 @@ export function PfCreateInterface(
   bMustBeUnique: boolean /* Windows.Win32.Foundation.BOOL */,
   ppInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfCreateInterface(dwName, inAction, outAction, util.boolToFfi(bUseLog), util.boolToFfi(bMustBeUnique), util.toPointer(ppInterface));
+  return libIPHLPAPI_dll.PfCreateInterface!(dwName, inAction, outAction, util.boolToFfi(bUseLog), util.boolToFfi(bMustBeUnique), util.toPointer(ppInterface));
 }
 
 export function PfDeleteInterface(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfDeleteInterface(util.toPointer(pInterface));
+  return libIPHLPAPI_dll.PfDeleteInterface!(util.toPointer(pInterface));
 }
 
 export function PfAddFiltersToInterface(
@@ -28362,7 +28558,7 @@ export function PfAddFiltersToInterface(
   pfiltOut: Deno.PointerValue | Uint8Array /* ptr */,
   pfHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfAddFiltersToInterface(util.toPointer(ih), cInFilters, util.toPointer(pfiltIn), cOutFilters, util.toPointer(pfiltOut), util.toPointer(pfHandle));
+  return libIPHLPAPI_dll.PfAddFiltersToInterface!(util.toPointer(ih), cInFilters, util.toPointer(pfiltIn), cOutFilters, util.toPointer(pfiltOut), util.toPointer(pfHandle));
 }
 
 export function PfRemoveFiltersFromInterface(
@@ -28372,7 +28568,7 @@ export function PfRemoveFiltersFromInterface(
   cOutFilters: number /* u32 */,
   pfiltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfRemoveFiltersFromInterface(util.toPointer(ih), cInFilters, util.toPointer(pfiltIn), cOutFilters, util.toPointer(pfiltOut));
+  return libIPHLPAPI_dll.PfRemoveFiltersFromInterface!(util.toPointer(ih), cInFilters, util.toPointer(pfiltIn), cOutFilters, util.toPointer(pfiltOut));
 }
 
 export function PfRemoveFilterHandles(
@@ -28380,13 +28576,13 @@ export function PfRemoveFilterHandles(
   cFilters: number /* u32 */,
   pvHandles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfRemoveFilterHandles(util.toPointer(pInterface), cFilters, util.toPointer(pvHandles));
+  return libIPHLPAPI_dll.PfRemoveFilterHandles!(util.toPointer(pInterface), cFilters, util.toPointer(pvHandles));
 }
 
 export function PfUnBindInterface(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfUnBindInterface(util.toPointer(pInterface));
+  return libIPHLPAPI_dll.PfUnBindInterface!(util.toPointer(pInterface));
 }
 
 export function PfBindInterfaceToIndex(
@@ -28395,7 +28591,7 @@ export function PfBindInterfaceToIndex(
   pfatLinkType: PFADDRESSTYPE /* Windows.Win32.NetworkManagement.IpHelper.PFADDRESSTYPE */,
   LinkIPAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfBindInterfaceToIndex(util.toPointer(pInterface), dwIndex, pfatLinkType, util.toPointer(LinkIPAddress));
+  return libIPHLPAPI_dll.PfBindInterfaceToIndex!(util.toPointer(pInterface), dwIndex, pfatLinkType, util.toPointer(LinkIPAddress));
 }
 
 export function PfBindInterfaceToIPAddress(
@@ -28403,34 +28599,34 @@ export function PfBindInterfaceToIPAddress(
   pfatType: PFADDRESSTYPE /* Windows.Win32.NetworkManagement.IpHelper.PFADDRESSTYPE */,
   IPAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfBindInterfaceToIPAddress(util.toPointer(pInterface), pfatType, util.toPointer(IPAddress));
+  return libIPHLPAPI_dll.PfBindInterfaceToIPAddress!(util.toPointer(pInterface), pfatType, util.toPointer(IPAddress));
 }
 
 export function PfRebindFilters(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
   pLateBindInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfRebindFilters(util.toPointer(pInterface), util.toPointer(pLateBindInfo));
+  return libIPHLPAPI_dll.PfRebindFilters!(util.toPointer(pInterface), util.toPointer(pLateBindInfo));
 }
 
 export function PfAddGlobalFilterToInterface(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
   gfFilter: GLOBAL_FILTER /* Windows.Win32.NetworkManagement.IpHelper.GLOBAL_FILTER */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfAddGlobalFilterToInterface(util.toPointer(pInterface), gfFilter);
+  return libIPHLPAPI_dll.PfAddGlobalFilterToInterface!(util.toPointer(pInterface), gfFilter);
 }
 
 export function PfRemoveGlobalFilterFromInterface(
   pInterface: Deno.PointerValue | Uint8Array /* ptr */,
   gfFilter: GLOBAL_FILTER /* Windows.Win32.NetworkManagement.IpHelper.GLOBAL_FILTER */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfRemoveGlobalFilterFromInterface(util.toPointer(pInterface), gfFilter);
+  return libIPHLPAPI_dll.PfRemoveGlobalFilterFromInterface!(util.toPointer(pInterface), gfFilter);
 }
 
 export function PfMakeLog(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfMakeLog(util.toPointer(hEvent));
+  return libIPHLPAPI_dll.PfMakeLog!(util.toPointer(hEvent));
 }
 
 export function PfSetLogBuffer(
@@ -28442,11 +28638,11 @@ export function PfSetLogBuffer(
   pdwLostEntries: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSizeUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfSetLogBuffer(util.toPointer(pbBuffer), dwSize, dwThreshold, dwEntries, util.toPointer(pdwLoggedEntries), util.toPointer(pdwLostEntries), util.toPointer(pdwSizeUsed));
+  return libIPHLPAPI_dll.PfSetLogBuffer!(util.toPointer(pbBuffer), dwSize, dwThreshold, dwEntries, util.toPointer(pdwLoggedEntries), util.toPointer(pdwLostEntries), util.toPointer(pdwSizeUsed));
 }
 
 export function PfDeleteLog(): number /* u32 */ {
-  return libIPHLPAPI_dll.PfDeleteLog();
+  return libIPHLPAPI_dll.PfDeleteLog!();
 }
 
 export function PfGetInterfaceStatistics(
@@ -28455,7 +28651,7 @@ export function PfGetInterfaceStatistics(
   pdwBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   fResetCounters: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfGetInterfaceStatistics(util.toPointer(pInterface), util.toPointer(ppfStats), util.toPointer(pdwBufferSize), util.boolToFfi(fResetCounters));
+  return libIPHLPAPI_dll.PfGetInterfaceStatistics!(util.toPointer(pInterface), util.toPointer(ppfStats), util.toPointer(pdwBufferSize), util.boolToFfi(fResetCounters));
 }
 
 export function PfTestPacket(
@@ -28465,6 +28661,6 @@ export function PfTestPacket(
   pbPacket: Deno.PointerValue | Uint8Array /* ptr */,
   ppAction: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIPHLPAPI_dll.PfTestPacket(util.toPointer(pInInterface), util.toPointer(pOutInterface), cBytes, util.toPointer(pbPacket), util.toPointer(ppAction));
+  return libIPHLPAPI_dll.PfTestPacket!(util.toPointer(pInInterface), util.toPointer(pOutInterface), cBytes, util.toPointer(pbPacket), util.toPointer(ppAction));
 }
 

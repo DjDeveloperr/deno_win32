@@ -4722,86 +4722,107 @@ try {
     SetICMMode: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CheckColorsInGamut: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetColorSpace: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetLogColorSpaceA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetLogColorSpaceW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateColorSpaceA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateColorSpaceW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetColorSpace: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteColorSpace: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetICMProfileA: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetICMProfileW: {
       parameters: ["pointer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SetICMProfileA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SetICMProfileW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetDeviceGammaRamp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetDeviceGammaRamp: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ColorMatchToTarget: {
       parameters: ["pointer", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     EnumICMProfilesA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumICMProfilesW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UpdateICMRegKeyA: {
       parameters: ["u32", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     UpdateICMRegKeyW: {
       parameters: ["u32", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ColorCorrectPalette: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -4811,310 +4832,387 @@ try {
     OpenColorProfileA: {
       parameters: ["pointer", "u32", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     OpenColorProfileW: {
       parameters: ["pointer", "u32", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     CloseColorProfile: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     GetColorProfileFromHandle: {
       parameters: ["isize", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsColorProfileValid: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProfileFromLogColorSpaceA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CreateProfileFromLogColorSpaceW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCountColorProfileElements: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetColorProfileHeader: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetColorProfileElementTag: {
       parameters: ["isize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     IsColorProfileTagPresent: {
       parameters: ["isize", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetColorProfileElement: {
       parameters: ["isize", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetColorProfileHeader: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetColorProfileElementSize: {
       parameters: ["isize", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SetColorProfileElement: {
       parameters: ["isize", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetColorProfileElementReference: {
       parameters: ["isize", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetPS2ColorSpaceArray: {
       parameters: ["isize", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPS2ColorRenderingIntent: {
       parameters: ["isize", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPS2ColorRenderingDictionary: {
       parameters: ["isize", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetNamedProfileInfo: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     ConvertColorNameToIndex: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ConvertIndexToColorName: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateDeviceLinkProfile: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CreateColorTransformA: {
       parameters: ["pointer", "isize", "isize", "u32"],
       result: "isize",
+      optional: true,
     },
     CreateColorTransformW: {
       parameters: ["pointer", "isize", "isize", "u32"],
       result: "isize",
+      optional: true,
     },
     CreateMultiProfileTransform: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     DeleteColorTransform: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     TranslateBitmapBits: {
       parameters: ["isize", "pointer", "i32", "u32", "u32", "u32", "pointer", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CheckBitmapBits: {
       parameters: ["isize", "pointer", "i32", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     TranslateColors: {
       parameters: ["isize", "pointer", "u32", "i32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CheckColors: {
       parameters: ["isize", "pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCMMInfo: {
       parameters: ["isize", "u32"],
       result: "u32",
+      optional: true,
     },
     RegisterCMMA: {
       parameters: ["buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     RegisterCMMW: {
       parameters: ["buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     UnregisterCMMA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     UnregisterCMMW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SelectCMM: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     GetColorDirectoryA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetColorDirectoryW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InstallColorProfileA: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     InstallColorProfileW: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     UninstallColorProfileA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     UninstallColorProfileW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     EnumColorProfilesA: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumColorProfilesW: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetStandardColorSpaceProfileA: {
       parameters: ["buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     SetStandardColorSpaceProfileW: {
       parameters: ["buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetStandardColorSpaceProfileA: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetStandardColorSpaceProfileW: {
       parameters: ["buffer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AssociateColorProfileWithDeviceA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     AssociateColorProfileWithDeviceW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DisassociateColorProfileFromDeviceA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DisassociateColorProfileFromDeviceW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WcsAssociateColorProfileWithDevice: {
       parameters: ["i32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WcsDisassociateColorProfileFromDevice: {
       parameters: ["i32", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     WcsEnumColorProfilesSize: {
       parameters: ["i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsEnumColorProfiles: {
       parameters: ["i32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsGetDefaultColorProfileSize: {
       parameters: ["i32", "buffer", "i32", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsGetDefaultColorProfile: {
       parameters: ["i32", "buffer", "i32", "i32", "u32", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     WcsSetDefaultColorProfile: {
       parameters: ["i32", "buffer", "i32", "i32", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     WcsSetDefaultRenderingIntent: {
       parameters: ["i32", "u32"],
       result: "i32",
+      optional: true,
     },
     WcsGetDefaultRenderingIntent: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsGetUsePerUserProfiles: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsSetUsePerUserProfiles: {
       parameters: ["buffer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     WcsTranslateColors: {
       parameters: ["isize", "u32", "u32", "i32", "u32", "pointer", "u32", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsCheckColors: {
       parameters: ["isize", "u32", "u32", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WcsOpenColorProfileA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     WcsOpenColorProfileW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     WcsCreateIccProfile: {
       parameters: ["isize", "u32"],
       result: "isize",
+      optional: true,
     },
     WcsGetCalibrationManagementState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WcsSetCalibrationManagementState: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     ColorProfileAddDisplayAssociation: {
       parameters: ["i32", "buffer", "pointer", "u32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ColorProfileRemoveDisplayAssociation: {
       parameters: ["i32", "buffer", "pointer", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ColorProfileSetDisplayDefaultAssociation: {
       parameters: ["i32", "buffer", "i32", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ColorProfileGetDisplayList: {
       parameters: ["i32", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ColorProfileGetDisplayDefault: {
       parameters: ["i32", "pointer", "u32", "i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ColorProfileGetDisplayUserScope: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5124,10 +5222,12 @@ try {
     SetupColorMatchingW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetupColorMatchingA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5137,86 +5237,107 @@ try {
     CMCheckColors: {
       parameters: ["isize", "pointer", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMCheckRGBs: {
       parameters: ["isize", "pointer", "i32", "u32", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMConvertColorNameToIndex: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CMConvertIndexToColorName: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CMCreateDeviceLinkProfile: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMCreateMultiProfileTransform: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32"],
       result: "isize",
+      optional: true,
     },
     CMCreateProfileW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMCreateTransform: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     CMCreateTransformW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     CMCreateTransformExt: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "isize",
+      optional: true,
     },
     CMCheckColorsInGamut: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CMCreateProfile: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMTranslateRGB: {
       parameters: ["isize", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CMTranslateRGBs: {
       parameters: ["isize", "pointer", "i32", "u32", "u32", "u32", "pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     CMCreateTransformExtW: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "isize",
+      optional: true,
     },
     CMDeleteTransform: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     CMGetInfo: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     CMGetNamedProfileInfo: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMIsProfileValid: {
       parameters: ["isize", "pointer"],
       result: "i32",
+      optional: true,
     },
     CMTranslateColors: {
       parameters: ["isize", "pointer", "u32", "i32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     CMTranslateRGBsExt: {
       parameters: ["isize", "pointer", "i32", "u32", "u32", "u32", "pointer", "i32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5227,7 +5348,7 @@ export function SetICMMode(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   mode: ICM_MODE /* Windows.Win32.UI.ColorSystem.ICM_MODE */,
 ): number /* i32 */ {
-  return libGDI32_dll.SetICMMode(util.toPointer(hdc), mode);
+  return libGDI32_dll.SetICMMode!(util.toPointer(hdc), mode);
 }
 
 export function CheckColorsInGamut(
@@ -5236,13 +5357,13 @@ export function CheckColorsInGamut(
   dlpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.CheckColorsInGamut(util.toPointer(hdc), util.toPointer(lpRGBTriple), util.toPointer(dlpBuffer), nCount));
+  return util.boolFromFfi(libGDI32_dll.CheckColorsInGamut!(util.toPointer(hdc), util.toPointer(lpRGBTriple), util.toPointer(dlpBuffer), nCount));
 }
 
 export function GetColorSpace(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return libGDI32_dll.GetColorSpace(util.toPointer(hdc));
+  return libGDI32_dll.GetColorSpace!(util.toPointer(hdc));
 }
 
 export function GetLogColorSpaceA(
@@ -5250,7 +5371,7 @@ export function GetLogColorSpaceA(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceA(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
+  return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceA!(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
 }
 
 export function GetLogColorSpaceW(
@@ -5258,32 +5379,32 @@ export function GetLogColorSpaceW(
   lpBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   nSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceW(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
+  return util.boolFromFfi(libGDI32_dll.GetLogColorSpaceW!(util.toPointer(hColorSpace), util.toPointer(lpBuffer), nSize));
 }
 
 export function CreateColorSpaceA(
   lplcs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return libGDI32_dll.CreateColorSpaceA(util.toPointer(lplcs));
+  return libGDI32_dll.CreateColorSpaceA!(util.toPointer(lplcs));
 }
 
 export function CreateColorSpaceW(
   lplcs: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return libGDI32_dll.CreateColorSpaceW(util.toPointer(lplcs));
+  return libGDI32_dll.CreateColorSpaceW!(util.toPointer(lplcs));
 }
 
 export function SetColorSpace(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   hcs: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
 ): Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */ {
-  return libGDI32_dll.SetColorSpace(util.toPointer(hdc), util.toPointer(hcs));
+  return libGDI32_dll.SetColorSpace!(util.toPointer(hdc), util.toPointer(hcs));
 }
 
 export function DeleteColorSpace(
   hcs: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.HCOLORSPACE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.DeleteColorSpace(util.toPointer(hcs)));
+  return util.boolFromFfi(libGDI32_dll.DeleteColorSpace!(util.toPointer(hcs)));
 }
 
 export function GetICMProfileA(
@@ -5291,7 +5412,7 @@ export function GetICMProfileA(
   pBufSize: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GetICMProfileA(util.toPointer(hdc), util.toPointer(pBufSize), util.pstrToFfi(pszFilename)));
+  return util.boolFromFfi(libGDI32_dll.GetICMProfileA!(util.toPointer(hdc), util.toPointer(pBufSize), util.pstrToFfi(pszFilename)));
 }
 
 export function GetICMProfileW(
@@ -5299,35 +5420,35 @@ export function GetICMProfileW(
   pBufSize: Deno.PointerValue | Uint8Array /* ptr */,
   pszFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GetICMProfileW(util.toPointer(hdc), util.toPointer(pBufSize), util.pwstrToFfi(pszFilename)));
+  return util.boolFromFfi(libGDI32_dll.GetICMProfileW!(util.toPointer(hdc), util.toPointer(pBufSize), util.pwstrToFfi(pszFilename)));
 }
 
 export function SetICMProfileA(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.SetICMProfileA(util.toPointer(hdc), util.pstrToFfi(lpFileName)));
+  return util.boolFromFfi(libGDI32_dll.SetICMProfileA!(util.toPointer(hdc), util.pstrToFfi(lpFileName)));
 }
 
 export function SetICMProfileW(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.SetICMProfileW(util.toPointer(hdc), util.pwstrToFfi(lpFileName)));
+  return util.boolFromFfi(libGDI32_dll.SetICMProfileW!(util.toPointer(hdc), util.pwstrToFfi(lpFileName)));
 }
 
 export function GetDeviceGammaRamp(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpRamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GetDeviceGammaRamp(util.toPointer(hdc), util.toPointer(lpRamp)));
+  return util.boolFromFfi(libGDI32_dll.GetDeviceGammaRamp!(util.toPointer(hdc), util.toPointer(lpRamp)));
 }
 
 export function SetDeviceGammaRamp(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpRamp: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.SetDeviceGammaRamp(util.toPointer(hdc), util.toPointer(lpRamp)));
+  return util.boolFromFfi(libGDI32_dll.SetDeviceGammaRamp!(util.toPointer(hdc), util.toPointer(lpRamp)));
 }
 
 export function ColorMatchToTarget(
@@ -5335,7 +5456,7 @@ export function ColorMatchToTarget(
   hdcTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   action: COLOR_MATCH_TO_TARGET_ACTION /* Windows.Win32.UI.ColorSystem.COLOR_MATCH_TO_TARGET_ACTION */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.ColorMatchToTarget(util.toPointer(hdc), util.toPointer(hdcTarget), action));
+  return util.boolFromFfi(libGDI32_dll.ColorMatchToTarget!(util.toPointer(hdc), util.toPointer(hdcTarget), action));
 }
 
 export function EnumICMProfilesA(
@@ -5343,7 +5464,7 @@ export function EnumICMProfilesA(
   proc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.ICMENUMPROCA */,
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
-  return libGDI32_dll.EnumICMProfilesA(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
+  return libGDI32_dll.EnumICMProfilesA!(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
 }
 
 export function EnumICMProfilesW(
@@ -5351,7 +5472,7 @@ export function EnumICMProfilesW(
   proc: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.ICMENUMPROCW */,
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* i32 */ {
-  return libGDI32_dll.EnumICMProfilesW(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
+  return libGDI32_dll.EnumICMProfilesW!(util.toPointer(hdc), util.toPointer(proc), util.toPointer(param2));
 }
 
 export function UpdateICMRegKeyA(
@@ -5360,7 +5481,7 @@ export function UpdateICMRegKeyA(
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   command: ICM_COMMAND /* Windows.Win32.UI.ColorSystem.ICM_COMMAND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.UpdateICMRegKeyA(reserved, util.pstrToFfi(lpszCMID), util.pstrToFfi(lpszFileName), command));
+  return util.boolFromFfi(libGDI32_dll.UpdateICMRegKeyA!(reserved, util.pstrToFfi(lpszCMID), util.pstrToFfi(lpszFileName), command));
 }
 
 export function UpdateICMRegKeyW(
@@ -5369,7 +5490,7 @@ export function UpdateICMRegKeyW(
   lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   command: ICM_COMMAND /* Windows.Win32.UI.ColorSystem.ICM_COMMAND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.UpdateICMRegKeyW(reserved, util.pwstrToFfi(lpszCMID), util.pwstrToFfi(lpszFileName), command));
+  return util.boolFromFfi(libGDI32_dll.UpdateICMRegKeyW!(reserved, util.pwstrToFfi(lpszCMID), util.pwstrToFfi(lpszFileName), command));
 }
 
 export function ColorCorrectPalette(
@@ -5378,7 +5499,7 @@ export function ColorCorrectPalette(
   deFirst: number /* u32 */,
   num: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.ColorCorrectPalette(util.toPointer(hdc), util.toPointer(hPal), deFirst, num));
+  return util.boolFromFfi(libGDI32_dll.ColorCorrectPalette!(util.toPointer(hdc), util.toPointer(hPal), deFirst, num));
 }
 
 export function OpenColorProfileA(
@@ -5387,7 +5508,7 @@ export function OpenColorProfileA(
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.OpenColorProfileA(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
+  return libmscms_dll.OpenColorProfileA!(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
 }
 
 export function OpenColorProfileW(
@@ -5396,13 +5517,13 @@ export function OpenColorProfileW(
   dwShareMode: number /* u32 */,
   dwCreationMode: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.OpenColorProfileW(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
+  return libmscms_dll.OpenColorProfileW!(util.toPointer(pProfile), dwDesiredAccess, dwShareMode, dwCreationMode);
 }
 
 export function CloseColorProfile(
   hProfile: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CloseColorProfile(hProfile));
+  return util.boolFromFfi(libmscms_dll.CloseColorProfile!(hProfile));
 }
 
 export function GetColorProfileFromHandle(
@@ -5410,42 +5531,42 @@ export function GetColorProfileFromHandle(
   pProfile: Deno.PointerValue | Uint8Array /* ptr */,
   pcbProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorProfileFromHandle(hProfile, util.toPointer(pProfile), util.toPointer(pcbProfile)));
+  return util.boolFromFfi(libmscms_dll.GetColorProfileFromHandle!(hProfile, util.toPointer(pProfile), util.toPointer(pcbProfile)));
 }
 
 export function IsColorProfileValid(
   hProfile: bigint | number /* isize */,
   pbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.IsColorProfileValid(hProfile, util.toPointer(pbValid)));
+  return util.boolFromFfi(libmscms_dll.IsColorProfileValid!(hProfile, util.toPointer(pbValid)));
 }
 
 export function CreateProfileFromLogColorSpaceA(
   pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   pProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceA(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
+  return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceA!(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
 }
 
 export function CreateProfileFromLogColorSpaceW(
   pLogColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   pProfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceW(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
+  return util.boolFromFfi(libmscms_dll.CreateProfileFromLogColorSpaceW!(util.toPointer(pLogColorSpace), util.toPointer(pProfile)));
 }
 
 export function GetCountColorProfileElements(
   hProfile: bigint | number /* isize */,
   pnElementCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetCountColorProfileElements(hProfile, util.toPointer(pnElementCount)));
+  return util.boolFromFfi(libmscms_dll.GetCountColorProfileElements!(hProfile, util.toPointer(pnElementCount)));
 }
 
 export function GetColorProfileHeader(
   hProfile: bigint | number /* isize */,
   pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorProfileHeader(hProfile, util.toPointer(pHeader)));
+  return util.boolFromFfi(libmscms_dll.GetColorProfileHeader!(hProfile, util.toPointer(pHeader)));
 }
 
 export function GetColorProfileElementTag(
@@ -5453,7 +5574,7 @@ export function GetColorProfileElementTag(
   dwIndex: number /* u32 */,
   pTag: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorProfileElementTag(hProfile, dwIndex, util.toPointer(pTag)));
+  return util.boolFromFfi(libmscms_dll.GetColorProfileElementTag!(hProfile, dwIndex, util.toPointer(pTag)));
 }
 
 export function IsColorProfileTagPresent(
@@ -5461,7 +5582,7 @@ export function IsColorProfileTagPresent(
   tag: number /* u32 */,
   pbPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.IsColorProfileTagPresent(hProfile, tag, util.toPointer(pbPresent)));
+  return util.boolFromFfi(libmscms_dll.IsColorProfileTagPresent!(hProfile, tag, util.toPointer(pbPresent)));
 }
 
 export function GetColorProfileElement(
@@ -5472,14 +5593,14 @@ export function GetColorProfileElement(
   pElement: Deno.PointerValue | Uint8Array /* ptr */,
   pbReference: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorProfileElement(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement), util.toPointer(pbReference)));
+  return util.boolFromFfi(libmscms_dll.GetColorProfileElement!(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement), util.toPointer(pbReference)));
 }
 
 export function SetColorProfileHeader(
   hProfile: bigint | number /* isize */,
   pHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetColorProfileHeader(hProfile, util.toPointer(pHeader)));
+  return util.boolFromFfi(libmscms_dll.SetColorProfileHeader!(hProfile, util.toPointer(pHeader)));
 }
 
 export function SetColorProfileElementSize(
@@ -5487,7 +5608,7 @@ export function SetColorProfileElementSize(
   tagType: number /* u32 */,
   pcbElement: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetColorProfileElementSize(hProfile, tagType, pcbElement));
+  return util.boolFromFfi(libmscms_dll.SetColorProfileElementSize!(hProfile, tagType, pcbElement));
 }
 
 export function SetColorProfileElement(
@@ -5497,7 +5618,7 @@ export function SetColorProfileElement(
   pcbElement: Deno.PointerValue | Uint8Array /* ptr */,
   pElement: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetColorProfileElement(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement)));
+  return util.boolFromFfi(libmscms_dll.SetColorProfileElement!(hProfile, tag, dwOffset, util.toPointer(pcbElement), util.toPointer(pElement)));
 }
 
 export function SetColorProfileElementReference(
@@ -5505,7 +5626,7 @@ export function SetColorProfileElementReference(
   newTag: number /* u32 */,
   refTag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetColorProfileElementReference(hProfile, newTag, refTag));
+  return util.boolFromFfi(libmscms_dll.SetColorProfileElementReference!(hProfile, newTag, refTag));
 }
 
 export function GetPS2ColorSpaceArray(
@@ -5516,7 +5637,7 @@ export function GetPS2ColorSpaceArray(
   pcbPS2ColorSpaceArray: Deno.PointerValue | Uint8Array /* ptr */,
   pbBinary: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetPS2ColorSpaceArray(hProfile, dwIntent, dwCSAType, util.toPointer(pPS2ColorSpaceArray), util.toPointer(pcbPS2ColorSpaceArray), util.toPointer(pbBinary)));
+  return util.boolFromFfi(libmscms_dll.GetPS2ColorSpaceArray!(hProfile, dwIntent, dwCSAType, util.toPointer(pPS2ColorSpaceArray), util.toPointer(pcbPS2ColorSpaceArray), util.toPointer(pbBinary)));
 }
 
 export function GetPS2ColorRenderingIntent(
@@ -5525,7 +5646,7 @@ export function GetPS2ColorRenderingIntent(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPS2ColorRenderingIntent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingIntent(hProfile, dwIntent, util.toPointer(pBuffer), util.toPointer(pcbPS2ColorRenderingIntent)));
+  return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingIntent!(hProfile, dwIntent, util.toPointer(pBuffer), util.toPointer(pcbPS2ColorRenderingIntent)));
 }
 
 export function GetPS2ColorRenderingDictionary(
@@ -5535,14 +5656,14 @@ export function GetPS2ColorRenderingDictionary(
   pcbPS2ColorRenderingDictionary: Deno.PointerValue | Uint8Array /* ptr */,
   pbBinary: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingDictionary(hProfile, dwIntent, util.toPointer(pPS2ColorRenderingDictionary), util.toPointer(pcbPS2ColorRenderingDictionary), util.toPointer(pbBinary)));
+  return util.boolFromFfi(libmscms_dll.GetPS2ColorRenderingDictionary!(hProfile, dwIntent, util.toPointer(pPS2ColorRenderingDictionary), util.toPointer(pcbPS2ColorRenderingDictionary), util.toPointer(pbBinary)));
 }
 
 export function GetNamedProfileInfo(
   hProfile: bigint | number /* isize */,
   pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
+  return util.boolFromFfi(libmscms_dll.GetNamedProfileInfo!(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function ConvertColorNameToIndex(
@@ -5551,7 +5672,7 @@ export function ConvertColorNameToIndex(
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.ConvertColorNameToIndex(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
+  return util.boolFromFfi(libmscms_dll.ConvertColorNameToIndex!(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
 }
 
 export function ConvertIndexToColorName(
@@ -5560,7 +5681,7 @@ export function ConvertIndexToColorName(
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.ConvertIndexToColorName(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
+  return util.boolFromFfi(libmscms_dll.ConvertIndexToColorName!(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
 }
 
 export function CreateDeviceLinkProfile(
@@ -5572,7 +5693,7 @@ export function CreateDeviceLinkProfile(
   pProfileData: Deno.PointerValue | Uint8Array /* ptr */,
   indexPreferredCMM: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CreateDeviceLinkProfile(util.toPointer(hProfile), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, util.toPointer(pProfileData), indexPreferredCMM));
+  return util.boolFromFfi(libmscms_dll.CreateDeviceLinkProfile!(util.toPointer(hProfile), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, util.toPointer(pProfileData), indexPreferredCMM));
 }
 
 export function CreateColorTransformA(
@@ -5581,7 +5702,7 @@ export function CreateColorTransformA(
   hTargetProfile: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.CreateColorTransformA(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
+  return libmscms_dll.CreateColorTransformA!(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
 }
 
 export function CreateColorTransformW(
@@ -5590,7 +5711,7 @@ export function CreateColorTransformW(
   hTargetProfile: bigint | number /* isize */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.CreateColorTransformW(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
+  return libmscms_dll.CreateColorTransformW!(util.toPointer(pLogColorSpace), hDestProfile, hTargetProfile, dwFlags);
 }
 
 export function CreateMultiProfileTransform(
@@ -5601,13 +5722,13 @@ export function CreateMultiProfileTransform(
   dwFlags: number /* u32 */,
   indexPreferredCMM: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.CreateMultiProfileTransform(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, indexPreferredCMM);
+  return libmscms_dll.CreateMultiProfileTransform!(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntent), nIntents, dwFlags, indexPreferredCMM);
 }
 
 export function DeleteColorTransform(
   hxform: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.DeleteColorTransform(hxform));
+  return util.boolFromFfi(libmscms_dll.DeleteColorTransform!(hxform));
 }
 
 export function TranslateBitmapBits(
@@ -5623,7 +5744,7 @@ export function TranslateBitmapBits(
   pfnCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
   ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.TranslateBitmapBits(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(pDestBits), bmOutput, dwOutputStride, util.toPointer(pfnCallBack), util.toPointer(ulCallbackData)));
+  return util.boolFromFfi(libmscms_dll.TranslateBitmapBits!(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(pDestBits), bmOutput, dwOutputStride, util.toPointer(pfnCallBack), util.toPointer(ulCallbackData)));
 }
 
 export function CheckBitmapBits(
@@ -5637,7 +5758,7 @@ export function CheckBitmapBits(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
   lpCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CheckBitmapBits(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(paResult), util.toPointer(pfnCallback), util.toPointer(lpCallbackData)));
+  return util.boolFromFfi(libmscms_dll.CheckBitmapBits!(hColorTransform, util.toPointer(pSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(paResult), util.toPointer(pfnCallback), util.toPointer(lpCallbackData)));
 }
 
 export function TranslateColors(
@@ -5648,7 +5769,7 @@ export function TranslateColors(
   paOutputColors: Deno.PointerValue | Uint8Array /* ptr */,
   ctOutput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.TranslateColors(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paOutputColors), ctOutput));
+  return util.boolFromFfi(libmscms_dll.TranslateColors!(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paOutputColors), ctOutput));
 }
 
 export function CheckColors(
@@ -5658,14 +5779,14 @@ export function CheckColors(
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
   paResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.CheckColors(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paResult)));
+  return util.boolFromFfi(libmscms_dll.CheckColors!(hColorTransform, util.toPointer(paInputColors), nColors, ctInput, util.toPointer(paResult)));
 }
 
 export function GetCMMInfo(
   hColorTransform: bigint | number /* isize */,
   param1: number /* u32 */,
 ): number /* u32 */ {
-  return libmscms_dll.GetCMMInfo(hColorTransform, param1);
+  return libmscms_dll.GetCMMInfo!(hColorTransform, param1);
 }
 
 export function RegisterCMMA(
@@ -5673,7 +5794,7 @@ export function RegisterCMMA(
   cmmID: number /* u32 */,
   pCMMdll: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.RegisterCMMA(util.pstrToFfi(pMachineName), cmmID, util.pstrToFfi(pCMMdll)));
+  return util.boolFromFfi(libmscms_dll.RegisterCMMA!(util.pstrToFfi(pMachineName), cmmID, util.pstrToFfi(pCMMdll)));
 }
 
 export function RegisterCMMW(
@@ -5681,27 +5802,27 @@ export function RegisterCMMW(
   cmmID: number /* u32 */,
   pCMMdll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.RegisterCMMW(util.pwstrToFfi(pMachineName), cmmID, util.pwstrToFfi(pCMMdll)));
+  return util.boolFromFfi(libmscms_dll.RegisterCMMW!(util.pwstrToFfi(pMachineName), cmmID, util.pwstrToFfi(pCMMdll)));
 }
 
 export function UnregisterCMMA(
   pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cmmID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.UnregisterCMMA(util.pstrToFfi(pMachineName), cmmID));
+  return util.boolFromFfi(libmscms_dll.UnregisterCMMA!(util.pstrToFfi(pMachineName), cmmID));
 }
 
 export function UnregisterCMMW(
   pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cmmID: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.UnregisterCMMW(util.pwstrToFfi(pMachineName), cmmID));
+  return util.boolFromFfi(libmscms_dll.UnregisterCMMW!(util.pwstrToFfi(pMachineName), cmmID));
 }
 
 export function SelectCMM(
   dwCMMType: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SelectCMM(dwCMMType));
+  return util.boolFromFfi(libmscms_dll.SelectCMM!(dwCMMType));
 }
 
 export function GetColorDirectoryA(
@@ -5709,7 +5830,7 @@ export function GetColorDirectoryA(
   pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorDirectoryA(util.pstrToFfi(pMachineName), util.pstrToFfi(pBuffer), util.toPointer(pdwSize)));
+  return util.boolFromFfi(libmscms_dll.GetColorDirectoryA!(util.pstrToFfi(pMachineName), util.pstrToFfi(pBuffer), util.toPointer(pdwSize)));
 }
 
 export function GetColorDirectoryW(
@@ -5717,21 +5838,21 @@ export function GetColorDirectoryW(
   pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetColorDirectoryW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pBuffer), util.toPointer(pdwSize)));
+  return util.boolFromFfi(libmscms_dll.GetColorDirectoryW!(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pBuffer), util.toPointer(pdwSize)));
 }
 
 export function InstallColorProfileA(
   pMachineName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.InstallColorProfileA(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName)));
+  return util.boolFromFfi(libmscms_dll.InstallColorProfileA!(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName)));
 }
 
 export function InstallColorProfileW(
   pMachineName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.InstallColorProfileW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName)));
+  return util.boolFromFfi(libmscms_dll.InstallColorProfileW!(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName)));
 }
 
 export function UninstallColorProfileA(
@@ -5739,7 +5860,7 @@ export function UninstallColorProfileA(
   pProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bDelete: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.UninstallColorProfileA(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.boolToFfi(bDelete)));
+  return util.boolFromFfi(libmscms_dll.UninstallColorProfileA!(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.boolToFfi(bDelete)));
 }
 
 export function UninstallColorProfileW(
@@ -5747,7 +5868,7 @@ export function UninstallColorProfileW(
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bDelete: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.UninstallColorProfileW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.boolToFfi(bDelete)));
+  return util.boolFromFfi(libmscms_dll.UninstallColorProfileW!(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.boolToFfi(bDelete)));
 }
 
 export function EnumColorProfilesA(
@@ -5757,7 +5878,7 @@ export function EnumColorProfilesA(
   pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.EnumColorProfilesA(util.pstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
+  return util.boolFromFfi(libmscms_dll.EnumColorProfilesA!(util.pstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
 }
 
 export function EnumColorProfilesW(
@@ -5767,7 +5888,7 @@ export function EnumColorProfilesW(
   pdwSizeOfEnumerationBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.EnumColorProfilesW(util.pwstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
+  return util.boolFromFfi(libmscms_dll.EnumColorProfilesW!(util.pwstrToFfi(pMachineName), util.toPointer(pEnumRecord), util.toPointer(pEnumerationBuffer), util.toPointer(pdwSizeOfEnumerationBuffer), util.toPointer(pnProfiles)));
 }
 
 export function SetStandardColorSpaceProfileA(
@@ -5775,7 +5896,7 @@ export function SetStandardColorSpaceProfileA(
   dwProfileID: number /* u32 */,
   pProfilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetStandardColorSpaceProfileA(util.pstrToFfi(pMachineName), dwProfileID, util.pstrToFfi(pProfilename)));
+  return util.boolFromFfi(libmscms_dll.SetStandardColorSpaceProfileA!(util.pstrToFfi(pMachineName), dwProfileID, util.pstrToFfi(pProfilename)));
 }
 
 export function SetStandardColorSpaceProfileW(
@@ -5783,7 +5904,7 @@ export function SetStandardColorSpaceProfileW(
   dwProfileID: number /* u32 */,
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SetStandardColorSpaceProfileW(util.pwstrToFfi(pMachineName), dwProfileID, util.pwstrToFfi(pProfileName)));
+  return util.boolFromFfi(libmscms_dll.SetStandardColorSpaceProfileW!(util.pwstrToFfi(pMachineName), dwProfileID, util.pwstrToFfi(pProfileName)));
 }
 
 export function GetStandardColorSpaceProfileA(
@@ -5792,7 +5913,7 @@ export function GetStandardColorSpaceProfileA(
   pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileA(util.pstrToFfi(pMachineName), dwSCS, util.pstrToFfi(pBuffer), util.toPointer(pcbSize)));
+  return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileA!(util.pstrToFfi(pMachineName), dwSCS, util.pstrToFfi(pBuffer), util.toPointer(pcbSize)));
 }
 
 export function GetStandardColorSpaceProfileW(
@@ -5801,7 +5922,7 @@ export function GetStandardColorSpaceProfileW(
   pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileW(util.pwstrToFfi(pMachineName), dwSCS, util.pwstrToFfi(pBuffer), util.toPointer(pcbSize)));
+  return util.boolFromFfi(libmscms_dll.GetStandardColorSpaceProfileW!(util.pwstrToFfi(pMachineName), dwSCS, util.pwstrToFfi(pBuffer), util.toPointer(pcbSize)));
 }
 
 export function AssociateColorProfileWithDeviceA(
@@ -5809,7 +5930,7 @@ export function AssociateColorProfileWithDeviceA(
   pProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.AssociateColorProfileWithDeviceA(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.pstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.AssociateColorProfileWithDeviceA!(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.pstrToFfi(pDeviceName)));
 }
 
 export function AssociateColorProfileWithDeviceW(
@@ -5817,7 +5938,7 @@ export function AssociateColorProfileWithDeviceW(
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.AssociateColorProfileWithDeviceW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.AssociateColorProfileWithDeviceW!(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
 }
 
 export function DisassociateColorProfileFromDeviceA(
@@ -5825,7 +5946,7 @@ export function DisassociateColorProfileFromDeviceA(
   pProfileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDeviceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.DisassociateColorProfileFromDeviceA(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.pstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.DisassociateColorProfileFromDeviceA!(util.pstrToFfi(pMachineName), util.pstrToFfi(pProfileName), util.pstrToFfi(pDeviceName)));
 }
 
 export function DisassociateColorProfileFromDeviceW(
@@ -5833,19 +5954,19 @@ export function DisassociateColorProfileFromDeviceW(
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.DisassociateColorProfileFromDeviceW(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.DisassociateColorProfileFromDeviceW!(util.pwstrToFfi(pMachineName), util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
 }
 
 export function SetupColorMatchingW(
   pcms: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICMUI_dll.SetupColorMatchingW(util.toPointer(pcms)));
+  return util.boolFromFfi(libICMUI_dll.SetupColorMatchingW!(util.toPointer(pcms)));
 }
 
 export function SetupColorMatchingA(
   pcms: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICMUI_dll.SetupColorMatchingA(util.toPointer(pcms)));
+  return util.boolFromFfi(libICMUI_dll.SetupColorMatchingA!(util.toPointer(pcms)));
 }
 
 export function WcsAssociateColorProfileWithDevice(
@@ -5853,7 +5974,7 @@ export function WcsAssociateColorProfileWithDevice(
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsAssociateColorProfileWithDevice(scope, util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.WcsAssociateColorProfileWithDevice!(scope, util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
 }
 
 export function WcsDisassociateColorProfileFromDevice(
@@ -5861,7 +5982,7 @@ export function WcsDisassociateColorProfileFromDevice(
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsDisassociateColorProfileFromDevice(scope, util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
+  return util.boolFromFfi(libmscms_dll.WcsDisassociateColorProfileFromDevice!(scope, util.pwstrToFfi(pProfileName), util.pwstrToFfi(pDeviceName)));
 }
 
 export function WcsEnumColorProfilesSize(
@@ -5869,7 +5990,7 @@ export function WcsEnumColorProfilesSize(
   pEnumRecord: Deno.PointerValue | Uint8Array /* ptr */,
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsEnumColorProfilesSize(scope, util.toPointer(pEnumRecord), util.toPointer(pdwSize)));
+  return util.boolFromFfi(libmscms_dll.WcsEnumColorProfilesSize!(scope, util.toPointer(pEnumRecord), util.toPointer(pdwSize)));
 }
 
 export function WcsEnumColorProfiles(
@@ -5879,7 +6000,7 @@ export function WcsEnumColorProfiles(
   dwSize: number /* u32 */,
   pnProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsEnumColorProfiles(scope, util.toPointer(pEnumRecord), util.toPointer(pBuffer), dwSize, util.toPointer(pnProfiles)));
+  return util.boolFromFfi(libmscms_dll.WcsEnumColorProfiles!(scope, util.toPointer(pEnumRecord), util.toPointer(pBuffer), dwSize, util.toPointer(pnProfiles)));
 }
 
 export function WcsGetDefaultColorProfileSize(
@@ -5890,7 +6011,7 @@ export function WcsGetDefaultColorProfileSize(
   dwProfileID: number /* u32 */,
   pcbProfileName: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsGetDefaultColorProfileSize(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, util.toPointer(pcbProfileName)));
+  return util.boolFromFfi(libmscms_dll.WcsGetDefaultColorProfileSize!(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, util.toPointer(pcbProfileName)));
 }
 
 export function WcsGetDefaultColorProfile(
@@ -5902,7 +6023,7 @@ export function WcsGetDefaultColorProfile(
   cbProfileName: number /* u32 */,
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsGetDefaultColorProfile(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, cbProfileName, util.pwstrToFfi(pProfileName)));
+  return util.boolFromFfi(libmscms_dll.WcsGetDefaultColorProfile!(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, cbProfileName, util.pwstrToFfi(pProfileName)));
 }
 
 export function WcsSetDefaultColorProfile(
@@ -5913,21 +6034,21 @@ export function WcsSetDefaultColorProfile(
   dwProfileID: number /* u32 */,
   pProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsSetDefaultColorProfile(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, util.pwstrToFfi(pProfileName)));
+  return util.boolFromFfi(libmscms_dll.WcsSetDefaultColorProfile!(scope, util.pwstrToFfi(pDeviceName), cptColorProfileType, cpstColorProfileSubType, dwProfileID, util.pwstrToFfi(pProfileName)));
 }
 
 export function WcsSetDefaultRenderingIntent(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
   dwRenderingIntent: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsSetDefaultRenderingIntent(scope, dwRenderingIntent));
+  return util.boolFromFfi(libmscms_dll.WcsSetDefaultRenderingIntent!(scope, dwRenderingIntent));
 }
 
 export function WcsGetDefaultRenderingIntent(
   scope: WCS_PROFILE_MANAGEMENT_SCOPE /* Windows.Win32.UI.ColorSystem.WCS_PROFILE_MANAGEMENT_SCOPE */,
   pdwRenderingIntent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsGetDefaultRenderingIntent(scope, util.toPointer(pdwRenderingIntent)));
+  return util.boolFromFfi(libmscms_dll.WcsGetDefaultRenderingIntent!(scope, util.toPointer(pdwRenderingIntent)));
 }
 
 export function WcsGetUsePerUserProfiles(
@@ -5935,7 +6056,7 @@ export function WcsGetUsePerUserProfiles(
   dwDeviceClass: number /* u32 */,
   pUsePerUserProfiles: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsGetUsePerUserProfiles(util.pwstrToFfi(pDeviceName), dwDeviceClass, util.toPointer(pUsePerUserProfiles)));
+  return util.boolFromFfi(libmscms_dll.WcsGetUsePerUserProfiles!(util.pwstrToFfi(pDeviceName), dwDeviceClass, util.toPointer(pUsePerUserProfiles)));
 }
 
 export function WcsSetUsePerUserProfiles(
@@ -5943,7 +6064,7 @@ export function WcsSetUsePerUserProfiles(
   dwDeviceClass: number /* u32 */,
   usePerUserProfiles: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsSetUsePerUserProfiles(util.pwstrToFfi(pDeviceName), dwDeviceClass, util.boolToFfi(usePerUserProfiles)));
+  return util.boolFromFfi(libmscms_dll.WcsSetUsePerUserProfiles!(util.pwstrToFfi(pDeviceName), dwDeviceClass, util.boolToFfi(usePerUserProfiles)));
 }
 
 export function WcsTranslateColors(
@@ -5958,7 +6079,7 @@ export function WcsTranslateColors(
   cbOutput: number /* u32 */,
   pOutputData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsTranslateColors(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), nOutputChannels, cdtOutput, cbOutput, util.toPointer(pOutputData)));
+  return util.boolFromFfi(libmscms_dll.WcsTranslateColors!(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), nOutputChannels, cdtOutput, cbOutput, util.toPointer(pOutputData)));
 }
 
 export function WcsCheckColors(
@@ -5970,7 +6091,7 @@ export function WcsCheckColors(
   pInputData: Deno.PointerValue | Uint8Array /* ptr */,
   paResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsCheckColors(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), util.toPointer(paResult)));
+  return util.boolFromFfi(libmscms_dll.WcsCheckColors!(hColorTransform, nColors, nInputChannels, cdtInput, cbInput, util.toPointer(pInputData), util.toPointer(paResult)));
 }
 
 export function CMCheckColors(
@@ -5980,7 +6101,7 @@ export function CMCheckColors(
   ctInput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
   lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCheckColors(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaResult)));
+  return util.boolFromFfi(libICM32_dll.CMCheckColors!(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaResult)));
 }
 
 export function CMCheckRGBs(
@@ -5994,7 +6115,7 @@ export function CMCheckRGBs(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
   ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCheckRGBs(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(lpaResult), util.toPointer(pfnCallback), util.toPointer(ulCallbackData)));
+  return util.boolFromFfi(libICM32_dll.CMCheckRGBs!(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(lpaResult), util.toPointer(pfnCallback), util.toPointer(ulCallbackData)));
 }
 
 export function CMConvertColorNameToIndex(
@@ -6003,7 +6124,7 @@ export function CMConvertColorNameToIndex(
   paIndex: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMConvertColorNameToIndex(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
+  return util.boolFromFfi(libICM32_dll.CMConvertColorNameToIndex!(hProfile, util.toPointer(paColorName), util.toPointer(paIndex), dwCount));
 }
 
 export function CMConvertIndexToColorName(
@@ -6012,7 +6133,7 @@ export function CMConvertIndexToColorName(
   paColorName: Deno.PointerValue | Uint8Array /* ptr */,
   dwCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMConvertIndexToColorName(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
+  return util.boolFromFfi(libICM32_dll.CMConvertIndexToColorName!(hProfile, util.toPointer(paIndex), util.toPointer(paColorName), dwCount));
 }
 
 export function CMCreateDeviceLinkProfile(
@@ -6023,7 +6144,7 @@ export function CMCreateDeviceLinkProfile(
   dwFlags: number /* u32 */,
   lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCreateDeviceLinkProfile(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags, util.toPointer(lpProfileData)));
+  return util.boolFromFfi(libICM32_dll.CMCreateDeviceLinkProfile!(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags, util.toPointer(lpProfileData)));
 }
 
 export function CMCreateMultiProfileTransform(
@@ -6033,14 +6154,14 @@ export function CMCreateMultiProfileTransform(
   nIntents: number /* u32 */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libICM32_dll.CMCreateMultiProfileTransform(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags);
+  return libICM32_dll.CMCreateMultiProfileTransform!(util.toPointer(pahProfiles), nProfiles, util.toPointer(padwIntents), nIntents, dwFlags);
 }
 
 export function CMCreateProfileW(
   lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCreateProfileW(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
+  return util.boolFromFfi(libICM32_dll.CMCreateProfileW!(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
 }
 
 export function CMCreateTransform(
@@ -6048,7 +6169,7 @@ export function CMCreateTransform(
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libICM32_dll.CMCreateTransform(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
+  return libICM32_dll.CMCreateTransform!(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
 export function CMCreateTransformW(
@@ -6056,7 +6177,7 @@ export function CMCreateTransformW(
   lpDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libICM32_dll.CMCreateTransformW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
+  return libICM32_dll.CMCreateTransformW!(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter));
 }
 
 export function CMCreateTransformExt(
@@ -6065,7 +6186,7 @@ export function CMCreateTransformExt(
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libICM32_dll.CMCreateTransformExt(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
+  return libICM32_dll.CMCreateTransformExt!(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
 }
 
 export function CMCheckColorsInGamut(
@@ -6074,14 +6195,14 @@ export function CMCheckColorsInGamut(
   lpaResult: Deno.PointerValue | Uint8Array /* ptr */,
   nCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCheckColorsInGamut(hcmTransform, util.toPointer(lpaRGBTriple), util.toPointer(lpaResult), nCount));
+  return util.boolFromFfi(libICM32_dll.CMCheckColorsInGamut!(hcmTransform, util.toPointer(lpaRGBTriple), util.toPointer(lpaResult), nCount));
 }
 
 export function CMCreateProfile(
   lpColorSpace: Deno.PointerValue | Uint8Array /* ptr */,
   lpProfileData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMCreateProfile(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
+  return util.boolFromFfi(libICM32_dll.CMCreateProfile!(util.toPointer(lpColorSpace), util.toPointer(lpProfileData)));
 }
 
 export function CMTranslateRGB(
@@ -6090,7 +6211,7 @@ export function CMTranslateRGB(
   lpColorRef: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMTranslateRGB(hcmTransform, util.toPointer(ColorRef), util.toPointer(lpColorRef), dwFlags));
+  return util.boolFromFfi(libICM32_dll.CMTranslateRGB!(hcmTransform, util.toPointer(ColorRef), util.toPointer(lpColorRef), dwFlags));
 }
 
 export function CMTranslateRGBs(
@@ -6104,7 +6225,7 @@ export function CMTranslateRGBs(
   bmOutput: BMFORMAT /* Windows.Win32.UI.ColorSystem.BMFORMAT */,
   dwTranslateDirection: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMTranslateRGBs(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(lpDestBits), bmOutput, dwTranslateDirection));
+  return util.boolFromFfi(libICM32_dll.CMTranslateRGBs!(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwStride, util.toPointer(lpDestBits), bmOutput, dwTranslateDirection));
 }
 
 export function CMCreateTransformExtW(
@@ -6113,33 +6234,33 @@ export function CMCreateTransformExtW(
   lpTargetDevCharacter: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libICM32_dll.CMCreateTransformExtW(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
+  return libICM32_dll.CMCreateTransformExtW!(util.toPointer(lpColorSpace), util.toPointer(lpDevCharacter), util.toPointer(lpTargetDevCharacter), dwFlags);
 }
 
 export function CMDeleteTransform(
   hcmTransform: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMDeleteTransform(hcmTransform));
+  return util.boolFromFfi(libICM32_dll.CMDeleteTransform!(hcmTransform));
 }
 
 export function CMGetInfo(
   dwInfo: number /* u32 */,
 ): number /* u32 */ {
-  return libICM32_dll.CMGetInfo(dwInfo);
+  return libICM32_dll.CMGetInfo!(dwInfo);
 }
 
 export function CMGetNamedProfileInfo(
   hProfile: bigint | number /* isize */,
   pNamedProfileInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMGetNamedProfileInfo(hProfile, util.toPointer(pNamedProfileInfo)));
+  return util.boolFromFfi(libICM32_dll.CMGetNamedProfileInfo!(hProfile, util.toPointer(pNamedProfileInfo)));
 }
 
 export function CMIsProfileValid(
   hProfile: bigint | number /* isize */,
   lpbValid: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMIsProfileValid(hProfile, util.toPointer(lpbValid)));
+  return util.boolFromFfi(libICM32_dll.CMIsProfileValid!(hProfile, util.toPointer(lpbValid)));
 }
 
 export function CMTranslateColors(
@@ -6150,7 +6271,7 @@ export function CMTranslateColors(
   lpaOutputColors: Deno.PointerValue | Uint8Array /* ptr */,
   ctOutput: COLORTYPE /* Windows.Win32.UI.ColorSystem.COLORTYPE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMTranslateColors(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaOutputColors), ctOutput));
+  return util.boolFromFfi(libICM32_dll.CMTranslateColors!(hcmTransform, util.toPointer(lpaInputColors), nColors, ctInput, util.toPointer(lpaOutputColors), ctOutput));
 }
 
 export function CMTranslateRGBsExt(
@@ -6166,7 +6287,7 @@ export function CMTranslateRGBsExt(
   lpfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.ColorSystem.LPBMCALLBACKFN */,
   ulCallbackData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libICM32_dll.CMTranslateRGBsExt(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(lpDestBits), bmOutput, dwOutputStride, util.toPointer(lpfnCallback), util.toPointer(ulCallbackData)));
+  return util.boolFromFfi(libICM32_dll.CMTranslateRGBsExt!(hcmTransform, util.toPointer(lpSrcBits), bmInput, dwWidth, dwHeight, dwInputStride, util.toPointer(lpDestBits), bmOutput, dwOutputStride, util.toPointer(lpfnCallback), util.toPointer(ulCallbackData)));
 }
 
 export function WcsOpenColorProfileA(
@@ -6178,7 +6299,7 @@ export function WcsOpenColorProfileA(
   dwCreationMode: number /* u32 */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.WcsOpenColorProfileA(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
+  return libmscms_dll.WcsOpenColorProfileA!(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
 }
 
 export function WcsOpenColorProfileW(
@@ -6190,26 +6311,26 @@ export function WcsOpenColorProfileW(
   dwCreationMode: number /* u32 */,
   dwFlags: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.WcsOpenColorProfileW(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
+  return libmscms_dll.WcsOpenColorProfileW!(util.toPointer(pCDMPProfile), util.toPointer(pCAMPProfile), util.toPointer(pGMMPProfile), dwDesireAccess, dwShareMode, dwCreationMode, dwFlags);
 }
 
 export function WcsCreateIccProfile(
   hWcsProfile: bigint | number /* isize */,
   dwOptions: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libmscms_dll.WcsCreateIccProfile(hWcsProfile, dwOptions);
+  return libmscms_dll.WcsCreateIccProfile!(hWcsProfile, dwOptions);
 }
 
 export function WcsGetCalibrationManagementState(
   pbIsEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsGetCalibrationManagementState(util.toPointer(pbIsEnabled)));
+  return util.boolFromFfi(libmscms_dll.WcsGetCalibrationManagementState!(util.toPointer(pbIsEnabled)));
 }
 
 export function WcsSetCalibrationManagementState(
   bIsEnabled: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.WcsSetCalibrationManagementState(util.boolToFfi(bIsEnabled)));
+  return util.boolFromFfi(libmscms_dll.WcsSetCalibrationManagementState!(util.boolToFfi(bIsEnabled)));
 }
 
 export function ColorProfileAddDisplayAssociation(
@@ -6220,7 +6341,7 @@ export function ColorProfileAddDisplayAssociation(
   setAsDefault: boolean /* Windows.Win32.Foundation.BOOL */,
   associateAsAdvancedColor: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileAddDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(setAsDefault), util.boolToFfi(associateAsAdvancedColor));
+  return libmscms_dll.ColorProfileAddDisplayAssociation!(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(setAsDefault), util.boolToFfi(associateAsAdvancedColor));
 }
 
 export function ColorProfileRemoveDisplayAssociation(
@@ -6230,7 +6351,7 @@ export function ColorProfileRemoveDisplayAssociation(
   sourceID: number /* u32 */,
   dissociateAdvancedColor: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileRemoveDisplayAssociation(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(dissociateAdvancedColor));
+  return libmscms_dll.ColorProfileRemoveDisplayAssociation!(scope, util.pwstrToFfi(profileName), util.toPointer(targetAdapterID), sourceID, util.boolToFfi(dissociateAdvancedColor));
 }
 
 export function ColorProfileSetDisplayDefaultAssociation(
@@ -6241,7 +6362,7 @@ export function ColorProfileSetDisplayDefaultAssociation(
   targetAdapterID: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LUID */,
   sourceID: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileSetDisplayDefaultAssociation(scope, util.pwstrToFfi(profileName), profileType, profileSubType, util.toPointer(targetAdapterID), sourceID);
+  return libmscms_dll.ColorProfileSetDisplayDefaultAssociation!(scope, util.pwstrToFfi(profileName), profileType, profileSubType, util.toPointer(targetAdapterID), sourceID);
 }
 
 export function ColorProfileGetDisplayList(
@@ -6251,7 +6372,7 @@ export function ColorProfileGetDisplayList(
   profileList: Deno.PointerValue | Uint8Array /* ptr */,
   profileCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileGetDisplayList(scope, util.toPointer(targetAdapterID), sourceID, util.toPointer(profileList), util.toPointer(profileCount));
+  return libmscms_dll.ColorProfileGetDisplayList!(scope, util.toPointer(targetAdapterID), sourceID, util.toPointer(profileList), util.toPointer(profileCount));
 }
 
 export function ColorProfileGetDisplayDefault(
@@ -6262,7 +6383,7 @@ export function ColorProfileGetDisplayDefault(
   profileSubType: COLORPROFILESUBTYPE /* Windows.Win32.UI.ColorSystem.COLORPROFILESUBTYPE */,
   profileName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileGetDisplayDefault(scope, util.toPointer(targetAdapterID), sourceID, profileType, profileSubType, util.toPointer(profileName));
+  return libmscms_dll.ColorProfileGetDisplayDefault!(scope, util.toPointer(targetAdapterID), sourceID, profileType, profileSubType, util.toPointer(profileName));
 }
 
 export function ColorProfileGetDisplayUserScope(
@@ -6270,6 +6391,6 @@ export function ColorProfileGetDisplayUserScope(
   sourceID: number /* u32 */,
   scope: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libmscms_dll.ColorProfileGetDisplayUserScope(util.toPointer(targetAdapterID), sourceID, util.toPointer(scope));
+  return libmscms_dll.ColorProfileGetDisplayUserScope!(util.toPointer(targetAdapterID), sourceID, util.toPointer(scope));
 }
 

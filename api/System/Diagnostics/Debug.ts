@@ -51205,250 +51205,312 @@ try {
     RtlAddFunctionTable: {
       parameters: ["pointer", "u32", "u64"],
       result: "pointer",
+      optional: true,
     },
     RtlDeleteFunctionTable: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInstallFunctionTableCallback: {
       parameters: ["u64", "u64", "u32", "pointer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     RtlLookupFunctionEntry: {
       parameters: ["u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlVirtualUnwind: {
       parameters: ["u32", "u64", "u64", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadProcessMemory: {
       parameters: ["pointer", "pointer", "pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     WriteProcessMemory: {
       parameters: ["pointer", "pointer", "pointer", "usize", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetThreadContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetThreadContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlushInstructionCache: {
       parameters: ["pointer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     Wow64GetThreadContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     Wow64SetThreadContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RtlUnwindEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RtlCaptureStackBackTrace: {
       parameters: ["u32", "u32", "pointer", "pointer"],
       result: "u16",
+      optional: true,
     },
     RtlCaptureContext: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlUnwind: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RtlRestoreContext: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     RtlRaiseException: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlPcToFileHeader: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsDebuggerPresent: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     DebugBreak: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     OutputDebugStringA: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     OutputDebugStringW: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     ContinueDebugEvent: {
       parameters: ["u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     WaitForDebugEvent: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     DebugActiveProcess: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     DebugActiveProcessStop: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     CheckRemoteDebuggerPresent: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WaitForDebugEventEx: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EncodePointer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DecodePointer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     EncodeSystemPointer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DecodeSystemPointer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     Beep: {
       parameters: ["u32", "u32"],
       result: "i32",
+      optional: true,
     },
     RaiseException: {
       parameters: ["u32", "u32", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     UnhandledExceptionFilter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetUnhandledExceptionFilter: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetErrorMode: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetErrorMode: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     AddVectoredExceptionHandler: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RemoveVectoredExceptionHandler: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AddVectoredContinueHandler: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RemoveVectoredContinueHandler: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RaiseFailFastException: {
       parameters: ["pointer", "pointer", "u32"],
       result: "void",
+      optional: true,
     },
     FatalAppExitA: {
       parameters: ["u32", "buffer"],
       result: "void",
+      optional: true,
     },
     FatalAppExitW: {
       parameters: ["u32", "buffer"],
       result: "void",
+      optional: true,
     },
     GetThreadErrorMode: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetThreadErrorMode: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FatalExit: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
     GetThreadSelectorEntry: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     Wow64GetThreadSelectorEntry: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DebugSetProcessKillOnExit: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     DebugBreakProcess: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FormatMessageA: {
       parameters: ["u32", "pointer", "u32", "u32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     FormatMessageW: {
       parameters: ["u32", "pointer", "u32", "u32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     CopyContext: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitializeContext: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     InitializeContext2: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     GetEnabledXStateFeatures: {
       parameters: [],
       result: "u64",
+      optional: true,
     },
     GetXStateFeaturesMask: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     LocateXStateFeature: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetXStateFeaturesMask: {
       parameters: ["pointer", "u64"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -51458,14 +51520,17 @@ try {
     RtlAddGrowableFunctionTable: {
       parameters: ["pointer", "pointer", "u32", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     RtlGrowFunctionTable: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     RtlDeleteGrowableFunctionTable: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -51475,18 +51540,22 @@ try {
     DebugConnect: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DebugConnectWide: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DebugCreate: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DebugCreateEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -51496,6 +51565,7 @@ try {
     CreateDataModelManager: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -51505,94 +51575,117 @@ try {
     CheckSumMappedFile: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetImageConfigInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetImageConfigInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     BindImage: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     BindImageEx: {
       parameters: ["u32", "buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReBaseImage: {
       parameters: ["buffer", "buffer", "i32", "i32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ReBaseImage64: {
       parameters: ["buffer", "buffer", "i32", "i32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     MapFileAndCheckSumA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MapFileAndCheckSumW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetImageUnusedHeaderBytes: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImageGetDigestStream: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageAddCertificate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageRemoveCertificate: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageEnumerateCertificates: {
       parameters: ["pointer", "u16", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImageGetCertificateData: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageGetCertificateHeader: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImageLoad: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ImageUnload: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MapAndLoad: {
       parameters: ["buffer", "buffer", "pointer", "i32", "i32"],
       result: "i32",
+      optional: true,
     },
     UnMapAndLoad: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     TouchFileTimes: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UpdateDebugInfoFile: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     UpdateDebugInfoFileEx: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -51602,862 +51695,1077 @@ try {
     ImageNtHeader: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageRvaToSection: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ImageRvaToVa: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MiniDumpWriteDump: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MiniDumpReadDumpStream: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFindDebugInfoFile: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SymFindDebugInfoFileW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindDebugInfoFile: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindDebugInfoFileEx: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindDebugInfoFileExW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SymFindFileInPath: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "u32", "u32", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFindFileInPathW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "u32", "u32", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFindExecutableImage: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SymFindExecutableImageW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindExecutableImage: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindExecutableImageEx: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindExecutableImageExW: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageDirectoryEntryToDataEx: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImageDirectoryEntryToData: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SearchTreeForFile: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SearchTreeForFileW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     EnumDirTree: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumDirTreeW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     MakeSureDirectoryPathExists: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     UnDecorateSymbolName: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     UnDecorateSymbolNameW: {
       parameters: ["buffer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     StackWalk64: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     StackWalkEx: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     StackWalk: {
       parameters: ["u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImagehlpApiVersion: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     ImagehlpApiVersionEx: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetTimestampForLoadedLibrary: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SymSetParentWindow: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SymSetHomeDirectory: {
       parameters: ["pointer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymSetHomeDirectoryW: {
       parameters: ["pointer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymGetHomeDirectory: {
       parameters: ["i32", "buffer", "usize"],
       result: "buffer",
+      optional: true,
     },
     SymGetHomeDirectoryW: {
       parameters: ["i32", "buffer", "usize"],
       result: "buffer",
+      optional: true,
     },
     SymGetOmaps: {
       parameters: ["pointer", "u64", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymSetOptions: {
       parameters: ["u32"],
       result: "u32",
+      optional: true,
     },
     SymGetOptions: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SymCleanup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetExtendedOption: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     SymSetExtendedOption: {
       parameters: ["i32", "i32"],
       result: "i32",
+      optional: true,
     },
     SymMatchString: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SymMatchStringA: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SymMatchStringW: {
       parameters: ["buffer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SymEnumSourceFiles: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSourceFilesW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateModules64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateModulesW64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateModules: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumerateLoadedModulesEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumerateLoadedModulesExW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumerateLoadedModules64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumerateLoadedModulesW64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumerateLoadedModules: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFunctionTableAccess64: {
       parameters: ["pointer", "u64"],
       result: "pointer",
+      optional: true,
     },
     SymFunctionTableAccess64AccessRoutines: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SymFunctionTableAccess: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SymGetUnwindInfo: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetModuleInfo64: {
       parameters: ["pointer", "u64", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetModuleInfoW64: {
       parameters: ["pointer", "u64", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetModuleInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetModuleInfoW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetModuleBase64: {
       parameters: ["pointer", "u64"],
       result: "u64",
+      optional: true,
     },
     SymGetModuleBase: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SymEnumLines: {
       parameters: ["pointer", "u64", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumLinesW: {
       parameters: ["pointer", "u64", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromAddr64: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromAddrW64: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromInlineContext: {
       parameters: ["pointer", "u64", "u32", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromInlineContextW: {
       parameters: ["pointer", "u64", "u32", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSourceLines: {
       parameters: ["pointer", "u64", "buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSourceLinesW: {
       parameters: ["pointer", "u64", "buffer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymAddrIncludeInlineTrace: {
       parameters: ["pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     SymCompareInlineTrace: {
       parameters: ["pointer", "u64", "u32", "u64", "u64", "u64"],
       result: "u32",
+      optional: true,
     },
     SymQueryInlineTrace: {
       parameters: ["pointer", "u64", "u32", "u64", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromAddr: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromName64: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromNameW64: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineFromName: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineNext64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineNextW64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLineNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLinePrev64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLinePrevW64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetLinePrev: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetFileLineOffsets64: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SymMatchFileName: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymMatchFileNameW: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFile: {
       parameters: ["pointer", "u64", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileW: {
       parameters: ["pointer", "u64", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileToken: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileTokenByTokenName: {
       parameters: ["pointer", "u64", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileChecksumW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileChecksum: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileTokenW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileTokenByTokenNameW: {
       parameters: ["pointer", "u64", "buffer", "buffer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileFromToken: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileFromTokenByTokenName: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileFromTokenW: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceFileFromTokenByTokenNameW: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceVarFromToken: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSourceVarFromTokenW: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymEnumSourceFileTokens: {
       parameters: ["pointer", "u64", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymInitialize: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SymInitializeW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     SymGetSearchPath: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetSearchPathW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSetSearchPath: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SymSetSearchPathW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SymLoadModuleEx: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u64", "u32", "pointer", "u32"],
       result: "u64",
+      optional: true,
     },
     SymLoadModuleExW: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u64", "u32", "pointer", "u32"],
       result: "u64",
+      optional: true,
     },
     SymUnloadModule64: {
       parameters: ["pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     SymUnloadModule: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymUnDName64: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymUnDName: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymRegisterCallback64: {
       parameters: ["pointer", "pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     SymRegisterCallbackW64: {
       parameters: ["pointer", "pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     SymRegisterFunctionEntryCallback64: {
       parameters: ["pointer", "pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     SymRegisterCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymRegisterFunctionEntryCallback: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymSetContext: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymSetScopeFromAddr: {
       parameters: ["pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     SymSetScopeFromInlineContext: {
       parameters: ["pointer", "u64", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSetScopeFromIndex: {
       parameters: ["pointer", "u64", "u32"],
       result: "i32",
+      optional: true,
     },
     SymEnumProcesses: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromAddr: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromAddrW: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromInlineContext: {
       parameters: ["pointer", "u64", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromInlineContextW: {
       parameters: ["pointer", "u64", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromToken: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromTokenW: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymNextW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymPrev: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymPrevW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromName: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromNameW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbols: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbolsEx: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbolsW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbolsExW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbolsForAddr: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSymbolsForAddrW: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymSearch: {
       parameters: ["pointer", "u64", "u32", "u32", "buffer", "u64", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSearchW: {
       parameters: ["pointer", "u64", "u32", "u32", "buffer", "u64", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymGetScope: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetScopeW: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromIndex: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymFromIndexW: {
       parameters: ["pointer", "u64", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetTypeInfo: {
       parameters: ["pointer", "u64", "u32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetTypeInfoEx: {
       parameters: ["pointer", "u64", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumTypes: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumTypesW: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumTypesByName: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumTypesByNameW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetTypeFromName: {
       parameters: ["pointer", "u64", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetTypeFromNameW: {
       parameters: ["pointer", "u64", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymAddSymbol: {
       parameters: ["pointer", "u64", "buffer", "u64", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SymAddSymbolW: {
       parameters: ["pointer", "u64", "buffer", "u64", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     SymDeleteSymbol: {
       parameters: ["pointer", "u64", "buffer", "u64", "u32"],
       result: "i32",
+      optional: true,
     },
     SymDeleteSymbolW: {
       parameters: ["pointer", "u64", "buffer", "u64", "u32"],
       result: "i32",
+      optional: true,
     },
     SymRefreshModuleList: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SymAddSourceStream: {
       parameters: ["pointer", "u64", "buffer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     SymAddSourceStreamA: {
       parameters: ["pointer", "u64", "buffer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     SymAddSourceStreamW: {
       parameters: ["pointer", "u64", "buffer", "pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     SymSrvIsStoreW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SymSrvIsStore: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SymSrvDeltaName: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymSrvDeltaNameW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymSrvGetSupplement: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymSrvGetSupplementW: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     SymSrvGetFileIndexes: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvGetFileIndexesW: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvGetFileIndexStringW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "usize", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvGetFileIndexString: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "usize", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvGetFileIndexInfo: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvGetFileIndexInfoW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SymSrvStoreSupplement: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     SymSrvStoreSupplementW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     SymSrvStoreFile: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     SymSrvStoreFileW: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "buffer",
+      optional: true,
     },
     SymGetSymbolFile: {
       parameters: ["pointer", "buffer", "buffer", "i32", "buffer", "usize", "buffer", "usize"],
       result: "i32",
+      optional: true,
     },
     SymGetSymbolFileW: {
       parameters: ["pointer", "buffer", "buffer", "i32", "buffer", "usize", "buffer", "usize"],
       result: "i32",
+      optional: true,
     },
     DbgHelpCreateUserDump: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DbgHelpCreateUserDumpW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymFromAddr64: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymFromAddr: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymFromName64: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymFromName: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FindFileInPath: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32", "u32", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     FindFileInSearchPath: {
       parameters: ["pointer", "buffer", "buffer", "u32", "u32", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     SymEnumSym: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateSymbols64: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateSymbolsW64: {
       parameters: ["pointer", "u64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateSymbols: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymEnumerateSymbolsW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymLoadModule64: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u64", "u32"],
       result: "u64",
+      optional: true,
     },
     SymLoadModule: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     SymGetSymNext64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymNext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymPrev64: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SymGetSymPrev: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetCheckUserInterruptShared: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     GetSymLoadError: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetSymLoadError: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     ReportSymbolLoadSummary: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RemoveInvalidModuleList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RangeMapCreate: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     RangeMapFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RangeMapAddPeImageSections: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u64", "u64", "u32"],
       result: "i32",
+      optional: true,
     },
     RangeMapRemove: {
       parameters: ["pointer", "u64"],
       result: "i32",
+      optional: true,
     },
     RangeMapRead: {
       parameters: ["pointer", "u64", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RangeMapWrite: {
       parameters: ["pointer", "u64", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -52467,10 +52775,12 @@ try {
     EncodeRemotePointer: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DecodeRemotePointer: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -52480,6 +52790,7 @@ try {
     TerminateProcessOnMemoryExhaustion: {
       parameters: ["usize"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -52489,18 +52800,22 @@ try {
     OpenThreadWaitChainSession: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CloseThreadWaitChainSession: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     GetThreadWaitChain: {
       parameters: ["pointer", "usize", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterWaitChainCOMCallback: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -52510,6 +52825,7 @@ try {
     MessageBeep: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -52521,13 +52837,13 @@ export function RtlAddFunctionTable(
   EntryCount: number /* u32 */,
   BaseAddress: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.RtlAddFunctionTable(util.toPointer(FunctionTable), EntryCount, BaseAddress);
+  return libKERNEL32_dll.RtlAddFunctionTable!(util.toPointer(FunctionTable), EntryCount, BaseAddress);
 }
 
 export function RtlDeleteFunctionTable(
   FunctionTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.RtlDeleteFunctionTable(util.toPointer(FunctionTable));
+  return libKERNEL32_dll.RtlDeleteFunctionTable!(util.toPointer(FunctionTable));
 }
 
 export function RtlInstallFunctionTableCallback(
@@ -52538,7 +52854,7 @@ export function RtlInstallFunctionTableCallback(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   OutOfProcessCallbackDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libKERNEL32_dll.RtlInstallFunctionTableCallback(TableIdentifier, BaseAddress, Length, util.toPointer(Callback), util.toPointer(Context), util.pwstrToFfi(OutOfProcessCallbackDll));
+  return libKERNEL32_dll.RtlInstallFunctionTableCallback!(TableIdentifier, BaseAddress, Length, util.toPointer(Callback), util.toPointer(Context), util.pwstrToFfi(OutOfProcessCallbackDll));
 }
 
 export function RtlAddGrowableFunctionTable(
@@ -52549,7 +52865,7 @@ export function RtlAddGrowableFunctionTable(
   RangeBase: bigint | number /* usize */,
   RangeEnd: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlAddGrowableFunctionTable(util.toPointer(DynamicTable), util.toPointer(FunctionTable), EntryCount, MaximumEntryCount, RangeBase, RangeEnd);
+  return libntdll_dll.RtlAddGrowableFunctionTable!(util.toPointer(DynamicTable), util.toPointer(FunctionTable), EntryCount, MaximumEntryCount, RangeBase, RangeEnd);
 }
 
 export function RtlLookupFunctionEntry(
@@ -52557,7 +52873,7 @@ export function RtlLookupFunctionEntry(
   ImageBase: Deno.PointerValue | Uint8Array /* ptr */,
   HistoryTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.RtlLookupFunctionEntry(ControlPc, util.toPointer(ImageBase), util.toPointer(HistoryTable));
+  return libKERNEL32_dll.RtlLookupFunctionEntry!(ControlPc, util.toPointer(ImageBase), util.toPointer(HistoryTable));
 }
 
 export function RtlVirtualUnwind(
@@ -52570,7 +52886,7 @@ export function RtlVirtualUnwind(
   EstablisherFrame: Deno.PointerValue | Uint8Array /* ptr */,
   ContextPointers: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Kernel.EXCEPTION_ROUTINE */ {
-  return libKERNEL32_dll.RtlVirtualUnwind(HandlerType, ImageBase, ControlPc, util.toPointer(FunctionEntry), util.toPointer(ContextRecord), util.toPointer(HandlerData), util.toPointer(EstablisherFrame), util.toPointer(ContextPointers));
+  return libKERNEL32_dll.RtlVirtualUnwind!(HandlerType, ImageBase, ControlPc, util.toPointer(FunctionEntry), util.toPointer(ContextRecord), util.toPointer(HandlerData), util.toPointer(EstablisherFrame), util.toPointer(ContextPointers));
 }
 
 export function DebugConnect(
@@ -52578,7 +52894,7 @@ export function DebugConnect(
   InterfaceId: Deno.PointerValue | Uint8Array /* ptr */,
   Interface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdbgeng_dll.DebugConnect(util.pstrToFfi(RemoteOptions), util.toPointer(InterfaceId), util.toPointer(Interface));
+  return libdbgeng_dll.DebugConnect!(util.pstrToFfi(RemoteOptions), util.toPointer(InterfaceId), util.toPointer(Interface));
 }
 
 export function DebugConnectWide(
@@ -52586,14 +52902,14 @@ export function DebugConnectWide(
   InterfaceId: Deno.PointerValue | Uint8Array /* ptr */,
   Interface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdbgeng_dll.DebugConnectWide(util.pwstrToFfi(RemoteOptions), util.toPointer(InterfaceId), util.toPointer(Interface));
+  return libdbgeng_dll.DebugConnectWide!(util.pwstrToFfi(RemoteOptions), util.toPointer(InterfaceId), util.toPointer(Interface));
 }
 
 export function DebugCreate(
   InterfaceId: Deno.PointerValue | Uint8Array /* ptr */,
   Interface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdbgeng_dll.DebugCreate(util.toPointer(InterfaceId), util.toPointer(Interface));
+  return libdbgeng_dll.DebugCreate!(util.toPointer(InterfaceId), util.toPointer(Interface));
 }
 
 export function DebugCreateEx(
@@ -52601,14 +52917,14 @@ export function DebugCreateEx(
   DbgEngOptions: number /* u32 */,
   Interface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdbgeng_dll.DebugCreateEx(util.toPointer(InterfaceId), DbgEngOptions, util.toPointer(Interface));
+  return libdbgeng_dll.DebugCreateEx!(util.toPointer(InterfaceId), DbgEngOptions, util.toPointer(Interface));
 }
 
 export function CreateDataModelManager(
   debugHost: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.IDebugHost */,
   manager: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdbgmodel_dll.CreateDataModelManager(util.toPointer(debugHost), util.toPointer(manager));
+  return libdbgmodel_dll.CreateDataModelManager!(util.toPointer(debugHost), util.toPointer(manager));
 }
 
 export function ReadProcessMemory(
@@ -52618,7 +52934,7 @@ export function ReadProcessMemory(
   nSize: bigint | number /* usize */,
   lpNumberOfBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ReadProcessMemory(util.toPointer(hProcess), util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), nSize, util.toPointer(lpNumberOfBytesRead)));
+  return util.boolFromFfi(libKERNEL32_dll.ReadProcessMemory!(util.toPointer(hProcess), util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), nSize, util.toPointer(lpNumberOfBytesRead)));
 }
 
 export function WriteProcessMemory(
@@ -52628,21 +52944,21 @@ export function WriteProcessMemory(
   nSize: bigint | number /* usize */,
   lpNumberOfBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WriteProcessMemory(util.toPointer(hProcess), util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), nSize, util.toPointer(lpNumberOfBytesWritten)));
+  return util.boolFromFfi(libKERNEL32_dll.WriteProcessMemory!(util.toPointer(hProcess), util.toPointer(lpBaseAddress), util.toPointer(lpBuffer), nSize, util.toPointer(lpNumberOfBytesWritten)));
 }
 
 export function GetThreadContext(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadContext(util.toPointer(hThread), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadContext!(util.toPointer(hThread), util.toPointer(lpContext)));
 }
 
 export function SetThreadContext(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadContext(util.toPointer(hThread), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadContext!(util.toPointer(hThread), util.toPointer(lpContext)));
 }
 
 export function FlushInstructionCache(
@@ -52650,34 +52966,34 @@ export function FlushInstructionCache(
   lpBaseAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FlushInstructionCache(util.toPointer(hProcess), util.toPointer(lpBaseAddress), dwSize));
+  return util.boolFromFfi(libKERNEL32_dll.FlushInstructionCache!(util.toPointer(hProcess), util.toPointer(lpBaseAddress), dwSize));
 }
 
 export function Wow64GetThreadContext(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Wow64GetThreadContext(util.toPointer(hThread), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.Wow64GetThreadContext!(util.toPointer(hThread), util.toPointer(lpContext)));
 }
 
 export function Wow64SetThreadContext(
   hThread: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Wow64SetThreadContext(util.toPointer(hThread), util.toPointer(lpContext)));
+  return util.boolFromFfi(libKERNEL32_dll.Wow64SetThreadContext!(util.toPointer(hThread), util.toPointer(lpContext)));
 }
 
 export function RtlGrowFunctionTable(
   DynamicTable: Deno.PointerValue | Uint8Array /* ptr */,
   NewEntryCount: number /* u32 */,
 ): void /* void */ {
-  return libntdll_dll.RtlGrowFunctionTable(util.toPointer(DynamicTable), NewEntryCount);
+  return libntdll_dll.RtlGrowFunctionTable!(util.toPointer(DynamicTable), NewEntryCount);
 }
 
 export function RtlDeleteGrowableFunctionTable(
   DynamicTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlDeleteGrowableFunctionTable(util.toPointer(DynamicTable));
+  return libntdll_dll.RtlDeleteGrowableFunctionTable!(util.toPointer(DynamicTable));
 }
 
 export function RtlUnwindEx(
@@ -52688,7 +53004,7 @@ export function RtlUnwindEx(
   ContextRecord: Deno.PointerValue | Uint8Array /* ptr */,
   HistoryTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RtlUnwindEx(util.toPointer(TargetFrame), util.toPointer(TargetIp), util.toPointer(ExceptionRecord), util.toPointer(ReturnValue), util.toPointer(ContextRecord), util.toPointer(HistoryTable));
+  return libKERNEL32_dll.RtlUnwindEx!(util.toPointer(TargetFrame), util.toPointer(TargetIp), util.toPointer(ExceptionRecord), util.toPointer(ReturnValue), util.toPointer(ContextRecord), util.toPointer(HistoryTable));
 }
 
 export function CheckSumMappedFile(
@@ -52697,27 +53013,27 @@ export function CheckSumMappedFile(
   HeaderSum: Deno.PointerValue | Uint8Array /* ptr */,
   CheckSum: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libimagehlp_dll.CheckSumMappedFile(util.toPointer(BaseAddress), FileLength, util.toPointer(HeaderSum), util.toPointer(CheckSum));
+  return libimagehlp_dll.CheckSumMappedFile!(util.toPointer(BaseAddress), FileLength, util.toPointer(HeaderSum), util.toPointer(CheckSum));
 }
 
 export function GetImageConfigInformation(
   LoadedImage: Deno.PointerValue | Uint8Array /* ptr */,
   ImageConfigInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.GetImageConfigInformation(util.toPointer(LoadedImage), util.toPointer(ImageConfigInformation)));
+  return util.boolFromFfi(libimagehlp_dll.GetImageConfigInformation!(util.toPointer(LoadedImage), util.toPointer(ImageConfigInformation)));
 }
 
 export function SetImageConfigInformation(
   LoadedImage: Deno.PointerValue | Uint8Array /* ptr */,
   ImageConfigInformation: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.SetImageConfigInformation(util.toPointer(LoadedImage), util.toPointer(ImageConfigInformation)));
+  return util.boolFromFfi(libimagehlp_dll.SetImageConfigInformation!(util.toPointer(LoadedImage), util.toPointer(ImageConfigInformation)));
 }
 
 export function ImageNtHeader(
   Base: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImageNtHeader(util.toPointer(Base));
+  return libdbghelp_dll.ImageNtHeader!(util.toPointer(Base));
 }
 
 export function ImageRvaToSection(
@@ -52725,7 +53041,7 @@ export function ImageRvaToSection(
   Base: Deno.PointerValue | Uint8Array /* ptr */,
   Rva: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImageRvaToSection(util.toPointer(NtHeaders), util.toPointer(Base), Rva);
+  return libdbghelp_dll.ImageRvaToSection!(util.toPointer(NtHeaders), util.toPointer(Base), Rva);
 }
 
 export function ImageRvaToVa(
@@ -52734,7 +53050,7 @@ export function ImageRvaToVa(
   Rva: number /* u32 */,
   LastRvaSection: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImageRvaToVa(util.toPointer(NtHeaders), util.toPointer(Base), Rva, util.toPointer(LastRvaSection));
+  return libdbghelp_dll.ImageRvaToVa!(util.toPointer(NtHeaders), util.toPointer(Base), Rva, util.toPointer(LastRvaSection));
 }
 
 export function RtlCaptureStackBackTrace(
@@ -52743,13 +53059,13 @@ export function RtlCaptureStackBackTrace(
   BackTrace: Deno.PointerValue | Uint8Array /* ptr */,
   BackTraceHash: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libKERNEL32_dll.RtlCaptureStackBackTrace(FramesToSkip, FramesToCapture, util.toPointer(BackTrace), util.toPointer(BackTraceHash));
+  return libKERNEL32_dll.RtlCaptureStackBackTrace!(FramesToSkip, FramesToCapture, util.toPointer(BackTrace), util.toPointer(BackTraceHash));
 }
 
 export function RtlCaptureContext(
   ContextRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RtlCaptureContext(util.toPointer(ContextRecord));
+  return libKERNEL32_dll.RtlCaptureContext!(util.toPointer(ContextRecord));
 }
 
 export function RtlUnwind(
@@ -52758,47 +53074,47 @@ export function RtlUnwind(
   ExceptionRecord: Deno.PointerValue | Uint8Array /* ptr */,
   ReturnValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RtlUnwind(util.toPointer(TargetFrame), util.toPointer(TargetIp), util.toPointer(ExceptionRecord), util.toPointer(ReturnValue));
+  return libKERNEL32_dll.RtlUnwind!(util.toPointer(TargetFrame), util.toPointer(TargetIp), util.toPointer(ExceptionRecord), util.toPointer(ReturnValue));
 }
 
 export function RtlRestoreContext(
   ContextRecord: Deno.PointerValue | Uint8Array /* ptr */,
   ExceptionRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RtlRestoreContext(util.toPointer(ContextRecord), util.toPointer(ExceptionRecord));
+  return libKERNEL32_dll.RtlRestoreContext!(util.toPointer(ContextRecord), util.toPointer(ExceptionRecord));
 }
 
 export function RtlRaiseException(
   ExceptionRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RtlRaiseException(util.toPointer(ExceptionRecord));
+  return libKERNEL32_dll.RtlRaiseException!(util.toPointer(ExceptionRecord));
 }
 
 export function RtlPcToFileHeader(
   PcValue: Deno.PointerValue | Uint8Array /* ptr */,
   BaseOfImage: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.RtlPcToFileHeader(util.toPointer(PcValue), util.toPointer(BaseOfImage));
+  return libKERNEL32_dll.RtlPcToFileHeader!(util.toPointer(PcValue), util.toPointer(BaseOfImage));
 }
 
 export function IsDebuggerPresent(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.IsDebuggerPresent());
+  return util.boolFromFfi(libKERNEL32_dll.IsDebuggerPresent!());
 }
 
 export function DebugBreak(): void /* void */ {
-  return libKERNEL32_dll.DebugBreak();
+  return libKERNEL32_dll.DebugBreak!();
 }
 
 export function OutputDebugStringA(
   lpOutputString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libKERNEL32_dll.OutputDebugStringA(util.pstrToFfi(lpOutputString));
+  return libKERNEL32_dll.OutputDebugStringA!(util.pstrToFfi(lpOutputString));
 }
 
 export function OutputDebugStringW(
   lpOutputString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libKERNEL32_dll.OutputDebugStringW(util.pwstrToFfi(lpOutputString));
+  return libKERNEL32_dll.OutputDebugStringW!(util.pwstrToFfi(lpOutputString));
 }
 
 export function ContinueDebugEvent(
@@ -52806,64 +53122,64 @@ export function ContinueDebugEvent(
   dwThreadId: number /* u32 */,
   dwContinueStatus: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ContinueDebugEvent(dwProcessId, dwThreadId, dwContinueStatus));
+  return util.boolFromFfi(libKERNEL32_dll.ContinueDebugEvent!(dwProcessId, dwThreadId, dwContinueStatus));
 }
 
 export function WaitForDebugEvent(
   lpDebugEvent: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WaitForDebugEvent(util.toPointer(lpDebugEvent), dwMilliseconds));
+  return util.boolFromFfi(libKERNEL32_dll.WaitForDebugEvent!(util.toPointer(lpDebugEvent), dwMilliseconds));
 }
 
 export function DebugActiveProcess(
   dwProcessId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DebugActiveProcess(dwProcessId));
+  return util.boolFromFfi(libKERNEL32_dll.DebugActiveProcess!(dwProcessId));
 }
 
 export function DebugActiveProcessStop(
   dwProcessId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DebugActiveProcessStop(dwProcessId));
+  return util.boolFromFfi(libKERNEL32_dll.DebugActiveProcessStop!(dwProcessId));
 }
 
 export function CheckRemoteDebuggerPresent(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pbDebuggerPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CheckRemoteDebuggerPresent(util.toPointer(hProcess), util.toPointer(pbDebuggerPresent)));
+  return util.boolFromFfi(libKERNEL32_dll.CheckRemoteDebuggerPresent!(util.toPointer(hProcess), util.toPointer(pbDebuggerPresent)));
 }
 
 export function WaitForDebugEventEx(
   lpDebugEvent: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.WaitForDebugEventEx(util.toPointer(lpDebugEvent), dwMilliseconds));
+  return util.boolFromFfi(libKERNEL32_dll.WaitForDebugEventEx!(util.toPointer(lpDebugEvent), dwMilliseconds));
 }
 
 export function EncodePointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.EncodePointer(util.toPointer(Ptr));
+  return libKERNEL32_dll.EncodePointer!(util.toPointer(Ptr));
 }
 
 export function DecodePointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.DecodePointer(util.toPointer(Ptr));
+  return libKERNEL32_dll.DecodePointer!(util.toPointer(Ptr));
 }
 
 export function EncodeSystemPointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.EncodeSystemPointer(util.toPointer(Ptr));
+  return libKERNEL32_dll.EncodeSystemPointer!(util.toPointer(Ptr));
 }
 
 export function DecodeSystemPointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.DecodeSystemPointer(util.toPointer(Ptr));
+  return libKERNEL32_dll.DecodeSystemPointer!(util.toPointer(Ptr));
 }
 
 export function EncodeRemotePointer(
@@ -52871,7 +53187,7 @@ export function EncodeRemotePointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
   EncodedPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_util_l1_1_1_dll.EncodeRemotePointer(util.toPointer(ProcessHandle), util.toPointer(Ptr), util.toPointer(EncodedPtr));
+  return libapi_ms_win_core_util_l1_1_1_dll.EncodeRemotePointer!(util.toPointer(ProcessHandle), util.toPointer(Ptr), util.toPointer(EncodedPtr));
 }
 
 export function DecodeRemotePointer(
@@ -52879,14 +53195,14 @@ export function DecodeRemotePointer(
   Ptr: Deno.PointerValue | Uint8Array /* ptr */,
   DecodedPtr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libapi_ms_win_core_util_l1_1_1_dll.DecodeRemotePointer(util.toPointer(ProcessHandle), util.toPointer(Ptr), util.toPointer(DecodedPtr));
+  return libapi_ms_win_core_util_l1_1_1_dll.DecodeRemotePointer!(util.toPointer(ProcessHandle), util.toPointer(Ptr), util.toPointer(DecodedPtr));
 }
 
 export function Beep(
   dwFreq: number /* u32 */,
   dwDuration: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Beep(dwFreq, dwDuration));
+  return util.boolFromFfi(libKERNEL32_dll.Beep!(dwFreq, dwDuration));
 }
 
 export function RaiseException(
@@ -52895,55 +53211,55 @@ export function RaiseException(
   nNumberOfArguments: number /* u32 */,
   lpArguments: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libKERNEL32_dll.RaiseException(dwExceptionCode, dwExceptionFlags, nNumberOfArguments, util.toPointer(lpArguments));
+  return libKERNEL32_dll.RaiseException!(dwExceptionCode, dwExceptionFlags, nNumberOfArguments, util.toPointer(lpArguments));
 }
 
 export function UnhandledExceptionFilter(
   ExceptionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libKERNEL32_dll.UnhandledExceptionFilter(util.toPointer(ExceptionInfo));
+  return libKERNEL32_dll.UnhandledExceptionFilter!(util.toPointer(ExceptionInfo));
 }
 
 export function SetUnhandledExceptionFilter(
   lpTopLevelExceptionFilter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.LPTOP_LEVEL_EXCEPTION_FILTER */,
 ): Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.LPTOP_LEVEL_EXCEPTION_FILTER */ {
-  return libKERNEL32_dll.SetUnhandledExceptionFilter(util.toPointer(lpTopLevelExceptionFilter));
+  return libKERNEL32_dll.SetUnhandledExceptionFilter!(util.toPointer(lpTopLevelExceptionFilter));
 }
 
 export function GetErrorMode(): number /* u32 */ {
-  return libKERNEL32_dll.GetErrorMode();
+  return libKERNEL32_dll.GetErrorMode!();
 }
 
 export function SetErrorMode(
   uMode: THREAD_ERROR_MODE /* Windows.Win32.System.Diagnostics.Debug.THREAD_ERROR_MODE */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SetErrorMode(uMode);
+  return libKERNEL32_dll.SetErrorMode!(uMode);
 }
 
 export function AddVectoredExceptionHandler(
   First: number /* u32 */,
   Handler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PVECTORED_EXCEPTION_HANDLER */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.AddVectoredExceptionHandler(First, util.toPointer(Handler));
+  return libKERNEL32_dll.AddVectoredExceptionHandler!(First, util.toPointer(Handler));
 }
 
 export function RemoveVectoredExceptionHandler(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.RemoveVectoredExceptionHandler(util.toPointer(Handle));
+  return libKERNEL32_dll.RemoveVectoredExceptionHandler!(util.toPointer(Handle));
 }
 
 export function AddVectoredContinueHandler(
   First: number /* u32 */,
   Handler: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PVECTORED_EXCEPTION_HANDLER */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.AddVectoredContinueHandler(First, util.toPointer(Handler));
+  return libKERNEL32_dll.AddVectoredContinueHandler!(First, util.toPointer(Handler));
 }
 
 export function RemoveVectoredContinueHandler(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.RemoveVectoredContinueHandler(util.toPointer(Handle));
+  return libKERNEL32_dll.RemoveVectoredContinueHandler!(util.toPointer(Handle));
 }
 
 export function RaiseFailFastException(
@@ -52951,51 +53267,51 @@ export function RaiseFailFastException(
   pContextRecord: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.RaiseFailFastException(util.toPointer(pExceptionRecord), util.toPointer(pContextRecord), dwFlags);
+  return libKERNEL32_dll.RaiseFailFastException!(util.toPointer(pExceptionRecord), util.toPointer(pContextRecord), dwFlags);
 }
 
 export function FatalAppExitA(
   uAction: number /* u32 */,
   lpMessageText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): void /* void */ {
-  return libKERNEL32_dll.FatalAppExitA(uAction, util.pstrToFfi(lpMessageText));
+  return libKERNEL32_dll.FatalAppExitA!(uAction, util.pstrToFfi(lpMessageText));
 }
 
 export function FatalAppExitW(
   uAction: number /* u32 */,
   lpMessageText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libKERNEL32_dll.FatalAppExitW(uAction, util.pwstrToFfi(lpMessageText));
+  return libKERNEL32_dll.FatalAppExitW!(uAction, util.pwstrToFfi(lpMessageText));
 }
 
 export function GetThreadErrorMode(): number /* u32 */ {
-  return libKERNEL32_dll.GetThreadErrorMode();
+  return libKERNEL32_dll.GetThreadErrorMode!();
 }
 
 export function SetThreadErrorMode(
   dwNewMode: THREAD_ERROR_MODE /* Windows.Win32.System.Diagnostics.Debug.THREAD_ERROR_MODE */,
   lpOldMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetThreadErrorMode(dwNewMode, util.toPointer(lpOldMode)));
+  return util.boolFromFfi(libKERNEL32_dll.SetThreadErrorMode!(dwNewMode, util.toPointer(lpOldMode)));
 }
 
 export function TerminateProcessOnMemoryExhaustion(
   FailedAllocationSize: bigint | number /* usize */,
 ): void /* void */ {
-  return libapi_ms_win_core_errorhandling_l1_1_3_dll.TerminateProcessOnMemoryExhaustion(FailedAllocationSize);
+  return libapi_ms_win_core_errorhandling_l1_1_3_dll.TerminateProcessOnMemoryExhaustion!(FailedAllocationSize);
 }
 
 export function OpenThreadWaitChainSession(
   Flags: OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS /* Windows.Win32.System.Diagnostics.Debug.OPEN_THREAD_WAIT_CHAIN_SESSION_FLAGS */,
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PWAITCHAINCALLBACK */,
 ): Deno.PointerValue /* ptr */ {
-  return libADVAPI32_dll.OpenThreadWaitChainSession(Flags, util.toPointer(callback));
+  return libADVAPI32_dll.OpenThreadWaitChainSession!(Flags, util.toPointer(callback));
 }
 
 export function CloseThreadWaitChainSession(
   WctHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libADVAPI32_dll.CloseThreadWaitChainSession(util.toPointer(WctHandle));
+  return libADVAPI32_dll.CloseThreadWaitChainSession!(util.toPointer(WctHandle));
 }
 
 export function GetThreadWaitChain(
@@ -53007,14 +53323,14 @@ export function GetThreadWaitChain(
   NodeInfoArray: Deno.PointerValue | Uint8Array /* ptr */,
   IsCycle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libADVAPI32_dll.GetThreadWaitChain(util.toPointer(WctHandle), Context, Flags, ThreadId, util.toPointer(NodeCount), util.toPointer(NodeInfoArray), util.toPointer(IsCycle)));
+  return util.boolFromFfi(libADVAPI32_dll.GetThreadWaitChain!(util.toPointer(WctHandle), Context, Flags, ThreadId, util.toPointer(NodeCount), util.toPointer(NodeInfoArray), util.toPointer(IsCycle)));
 }
 
 export function RegisterWaitChainCOMCallback(
   CallStateCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PCOGETCALLSTATE */,
   ActivationStateCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PCOGETACTIVATIONSTATE */,
 ): void /* void */ {
-  return libADVAPI32_dll.RegisterWaitChainCOMCallback(util.toPointer(CallStateCallback), util.toPointer(ActivationStateCallback));
+  return libADVAPI32_dll.RegisterWaitChainCOMCallback!(util.toPointer(CallStateCallback), util.toPointer(ActivationStateCallback));
 }
 
 export function MiniDumpWriteDump(
@@ -53026,7 +53342,7 @@ export function MiniDumpWriteDump(
   UserStreamParam: Deno.PointerValue | Uint8Array /* ptr */,
   CallbackParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.MiniDumpWriteDump(util.toPointer(hProcess), ProcessId, util.toPointer(hFile), DumpType, util.toPointer(ExceptionParam), util.toPointer(UserStreamParam), util.toPointer(CallbackParam)));
+  return util.boolFromFfi(libdbghelp_dll.MiniDumpWriteDump!(util.toPointer(hProcess), ProcessId, util.toPointer(hFile), DumpType, util.toPointer(ExceptionParam), util.toPointer(UserStreamParam), util.toPointer(CallbackParam)));
 }
 
 export function MiniDumpReadDumpStream(
@@ -53036,7 +53352,7 @@ export function MiniDumpReadDumpStream(
   StreamPointer: Deno.PointerValue | Uint8Array /* ptr */,
   StreamSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.MiniDumpReadDumpStream(util.toPointer(BaseOfDump), StreamNumber, util.toPointer(Dir), util.toPointer(StreamPointer), util.toPointer(StreamSize)));
+  return util.boolFromFfi(libdbghelp_dll.MiniDumpReadDumpStream!(util.toPointer(BaseOfDump), StreamNumber, util.toPointer(Dir), util.toPointer(StreamPointer), util.toPointer(StreamSize)));
 }
 
 export function BindImage(
@@ -53044,7 +53360,7 @@ export function BindImage(
   DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.BindImage(util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath)));
+  return util.boolFromFfi(libimagehlp_dll.BindImage!(util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath)));
 }
 
 export function BindImageEx(
@@ -53054,7 +53370,7 @@ export function BindImageEx(
   SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   StatusRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PIMAGEHLP_STATUS_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.BindImageEx(Flags, util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath), util.toPointer(StatusRoutine)));
+  return util.boolFromFfi(libimagehlp_dll.BindImageEx!(Flags, util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.pstrToFfi(SymbolPath), util.toPointer(StatusRoutine)));
 }
 
 export function ReBaseImage(
@@ -53070,7 +53386,7 @@ export function ReBaseImage(
   NewImageBase: Deno.PointerValue | Uint8Array /* ptr */,
   TimeStamp: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ReBaseImage(util.pstrToFfi(CurrentImageName), util.pstrToFfi(SymbolPath), util.boolToFfi(fReBase), util.boolToFfi(fRebaseSysfileOk), util.boolToFfi(fGoingDown), CheckImageSize, util.toPointer(OldImageSize), util.toPointer(OldImageBase), util.toPointer(NewImageSize), util.toPointer(NewImageBase), TimeStamp));
+  return util.boolFromFfi(libimagehlp_dll.ReBaseImage!(util.pstrToFfi(CurrentImageName), util.pstrToFfi(SymbolPath), util.boolToFfi(fReBase), util.boolToFfi(fRebaseSysfileOk), util.boolToFfi(fGoingDown), CheckImageSize, util.toPointer(OldImageSize), util.toPointer(OldImageBase), util.toPointer(NewImageSize), util.toPointer(NewImageBase), TimeStamp));
 }
 
 export function ReBaseImage64(
@@ -53086,7 +53402,7 @@ export function ReBaseImage64(
   NewImageBase: Deno.PointerValue | Uint8Array /* ptr */,
   TimeStamp: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ReBaseImage64(util.pstrToFfi(CurrentImageName), util.pstrToFfi(SymbolPath), util.boolToFfi(fReBase), util.boolToFfi(fRebaseSysfileOk), util.boolToFfi(fGoingDown), CheckImageSize, util.toPointer(OldImageSize), util.toPointer(OldImageBase), util.toPointer(NewImageSize), util.toPointer(NewImageBase), TimeStamp));
+  return util.boolFromFfi(libimagehlp_dll.ReBaseImage64!(util.pstrToFfi(CurrentImageName), util.pstrToFfi(SymbolPath), util.boolToFfi(fReBase), util.boolToFfi(fRebaseSysfileOk), util.boolToFfi(fGoingDown), CheckImageSize, util.toPointer(OldImageSize), util.toPointer(OldImageBase), util.toPointer(NewImageSize), util.toPointer(NewImageBase), TimeStamp));
 }
 
 export function MapFileAndCheckSumA(
@@ -53094,7 +53410,7 @@ export function MapFileAndCheckSumA(
   HeaderSum: Deno.PointerValue | Uint8Array /* ptr */,
   CheckSum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libimagehlp_dll.MapFileAndCheckSumA(util.pstrToFfi(Filename), util.toPointer(HeaderSum), util.toPointer(CheckSum));
+  return libimagehlp_dll.MapFileAndCheckSumA!(util.pstrToFfi(Filename), util.toPointer(HeaderSum), util.toPointer(CheckSum));
 }
 
 export function MapFileAndCheckSumW(
@@ -53102,14 +53418,14 @@ export function MapFileAndCheckSumW(
   HeaderSum: Deno.PointerValue | Uint8Array /* ptr */,
   CheckSum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libimagehlp_dll.MapFileAndCheckSumW(util.pwstrToFfi(Filename), util.toPointer(HeaderSum), util.toPointer(CheckSum));
+  return libimagehlp_dll.MapFileAndCheckSumW!(util.pwstrToFfi(Filename), util.toPointer(HeaderSum), util.toPointer(CheckSum));
 }
 
 export function GetImageUnusedHeaderBytes(
   LoadedImage: Deno.PointerValue | Uint8Array /* ptr */,
   SizeUnusedHeaderBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libimagehlp_dll.GetImageUnusedHeaderBytes(util.toPointer(LoadedImage), util.toPointer(SizeUnusedHeaderBytes));
+  return libimagehlp_dll.GetImageUnusedHeaderBytes!(util.toPointer(LoadedImage), util.toPointer(SizeUnusedHeaderBytes));
 }
 
 export function ImageGetDigestStream(
@@ -53118,7 +53434,7 @@ export function ImageGetDigestStream(
   DigestFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.DIGEST_FUNCTION */,
   DigestHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageGetDigestStream(util.toPointer(FileHandle), DigestLevel, util.toPointer(DigestFunction), util.toPointer(DigestHandle)));
+  return util.boolFromFfi(libimagehlp_dll.ImageGetDigestStream!(util.toPointer(FileHandle), DigestLevel, util.toPointer(DigestFunction), util.toPointer(DigestHandle)));
 }
 
 export function ImageAddCertificate(
@@ -53126,14 +53442,14 @@ export function ImageAddCertificate(
   Certificate: Deno.PointerValue | Uint8Array /* ptr */,
   Index: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageAddCertificate(util.toPointer(FileHandle), util.toPointer(Certificate), util.toPointer(Index)));
+  return util.boolFromFfi(libimagehlp_dll.ImageAddCertificate!(util.toPointer(FileHandle), util.toPointer(Certificate), util.toPointer(Index)));
 }
 
 export function ImageRemoveCertificate(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Index: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageRemoveCertificate(util.toPointer(FileHandle), Index));
+  return util.boolFromFfi(libimagehlp_dll.ImageRemoveCertificate!(util.toPointer(FileHandle), Index));
 }
 
 export function ImageEnumerateCertificates(
@@ -53143,7 +53459,7 @@ export function ImageEnumerateCertificates(
   Indices: Deno.PointerValue | Uint8Array /* ptr */,
   IndexCount: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageEnumerateCertificates(util.toPointer(FileHandle), TypeFilter, util.toPointer(CertificateCount), util.toPointer(Indices), IndexCount));
+  return util.boolFromFfi(libimagehlp_dll.ImageEnumerateCertificates!(util.toPointer(FileHandle), TypeFilter, util.toPointer(CertificateCount), util.toPointer(Indices), IndexCount));
 }
 
 export function ImageGetCertificateData(
@@ -53152,7 +53468,7 @@ export function ImageGetCertificateData(
   Certificate: Deno.PointerValue | Uint8Array /* ptr */,
   RequiredLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageGetCertificateData(util.toPointer(FileHandle), CertificateIndex, util.toPointer(Certificate), util.toPointer(RequiredLength)));
+  return util.boolFromFfi(libimagehlp_dll.ImageGetCertificateData!(util.toPointer(FileHandle), CertificateIndex, util.toPointer(Certificate), util.toPointer(RequiredLength)));
 }
 
 export function ImageGetCertificateHeader(
@@ -53160,20 +53476,20 @@ export function ImageGetCertificateHeader(
   CertificateIndex: number /* u32 */,
   Certificateheader: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageGetCertificateHeader(util.toPointer(FileHandle), CertificateIndex, util.toPointer(Certificateheader)));
+  return util.boolFromFfi(libimagehlp_dll.ImageGetCertificateHeader!(util.toPointer(FileHandle), CertificateIndex, util.toPointer(Certificateheader)));
 }
 
 export function ImageLoad(
   DllName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DllPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libimagehlp_dll.ImageLoad(util.pstrToFfi(DllName), util.pstrToFfi(DllPath));
+  return libimagehlp_dll.ImageLoad!(util.pstrToFfi(DllName), util.pstrToFfi(DllPath));
 }
 
 export function ImageUnload(
   LoadedImage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.ImageUnload(util.toPointer(LoadedImage)));
+  return util.boolFromFfi(libimagehlp_dll.ImageUnload!(util.toPointer(LoadedImage)));
 }
 
 export function MapAndLoad(
@@ -53183,20 +53499,20 @@ export function MapAndLoad(
   DotDll: boolean /* Windows.Win32.Foundation.BOOL */,
   ReadOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.MapAndLoad(util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.toPointer(LoadedImage), util.boolToFfi(DotDll), util.boolToFfi(ReadOnly)));
+  return util.boolFromFfi(libimagehlp_dll.MapAndLoad!(util.pstrToFfi(ImageName), util.pstrToFfi(DllPath), util.toPointer(LoadedImage), util.boolToFfi(DotDll), util.boolToFfi(ReadOnly)));
 }
 
 export function UnMapAndLoad(
   LoadedImage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.UnMapAndLoad(util.toPointer(LoadedImage)));
+  return util.boolFromFfi(libimagehlp_dll.UnMapAndLoad!(util.toPointer(LoadedImage)));
 }
 
 export function TouchFileTimes(
   FileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.TouchFileTimes(util.toPointer(FileHandle), util.toPointer(pSystemTime)));
+  return util.boolFromFfi(libimagehlp_dll.TouchFileTimes!(util.toPointer(FileHandle), util.toPointer(pSystemTime)));
 }
 
 export function UpdateDebugInfoFile(
@@ -53205,7 +53521,7 @@ export function UpdateDebugInfoFile(
   DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   NtHeaders: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.UpdateDebugInfoFile(util.pstrToFfi(ImageFileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(NtHeaders)));
+  return util.boolFromFfi(libimagehlp_dll.UpdateDebugInfoFile!(util.pstrToFfi(ImageFileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(NtHeaders)));
 }
 
 export function UpdateDebugInfoFileEx(
@@ -53215,7 +53531,7 @@ export function UpdateDebugInfoFileEx(
   NtHeaders: Deno.PointerValue | Uint8Array /* ptr */,
   OldCheckSum: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libimagehlp_dll.UpdateDebugInfoFileEx(util.pstrToFfi(ImageFileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(NtHeaders), OldCheckSum));
+  return util.boolFromFfi(libimagehlp_dll.UpdateDebugInfoFileEx!(util.pstrToFfi(ImageFileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(NtHeaders), OldCheckSum));
 }
 
 export function SymFindDebugInfoFile(
@@ -53225,7 +53541,7 @@ export function SymFindDebugInfoFile(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.SymFindDebugInfoFile(util.toPointer(hProcess), util.pstrToFfi(FileName), util.pstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.SymFindDebugInfoFile!(util.toPointer(hProcess), util.pstrToFfi(FileName), util.pstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function SymFindDebugInfoFileW(
@@ -53235,7 +53551,7 @@ export function SymFindDebugInfoFileW(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.SymFindDebugInfoFileW(util.toPointer(hProcess), util.pwstrToFfi(FileName), util.pwstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.SymFindDebugInfoFileW!(util.toPointer(hProcess), util.pwstrToFfi(FileName), util.pwstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function FindDebugInfoFile(
@@ -53243,7 +53559,7 @@ export function FindDebugInfoFile(
   SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DebugFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindDebugInfoFile(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath));
+  return libdbghelp_dll.FindDebugInfoFile!(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath));
 }
 
 export function FindDebugInfoFileEx(
@@ -53253,7 +53569,7 @@ export function FindDebugInfoFileEx(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindDebugInfoFileEx(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.FindDebugInfoFileEx!(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function FindDebugInfoFileExW(
@@ -53263,7 +53579,7 @@ export function FindDebugInfoFileExW(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_DEBUG_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindDebugInfoFileExW(util.pwstrToFfi(FileName), util.pwstrToFfi(SymbolPath), util.pwstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.FindDebugInfoFileExW!(util.pwstrToFfi(FileName), util.pwstrToFfi(SymbolPath), util.pwstrToFfi(DebugFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function SymFindFileInPath(
@@ -53278,7 +53594,7 @@ export function SymFindFileInPath(
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFINDFILEINPATHCALLBACK */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFindFileInPath(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pstrToFfi(FoundFile), util.toPointer(callback), util.toPointer(context)));
+  return util.boolFromFfi(libdbghelp_dll.SymFindFileInPath!(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pstrToFfi(FoundFile), util.toPointer(callback), util.toPointer(context)));
 }
 
 export function SymFindFileInPathW(
@@ -53293,7 +53609,7 @@ export function SymFindFileInPathW(
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFINDFILEINPATHCALLBACKW */,
   context: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFindFileInPathW(util.toPointer(hprocess), util.pwstrToFfi(SearchPathA), util.pwstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pwstrToFfi(FoundFile), util.toPointer(callback), util.toPointer(context)));
+  return util.boolFromFfi(libdbghelp_dll.SymFindFileInPathW!(util.toPointer(hprocess), util.pwstrToFfi(SearchPathA), util.pwstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pwstrToFfi(FoundFile), util.toPointer(callback), util.toPointer(context)));
 }
 
 export function SymFindExecutableImage(
@@ -53303,7 +53619,7 @@ export function SymFindExecutableImage(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.SymFindExecutableImage(util.toPointer(hProcess), util.pstrToFfi(FileName), util.pstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.SymFindExecutableImage!(util.toPointer(hProcess), util.pstrToFfi(FileName), util.pstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function SymFindExecutableImageW(
@@ -53313,7 +53629,7 @@ export function SymFindExecutableImageW(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.SymFindExecutableImageW(util.toPointer(hProcess), util.pwstrToFfi(FileName), util.pwstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.SymFindExecutableImageW!(util.toPointer(hProcess), util.pwstrToFfi(FileName), util.pwstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function FindExecutableImage(
@@ -53321,7 +53637,7 @@ export function FindExecutableImage(
   SymbolPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ImageFilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindExecutableImage(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(ImageFilePath));
+  return libdbghelp_dll.FindExecutableImage!(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(ImageFilePath));
 }
 
 export function FindExecutableImageEx(
@@ -53331,7 +53647,7 @@ export function FindExecutableImageEx(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACK */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindExecutableImageEx(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.FindExecutableImageEx!(util.pstrToFfi(FileName), util.pstrToFfi(SymbolPath), util.pstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function FindExecutableImageExW(
@@ -53341,7 +53657,7 @@ export function FindExecutableImageExW(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PFIND_EXE_FILE_CALLBACKW */,
   CallerData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libdbghelp_dll.FindExecutableImageExW(util.pwstrToFfi(FileName), util.pwstrToFfi(SymbolPath), util.pwstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
+  return libdbghelp_dll.FindExecutableImageExW!(util.pwstrToFfi(FileName), util.pwstrToFfi(SymbolPath), util.pwstrToFfi(ImageFilePath), util.toPointer(Callback), util.toPointer(CallerData));
 }
 
 export function ImageDirectoryEntryToDataEx(
@@ -53351,7 +53667,7 @@ export function ImageDirectoryEntryToDataEx(
   Size: Deno.PointerValue | Uint8Array /* ptr */,
   FoundHeader: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImageDirectoryEntryToDataEx(util.toPointer(Base), util.toPointer(MappedAsImage), DirectoryEntry, util.toPointer(Size), util.toPointer(FoundHeader));
+  return libdbghelp_dll.ImageDirectoryEntryToDataEx!(util.toPointer(Base), util.toPointer(MappedAsImage), DirectoryEntry, util.toPointer(Size), util.toPointer(FoundHeader));
 }
 
 export function ImageDirectoryEntryToData(
@@ -53360,7 +53676,7 @@ export function ImageDirectoryEntryToData(
   DirectoryEntry: IMAGE_DIRECTORY_ENTRY /* Windows.Win32.System.Diagnostics.Debug.IMAGE_DIRECTORY_ENTRY */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImageDirectoryEntryToData(util.toPointer(Base), util.toPointer(MappedAsImage), DirectoryEntry, util.toPointer(Size));
+  return libdbghelp_dll.ImageDirectoryEntryToData!(util.toPointer(Base), util.toPointer(MappedAsImage), DirectoryEntry, util.toPointer(Size));
 }
 
 export function SearchTreeForFile(
@@ -53368,7 +53684,7 @@ export function SearchTreeForFile(
   InputPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   OutputPathBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SearchTreeForFile(util.pstrToFfi(RootPath), util.pstrToFfi(InputPathName), util.pstrToFfi(OutputPathBuffer)));
+  return util.boolFromFfi(libdbghelp_dll.SearchTreeForFile!(util.pstrToFfi(RootPath), util.pstrToFfi(InputPathName), util.pstrToFfi(OutputPathBuffer)));
 }
 
 export function SearchTreeForFileW(
@@ -53376,7 +53692,7 @@ export function SearchTreeForFileW(
   InputPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   OutputPathBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SearchTreeForFileW(util.pwstrToFfi(RootPath), util.pwstrToFfi(InputPathName), util.pwstrToFfi(OutputPathBuffer)));
+  return util.boolFromFfi(libdbghelp_dll.SearchTreeForFileW!(util.pwstrToFfi(RootPath), util.pwstrToFfi(InputPathName), util.pwstrToFfi(OutputPathBuffer)));
 }
 
 export function EnumDirTree(
@@ -53387,7 +53703,7 @@ export function EnumDirTree(
   cb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMDIRTREE_CALLBACK */,
   data: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumDirTree(util.toPointer(hProcess), util.pstrToFfi(RootPath), util.pstrToFfi(InputPathName), util.pstrToFfi(OutputPathBuffer), util.toPointer(cb), util.toPointer(data)));
+  return util.boolFromFfi(libdbghelp_dll.EnumDirTree!(util.toPointer(hProcess), util.pstrToFfi(RootPath), util.pstrToFfi(InputPathName), util.pstrToFfi(OutputPathBuffer), util.toPointer(cb), util.toPointer(data)));
 }
 
 export function EnumDirTreeW(
@@ -53398,13 +53714,13 @@ export function EnumDirTreeW(
   cb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMDIRTREE_CALLBACKW */,
   data: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumDirTreeW(util.toPointer(hProcess), util.pwstrToFfi(RootPath), util.pwstrToFfi(InputPathName), util.pwstrToFfi(OutputPathBuffer), util.toPointer(cb), util.toPointer(data)));
+  return util.boolFromFfi(libdbghelp_dll.EnumDirTreeW!(util.toPointer(hProcess), util.pwstrToFfi(RootPath), util.pwstrToFfi(InputPathName), util.pwstrToFfi(OutputPathBuffer), util.toPointer(cb), util.toPointer(data)));
 }
 
 export function MakeSureDirectoryPathExists(
   DirPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.MakeSureDirectoryPathExists(util.pstrToFfi(DirPath)));
+  return util.boolFromFfi(libdbghelp_dll.MakeSureDirectoryPathExists!(util.pstrToFfi(DirPath)));
 }
 
 export function UnDecorateSymbolName(
@@ -53413,7 +53729,7 @@ export function UnDecorateSymbolName(
   maxStringLength: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.UnDecorateSymbolName(util.pstrToFfi(name), util.pstrToFfi(outputString), maxStringLength, flags);
+  return libdbghelp_dll.UnDecorateSymbolName!(util.pstrToFfi(name), util.pstrToFfi(outputString), maxStringLength, flags);
 }
 
 export function UnDecorateSymbolNameW(
@@ -53422,7 +53738,7 @@ export function UnDecorateSymbolNameW(
   maxStringLength: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.UnDecorateSymbolNameW(util.pwstrToFfi(name), util.pwstrToFfi(outputString), maxStringLength, flags);
+  return libdbghelp_dll.UnDecorateSymbolNameW!(util.pwstrToFfi(name), util.pwstrToFfi(outputString), maxStringLength, flags);
 }
 
 export function StackWalk64(
@@ -53436,7 +53752,7 @@ export function StackWalk64(
   GetModuleBaseRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PGET_MODULE_BASE_ROUTINE64 */,
   TranslateAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PTRANSLATE_ADDRESS_ROUTINE64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.StackWalk64(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress)));
+  return util.boolFromFfi(libdbghelp_dll.StackWalk64!(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress)));
 }
 
 export function StackWalkEx(
@@ -53451,7 +53767,7 @@ export function StackWalkEx(
   TranslateAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PTRANSLATE_ADDRESS_ROUTINE64 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.StackWalkEx(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress), Flags));
+  return util.boolFromFfi(libdbghelp_dll.StackWalkEx!(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress), Flags));
 }
 
 export function StackWalk(
@@ -53465,43 +53781,43 @@ export function StackWalk(
   GetModuleBaseRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PGET_MODULE_BASE_ROUTINE */,
   TranslateAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PTRANSLATE_ADDRESS_ROUTINE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.StackWalk(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress)));
+  return util.boolFromFfi(libdbghelp_dll.StackWalk!(MachineType, util.toPointer(hProcess), util.toPointer(hThread), util.toPointer(StackFrame), util.toPointer(ContextRecord), util.toPointer(ReadMemoryRoutine), util.toPointer(FunctionTableAccessRoutine), util.toPointer(GetModuleBaseRoutine), util.toPointer(TranslateAddress)));
 }
 
 export function ImagehlpApiVersion(): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImagehlpApiVersion();
+  return libdbghelp_dll.ImagehlpApiVersion!();
 }
 
 export function ImagehlpApiVersionEx(
   AppVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.ImagehlpApiVersionEx(util.toPointer(AppVersion));
+  return libdbghelp_dll.ImagehlpApiVersionEx!(util.toPointer(AppVersion));
 }
 
 export function GetTimestampForLoadedLibrary(
   Module: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): number /* u32 */ {
-  return libdbghelp_dll.GetTimestampForLoadedLibrary(util.toPointer(Module));
+  return libdbghelp_dll.GetTimestampForLoadedLibrary!(util.toPointer(Module));
 }
 
 export function SymSetParentWindow(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetParentWindow((hwnd)));
+  return util.boolFromFfi(libdbghelp_dll.SymSetParentWindow!((hwnd)));
 }
 
 export function SymSetHomeDirectory(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymSetHomeDirectory(util.toPointer(hProcess), util.pstrToFfi(dir)));
+  return util.pstrFromFfi(libdbghelp_dll.SymSetHomeDirectory!(util.toPointer(hProcess), util.pstrToFfi(dir)));
 }
 
 export function SymSetHomeDirectoryW(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymSetHomeDirectoryW(util.toPointer(hProcess), util.pwstrToFfi(dir)));
+  return util.pwstrFromFfi(libdbghelp_dll.SymSetHomeDirectoryW!(util.toPointer(hProcess), util.pwstrToFfi(dir)));
 }
 
 export function SymGetHomeDirectory(
@@ -53509,7 +53825,7 @@ export function SymGetHomeDirectory(
   dir: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   size: bigint | number /* usize */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymGetHomeDirectory(type, util.pstrToFfi(dir), size));
+  return util.pstrFromFfi(libdbghelp_dll.SymGetHomeDirectory!(type, util.pstrToFfi(dir), size));
 }
 
 export function SymGetHomeDirectoryW(
@@ -53517,7 +53833,7 @@ export function SymGetHomeDirectoryW(
   dir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   size: bigint | number /* usize */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymGetHomeDirectoryW(type, util.pwstrToFfi(dir), size));
+  return util.pwstrFromFfi(libdbghelp_dll.SymGetHomeDirectoryW!(type, util.pwstrToFfi(dir), size));
 }
 
 export function SymGetOmaps(
@@ -53528,36 +53844,36 @@ export function SymGetOmaps(
   OmapFrom: Deno.PointerValue | Uint8Array /* ptr */,
   cOmapFrom: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetOmaps(util.toPointer(hProcess), BaseOfDll, util.toPointer(OmapTo), util.toPointer(cOmapTo), util.toPointer(OmapFrom), util.toPointer(cOmapFrom)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetOmaps!(util.toPointer(hProcess), BaseOfDll, util.toPointer(OmapTo), util.toPointer(cOmapTo), util.toPointer(OmapFrom), util.toPointer(cOmapFrom)));
 }
 
 export function SymSetOptions(
   SymOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymSetOptions(SymOptions);
+  return libdbghelp_dll.SymSetOptions!(SymOptions);
 }
 
 export function SymGetOptions(): number /* u32 */ {
-  return libdbghelp_dll.SymGetOptions();
+  return libdbghelp_dll.SymGetOptions!();
 }
 
 export function SymCleanup(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymCleanup(util.toPointer(hProcess)));
+  return util.boolFromFfi(libdbghelp_dll.SymCleanup!(util.toPointer(hProcess)));
 }
 
 export function SymGetExtendedOption(
   option: IMAGEHLP_EXTENDED_OPTIONS /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_EXTENDED_OPTIONS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetExtendedOption(option));
+  return util.boolFromFfi(libdbghelp_dll.SymGetExtendedOption!(option));
 }
 
 export function SymSetExtendedOption(
   option: IMAGEHLP_EXTENDED_OPTIONS /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_EXTENDED_OPTIONS */,
   value: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetExtendedOption(option, util.boolToFfi(value)));
+  return util.boolFromFfi(libdbghelp_dll.SymSetExtendedOption!(option, util.boolToFfi(value)));
 }
 
 export function SymMatchString(
@@ -53565,7 +53881,7 @@ export function SymMatchString(
   expression: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymMatchString(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
+  return util.boolFromFfi(libdbghelp_dll.SymMatchString!(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
 }
 
 export function SymMatchStringA(
@@ -53573,7 +53889,7 @@ export function SymMatchStringA(
   expression: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymMatchStringA(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
+  return util.boolFromFfi(libdbghelp_dll.SymMatchStringA!(util.pstrToFfi(string), util.pstrToFfi(expression), util.boolToFfi(fCase)));
 }
 
 export function SymMatchStringW(
@@ -53581,7 +53897,7 @@ export function SymMatchStringW(
   expression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fCase: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymMatchStringW(util.pwstrToFfi(string), util.pwstrToFfi(expression), util.boolToFfi(fCase)));
+  return util.boolFromFfi(libdbghelp_dll.SymMatchStringW!(util.pwstrToFfi(string), util.pwstrToFfi(expression), util.boolToFfi(fCase)));
 }
 
 export function SymEnumSourceFiles(
@@ -53591,7 +53907,7 @@ export function SymEnumSourceFiles(
   cbSrcFiles: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSOURCEFILES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFiles(util.toPointer(hProcess), ModBase, util.pstrToFfi(Mask), util.toPointer(cbSrcFiles), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFiles!(util.toPointer(hProcess), ModBase, util.pstrToFfi(Mask), util.toPointer(cbSrcFiles), util.toPointer(UserContext)));
 }
 
 export function SymEnumSourceFilesW(
@@ -53601,7 +53917,7 @@ export function SymEnumSourceFilesW(
   cbSrcFiles: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSOURCEFILES_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFilesW(util.toPointer(hProcess), ModBase, util.pwstrToFfi(Mask), util.toPointer(cbSrcFiles), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFilesW!(util.toPointer(hProcess), ModBase, util.pwstrToFfi(Mask), util.toPointer(cbSrcFiles), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateModules64(
@@ -53609,7 +53925,7 @@ export function SymEnumerateModules64(
   EnumModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMMODULES_CALLBACK64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModules64(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModules64!(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateModulesW64(
@@ -53617,7 +53933,7 @@ export function SymEnumerateModulesW64(
   EnumModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMMODULES_CALLBACKW64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModulesW64(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModulesW64!(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateModules(
@@ -53625,7 +53941,7 @@ export function SymEnumerateModules(
   EnumModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMMODULES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModules(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateModules!(util.toPointer(hProcess), util.toPointer(EnumModulesCallback), util.toPointer(UserContext)));
 }
 
 export function EnumerateLoadedModulesEx(
@@ -53633,7 +53949,7 @@ export function EnumerateLoadedModulesEx(
   EnumLoadedModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMLOADED_MODULES_CALLBACK64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesEx(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesEx!(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
 }
 
 export function EnumerateLoadedModulesExW(
@@ -53641,7 +53957,7 @@ export function EnumerateLoadedModulesExW(
   EnumLoadedModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMLOADED_MODULES_CALLBACKW64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesExW(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesExW!(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
 }
 
 export function EnumerateLoadedModules64(
@@ -53649,7 +53965,7 @@ export function EnumerateLoadedModules64(
   EnumLoadedModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMLOADED_MODULES_CALLBACK64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModules64(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModules64!(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
 }
 
 export function EnumerateLoadedModulesW64(
@@ -53657,7 +53973,7 @@ export function EnumerateLoadedModulesW64(
   EnumLoadedModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMLOADED_MODULES_CALLBACKW64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesW64(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModulesW64!(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
 }
 
 export function EnumerateLoadedModules(
@@ -53665,14 +53981,14 @@ export function EnumerateLoadedModules(
   EnumLoadedModulesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMLOADED_MODULES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModules(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.EnumerateLoadedModules!(util.toPointer(hProcess), util.toPointer(EnumLoadedModulesCallback), util.toPointer(UserContext)));
 }
 
 export function SymFunctionTableAccess64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   AddrBase: bigint | number /* u64 */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.SymFunctionTableAccess64(util.toPointer(hProcess), AddrBase);
+  return libdbghelp_dll.SymFunctionTableAccess64!(util.toPointer(hProcess), AddrBase);
 }
 
 export function SymFunctionTableAccess64AccessRoutines(
@@ -53681,14 +53997,14 @@ export function SymFunctionTableAccess64AccessRoutines(
   ReadMemoryRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PREAD_PROCESS_MEMORY_ROUTINE64 */,
   GetModuleBaseRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PGET_MODULE_BASE_ROUTINE64 */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.SymFunctionTableAccess64AccessRoutines(util.toPointer(hProcess), AddrBase, util.toPointer(ReadMemoryRoutine), util.toPointer(GetModuleBaseRoutine));
+  return libdbghelp_dll.SymFunctionTableAccess64AccessRoutines!(util.toPointer(hProcess), AddrBase, util.toPointer(ReadMemoryRoutine), util.toPointer(GetModuleBaseRoutine));
 }
 
 export function SymFunctionTableAccess(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   AddrBase: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.SymFunctionTableAccess(util.toPointer(hProcess), AddrBase);
+  return libdbghelp_dll.SymFunctionTableAccess!(util.toPointer(hProcess), AddrBase);
 }
 
 export function SymGetUnwindInfo(
@@ -53697,7 +54013,7 @@ export function SymGetUnwindInfo(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetUnwindInfo(util.toPointer(hProcess), Address, util.toPointer(Buffer), util.toPointer(Size)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetUnwindInfo!(util.toPointer(hProcess), Address, util.toPointer(Buffer), util.toPointer(Size)));
 }
 
 export function SymGetModuleInfo64(
@@ -53705,7 +54021,7 @@ export function SymGetModuleInfo64(
   qwAddr: bigint | number /* u64 */,
   ModuleInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfo64(util.toPointer(hProcess), qwAddr, util.toPointer(ModuleInfo)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfo64!(util.toPointer(hProcess), qwAddr, util.toPointer(ModuleInfo)));
 }
 
 export function SymGetModuleInfoW64(
@@ -53713,7 +54029,7 @@ export function SymGetModuleInfoW64(
   qwAddr: bigint | number /* u64 */,
   ModuleInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfoW64(util.toPointer(hProcess), qwAddr, util.toPointer(ModuleInfo)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfoW64!(util.toPointer(hProcess), qwAddr, util.toPointer(ModuleInfo)));
 }
 
 export function SymGetModuleInfo(
@@ -53721,7 +54037,7 @@ export function SymGetModuleInfo(
   dwAddr: number /* u32 */,
   ModuleInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfo(util.toPointer(hProcess), dwAddr, util.toPointer(ModuleInfo)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfo!(util.toPointer(hProcess), dwAddr, util.toPointer(ModuleInfo)));
 }
 
 export function SymGetModuleInfoW(
@@ -53729,21 +54045,21 @@ export function SymGetModuleInfoW(
   dwAddr: number /* u32 */,
   ModuleInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfoW(util.toPointer(hProcess), dwAddr, util.toPointer(ModuleInfo)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetModuleInfoW!(util.toPointer(hProcess), dwAddr, util.toPointer(ModuleInfo)));
 }
 
 export function SymGetModuleBase64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   qwAddr: bigint | number /* u64 */,
 ): bigint | number /* u64 */ {
-  return libdbghelp_dll.SymGetModuleBase64(util.toPointer(hProcess), qwAddr);
+  return libdbghelp_dll.SymGetModuleBase64!(util.toPointer(hProcess), qwAddr);
 }
 
 export function SymGetModuleBase(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwAddr: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymGetModuleBase(util.toPointer(hProcess), dwAddr);
+  return libdbghelp_dll.SymGetModuleBase!(util.toPointer(hProcess), dwAddr);
 }
 
 export function SymEnumLines(
@@ -53754,7 +54070,7 @@ export function SymEnumLines(
   EnumLinesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumLines(util.toPointer(hProcess), Base, util.pstrToFfi(Obj), util.pstrToFfi(File), util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumLines!(util.toPointer(hProcess), Base, util.pstrToFfi(Obj), util.pstrToFfi(File), util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumLinesW(
@@ -53765,7 +54081,7 @@ export function SymEnumLinesW(
   EnumLinesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumLinesW(util.toPointer(hProcess), Base, util.pwstrToFfi(Obj), util.pwstrToFfi(File), util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumLinesW!(util.toPointer(hProcess), Base, util.pwstrToFfi(Obj), util.pwstrToFfi(File), util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
 }
 
 export function SymGetLineFromAddr64(
@@ -53774,7 +54090,7 @@ export function SymGetLineFromAddr64(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line64: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddr64(util.toPointer(hProcess), qwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line64)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddr64!(util.toPointer(hProcess), qwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line64)));
 }
 
 export function SymGetLineFromAddrW64(
@@ -53783,7 +54099,7 @@ export function SymGetLineFromAddrW64(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddrW64(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddrW64!(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line)));
 }
 
 export function SymGetLineFromInlineContext(
@@ -53794,7 +54110,7 @@ export function SymGetLineFromInlineContext(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line64: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromInlineContext(util.toPointer(hProcess), qwAddr, InlineContext, qwModuleBaseAddress, util.toPointer(pdwDisplacement), util.toPointer(Line64)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromInlineContext!(util.toPointer(hProcess), qwAddr, InlineContext, qwModuleBaseAddress, util.toPointer(pdwDisplacement), util.toPointer(Line64)));
 }
 
 export function SymGetLineFromInlineContextW(
@@ -53805,7 +54121,7 @@ export function SymGetLineFromInlineContextW(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromInlineContextW(util.toPointer(hProcess), dwAddr, InlineContext, qwModuleBaseAddress, util.toPointer(pdwDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromInlineContextW!(util.toPointer(hProcess), dwAddr, InlineContext, qwModuleBaseAddress, util.toPointer(pdwDisplacement), util.toPointer(Line)));
 }
 
 export function SymEnumSourceLines(
@@ -53818,7 +54134,7 @@ export function SymEnumSourceLines(
   EnumLinesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceLines(util.toPointer(hProcess), Base, util.pstrToFfi(Obj), util.pstrToFfi(File), Line, Flags, util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceLines!(util.toPointer(hProcess), Base, util.pstrToFfi(Obj), util.pstrToFfi(File), Line, Flags, util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumSourceLinesW(
@@ -53831,14 +54147,14 @@ export function SymEnumSourceLinesW(
   EnumLinesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMLINES_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceLinesW(util.toPointer(hProcess), Base, util.pwstrToFfi(Obj), util.pwstrToFfi(File), Line, Flags, util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceLinesW!(util.toPointer(hProcess), Base, util.pwstrToFfi(Obj), util.pwstrToFfi(File), Line, Flags, util.toPointer(EnumLinesCallback), util.toPointer(UserContext)));
 }
 
 export function SymAddrIncludeInlineTrace(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Address: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymAddrIncludeInlineTrace(util.toPointer(hProcess), Address);
+  return libdbghelp_dll.SymAddrIncludeInlineTrace!(util.toPointer(hProcess), Address);
 }
 
 export function SymCompareInlineTrace(
@@ -53849,7 +54165,7 @@ export function SymCompareInlineTrace(
   Address2: bigint | number /* u64 */,
   RetAddress2: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymCompareInlineTrace(util.toPointer(hProcess), Address1, InlineContext1, RetAddress1, Address2, RetAddress2);
+  return libdbghelp_dll.SymCompareInlineTrace!(util.toPointer(hProcess), Address1, InlineContext1, RetAddress1, Address2, RetAddress2);
 }
 
 export function SymQueryInlineTrace(
@@ -53861,7 +54177,7 @@ export function SymQueryInlineTrace(
   CurContext: Deno.PointerValue | Uint8Array /* ptr */,
   CurFrameIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymQueryInlineTrace(util.toPointer(hProcess), StartAddress, StartContext, StartRetAddress, CurAddress, util.toPointer(CurContext), util.toPointer(CurFrameIndex)));
+  return util.boolFromFfi(libdbghelp_dll.SymQueryInlineTrace!(util.toPointer(hProcess), StartAddress, StartContext, StartRetAddress, CurAddress, util.toPointer(CurContext), util.toPointer(CurFrameIndex)));
 }
 
 export function SymGetLineFromAddr(
@@ -53870,7 +54186,7 @@ export function SymGetLineFromAddr(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddr(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromAddr!(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Line)));
 }
 
 export function SymGetLineFromName64(
@@ -53881,7 +54197,7 @@ export function SymGetLineFromName64(
   plDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromName64(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromName64!(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
 }
 
 export function SymGetLineFromNameW64(
@@ -53892,7 +54208,7 @@ export function SymGetLineFromNameW64(
   plDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromNameW64(util.toPointer(hProcess), util.pwstrToFfi(ModuleName), util.pwstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromNameW64!(util.toPointer(hProcess), util.pwstrToFfi(ModuleName), util.pwstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
 }
 
 export function SymGetLineFromName(
@@ -53903,49 +54219,49 @@ export function SymGetLineFromName(
   plDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromName(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineFromName!(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), dwLineNumber, util.toPointer(plDisplacement), util.toPointer(Line)));
 }
 
 export function SymGetLineNext64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineNext64(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineNext64!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetLineNextW64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineNextW64(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineNextW64!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetLineNext(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLineNext(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLineNext!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetLinePrev64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrev64(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrev64!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetLinePrevW64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrevW64(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrevW64!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetLinePrev(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Line: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrev(util.toPointer(hProcess), util.toPointer(Line)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetLinePrev!(util.toPointer(hProcess), util.toPointer(Line)));
 }
 
 export function SymGetFileLineOffsets64(
@@ -53955,7 +54271,7 @@ export function SymGetFileLineOffsets64(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferLines: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymGetFileLineOffsets64(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), util.toPointer(Buffer), BufferLines);
+  return libdbghelp_dll.SymGetFileLineOffsets64!(util.toPointer(hProcess), util.pstrToFfi(ModuleName), util.pstrToFfi(FileName), util.toPointer(Buffer), BufferLines);
 }
 
 export function SymMatchFileName(
@@ -53964,7 +54280,7 @@ export function SymMatchFileName(
   FileNameStop: Deno.PointerValue | Uint8Array /* ptr */,
   MatchStop: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymMatchFileName(util.pstrToFfi(FileName), util.pstrToFfi(Match), util.toPointer(FileNameStop), util.toPointer(MatchStop)));
+  return util.boolFromFfi(libdbghelp_dll.SymMatchFileName!(util.pstrToFfi(FileName), util.pstrToFfi(Match), util.toPointer(FileNameStop), util.toPointer(MatchStop)));
 }
 
 export function SymMatchFileNameW(
@@ -53973,7 +54289,7 @@ export function SymMatchFileNameW(
   FileNameStop: Deno.PointerValue | Uint8Array /* ptr */,
   MatchStop: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymMatchFileNameW(util.pwstrToFfi(FileName), util.pwstrToFfi(Match), util.toPointer(FileNameStop), util.toPointer(MatchStop)));
+  return util.boolFromFfi(libdbghelp_dll.SymMatchFileNameW!(util.pwstrToFfi(FileName), util.pwstrToFfi(Match), util.toPointer(FileNameStop), util.toPointer(MatchStop)));
 }
 
 export function SymGetSourceFile(
@@ -53984,7 +54300,7 @@ export function SymGetSourceFile(
   FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFile(util.toPointer(hProcess), Base, util.pstrToFfi(Params), util.pstrToFfi(FileSpec), util.pstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFile!(util.toPointer(hProcess), Base, util.pstrToFfi(Params), util.pstrToFfi(FileSpec), util.pstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceFileW(
@@ -53995,7 +54311,7 @@ export function SymGetSourceFileW(
   FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileW(util.toPointer(hProcess), Base, util.pwstrToFfi(Params), util.pwstrToFfi(FileSpec), util.pwstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileW!(util.toPointer(hProcess), Base, util.pwstrToFfi(Params), util.pwstrToFfi(FileSpec), util.pwstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceFileToken(
@@ -54005,7 +54321,7 @@ export function SymGetSourceFileToken(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileToken(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.toPointer(Token), util.toPointer(Size)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileToken!(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.toPointer(Token), util.toPointer(Size)));
 }
 
 export function SymGetSourceFileTokenByTokenName(
@@ -54017,7 +54333,7 @@ export function SymGetSourceFileTokenByTokenName(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenByTokenName(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.pstrToFfi(TokenName), util.pstrToFfi(TokenParameters), util.toPointer(Token), util.toPointer(Size)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenByTokenName!(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.pstrToFfi(TokenName), util.pstrToFfi(TokenParameters), util.toPointer(Token), util.toPointer(Size)));
 }
 
 export function SymGetSourceFileChecksumW(
@@ -54029,7 +54345,7 @@ export function SymGetSourceFileChecksumW(
   checksumSize: number /* u32 */,
   pActualBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileChecksumW(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(pCheckSumType), util.toPointer(pChecksum), checksumSize, util.toPointer(pActualBytesWritten)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileChecksumW!(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(pCheckSumType), util.toPointer(pChecksum), checksumSize, util.toPointer(pActualBytesWritten)));
 }
 
 export function SymGetSourceFileChecksum(
@@ -54041,7 +54357,7 @@ export function SymGetSourceFileChecksum(
   checksumSize: number /* u32 */,
   pActualBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileChecksum(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.toPointer(pCheckSumType), util.toPointer(pChecksum), checksumSize, util.toPointer(pActualBytesWritten)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileChecksum!(util.toPointer(hProcess), Base, util.pstrToFfi(FileSpec), util.toPointer(pCheckSumType), util.toPointer(pChecksum), checksumSize, util.toPointer(pActualBytesWritten)));
 }
 
 export function SymGetSourceFileTokenW(
@@ -54051,7 +54367,7 @@ export function SymGetSourceFileTokenW(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenW(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(Token), util.toPointer(Size)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenW!(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(Token), util.toPointer(Size)));
 }
 
 export function SymGetSourceFileTokenByTokenNameW(
@@ -54063,7 +54379,7 @@ export function SymGetSourceFileTokenByTokenNameW(
   Token: Deno.PointerValue | Uint8Array /* ptr */,
   Size: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenByTokenNameW(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.pwstrToFfi(TokenName), util.pwstrToFfi(TokenParameters), util.toPointer(Token), util.toPointer(Size)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileTokenByTokenNameW!(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.pwstrToFfi(TokenName), util.pwstrToFfi(TokenParameters), util.toPointer(Token), util.toPointer(Size)));
 }
 
 export function SymGetSourceFileFromToken(
@@ -54073,7 +54389,7 @@ export function SymGetSourceFileFromToken(
   FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromToken(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromToken!(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceFileFromTokenByTokenName(
@@ -54084,7 +54400,7 @@ export function SymGetSourceFileFromTokenByTokenName(
   FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenName(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(TokenName), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenName!(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(TokenName), util.pstrToFfi(Params), util.pstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceFileFromTokenW(
@@ -54094,7 +54410,7 @@ export function SymGetSourceFileFromTokenW(
   FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenW!(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceFileFromTokenByTokenNameW(
@@ -54105,7 +54421,7 @@ export function SymGetSourceFileFromTokenByTokenNameW(
   FilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenNameW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(TokenName), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceFileFromTokenByTokenNameW!(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(TokenName), util.pwstrToFfi(Params), util.pwstrToFfi(FilePath), Size));
 }
 
 export function SymGetSourceVarFromToken(
@@ -54116,7 +54432,7 @@ export function SymGetSourceVarFromToken(
   Value: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromToken(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(VarName), util.pstrToFfi(Value), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromToken!(util.toPointer(hProcess), util.toPointer(Token), util.pstrToFfi(Params), util.pstrToFfi(VarName), util.pstrToFfi(Value), Size));
 }
 
 export function SymGetSourceVarFromTokenW(
@@ -54127,7 +54443,7 @@ export function SymGetSourceVarFromTokenW(
   Value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Size: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromTokenW(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(VarName), util.pwstrToFfi(Value), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSourceVarFromTokenW!(util.toPointer(hProcess), util.toPointer(Token), util.pwstrToFfi(Params), util.pwstrToFfi(VarName), util.pwstrToFfi(Value), Size));
 }
 
 export function SymEnumSourceFileTokens(
@@ -54135,7 +54451,7 @@ export function SymEnumSourceFileTokens(
   Base: bigint | number /* u64 */,
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PENUMSOURCEFILETOKENSCALLBACK */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFileTokens(util.toPointer(hProcess), Base, util.toPointer(Callback)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSourceFileTokens!(util.toPointer(hProcess), Base, util.toPointer(Callback)));
 }
 
 export function SymInitialize(
@@ -54143,7 +54459,7 @@ export function SymInitialize(
   UserSearchPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fInvadeProcess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymInitialize(util.toPointer(hProcess), util.pstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
+  return util.boolFromFfi(libdbghelp_dll.SymInitialize!(util.toPointer(hProcess), util.pstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
 }
 
 export function SymInitializeW(
@@ -54151,7 +54467,7 @@ export function SymInitializeW(
   UserSearchPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fInvadeProcess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymInitializeW(util.toPointer(hProcess), util.pwstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
+  return util.boolFromFfi(libdbghelp_dll.SymInitializeW!(util.toPointer(hProcess), util.pwstrToFfi(UserSearchPath), util.boolToFfi(fInvadeProcess)));
 }
 
 export function SymGetSearchPath(
@@ -54159,7 +54475,7 @@ export function SymGetSearchPath(
   SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SearchPathLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSearchPath(util.toPointer(hProcess), util.pstrToFfi(SearchPathA), SearchPathLength));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSearchPath!(util.toPointer(hProcess), util.pstrToFfi(SearchPathA), SearchPathLength));
 }
 
 export function SymGetSearchPathW(
@@ -54167,21 +54483,21 @@ export function SymGetSearchPathW(
   SearchPathA: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SearchPathLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSearchPathW(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA), SearchPathLength));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSearchPathW!(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA), SearchPathLength));
 }
 
 export function SymSetSearchPath(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SearchPathA: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetSearchPath(util.toPointer(hProcess), util.pstrToFfi(SearchPathA)));
+  return util.boolFromFfi(libdbghelp_dll.SymSetSearchPath!(util.toPointer(hProcess), util.pstrToFfi(SearchPathA)));
 }
 
 export function SymSetSearchPathW(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   SearchPathA: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetSearchPathW(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA)));
+  return util.boolFromFfi(libdbghelp_dll.SymSetSearchPathW!(util.toPointer(hProcess), util.pwstrToFfi(SearchPathA)));
 }
 
 export function SymLoadModuleEx(
@@ -54194,7 +54510,7 @@ export function SymLoadModuleEx(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: SYM_LOAD_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_LOAD_FLAGS */,
 ): bigint | number /* u64 */ {
-  return libdbghelp_dll.SymLoadModuleEx(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, DllSize, util.toPointer(Data), Flags);
+  return libdbghelp_dll.SymLoadModuleEx!(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, DllSize, util.toPointer(Data), Flags);
 }
 
 export function SymLoadModuleExW(
@@ -54207,21 +54523,21 @@ export function SymLoadModuleExW(
   Data: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: SYM_LOAD_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_LOAD_FLAGS */,
 ): bigint | number /* u64 */ {
-  return libdbghelp_dll.SymLoadModuleExW(util.toPointer(hProcess), util.toPointer(hFile), util.pwstrToFfi(ImageName), util.pwstrToFfi(ModuleName), BaseOfDll, DllSize, util.toPointer(Data), Flags);
+  return libdbghelp_dll.SymLoadModuleExW!(util.toPointer(hProcess), util.toPointer(hFile), util.pwstrToFfi(ImageName), util.pwstrToFfi(ModuleName), BaseOfDll, DllSize, util.toPointer(Data), Flags);
 }
 
 export function SymUnloadModule64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymUnloadModule64(util.toPointer(hProcess), BaseOfDll));
+  return util.boolFromFfi(libdbghelp_dll.SymUnloadModule64!(util.toPointer(hProcess), BaseOfDll));
 }
 
 export function SymUnloadModule(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   BaseOfDll: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymUnloadModule(util.toPointer(hProcess), BaseOfDll));
+  return util.boolFromFfi(libdbghelp_dll.SymUnloadModule!(util.toPointer(hProcess), BaseOfDll));
 }
 
 export function SymUnDName64(
@@ -54229,7 +54545,7 @@ export function SymUnDName64(
   UnDecName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UnDecNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymUnDName64(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
+  return util.boolFromFfi(libdbghelp_dll.SymUnDName64!(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
 }
 
 export function SymUnDName(
@@ -54237,7 +54553,7 @@ export function SymUnDName(
   UnDecName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UnDecNameLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymUnDName(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
+  return util.boolFromFfi(libdbghelp_dll.SymUnDName!(util.toPointer(sym), util.pstrToFfi(UnDecName), UnDecNameLength));
 }
 
 export function SymRegisterCallback64(
@@ -54245,7 +54561,7 @@ export function SymRegisterCallback64(
   CallbackFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYMBOL_REGISTERED_CALLBACK64 */,
   UserContext: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallback64(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
+  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallback64!(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
 }
 
 export function SymRegisterCallbackW64(
@@ -54253,7 +54569,7 @@ export function SymRegisterCallbackW64(
   CallbackFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYMBOL_REGISTERED_CALLBACK64 */,
   UserContext: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallbackW64(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
+  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallbackW64!(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
 }
 
 export function SymRegisterFunctionEntryCallback64(
@@ -54261,7 +54577,7 @@ export function SymRegisterFunctionEntryCallback64(
   CallbackFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYMBOL_FUNCENTRY_CALLBACK64 */,
   UserContext: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRegisterFunctionEntryCallback64(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
+  return util.boolFromFfi(libdbghelp_dll.SymRegisterFunctionEntryCallback64!(util.toPointer(hProcess), util.toPointer(CallbackFunction), UserContext));
 }
 
 export function SymRegisterCallback(
@@ -54269,7 +54585,7 @@ export function SymRegisterCallback(
   CallbackFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYMBOL_REGISTERED_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallback(util.toPointer(hProcess), util.toPointer(CallbackFunction), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymRegisterCallback!(util.toPointer(hProcess), util.toPointer(CallbackFunction), util.toPointer(UserContext)));
 }
 
 export function SymRegisterFunctionEntryCallback(
@@ -54277,7 +54593,7 @@ export function SymRegisterFunctionEntryCallback(
   CallbackFunction: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYMBOL_FUNCENTRY_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRegisterFunctionEntryCallback(util.toPointer(hProcess), util.toPointer(CallbackFunction), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymRegisterFunctionEntryCallback!(util.toPointer(hProcess), util.toPointer(CallbackFunction), util.toPointer(UserContext)));
 }
 
 export function SymSetContext(
@@ -54285,14 +54601,14 @@ export function SymSetContext(
   StackFrame: Deno.PointerValue | Uint8Array /* ptr */,
   Context: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetContext(util.toPointer(hProcess), util.toPointer(StackFrame), util.toPointer(Context)));
+  return util.boolFromFfi(libdbghelp_dll.SymSetContext!(util.toPointer(hProcess), util.toPointer(StackFrame), util.toPointer(Context)));
 }
 
 export function SymSetScopeFromAddr(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Address: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromAddr(util.toPointer(hProcess), Address));
+  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromAddr!(util.toPointer(hProcess), Address));
 }
 
 export function SymSetScopeFromInlineContext(
@@ -54300,7 +54616,7 @@ export function SymSetScopeFromInlineContext(
   Address: bigint | number /* u64 */,
   InlineContext: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromInlineContext(util.toPointer(hProcess), Address, InlineContext));
+  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromInlineContext!(util.toPointer(hProcess), Address, InlineContext));
 }
 
 export function SymSetScopeFromIndex(
@@ -54308,14 +54624,14 @@ export function SymSetScopeFromIndex(
   BaseOfDll: bigint | number /* u64 */,
   Index: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromIndex(util.toPointer(hProcess), BaseOfDll, Index));
+  return util.boolFromFfi(libdbghelp_dll.SymSetScopeFromIndex!(util.toPointer(hProcess), BaseOfDll, Index));
 }
 
 export function SymEnumProcesses(
   EnumProcessesCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMPROCESSES_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumProcesses(util.toPointer(EnumProcessesCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumProcesses!(util.toPointer(EnumProcessesCallback), util.toPointer(UserContext)));
 }
 
 export function SymFromAddr(
@@ -54324,7 +54640,7 @@ export function SymFromAddr(
   Displacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromAddr(util.toPointer(hProcess), Address, util.toPointer(Displacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromAddr!(util.toPointer(hProcess), Address, util.toPointer(Displacement), util.toPointer(Symbol)));
 }
 
 export function SymFromAddrW(
@@ -54333,7 +54649,7 @@ export function SymFromAddrW(
   Displacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromAddrW(util.toPointer(hProcess), Address, util.toPointer(Displacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromAddrW!(util.toPointer(hProcess), Address, util.toPointer(Displacement), util.toPointer(Symbol)));
 }
 
 export function SymFromInlineContext(
@@ -54343,7 +54659,7 @@ export function SymFromInlineContext(
   Displacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromInlineContext(util.toPointer(hProcess), Address, InlineContext, util.toPointer(Displacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromInlineContext!(util.toPointer(hProcess), Address, InlineContext, util.toPointer(Displacement), util.toPointer(Symbol)));
 }
 
 export function SymFromInlineContextW(
@@ -54353,7 +54669,7 @@ export function SymFromInlineContextW(
   Displacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromInlineContextW(util.toPointer(hProcess), Address, InlineContext, util.toPointer(Displacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromInlineContextW!(util.toPointer(hProcess), Address, InlineContext, util.toPointer(Displacement), util.toPointer(Symbol)));
 }
 
 export function SymFromToken(
@@ -54362,7 +54678,7 @@ export function SymFromToken(
   Token: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromToken(util.toPointer(hProcess), Base, Token, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromToken!(util.toPointer(hProcess), Base, Token, util.toPointer(Symbol)));
 }
 
 export function SymFromTokenW(
@@ -54371,35 +54687,35 @@ export function SymFromTokenW(
   Token: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromTokenW(util.toPointer(hProcess), Base, Token, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromTokenW!(util.toPointer(hProcess), Base, Token, util.toPointer(Symbol)));
 }
 
 export function SymNext(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   si: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymNext(util.toPointer(hProcess), util.toPointer(si)));
+  return util.boolFromFfi(libdbghelp_dll.SymNext!(util.toPointer(hProcess), util.toPointer(si)));
 }
 
 export function SymNextW(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   siw: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymNextW(util.toPointer(hProcess), util.toPointer(siw)));
+  return util.boolFromFfi(libdbghelp_dll.SymNextW!(util.toPointer(hProcess), util.toPointer(siw)));
 }
 
 export function SymPrev(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   si: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymPrev(util.toPointer(hProcess), util.toPointer(si)));
+  return util.boolFromFfi(libdbghelp_dll.SymPrev!(util.toPointer(hProcess), util.toPointer(si)));
 }
 
 export function SymPrevW(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   siw: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymPrevW(util.toPointer(hProcess), util.toPointer(siw)));
+  return util.boolFromFfi(libdbghelp_dll.SymPrevW!(util.toPointer(hProcess), util.toPointer(siw)));
 }
 
 export function SymFromName(
@@ -54407,7 +54723,7 @@ export function SymFromName(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromName(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromName!(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function SymFromNameW(
@@ -54415,7 +54731,7 @@ export function SymFromNameW(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromNameW(util.toPointer(hProcess), util.pwstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromNameW!(util.toPointer(hProcess), util.pwstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function SymEnumSymbols(
@@ -54425,7 +54741,7 @@ export function SymEnumSymbols(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbols(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbols!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumSymbolsEx(
@@ -54436,7 +54752,7 @@ export function SymEnumSymbolsEx(
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsEx(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsEx!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
 }
 
 export function SymEnumSymbolsW(
@@ -54446,7 +54762,7 @@ export function SymEnumSymbolsW(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumSymbolsExW(
@@ -54457,7 +54773,7 @@ export function SymEnumSymbolsExW(
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsExW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsExW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
 }
 
 export function SymEnumSymbolsForAddr(
@@ -54466,7 +54782,7 @@ export function SymEnumSymbolsForAddr(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsForAddr(util.toPointer(hProcess), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsForAddr!(util.toPointer(hProcess), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumSymbolsForAddrW(
@@ -54475,7 +54791,7 @@ export function SymEnumSymbolsForAddrW(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsForAddrW(util.toPointer(hProcess), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSymbolsForAddrW!(util.toPointer(hProcess), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymSearch(
@@ -54489,7 +54805,7 @@ export function SymSearch(
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSearch(util.toPointer(hProcess), BaseOfDll, Index, SymTag, util.pstrToFfi(Mask), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
+  return util.boolFromFfi(libdbghelp_dll.SymSearch!(util.toPointer(hProcess), BaseOfDll, Index, SymTag, util.pstrToFfi(Mask), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
 }
 
 export function SymSearchW(
@@ -54503,7 +54819,7 @@ export function SymSearchW(
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSearchW(util.toPointer(hProcess), BaseOfDll, Index, SymTag, util.pwstrToFfi(Mask), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
+  return util.boolFromFfi(libdbghelp_dll.SymSearchW!(util.toPointer(hProcess), BaseOfDll, Index, SymTag, util.pwstrToFfi(Mask), Address, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext), Options));
 }
 
 export function SymGetScope(
@@ -54512,7 +54828,7 @@ export function SymGetScope(
   Index: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetScope(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetScope!(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
 }
 
 export function SymGetScopeW(
@@ -54521,7 +54837,7 @@ export function SymGetScopeW(
   Index: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetScopeW(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetScopeW!(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
 }
 
 export function SymFromIndex(
@@ -54530,7 +54846,7 @@ export function SymFromIndex(
   Index: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromIndex(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromIndex!(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
 }
 
 export function SymFromIndexW(
@@ -54539,7 +54855,7 @@ export function SymFromIndexW(
   Index: number /* u32 */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymFromIndexW(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymFromIndexW!(util.toPointer(hProcess), BaseOfDll, Index, util.toPointer(Symbol)));
 }
 
 export function SymGetTypeInfo(
@@ -54549,7 +54865,7 @@ export function SymGetTypeInfo(
   GetType: IMAGEHLP_SYMBOL_TYPE_INFO /* Windows.Win32.System.Diagnostics.Debug.IMAGEHLP_SYMBOL_TYPE_INFO */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetTypeInfo(util.toPointer(hProcess), ModBase, TypeId, GetType, util.toPointer(pInfo)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetTypeInfo!(util.toPointer(hProcess), ModBase, TypeId, GetType, util.toPointer(pInfo)));
 }
 
 export function SymGetTypeInfoEx(
@@ -54557,7 +54873,7 @@ export function SymGetTypeInfoEx(
   ModBase: bigint | number /* u64 */,
   Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetTypeInfoEx(util.toPointer(hProcess), ModBase, util.toPointer(Params)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetTypeInfoEx!(util.toPointer(hProcess), ModBase, util.toPointer(Params)));
 }
 
 export function SymEnumTypes(
@@ -54566,7 +54882,7 @@ export function SymEnumTypes(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumTypes(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumTypes!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumTypesW(
@@ -54575,7 +54891,7 @@ export function SymEnumTypesW(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesW(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesW!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumTypesByName(
@@ -54585,7 +54901,7 @@ export function SymEnumTypesByName(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesByName(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesByName!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumTypesByNameW(
@@ -54595,7 +54911,7 @@ export function SymEnumTypesByNameW(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesByNameW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumTypesByNameW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(mask), util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymGetTypeFromName(
@@ -54604,7 +54920,7 @@ export function SymGetTypeFromName(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromName(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromName!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function SymGetTypeFromNameW(
@@ -54613,7 +54929,7 @@ export function SymGetTypeFromNameW(
   Name: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromNameW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetTypeFromNameW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function SymAddSymbol(
@@ -54624,7 +54940,7 @@ export function SymAddSymbol(
   Size: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymAddSymbol(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), Address, Size, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymAddSymbol!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), Address, Size, Flags));
 }
 
 export function SymAddSymbolW(
@@ -54635,7 +54951,7 @@ export function SymAddSymbolW(
   Size: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymAddSymbolW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), Address, Size, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymAddSymbolW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), Address, Size, Flags));
 }
 
 export function SymDeleteSymbol(
@@ -54645,7 +54961,7 @@ export function SymDeleteSymbol(
   Address: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymDeleteSymbol(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), Address, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymDeleteSymbol!(util.toPointer(hProcess), BaseOfDll, util.pstrToFfi(Name), Address, Flags));
 }
 
 export function SymDeleteSymbolW(
@@ -54655,13 +54971,13 @@ export function SymDeleteSymbolW(
   Address: bigint | number /* u64 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymDeleteSymbolW(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), Address, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymDeleteSymbolW!(util.toPointer(hProcess), BaseOfDll, util.pwstrToFfi(Name), Address, Flags));
 }
 
 export function SymRefreshModuleList(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymRefreshModuleList(util.toPointer(hProcess)));
+  return util.boolFromFfi(libdbghelp_dll.SymRefreshModuleList!(util.toPointer(hProcess)));
 }
 
 export function SymAddSourceStream(
@@ -54671,7 +54987,7 @@ export function SymAddSourceStream(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStream(util.toPointer(hProcess), Base, util.pstrToFfi(StreamFile), util.toPointer(Buffer), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStream!(util.toPointer(hProcess), Base, util.pstrToFfi(StreamFile), util.toPointer(Buffer), Size));
 }
 
 export function SymAddSourceStreamA(
@@ -54681,7 +54997,7 @@ export function SymAddSourceStreamA(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStreamA(util.toPointer(hProcess), Base, util.pstrToFfi(StreamFile), util.toPointer(Buffer), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStreamA!(util.toPointer(hProcess), Base, util.pstrToFfi(StreamFile), util.toPointer(Buffer), Size));
 }
 
 export function SymAddSourceStreamW(
@@ -54691,21 +55007,21 @@ export function SymAddSourceStreamW(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   Size: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStreamW(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(Buffer), Size));
+  return util.boolFromFfi(libdbghelp_dll.SymAddSourceStreamW!(util.toPointer(hProcess), Base, util.pwstrToFfi(FileSpec), util.toPointer(Buffer), Size));
 }
 
 export function SymSrvIsStoreW(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   path: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvIsStoreW(util.toPointer(hProcess), util.pwstrToFfi(path)));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvIsStoreW!(util.toPointer(hProcess), util.pwstrToFfi(path)));
 }
 
 export function SymSrvIsStore(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   path: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvIsStore(util.toPointer(hProcess), util.pstrToFfi(path)));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvIsStore!(util.toPointer(hProcess), util.pstrToFfi(path)));
 }
 
 export function SymSrvDeltaName(
@@ -54715,7 +55031,7 @@ export function SymSrvDeltaName(
   File1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   File2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymSrvDeltaName(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Type), util.pstrToFfi(File1), util.pstrToFfi(File2)));
+  return util.pstrFromFfi(libdbghelp_dll.SymSrvDeltaName!(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Type), util.pstrToFfi(File1), util.pstrToFfi(File2)));
 }
 
 export function SymSrvDeltaNameW(
@@ -54725,7 +55041,7 @@ export function SymSrvDeltaNameW(
   File1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   File2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymSrvDeltaNameW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Type), util.pwstrToFfi(File1), util.pwstrToFfi(File2)));
+  return util.pwstrFromFfi(libdbghelp_dll.SymSrvDeltaNameW!(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Type), util.pwstrToFfi(File1), util.pwstrToFfi(File2)));
 }
 
 export function SymSrvGetSupplement(
@@ -54734,7 +55050,7 @@ export function SymSrvGetSupplement(
   Node: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymSrvGetSupplement(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Node), util.pstrToFfi(File)));
+  return util.pstrFromFfi(libdbghelp_dll.SymSrvGetSupplement!(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(Node), util.pstrToFfi(File)));
 }
 
 export function SymSrvGetSupplementW(
@@ -54743,7 +55059,7 @@ export function SymSrvGetSupplementW(
   Node: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymSrvGetSupplementW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File)));
+  return util.pwstrFromFfi(libdbghelp_dll.SymSrvGetSupplementW!(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File)));
 }
 
 export function SymSrvGetFileIndexes(
@@ -54753,7 +55069,7 @@ export function SymSrvGetFileIndexes(
   Val2: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexes(util.pstrToFfi(File), util.toPointer(Id), util.toPointer(Val1), util.toPointer(Val2), Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexes!(util.pstrToFfi(File), util.toPointer(Id), util.toPointer(Val1), util.toPointer(Val2), Flags));
 }
 
 export function SymSrvGetFileIndexesW(
@@ -54763,7 +55079,7 @@ export function SymSrvGetFileIndexesW(
   Val2: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexesW(util.pwstrToFfi(File), util.toPointer(Id), util.toPointer(Val1), util.toPointer(Val2), Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexesW!(util.pwstrToFfi(File), util.toPointer(Id), util.toPointer(Val1), util.toPointer(Val2), Flags));
 }
 
 export function SymSrvGetFileIndexStringW(
@@ -54774,7 +55090,7 @@ export function SymSrvGetFileIndexStringW(
   Size: bigint | number /* usize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexStringW(util.toPointer(hProcess), util.pwstrToFfi(SrvPath), util.pwstrToFfi(File), util.pwstrToFfi(Index), Size, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexStringW!(util.toPointer(hProcess), util.pwstrToFfi(SrvPath), util.pwstrToFfi(File), util.pwstrToFfi(Index), Size, Flags));
 }
 
 export function SymSrvGetFileIndexString(
@@ -54785,7 +55101,7 @@ export function SymSrvGetFileIndexString(
   Size: bigint | number /* usize */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexString(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(File), util.pstrToFfi(Index), Size, Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexString!(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(File), util.pstrToFfi(Index), Size, Flags));
 }
 
 export function SymSrvGetFileIndexInfo(
@@ -54793,7 +55109,7 @@ export function SymSrvGetFileIndexInfo(
   Info: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexInfo(util.pstrToFfi(File), util.toPointer(Info), Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexInfo!(util.pstrToFfi(File), util.toPointer(Info), Flags));
 }
 
 export function SymSrvGetFileIndexInfoW(
@@ -54801,7 +55117,7 @@ export function SymSrvGetFileIndexInfoW(
   Info: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexInfoW(util.pwstrToFfi(File), util.toPointer(Info), Flags));
+  return util.boolFromFfi(libdbghelp_dll.SymSrvGetFileIndexInfoW!(util.pwstrToFfi(File), util.toPointer(Info), Flags));
 }
 
 export function SymSrvStoreSupplement(
@@ -54811,7 +55127,7 @@ export function SymSrvStoreSupplement(
   File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreSupplement(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(Node), util.pstrToFfi(File), Flags));
+  return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreSupplement!(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(Node), util.pstrToFfi(File), Flags));
 }
 
 export function SymSrvStoreSupplementW(
@@ -54821,7 +55137,7 @@ export function SymSrvStoreSupplementW(
   File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: number /* u32 */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreSupplementW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File), Flags));
+  return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreSupplementW!(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(Node), util.pwstrToFfi(File), Flags));
 }
 
 export function SymSrvStoreFile(
@@ -54830,7 +55146,7 @@ export function SymSrvStoreFile(
   File: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: SYM_SRV_STORE_FILE_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_SRV_STORE_FILE_FLAGS */,
 ): string | null /* Windows.Win32.Foundation.PSTR */ {
-  return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreFile(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(File), Flags));
+  return util.pstrFromFfi(libdbghelp_dll.SymSrvStoreFile!(util.toPointer(hProcess), util.pstrToFfi(SrvPath), util.pstrToFfi(File), Flags));
 }
 
 export function SymSrvStoreFileW(
@@ -54839,7 +55155,7 @@ export function SymSrvStoreFileW(
   File: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: SYM_SRV_STORE_FILE_FLAGS /* Windows.Win32.System.Diagnostics.Debug.SYM_SRV_STORE_FILE_FLAGS */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreFileW(util.toPointer(hProcess), util.pwstrToFfi(SrvPath), util.pwstrToFfi(File), Flags));
+  return util.pwstrFromFfi(libdbghelp_dll.SymSrvStoreFileW!(util.toPointer(hProcess), util.pwstrToFfi(SrvPath), util.pwstrToFfi(File), Flags));
 }
 
 export function SymGetSymbolFile(
@@ -54852,7 +55168,7 @@ export function SymGetSymbolFile(
   DbgFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cDbgFile: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFile(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(ImageFile), Type, util.pstrToFfi(SymbolFile), cSymbolFile, util.pstrToFfi(DbgFile), cDbgFile));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFile!(util.toPointer(hProcess), util.pstrToFfi(SymPath), util.pstrToFfi(ImageFile), Type, util.pstrToFfi(SymbolFile), cSymbolFile, util.pstrToFfi(DbgFile), cDbgFile));
 }
 
 export function SymGetSymbolFileW(
@@ -54865,7 +55181,7 @@ export function SymGetSymbolFileW(
   DbgFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cDbgFile: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFileW(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(ImageFile), Type, util.pwstrToFfi(SymbolFile), cSymbolFile, util.pwstrToFfi(DbgFile), cDbgFile));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymbolFileW!(util.toPointer(hProcess), util.pwstrToFfi(SymPath), util.pwstrToFfi(ImageFile), Type, util.pwstrToFfi(SymbolFile), cSymbolFile, util.pwstrToFfi(DbgFile), cDbgFile));
 }
 
 export function DbgHelpCreateUserDump(
@@ -54873,7 +55189,7 @@ export function DbgHelpCreateUserDump(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PDBGHELP_CREATE_USER_DUMP_CALLBACK */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.DbgHelpCreateUserDump(util.pstrToFfi(FileName), util.toPointer(Callback), util.toPointer(UserData)));
+  return util.boolFromFfi(libdbghelp_dll.DbgHelpCreateUserDump!(util.pstrToFfi(FileName), util.toPointer(Callback), util.toPointer(UserData)));
 }
 
 export function DbgHelpCreateUserDumpW(
@@ -54881,7 +55197,7 @@ export function DbgHelpCreateUserDumpW(
   Callback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PDBGHELP_CREATE_USER_DUMP_CALLBACK */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.DbgHelpCreateUserDumpW(util.pwstrToFfi(FileName), util.toPointer(Callback), util.toPointer(UserData)));
+  return util.boolFromFfi(libdbghelp_dll.DbgHelpCreateUserDumpW!(util.pwstrToFfi(FileName), util.toPointer(Callback), util.toPointer(UserData)));
 }
 
 export function SymGetSymFromAddr64(
@@ -54890,7 +55206,7 @@ export function SymGetSymFromAddr64(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromAddr64(util.toPointer(hProcess), qwAddr, util.toPointer(pdwDisplacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromAddr64!(util.toPointer(hProcess), qwAddr, util.toPointer(pdwDisplacement), util.toPointer(Symbol)));
 }
 
 export function SymGetSymFromAddr(
@@ -54899,7 +55215,7 @@ export function SymGetSymFromAddr(
   pdwDisplacement: Deno.PointerValue | Uint8Array /* ptr */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromAddr(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromAddr!(util.toPointer(hProcess), dwAddr, util.toPointer(pdwDisplacement), util.toPointer(Symbol)));
 }
 
 export function SymGetSymFromName64(
@@ -54907,7 +55223,7 @@ export function SymGetSymFromName64(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName64(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName64!(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function SymGetSymFromName(
@@ -54915,7 +55231,7 @@ export function SymGetSymFromName(
   Name: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymFromName!(util.toPointer(hProcess), util.pstrToFfi(Name), util.toPointer(Symbol)));
 }
 
 export function FindFileInPath(
@@ -54928,7 +55244,7 @@ export function FindFileInPath(
   flags: number /* u32 */,
   FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.FindFileInPath(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pstrToFfi(FilePath)));
+  return util.boolFromFfi(libdbghelp_dll.FindFileInPath!(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), util.toPointer(id), two, three, flags, util.pstrToFfi(FilePath)));
 }
 
 export function FindFileInSearchPath(
@@ -54940,7 +55256,7 @@ export function FindFileInSearchPath(
   three: number /* u32 */,
   FilePath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.FindFileInSearchPath(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), one, two, three, util.pstrToFfi(FilePath)));
+  return util.boolFromFfi(libdbghelp_dll.FindFileInSearchPath!(util.toPointer(hprocess), util.pstrToFfi(SearchPathA), util.pstrToFfi(FileName), one, two, three, util.pstrToFfi(FilePath)));
 }
 
 export function SymEnumSym(
@@ -54949,7 +55265,7 @@ export function SymEnumSym(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMERATESYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumSym(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumSym!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateSymbols64(
@@ -54958,7 +55274,7 @@ export function SymEnumerateSymbols64(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSYMBOLS_CALLBACK64 */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbols64(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbols64!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateSymbolsW64(
@@ -54967,7 +55283,7 @@ export function SymEnumerateSymbolsW64(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSYMBOLS_CALLBACK64W */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbolsW64(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbolsW64!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateSymbols(
@@ -54976,7 +55292,7 @@ export function SymEnumerateSymbols(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSYMBOLS_CALLBACK */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbols(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbols!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymEnumerateSymbolsW(
@@ -54985,7 +55301,7 @@ export function SymEnumerateSymbolsW(
   EnumSymbolsCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.PSYM_ENUMSYMBOLS_CALLBACKW */,
   UserContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbolsW(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
+  return util.boolFromFfi(libdbghelp_dll.SymEnumerateSymbolsW!(util.toPointer(hProcess), BaseOfDll, util.toPointer(EnumSymbolsCallback), util.toPointer(UserContext)));
 }
 
 export function SymLoadModule64(
@@ -54996,7 +55312,7 @@ export function SymLoadModule64(
   BaseOfDll: bigint | number /* u64 */,
   SizeOfDll: number /* u32 */,
 ): bigint | number /* u64 */ {
-  return libdbghelp_dll.SymLoadModule64(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, SizeOfDll);
+  return libdbghelp_dll.SymLoadModule64!(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, SizeOfDll);
 }
 
 export function SymLoadModule(
@@ -55007,51 +55323,51 @@ export function SymLoadModule(
   BaseOfDll: number /* u32 */,
   SizeOfDll: number /* u32 */,
 ): number /* u32 */ {
-  return libdbghelp_dll.SymLoadModule(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, SizeOfDll);
+  return libdbghelp_dll.SymLoadModule!(util.toPointer(hProcess), util.toPointer(hFile), util.pstrToFfi(ImageName), util.pstrToFfi(ModuleName), BaseOfDll, SizeOfDll);
 }
 
 export function SymGetSymNext64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymNext64(util.toPointer(hProcess), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymNext64!(util.toPointer(hProcess), util.toPointer(Symbol)));
 }
 
 export function SymGetSymNext(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymNext(util.toPointer(hProcess), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymNext!(util.toPointer(hProcess), util.toPointer(Symbol)));
 }
 
 export function SymGetSymPrev64(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymPrev64(util.toPointer(hProcess), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymPrev64!(util.toPointer(hProcess), util.toPointer(Symbol)));
 }
 
 export function SymGetSymPrev(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Symbol: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.SymGetSymPrev(util.toPointer(hProcess), util.toPointer(Symbol)));
+  return util.boolFromFfi(libdbghelp_dll.SymGetSymPrev!(util.toPointer(hProcess), util.toPointer(Symbol)));
 }
 
 export function SetCheckUserInterruptShared(
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Debug.LPCALL_BACK_USER_INTERRUPT_ROUTINE */,
 ): void /* void */ {
-  return libdbghelp_dll.SetCheckUserInterruptShared(util.toPointer(lpStartAddress));
+  return libdbghelp_dll.SetCheckUserInterruptShared!(util.toPointer(lpStartAddress));
 }
 
 export function GetSymLoadError(): number /* u32 */ {
-  return libdbghelp_dll.GetSymLoadError();
+  return libdbghelp_dll.GetSymLoadError!();
 }
 
 export function SetSymLoadError(
   error: number /* u32 */,
 ): void /* void */ {
-  return libdbghelp_dll.SetSymLoadError(error);
+  return libdbghelp_dll.SetSymLoadError!(error);
 }
 
 export function ReportSymbolLoadSummary(
@@ -55059,23 +55375,23 @@ export function ReportSymbolLoadSummary(
   pLoadModule: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pSymbolData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.ReportSymbolLoadSummary(util.toPointer(hProcess), util.pwstrToFfi(pLoadModule), util.toPointer(pSymbolData)));
+  return util.boolFromFfi(libdbghelp_dll.ReportSymbolLoadSummary!(util.toPointer(hProcess), util.pwstrToFfi(pLoadModule), util.toPointer(pSymbolData)));
 }
 
 export function RemoveInvalidModuleList(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libdbghelp_dll.RemoveInvalidModuleList(util.toPointer(hProcess));
+  return libdbghelp_dll.RemoveInvalidModuleList!(util.toPointer(hProcess));
 }
 
 export function RangeMapCreate(): Deno.PointerValue /* ptr */ {
-  return libdbghelp_dll.RangeMapCreate();
+  return libdbghelp_dll.RangeMapCreate!();
 }
 
 export function RangeMapFree(
   RmapHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libdbghelp_dll.RangeMapFree(util.toPointer(RmapHandle));
+  return libdbghelp_dll.RangeMapFree!(util.toPointer(RmapHandle));
 }
 
 export function RangeMapAddPeImageSections(
@@ -55087,14 +55403,14 @@ export function RangeMapAddPeImageSections(
   UserTag: bigint | number /* u64 */,
   MappingFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.RangeMapAddPeImageSections(util.toPointer(RmapHandle), util.pwstrToFfi(ImageName), util.toPointer(MappedImage), MappingBytes, ImageBase, UserTag, MappingFlags));
+  return util.boolFromFfi(libdbghelp_dll.RangeMapAddPeImageSections!(util.toPointer(RmapHandle), util.pwstrToFfi(ImageName), util.toPointer(MappedImage), MappingBytes, ImageBase, UserTag, MappingFlags));
 }
 
 export function RangeMapRemove(
   RmapHandle: Deno.PointerValue | Uint8Array /* ptr */,
   UserTag: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.RangeMapRemove(util.toPointer(RmapHandle), UserTag));
+  return util.boolFromFfi(libdbghelp_dll.RangeMapRemove!(util.toPointer(RmapHandle), UserTag));
 }
 
 export function RangeMapRead(
@@ -55105,7 +55421,7 @@ export function RangeMapRead(
   Flags: number /* u32 */,
   DoneBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.RangeMapRead(util.toPointer(RmapHandle), Offset, util.toPointer(Buffer), RequestBytes, Flags, util.toPointer(DoneBytes)));
+  return util.boolFromFfi(libdbghelp_dll.RangeMapRead!(util.toPointer(RmapHandle), Offset, util.toPointer(Buffer), RequestBytes, Flags, util.toPointer(DoneBytes)));
 }
 
 export function RangeMapWrite(
@@ -55116,19 +55432,19 @@ export function RangeMapWrite(
   Flags: number /* u32 */,
   DoneBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdbghelp_dll.RangeMapWrite(util.toPointer(RmapHandle), Offset, util.toPointer(Buffer), RequestBytes, Flags, util.toPointer(DoneBytes)));
+  return util.boolFromFfi(libdbghelp_dll.RangeMapWrite!(util.toPointer(RmapHandle), Offset, util.toPointer(Buffer), RequestBytes, Flags, util.toPointer(DoneBytes)));
 }
 
 export function MessageBeep(
   uType: MESSAGEBOX_STYLE /* Windows.Win32.UI.WindowsAndMessaging.MESSAGEBOX_STYLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.MessageBeep(uType));
+  return util.boolFromFfi(libUSER32_dll.MessageBeep!(uType));
 }
 
 export function FatalExit(
   ExitCode: number /* i32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.FatalExit(ExitCode);
+  return libKERNEL32_dll.FatalExit!(ExitCode);
 }
 
 export function GetThreadSelectorEntry(
@@ -55136,7 +55452,7 @@ export function GetThreadSelectorEntry(
   dwSelector: number /* u32 */,
   lpSelectorEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectorEntry(util.toPointer(hThread), dwSelector, util.toPointer(lpSelectorEntry)));
+  return util.boolFromFfi(libKERNEL32_dll.GetThreadSelectorEntry!(util.toPointer(hThread), dwSelector, util.toPointer(lpSelectorEntry)));
 }
 
 export function Wow64GetThreadSelectorEntry(
@@ -55144,19 +55460,19 @@ export function Wow64GetThreadSelectorEntry(
   dwSelector: number /* u32 */,
   lpSelectorEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.Wow64GetThreadSelectorEntry(util.toPointer(hThread), dwSelector, util.toPointer(lpSelectorEntry)));
+  return util.boolFromFfi(libKERNEL32_dll.Wow64GetThreadSelectorEntry!(util.toPointer(hThread), dwSelector, util.toPointer(lpSelectorEntry)));
 }
 
 export function DebugSetProcessKillOnExit(
   KillOnExit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DebugSetProcessKillOnExit(util.boolToFfi(KillOnExit)));
+  return util.boolFromFfi(libKERNEL32_dll.DebugSetProcessKillOnExit!(util.boolToFfi(KillOnExit)));
 }
 
 export function DebugBreakProcess(
   Process: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DebugBreakProcess(util.toPointer(Process)));
+  return util.boolFromFfi(libKERNEL32_dll.DebugBreakProcess!(util.toPointer(Process)));
 }
 
 export function FormatMessageA(
@@ -55168,7 +55484,7 @@ export function FormatMessageA(
   nSize: number /* u32 */,
   Arguments: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.FormatMessageA(dwFlags, util.toPointer(lpSource), dwMessageId, dwLanguageId, util.pstrToFfi(lpBuffer), nSize, util.toPointer(Arguments));
+  return libKERNEL32_dll.FormatMessageA!(dwFlags, util.toPointer(lpSource), dwMessageId, dwLanguageId, util.pstrToFfi(lpBuffer), nSize, util.toPointer(Arguments));
 }
 
 export function FormatMessageW(
@@ -55180,7 +55496,7 @@ export function FormatMessageW(
   nSize: number /* u32 */,
   Arguments: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.FormatMessageW(dwFlags, util.toPointer(lpSource), dwMessageId, dwLanguageId, util.pwstrToFfi(lpBuffer), nSize, util.toPointer(Arguments));
+  return libKERNEL32_dll.FormatMessageW!(dwFlags, util.toPointer(lpSource), dwMessageId, dwLanguageId, util.pwstrToFfi(lpBuffer), nSize, util.toPointer(Arguments));
 }
 
 export function CopyContext(
@@ -55188,7 +55504,7 @@ export function CopyContext(
   ContextFlags: number /* u32 */,
   Source: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CopyContext(util.toPointer(Destination), ContextFlags, util.toPointer(Source)));
+  return util.boolFromFfi(libKERNEL32_dll.CopyContext!(util.toPointer(Destination), ContextFlags, util.toPointer(Source)));
 }
 
 export function InitializeContext(
@@ -55197,7 +55513,7 @@ export function InitializeContext(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   ContextLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeContext(util.toPointer(Buffer), ContextFlags, util.toPointer(Context), util.toPointer(ContextLength)));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeContext!(util.toPointer(Buffer), ContextFlags, util.toPointer(Context), util.toPointer(ContextLength)));
 }
 
 export function InitializeContext2(
@@ -55207,18 +55523,18 @@ export function InitializeContext2(
   ContextLength: Deno.PointerValue | Uint8Array /* ptr */,
   XStateCompactionMask: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.InitializeContext2(util.toPointer(Buffer), ContextFlags, util.toPointer(Context), util.toPointer(ContextLength), XStateCompactionMask));
+  return util.boolFromFfi(libKERNEL32_dll.InitializeContext2!(util.toPointer(Buffer), ContextFlags, util.toPointer(Context), util.toPointer(ContextLength), XStateCompactionMask));
 }
 
 export function GetEnabledXStateFeatures(): bigint | number /* u64 */ {
-  return libKERNEL32_dll.GetEnabledXStateFeatures();
+  return libKERNEL32_dll.GetEnabledXStateFeatures!();
 }
 
 export function GetXStateFeaturesMask(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   FeatureMask: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetXStateFeaturesMask(util.toPointer(Context), util.toPointer(FeatureMask)));
+  return util.boolFromFfi(libKERNEL32_dll.GetXStateFeaturesMask!(util.toPointer(Context), util.toPointer(FeatureMask)));
 }
 
 export function LocateXStateFeature(
@@ -55226,13 +55542,13 @@ export function LocateXStateFeature(
   FeatureId: number /* u32 */,
   Length: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.LocateXStateFeature(util.toPointer(Context), FeatureId, util.toPointer(Length));
+  return libKERNEL32_dll.LocateXStateFeature!(util.toPointer(Context), FeatureId, util.toPointer(Length));
 }
 
 export function SetXStateFeaturesMask(
   Context: Deno.PointerValue | Uint8Array /* ptr */,
   FeatureMask: bigint | number /* u64 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetXStateFeaturesMask(util.toPointer(Context), FeatureMask));
+  return util.boolFromFfi(libKERNEL32_dll.SetXStateFeaturesMask!(util.toPointer(Context), FeatureMask));
 }
 

@@ -108,30 +108,37 @@ try {
     FhServiceOpenPipe: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FhServiceClosePipe: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FhServiceStartBackup: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     FhServiceStopBackup: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     FhServiceReloadConfiguration: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FhServiceBlockBackup: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FhServiceUnblockBackup: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -142,44 +149,44 @@ export function FhServiceOpenPipe(
   StartServiceIfStopped: boolean /* Windows.Win32.Foundation.BOOL */,
   Pipe: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceOpenPipe(util.boolToFfi(StartServiceIfStopped), util.toPointer(Pipe));
+  return libfhsvcctl_dll.FhServiceOpenPipe!(util.boolToFfi(StartServiceIfStopped), util.toPointer(Pipe));
 }
 
 export function FhServiceClosePipe(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceClosePipe(util.toPointer(Pipe));
+  return libfhsvcctl_dll.FhServiceClosePipe!(util.toPointer(Pipe));
 }
 
 export function FhServiceStartBackup(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
   LowPriorityIo: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceStartBackup(util.toPointer(Pipe), util.boolToFfi(LowPriorityIo));
+  return libfhsvcctl_dll.FhServiceStartBackup!(util.toPointer(Pipe), util.boolToFfi(LowPriorityIo));
 }
 
 export function FhServiceStopBackup(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
   StopTracking: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceStopBackup(util.toPointer(Pipe), util.boolToFfi(StopTracking));
+  return libfhsvcctl_dll.FhServiceStopBackup!(util.toPointer(Pipe), util.boolToFfi(StopTracking));
 }
 
 export function FhServiceReloadConfiguration(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceReloadConfiguration(util.toPointer(Pipe));
+  return libfhsvcctl_dll.FhServiceReloadConfiguration!(util.toPointer(Pipe));
 }
 
 export function FhServiceBlockBackup(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceBlockBackup(util.toPointer(Pipe));
+  return libfhsvcctl_dll.FhServiceBlockBackup!(util.toPointer(Pipe));
 }
 
 export function FhServiceUnblockBackup(
   Pipe: Uint8Array | Deno.PointerValue /* Windows.Win32.System.WindowsProgramming.FH_SERVICE_PIPE_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfhsvcctl_dll.FhServiceUnblockBackup(util.toPointer(Pipe));
+  return libfhsvcctl_dll.FhServiceUnblockBackup!(util.toPointer(Pipe));
 }
 

@@ -1924,30 +1924,37 @@ try {
     RtlInitializeSListHead: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     RtlFirstEntrySList: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInterlockedPopEntrySList: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInterlockedPushEntrySList: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlInterlockedPushListSListEx: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     RtlInterlockedFlushSList: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     RtlQueryDepthSList: {
       parameters: ["pointer"],
       result: "u16",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1957,26 +1964,26 @@ try {
 export function RtlInitializeSListHead(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libntdll_dll.RtlInitializeSListHead(util.toPointer(ListHead));
+  return libntdll_dll.RtlInitializeSListHead!(util.toPointer(ListHead));
 }
 
 export function RtlFirstEntrySList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libntdll_dll.RtlFirstEntrySList(util.toPointer(ListHead));
+  return libntdll_dll.RtlFirstEntrySList!(util.toPointer(ListHead));
 }
 
 export function RtlInterlockedPopEntrySList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libntdll_dll.RtlInterlockedPopEntrySList(util.toPointer(ListHead));
+  return libntdll_dll.RtlInterlockedPopEntrySList!(util.toPointer(ListHead));
 }
 
 export function RtlInterlockedPushEntrySList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
   ListEntry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libntdll_dll.RtlInterlockedPushEntrySList(util.toPointer(ListHead), util.toPointer(ListEntry));
+  return libntdll_dll.RtlInterlockedPushEntrySList!(util.toPointer(ListHead), util.toPointer(ListEntry));
 }
 
 export function RtlInterlockedPushListSListEx(
@@ -1985,18 +1992,18 @@ export function RtlInterlockedPushListSListEx(
   ListEnd: Deno.PointerValue | Uint8Array /* ptr */,
   Count: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libntdll_dll.RtlInterlockedPushListSListEx(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count);
+  return libntdll_dll.RtlInterlockedPushListSListEx!(util.toPointer(ListHead), util.toPointer(List), util.toPointer(ListEnd), Count);
 }
 
 export function RtlInterlockedFlushSList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libntdll_dll.RtlInterlockedFlushSList(util.toPointer(ListHead));
+  return libntdll_dll.RtlInterlockedFlushSList!(util.toPointer(ListHead));
 }
 
 export function RtlQueryDepthSList(
   ListHead: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u16 */ {
-  return libntdll_dll.RtlQueryDepthSList(util.toPointer(ListHead));
+  return libntdll_dll.RtlQueryDepthSList!(util.toPointer(ListHead));
 }
 

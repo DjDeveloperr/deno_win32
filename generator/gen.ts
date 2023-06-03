@@ -727,6 +727,7 @@ for (const api in win32) {
         parameters.map((e) => JSON.stringify(e)).join(", ")
       }],\n`;
       content += `      result: ${JSON.stringify(result)},\n`;
+      content += `      optional: true,\n`;
       content += `    },\n`;
       if (asyncSymbols.includes(name)) {
         content += `    ${name}Async: {\n`;
@@ -736,6 +737,7 @@ for (const api in win32) {
           parameters.map((e) => JSON.stringify(e)).join(", ")
         }],\n`;
         content += `      result: ${JSON.stringify(result)},\n`;
+        content += `      optional: true,\n`;
         content += `    },\n`;
       }
     }
@@ -760,7 +762,7 @@ for (const api in win32) {
     }: ${ret} /* ${result} */ {\n`;
     content += `  return ${retSpecial ? `${retSpecial.fromFfi}(` : ""}lib${
       jsify(dll)
-    }.${name}(${
+    }.${name}!(${
       parameters.map((e: [string, string]) => {
         const special = specialTypes[e[1]];
         if (special) {

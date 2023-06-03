@@ -13615,42 +13615,52 @@ try {
     GetRawInputData: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetRawInputDeviceInfoA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetRawInputDeviceInfoW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetRawInputBuffer: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegisterRawInputDevices: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetRegisteredRawInputDevices: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetRawInputDeviceList: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DefRawInputProc: {
       parameters: ["pointer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetCurrentInputMessageSource: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetCIMSSM: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -13664,7 +13674,7 @@ export function GetRawInputData(
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
   cbSizeHeader: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRawInputData(util.toPointer(hRawInput), uiCommand, util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
+  return libUSER32_dll.GetRawInputData!(util.toPointer(hRawInput), uiCommand, util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
 }
 
 export function GetRawInputDeviceInfoA(
@@ -13673,7 +13683,7 @@ export function GetRawInputDeviceInfoA(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRawInputDeviceInfoA(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
+  return libUSER32_dll.GetRawInputDeviceInfoA!(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
 }
 
 export function GetRawInputDeviceInfoW(
@@ -13682,7 +13692,7 @@ export function GetRawInputDeviceInfoW(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRawInputDeviceInfoW(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
+  return libUSER32_dll.GetRawInputDeviceInfoW!(util.toPointer(hDevice), uiCommand, util.toPointer(pData), util.toPointer(pcbSize));
 }
 
 export function GetRawInputBuffer(
@@ -13690,7 +13700,7 @@ export function GetRawInputBuffer(
   pcbSize: Deno.PointerValue | Uint8Array /* ptr */,
   cbSizeHeader: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRawInputBuffer(util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
+  return libUSER32_dll.GetRawInputBuffer!(util.toPointer(pData), util.toPointer(pcbSize), cbSizeHeader);
 }
 
 export function RegisterRawInputDevices(
@@ -13698,7 +13708,7 @@ export function RegisterRawInputDevices(
   uiNumDevices: number /* u32 */,
   cbSize: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterRawInputDevices(util.toPointer(pRawInputDevices), uiNumDevices, cbSize));
+  return util.boolFromFfi(libUSER32_dll.RegisterRawInputDevices!(util.toPointer(pRawInputDevices), uiNumDevices, cbSize));
 }
 
 export function GetRegisteredRawInputDevices(
@@ -13706,7 +13716,7 @@ export function GetRegisteredRawInputDevices(
   puiNumDevices: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRegisteredRawInputDevices(util.toPointer(pRawInputDevices), util.toPointer(puiNumDevices), cbSize);
+  return libUSER32_dll.GetRegisteredRawInputDevices!(util.toPointer(pRawInputDevices), util.toPointer(puiNumDevices), cbSize);
 }
 
 export function GetRawInputDeviceList(
@@ -13714,7 +13724,7 @@ export function GetRawInputDeviceList(
   puiNumDevices: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.GetRawInputDeviceList(util.toPointer(pRawInputDeviceList), util.toPointer(puiNumDevices), cbSize);
+  return libUSER32_dll.GetRawInputDeviceList!(util.toPointer(pRawInputDeviceList), util.toPointer(puiNumDevices), cbSize);
 }
 
 export function DefRawInputProc(
@@ -13722,18 +13732,18 @@ export function DefRawInputProc(
   nInput: number /* i32 */,
   cbSizeHeader: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libUSER32_dll.DefRawInputProc(util.toPointer(paRawInput), nInput, cbSizeHeader);
+  return libUSER32_dll.DefRawInputProc!(util.toPointer(paRawInput), nInput, cbSizeHeader);
 }
 
 export function GetCurrentInputMessageSource(
   inputMessageSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetCurrentInputMessageSource(util.toPointer(inputMessageSource)));
+  return util.boolFromFfi(libUSER32_dll.GetCurrentInputMessageSource!(util.toPointer(inputMessageSource)));
 }
 
 export function GetCIMSSM(
   inputMessageSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetCIMSSM(util.toPointer(inputMessageSource)));
+  return util.boolFromFfi(libUSER32_dll.GetCIMSSM!(util.toPointer(inputMessageSource)));
 }
 

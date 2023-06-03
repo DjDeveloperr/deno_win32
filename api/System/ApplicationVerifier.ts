@@ -371,6 +371,7 @@ try {
     VerifierEnumerateResource: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -384,6 +385,6 @@ export function VerifierEnumerateResource(
   ResourceCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ApplicationVerifier.AVRF_RESOURCE_ENUMERATE_CALLBACK */,
   EnumerationContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libverifier_dll.VerifierEnumerateResource(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
+  return libverifier_dll.VerifierEnumerateResource!(util.toPointer(Process), Flags, ResourceType, util.toPointer(ResourceCallback), util.toPointer(EnumerationContext));
 }
 

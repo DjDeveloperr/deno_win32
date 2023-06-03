@@ -79,18 +79,22 @@ try {
     RtlInitializeCorrelationVector: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RtlIncrementCorrelationVector: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RtlExtendCorrelationVector: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RtlValidateCorrelationVector: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -102,24 +106,24 @@ export function RtlInitializeCorrelationVector(
   Version: number /* i32 */,
   Guid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlInitializeCorrelationVector(util.toPointer(CorrelationVector), Version, util.toPointer(Guid));
+  return libntdll_dll.RtlInitializeCorrelationVector!(util.toPointer(CorrelationVector), Version, util.toPointer(Guid));
 }
 
 export function RtlIncrementCorrelationVector(
   CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlIncrementCorrelationVector(util.toPointer(CorrelationVector));
+  return libntdll_dll.RtlIncrementCorrelationVector!(util.toPointer(CorrelationVector));
 }
 
 export function RtlExtendCorrelationVector(
   CorrelationVector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlExtendCorrelationVector(util.toPointer(CorrelationVector));
+  return libntdll_dll.RtlExtendCorrelationVector!(util.toPointer(CorrelationVector));
 }
 
 export function RtlValidateCorrelationVector(
   Vector: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlValidateCorrelationVector(util.toPointer(Vector));
+  return libntdll_dll.RtlValidateCorrelationVector!(util.toPointer(Vector));
 }
 

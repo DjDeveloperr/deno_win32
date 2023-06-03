@@ -1069,18 +1069,22 @@ try {
     LoadIFilter: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadIFilterEx: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BindIFilterFromStorage: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BindIFilterFromStream: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1092,7 +1096,7 @@ export function LoadIFilter(
   pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libquery_dll.LoadIFilter(util.pwstrToFfi(pwcsPath), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
+  return libquery_dll.LoadIFilter!(util.pwstrToFfi(pwcsPath), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
 }
 
 export function LoadIFilterEx(
@@ -1101,7 +1105,7 @@ export function LoadIFilterEx(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppIUnk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libquery_dll.LoadIFilterEx(util.pwstrToFfi(pwcsPath), dwFlags, util.toPointer(riid), util.toPointer(ppIUnk));
+  return libquery_dll.LoadIFilterEx!(util.pwstrToFfi(pwcsPath), dwFlags, util.toPointer(riid), util.toPointer(ppIUnk));
 }
 
 export function BindIFilterFromStorage(
@@ -1109,7 +1113,7 @@ export function BindIFilterFromStorage(
   pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libquery_dll.BindIFilterFromStorage(util.toPointer(pStg), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
+  return libquery_dll.BindIFilterFromStorage!(util.toPointer(pStg), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
 }
 
 export function BindIFilterFromStream(
@@ -1117,6 +1121,6 @@ export function BindIFilterFromStream(
   pUnkOuter: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   ppIUnk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libquery_dll.BindIFilterFromStream(util.toPointer(pStm), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
+  return libquery_dll.BindIFilterFromStream!(util.toPointer(pStm), util.toPointer(pUnkOuter), util.toPointer(ppIUnk));
 }
 

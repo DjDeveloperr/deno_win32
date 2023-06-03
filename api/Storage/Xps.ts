@@ -1992,10 +1992,12 @@ try {
     DeviceCapabilitiesA: {
       parameters: ["buffer", "buffer", "u16", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeviceCapabilitiesW: {
       parameters: ["buffer", "buffer", "u16", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2005,38 +2007,47 @@ try {
     Escape: {
       parameters: ["pointer", "i32", "i32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ExtEscape: {
       parameters: ["pointer", "i32", "i32", "buffer", "i32", "buffer"],
       result: "i32",
+      optional: true,
     },
     StartDocA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     StartDocW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EndDoc: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     StartPage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     EndPage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AbortDoc: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetAbortProc: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2046,6 +2057,7 @@ try {
     PrintWindow: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2059,7 +2071,7 @@ export function DeviceCapabilitiesA(
   pOutput: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDevMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libwinspool_drv.DeviceCapabilitiesA(util.pstrToFfi(pDevice), util.pstrToFfi(pPort), fwCapability, util.pstrToFfi(pOutput), util.toPointer(pDevMode));
+  return libwinspool_drv.DeviceCapabilitiesA!(util.pstrToFfi(pDevice), util.pstrToFfi(pPort), fwCapability, util.pstrToFfi(pOutput), util.toPointer(pDevMode));
 }
 
 export function DeviceCapabilitiesW(
@@ -2069,7 +2081,7 @@ export function DeviceCapabilitiesW(
   pOutput: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDevMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libwinspool_drv.DeviceCapabilitiesW(util.pwstrToFfi(pDevice), util.pwstrToFfi(pPort), fwCapability, util.pwstrToFfi(pOutput), util.toPointer(pDevMode));
+  return libwinspool_drv.DeviceCapabilitiesW!(util.pwstrToFfi(pDevice), util.pwstrToFfi(pPort), fwCapability, util.pwstrToFfi(pOutput), util.toPointer(pDevMode));
 }
 
 export function Escape(
@@ -2079,7 +2091,7 @@ export function Escape(
   pvIn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pvOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libGDI32_dll.Escape(util.toPointer(hdc), iEscape, cjIn, util.pstrToFfi(pvIn), util.toPointer(pvOut));
+  return libGDI32_dll.Escape!(util.toPointer(hdc), iEscape, cjIn, util.pstrToFfi(pvIn), util.toPointer(pvOut));
 }
 
 export function ExtEscape(
@@ -2090,52 +2102,52 @@ export function ExtEscape(
   cjOutput: number /* i32 */,
   lpOutData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libGDI32_dll.ExtEscape(util.toPointer(hdc), iEscape, cjInput, util.pstrToFfi(lpInData), cjOutput, util.pstrToFfi(lpOutData));
+  return libGDI32_dll.ExtEscape!(util.toPointer(hdc), iEscape, cjInput, util.pstrToFfi(lpInData), cjOutput, util.pstrToFfi(lpOutData));
 }
 
 export function StartDocA(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libGDI32_dll.StartDocA(util.toPointer(hdc), util.toPointer(lpdi));
+  return libGDI32_dll.StartDocA!(util.toPointer(hdc), util.toPointer(lpdi));
 }
 
 export function StartDocW(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lpdi: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libGDI32_dll.StartDocW(util.toPointer(hdc), util.toPointer(lpdi));
+  return libGDI32_dll.StartDocW!(util.toPointer(hdc), util.toPointer(lpdi));
 }
 
 export function EndDoc(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
-  return libGDI32_dll.EndDoc(util.toPointer(hdc));
+  return libGDI32_dll.EndDoc!(util.toPointer(hdc));
 }
 
 export function StartPage(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
-  return libGDI32_dll.StartPage(util.toPointer(hdc));
+  return libGDI32_dll.StartPage!(util.toPointer(hdc));
 }
 
 export function EndPage(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
-  return libGDI32_dll.EndPage(util.toPointer(hdc));
+  return libGDI32_dll.EndPage!(util.toPointer(hdc));
 }
 
 export function AbortDoc(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
 ): number /* i32 */ {
-  return libGDI32_dll.AbortDoc(util.toPointer(hdc));
+  return libGDI32_dll.AbortDoc!(util.toPointer(hdc));
 }
 
 export function SetAbortProc(
   hdc: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   proc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Xps.ABORTPROC */,
 ): number /* i32 */ {
-  return libGDI32_dll.SetAbortProc(util.toPointer(hdc), util.toPointer(proc));
+  return libGDI32_dll.SetAbortProc!(util.toPointer(hdc), util.toPointer(proc));
 }
 
 export function PrintWindow(
@@ -2143,6 +2155,6 @@ export function PrintWindow(
   hdcBlt: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   nFlags: PRINT_WINDOW_FLAGS /* Windows.Win32.Storage.Xps.PRINT_WINDOW_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.PrintWindow((hwnd), util.toPointer(hdcBlt), nFlags));
+  return util.boolFromFfi(libUSER32_dll.PrintWindow!((hwnd), util.toPointer(hdcBlt), nFlags));
 }
 

@@ -23925,6 +23925,7 @@ try {
     UnregisterDeviceNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -23934,6 +23935,6 @@ try {
 export function UnregisterDeviceNotification(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterDeviceNotification(util.toPointer(Handle)));
+  return util.boolFromFfi(libUSER32_dll.UnregisterDeviceNotification!(util.toPointer(Handle)));
 }
 

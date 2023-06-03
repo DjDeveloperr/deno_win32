@@ -29762,18 +29762,22 @@ try {
     CommonPropertySheetUIA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CommonPropertySheetUIW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetCPSUIUserData: {
       parameters: ["pointer"],
       result: "usize",
+      optional: true,
     },
     SetCPSUIUserData: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -29783,682 +29787,852 @@ try {
     EnumPrintersA: {
       parameters: ["u32", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPrintersW: {
       parameters: ["u32", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetSpoolFileHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CommitSpoolData: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CloseSpoolFileHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenPrinterA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenPrinterW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResetPrinterA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResetPrinterW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetJobA: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetJobW: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetJobA: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetJobW: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumJobsA: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumJobsW: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AddPrinterW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeletePrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetPrinterA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     SetPrinterW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetPrinterA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterW: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterDriverA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterDriverW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterDriverExA: {
       parameters: ["buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AddPrinterDriverExW: {
       parameters: ["buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EnumPrinterDriversA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPrinterDriversW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDriverA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDriverW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDriverDirectoryA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDriverDirectoryW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterDriverA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterDriverW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterDriverExA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterDriverExW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     AddPrintProcessorA: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     AddPrintProcessorW: {
       parameters: ["buffer", "buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     EnumPrintProcessorsA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPrintProcessorsW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrintProcessorDirectoryA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrintProcessorDirectoryW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPrintProcessorDatatypesA: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPrintProcessorDatatypesW: {
       parameters: ["buffer", "buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeletePrintProcessorA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrintProcessorW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     StartDocPrinterA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     StartDocPrinterW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     StartPagePrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WritePrinter: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     FlushPrinter: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EndPagePrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AbortPrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ReadPrinter: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EndDocPrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AddJobA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddJobW: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ScheduleJob: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PrinterProperties: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DocumentPropertiesA: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     DocumentPropertiesW: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AdvancedDocumentPropertiesA: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AdvancedDocumentPropertiesW: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ExtDeviceMode: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "buffer", "pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDataA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPrinterDataW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPrinterDataExA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPrinterDataExW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterDataA: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterDataW: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterDataExA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterDataExW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterKeyA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumPrinterKeyW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetPrinterDataA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SetPrinterDataW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SetPrinterDataExA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     SetPrinterDataExW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterDataA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterDataW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterDataExA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterDataExW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterKeyA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DeletePrinterKeyW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     WaitForPrinterChange: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     FindFirstPrinterChangeNotification: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FindNextPrinterChangeNotification: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     FreePrinterNotifyInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FindClosePrinterChangeNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     PrinterMessageBoxA: {
       parameters: ["pointer", "u32", "pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     PrinterMessageBoxW: {
       parameters: ["pointer", "u32", "pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ClosePrinter: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     AddFormA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddFormW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteFormA: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeleteFormW: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     GetFormA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetFormW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetFormA: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetFormW: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumFormsA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumFormsW: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumMonitorsA: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumMonitorsW: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddMonitorA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddMonitorW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteMonitorA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeleteMonitorW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     EnumPortsA: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     EnumPortsW: {
       parameters: ["buffer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPortA: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     AddPortW: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ConfigurePortA: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ConfigurePortW: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePortA: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePortW: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     XcvDataW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDefaultPrinterA: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetDefaultPrinterW: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetDefaultPrinterA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SetDefaultPrinterW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SetPortA: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetPortW: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterConnectionA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterConnectionW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterConnectionA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterConnectionW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ConnectToPrinterDlg: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     AddPrintProvidorA: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrintProvidorW: {
       parameters: ["buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     DeletePrintProvidorA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DeletePrintProvidorW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     IsValidDevmodeA: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     IsValidDevmodeW: {
       parameters: ["pointer", "usize"],
       result: "i32",
+      optional: true,
     },
     OpenPrinter2A: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenPrinter2W: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterConnection2A: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     AddPrinterConnection2W: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     InstallPrinterDriverFromPackageA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     InstallPrinterDriverFromPackageW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UploadPrinterDriverPackageA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UploadPrinterDriverPackageW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCorePrinterDriversA: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetCorePrinterDriversW: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CorePrinterDriverInstalledA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CorePrinterDriverInstalledW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetPrinterDriverPackagePathA: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetPrinterDriverPackagePathW: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DeletePrinterDriverPackageA: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     DeletePrinterDriverPackageW: {
       parameters: ["buffer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ReportJobProcessingProgress: {
       parameters: ["pointer", "u32", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     GetPrinterDriver2A: {
       parameters: ["pointer", "pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrinterDriver2W: {
       parameters: ["pointer", "pointer", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetPrintExecutionData: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetJobNamedPropertyValue: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FreePrintPropertyValue: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     FreePrintNamedPropertyArray: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     SetJobNamedProperty: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteJobNamedProperty: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     EnumJobNamedProperties: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetPrintOutputInfo: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DevQueryPrintEx: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterForPrintAsyncNotifications: {
       parameters: ["buffer", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UnRegisterForPrintAsyncNotifications: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreatePrintAsyncNotifyChannel: {
       parameters: ["buffer", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreatePrinterIC: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PlayGdiScriptOnPrinterIC: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     DeletePrinterIC: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DevQueryPrint: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RouterFreeBidiResponseContainer: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -30468,50 +30642,62 @@ try {
     GdiGetSpoolFileHandle: {
       parameters: ["buffer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     GdiDeleteSpoolFileHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GdiGetPageCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GdiGetDC: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GdiGetPageHandle: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GdiStartDocEMF: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GdiStartPageEMF: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GdiPlayPageEMF: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GdiEndPageEMF: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     GdiEndDocEMF: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GdiGetDevmodeForPage: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GdiResetDCEMF: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -30521,106 +30707,132 @@ try {
     GetJobAttributes: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetJobAttributesEx: {
       parameters: ["buffer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     RevertToPrinterSelf: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     ImpersonatePrinterClient: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ReplyPrinterChangeNotification: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ReplyPrinterChangeNotificationEx: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     PartialReplyPrinterChangeNotification: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     RouterAllocPrinterNotifyInfo: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     RouterFreePrinterNotifyInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RouterAllocBidiResponseContainer: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     RouterAllocBidiMem: {
       parameters: ["usize"],
       result: "pointer",
+      optional: true,
     },
     RouterFreeBidiMem: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     AppendPrinterNotifyInfoData: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CallRouterFindFirstPrinterChangeNotification: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ProvidorFindFirstPrinterChangeNotification: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ProvidorFindClosePrinterChangeNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SpoolerFindFirstPrinterChangeNotification: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SpoolerFindNextPrinterChangeNotification: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SpoolerRefreshPrinterChangeNotification: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SpoolerFreePrinterNotifyInfo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SpoolerFindClosePrinterChangeNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SplPromptUIInUsersSession: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SplIsSessionZero: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddPrintDeviceObject: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     UpdatePrintDeviceObject: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RemovePrintDeviceObject: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -30630,10 +30842,12 @@ try {
     SpoolerCopyFileEvent: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     GenerateCopyFilePaths: {
       parameters: ["buffer", "buffer", "pointer", "u32", "buffer", "pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -30646,7 +30860,7 @@ export function CommonPropertySheetUIA(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCOMPSTUI_dll.CommonPropertySheetUIA((hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
+  return libCOMPSTUI_dll.CommonPropertySheetUIA!((hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
 }
 
 export function CommonPropertySheetUIW(
@@ -30655,20 +30869,20 @@ export function CommonPropertySheetUIW(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCOMPSTUI_dll.CommonPropertySheetUIW((hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
+  return libCOMPSTUI_dll.CommonPropertySheetUIW!((hWndOwner), util.toPointer(pfnPropSheetUI), util.toPointer(lParam), util.toPointer(pResult));
 }
 
 export function GetCPSUIUserData(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): bigint | number /* usize */ {
-  return libCOMPSTUI_dll.GetCPSUIUserData((hDlg));
+  return libCOMPSTUI_dll.GetCPSUIUserData!((hDlg));
 }
 
 export function SetCPSUIUserData(
   hDlg: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   CPSUIUserData: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMPSTUI_dll.SetCPSUIUserData((hDlg), CPSUIUserData));
+  return util.boolFromFfi(libCOMPSTUI_dll.SetCPSUIUserData!((hDlg), CPSUIUserData));
 }
 
 export function EnumPrintersA(
@@ -30680,7 +30894,7 @@ export function EnumPrintersA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintersA(Flags, util.pstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintersA!(Flags, util.pstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintersW(
@@ -30692,13 +30906,13 @@ export function EnumPrintersW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintersW(Flags, util.pwstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintersW!(Flags, util.pwstrToFfi(Name), Level, util.toPointer(pPrinterEnum), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetSpoolFileHandle(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.GetSpoolFileHandle(util.toPointer(hPrinter));
+  return libwinspool_drv.GetSpoolFileHandle!(util.toPointer(hPrinter));
 }
 
 export function CommitSpoolData(
@@ -30706,14 +30920,14 @@ export function CommitSpoolData(
   hSpoolFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   cbCommit: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.CommitSpoolData(util.toPointer(hPrinter), util.toPointer(hSpoolFile), cbCommit);
+  return libwinspool_drv.CommitSpoolData!(util.toPointer(hPrinter), util.toPointer(hSpoolFile), cbCommit);
 }
 
 export function CloseSpoolFileHandle(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hSpoolFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.CloseSpoolFileHandle(util.toPointer(hPrinter), util.toPointer(hSpoolFile)));
+  return util.boolFromFfi(libwinspool_drv.CloseSpoolFileHandle!(util.toPointer(hPrinter), util.toPointer(hSpoolFile)));
 }
 
 export function OpenPrinterA(
@@ -30721,7 +30935,7 @@ export function OpenPrinterA(
   phPrinter: Deno.PointerValue | Uint8Array /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.OpenPrinterA(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinterA!(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
 }
 
 export function OpenPrinterW(
@@ -30729,21 +30943,21 @@ export function OpenPrinterW(
   phPrinter: Deno.PointerValue | Uint8Array /* ptr */,
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.OpenPrinterW(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinterW!(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault)));
 }
 
 export function ResetPrinterA(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ResetPrinterA(util.toPointer(hPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.ResetPrinterA!(util.toPointer(hPrinter), util.toPointer(pDefault)));
 }
 
 export function ResetPrinterW(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ResetPrinterW(util.toPointer(hPrinter), util.toPointer(pDefault)));
+  return util.boolFromFfi(libwinspool_drv.ResetPrinterW!(util.toPointer(hPrinter), util.toPointer(pDefault)));
 }
 
 export function SetJobA(
@@ -30753,7 +30967,7 @@ export function SetJobA(
   pJob: Deno.PointerValue | Uint8Array /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
+  return util.boolFromFfi(libwinspool_drv.SetJobA!(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
 }
 
 export function SetJobW(
@@ -30763,7 +30977,7 @@ export function SetJobW(
   pJob: Deno.PointerValue | Uint8Array /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
+  return util.boolFromFfi(libwinspool_drv.SetJobW!(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), Command));
 }
 
 export function GetJobA(
@@ -30774,7 +30988,7 @@ export function GetJobA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetJobA(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetJobA!(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetJobW(
@@ -30785,7 +30999,7 @@ export function GetJobW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetJobW(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetJobW!(util.toPointer(hPrinter), JobId, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function EnumJobsA(
@@ -30798,7 +31012,7 @@ export function EnumJobsA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumJobsA(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumJobsA!(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumJobsW(
@@ -30811,7 +31025,7 @@ export function EnumJobsW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumJobsW(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumJobsW!(util.toPointer(hPrinter), FirstJob, NoJobs, Level, util.toPointer(pJob), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddPrinterA(
@@ -30819,7 +31033,7 @@ export function AddPrinterA(
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.AddPrinterA(util.pstrToFfi(pName), Level, util.toPointer(pPrinter));
+  return libwinspool_drv.AddPrinterA!(util.pstrToFfi(pName), Level, util.toPointer(pPrinter));
 }
 
 export function AddPrinterW(
@@ -30827,13 +31041,13 @@ export function AddPrinterW(
   Level: number /* u32 */,
   pPrinter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.AddPrinterW(util.pwstrToFfi(pName), Level, util.toPointer(pPrinter));
+  return libwinspool_drv.AddPrinterW!(util.pwstrToFfi(pName), Level, util.toPointer(pPrinter));
 }
 
 export function DeletePrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinter!(util.toPointer(hPrinter)));
 }
 
 export function SetPrinterA(
@@ -30842,7 +31056,7 @@ export function SetPrinterA(
   pPrinter: Deno.PointerValue | Uint8Array /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
+  return util.boolFromFfi(libwinspool_drv.SetPrinterA!(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
 }
 
 export function SetPrinterW(
@@ -30851,7 +31065,7 @@ export function SetPrinterW(
   pPrinter: Deno.PointerValue | Uint8Array /* ptr */,
   Command: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
+  return util.boolFromFfi(libwinspool_drv.SetPrinterW!(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), Command));
 }
 
 export function GetPrinterA(
@@ -30861,7 +31075,7 @@ export function GetPrinterA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterA!(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterW(
@@ -30871,7 +31085,7 @@ export function GetPrinterW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterW!(util.toPointer(hPrinter), Level, util.toPointer(pPrinter), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function AddPrinterDriverA(
@@ -30879,7 +31093,7 @@ export function AddPrinterDriverA(
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverA(util.pstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverA!(util.pstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
 }
 
 export function AddPrinterDriverW(
@@ -30887,7 +31101,7 @@ export function AddPrinterDriverW(
   Level: number /* u32 */,
   pDriverInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverW(util.pwstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverW!(util.pwstrToFfi(pName), Level, util.toPointer(pDriverInfo)));
 }
 
 export function AddPrinterDriverExA(
@@ -30896,7 +31110,7 @@ export function AddPrinterDriverExA(
   lpbDriverInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFileCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExA(util.pstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExA!(util.pstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
 }
 
 export function AddPrinterDriverExW(
@@ -30905,7 +31119,7 @@ export function AddPrinterDriverExW(
   lpbDriverInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwFileCopyFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExW(util.pwstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterDriverExW!(util.pwstrToFfi(pName), Level, util.toPointer(lpbDriverInfo), dwFileCopyFlags));
 }
 
 export function EnumPrinterDriversA(
@@ -30917,7 +31131,7 @@ export function EnumPrinterDriversA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrinterDriversW(
@@ -30929,7 +31143,7 @@ export function EnumPrinterDriversW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrinterDriversW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetPrinterDriverA(
@@ -30940,7 +31154,7 @@ export function GetPrinterDriverA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverA(util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverA!(util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverW(
@@ -30951,7 +31165,7 @@ export function GetPrinterDriverW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverW(util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverW!(util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverDirectoryA(
@@ -30962,7 +31176,7 @@ export function GetPrinterDriverDirectoryA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriverDirectoryW(
@@ -30973,7 +31187,7 @@ export function GetPrinterDriverDirectoryW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriverDirectoryW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverDirectory), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function DeletePrinterDriverA(
@@ -30981,7 +31195,7 @@ export function DeletePrinterDriverA(
   pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pDriverName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverW(
@@ -30989,7 +31203,7 @@ export function DeletePrinterDriverW(
   pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pDriverName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName)));
 }
 
 export function DeletePrinterDriverExA(
@@ -30999,7 +31213,7 @@ export function DeletePrinterDriverExA(
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
 }
 
 export function DeletePrinterDriverExW(
@@ -31009,7 +31223,7 @@ export function DeletePrinterDriverExW(
   dwDeleteFlag: number /* u32 */,
   dwVersionFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterDriverExW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pDriverName), dwDeleteFlag, dwVersionFlag));
 }
 
 export function AddPrintProcessorA(
@@ -31018,7 +31232,7 @@ export function AddPrintProcessorA(
   pPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pPrintProcessorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPathName), util.pstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPathName), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function AddPrintProcessorW(
@@ -31027,7 +31241,7 @@ export function AddPrintProcessorW(
   pPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPrintProcessorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPathName), util.pwstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProcessorW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPathName), util.pwstrToFfi(pPrintProcessorName)));
 }
 
 export function EnumPrintProcessorsA(
@@ -31039,7 +31253,7 @@ export function EnumPrintProcessorsA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintProcessorsW(
@@ -31051,7 +31265,7 @@ export function EnumPrintProcessorsW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorsW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function GetPrintProcessorDirectoryA(
@@ -31062,7 +31276,7 @@ export function GetPrintProcessorDirectoryA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrintProcessorDirectoryW(
@@ -31073,7 +31287,7 @@ export function GetPrintProcessorDirectoryW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintProcessorDirectoryW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pPrintProcessorInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function EnumPrintProcessorDatatypesA(
@@ -31085,7 +31299,7 @@ export function EnumPrintProcessorDatatypesA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesA(util.pstrToFfi(pName), util.pstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesA!(util.pstrToFfi(pName), util.pstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPrintProcessorDatatypesW(
@@ -31097,7 +31311,7 @@ export function EnumPrintProcessorDatatypesW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesW(util.pwstrToFfi(pName), util.pwstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPrintProcessorDatatypesW!(util.pwstrToFfi(pName), util.pwstrToFfi(pPrintProcessorName), Level, util.toPointer(pDatatypes), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function DeletePrintProcessorA(
@@ -31105,7 +31319,7 @@ export function DeletePrintProcessorA(
   pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pPrintProcessorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProcessorName)));
 }
 
 export function DeletePrintProcessorW(
@@ -31113,7 +31327,7 @@ export function DeletePrintProcessorW(
   pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPrintProcessorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProcessorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProcessorW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProcessorName)));
 }
 
 export function StartDocPrinterA(
@@ -31121,7 +31335,7 @@ export function StartDocPrinterA(
   Level: number /* u32 */,
   pDocInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.StartDocPrinterA(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
+  return libwinspool_drv.StartDocPrinterA!(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
 }
 
 export function StartDocPrinterW(
@@ -31129,13 +31343,13 @@ export function StartDocPrinterW(
   Level: number /* u32 */,
   pDocInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.StartDocPrinterW(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
+  return libwinspool_drv.StartDocPrinterW!(util.toPointer(hPrinter), Level, util.toPointer(pDocInfo));
 }
 
 export function StartPagePrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.StartPagePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.StartPagePrinter!(util.toPointer(hPrinter)));
 }
 
 export function WritePrinter(
@@ -31144,7 +31358,7 @@ export function WritePrinter(
   cbBuf: number /* u32 */,
   pcWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.WritePrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten)));
+  return util.boolFromFfi(libwinspool_drv.WritePrinter!(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten)));
 }
 
 export function FlushPrinter(
@@ -31154,19 +31368,19 @@ export function FlushPrinter(
   pcWritten: Deno.PointerValue | Uint8Array /* ptr */,
   cSleep: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.FlushPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten), cSleep));
+  return util.boolFromFfi(libwinspool_drv.FlushPrinter!(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pcWritten), cSleep));
 }
 
 export function EndPagePrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EndPagePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.EndPagePrinter!(util.toPointer(hPrinter)));
 }
 
 export function AbortPrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AbortPrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.AbortPrinter!(util.toPointer(hPrinter)));
 }
 
 export function ReadPrinter(
@@ -31175,13 +31389,13 @@ export function ReadPrinter(
   cbBuf: number /* u32 */,
   pNoBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ReadPrinter(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pNoBytesRead)));
+  return util.boolFromFfi(libwinspool_drv.ReadPrinter!(util.toPointer(hPrinter), util.toPointer(pBuf), cbBuf, util.toPointer(pNoBytesRead)));
 }
 
 export function EndDocPrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EndDocPrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.EndDocPrinter!(util.toPointer(hPrinter)));
 }
 
 export function AddJobA(
@@ -31191,7 +31405,7 @@ export function AddJobA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddJobA(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.AddJobA!(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function AddJobW(
@@ -31201,21 +31415,21 @@ export function AddJobW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddJobW(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.AddJobW!(util.toPointer(hPrinter), Level, util.toPointer(pData), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function ScheduleJob(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   JobId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ScheduleJob(util.toPointer(hPrinter), JobId));
+  return util.boolFromFfi(libwinspool_drv.ScheduleJob!(util.toPointer(hPrinter), JobId));
 }
 
 export function PrinterProperties(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.PrinterProperties((hWnd), util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.PrinterProperties!((hWnd), util.toPointer(hPrinter)));
 }
 
 export function DocumentPropertiesA(
@@ -31226,7 +31440,7 @@ export function DocumentPropertiesA(
   pDevModeInput: Deno.PointerValue | Uint8Array /* ptr */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libwinspool_drv.DocumentPropertiesA((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
+  return libwinspool_drv.DocumentPropertiesA!((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
 }
 
 export function DocumentPropertiesW(
@@ -31237,7 +31451,7 @@ export function DocumentPropertiesW(
   pDevModeInput: Deno.PointerValue | Uint8Array /* ptr */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libwinspool_drv.DocumentPropertiesW((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
+  return libwinspool_drv.DocumentPropertiesW!((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput), fMode);
 }
 
 export function AdvancedDocumentPropertiesA(
@@ -31247,7 +31461,7 @@ export function AdvancedDocumentPropertiesA(
   pDevModeOutput: Deno.PointerValue | Uint8Array /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libwinspool_drv.AdvancedDocumentPropertiesA((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
+  return libwinspool_drv.AdvancedDocumentPropertiesA!((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
 }
 
 export function AdvancedDocumentPropertiesW(
@@ -31257,7 +31471,7 @@ export function AdvancedDocumentPropertiesW(
   pDevModeOutput: Deno.PointerValue | Uint8Array /* ptr */,
   pDevModeInput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libwinspool_drv.AdvancedDocumentPropertiesW((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
+  return libwinspool_drv.AdvancedDocumentPropertiesW!((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pDeviceName), util.toPointer(pDevModeOutput), util.toPointer(pDevModeInput));
 }
 
 export function ExtDeviceMode(
@@ -31270,7 +31484,7 @@ export function ExtDeviceMode(
   pProfile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fMode: number /* u32 */,
 ): number /* i32 */ {
-  return libwinspool_drv.ExtDeviceMode((hWnd), util.toPointer(hInst), util.toPointer(pDevModeOutput), util.pstrToFfi(pDeviceName), util.pstrToFfi(pPort), util.toPointer(pDevModeInput), util.pstrToFfi(pProfile), fMode);
+  return libwinspool_drv.ExtDeviceMode!((hWnd), util.toPointer(hInst), util.toPointer(pDevModeOutput), util.pstrToFfi(pDeviceName), util.pstrToFfi(pPort), util.toPointer(pDevModeInput), util.pstrToFfi(pProfile), fMode);
 }
 
 export function GetPrinterDataA(
@@ -31281,7 +31495,7 @@ export function GetPrinterDataA(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.GetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataA!(util.toPointer(hPrinter), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataW(
@@ -31292,7 +31506,7 @@ export function GetPrinterDataW(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.GetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataW!(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataExA(
@@ -31304,7 +31518,7 @@ export function GetPrinterDataExA(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.GetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataExA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function GetPrinterDataExW(
@@ -31316,7 +31530,7 @@ export function GetPrinterDataExW(
   nSize: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.GetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
+  return libwinspool_drv.GetPrinterDataExW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), util.toPointer(pType), util.toPointer(pData), nSize, util.toPointer(pcbNeeded));
 }
 
 export function EnumPrinterDataA(
@@ -31330,7 +31544,7 @@ export function EnumPrinterDataA(
   cbData: number /* u32 */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterDataA(util.toPointer(hPrinter), dwIndex, util.pstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
+  return libwinspool_drv.EnumPrinterDataA!(util.toPointer(hPrinter), dwIndex, util.pstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
 }
 
 export function EnumPrinterDataW(
@@ -31344,7 +31558,7 @@ export function EnumPrinterDataW(
   cbData: number /* u32 */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterDataW(util.toPointer(hPrinter), dwIndex, util.pwstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
+  return libwinspool_drv.EnumPrinterDataW!(util.toPointer(hPrinter), dwIndex, util.pwstrToFfi(pValueName), cbValueName, util.toPointer(pcbValueName), util.toPointer(pType), util.toPointer(pData), cbData, util.toPointer(pcbData));
 }
 
 export function EnumPrinterDataExA(
@@ -31355,7 +31569,7 @@ export function EnumPrinterDataExA(
   pcbEnumValues: Deno.PointerValue | Uint8Array /* ptr */,
   pnEnumValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
+  return libwinspool_drv.EnumPrinterDataExA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
 }
 
 export function EnumPrinterDataExW(
@@ -31366,7 +31580,7 @@ export function EnumPrinterDataExW(
   pcbEnumValues: Deno.PointerValue | Uint8Array /* ptr */,
   pnEnumValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
+  return libwinspool_drv.EnumPrinterDataExW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.toPointer(pEnumValues), cbEnumValues, util.toPointer(pcbEnumValues), util.toPointer(pnEnumValues));
 }
 
 export function EnumPrinterKeyA(
@@ -31376,7 +31590,7 @@ export function EnumPrinterKeyA(
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
+  return libwinspool_drv.EnumPrinterKeyA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
 }
 
 export function EnumPrinterKeyW(
@@ -31386,7 +31600,7 @@ export function EnumPrinterKeyW(
   cbSubkey: number /* u32 */,
   pcbSubkey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumPrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
+  return libwinspool_drv.EnumPrinterKeyW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pSubkey), cbSubkey, util.toPointer(pcbSubkey));
 }
 
 export function SetPrinterDataA(
@@ -31396,7 +31610,7 @@ export function SetPrinterDataA(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.SetPrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataA!(util.toPointer(hPrinter), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataW(
@@ -31406,7 +31620,7 @@ export function SetPrinterDataW(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.SetPrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataW!(util.toPointer(hPrinter), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataExA(
@@ -31417,7 +31631,7 @@ export function SetPrinterDataExA(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.SetPrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataExA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function SetPrinterDataExW(
@@ -31428,21 +31642,21 @@ export function SetPrinterDataExW(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.SetPrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
+  return libwinspool_drv.SetPrinterDataExW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName), Type, util.toPointer(pData), cbData);
 }
 
 export function DeletePrinterDataA(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterDataA(util.toPointer(hPrinter), util.pstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataA!(util.toPointer(hPrinter), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataW(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterDataW(util.toPointer(hPrinter), util.pwstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataW!(util.toPointer(hPrinter), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExA(
@@ -31450,7 +31664,7 @@ export function DeletePrinterDataExA(
   pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterDataExA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataExA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName), util.pstrToFfi(pValueName));
 }
 
 export function DeletePrinterDataExW(
@@ -31458,28 +31672,28 @@ export function DeletePrinterDataExW(
   pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterDataExW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName));
+  return libwinspool_drv.DeletePrinterDataExW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName), util.pwstrToFfi(pValueName));
 }
 
 export function DeletePrinterKeyA(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pKeyName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterKeyA(util.toPointer(hPrinter), util.pstrToFfi(pKeyName));
+  return libwinspool_drv.DeletePrinterKeyA!(util.toPointer(hPrinter), util.pstrToFfi(pKeyName));
 }
 
 export function DeletePrinterKeyW(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeletePrinterKeyW(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName));
+  return libwinspool_drv.DeletePrinterKeyW!(util.toPointer(hPrinter), util.pwstrToFfi(pKeyName));
 }
 
 export function WaitForPrinterChange(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.WaitForPrinterChange(util.toPointer(hPrinter), Flags);
+  return libwinspool_drv.WaitForPrinterChange!(util.toPointer(hPrinter), Flags);
 }
 
 export function FindFirstPrinterChangeNotification(
@@ -31488,7 +31702,7 @@ export function FindFirstPrinterChangeNotification(
   fdwOptions: number /* u32 */,
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.FindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilter, fdwOptions, util.toPointer(pPrinterNotifyOptions));
+  return libwinspool_drv.FindFirstPrinterChangeNotification!(util.toPointer(hPrinter), fdwFilter, fdwOptions, util.toPointer(pPrinterNotifyOptions));
 }
 
 export function FindNextPrinterChangeNotification(
@@ -31497,19 +31711,19 @@ export function FindNextPrinterChangeNotification(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppPrinterNotifyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.FindNextPrinterChangeNotification(util.toPointer(hChange), util.toPointer(pdwChange), util.toPointer(pvReserved), util.toPointer(ppPrinterNotifyInfo)));
+  return util.boolFromFfi(libwinspool_drv.FindNextPrinterChangeNotification!(util.toPointer(hChange), util.toPointer(pdwChange), util.toPointer(pvReserved), util.toPointer(ppPrinterNotifyInfo)));
 }
 
 export function FreePrinterNotifyInfo(
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.FreePrinterNotifyInfo(util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libwinspool_drv.FreePrinterNotifyInfo!(util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function FindClosePrinterChangeNotification(
   hChange: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.FindClosePrinterChangeNotification(util.toPointer(hChange)));
+  return util.boolFromFfi(libwinspool_drv.FindClosePrinterChangeNotification!(util.toPointer(hChange)));
 }
 
 export function PrinterMessageBoxA(
@@ -31520,7 +31734,7 @@ export function PrinterMessageBoxA(
   pCaption: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.PrinterMessageBoxA(util.toPointer(hPrinter), Error, (hWnd), util.pstrToFfi(pText), util.pstrToFfi(pCaption), dwType);
+  return libwinspool_drv.PrinterMessageBoxA!(util.toPointer(hPrinter), Error, (hWnd), util.pstrToFfi(pText), util.pstrToFfi(pCaption), dwType);
 }
 
 export function PrinterMessageBoxW(
@@ -31531,13 +31745,13 @@ export function PrinterMessageBoxW(
   pCaption: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): number /* u32 */ {
-  return libwinspool_drv.PrinterMessageBoxW(util.toPointer(hPrinter), Error, (hWnd), util.pwstrToFfi(pText), util.pwstrToFfi(pCaption), dwType);
+  return libwinspool_drv.PrinterMessageBoxW!(util.toPointer(hPrinter), Error, (hWnd), util.pwstrToFfi(pText), util.pwstrToFfi(pCaption), dwType);
 }
 
 export function ClosePrinter(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ClosePrinter(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libwinspool_drv.ClosePrinter!(util.toPointer(hPrinter)));
 }
 
 export function AddFormA(
@@ -31545,7 +31759,7 @@ export function AddFormA(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddFormA(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.AddFormA!(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
 }
 
 export function AddFormW(
@@ -31553,21 +31767,21 @@ export function AddFormW(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddFormW(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.AddFormW!(util.toPointer(hPrinter), Level, util.toPointer(pForm)));
 }
 
 export function DeleteFormA(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pFormName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeleteFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteFormA!(util.toPointer(hPrinter), util.pstrToFfi(pFormName)));
 }
 
 export function DeleteFormW(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pFormName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeleteFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteFormW!(util.toPointer(hPrinter), util.pwstrToFfi(pFormName)));
 }
 
 export function GetFormA(
@@ -31578,7 +31792,7 @@ export function GetFormA(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetFormA!(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetFormW(
@@ -31589,7 +31803,7 @@ export function GetFormW(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetFormW!(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function SetFormA(
@@ -31598,7 +31812,7 @@ export function SetFormA(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetFormA(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.SetFormA!(util.toPointer(hPrinter), util.pstrToFfi(pFormName), Level, util.toPointer(pForm)));
 }
 
 export function SetFormW(
@@ -31607,7 +31821,7 @@ export function SetFormW(
   Level: number /* u32 */,
   pForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetFormW(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm)));
+  return util.boolFromFfi(libwinspool_drv.SetFormW!(util.toPointer(hPrinter), util.pwstrToFfi(pFormName), Level, util.toPointer(pForm)));
 }
 
 export function EnumFormsA(
@@ -31618,7 +31832,7 @@ export function EnumFormsA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumFormsA(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumFormsA!(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumFormsW(
@@ -31629,7 +31843,7 @@ export function EnumFormsW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumFormsW(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumFormsW!(util.toPointer(hPrinter), Level, util.toPointer(pForm), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumMonitorsA(
@@ -31640,7 +31854,7 @@ export function EnumMonitorsA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumMonitorsA(util.pstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumMonitorsA!(util.pstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumMonitorsW(
@@ -31651,7 +31865,7 @@ export function EnumMonitorsW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumMonitorsW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumMonitorsW!(util.pwstrToFfi(pName), Level, util.toPointer(pMonitor), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddMonitorA(
@@ -31659,7 +31873,7 @@ export function AddMonitorA(
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddMonitorA(util.pstrToFfi(pName), Level, util.toPointer(pMonitors)));
+  return util.boolFromFfi(libwinspool_drv.AddMonitorA!(util.pstrToFfi(pName), Level, util.toPointer(pMonitors)));
 }
 
 export function AddMonitorW(
@@ -31667,7 +31881,7 @@ export function AddMonitorW(
   Level: number /* u32 */,
   pMonitors: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddMonitorW(util.pwstrToFfi(pName), Level, util.toPointer(pMonitors)));
+  return util.boolFromFfi(libwinspool_drv.AddMonitorW!(util.pwstrToFfi(pName), Level, util.toPointer(pMonitors)));
 }
 
 export function DeleteMonitorA(
@@ -31675,7 +31889,7 @@ export function DeleteMonitorA(
   pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pMonitorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeleteMonitorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteMonitorA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pMonitorName)));
 }
 
 export function DeleteMonitorW(
@@ -31683,7 +31897,7 @@ export function DeleteMonitorW(
   pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pMonitorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeleteMonitorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.DeleteMonitorW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pMonitorName)));
 }
 
 export function EnumPortsA(
@@ -31694,7 +31908,7 @@ export function EnumPortsA(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPortsA(util.pstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPortsA!(util.pstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function EnumPortsW(
@@ -31705,7 +31919,7 @@ export function EnumPortsW(
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pcReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.EnumPortsW(util.pwstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
+  return util.boolFromFfi(libwinspool_drv.EnumPortsW!(util.pwstrToFfi(pName), Level, util.toPointer(pPort), cbBuf, util.toPointer(pcbNeeded), util.toPointer(pcReturned)));
 }
 
 export function AddPortA(
@@ -31713,7 +31927,7 @@ export function AddPortA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pMonitorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPortA(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPortA!(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pMonitorName)));
 }
 
 export function AddPortW(
@@ -31721,7 +31935,7 @@ export function AddPortW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pMonitorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPortW(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pMonitorName)));
+  return util.boolFromFfi(libwinspool_drv.AddPortW!(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pMonitorName)));
 }
 
 export function ConfigurePortA(
@@ -31729,7 +31943,7 @@ export function ConfigurePortA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ConfigurePortA(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.ConfigurePortA!(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function ConfigurePortW(
@@ -31737,7 +31951,7 @@ export function ConfigurePortW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.ConfigurePortW(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.ConfigurePortW!(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function DeletePortA(
@@ -31745,7 +31959,7 @@ export function DeletePortA(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePortA(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePortA!(util.pstrToFfi(pName), (hWnd), util.pstrToFfi(pPortName)));
 }
 
 export function DeletePortW(
@@ -31753,7 +31967,7 @@ export function DeletePortW(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pPortName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePortW(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pPortName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePortW!(util.pwstrToFfi(pName), (hWnd), util.pwstrToFfi(pPortName)));
 }
 
 export function XcvDataW(
@@ -31766,33 +31980,33 @@ export function XcvDataW(
   pcbOutputNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   pdwStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.XcvDataW(util.toPointer(hXcv), util.pwstrToFfi(pszDataName), util.toPointer(pInputData), cbInputData, util.toPointer(pOutputData), cbOutputData, util.toPointer(pcbOutputNeeded), util.toPointer(pdwStatus)));
+  return util.boolFromFfi(libwinspool_drv.XcvDataW!(util.toPointer(hXcv), util.pwstrToFfi(pszDataName), util.toPointer(pInputData), cbInputData, util.toPointer(pOutputData), cbOutputData, util.toPointer(pcbOutputNeeded), util.toPointer(pdwStatus)));
 }
 
 export function GetDefaultPrinterA(
   pszBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterA(util.pstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
+  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterA!(util.pstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function GetDefaultPrinterW(
   pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterW(util.pwstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
+  return util.boolFromFfi(libwinspool_drv.GetDefaultPrinterW!(util.pwstrToFfi(pszBuffer), util.toPointer(pcchBuffer)));
 }
 
 export function SetDefaultPrinterA(
   pszPrinter: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterA(util.pstrToFfi(pszPrinter)));
+  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterA!(util.pstrToFfi(pszPrinter)));
 }
 
 export function SetDefaultPrinterW(
   pszPrinter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterW(util.pwstrToFfi(pszPrinter)));
+  return util.boolFromFfi(libwinspool_drv.SetDefaultPrinterW!(util.pwstrToFfi(pszPrinter)));
 }
 
 export function SetPortA(
@@ -31801,7 +32015,7 @@ export function SetPortA(
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetPortA(util.pstrToFfi(pName), util.pstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
+  return util.boolFromFfi(libwinspool_drv.SetPortA!(util.pstrToFfi(pName), util.pstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
 }
 
 export function SetPortW(
@@ -31810,38 +32024,38 @@ export function SetPortW(
   dwLevel: number /* u32 */,
   pPortInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.SetPortW(util.pwstrToFfi(pName), util.pwstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
+  return util.boolFromFfi(libwinspool_drv.SetPortW!(util.pwstrToFfi(pName), util.pwstrToFfi(pPortName), dwLevel, util.toPointer(pPortInfo)));
 }
 
 export function AddPrinterConnectionA(
   pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionA(util.pstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionA!(util.pstrToFfi(pName)));
 }
 
 export function AddPrinterConnectionW(
   pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionW(util.pwstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnectionW!(util.pwstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionA(
   pName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionA(util.pstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionA!(util.pstrToFfi(pName)));
 }
 
 export function DeletePrinterConnectionW(
   pName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionW(util.pwstrToFfi(pName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterConnectionW!(util.pwstrToFfi(pName)));
 }
 
 export function ConnectToPrinterDlg(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   Flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.ConnectToPrinterDlg((hwnd), Flags);
+  return libwinspool_drv.ConnectToPrinterDlg!((hwnd), Flags);
 }
 
 export function AddPrintProvidorA(
@@ -31849,7 +32063,7 @@ export function AddPrintProvidorA(
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorA(util.pstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorA!(util.pstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
 }
 
 export function AddPrintProvidorW(
@@ -31857,7 +32071,7 @@ export function AddPrintProvidorW(
   Level: number /* u32 */,
   pProvidorInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorW(util.pwstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrintProvidorW!(util.pwstrToFfi(pName), Level, util.toPointer(pProvidorInfo)));
 }
 
 export function DeletePrintProvidorA(
@@ -31865,7 +32079,7 @@ export function DeletePrintProvidorA(
   pEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pPrintProvidorName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorA(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProvidorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorA!(util.pstrToFfi(pName), util.pstrToFfi(pEnvironment), util.pstrToFfi(pPrintProvidorName)));
 }
 
 export function DeletePrintProvidorW(
@@ -31873,21 +32087,21 @@ export function DeletePrintProvidorW(
   pEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pPrintProvidorName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorW(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProvidorName)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrintProvidorW!(util.pwstrToFfi(pName), util.pwstrToFfi(pEnvironment), util.pwstrToFfi(pPrintProvidorName)));
 }
 
 export function IsValidDevmodeA(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   DevmodeSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeA(util.toPointer(pDevmode), DevmodeSize));
+  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeA!(util.toPointer(pDevmode), DevmodeSize));
 }
 
 export function IsValidDevmodeW(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   DevmodeSize: bigint | number /* usize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeW(util.toPointer(pDevmode), DevmodeSize));
+  return util.boolFromFfi(libwinspool_drv.IsValidDevmodeW!(util.toPointer(pDevmode), DevmodeSize));
 }
 
 export function OpenPrinter2A(
@@ -31896,7 +32110,7 @@ export function OpenPrinter2A(
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.OpenPrinter2A(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinter2A!(util.pstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
 }
 
 export function OpenPrinter2W(
@@ -31905,7 +32119,7 @@ export function OpenPrinter2W(
   pDefault: Deno.PointerValue | Uint8Array /* ptr */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.OpenPrinter2W(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
+  return util.boolFromFfi(libwinspool_drv.OpenPrinter2W!(util.pwstrToFfi(pPrinterName), util.toPointer(phPrinter), util.toPointer(pDefault), util.toPointer(pOptions)));
 }
 
 export function AddPrinterConnection2A(
@@ -31914,7 +32128,7 @@ export function AddPrinterConnection2A(
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2A((hWnd), util.pstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2A!((hWnd), util.pstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
 }
 
 export function AddPrinterConnection2W(
@@ -31923,7 +32137,7 @@ export function AddPrinterConnection2W(
   dwLevel: number /* u32 */,
   pConnectionInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2W((hWnd), util.pwstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
+  return util.boolFromFfi(libwinspool_drv.AddPrinterConnection2W!((hWnd), util.pwstrToFfi(pszName), dwLevel, util.toPointer(pConnectionInfo)));
 }
 
 export function InstallPrinterDriverFromPackageA(
@@ -31933,7 +32147,7 @@ export function InstallPrinterDriverFromPackageA(
   pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.InstallPrinterDriverFromPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszDriverName), util.pstrToFfi(pszEnvironment), dwFlags);
+  return libwinspool_drv.InstallPrinterDriverFromPackageA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszDriverName), util.pstrToFfi(pszEnvironment), dwFlags);
 }
 
 export function InstallPrinterDriverFromPackageW(
@@ -31943,7 +32157,7 @@ export function InstallPrinterDriverFromPackageW(
   pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.InstallPrinterDriverFromPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszDriverName), util.pwstrToFfi(pszEnvironment), dwFlags);
+  return libwinspool_drv.InstallPrinterDriverFromPackageW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszDriverName), util.pwstrToFfi(pszEnvironment), dwFlags);
 }
 
 export function UploadPrinterDriverPackageA(
@@ -31955,7 +32169,7 @@ export function UploadPrinterDriverPackageA(
   pszDestInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.UploadPrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment), dwFlags, (hwnd), util.pstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath));
+  return libwinspool_drv.UploadPrinterDriverPackageA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment), dwFlags, (hwnd), util.pstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath));
 }
 
 export function UploadPrinterDriverPackageW(
@@ -31967,7 +32181,7 @@ export function UploadPrinterDriverPackageW(
   pszDestInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDestInfPath: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.UploadPrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment), dwFlags, (hwnd), util.pwstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath));
+  return libwinspool_drv.UploadPrinterDriverPackageW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment), dwFlags, (hwnd), util.pwstrToFfi(pszDestInfPath), util.toPointer(pcchDestInfPath));
 }
 
 export function GetCorePrinterDriversA(
@@ -31977,7 +32191,7 @@ export function GetCorePrinterDriversA(
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.GetCorePrinterDriversA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers));
+  return libwinspool_drv.GetCorePrinterDriversA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers));
 }
 
 export function GetCorePrinterDriversW(
@@ -31987,7 +32201,7 @@ export function GetCorePrinterDriversW(
   cCorePrinterDrivers: number /* u32 */,
   pCorePrinterDrivers: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.GetCorePrinterDriversW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers));
+  return libwinspool_drv.GetCorePrinterDriversW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszzCoreDriverDependencies), cCorePrinterDrivers, util.toPointer(pCorePrinterDrivers));
 }
 
 export function CorePrinterDriverInstalledA(
@@ -31998,7 +32212,7 @@ export function CorePrinterDriverInstalledA(
   dwlDriverVersion: bigint | number /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.CorePrinterDriverInstalledA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
+  return libwinspool_drv.CorePrinterDriverInstalledA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
 }
 
 export function CorePrinterDriverInstalledW(
@@ -32009,7 +32223,7 @@ export function CorePrinterDriverInstalledW(
   dwlDriverVersion: bigint | number /* u64 */,
   pbDriverInstalled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.CorePrinterDriverInstalledW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
+  return libwinspool_drv.CorePrinterDriverInstalledW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.toPointer(CoreDriverGUID), util.toPointer(ftDriverDate), dwlDriverVersion, util.toPointer(pbDriverInstalled));
 }
 
 export function GetPrinterDriverPackagePathA(
@@ -32021,7 +32235,7 @@ export function GetPrinterDriverPackagePathA(
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.GetPrinterDriverPackagePathA(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszLanguage), util.pstrToFfi(pszPackageID), util.pstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize));
+  return libwinspool_drv.GetPrinterDriverPackagePathA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszEnvironment), util.pstrToFfi(pszLanguage), util.pstrToFfi(pszPackageID), util.pstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize));
 }
 
 export function GetPrinterDriverPackagePathW(
@@ -32033,7 +32247,7 @@ export function GetPrinterDriverPackagePathW(
   cchDriverPackageCab: number /* u32 */,
   pcchRequiredSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.GetPrinterDriverPackagePathW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszPackageID), util.pwstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize));
+  return libwinspool_drv.GetPrinterDriverPackagePathW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszEnvironment), util.pwstrToFfi(pszLanguage), util.pwstrToFfi(pszPackageID), util.pwstrToFfi(pszDriverPackageCab), cchDriverPackageCab, util.toPointer(pcchRequiredSize));
 }
 
 export function DeletePrinterDriverPackageA(
@@ -32041,7 +32255,7 @@ export function DeletePrinterDriverPackageA(
   pszInfPath: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pszEnvironment: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.DeletePrinterDriverPackageA(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment));
+  return libwinspool_drv.DeletePrinterDriverPackageA!(util.pstrToFfi(pszServer), util.pstrToFfi(pszInfPath), util.pstrToFfi(pszEnvironment));
 }
 
 export function DeletePrinterDriverPackageW(
@@ -32049,7 +32263,7 @@ export function DeletePrinterDriverPackageW(
   pszInfPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszEnvironment: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.DeletePrinterDriverPackageW(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment));
+  return libwinspool_drv.DeletePrinterDriverPackageW!(util.pwstrToFfi(pszServer), util.pwstrToFfi(pszInfPath), util.pwstrToFfi(pszEnvironment));
 }
 
 export function ReportJobProcessingProgress(
@@ -32058,7 +32272,7 @@ export function ReportJobProcessingProgress(
   jobOperation: EPrintXPSJobOperation /* Windows.Win32.Graphics.Printing.EPrintXPSJobOperation */,
   jobProgress: EPrintXPSJobProgress /* Windows.Win32.Graphics.Printing.EPrintXPSJobProgress */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.ReportJobProcessingProgress(util.toPointer(printerHandle), jobId, jobOperation, jobProgress);
+  return libwinspool_drv.ReportJobProcessingProgress!(util.toPointer(printerHandle), jobId, jobOperation, jobProgress);
 }
 
 export function GetPrinterDriver2A(
@@ -32070,7 +32284,7 @@ export function GetPrinterDriver2A(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2A((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2A!((hWnd), util.toPointer(hPrinter), util.pstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrinterDriver2W(
@@ -32082,13 +32296,13 @@ export function GetPrinterDriver2W(
   cbBuf: number /* u32 */,
   pcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2W((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
+  return util.boolFromFfi(libwinspool_drv.GetPrinterDriver2W!((hWnd), util.toPointer(hPrinter), util.pwstrToFfi(pEnvironment), Level, util.toPointer(pDriverInfo), cbBuf, util.toPointer(pcbNeeded)));
 }
 
 export function GetPrintExecutionData(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.GetPrintExecutionData(util.toPointer(pData)));
+  return util.boolFromFfi(libwinspool_drv.GetPrintExecutionData!(util.toPointer(pData)));
 }
 
 export function GetJobNamedPropertyValue(
@@ -32097,20 +32311,20 @@ export function GetJobNamedPropertyValue(
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.GetJobNamedPropertyValue(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName), util.toPointer(pValue));
+  return libwinspool_drv.GetJobNamedPropertyValue!(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName), util.toPointer(pValue));
 }
 
 export function FreePrintPropertyValue(
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwinspool_drv.FreePrintPropertyValue(util.toPointer(pValue));
+  return libwinspool_drv.FreePrintPropertyValue!(util.toPointer(pValue));
 }
 
 export function FreePrintNamedPropertyArray(
   cProperties: number /* u32 */,
   ppProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwinspool_drv.FreePrintNamedPropertyArray(cProperties, util.toPointer(ppProperties));
+  return libwinspool_drv.FreePrintNamedPropertyArray!(cProperties, util.toPointer(ppProperties));
 }
 
 export function SetJobNamedProperty(
@@ -32118,7 +32332,7 @@ export function SetJobNamedProperty(
   JobId: number /* u32 */,
   pProperty: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.SetJobNamedProperty(util.toPointer(hPrinter), JobId, util.toPointer(pProperty));
+  return libwinspool_drv.SetJobNamedProperty!(util.toPointer(hPrinter), JobId, util.toPointer(pProperty));
 }
 
 export function DeleteJobNamedProperty(
@@ -32126,7 +32340,7 @@ export function DeleteJobNamedProperty(
   JobId: number /* u32 */,
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwinspool_drv.DeleteJobNamedProperty(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName));
+  return libwinspool_drv.DeleteJobNamedProperty!(util.toPointer(hPrinter), JobId, util.pwstrToFfi(pszName));
 }
 
 export function EnumJobNamedProperties(
@@ -32135,7 +32349,7 @@ export function EnumJobNamedProperties(
   pcProperties: Deno.PointerValue | Uint8Array /* ptr */,
   ppProperties: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.EnumJobNamedProperties(util.toPointer(hPrinter), JobId, util.toPointer(pcProperties), util.toPointer(ppProperties));
+  return libwinspool_drv.EnumJobNamedProperties!(util.toPointer(hPrinter), JobId, util.toPointer(pcProperties), util.toPointer(ppProperties));
 }
 
 export function GetPrintOutputInfo(
@@ -32144,13 +32358,13 @@ export function GetPrintOutputInfo(
   phFile: Deno.PointerValue | Uint8Array /* ptr */,
   ppszOutputFile: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.GetPrintOutputInfo((hWnd), util.pwstrToFfi(pszPrinter), util.toPointer(phFile), util.toPointer(ppszOutputFile));
+  return libwinspool_drv.GetPrintOutputInfo!((hWnd), util.pwstrToFfi(pszPrinter), util.toPointer(phFile), util.toPointer(ppszOutputFile));
 }
 
 export function DevQueryPrintEx(
   pDQPInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DevQueryPrintEx(util.toPointer(pDQPInfo)));
+  return util.boolFromFfi(libwinspool_drv.DevQueryPrintEx!(util.toPointer(pDQPInfo)));
 }
 
 export function RegisterForPrintAsyncNotifications(
@@ -32161,13 +32375,13 @@ export function RegisterForPrintAsyncNotifications(
   pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Printing.IPrintAsyncNotifyCallback */,
   phNotify: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.RegisterForPrintAsyncNotifications(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(phNotify));
+  return libwinspool_drv.RegisterForPrintAsyncNotifications!(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(phNotify));
 }
 
 export function UnRegisterForPrintAsyncNotifications(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.UnRegisterForPrintAsyncNotifications(util.toPointer(param0));
+  return libwinspool_drv.UnRegisterForPrintAsyncNotifications!(util.toPointer(param0));
 }
 
 export function CreatePrintAsyncNotifyChannel(
@@ -32178,7 +32392,7 @@ export function CreatePrintAsyncNotifyChannel(
   pCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Printing.IPrintAsyncNotifyCallback */,
   ppIAsynchNotification: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinspool_drv.CreatePrintAsyncNotifyChannel(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(ppIAsynchNotification));
+  return libwinspool_drv.CreatePrintAsyncNotifyChannel!(util.pwstrToFfi(pszName), util.toPointer(pNotificationType), eUserFilter, eConversationStyle, util.toPointer(pCallback), util.toPointer(ppIAsynchNotification));
 }
 
 export function GdiGetSpoolFileHandle(
@@ -32186,25 +32400,25 @@ export function GdiGetSpoolFileHandle(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   pwszDocName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libGDI32_dll.GdiGetSpoolFileHandle(util.pwstrToFfi(pwszPrinterName), util.toPointer(pDevmode), util.pwstrToFfi(pwszDocName));
+  return libGDI32_dll.GdiGetSpoolFileHandle!(util.pwstrToFfi(pwszPrinterName), util.toPointer(pDevmode), util.pwstrToFfi(pwszDocName));
 }
 
 export function GdiDeleteSpoolFileHandle(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiDeleteSpoolFileHandle(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiDeleteSpoolFileHandle!(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiGetPageCount(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libGDI32_dll.GdiGetPageCount(util.toPointer(SpoolFileHandle));
+  return libGDI32_dll.GdiGetPageCount!(util.toPointer(SpoolFileHandle));
 }
 
 export function GdiGetDC(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */ {
-  return libGDI32_dll.GdiGetDC(util.toPointer(SpoolFileHandle));
+  return libGDI32_dll.GdiGetDC!(util.toPointer(SpoolFileHandle));
 }
 
 export function GdiGetPageHandle(
@@ -32212,20 +32426,20 @@ export function GdiGetPageHandle(
   Page: number /* u32 */,
   pdwPageType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libGDI32_dll.GdiGetPageHandle(util.toPointer(SpoolFileHandle), Page, util.toPointer(pdwPageType));
+  return libGDI32_dll.GdiGetPageHandle!(util.toPointer(SpoolFileHandle), Page, util.toPointer(pdwPageType));
 }
 
 export function GdiStartDocEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDocInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiStartDocEMF(util.toPointer(SpoolFileHandle), util.toPointer(pDocInfo)));
+  return util.boolFromFfi(libGDI32_dll.GdiStartDocEMF!(util.toPointer(SpoolFileHandle), util.toPointer(pDocInfo)));
 }
 
 export function GdiStartPageEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiStartPageEMF(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiStartPageEMF!(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiPlayPageEMF(
@@ -32235,20 +32449,20 @@ export function GdiPlayPageEMF(
   prectBorder: Deno.PointerValue | Uint8Array /* ptr */,
   prectClip: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiPlayPageEMF(util.toPointer(SpoolFileHandle), util.toPointer(hemf), util.toPointer(prectDocument), util.toPointer(prectBorder), util.toPointer(prectClip)));
+  return util.boolFromFfi(libGDI32_dll.GdiPlayPageEMF!(util.toPointer(SpoolFileHandle), util.toPointer(hemf), util.toPointer(prectDocument), util.toPointer(prectBorder), util.toPointer(prectClip)));
 }
 
 export function GdiEndPageEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwOptimization: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiEndPageEMF(util.toPointer(SpoolFileHandle), dwOptimization));
+  return util.boolFromFfi(libGDI32_dll.GdiEndPageEMF!(util.toPointer(SpoolFileHandle), dwOptimization));
 }
 
 export function GdiEndDocEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiEndDocEMF(util.toPointer(SpoolFileHandle)));
+  return util.boolFromFfi(libGDI32_dll.GdiEndDocEMF!(util.toPointer(SpoolFileHandle)));
 }
 
 export function GdiGetDevmodeForPage(
@@ -32257,14 +32471,14 @@ export function GdiGetDevmodeForPage(
   pCurrDM: Deno.PointerValue | Uint8Array /* ptr */,
   pLastDM: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiGetDevmodeForPage(util.toPointer(SpoolFileHandle), dwPageNumber, util.toPointer(pCurrDM), util.toPointer(pLastDM)));
+  return util.boolFromFfi(libGDI32_dll.GdiGetDevmodeForPage!(util.toPointer(SpoolFileHandle), dwPageNumber, util.toPointer(pCurrDM), util.toPointer(pLastDM)));
 }
 
 export function GdiResetDCEMF(
   SpoolFileHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCurrDM: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libGDI32_dll.GdiResetDCEMF(util.toPointer(SpoolFileHandle), util.toPointer(pCurrDM)));
+  return util.boolFromFfi(libGDI32_dll.GdiResetDCEMF!(util.toPointer(SpoolFileHandle), util.toPointer(pCurrDM)));
 }
 
 export function GetJobAttributes(
@@ -32272,7 +32486,7 @@ export function GetJobAttributes(
   pDevmode: Deno.PointerValue | Uint8Array /* ptr */,
   pAttributeInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributes(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), util.toPointer(pAttributeInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributes!(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), util.toPointer(pAttributeInfo)));
 }
 
 export function GetJobAttributesEx(
@@ -32283,14 +32497,14 @@ export function GetJobAttributesEx(
   nSize: number /* u32 */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributesEx(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), dwLevel, util.toPointer(pAttributeInfo), nSize, dwFlags));
+  return util.boolFromFfi(libSPOOLSS_dll.GetJobAttributesEx!(util.pwstrToFfi(pPrinterName), util.toPointer(pDevmode), dwLevel, util.toPointer(pAttributeInfo), nSize, dwFlags));
 }
 
 export function CreatePrinterIC(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDevMode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libwinspool_drv.CreatePrinterIC(util.toPointer(hPrinter), util.toPointer(pDevMode));
+  return libwinspool_drv.CreatePrinterIC!(util.toPointer(hPrinter), util.toPointer(pDevMode));
 }
 
 export function PlayGdiScriptOnPrinterIC(
@@ -32301,13 +32515,13 @@ export function PlayGdiScriptOnPrinterIC(
   cOut: number /* u32 */,
   ul: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.PlayGdiScriptOnPrinterIC(util.toPointer(hPrinterIC), util.toPointer(pIn), cIn, util.toPointer(pOut), cOut, ul));
+  return util.boolFromFfi(libwinspool_drv.PlayGdiScriptOnPrinterIC!(util.toPointer(hPrinterIC), util.toPointer(pIn), cIn, util.toPointer(pOut), cOut, ul));
 }
 
 export function DeletePrinterIC(
   hPrinterIC: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DeletePrinterIC(util.toPointer(hPrinterIC)));
+  return util.boolFromFfi(libwinspool_drv.DeletePrinterIC!(util.toPointer(hPrinterIC)));
 }
 
 export function DevQueryPrint(
@@ -32315,17 +32529,17 @@ export function DevQueryPrint(
   pDevMode: Deno.PointerValue | Uint8Array /* ptr */,
   pResID: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libwinspool_drv.DevQueryPrint(util.toPointer(hPrinter), util.toPointer(pDevMode), util.toPointer(pResID)));
+  return util.boolFromFfi(libwinspool_drv.DevQueryPrint!(util.toPointer(hPrinter), util.toPointer(pDevMode), util.toPointer(pResID)));
 }
 
 export function RevertToPrinterSelf(): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libSPOOLSS_dll.RevertToPrinterSelf();
+  return libSPOOLSS_dll.RevertToPrinterSelf!();
 }
 
 export function ImpersonatePrinterClient(
   hToken: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.ImpersonatePrinterClient(util.toPointer(hToken)));
+  return util.boolFromFfi(libSPOOLSS_dll.ImpersonatePrinterClient!(util.toPointer(hToken)));
 }
 
 export function ReplyPrinterChangeNotification(
@@ -32334,7 +32548,7 @@ export function ReplyPrinterChangeNotification(
   pdwResult: Deno.PointerValue | Uint8Array /* ptr */,
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotification(util.toPointer(hPrinter), fdwChangeFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotification!(util.toPointer(hPrinter), fdwChangeFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function ReplyPrinterChangeNotificationEx(
@@ -32344,50 +32558,50 @@ export function ReplyPrinterChangeNotificationEx(
   pdwResult: Deno.PointerValue | Uint8Array /* ptr */,
   pPrinterNotifyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotificationEx(util.toPointer(hNotify), dwColor, fdwFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.ReplyPrinterChangeNotificationEx!(util.toPointer(hNotify), dwColor, fdwFlags, util.toPointer(pdwResult), util.toPointer(pPrinterNotifyInfo)));
 }
 
 export function PartialReplyPrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDataSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.PartialReplyPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pDataSrc)));
+  return util.boolFromFfi(libSPOOLSS_dll.PartialReplyPrinterChangeNotification!(util.toPointer(hPrinter), util.toPointer(pDataSrc)));
 }
 
 export function RouterAllocPrinterNotifyInfo(
   cPrinterNotifyInfoData: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libSPOOLSS_dll.RouterAllocPrinterNotifyInfo(cPrinterNotifyInfoData);
+  return libSPOOLSS_dll.RouterAllocPrinterNotifyInfo!(cPrinterNotifyInfoData);
 }
 
 export function RouterFreePrinterNotifyInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.RouterFreePrinterNotifyInfo(util.toPointer(pInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.RouterFreePrinterNotifyInfo!(util.toPointer(pInfo)));
 }
 
 export function RouterAllocBidiResponseContainer(
   Count: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libSPOOLSS_dll.RouterAllocBidiResponseContainer(Count);
+  return libSPOOLSS_dll.RouterAllocBidiResponseContainer!(Count);
 }
 
 export function RouterAllocBidiMem(
   NumBytes: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libSPOOLSS_dll.RouterAllocBidiMem(NumBytes);
+  return libSPOOLSS_dll.RouterAllocBidiMem!(NumBytes);
 }
 
 export function RouterFreeBidiResponseContainer(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwinspool_drv.RouterFreeBidiResponseContainer(util.toPointer(pData));
+  return libwinspool_drv.RouterFreeBidiResponseContainer!(util.toPointer(pData));
 }
 
 export function RouterFreeBidiMem(
   pMemPointer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSPOOLSS_dll.RouterFreeBidiMem(util.toPointer(pMemPointer));
+  return libSPOOLSS_dll.RouterFreeBidiMem!(util.toPointer(pMemPointer));
 }
 
 export function AppendPrinterNotifyInfoData(
@@ -32395,7 +32609,7 @@ export function AppendPrinterNotifyInfoData(
   pDataSrc: Deno.PointerValue | Uint8Array /* ptr */,
   fdwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.AppendPrinterNotifyInfoData(util.toPointer(pInfoDest), util.toPointer(pDataSrc), fdwFlags));
+  return util.boolFromFfi(libSPOOLSS_dll.AppendPrinterNotifyInfoData!(util.toPointer(pInfoDest), util.toPointer(pDataSrc), fdwFlags));
 }
 
 export function CallRouterFindFirstPrinterChangeNotification(
@@ -32405,7 +32619,7 @@ export function CallRouterFindFirstPrinterChangeNotification(
   hNotify: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSPOOLSS_dll.CallRouterFindFirstPrinterChangeNotification(util.toPointer(hPrinterRPC), fdwFilterFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions));
+  return libSPOOLSS_dll.CallRouterFindFirstPrinterChangeNotification!(util.toPointer(hPrinterRPC), fdwFilterFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions));
 }
 
 export function ProvidorFindFirstPrinterChangeNotification(
@@ -32416,13 +32630,13 @@ export function ProvidorFindFirstPrinterChangeNotification(
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved1: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved1)));
+  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindFirstPrinterChangeNotification!(util.toPointer(hPrinter), fdwFlags, fdwOptions, util.toPointer(hNotify), util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved1)));
 }
 
 export function ProvidorFindClosePrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libSPOOLSS_dll.ProvidorFindClosePrinterChangeNotification!(util.toPointer(hPrinter)));
 }
 
 export function SpoolerFindFirstPrinterChangeNotification(
@@ -32435,7 +32649,7 @@ export function SpoolerFindFirstPrinterChangeNotification(
   phNotify: Deno.PointerValue | Uint8Array /* ptr */,
   phEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindFirstPrinterChangeNotification(util.toPointer(hPrinter), fdwFilterFlags, fdwOptions, util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved), util.toPointer(pNotificationConfig), util.toPointer(phNotify), util.toPointer(phEvent)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindFirstPrinterChangeNotification!(util.toPointer(hPrinter), fdwFilterFlags, fdwOptions, util.toPointer(pPrinterNotifyOptions), util.toPointer(pvReserved), util.toPointer(pNotificationConfig), util.toPointer(phNotify), util.toPointer(phEvent)));
 }
 
 export function SpoolerFindNextPrinterChangeNotification(
@@ -32444,7 +32658,7 @@ export function SpoolerFindNextPrinterChangeNotification(
   pPrinterNotifyOptions: Deno.PointerValue | Uint8Array /* ptr */,
   ppPrinterNotifyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindNextPrinterChangeNotification(util.toPointer(hPrinter), util.toPointer(pfdwChange), util.toPointer(pPrinterNotifyOptions), util.toPointer(ppPrinterNotifyInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindNextPrinterChangeNotification!(util.toPointer(hPrinter), util.toPointer(pfdwChange), util.toPointer(pPrinterNotifyOptions), util.toPointer(ppPrinterNotifyInfo)));
 }
 
 export function SpoolerRefreshPrinterChangeNotification(
@@ -32453,19 +32667,19 @@ export function SpoolerRefreshPrinterChangeNotification(
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.SpoolerRefreshPrinterChangeNotification(util.toPointer(hPrinter), dwColor, util.toPointer(pOptions), util.toPointer(ppInfo)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerRefreshPrinterChangeNotification!(util.toPointer(hPrinter), dwColor, util.toPointer(pOptions), util.toPointer(ppInfo)));
 }
 
 export function SpoolerFreePrinterNotifyInfo(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libSPOOLSS_dll.SpoolerFreePrinterNotifyInfo(util.toPointer(pInfo));
+  return libSPOOLSS_dll.SpoolerFreePrinterNotifyInfo!(util.toPointer(pInfo));
 }
 
 export function SpoolerFindClosePrinterChangeNotification(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindClosePrinterChangeNotification(util.toPointer(hPrinter)));
+  return util.boolFromFfi(libSPOOLSS_dll.SpoolerFindClosePrinterChangeNotification!(util.toPointer(hPrinter)));
 }
 
 export function SpoolerCopyFileEvent(
@@ -32473,7 +32687,7 @@ export function SpoolerCopyFileEvent(
   pszKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwCopyFileEvent: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libmscms_dll.SpoolerCopyFileEvent(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszKey), dwCopyFileEvent));
+  return util.boolFromFfi(libmscms_dll.SpoolerCopyFileEvent!(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszKey), dwCopyFileEvent));
 }
 
 export function GenerateCopyFilePaths(
@@ -32487,7 +32701,7 @@ export function GenerateCopyFilePaths(
   pcchTargetDirSize: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libmscms_dll.GenerateCopyFilePaths(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszDirectory), util.toPointer(pSplClientInfo), dwLevel, util.pwstrToFfi(pszSourceDir), util.toPointer(pcchSourceDirSize), util.pwstrToFfi(pszTargetDir), util.toPointer(pcchTargetDirSize), dwFlags);
+  return libmscms_dll.GenerateCopyFilePaths!(util.pwstrToFfi(pszPrinterName), util.pwstrToFfi(pszDirectory), util.toPointer(pSplClientInfo), dwLevel, util.pwstrToFfi(pszSourceDir), util.toPointer(pcchSourceDirSize), util.pwstrToFfi(pszTargetDir), util.toPointer(pcchTargetDirSize), dwFlags);
 }
 
 export function SplPromptUIInUsersSession(
@@ -32496,7 +32710,7 @@ export function SplPromptUIInUsersSession(
   pUIParams: Deno.PointerValue | Uint8Array /* ptr */,
   pResponse: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libSPOOLSS_dll.SplPromptUIInUsersSession(util.toPointer(hPrinter), JobId, util.toPointer(pUIParams), util.toPointer(pResponse)));
+  return util.boolFromFfi(libSPOOLSS_dll.SplPromptUIInUsersSession!(util.toPointer(hPrinter), JobId, util.toPointer(pUIParams), util.toPointer(pResponse)));
 }
 
 export function SplIsSessionZero(
@@ -32504,26 +32718,26 @@ export function SplIsSessionZero(
   JobId: number /* u32 */,
   pIsSessionZero: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libSPOOLSS_dll.SplIsSessionZero(util.toPointer(hPrinter), JobId, util.toPointer(pIsSessionZero));
+  return libSPOOLSS_dll.SplIsSessionZero!(util.toPointer(hPrinter), JobId, util.toPointer(pIsSessionZero));
 }
 
 export function AddPrintDeviceObject(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   phDeviceObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSPOOLSS_dll.AddPrintDeviceObject(util.toPointer(hPrinter), util.toPointer(phDeviceObject));
+  return libSPOOLSS_dll.AddPrintDeviceObject!(util.toPointer(hPrinter), util.toPointer(phDeviceObject));
 }
 
 export function UpdatePrintDeviceObject(
   hPrinter: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hDeviceObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSPOOLSS_dll.UpdatePrintDeviceObject(util.toPointer(hPrinter), util.toPointer(hDeviceObject));
+  return libSPOOLSS_dll.UpdatePrintDeviceObject!(util.toPointer(hPrinter), util.toPointer(hDeviceObject));
 }
 
 export function RemovePrintDeviceObject(
   hDeviceObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libSPOOLSS_dll.RemovePrintDeviceObject(util.toPointer(hDeviceObject));
+  return libSPOOLSS_dll.RemovePrintDeviceObject!(util.toPointer(hDeviceObject));
 }
 

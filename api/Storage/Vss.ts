@@ -1293,6 +1293,7 @@ try {
     CreateVssExpressWriterInternal: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1302,6 +1303,6 @@ try {
 export function CreateVssExpressWriterInternal(
   ppWriter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libVSSAPI_dll.CreateVssExpressWriterInternal(util.toPointer(ppWriter));
+  return libVSSAPI_dll.CreateVssExpressWriterInternal!(util.toPointer(ppWriter));
 }
 

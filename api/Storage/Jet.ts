@@ -13971,918 +13971,1147 @@ try {
     JetInit: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetInit2: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetInit3A: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetInit3W: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateInstanceA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateInstanceW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateInstance2A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateInstance2W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetInstanceMiscInfo: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetTerm: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetTerm2: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetStopService: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     JetStopServiceInstance: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetStopServiceInstance2: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetStopBackup: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     JetStopBackupInstance: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetSystemParameterA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetSystemParameterW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetSystemParameterA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetSystemParameterW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetEnableMultiInstanceA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetEnableMultiInstanceW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetThreadStats: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetBeginSessionA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBeginSessionW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDupSession: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetEndSession: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetVersion: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetIdle: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateDatabaseA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateDatabaseW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateDatabase2A: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateDatabase2W: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetAttachDatabaseA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetAttachDatabaseW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetAttachDatabase2A: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetAttachDatabase2W: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDetachDatabaseA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDetachDatabaseW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDetachDatabase2A: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDetachDatabase2W: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetObjectInfoA: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetObjectInfoW: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetTableInfoA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetTableInfoW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableA: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableW: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndexA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndexW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex2A: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex2W: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex3A: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex3W: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex4A: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCreateTableColumnIndex4W: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteTableA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteTableW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRenameTableA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRenameTableW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetTableColumnInfoA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetTableColumnInfoW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetColumnInfoA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetColumnInfoW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetAddColumnA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetAddColumnW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteColumnA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteColumnW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteColumn2A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDeleteColumn2W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetRenameColumnA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetRenameColumnW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetColumnDefaultValueA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetColumnDefaultValueW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetTableIndexInfoA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetTableIndexInfoW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetIndexInfoA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetIndexInfoW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndexA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndexW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "buffer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex2A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex2W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex3A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex3W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex4A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCreateIndex4W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDeleteIndexA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDeleteIndexW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBeginTransaction: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetBeginTransaction2: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetBeginTransaction3: {
       parameters: ["pointer", "i64", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCommitTransaction: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCommitTransaction2: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRollback: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetDatabaseInfoA: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetDatabaseInfoW: {
       parameters: ["pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetDatabaseFileInfoA: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetDatabaseFileInfoW: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOpenDatabaseA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOpenDatabaseW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCloseDatabase: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOpenTableA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTableW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetTableSequential: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetResetTableSequential: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCloseTable: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetDelete: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetUpdate: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetUpdate2: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetEscrowUpdate: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetRetrieveColumn: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRetrieveColumns: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetEnumerateColumns: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetRecordSize: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetRecordSize2: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetColumn: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetColumns: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetPrepareUpdate: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetRecordPosition: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGotoPosition: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetCursorInfo: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDupCursor: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetCurrentIndexA: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetCurrentIndexW: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndexA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndexW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex2A: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex2W: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex3A: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex3W: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex4A: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCurrentIndex4W: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetMove: {
       parameters: ["pointer", "pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetCursorFilter: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetLock: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetMakeKey: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSeek: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetPrereadKeys: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetPrereadIndexRanges: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetBookmark: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetSecondaryIndexBookmark: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCompactA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetCompactW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragmentA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragmentW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragment2A: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragment2W: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragment3A: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetDefragment3W: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetDatabaseSizeA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetDatabaseSizeW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGrowDatabase: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetResizeDatabase: {
       parameters: ["pointer", "u32", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetSessionContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetResetSessionContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetGotoBookmark: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGotoSecondaryIndexBookmark: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetIntersectIndexes: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetComputeStats: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTempTable: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTempTable2: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTempTable3: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTemporaryTable: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenTemporaryTable2: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBackupA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBackupW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBackupInstanceA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetBackupInstanceW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestoreA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestoreW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestore2A: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestore2W: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestoreInstanceA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRestoreInstanceW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetSetIndexRange: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetIndexRecordCount: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetRetrieveKey: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetBeginExternalBackup: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     JetBeginExternalBackupInstance: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetAttachInfoA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetAttachInfoW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetAttachInfoInstanceA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetAttachInfoInstanceW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenFileA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenFileW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenFileInstanceA: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetOpenFileInstanceW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetReadFile: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetReadFileInstance: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetCloseFile: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetCloseFileInstance: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoInstanceA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoInstanceW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoInstance2A: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetLogInfoInstance2W: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetTruncateLogInfoInstanceA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetTruncateLogInfoInstanceW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetTruncateLog: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     JetTruncateLogInstance: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetEndExternalBackup: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     JetEndExternalBackupInstance: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     JetEndExternalBackupInstance2: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetExternalRestoreA: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetExternalRestoreW: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "i32", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetExternalRestore2A: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetExternalRestore2W: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetRegisterCallback: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetUnregisterCallback: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetInstanceInfoA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetGetInstanceInfoW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     JetFreeBuffer: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     JetSetLS: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetLS: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotPrepare: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotPrepareInstance: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotFreezeA: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotFreezeW: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotThaw: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotAbort: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotTruncateLog: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotTruncateLogInstance: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotGetFreezeInfoA: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotGetFreezeInfoW: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetOSSnapshotEnd: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetConfigureProcessForCrashDump: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     JetGetErrorInfoW: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     JetSetSessionParameter: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     JetGetSessionParameter: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14892,14 +15121,14 @@ try {
 export function JetInit(
   pinstance: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetInit(util.toPointer(pinstance));
+  return libESENT_dll.JetInit!(util.toPointer(pinstance));
 }
 
 export function JetInit2(
   pinstance: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetInit2(util.toPointer(pinstance), grbit);
+  return libESENT_dll.JetInit2!(util.toPointer(pinstance), grbit);
 }
 
 export function JetInit3A(
@@ -14907,7 +15136,7 @@ export function JetInit3A(
   prstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetInit3A(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
+  return libESENT_dll.JetInit3A!(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
 }
 
 export function JetInit3W(
@@ -14915,21 +15144,21 @@ export function JetInit3W(
   prstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetInit3W(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
+  return libESENT_dll.JetInit3W!(util.toPointer(pinstance), util.toPointer(prstInfo), grbit);
 }
 
 export function JetCreateInstanceA(
   pinstance: Deno.PointerValue | Uint8Array /* ptr */,
   szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateInstanceA(util.toPointer(pinstance), util.toPointer(szInstanceName));
+  return libESENT_dll.JetCreateInstanceA!(util.toPointer(pinstance), util.toPointer(szInstanceName));
 }
 
 export function JetCreateInstanceW(
   pinstance: Deno.PointerValue | Uint8Array /* ptr */,
   szInstanceName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateInstanceW(util.toPointer(pinstance), util.toPointer(szInstanceName));
+  return libESENT_dll.JetCreateInstanceW!(util.toPointer(pinstance), util.toPointer(szInstanceName));
 }
 
 export function JetCreateInstance2A(
@@ -14938,7 +15167,7 @@ export function JetCreateInstance2A(
   szDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateInstance2A(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
+  return libESENT_dll.JetCreateInstance2A!(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
 }
 
 export function JetCreateInstance2W(
@@ -14947,7 +15176,7 @@ export function JetCreateInstance2W(
   szDisplayName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateInstance2W(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
+  return libESENT_dll.JetCreateInstance2W!(util.toPointer(pinstance), util.toPointer(szInstanceName), util.toPointer(szDisplayName), grbit);
 }
 
 export function JetGetInstanceMiscInfo(
@@ -14956,47 +15185,47 @@ export function JetGetInstanceMiscInfo(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetInstanceMiscInfo(util.toPointer(instance), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetInstanceMiscInfo!(util.toPointer(instance), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetTerm(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetTerm(util.toPointer(instance));
+  return libESENT_dll.JetTerm!(util.toPointer(instance));
 }
 
 export function JetTerm2(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetTerm2(util.toPointer(instance), grbit);
+  return libESENT_dll.JetTerm2!(util.toPointer(instance), grbit);
 }
 
 export function JetStopService(): number /* i32 */ {
-  return libESENT_dll.JetStopService();
+  return libESENT_dll.JetStopService!();
 }
 
 export function JetStopServiceInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetStopServiceInstance(util.toPointer(instance));
+  return libESENT_dll.JetStopServiceInstance!(util.toPointer(instance));
 }
 
 export function JetStopServiceInstance2(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetStopServiceInstance2(util.toPointer(instance), grbit);
+  return libESENT_dll.JetStopServiceInstance2!(util.toPointer(instance), grbit);
 }
 
 export function JetStopBackup(): number /* i32 */ {
-  return libESENT_dll.JetStopBackup();
+  return libESENT_dll.JetStopBackup!();
 }
 
 export function JetStopBackupInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetStopBackupInstance(util.toPointer(instance));
+  return libESENT_dll.JetStopBackupInstance!(util.toPointer(instance));
 }
 
 export function JetSetSystemParameterA(
@@ -15006,7 +15235,7 @@ export function JetSetSystemParameterA(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
   szParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetSystemParameterA(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
+  return libESENT_dll.JetSetSystemParameterA!(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
 }
 
 export function JetSetSystemParameterW(
@@ -15016,7 +15245,7 @@ export function JetSetSystemParameterW(
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
   szParam: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetSystemParameterW(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
+  return libESENT_dll.JetSetSystemParameterW!(util.toPointer(pinstance), util.toPointer(sesid), paramid, util.toPointer(lParam), util.toPointer(szParam));
 }
 
 export function JetGetSystemParameterA(
@@ -15027,7 +15256,7 @@ export function JetGetSystemParameterA(
   szParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetSystemParameterA(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
+  return libESENT_dll.JetGetSystemParameterA!(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
 }
 
 export function JetGetSystemParameterW(
@@ -15038,7 +15267,7 @@ export function JetGetSystemParameterW(
   szParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetSystemParameterW(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
+  return libESENT_dll.JetGetSystemParameterW!(util.toPointer(instance), util.toPointer(sesid), paramid, util.toPointer(plParam), util.toPointer(szParam), cbMax);
 }
 
 export function JetEnableMultiInstanceA(
@@ -15046,7 +15275,7 @@ export function JetEnableMultiInstanceA(
   csetsysparam: number /* u32 */,
   pcsetsucceed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEnableMultiInstanceA(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
+  return libESENT_dll.JetEnableMultiInstanceA!(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
 }
 
 export function JetEnableMultiInstanceW(
@@ -15054,14 +15283,14 @@ export function JetEnableMultiInstanceW(
   csetsysparam: number /* u32 */,
   pcsetsucceed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEnableMultiInstanceW(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
+  return libESENT_dll.JetEnableMultiInstanceW!(util.toPointer(psetsysparam), csetsysparam, util.toPointer(pcsetsucceed));
 }
 
 export function JetGetThreadStats(
   pvResult: Deno.PointerValue | Uint8Array /* ptr */,
   cbMax: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetThreadStats(util.toPointer(pvResult), cbMax);
+  return libESENT_dll.JetGetThreadStats!(util.toPointer(pvResult), cbMax);
 }
 
 export function JetBeginSessionA(
@@ -15070,7 +15299,7 @@ export function JetBeginSessionA(
   szUserName: Deno.PointerValue | Uint8Array /* ptr */,
   szPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginSessionA(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
+  return libESENT_dll.JetBeginSessionA!(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
 }
 
 export function JetBeginSessionW(
@@ -15079,35 +15308,35 @@ export function JetBeginSessionW(
   szUserName: Deno.PointerValue | Uint8Array /* ptr */,
   szPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginSessionW(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
+  return libESENT_dll.JetBeginSessionW!(util.toPointer(instance), util.toPointer(psesid), util.toPointer(szUserName), util.toPointer(szPassword));
 }
 
 export function JetDupSession(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   psesid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDupSession(util.toPointer(sesid), util.toPointer(psesid));
+  return libESENT_dll.JetDupSession!(util.toPointer(sesid), util.toPointer(psesid));
 }
 
 export function JetEndSession(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEndSession(util.toPointer(sesid), grbit);
+  return libESENT_dll.JetEndSession!(util.toPointer(sesid), grbit);
 }
 
 export function JetGetVersion(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   pwVersion: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetVersion(util.toPointer(sesid), util.toPointer(pwVersion));
+  return libESENT_dll.JetGetVersion!(util.toPointer(sesid), util.toPointer(pwVersion));
 }
 
 export function JetIdle(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetIdle(util.toPointer(sesid), grbit);
+  return libESENT_dll.JetIdle!(util.toPointer(sesid), grbit);
 }
 
 export function JetCreateDatabaseA(
@@ -15117,7 +15346,7 @@ export function JetCreateDatabaseA(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetCreateDatabaseA!(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabaseW(
@@ -15127,7 +15356,7 @@ export function JetCreateDatabaseW(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetCreateDatabaseW!(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabase2A(
@@ -15137,7 +15366,7 @@ export function JetCreateDatabase2A(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateDatabase2A(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetCreateDatabase2A!(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
 }
 
 export function JetCreateDatabase2W(
@@ -15147,7 +15376,7 @@ export function JetCreateDatabase2W(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateDatabase2W(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetCreateDatabase2W!(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, util.toPointer(pdbid), grbit);
 }
 
 export function JetAttachDatabaseA(
@@ -15155,7 +15384,7 @@ export function JetAttachDatabaseA(
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAttachDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), grbit);
+  return libESENT_dll.JetAttachDatabaseA!(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetAttachDatabaseW(
@@ -15163,7 +15392,7 @@ export function JetAttachDatabaseW(
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAttachDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), grbit);
+  return libESENT_dll.JetAttachDatabaseW!(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetAttachDatabase2A(
@@ -15172,7 +15401,7 @@ export function JetAttachDatabase2A(
   cpgDatabaseSizeMax: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAttachDatabase2A(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, grbit);
+  return libESENT_dll.JetAttachDatabase2A!(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, grbit);
 }
 
 export function JetAttachDatabase2W(
@@ -15181,21 +15410,21 @@ export function JetAttachDatabase2W(
   cpgDatabaseSizeMax: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAttachDatabase2W(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, grbit);
+  return libESENT_dll.JetAttachDatabase2W!(util.toPointer(sesid), util.toPointer(szFilename), cpgDatabaseSizeMax, grbit);
 }
 
 export function JetDetachDatabaseA(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDetachDatabaseA(util.toPointer(sesid), util.toPointer(szFilename));
+  return libESENT_dll.JetDetachDatabaseA!(util.toPointer(sesid), util.toPointer(szFilename));
 }
 
 export function JetDetachDatabaseW(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDetachDatabaseW(util.toPointer(sesid), util.toPointer(szFilename));
+  return libESENT_dll.JetDetachDatabaseW!(util.toPointer(sesid), util.toPointer(szFilename));
 }
 
 export function JetDetachDatabase2A(
@@ -15203,7 +15432,7 @@ export function JetDetachDatabase2A(
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDetachDatabase2A(util.toPointer(sesid), util.toPointer(szFilename), grbit);
+  return libESENT_dll.JetDetachDatabase2A!(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetDetachDatabase2W(
@@ -15211,7 +15440,7 @@ export function JetDetachDatabase2W(
   szFilename: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDetachDatabase2W(util.toPointer(sesid), util.toPointer(szFilename), grbit);
+  return libESENT_dll.JetDetachDatabase2W!(util.toPointer(sesid), util.toPointer(szFilename), grbit);
 }
 
 export function JetGetObjectInfoA(
@@ -15224,7 +15453,7 @@ export function JetGetObjectInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetObjectInfoA(util.toPointer(sesid), dbid, objtyp, util.toPointer(szContainerName), util.toPointer(szObjectName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetObjectInfoA!(util.toPointer(sesid), dbid, objtyp, util.toPointer(szContainerName), util.toPointer(szObjectName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetObjectInfoW(
@@ -15237,7 +15466,7 @@ export function JetGetObjectInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetObjectInfoW(util.toPointer(sesid), dbid, objtyp, util.toPointer(szContainerName), util.toPointer(szObjectName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetObjectInfoW!(util.toPointer(sesid), dbid, objtyp, util.toPointer(szContainerName), util.toPointer(szObjectName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetTableInfoA(
@@ -15247,7 +15476,7 @@ export function JetGetTableInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableInfoA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetTableInfoA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetTableInfoW(
@@ -15257,7 +15486,7 @@ export function JetGetTableInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableInfoW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetTableInfoW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetCreateTableA(
@@ -15268,7 +15497,7 @@ export function JetCreateTableA(
   lDensity: number /* u32 */,
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
+  return libESENT_dll.JetCreateTableA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
 }
 
 export function JetCreateTableW(
@@ -15279,7 +15508,7 @@ export function JetCreateTableW(
   lDensity: number /* u32 */,
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
+  return libESENT_dll.JetCreateTableW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), lPages, lDensity, util.toPointer(ptableid));
 }
 
 export function JetCreateTableColumnIndexA(
@@ -15287,7 +15516,7 @@ export function JetCreateTableColumnIndexA(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndexA(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndexA!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndexW(
@@ -15295,7 +15524,7 @@ export function JetCreateTableColumnIndexW(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndexW(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndexW!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex2A(
@@ -15303,7 +15532,7 @@ export function JetCreateTableColumnIndex2A(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex2A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex2A!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex2W(
@@ -15311,7 +15540,7 @@ export function JetCreateTableColumnIndex2W(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex2W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex2W!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex3A(
@@ -15319,7 +15548,7 @@ export function JetCreateTableColumnIndex3A(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex3A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex3A!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex3W(
@@ -15327,7 +15556,7 @@ export function JetCreateTableColumnIndex3W(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex3W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex3W!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex4A(
@@ -15335,7 +15564,7 @@ export function JetCreateTableColumnIndex4A(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex4A(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex4A!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetCreateTableColumnIndex4W(
@@ -15343,7 +15572,7 @@ export function JetCreateTableColumnIndex4W(
   dbid: number /* u32 */,
   ptablecreate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateTableColumnIndex4W(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
+  return libESENT_dll.JetCreateTableColumnIndex4W!(util.toPointer(sesid), dbid, util.toPointer(ptablecreate));
 }
 
 export function JetDeleteTableA(
@@ -15351,7 +15580,7 @@ export function JetDeleteTableA(
   dbid: number /* u32 */,
   szTableName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName));
+  return libESENT_dll.JetDeleteTableA!(util.toPointer(sesid), dbid, util.toPointer(szTableName));
 }
 
 export function JetDeleteTableW(
@@ -15359,7 +15588,7 @@ export function JetDeleteTableW(
   dbid: number /* u32 */,
   szTableName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName));
+  return libESENT_dll.JetDeleteTableW!(util.toPointer(sesid), dbid, util.toPointer(szTableName));
 }
 
 export function JetRenameTableA(
@@ -15368,7 +15597,7 @@ export function JetRenameTableA(
   szName: Deno.PointerValue | Uint8Array /* ptr */,
   szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRenameTableA(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
+  return libESENT_dll.JetRenameTableA!(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
 }
 
 export function JetRenameTableW(
@@ -15377,7 +15606,7 @@ export function JetRenameTableW(
   szName: Deno.PointerValue | Uint8Array /* ptr */,
   szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRenameTableW(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
+  return libESENT_dll.JetRenameTableW!(util.toPointer(sesid), dbid, util.toPointer(szName), util.toPointer(szNameNew));
 }
 
 export function JetGetTableColumnInfoA(
@@ -15388,7 +15617,7 @@ export function JetGetTableColumnInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableColumnInfoA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetTableColumnInfoA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetTableColumnInfoW(
@@ -15399,7 +15628,7 @@ export function JetGetTableColumnInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableColumnInfoW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetTableColumnInfoW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetColumnInfoA(
@@ -15411,7 +15640,7 @@ export function JetGetColumnInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetColumnInfoA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pColumnNameOrId), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetColumnInfoA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pColumnNameOrId), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetColumnInfoW(
@@ -15423,7 +15652,7 @@ export function JetGetColumnInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetColumnInfoW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pwColumnNameOrId), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetColumnInfoW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pwColumnNameOrId), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetAddColumnA(
@@ -15435,7 +15664,7 @@ export function JetAddColumnA(
   cbDefault: number /* u32 */,
   pcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAddColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
+  return libESENT_dll.JetAddColumnA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
 }
 
 export function JetAddColumnW(
@@ -15447,7 +15676,7 @@ export function JetAddColumnW(
   cbDefault: number /* u32 */,
   pcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetAddColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
+  return libESENT_dll.JetAddColumnW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), util.toPointer(pcolumndef), util.toPointer(pvDefault), cbDefault, util.toPointer(pcolumnid));
 }
 
 export function JetDeleteColumnA(
@@ -15455,7 +15684,7 @@ export function JetDeleteColumnA(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
+  return libESENT_dll.JetDeleteColumnA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
 }
 
 export function JetDeleteColumnW(
@@ -15463,7 +15692,7 @@ export function JetDeleteColumnW(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
+  return libESENT_dll.JetDeleteColumnW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName));
 }
 
 export function JetDeleteColumn2A(
@@ -15472,7 +15701,7 @@ export function JetDeleteColumn2A(
   szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteColumn2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
+  return libESENT_dll.JetDeleteColumn2A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
 }
 
 export function JetDeleteColumn2W(
@@ -15481,7 +15710,7 @@ export function JetDeleteColumn2W(
   szColumnName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteColumn2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
+  return libESENT_dll.JetDeleteColumn2W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szColumnName), grbit);
 }
 
 export function JetRenameColumnA(
@@ -15491,7 +15720,7 @@ export function JetRenameColumnA(
   szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRenameColumnA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
+  return libESENT_dll.JetRenameColumnA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
 }
 
 export function JetRenameColumnW(
@@ -15501,7 +15730,7 @@ export function JetRenameColumnW(
   szNameNew: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRenameColumnW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
+  return libESENT_dll.JetRenameColumnW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szName), util.toPointer(szNameNew), grbit);
 }
 
 export function JetSetColumnDefaultValueA(
@@ -15513,7 +15742,7 @@ export function JetSetColumnDefaultValueA(
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetColumnDefaultValueA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szColumnName), util.toPointer(pvData), cbData, grbit);
+  return libESENT_dll.JetSetColumnDefaultValueA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szColumnName), util.toPointer(pvData), cbData, grbit);
 }
 
 export function JetSetColumnDefaultValueW(
@@ -15525,7 +15754,7 @@ export function JetSetColumnDefaultValueW(
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetColumnDefaultValueW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szColumnName), util.toPointer(pvData), cbData, grbit);
+  return libESENT_dll.JetSetColumnDefaultValueW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szColumnName), util.toPointer(pvData), cbData, grbit);
 }
 
 export function JetGetTableIndexInfoA(
@@ -15536,7 +15765,7 @@ export function JetGetTableIndexInfoA(
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableIndexInfoA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
+  return libESENT_dll.JetGetTableIndexInfoA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
 }
 
 export function JetGetTableIndexInfoW(
@@ -15547,7 +15776,7 @@ export function JetGetTableIndexInfoW(
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTableIndexInfoW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
+  return libESENT_dll.JetGetTableIndexInfoW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
 }
 
 export function JetGetIndexInfoA(
@@ -15559,7 +15788,7 @@ export function JetGetIndexInfoA(
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetIndexInfoA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
+  return libESENT_dll.JetGetIndexInfoA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
 }
 
 export function JetGetIndexInfoW(
@@ -15571,7 +15800,7 @@ export function JetGetIndexInfoW(
   cbResult: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetIndexInfoW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
+  return libESENT_dll.JetGetIndexInfoW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(szIndexName), util.toPointer(pvResult), cbResult, InfoLevel);
 }
 
 export function JetCreateIndexA(
@@ -15583,7 +15812,7 @@ export function JetCreateIndexA(
   cbKey: number /* u32 */,
   lDensity: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, util.pstrToFfi(szKey), cbKey, lDensity);
+  return libESENT_dll.JetCreateIndexA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, util.pstrToFfi(szKey), cbKey, lDensity);
 }
 
 export function JetCreateIndexW(
@@ -15595,7 +15824,7 @@ export function JetCreateIndexW(
   cbKey: number /* u32 */,
   lDensity: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, util.pwstrToFfi(szKey), cbKey, lDensity);
+  return libESENT_dll.JetCreateIndexW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, util.pwstrToFfi(szKey), cbKey, lDensity);
 }
 
 export function JetCreateIndex2A(
@@ -15604,7 +15833,7 @@ export function JetCreateIndex2A(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex2A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex2W(
@@ -15613,7 +15842,7 @@ export function JetCreateIndex2W(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex2W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex3A(
@@ -15622,7 +15851,7 @@ export function JetCreateIndex3A(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex3A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex3A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex3W(
@@ -15631,7 +15860,7 @@ export function JetCreateIndex3W(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex3W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex3W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex4A(
@@ -15640,7 +15869,7 @@ export function JetCreateIndex4A(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex4A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex4A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetCreateIndex4W(
@@ -15649,7 +15878,7 @@ export function JetCreateIndex4W(
   pindexcreate: Deno.PointerValue | Uint8Array /* ptr */,
   cIndexCreate: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCreateIndex4W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
+  return libESENT_dll.JetCreateIndex4W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pindexcreate), cIndexCreate);
 }
 
 export function JetDeleteIndexA(
@@ -15657,7 +15886,7 @@ export function JetDeleteIndexA(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
+  return libESENT_dll.JetDeleteIndexA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetDeleteIndexW(
@@ -15665,20 +15894,20 @@ export function JetDeleteIndexW(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDeleteIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
+  return libESENT_dll.JetDeleteIndexW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetBeginTransaction(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginTransaction(util.toPointer(sesid));
+  return libESENT_dll.JetBeginTransaction!(util.toPointer(sesid));
 }
 
 export function JetBeginTransaction2(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginTransaction2(util.toPointer(sesid), grbit);
+  return libESENT_dll.JetBeginTransaction2!(util.toPointer(sesid), grbit);
 }
 
 export function JetBeginTransaction3(
@@ -15686,14 +15915,14 @@ export function JetBeginTransaction3(
   trxid: bigint | number /* i64 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginTransaction3(util.toPointer(sesid), trxid, grbit);
+  return libESENT_dll.JetBeginTransaction3!(util.toPointer(sesid), trxid, grbit);
 }
 
 export function JetCommitTransaction(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCommitTransaction(util.toPointer(sesid), grbit);
+  return libESENT_dll.JetCommitTransaction!(util.toPointer(sesid), grbit);
 }
 
 export function JetCommitTransaction2(
@@ -15702,14 +15931,14 @@ export function JetCommitTransaction2(
   cmsecDurableCommit: number /* u32 */,
   pCommitId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCommitTransaction2(util.toPointer(sesid), grbit, cmsecDurableCommit, util.toPointer(pCommitId));
+  return libESENT_dll.JetCommitTransaction2!(util.toPointer(sesid), grbit, cmsecDurableCommit, util.toPointer(pCommitId));
 }
 
 export function JetRollback(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRollback(util.toPointer(sesid), grbit);
+  return libESENT_dll.JetRollback!(util.toPointer(sesid), grbit);
 }
 
 export function JetGetDatabaseInfoA(
@@ -15719,7 +15948,7 @@ export function JetGetDatabaseInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetDatabaseInfoA(util.toPointer(sesid), dbid, util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetDatabaseInfoA!(util.toPointer(sesid), dbid, util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetDatabaseInfoW(
@@ -15729,7 +15958,7 @@ export function JetGetDatabaseInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetDatabaseInfoW(util.toPointer(sesid), dbid, util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetDatabaseInfoW!(util.toPointer(sesid), dbid, util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetDatabaseFileInfoA(
@@ -15738,7 +15967,7 @@ export function JetGetDatabaseFileInfoA(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetDatabaseFileInfoA(util.toPointer(szDatabaseName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetDatabaseFileInfoA!(util.toPointer(szDatabaseName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetGetDatabaseFileInfoW(
@@ -15747,7 +15976,7 @@ export function JetGetDatabaseFileInfoW(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetDatabaseFileInfoW(util.toPointer(szDatabaseName), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetDatabaseFileInfoW!(util.toPointer(szDatabaseName), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetOpenDatabaseA(
@@ -15757,7 +15986,7 @@ export function JetOpenDatabaseA(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenDatabaseA(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetOpenDatabaseA!(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetOpenDatabaseW(
@@ -15767,7 +15996,7 @@ export function JetOpenDatabaseW(
   pdbid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenDatabaseW(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
+  return libESENT_dll.JetOpenDatabaseW!(util.toPointer(sesid), util.toPointer(szFilename), util.toPointer(szConnect), util.toPointer(pdbid), grbit);
 }
 
 export function JetCloseDatabase(
@@ -15775,7 +16004,7 @@ export function JetCloseDatabase(
   dbid: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCloseDatabase(util.toPointer(sesid), dbid, grbit);
+  return libESENT_dll.JetCloseDatabase!(util.toPointer(sesid), dbid, grbit);
 }
 
 export function JetOpenTableA(
@@ -15787,7 +16016,7 @@ export function JetOpenTableA(
   grbit: number /* u32 */,
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTableA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
+  return libESENT_dll.JetOpenTableA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
 }
 
 export function JetOpenTableW(
@@ -15799,7 +16028,7 @@ export function JetOpenTableW(
   grbit: number /* u32 */,
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTableW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
+  return libESENT_dll.JetOpenTableW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pvParameters), cbParameters, grbit, util.toPointer(ptableid));
 }
 
 export function JetSetTableSequential(
@@ -15807,7 +16036,7 @@ export function JetSetTableSequential(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetTableSequential(util.toPointer(sesid), util.toPointer(tableid), grbit);
+  return libESENT_dll.JetSetTableSequential!(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetResetTableSequential(
@@ -15815,21 +16044,21 @@ export function JetResetTableSequential(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetResetTableSequential(util.toPointer(sesid), util.toPointer(tableid), grbit);
+  return libESENT_dll.JetResetTableSequential!(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetCloseTable(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCloseTable(util.toPointer(sesid), util.toPointer(tableid));
+  return libESENT_dll.JetCloseTable!(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetDelete(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDelete(util.toPointer(sesid), util.toPointer(tableid));
+  return libESENT_dll.JetDelete!(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetUpdate(
@@ -15839,7 +16068,7 @@ export function JetUpdate(
   cbBookmark: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetUpdate(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual));
+  return libESENT_dll.JetUpdate!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual));
 }
 
 export function JetUpdate2(
@@ -15850,7 +16079,7 @@ export function JetUpdate2(
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetUpdate2(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual), grbit);
+  return libESENT_dll.JetUpdate2!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark, util.toPointer(pcbActual), grbit);
 }
 
 export function JetEscrowUpdate(
@@ -15864,7 +16093,7 @@ export function JetEscrowUpdate(
   pcbOldActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEscrowUpdate(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pv), cbMax, util.toPointer(pvOld), cbOldMax, util.toPointer(pcbOldActual), grbit);
+  return libESENT_dll.JetEscrowUpdate!(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pv), cbMax, util.toPointer(pvOld), cbOldMax, util.toPointer(pcbOldActual), grbit);
 }
 
 export function JetRetrieveColumn(
@@ -15877,7 +16106,7 @@ export function JetRetrieveColumn(
   grbit: number /* u32 */,
   pretinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRetrieveColumn(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, util.toPointer(pcbActual), grbit, util.toPointer(pretinfo));
+  return libESENT_dll.JetRetrieveColumn!(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, util.toPointer(pcbActual), grbit, util.toPointer(pretinfo));
 }
 
 export function JetRetrieveColumns(
@@ -15886,7 +16115,7 @@ export function JetRetrieveColumns(
   pretrievecolumn: Deno.PointerValue | Uint8Array /* ptr */,
   cretrievecolumn: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRetrieveColumns(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pretrievecolumn), cretrievecolumn);
+  return libESENT_dll.JetRetrieveColumns!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pretrievecolumn), cretrievecolumn);
 }
 
 export function JetEnumerateColumns(
@@ -15901,7 +16130,7 @@ export function JetEnumerateColumns(
   cbDataMost: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEnumerateColumns(util.toPointer(sesid), util.toPointer(tableid), cEnumColumnId, util.toPointer(rgEnumColumnId), util.toPointer(pcEnumColumn), util.toPointer(prgEnumColumn), util.toPointer(pfnRealloc), util.toPointer(pvReallocContext), cbDataMost, grbit);
+  return libESENT_dll.JetEnumerateColumns!(util.toPointer(sesid), util.toPointer(tableid), cEnumColumnId, util.toPointer(rgEnumColumnId), util.toPointer(pcEnumColumn), util.toPointer(prgEnumColumn), util.toPointer(pfnRealloc), util.toPointer(pvReallocContext), cbDataMost, grbit);
 }
 
 export function JetGetRecordSize(
@@ -15910,7 +16139,7 @@ export function JetGetRecordSize(
   precsize: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetRecordSize(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
+  return libESENT_dll.JetGetRecordSize!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
 }
 
 export function JetGetRecordSize2(
@@ -15919,7 +16148,7 @@ export function JetGetRecordSize2(
   precsize: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetRecordSize2(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
+  return libESENT_dll.JetGetRecordSize2!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precsize), grbit);
 }
 
 export function JetSetColumn(
@@ -15931,7 +16160,7 @@ export function JetSetColumn(
   grbit: number /* u32 */,
   psetinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetColumn(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, grbit, util.toPointer(psetinfo));
+  return libESENT_dll.JetSetColumn!(util.toPointer(sesid), util.toPointer(tableid), columnid, util.toPointer(pvData), cbData, grbit, util.toPointer(psetinfo));
 }
 
 export function JetSetColumns(
@@ -15940,7 +16169,7 @@ export function JetSetColumns(
   psetcolumn: Deno.PointerValue | Uint8Array /* ptr */,
   csetcolumn: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetColumns(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(psetcolumn), csetcolumn);
+  return libESENT_dll.JetSetColumns!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(psetcolumn), csetcolumn);
 }
 
 export function JetPrepareUpdate(
@@ -15948,7 +16177,7 @@ export function JetPrepareUpdate(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   prep: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetPrepareUpdate(util.toPointer(sesid), util.toPointer(tableid), prep);
+  return libESENT_dll.JetPrepareUpdate!(util.toPointer(sesid), util.toPointer(tableid), prep);
 }
 
 export function JetGetRecordPosition(
@@ -15957,7 +16186,7 @@ export function JetGetRecordPosition(
   precpos: Deno.PointerValue | Uint8Array /* ptr */,
   cbRecpos: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetRecordPosition(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos), cbRecpos);
+  return libESENT_dll.JetGetRecordPosition!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos), cbRecpos);
 }
 
 export function JetGotoPosition(
@@ -15965,7 +16194,7 @@ export function JetGotoPosition(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   precpos: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGotoPosition(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos));
+  return libESENT_dll.JetGotoPosition!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(precpos));
 }
 
 export function JetGetCursorInfo(
@@ -15975,7 +16204,7 @@ export function JetGetCursorInfo(
   cbMax: number /* u32 */,
   InfoLevel: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetCursorInfo(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
+  return libESENT_dll.JetGetCursorInfo!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvResult), cbMax, InfoLevel);
 }
 
 export function JetDupCursor(
@@ -15984,7 +16213,7 @@ export function JetDupCursor(
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDupCursor(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ptableid), grbit);
+  return libESENT_dll.JetDupCursor!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ptableid), grbit);
 }
 
 export function JetGetCurrentIndexA(
@@ -15993,7 +16222,7 @@ export function JetGetCurrentIndexA(
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   cbIndexName: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetCurrentIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
+  return libESENT_dll.JetGetCurrentIndexA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
 }
 
 export function JetGetCurrentIndexW(
@@ -16002,7 +16231,7 @@ export function JetGetCurrentIndexW(
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   cbIndexName: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetCurrentIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
+  return libESENT_dll.JetGetCurrentIndexW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), cbIndexName);
 }
 
 export function JetSetCurrentIndexA(
@@ -16010,7 +16239,7 @@ export function JetSetCurrentIndexA(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndexA(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
+  return libESENT_dll.JetSetCurrentIndexA!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetSetCurrentIndexW(
@@ -16018,7 +16247,7 @@ export function JetSetCurrentIndexW(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndexW(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
+  return libESENT_dll.JetSetCurrentIndexW!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName));
 }
 
 export function JetSetCurrentIndex2A(
@@ -16027,7 +16256,7 @@ export function JetSetCurrentIndex2A(
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex2A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
+  return libESENT_dll.JetSetCurrentIndex2A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
 }
 
 export function JetSetCurrentIndex2W(
@@ -16036,7 +16265,7 @@ export function JetSetCurrentIndex2W(
   szIndexName: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex2W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
+  return libESENT_dll.JetSetCurrentIndex2W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit);
 }
 
 export function JetSetCurrentIndex3A(
@@ -16046,7 +16275,7 @@ export function JetSetCurrentIndex3A(
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex3A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, itagSequence);
+  return libESENT_dll.JetSetCurrentIndex3A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, itagSequence);
 }
 
 export function JetSetCurrentIndex3W(
@@ -16056,7 +16285,7 @@ export function JetSetCurrentIndex3W(
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex3W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, itagSequence);
+  return libESENT_dll.JetSetCurrentIndex3W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), grbit, itagSequence);
 }
 
 export function JetSetCurrentIndex4A(
@@ -16067,7 +16296,7 @@ export function JetSetCurrentIndex4A(
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex4A(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pindexid), grbit, itagSequence);
+  return libESENT_dll.JetSetCurrentIndex4A!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pindexid), grbit, itagSequence);
 }
 
 export function JetSetCurrentIndex4W(
@@ -16078,7 +16307,7 @@ export function JetSetCurrentIndex4W(
   grbit: number /* u32 */,
   itagSequence: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCurrentIndex4W(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pindexid), grbit, itagSequence);
+  return libESENT_dll.JetSetCurrentIndex4W!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(szIndexName), util.toPointer(pindexid), grbit, itagSequence);
 }
 
 export function JetMove(
@@ -16087,7 +16316,7 @@ export function JetMove(
   cRow: number /* i32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetMove(util.toPointer(sesid), util.toPointer(tableid), cRow, grbit);
+  return libESENT_dll.JetMove!(util.toPointer(sesid), util.toPointer(tableid), cRow, grbit);
 }
 
 export function JetSetCursorFilter(
@@ -16097,7 +16326,7 @@ export function JetSetCursorFilter(
   cColumnFilters: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetCursorFilter(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgColumnFilters), cColumnFilters, grbit);
+  return libESENT_dll.JetSetCursorFilter!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgColumnFilters), cColumnFilters, grbit);
 }
 
 export function JetGetLock(
@@ -16105,7 +16334,7 @@ export function JetGetLock(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLock(util.toPointer(sesid), util.toPointer(tableid), grbit);
+  return libESENT_dll.JetGetLock!(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetMakeKey(
@@ -16115,7 +16344,7 @@ export function JetMakeKey(
   cbData: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetMakeKey(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvData), cbData, grbit);
+  return libESENT_dll.JetMakeKey!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvData), cbData, grbit);
 }
 
 export function JetSeek(
@@ -16123,7 +16352,7 @@ export function JetSeek(
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSeek(util.toPointer(sesid), util.toPointer(tableid), grbit);
+  return libESENT_dll.JetSeek!(util.toPointer(sesid), util.toPointer(tableid), grbit);
 }
 
 export function JetPrereadKeys(
@@ -16135,7 +16364,7 @@ export function JetPrereadKeys(
   pckeysPreread: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetPrereadKeys(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgpvKeys), util.toPointer(rgcbKeys), ckeys, util.toPointer(pckeysPreread), grbit);
+  return libESENT_dll.JetPrereadKeys!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgpvKeys), util.toPointer(rgcbKeys), ckeys, util.toPointer(pckeysPreread), grbit);
 }
 
 export function JetPrereadIndexRanges(
@@ -16148,7 +16377,7 @@ export function JetPrereadIndexRanges(
   ccolumnidPreread: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetPrereadIndexRanges(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgIndexRanges), cIndexRanges, util.toPointer(pcRangesPreread), util.toPointer(rgcolumnidPreread), ccolumnidPreread, grbit);
+  return libESENT_dll.JetPrereadIndexRanges!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(rgIndexRanges), cIndexRanges, util.toPointer(pcRangesPreread), util.toPointer(rgcolumnidPreread), ccolumnidPreread, grbit);
 }
 
 export function JetGetBookmark(
@@ -16158,7 +16387,7 @@ export function JetGetBookmark(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetBookmark!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetSecondaryIndexBookmark(
@@ -16172,7 +16401,7 @@ export function JetGetSecondaryIndexBookmark(
   pcbPrimaryBookmarkActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetSecondaryIndexBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvSecondaryKey), cbSecondaryKeyMax, util.toPointer(pcbSecondaryKeyActual), util.toPointer(pvPrimaryBookmark), cbPrimaryBookmarkMax, util.toPointer(pcbPrimaryBookmarkActual), grbit);
+  return libESENT_dll.JetGetSecondaryIndexBookmark!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvSecondaryKey), cbSecondaryKeyMax, util.toPointer(pcbSecondaryKeyActual), util.toPointer(pvPrimaryBookmark), cbPrimaryBookmarkMax, util.toPointer(pcbPrimaryBookmarkActual), grbit);
 }
 
 export function JetCompactA(
@@ -16183,7 +16412,7 @@ export function JetCompactA(
   pconvert: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCompactA(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
+  return libESENT_dll.JetCompactA!(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
 }
 
 export function JetCompactW(
@@ -16194,7 +16423,7 @@ export function JetCompactW(
   pconvert: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCompactW(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
+  return libESENT_dll.JetCompactW!(util.toPointer(sesid), util.toPointer(szDatabaseSrc), util.toPointer(szDatabaseDest), util.toPointer(pfnStatus), util.toPointer(pconvert), grbit);
 }
 
 export function JetDefragmentA(
@@ -16205,7 +16434,7 @@ export function JetDefragmentA(
   pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragmentA(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
+  return libESENT_dll.JetDefragmentA!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
 }
 
 export function JetDefragmentW(
@@ -16216,7 +16445,7 @@ export function JetDefragmentW(
   pcSeconds: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragmentW(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
+  return libESENT_dll.JetDefragmentW!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), grbit);
 }
 
 export function JetDefragment2A(
@@ -16228,7 +16457,7 @@ export function JetDefragment2A(
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragment2A(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
+  return libESENT_dll.JetDefragment2A!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
 }
 
 export function JetDefragment2W(
@@ -16240,7 +16469,7 @@ export function JetDefragment2W(
   callback: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_CALLBACK */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragment2W(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
+  return libESENT_dll.JetDefragment2W!(util.toPointer(sesid), dbid, util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), grbit);
 }
 
 export function JetDefragment3A(
@@ -16253,7 +16482,7 @@ export function JetDefragment3A(
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragment3A(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
+  return libESENT_dll.JetDefragment3A!(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
 }
 
 export function JetDefragment3W(
@@ -16266,7 +16495,7 @@ export function JetDefragment3W(
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetDefragment3W(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
+  return libESENT_dll.JetDefragment3W!(util.toPointer(sesid), util.toPointer(szDatabaseName), util.toPointer(szTableName), util.toPointer(pcPasses), util.toPointer(pcSeconds), util.toPointer(callback), util.toPointer(pvContext), grbit);
 }
 
 export function JetSetDatabaseSizeA(
@@ -16275,7 +16504,7 @@ export function JetSetDatabaseSizeA(
   cpg: number /* u32 */,
   pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetDatabaseSizeA(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
+  return libESENT_dll.JetSetDatabaseSizeA!(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
 }
 
 export function JetSetDatabaseSizeW(
@@ -16284,7 +16513,7 @@ export function JetSetDatabaseSizeW(
   cpg: number /* u32 */,
   pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetDatabaseSizeW(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
+  return libESENT_dll.JetSetDatabaseSizeW!(util.toPointer(sesid), util.toPointer(szDatabaseName), cpg, util.toPointer(pcpgReal));
 }
 
 export function JetGrowDatabase(
@@ -16293,7 +16522,7 @@ export function JetGrowDatabase(
   cpg: number /* u32 */,
   pcpgReal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGrowDatabase(util.toPointer(sesid), dbid, cpg, util.toPointer(pcpgReal));
+  return libESENT_dll.JetGrowDatabase!(util.toPointer(sesid), dbid, cpg, util.toPointer(pcpgReal));
 }
 
 export function JetResizeDatabase(
@@ -16303,20 +16532,20 @@ export function JetResizeDatabase(
   pcpgActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetResizeDatabase(util.toPointer(sesid), dbid, cpgTarget, util.toPointer(pcpgActual), grbit);
+  return libESENT_dll.JetResizeDatabase!(util.toPointer(sesid), dbid, cpgTarget, util.toPointer(pcpgActual), grbit);
 }
 
 export function JetSetSessionContext(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   ulContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_API_PTR */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetSessionContext(util.toPointer(sesid), util.toPointer(ulContext));
+  return libESENT_dll.JetSetSessionContext!(util.toPointer(sesid), util.toPointer(ulContext));
 }
 
 export function JetResetSessionContext(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
 ): number /* i32 */ {
-  return libESENT_dll.JetResetSessionContext(util.toPointer(sesid));
+  return libESENT_dll.JetResetSessionContext!(util.toPointer(sesid));
 }
 
 export function JetGotoBookmark(
@@ -16325,7 +16554,7 @@ export function JetGotoBookmark(
   pvBookmark: Deno.PointerValue | Uint8Array /* ptr */,
   cbBookmark: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGotoBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark);
+  return libESENT_dll.JetGotoBookmark!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvBookmark), cbBookmark);
 }
 
 export function JetGotoSecondaryIndexBookmark(
@@ -16337,7 +16566,7 @@ export function JetGotoSecondaryIndexBookmark(
   cbPrimaryBookmark: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGotoSecondaryIndexBookmark(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvSecondaryKey), cbSecondaryKey, util.toPointer(pvPrimaryBookmark), cbPrimaryBookmark, grbit);
+  return libESENT_dll.JetGotoSecondaryIndexBookmark!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvSecondaryKey), cbSecondaryKey, util.toPointer(pvPrimaryBookmark), cbPrimaryBookmark, grbit);
 }
 
 export function JetIntersectIndexes(
@@ -16347,14 +16576,14 @@ export function JetIntersectIndexes(
   precordlist: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetIntersectIndexes(util.toPointer(sesid), util.toPointer(rgindexrange), cindexrange, util.toPointer(precordlist), grbit);
+  return libESENT_dll.JetIntersectIndexes!(util.toPointer(sesid), util.toPointer(rgindexrange), cindexrange, util.toPointer(precordlist), grbit);
 }
 
 export function JetComputeStats(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   tableid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
 ): number /* i32 */ {
-  return libESENT_dll.JetComputeStats(util.toPointer(sesid), util.toPointer(tableid));
+  return libESENT_dll.JetComputeStats!(util.toPointer(sesid), util.toPointer(tableid));
 }
 
 export function JetOpenTempTable(
@@ -16365,7 +16594,7 @@ export function JetOpenTempTable(
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
   prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTempTable(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
+  return libESENT_dll.JetOpenTempTable!(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTempTable2(
@@ -16377,7 +16606,7 @@ export function JetOpenTempTable2(
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
   prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTempTable2(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, lcid, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
+  return libESENT_dll.JetOpenTempTable2!(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, lcid, grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTempTable3(
@@ -16389,21 +16618,21 @@ export function JetOpenTempTable3(
   ptableid: Deno.PointerValue | Uint8Array /* ptr */,
   prgcolumnid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTempTable3(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, util.toPointer(pidxunicode), grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
+  return libESENT_dll.JetOpenTempTable3!(util.toPointer(sesid), util.toPointer(prgcolumndef), ccolumn, util.toPointer(pidxunicode), grbit, util.toPointer(ptableid), util.toPointer(prgcolumnid));
 }
 
 export function JetOpenTemporaryTable(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   popentemporarytable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTemporaryTable(util.toPointer(sesid), util.toPointer(popentemporarytable));
+  return libESENT_dll.JetOpenTemporaryTable!(util.toPointer(sesid), util.toPointer(popentemporarytable));
 }
 
 export function JetOpenTemporaryTable2(
   sesid: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_SESID */,
   popentemporarytable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenTemporaryTable2(util.toPointer(sesid), util.toPointer(popentemporarytable));
+  return libESENT_dll.JetOpenTemporaryTable2!(util.toPointer(sesid), util.toPointer(popentemporarytable));
 }
 
 export function JetBackupA(
@@ -16411,7 +16640,7 @@ export function JetBackupA(
   grbit: number /* u32 */,
   pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBackupA(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
+  return libESENT_dll.JetBackupA!(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupW(
@@ -16419,7 +16648,7 @@ export function JetBackupW(
   grbit: number /* u32 */,
   pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBackupW(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
+  return libESENT_dll.JetBackupW!(util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupInstanceA(
@@ -16428,7 +16657,7 @@ export function JetBackupInstanceA(
   grbit: number /* u32 */,
   pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBackupInstanceA(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
+  return libESENT_dll.JetBackupInstanceA!(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetBackupInstanceW(
@@ -16437,21 +16666,21 @@ export function JetBackupInstanceW(
   grbit: number /* u32 */,
   pfnStatus: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBackupInstanceW(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
+  return libESENT_dll.JetBackupInstanceW!(util.toPointer(instance), util.toPointer(szBackupPath), grbit, util.toPointer(pfnStatus));
 }
 
 export function JetRestoreA(
   szSource: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestoreA(util.toPointer(szSource), util.toPointer(pfn));
+  return libESENT_dll.JetRestoreA!(util.toPointer(szSource), util.toPointer(pfn));
 }
 
 export function JetRestoreW(
   szSource: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestoreW(util.toPointer(szSource), util.toPointer(pfn));
+  return libESENT_dll.JetRestoreW!(util.toPointer(szSource), util.toPointer(pfn));
 }
 
 export function JetRestore2A(
@@ -16459,7 +16688,7 @@ export function JetRestore2A(
   szDest: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestore2A(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
+  return libESENT_dll.JetRestore2A!(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestore2W(
@@ -16467,7 +16696,7 @@ export function JetRestore2W(
   szDest: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestore2W(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
+  return libESENT_dll.JetRestore2W!(util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestoreInstanceA(
@@ -16476,7 +16705,7 @@ export function JetRestoreInstanceA(
   szDest: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestoreInstanceA(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
+  return libESENT_dll.JetRestoreInstanceA!(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetRestoreInstanceW(
@@ -16485,7 +16714,7 @@ export function JetRestoreInstanceW(
   szDest: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRestoreInstanceW(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
+  return libESENT_dll.JetRestoreInstanceW!(util.toPointer(instance), util.toPointer(sz), util.toPointer(szDest), util.toPointer(pfn));
 }
 
 export function JetSetIndexRange(
@@ -16493,7 +16722,7 @@ export function JetSetIndexRange(
   tableidSrc: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_TABLEID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetIndexRange(util.toPointer(sesid), util.toPointer(tableidSrc), grbit);
+  return libESENT_dll.JetSetIndexRange!(util.toPointer(sesid), util.toPointer(tableidSrc), grbit);
 }
 
 export function JetIndexRecordCount(
@@ -16502,7 +16731,7 @@ export function JetIndexRecordCount(
   pcrec: Deno.PointerValue | Uint8Array /* ptr */,
   crecMax: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetIndexRecordCount(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pcrec), crecMax);
+  return libESENT_dll.JetIndexRecordCount!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pcrec), crecMax);
 }
 
 export function JetRetrieveKey(
@@ -16513,20 +16742,20 @@ export function JetRetrieveKey(
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRetrieveKey(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvKey), cbMax, util.toPointer(pcbActual), grbit);
+  return libESENT_dll.JetRetrieveKey!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pvKey), cbMax, util.toPointer(pcbActual), grbit);
 }
 
 export function JetBeginExternalBackup(
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginExternalBackup(grbit);
+  return libESENT_dll.JetBeginExternalBackup!(grbit);
 }
 
 export function JetBeginExternalBackupInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetBeginExternalBackupInstance(util.toPointer(instance), grbit);
+  return libESENT_dll.JetBeginExternalBackupInstance!(util.toPointer(instance), grbit);
 }
 
 export function JetGetAttachInfoA(
@@ -16534,7 +16763,7 @@ export function JetGetAttachInfoA(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetAttachInfoA(util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetAttachInfoA!(util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoW(
@@ -16542,7 +16771,7 @@ export function JetGetAttachInfoW(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetAttachInfoW(util.toPointer(wszzDatabases), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetAttachInfoW!(util.toPointer(wszzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoInstanceA(
@@ -16551,7 +16780,7 @@ export function JetGetAttachInfoInstanceA(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetAttachInfoInstanceA(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetAttachInfoInstanceA!(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetAttachInfoInstanceW(
@@ -16560,7 +16789,7 @@ export function JetGetAttachInfoInstanceW(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetAttachInfoInstanceW(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetAttachInfoInstanceW!(util.toPointer(instance), util.toPointer(szzDatabases), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetOpenFileA(
@@ -16569,7 +16798,7 @@ export function JetOpenFileA(
   pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
   pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenFileA(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
+  return libESENT_dll.JetOpenFileA!(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileW(
@@ -16578,7 +16807,7 @@ export function JetOpenFileW(
   pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
   pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenFileW(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
+  return libESENT_dll.JetOpenFileW!(util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileInstanceA(
@@ -16588,7 +16817,7 @@ export function JetOpenFileInstanceA(
   pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
   pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenFileInstanceA(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
+  return libESENT_dll.JetOpenFileInstanceA!(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetOpenFileInstanceW(
@@ -16598,7 +16827,7 @@ export function JetOpenFileInstanceW(
   pulFileSizeLow: Deno.PointerValue | Uint8Array /* ptr */,
   pulFileSizeHigh: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOpenFileInstanceW(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
+  return libESENT_dll.JetOpenFileInstanceW!(util.toPointer(instance), util.toPointer(szFileName), util.toPointer(phfFile), util.toPointer(pulFileSizeLow), util.toPointer(pulFileSizeHigh));
 }
 
 export function JetReadFile(
@@ -16607,7 +16836,7 @@ export function JetReadFile(
   cb: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetReadFile(util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
+  return libESENT_dll.JetReadFile!(util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
 }
 
 export function JetReadFileInstance(
@@ -16617,20 +16846,20 @@ export function JetReadFileInstance(
   cb: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetReadFileInstance(util.toPointer(instance), util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
+  return libESENT_dll.JetReadFileInstance!(util.toPointer(instance), util.toPointer(hfFile), util.toPointer(pv), cb, util.toPointer(pcbActual));
 }
 
 export function JetCloseFile(
   hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCloseFile(util.toPointer(hfFile));
+  return libESENT_dll.JetCloseFile!(util.toPointer(hfFile));
 }
 
 export function JetCloseFileInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   hfFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetCloseFileInstance(util.toPointer(instance), util.toPointer(hfFile));
+  return libESENT_dll.JetCloseFileInstance!(util.toPointer(instance), util.toPointer(hfFile));
 }
 
 export function JetGetLogInfoA(
@@ -16638,7 +16867,7 @@ export function JetGetLogInfoA(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoA(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetLogInfoA!(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoW(
@@ -16646,7 +16875,7 @@ export function JetGetLogInfoW(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoW(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetLogInfoW!(util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstanceA(
@@ -16655,7 +16884,7 @@ export function JetGetLogInfoInstanceA(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoInstanceA(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetLogInfoInstanceA!(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstanceW(
@@ -16664,7 +16893,7 @@ export function JetGetLogInfoInstanceW(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoInstanceW(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetLogInfoInstanceW!(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetLogInfoInstance2A(
@@ -16674,7 +16903,7 @@ export function JetGetLogInfoInstance2A(
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoInstance2A(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
+  return libESENT_dll.JetGetLogInfoInstance2A!(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
 }
 
 export function JetGetLogInfoInstance2W(
@@ -16684,7 +16913,7 @@ export function JetGetLogInfoInstance2W(
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
   pLogInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLogInfoInstance2W(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
+  return libESENT_dll.JetGetLogInfoInstance2W!(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual), util.toPointer(pLogInfo));
 }
 
 export function JetGetTruncateLogInfoInstanceA(
@@ -16693,7 +16922,7 @@ export function JetGetTruncateLogInfoInstanceA(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTruncateLogInfoInstanceA(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetTruncateLogInfoInstanceA!(util.toPointer(instance), util.toPointer(szzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetGetTruncateLogInfoInstanceW(
@@ -16702,34 +16931,34 @@ export function JetGetTruncateLogInfoInstanceW(
   cbMax: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetTruncateLogInfoInstanceW(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
+  return libESENT_dll.JetGetTruncateLogInfoInstanceW!(util.toPointer(instance), util.toPointer(wszzLogs), cbMax, util.toPointer(pcbActual));
 }
 
 export function JetTruncateLog(): number /* i32 */ {
-  return libESENT_dll.JetTruncateLog();
+  return libESENT_dll.JetTruncateLog!();
 }
 
 export function JetTruncateLogInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetTruncateLogInstance(util.toPointer(instance));
+  return libESENT_dll.JetTruncateLogInstance!(util.toPointer(instance));
 }
 
 export function JetEndExternalBackup(): number /* i32 */ {
-  return libESENT_dll.JetEndExternalBackup();
+  return libESENT_dll.JetEndExternalBackup!();
 }
 
 export function JetEndExternalBackupInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEndExternalBackupInstance(util.toPointer(instance));
+  return libESENT_dll.JetEndExternalBackupInstance!(util.toPointer(instance));
 }
 
 export function JetEndExternalBackupInstance2(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetEndExternalBackupInstance2(util.toPointer(instance), grbit);
+  return libESENT_dll.JetEndExternalBackupInstance2!(util.toPointer(instance), grbit);
 }
 
 export function JetExternalRestoreA(
@@ -16742,7 +16971,7 @@ export function JetExternalRestoreA(
   genHigh: number /* i32 */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetExternalRestoreA(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
+  return libESENT_dll.JetExternalRestoreA!(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
 }
 
 export function JetExternalRestoreW(
@@ -16755,7 +16984,7 @@ export function JetExternalRestoreW(
   genHigh: number /* i32 */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetExternalRestoreW(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
+  return libESENT_dll.JetExternalRestoreW!(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), genLow, genHigh, util.toPointer(pfn));
 }
 
 export function JetExternalRestore2A(
@@ -16770,7 +16999,7 @@ export function JetExternalRestore2A(
   szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetExternalRestore2A(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
+  return libESENT_dll.JetExternalRestore2A!(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
 }
 
 export function JetExternalRestore2W(
@@ -16785,7 +17014,7 @@ export function JetExternalRestore2W(
   szTargetInstanceCheckpointPath: Deno.PointerValue | Uint8Array /* ptr */,
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_PFNSTATUS */,
 ): number /* i32 */ {
-  return libESENT_dll.JetExternalRestore2W(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
+  return libESENT_dll.JetExternalRestore2W!(util.toPointer(szCheckpointFilePath), util.toPointer(szLogPath), util.toPointer(rgrstmap), crstfilemap, util.toPointer(szBackupLogPath), util.toPointer(pLogInfo), util.toPointer(szTargetInstanceName), util.toPointer(szTargetInstanceLogPath), util.toPointer(szTargetInstanceCheckpointPath), util.toPointer(pfn));
 }
 
 export function JetRegisterCallback(
@@ -16796,7 +17025,7 @@ export function JetRegisterCallback(
   pvContext: Deno.PointerValue | Uint8Array /* ptr */,
   phCallbackId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetRegisterCallback(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(pCallback), util.toPointer(pvContext), util.toPointer(phCallbackId));
+  return libESENT_dll.JetRegisterCallback!(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(pCallback), util.toPointer(pvContext), util.toPointer(phCallbackId));
 }
 
 export function JetUnregisterCallback(
@@ -16805,27 +17034,27 @@ export function JetUnregisterCallback(
   cbtyp: number /* u32 */,
   hCallbackId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_HANDLE */,
 ): number /* i32 */ {
-  return libESENT_dll.JetUnregisterCallback(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(hCallbackId));
+  return libESENT_dll.JetUnregisterCallback!(util.toPointer(sesid), util.toPointer(tableid), cbtyp, util.toPointer(hCallbackId));
 }
 
 export function JetGetInstanceInfoA(
   pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetInstanceInfoA(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
+  return libESENT_dll.JetGetInstanceInfoA!(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
 }
 
 export function JetGetInstanceInfoW(
   pcInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetInstanceInfoW(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
+  return libESENT_dll.JetGetInstanceInfoW!(util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo));
 }
 
 export function JetFreeBuffer(
   pbBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* i32 */ {
-  return libESENT_dll.JetFreeBuffer(util.pstrToFfi(pbBuf));
+  return libESENT_dll.JetFreeBuffer!(util.pstrToFfi(pbBuf));
 }
 
 export function JetSetLS(
@@ -16834,7 +17063,7 @@ export function JetSetLS(
   ls: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_LS */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetLS(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ls), grbit);
+  return libESENT_dll.JetSetLS!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(ls), grbit);
 }
 
 export function JetGetLS(
@@ -16843,14 +17072,14 @@ export function JetGetLS(
   pls: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetLS(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pls), grbit);
+  return libESENT_dll.JetGetLS!(util.toPointer(sesid), util.toPointer(tableid), util.toPointer(pls), grbit);
 }
 
 export function JetOSSnapshotPrepare(
   psnapId: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotPrepare(util.toPointer(psnapId), grbit);
+  return libESENT_dll.JetOSSnapshotPrepare!(util.toPointer(psnapId), grbit);
 }
 
 export function JetOSSnapshotPrepareInstance(
@@ -16858,7 +17087,7 @@ export function JetOSSnapshotPrepareInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotPrepareInstance(util.toPointer(snapId), util.toPointer(instance), grbit);
+  return libESENT_dll.JetOSSnapshotPrepareInstance!(util.toPointer(snapId), util.toPointer(instance), grbit);
 }
 
 export function JetOSSnapshotFreezeA(
@@ -16867,7 +17096,7 @@ export function JetOSSnapshotFreezeA(
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotFreezeA(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
+  return libESENT_dll.JetOSSnapshotFreezeA!(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotFreezeW(
@@ -16876,28 +17105,28 @@ export function JetOSSnapshotFreezeW(
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotFreezeW(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
+  return libESENT_dll.JetOSSnapshotFreezeW!(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotThaw(
   snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotThaw(util.toPointer(snapId), grbit);
+  return libESENT_dll.JetOSSnapshotThaw!(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotAbort(
   snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotAbort(util.toPointer(snapId), grbit);
+  return libESENT_dll.JetOSSnapshotAbort!(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotTruncateLog(
   snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotTruncateLog(util.toPointer(snapId), grbit);
+  return libESENT_dll.JetOSSnapshotTruncateLog!(util.toPointer(snapId), grbit);
 }
 
 export function JetOSSnapshotTruncateLogInstance(
@@ -16905,7 +17134,7 @@ export function JetOSSnapshotTruncateLogInstance(
   instance: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.StructuredStorage.JET_INSTANCE */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotTruncateLogInstance(util.toPointer(snapId), util.toPointer(instance), grbit);
+  return libESENT_dll.JetOSSnapshotTruncateLogInstance!(util.toPointer(snapId), util.toPointer(instance), grbit);
 }
 
 export function JetOSSnapshotGetFreezeInfoA(
@@ -16914,7 +17143,7 @@ export function JetOSSnapshotGetFreezeInfoA(
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotGetFreezeInfoA(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
+  return libESENT_dll.JetOSSnapshotGetFreezeInfoA!(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotGetFreezeInfoW(
@@ -16923,20 +17152,20 @@ export function JetOSSnapshotGetFreezeInfoW(
   paInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotGetFreezeInfoW(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
+  return libESENT_dll.JetOSSnapshotGetFreezeInfoW!(util.toPointer(snapId), util.toPointer(pcInstanceInfo), util.toPointer(paInstanceInfo), grbit);
 }
 
 export function JetOSSnapshotEnd(
   snapId: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.Jet.JET_OSSNAPID */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetOSSnapshotEnd(util.toPointer(snapId), grbit);
+  return libESENT_dll.JetOSSnapshotEnd!(util.toPointer(snapId), grbit);
 }
 
 export function JetConfigureProcessForCrashDump(
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetConfigureProcessForCrashDump(grbit);
+  return libESENT_dll.JetConfigureProcessForCrashDump!(grbit);
 }
 
 export function JetGetErrorInfoW(
@@ -16946,7 +17175,7 @@ export function JetGetErrorInfoW(
   InfoLevel: number /* u32 */,
   grbit: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetErrorInfoW(util.toPointer(pvContext), util.toPointer(pvResult), cbMax, InfoLevel, grbit);
+  return libESENT_dll.JetGetErrorInfoW!(util.toPointer(pvContext), util.toPointer(pvResult), cbMax, InfoLevel, grbit);
 }
 
 export function JetSetSessionParameter(
@@ -16955,7 +17184,7 @@ export function JetSetSessionParameter(
   pvParam: Deno.PointerValue | Uint8Array /* ptr */,
   cbParam: number /* u32 */,
 ): number /* i32 */ {
-  return libESENT_dll.JetSetSessionParameter(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParam);
+  return libESENT_dll.JetSetSessionParameter!(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParam);
 }
 
 export function JetGetSessionParameter(
@@ -16965,6 +17194,6 @@ export function JetGetSessionParameter(
   cbParamMax: number /* u32 */,
   pcbParamActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libESENT_dll.JetGetSessionParameter(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParamMax, util.toPointer(pcbParamActual));
+  return libESENT_dll.JetGetSessionParameter!(util.toPointer(sesid), sesparamid, util.toPointer(pvParam), cbParamMax, util.toPointer(pcbParamActual));
 }
 

@@ -2605,130 +2605,162 @@ try {
     CoGetInstanceFromFile: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CoGetInstanceFromIStorage: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateStreamOnHGlobal: {
       parameters: ["isize", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetHGlobalFromStream: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CoGetInterfaceAndReleaseStream: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropVariantCopy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropVariantClear: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     FreePropVariantArray: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgCreateDocfile: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgCreateDocfileOnILockBytes: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgOpenStorage: {
       parameters: ["buffer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgOpenStorageOnILockBytes: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgIsStorageFile: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     StgIsStorageILockBytes: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     StgSetTimes: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgCreateStorageEx: {
       parameters: ["buffer", "u32", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgOpenStorageEx: {
       parameters: ["buffer", "u32", "u32", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgCreatePropStg: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgOpenPropStg: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgCreatePropSetStg: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     FmtIdToPropStgName: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PropStgNameToFmtId: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadClassStg: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WriteClassStg: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ReadClassStm: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WriteClassStm: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetHGlobalFromILockBytes: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateILockBytesOnHGlobal: {
       parameters: ["isize", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetConvertStg: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WriteFmtUserTypeStg: {
       parameters: ["pointer", "u16", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ReadFmtUserTypeStg: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetConvertStg: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2738,42 +2770,52 @@ try {
     StgOpenAsyncDocfileOnIFillLockBytes: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgGetIFillLockBytesOnILockBytes: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgGetIFillLockBytesOnFile: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgConvertVariantToProperty: {
       parameters: ["pointer", "u16", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgConvertPropertyToVariant: {
       parameters: ["pointer", "u16", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgPropertyLengthAsVariant: {
       parameters: ["pointer", "u32", "u16", "u8"],
       result: "u32",
+      optional: true,
     },
     OleConvertOLESTREAMToIStorage: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleConvertIStorageToOLESTREAM: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleConvertIStorageToOLESTREAMEx: {
       parameters: ["pointer", "u16", "i32", "i32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleConvertOLESTREAMToIStorageEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2783,6 +2825,7 @@ try {
     StgOpenLayoutDocfile: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2792,10 +2835,12 @@ try {
     StgSerializePropVariant: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StgDeserializePropVariant: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2812,7 +2857,7 @@ export function CoGetInstanceFromFile(
   dwCount: number /* u32 */,
   pResults: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CoGetInstanceFromFile(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, grfMode, util.pwstrToFfi(pwszName), dwCount, util.toPointer(pResults));
+  return libOLE32_dll.CoGetInstanceFromFile!(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, grfMode, util.pwstrToFfi(pwszName), dwCount, util.toPointer(pResults));
 }
 
 export function CoGetInstanceFromIStorage(
@@ -2824,7 +2869,7 @@ export function CoGetInstanceFromIStorage(
   dwCount: number /* u32 */,
   pResults: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CoGetInstanceFromIStorage(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pstg), dwCount, util.toPointer(pResults));
+  return libOLE32_dll.CoGetInstanceFromIStorage!(util.toPointer(pServerInfo), util.toPointer(pClsid), util.toPointer(punkOuter), dwClsCtx, util.toPointer(pstg), dwCount, util.toPointer(pResults));
 }
 
 export function StgOpenAsyncDocfileOnIFillLockBytes(
@@ -2833,21 +2878,21 @@ export function StgOpenAsyncDocfileOnIFillLockBytes(
   asyncFlags: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.StgOpenAsyncDocfileOnIFillLockBytes(util.toPointer(pflb), grfMode, asyncFlags, util.toPointer(ppstgOpen));
+  return libole32_dll.StgOpenAsyncDocfileOnIFillLockBytes!(util.toPointer(pflb), grfMode, asyncFlags, util.toPointer(ppstgOpen));
 }
 
 export function StgGetIFillLockBytesOnILockBytes(
   pilb: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
   ppflb: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.StgGetIFillLockBytesOnILockBytes(util.toPointer(pilb), util.toPointer(ppflb));
+  return libole32_dll.StgGetIFillLockBytesOnILockBytes!(util.toPointer(pilb), util.toPointer(ppflb));
 }
 
 export function StgGetIFillLockBytesOnFile(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppflb: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.StgGetIFillLockBytesOnFile(util.pwstrToFfi(pwcsName), util.toPointer(ppflb));
+  return libole32_dll.StgGetIFillLockBytesOnFile!(util.pwstrToFfi(pwcsName), util.toPointer(ppflb));
 }
 
 export function StgOpenLayoutDocfile(
@@ -2856,7 +2901,7 @@ export function StgOpenLayoutDocfile(
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdflayout_dll.StgOpenLayoutDocfile(util.pwstrToFfi(pwcsDfName), grfMode, reserved, util.toPointer(ppstgOpen));
+  return libdflayout_dll.StgOpenLayoutDocfile!(util.pwstrToFfi(pwcsDfName), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function CreateStreamOnHGlobal(
@@ -2864,14 +2909,14 @@ export function CreateStreamOnHGlobal(
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
   ppstm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CreateStreamOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(ppstm));
+  return libOLE32_dll.CreateStreamOnHGlobal!(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(ppstm));
 }
 
 export function GetHGlobalFromStream(
   pstm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   phglobal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.GetHGlobalFromStream(util.toPointer(pstm), util.toPointer(phglobal));
+  return libOLE32_dll.GetHGlobalFromStream!(util.toPointer(pstm), util.toPointer(phglobal));
 }
 
 export function CoGetInterfaceAndReleaseStream(
@@ -2879,27 +2924,27 @@ export function CoGetInterfaceAndReleaseStream(
   iid: Deno.PointerValue | Uint8Array /* ptr */,
   ppv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CoGetInterfaceAndReleaseStream(util.toPointer(pStm), util.toPointer(iid), util.toPointer(ppv));
+  return libOLE32_dll.CoGetInterfaceAndReleaseStream!(util.toPointer(pStm), util.toPointer(iid), util.toPointer(ppv));
 }
 
 export function PropVariantCopy(
   pvarDest: Deno.PointerValue | Uint8Array /* ptr */,
   pvarSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.PropVariantCopy(util.toPointer(pvarDest), util.toPointer(pvarSrc));
+  return libOLE32_dll.PropVariantCopy!(util.toPointer(pvarDest), util.toPointer(pvarSrc));
 }
 
 export function PropVariantClear(
   pvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.PropVariantClear(util.toPointer(pvar));
+  return libOLE32_dll.PropVariantClear!(util.toPointer(pvar));
 }
 
 export function FreePropVariantArray(
   cVariants: number /* u32 */,
   rgvars: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.FreePropVariantArray(cVariants, util.toPointer(rgvars));
+  return libOLE32_dll.FreePropVariantArray!(cVariants, util.toPointer(rgvars));
 }
 
 export function StgCreateDocfile(
@@ -2908,7 +2953,7 @@ export function StgCreateDocfile(
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgCreateDocfile(util.pwstrToFfi(pwcsName), grfMode, reserved, util.toPointer(ppstgOpen));
+  return libOLE32_dll.StgCreateDocfile!(util.pwstrToFfi(pwcsName), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgCreateDocfileOnILockBytes(
@@ -2917,7 +2962,7 @@ export function StgCreateDocfileOnILockBytes(
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgCreateDocfileOnILockBytes(util.toPointer(plkbyt), grfMode, reserved, util.toPointer(ppstgOpen));
+  return libOLE32_dll.StgCreateDocfileOnILockBytes!(util.toPointer(plkbyt), grfMode, reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgOpenStorage(
@@ -2928,7 +2973,7 @@ export function StgOpenStorage(
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgOpenStorage(util.pwstrToFfi(pwcsName), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
+  return libOLE32_dll.StgOpenStorage!(util.pwstrToFfi(pwcsName), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgOpenStorageOnILockBytes(
@@ -2939,19 +2984,19 @@ export function StgOpenStorageOnILockBytes(
   reserved: number /* u32 */,
   ppstgOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgOpenStorageOnILockBytes(util.toPointer(plkbyt), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
+  return libOLE32_dll.StgOpenStorageOnILockBytes!(util.toPointer(plkbyt), util.toPointer(pstgPriority), grfMode, util.toPointer(snbExclude), reserved, util.toPointer(ppstgOpen));
 }
 
 export function StgIsStorageFile(
   pwcsName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgIsStorageFile(util.pwstrToFfi(pwcsName));
+  return libOLE32_dll.StgIsStorageFile!(util.pwstrToFfi(pwcsName));
 }
 
 export function StgIsStorageILockBytes(
   plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgIsStorageILockBytes(util.toPointer(plkbyt));
+  return libOLE32_dll.StgIsStorageILockBytes!(util.toPointer(plkbyt));
 }
 
 export function StgSetTimes(
@@ -2960,7 +3005,7 @@ export function StgSetTimes(
   patime: Deno.PointerValue | Uint8Array /* ptr */,
   pmtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgSetTimes(util.pwstrToFfi(lpszName), util.toPointer(pctime), util.toPointer(patime), util.toPointer(pmtime));
+  return libOLE32_dll.StgSetTimes!(util.pwstrToFfi(lpszName), util.toPointer(pctime), util.toPointer(patime), util.toPointer(pmtime));
 }
 
 export function StgCreateStorageEx(
@@ -2973,7 +3018,7 @@ export function StgCreateStorageEx(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppObjectOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgCreateStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
+  return libOLE32_dll.StgCreateStorageEx!(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
 }
 
 export function StgOpenStorageEx(
@@ -2986,7 +3031,7 @@ export function StgOpenStorageEx(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppObjectOpen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgOpenStorageEx(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
+  return libOLE32_dll.StgOpenStorageEx!(util.pwstrToFfi(pwcsName), grfMode, stgfmt, grfAttrs, util.toPointer(pStgOptions), util.toPointer(pSecurityDescriptor), util.toPointer(riid), util.toPointer(ppObjectOpen));
 }
 
 export function StgCreatePropStg(
@@ -2997,7 +3042,7 @@ export function StgCreatePropStg(
   dwReserved: number /* u32 */,
   ppPropStg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgCreatePropStg(util.toPointer(pUnk), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, dwReserved, util.toPointer(ppPropStg));
+  return libOLE32_dll.StgCreatePropStg!(util.toPointer(pUnk), util.toPointer(fmtid), util.toPointer(pclsid), grfFlags, dwReserved, util.toPointer(ppPropStg));
 }
 
 export function StgOpenPropStg(
@@ -3007,7 +3052,7 @@ export function StgOpenPropStg(
   dwReserved: number /* u32 */,
   ppPropStg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgOpenPropStg(util.toPointer(pUnk), util.toPointer(fmtid), grfFlags, dwReserved, util.toPointer(ppPropStg));
+  return libOLE32_dll.StgOpenPropStg!(util.toPointer(pUnk), util.toPointer(fmtid), grfFlags, dwReserved, util.toPointer(ppPropStg));
 }
 
 export function StgCreatePropSetStg(
@@ -3015,56 +3060,56 @@ export function StgCreatePropSetStg(
   dwReserved: number /* u32 */,
   ppPropSetStg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.StgCreatePropSetStg(util.toPointer(pStorage), dwReserved, util.toPointer(ppPropSetStg));
+  return libOLE32_dll.StgCreatePropSetStg!(util.toPointer(pStorage), dwReserved, util.toPointer(ppPropSetStg));
 }
 
 export function FmtIdToPropStgName(
   pfmtid: Deno.PointerValue | Uint8Array /* ptr */,
   oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.FmtIdToPropStgName(util.toPointer(pfmtid), util.pwstrToFfi(oszName));
+  return libOLE32_dll.FmtIdToPropStgName!(util.toPointer(pfmtid), util.pwstrToFfi(oszName));
 }
 
 export function PropStgNameToFmtId(
   oszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pfmtid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.PropStgNameToFmtId(util.pwstrToFfi(oszName), util.toPointer(pfmtid));
+  return libOLE32_dll.PropStgNameToFmtId!(util.pwstrToFfi(oszName), util.toPointer(pfmtid));
 }
 
 export function ReadClassStg(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   pclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.ReadClassStg(util.toPointer(pStg), util.toPointer(pclsid));
+  return libOLE32_dll.ReadClassStg!(util.toPointer(pStg), util.toPointer(pclsid));
 }
 
 export function WriteClassStg(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   rclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.WriteClassStg(util.toPointer(pStg), util.toPointer(rclsid));
+  return libOLE32_dll.WriteClassStg!(util.toPointer(pStg), util.toPointer(rclsid));
 }
 
 export function ReadClassStm(
   pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   pclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.ReadClassStm(util.toPointer(pStm), util.toPointer(pclsid));
+  return libOLE32_dll.ReadClassStm!(util.toPointer(pStm), util.toPointer(pclsid));
 }
 
 export function WriteClassStm(
   pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
   rclsid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.WriteClassStm(util.toPointer(pStm), util.toPointer(rclsid));
+  return libOLE32_dll.WriteClassStm!(util.toPointer(pStm), util.toPointer(rclsid));
 }
 
 export function GetHGlobalFromILockBytes(
   plkbyt: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.ILockBytes */,
   phglobal: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.GetHGlobalFromILockBytes(util.toPointer(plkbyt), util.toPointer(phglobal));
+  return libOLE32_dll.GetHGlobalFromILockBytes!(util.toPointer(plkbyt), util.toPointer(phglobal));
 }
 
 export function CreateILockBytesOnHGlobal(
@@ -3072,13 +3117,13 @@ export function CreateILockBytesOnHGlobal(
   fDeleteOnRelease: boolean /* Windows.Win32.Foundation.BOOL */,
   pplkbyt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CreateILockBytesOnHGlobal(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(pplkbyt));
+  return libOLE32_dll.CreateILockBytesOnHGlobal!(hGlobal, util.boolToFfi(fDeleteOnRelease), util.toPointer(pplkbyt));
 }
 
 export function GetConvertStg(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.GetConvertStg(util.toPointer(pStg));
+  return libOLE32_dll.GetConvertStg!(util.toPointer(pStg));
 }
 
 export function StgConvertVariantToProperty(
@@ -3090,7 +3135,7 @@ export function StgConvertVariantToProperty(
   fReserved: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
   pcIndirect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libole32_dll.StgConvertVariantToProperty(util.toPointer(pvar), CodePage, util.toPointer(pprop), util.toPointer(pcb), pid, util.toPointer(fReserved), util.toPointer(pcIndirect));
+  return libole32_dll.StgConvertVariantToProperty!(util.toPointer(pvar), CodePage, util.toPointer(pprop), util.toPointer(pcb), pid, util.toPointer(fReserved), util.toPointer(pcIndirect));
 }
 
 export function StgConvertPropertyToVariant(
@@ -3099,7 +3144,7 @@ export function StgConvertPropertyToVariant(
   pvar: Deno.PointerValue | Uint8Array /* ptr */,
   pma: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libole32_dll.StgConvertPropertyToVariant(util.toPointer(pprop), CodePage, util.toPointer(pvar), util.toPointer(pma));
+  return libole32_dll.StgConvertPropertyToVariant!(util.toPointer(pprop), CodePage, util.toPointer(pvar), util.toPointer(pma));
 }
 
 export function StgPropertyLengthAsVariant(
@@ -3108,7 +3153,7 @@ export function StgPropertyLengthAsVariant(
   CodePage: number /* u16 */,
   bReserved: number /* u8 */,
 ): number /* u32 */ {
-  return libole32_dll.StgPropertyLengthAsVariant(util.toPointer(pProp), cbProp, CodePage, bReserved);
+  return libole32_dll.StgPropertyLengthAsVariant!(util.toPointer(pProp), cbProp, CodePage, bReserved);
 }
 
 export function WriteFmtUserTypeStg(
@@ -3116,7 +3161,7 @@ export function WriteFmtUserTypeStg(
   cf: number /* u16 */,
   lpszUserType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.WriteFmtUserTypeStg(util.toPointer(pstg), cf, util.pwstrToFfi(lpszUserType));
+  return libOLE32_dll.WriteFmtUserTypeStg!(util.toPointer(pstg), cf, util.pwstrToFfi(lpszUserType));
 }
 
 export function ReadFmtUserTypeStg(
@@ -3124,7 +3169,7 @@ export function ReadFmtUserTypeStg(
   pcf: Deno.PointerValue | Uint8Array /* ptr */,
   lplpszUserType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.ReadFmtUserTypeStg(util.toPointer(pstg), util.toPointer(pcf), util.toPointer(lplpszUserType));
+  return libOLE32_dll.ReadFmtUserTypeStg!(util.toPointer(pstg), util.toPointer(pcf), util.toPointer(lplpszUserType));
 }
 
 export function OleConvertOLESTREAMToIStorage(
@@ -3132,21 +3177,21 @@ export function OleConvertOLESTREAMToIStorage(
   pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ptd: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleConvertOLESTREAMToIStorage(util.toPointer(lpolestream), util.toPointer(pstg), util.toPointer(ptd));
+  return libole32_dll.OleConvertOLESTREAMToIStorage!(util.toPointer(lpolestream), util.toPointer(pstg), util.toPointer(ptd));
 }
 
 export function OleConvertIStorageToOLESTREAM(
   pstg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   lpolestream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleConvertIStorageToOLESTREAM(util.toPointer(pstg), util.toPointer(lpolestream));
+  return libole32_dll.OleConvertIStorageToOLESTREAM!(util.toPointer(pstg), util.toPointer(lpolestream));
 }
 
 export function SetConvertStg(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   fConvert: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.SetConvertStg(util.toPointer(pStg), util.boolToFfi(fConvert));
+  return libOLE32_dll.SetConvertStg!(util.toPointer(pStg), util.boolToFfi(fConvert));
 }
 
 export function OleConvertIStorageToOLESTREAMEx(
@@ -3158,7 +3203,7 @@ export function OleConvertIStorageToOLESTREAMEx(
   pmedium: Deno.PointerValue | Uint8Array /* ptr */,
   polestm: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleConvertIStorageToOLESTREAMEx(util.toPointer(pstg), cfFormat, lWidth, lHeight, dwSize, util.toPointer(pmedium), util.toPointer(polestm));
+  return libole32_dll.OleConvertIStorageToOLESTREAMEx!(util.toPointer(pstg), cfFormat, lWidth, lHeight, dwSize, util.toPointer(pmedium), util.toPointer(polestm));
 }
 
 export function OleConvertOLESTREAMToIStorageEx(
@@ -3170,7 +3215,7 @@ export function OleConvertOLESTREAMToIStorageEx(
   pdwSize: Deno.PointerValue | Uint8Array /* ptr */,
   pmedium: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleConvertOLESTREAMToIStorageEx(util.toPointer(polestm), util.toPointer(pstg), util.toPointer(pcfFormat), util.toPointer(plwWidth), util.toPointer(plHeight), util.toPointer(pdwSize), util.toPointer(pmedium));
+  return libole32_dll.OleConvertOLESTREAMToIStorageEx!(util.toPointer(polestm), util.toPointer(pstg), util.toPointer(pcfFormat), util.toPointer(plwWidth), util.toPointer(plHeight), util.toPointer(pdwSize), util.toPointer(pmedium));
 }
 
 export function StgSerializePropVariant(
@@ -3178,7 +3223,7 @@ export function StgSerializePropVariant(
   ppProp: Deno.PointerValue | Uint8Array /* ptr */,
   pcb: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROPSYS_dll.StgSerializePropVariant(util.toPointer(ppropvar), util.toPointer(ppProp), util.toPointer(pcb));
+  return libPROPSYS_dll.StgSerializePropVariant!(util.toPointer(ppropvar), util.toPointer(ppProp), util.toPointer(pcb));
 }
 
 export function StgDeserializePropVariant(
@@ -3186,6 +3231,6 @@ export function StgDeserializePropVariant(
   cbMax: number /* u32 */,
   ppropvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROPSYS_dll.StgDeserializePropVariant(util.toPointer(pprop), cbMax, util.toPointer(ppropvar));
+  return libPROPSYS_dll.StgDeserializePropVariant!(util.toPointer(pprop), cbMax, util.toPointer(ppropvar));
 }
 

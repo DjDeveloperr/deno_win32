@@ -6288,18 +6288,22 @@ try {
     GetExtensionVersion: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     HttpExtensionProc: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     HttpFilterProc: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetFilterVersion: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6309,13 +6313,13 @@ try {
 export function GetExtensionVersion(
   pVer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRpcProxy_dll.GetExtensionVersion(util.toPointer(pVer)));
+  return util.boolFromFfi(libRpcProxy_dll.GetExtensionVersion!(util.toPointer(pVer)));
 }
 
 export function HttpExtensionProc(
   pECB: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRpcProxy_dll.HttpExtensionProc(util.toPointer(pECB));
+  return libRpcProxy_dll.HttpExtensionProc!(util.toPointer(pECB));
 }
 
 export function HttpFilterProc(
@@ -6323,12 +6327,12 @@ export function HttpFilterProc(
   NotificationType: number /* u32 */,
   pvNotification: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRpcProxy_dll.HttpFilterProc(util.toPointer(pfc), NotificationType, util.toPointer(pvNotification));
+  return libRpcProxy_dll.HttpFilterProc!(util.toPointer(pfc), NotificationType, util.toPointer(pvNotification));
 }
 
 export function GetFilterVersion(
   pVer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRpcProxy_dll.GetFilterVersion(util.toPointer(pVer)));
+  return util.boolFromFfi(libRpcProxy_dll.GetFilterVersion!(util.toPointer(pVer)));
 }
 

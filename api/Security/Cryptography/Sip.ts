@@ -1419,30 +1419,37 @@ try {
     CryptSIPGetSignedDataMsg: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPPutSignedDataMsg: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPCreateIndirectData: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPVerifyIndirectData: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPRemoveSignedDataMsg: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     CryptSIPGetCaps: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPGetSealedDigest: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1452,22 +1459,27 @@ try {
     CryptSIPLoad: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPRetrieveSubjectGuid: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPRetrieveSubjectGuidForCatalogFile: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPAddProvider: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     CryptSIPRemoveProvider: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1481,7 +1493,7 @@ export function CryptSIPGetSignedDataMsg(
   pcbSignedDataMsg: Deno.PointerValue | Uint8Array /* ptr */,
   pbSignedDataMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSignedDataMsg(util.toPointer(pSubjectInfo), util.toPointer(pdwEncodingType), dwIndex, util.toPointer(pcbSignedDataMsg), util.toPointer(pbSignedDataMsg)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSignedDataMsg!(util.toPointer(pSubjectInfo), util.toPointer(pdwEncodingType), dwIndex, util.toPointer(pcbSignedDataMsg), util.toPointer(pbSignedDataMsg)));
 }
 
 export function CryptSIPPutSignedDataMsg(
@@ -1491,7 +1503,7 @@ export function CryptSIPPutSignedDataMsg(
   cbSignedDataMsg: number /* u32 */,
   pbSignedDataMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPPutSignedDataMsg(util.toPointer(pSubjectInfo), dwEncodingType, util.toPointer(pdwIndex), cbSignedDataMsg, util.toPointer(pbSignedDataMsg)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPPutSignedDataMsg!(util.toPointer(pSubjectInfo), dwEncodingType, util.toPointer(pdwIndex), cbSignedDataMsg, util.toPointer(pbSignedDataMsg)));
 }
 
 export function CryptSIPCreateIndirectData(
@@ -1499,21 +1511,21 @@ export function CryptSIPCreateIndirectData(
   pcbIndirectData: Deno.PointerValue | Uint8Array /* ptr */,
   pIndirectData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPCreateIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pcbIndirectData), util.toPointer(pIndirectData)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPCreateIndirectData!(util.toPointer(pSubjectInfo), util.toPointer(pcbIndirectData), util.toPointer(pIndirectData)));
 }
 
 export function CryptSIPVerifyIndirectData(
   pSubjectInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pIndirectData: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPVerifyIndirectData(util.toPointer(pSubjectInfo), util.toPointer(pIndirectData)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPVerifyIndirectData!(util.toPointer(pSubjectInfo), util.toPointer(pIndirectData)));
 }
 
 export function CryptSIPRemoveSignedDataMsg(
   pSubjectInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dwIndex: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPRemoveSignedDataMsg(util.toPointer(pSubjectInfo), dwIndex));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPRemoveSignedDataMsg!(util.toPointer(pSubjectInfo), dwIndex));
 }
 
 export function CryptSIPLoad(
@@ -1521,7 +1533,7 @@ export function CryptSIPLoad(
   dwFlags: number /* u32 */,
   pSipDispatch: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSIPLoad(util.toPointer(pgSubject), dwFlags, util.toPointer(pSipDispatch)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPLoad!(util.toPointer(pgSubject), dwFlags, util.toPointer(pSipDispatch)));
 }
 
 export function CryptSIPRetrieveSubjectGuid(
@@ -1529,7 +1541,7 @@ export function CryptSIPRetrieveSubjectGuid(
   hFileIn: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuid(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuid!(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
 }
 
 export function CryptSIPRetrieveSubjectGuidForCatalogFile(
@@ -1537,26 +1549,26 @@ export function CryptSIPRetrieveSubjectGuidForCatalogFile(
   hFileIn: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pgSubject: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuidForCatalogFile(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRetrieveSubjectGuidForCatalogFile!(util.pwstrToFfi(FileName), util.toPointer(hFileIn), util.toPointer(pgSubject)));
 }
 
 export function CryptSIPAddProvider(
   psNewProv: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSIPAddProvider(util.toPointer(psNewProv)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPAddProvider!(util.toPointer(psNewProv)));
 }
 
 export function CryptSIPRemoveProvider(
   pgProv: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRemoveProvider(util.toPointer(pgProv)));
+  return util.boolFromFfi(libCRYPT32_dll.CryptSIPRemoveProvider!(util.toPointer(pgProv)));
 }
 
 export function CryptSIPGetCaps(
   pSubjInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCaps: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetCaps(util.toPointer(pSubjInfo), util.toPointer(pCaps)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetCaps!(util.toPointer(pSubjInfo), util.toPointer(pCaps)));
 }
 
 export function CryptSIPGetSealedDigest(
@@ -1566,6 +1578,6 @@ export function CryptSIPGetSealedDigest(
   pbDigest: Deno.PointerValue | Uint8Array /* ptr */,
   pcbDigest: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSealedDigest(util.toPointer(pSubjectInfo), util.toPointer(pSig), dwSig, util.toPointer(pbDigest), util.toPointer(pcbDigest)));
+  return util.boolFromFfi(libWINTRUST_dll.CryptSIPGetSealedDigest!(util.toPointer(pSubjectInfo), util.toPointer(pSig), dwSig, util.toPointer(pbDigest), util.toPointer(pcbDigest)));
 }
 

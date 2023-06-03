@@ -13,6 +13,7 @@ try {
     CeipIsOptedIn: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -20,6 +21,6 @@ try {
 // Symbols
 
 export function CeipIsOptedIn(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CeipIsOptedIn());
+  return util.boolFromFfi(libKERNEL32_dll.CeipIsOptedIn!());
 }
 

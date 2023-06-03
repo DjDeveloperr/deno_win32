@@ -270,198 +270,247 @@ try {
     DisableThreadLibraryCalls: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FindResourceExW: {
       parameters: ["pointer", "buffer", "buffer", "u16"],
       result: "pointer",
+      optional: true,
     },
     FreeLibrary: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     FreeLibraryAndExitThread: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     FreeResource: {
       parameters: ["isize"],
       result: "i32",
+      optional: true,
     },
     GetModuleFileNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetModuleFileNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     GetModuleHandleA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     GetModuleHandleW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     GetModuleHandleExA: {
       parameters: ["u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetModuleHandleExW: {
       parameters: ["u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetProcAddress: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadLibraryExA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadLibraryExW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadResource: {
       parameters: ["pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     LockResource: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     SizeofResource: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddDllDirectory: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     RemoveDllDirectory: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetDefaultDllDirectories: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     EnumResourceLanguagesExA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     EnumResourceLanguagesExW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     EnumResourceNamesExA: {
       parameters: ["pointer", "buffer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     EnumResourceNamesExW: {
       parameters: ["pointer", "buffer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     EnumResourceTypesExA: {
       parameters: ["pointer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     EnumResourceTypesExW: {
       parameters: ["pointer", "pointer", "isize", "u32", "u16"],
       result: "i32",
+      optional: true,
     },
     FindResourceW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadLibraryA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     LoadLibraryW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     EnumResourceNamesW: {
       parameters: ["pointer", "buffer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     EnumResourceNamesA: {
       parameters: ["pointer", "buffer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     LoadModule: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     LoadPackagedLibrary: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     FindResourceA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     FindResourceExA: {
       parameters: ["pointer", "buffer", "buffer", "u16"],
       result: "pointer",
+      optional: true,
     },
     EnumResourceTypesA: {
       parameters: ["pointer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     EnumResourceTypesW: {
       parameters: ["pointer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     EnumResourceLanguagesA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     EnumResourceLanguagesW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "isize"],
       result: "i32",
+      optional: true,
     },
     BeginUpdateResourceA: {
       parameters: ["buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     BeginUpdateResourceW: {
       parameters: ["buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     UpdateResourceA: {
       parameters: ["pointer", "buffer", "buffer", "u16", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     UpdateResourceW: {
       parameters: ["pointer", "buffer", "buffer", "u16", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     EndUpdateResourceA: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     EndUpdateResourceW: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SetDllDirectoryA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     SetDllDirectoryW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     GetDllDirectoryA: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetDllDirectoryW: {
       parameters: ["u32", "buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -471,7 +520,7 @@ try {
 export function DisableThreadLibraryCalls(
   hLibModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DisableThreadLibraryCalls(util.toPointer(hLibModule)));
+  return util.boolFromFfi(libKERNEL32_dll.DisableThreadLibraryCalls!(util.toPointer(hLibModule)));
 }
 
 export function FindResourceExW(
@@ -480,26 +529,26 @@ export function FindResourceExW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wLanguage: number /* u16 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */ {
-  return libKERNEL32_dll.FindResourceExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), wLanguage);
+  return libKERNEL32_dll.FindResourceExW!(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), wLanguage);
 }
 
 export function FreeLibrary(
   hLibModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FreeLibrary(util.toPointer(hLibModule)));
+  return util.boolFromFfi(libKERNEL32_dll.FreeLibrary!(util.toPointer(hLibModule)));
 }
 
 export function FreeLibraryAndExitThread(
   hLibModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   dwExitCode: number /* u32 */,
 ): void /* void */ {
-  return libKERNEL32_dll.FreeLibraryAndExitThread(util.toPointer(hLibModule), dwExitCode);
+  return libKERNEL32_dll.FreeLibraryAndExitThread!(util.toPointer(hLibModule), dwExitCode);
 }
 
 export function FreeResource(
   hResData: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.FreeResource(hResData));
+  return util.boolFromFfi(libKERNEL32_dll.FreeResource!(hResData));
 }
 
 export function GetModuleFileNameA(
@@ -507,7 +556,7 @@ export function GetModuleFileNameA(
   lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetModuleFileNameA(util.toPointer(hModule), util.pstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.GetModuleFileNameA!(util.toPointer(hModule), util.pstrToFfi(lpFilename), nSize);
 }
 
 export function GetModuleFileNameW(
@@ -515,19 +564,19 @@ export function GetModuleFileNameW(
   lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetModuleFileNameW(util.toPointer(hModule), util.pwstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.GetModuleFileNameW!(util.toPointer(hModule), util.pwstrToFfi(lpFilename), nSize);
 }
 
 export function GetModuleHandleA(
   lpModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.GetModuleHandleA(util.pstrToFfi(lpModuleName));
+  return libKERNEL32_dll.GetModuleHandleA!(util.pstrToFfi(lpModuleName));
 }
 
 export function GetModuleHandleW(
   lpModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.GetModuleHandleW(util.pwstrToFfi(lpModuleName));
+  return libKERNEL32_dll.GetModuleHandleW!(util.pwstrToFfi(lpModuleName));
 }
 
 export function GetModuleHandleExA(
@@ -535,7 +584,7 @@ export function GetModuleHandleExA(
   lpModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phModule: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetModuleHandleExA(dwFlags, util.pstrToFfi(lpModuleName), util.toPointer(phModule)));
+  return util.boolFromFfi(libKERNEL32_dll.GetModuleHandleExA!(dwFlags, util.pstrToFfi(lpModuleName), util.toPointer(phModule)));
 }
 
 export function GetModuleHandleExW(
@@ -543,14 +592,14 @@ export function GetModuleHandleExW(
   lpModuleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phModule: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetModuleHandleExW(dwFlags, util.pwstrToFfi(lpModuleName), util.toPointer(phModule)));
+  return util.boolFromFfi(libKERNEL32_dll.GetModuleHandleExW!(dwFlags, util.pwstrToFfi(lpModuleName), util.toPointer(phModule)));
 }
 
 export function GetProcAddress(
   hModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   lpProcName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.FARPROC */ {
-  return libKERNEL32_dll.GetProcAddress(util.toPointer(hModule), util.pstrToFfi(lpProcName));
+  return libKERNEL32_dll.GetProcAddress!(util.toPointer(hModule), util.pstrToFfi(lpProcName));
 }
 
 export function LoadLibraryExA(
@@ -558,7 +607,7 @@ export function LoadLibraryExA(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: LOAD_LIBRARY_FLAGS /* Windows.Win32.System.LibraryLoader.LOAD_LIBRARY_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.LoadLibraryExA(util.pstrToFfi(lpLibFileName), util.toPointer(hFile), dwFlags);
+  return libKERNEL32_dll.LoadLibraryExA!(util.pstrToFfi(lpLibFileName), util.toPointer(hFile), dwFlags);
 }
 
 export function LoadLibraryExW(
@@ -566,45 +615,45 @@ export function LoadLibraryExW(
   hFile: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwFlags: LOAD_LIBRARY_FLAGS /* Windows.Win32.System.LibraryLoader.LOAD_LIBRARY_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.LoadLibraryExW(util.pwstrToFfi(lpLibFileName), util.toPointer(hFile), dwFlags);
+  return libKERNEL32_dll.LoadLibraryExW!(util.pwstrToFfi(lpLibFileName), util.toPointer(hFile), dwFlags);
 }
 
 export function LoadResource(
   hModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   hResInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */,
 ): bigint | number /* isize */ {
-  return libKERNEL32_dll.LoadResource(util.toPointer(hModule), util.toPointer(hResInfo));
+  return libKERNEL32_dll.LoadResource!(util.toPointer(hModule), util.toPointer(hResInfo));
 }
 
 export function LockResource(
   hResData: bigint | number /* isize */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.LockResource(hResData);
+  return libKERNEL32_dll.LockResource!(hResData);
 }
 
 export function SizeofResource(
   hModule: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   hResInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.SizeofResource(util.toPointer(hModule), util.toPointer(hResInfo));
+  return libKERNEL32_dll.SizeofResource!(util.toPointer(hModule), util.toPointer(hResInfo));
 }
 
 export function AddDllDirectory(
   NewDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libKERNEL32_dll.AddDllDirectory(util.pwstrToFfi(NewDirectory));
+  return libKERNEL32_dll.AddDllDirectory!(util.pwstrToFfi(NewDirectory));
 }
 
 export function RemoveDllDirectory(
   Cookie: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.RemoveDllDirectory(util.toPointer(Cookie)));
+  return util.boolFromFfi(libKERNEL32_dll.RemoveDllDirectory!(util.toPointer(Cookie)));
 }
 
 export function SetDefaultDllDirectories(
   DirectoryFlags: LOAD_LIBRARY_FLAGS /* Windows.Win32.System.LibraryLoader.LOAD_LIBRARY_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetDefaultDllDirectories(DirectoryFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetDefaultDllDirectories!(DirectoryFlags));
 }
 
 export function EnumResourceLanguagesExA(
@@ -616,7 +665,7 @@ export function EnumResourceLanguagesExA(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExA!(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function EnumResourceLanguagesExW(
@@ -628,7 +677,7 @@ export function EnumResourceLanguagesExW(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesExW!(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function EnumResourceNamesExA(
@@ -639,7 +688,7 @@ export function EnumResourceNamesExA(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExA!(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function EnumResourceNamesExW(
@@ -650,7 +699,7 @@ export function EnumResourceNamesExW(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesExW!(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function EnumResourceTypesExA(
@@ -660,7 +709,7 @@ export function EnumResourceTypesExA(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExA(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExA!(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function EnumResourceTypesExW(
@@ -670,7 +719,7 @@ export function EnumResourceTypesExW(
   dwFlags: number /* u32 */,
   LangId: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExW(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesExW!(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam, dwFlags, LangId));
 }
 
 export function FindResourceW(
@@ -678,19 +727,19 @@ export function FindResourceW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */ {
-  return libKERNEL32_dll.FindResourceW(util.toPointer(hModule), util.pwstrToFfi(lpName), util.pwstrToFfi(lpType));
+  return libKERNEL32_dll.FindResourceW!(util.toPointer(hModule), util.pwstrToFfi(lpName), util.pwstrToFfi(lpType));
 }
 
 export function LoadLibraryA(
   lpLibFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.LoadLibraryA(util.pstrToFfi(lpLibFileName));
+  return libKERNEL32_dll.LoadLibraryA!(util.pstrToFfi(lpLibFileName));
 }
 
 export function LoadLibraryW(
   lpLibFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.LoadLibraryW(util.pwstrToFfi(lpLibFileName));
+  return libKERNEL32_dll.LoadLibraryW!(util.pwstrToFfi(lpLibFileName));
 }
 
 export function EnumResourceNamesW(
@@ -699,7 +748,7 @@ export function EnumResourceNamesW(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCW */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesW!(util.toPointer(hModule), util.pwstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function EnumResourceNamesA(
@@ -708,21 +757,21 @@ export function EnumResourceNamesA(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESNAMEPROCA */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceNamesA!(util.toPointer(hModule), util.pstrToFfi(lpType), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function LoadModule(
   lpModuleName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpParameterBlock: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.LoadModule(util.pstrToFfi(lpModuleName), util.toPointer(lpParameterBlock));
+  return libKERNEL32_dll.LoadModule!(util.pstrToFfi(lpModuleName), util.toPointer(lpParameterBlock));
 }
 
 export function LoadPackagedLibrary(
   lpwLibFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Reserved: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */ {
-  return libKERNEL32_dll.LoadPackagedLibrary(util.pwstrToFfi(lpwLibFileName), Reserved);
+  return libKERNEL32_dll.LoadPackagedLibrary!(util.pwstrToFfi(lpwLibFileName), Reserved);
 }
 
 export function FindResourceA(
@@ -730,7 +779,7 @@ export function FindResourceA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpType: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */ {
-  return libKERNEL32_dll.FindResourceA(util.toPointer(hModule), util.pstrToFfi(lpName), util.pstrToFfi(lpType));
+  return libKERNEL32_dll.FindResourceA!(util.toPointer(hModule), util.pstrToFfi(lpName), util.pstrToFfi(lpType));
 }
 
 export function FindResourceExA(
@@ -739,7 +788,7 @@ export function FindResourceExA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   wLanguage: number /* u16 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRSRC */ {
-  return libKERNEL32_dll.FindResourceExA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), wLanguage);
+  return libKERNEL32_dll.FindResourceExA!(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), wLanguage);
 }
 
 export function EnumResourceTypesA(
@@ -747,7 +796,7 @@ export function EnumResourceTypesA(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCA */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesA(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesA!(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function EnumResourceTypesW(
@@ -755,7 +804,7 @@ export function EnumResourceTypesW(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESTYPEPROCW */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesW(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceTypesW!(util.toPointer(hModule), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function EnumResourceLanguagesA(
@@ -765,7 +814,7 @@ export function EnumResourceLanguagesA(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCA */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesA(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesA!(util.toPointer(hModule), util.pstrToFfi(lpType), util.pstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function EnumResourceLanguagesW(
@@ -775,21 +824,21 @@ export function EnumResourceLanguagesW(
   lpEnumFunc: Uint8Array | Deno.PointerValue /* Windows.Win32.System.LibraryLoader.ENUMRESLANGPROCW */,
   lParam: bigint | number /* isize */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesW(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
+  return util.boolFromFfi(libKERNEL32_dll.EnumResourceLanguagesW!(util.toPointer(hModule), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), util.toPointer(lpEnumFunc), lParam));
 }
 
 export function BeginUpdateResourceA(
   pFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bDeleteExistingResources: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.BeginUpdateResourceA(util.pstrToFfi(pFileName), util.boolToFfi(bDeleteExistingResources));
+  return libKERNEL32_dll.BeginUpdateResourceA!(util.pstrToFfi(pFileName), util.boolToFfi(bDeleteExistingResources));
 }
 
 export function BeginUpdateResourceW(
   pFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bDeleteExistingResources: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libKERNEL32_dll.BeginUpdateResourceW(util.pwstrToFfi(pFileName), util.boolToFfi(bDeleteExistingResources));
+  return libKERNEL32_dll.BeginUpdateResourceW!(util.pwstrToFfi(pFileName), util.boolToFfi(bDeleteExistingResources));
 }
 
 export function UpdateResourceA(
@@ -800,7 +849,7 @@ export function UpdateResourceA(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UpdateResourceA(util.toPointer(hUpdate), util.pstrToFfi(lpType), util.pstrToFfi(lpName), wLanguage, util.toPointer(lpData), cb));
+  return util.boolFromFfi(libKERNEL32_dll.UpdateResourceA!(util.toPointer(hUpdate), util.pstrToFfi(lpType), util.pstrToFfi(lpName), wLanguage, util.toPointer(lpData), cb));
 }
 
 export function UpdateResourceW(
@@ -811,46 +860,46 @@ export function UpdateResourceW(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.UpdateResourceW(util.toPointer(hUpdate), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), wLanguage, util.toPointer(lpData), cb));
+  return util.boolFromFfi(libKERNEL32_dll.UpdateResourceW!(util.toPointer(hUpdate), util.pwstrToFfi(lpType), util.pwstrToFfi(lpName), wLanguage, util.toPointer(lpData), cb));
 }
 
 export function EndUpdateResourceA(
   hUpdate: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fDiscard: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EndUpdateResourceA(util.toPointer(hUpdate), util.boolToFfi(fDiscard)));
+  return util.boolFromFfi(libKERNEL32_dll.EndUpdateResourceA!(util.toPointer(hUpdate), util.boolToFfi(fDiscard)));
 }
 
 export function EndUpdateResourceW(
   hUpdate: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fDiscard: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.EndUpdateResourceW(util.toPointer(hUpdate), util.boolToFfi(fDiscard)));
+  return util.boolFromFfi(libKERNEL32_dll.EndUpdateResourceW!(util.toPointer(hUpdate), util.boolToFfi(fDiscard)));
 }
 
 export function SetDllDirectoryA(
   lpPathName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetDllDirectoryA(util.pstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetDllDirectoryA!(util.pstrToFfi(lpPathName)));
 }
 
 export function SetDllDirectoryW(
   lpPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetDllDirectoryW(util.pwstrToFfi(lpPathName)));
+  return util.boolFromFfi(libKERNEL32_dll.SetDllDirectoryW!(util.pwstrToFfi(lpPathName)));
 }
 
 export function GetDllDirectoryA(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetDllDirectoryA(nBufferLength, util.pstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetDllDirectoryA!(nBufferLength, util.pstrToFfi(lpBuffer));
 }
 
 export function GetDllDirectoryW(
   nBufferLength: number /* u32 */,
   lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.GetDllDirectoryW(nBufferLength, util.pwstrToFfi(lpBuffer));
+  return libKERNEL32_dll.GetDllDirectoryW!(nBufferLength, util.pwstrToFfi(lpBuffer));
 }
 

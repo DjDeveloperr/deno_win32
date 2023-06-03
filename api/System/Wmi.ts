@@ -17329,6 +17329,7 @@ try {
     MI_Application_InitializeV1: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -17341,6 +17342,6 @@ export function MI_Application_InitializeV1(
   extendedError: Deno.PointerValue | Uint8Array /* ptr */,
   application: Deno.PointerValue | Uint8Array /* ptr */,
 ): MI_Result /* Windows.Win32.System.Wmi.MI_Result */ {
-  return libmi_dll.MI_Application_InitializeV1(flags, util.toPointer(applicationID), util.toPointer(extendedError), util.toPointer(application));
+  return libmi_dll.MI_Application_InitializeV1!(flags, util.toPointer(applicationID), util.toPointer(extendedError), util.toPointer(application));
 }
 

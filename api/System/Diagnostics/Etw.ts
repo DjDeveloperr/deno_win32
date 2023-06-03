@@ -12791,214 +12791,267 @@ try {
     StartTraceW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     StartTraceA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     StopTraceW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     StopTraceA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     QueryTraceW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     QueryTraceA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UpdateTraceW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     UpdateTraceA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FlushTraceW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FlushTraceA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ControlTraceW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ControlTraceA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     QueryAllTracesW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     QueryAllTracesA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnableTrace: {
       parameters: ["u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnableTraceEx: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u8", "u64", "u64", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnableTraceEx2: {
       parameters: ["pointer", "pointer", "u32", "u8", "u64", "u64", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumerateTraceGuidsEx: {
       parameters: ["i32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TraceSetInformation: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     TraceQueryInformation: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreateTraceInstanceId: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TraceEvent: {
       parameters: ["u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     TraceEventInstance: {
       parameters: ["u64", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterTraceGuidsW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterTraceGuidsA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EnumerateTraceGuids: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     UnregisterTraceGuids: {
       parameters: ["u64"],
       result: "u32",
+      optional: true,
     },
     GetTraceLoggerHandle: {
       parameters: ["pointer"],
       result: "u64",
+      optional: true,
     },
     GetTraceEnableLevel: {
       parameters: ["u64"],
       result: "u8",
+      optional: true,
     },
     GetTraceEnableFlags: {
       parameters: ["u64"],
       result: "u32",
+      optional: true,
     },
     OpenTraceW: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ProcessTrace: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CloseTrace: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     QueryTraceProcessingHandle: {
       parameters: ["pointer", "i32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenTraceA: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SetTraceCallback: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveTraceCallback: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TraceMessage: {
       parameters: ["u64", "u32", "pointer", "u16"],
       result: "u32",
+      optional: true,
     },
     TraceMessageVa: {
       parameters: ["u64", "u32", "pointer", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventRegister: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventUnregister: {
       parameters: ["u64"],
       result: "u32",
+      optional: true,
     },
     EventSetInformation: {
       parameters: ["u64", "i32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     EventEnabled: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     EventProviderEnabled: {
       parameters: ["u64", "u8", "u64"],
       result: "pointer",
+      optional: true,
     },
     EventWrite: {
       parameters: ["u64", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventWriteTransfer: {
       parameters: ["u64", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventWriteEx: {
       parameters: ["u64", "pointer", "u64", "u32", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventWriteString: {
       parameters: ["u64", "u8", "u64", "buffer"],
       result: "u32",
+      optional: true,
     },
     EventActivityIdControl: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventAccessControl: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventAccessQuery: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EventAccessRemove: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CveEventWrite: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -13008,54 +13061,67 @@ try {
     TdhCreatePayloadFilter: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhDeletePayloadFilter: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TdhAggregatePayloadFilters: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhCleanupPayloadEventFilterDescriptor: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TdhEnumerateProvidersForDecodingSource: {
       parameters: ["i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhEnumerateProviderFilters: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhOpenDecodingHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TdhSetDecodingParameter: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetDecodingParameter: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetWppProperty: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetWppMessage: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhCloseDecodingHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TdhLoadManifestFromBinary: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -13065,58 +13131,72 @@ try {
     TdhGetEventInformation: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetEventMapInformation: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetPropertySize: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetProperty: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhEnumerateProviders: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhQueryProviderFieldInformation: {
       parameters: ["pointer", "u64", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhEnumerateProviderFieldInformation: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhLoadManifest: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     TdhLoadManifestFromMemory: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     TdhUnloadManifest: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     TdhUnloadManifestFromMemory: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     TdhFormatProperty: {
       parameters: ["pointer", "pointer", "u32", "u16", "u16", "u16", "u16", "pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhEnumerateManifestProviderEvents: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TdhGetManifestEventInformation: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -13128,7 +13208,7 @@ export function StartTraceW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.StartTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.StartTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function StartTraceA(
@@ -13136,7 +13216,7 @@ export function StartTraceA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.StartTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.StartTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function StopTraceW(
@@ -13144,7 +13224,7 @@ export function StopTraceW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.StopTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.StopTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function StopTraceA(
@@ -13152,7 +13232,7 @@ export function StopTraceA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.StopTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.StopTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function QueryTraceW(
@@ -13160,7 +13240,7 @@ export function QueryTraceW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.QueryTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.QueryTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function QueryTraceA(
@@ -13168,7 +13248,7 @@ export function QueryTraceA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.QueryTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.QueryTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function UpdateTraceW(
@@ -13176,7 +13256,7 @@ export function UpdateTraceW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.UpdateTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.UpdateTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function UpdateTraceA(
@@ -13184,7 +13264,7 @@ export function UpdateTraceA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.UpdateTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.UpdateTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function FlushTraceW(
@@ -13192,7 +13272,7 @@ export function FlushTraceW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.FlushTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.FlushTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function FlushTraceA(
@@ -13200,7 +13280,7 @@ export function FlushTraceA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.FlushTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
+  return libADVAPI32_dll.FlushTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties));
 }
 
 export function ControlTraceW(
@@ -13209,7 +13289,7 @@ export function ControlTraceW(
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
   ControlCode: EVENT_TRACE_CONTROL /* Windows.Win32.System.Diagnostics.Etw.EVENT_TRACE_CONTROL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.ControlTraceW(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties), ControlCode);
+  return libADVAPI32_dll.ControlTraceW!(util.toPointer(TraceHandle), util.pwstrToFfi(InstanceName), util.toPointer(Properties), ControlCode);
 }
 
 export function ControlTraceA(
@@ -13218,7 +13298,7 @@ export function ControlTraceA(
   Properties: Deno.PointerValue | Uint8Array /* ptr */,
   ControlCode: EVENT_TRACE_CONTROL /* Windows.Win32.System.Diagnostics.Etw.EVENT_TRACE_CONTROL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.ControlTraceA(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties), ControlCode);
+  return libADVAPI32_dll.ControlTraceA!(util.toPointer(TraceHandle), util.pstrToFfi(InstanceName), util.toPointer(Properties), ControlCode);
 }
 
 export function QueryAllTracesW(
@@ -13226,7 +13306,7 @@ export function QueryAllTracesW(
   PropertyArrayCount: number /* u32 */,
   LoggerCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.QueryAllTracesW(util.toPointer(PropertyArray), PropertyArrayCount, util.toPointer(LoggerCount));
+  return libADVAPI32_dll.QueryAllTracesW!(util.toPointer(PropertyArray), PropertyArrayCount, util.toPointer(LoggerCount));
 }
 
 export function QueryAllTracesA(
@@ -13234,7 +13314,7 @@ export function QueryAllTracesA(
   PropertyArrayCount: number /* u32 */,
   LoggerCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.QueryAllTracesA(util.toPointer(PropertyArray), PropertyArrayCount, util.toPointer(LoggerCount));
+  return libADVAPI32_dll.QueryAllTracesA!(util.toPointer(PropertyArray), PropertyArrayCount, util.toPointer(LoggerCount));
 }
 
 export function EnableTrace(
@@ -13244,7 +13324,7 @@ export function EnableTrace(
   ControlGuid: Deno.PointerValue | Uint8Array /* ptr */,
   TraceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.CONTROLTRACE_HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.EnableTrace(Enable, EnableFlag, EnableLevel, util.toPointer(ControlGuid), util.toPointer(TraceHandle));
+  return libADVAPI32_dll.EnableTrace!(Enable, EnableFlag, EnableLevel, util.toPointer(ControlGuid), util.toPointer(TraceHandle));
 }
 
 export function EnableTraceEx(
@@ -13258,7 +13338,7 @@ export function EnableTraceEx(
   EnableProperty: number /* u32 */,
   EnableFilterDesc: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.EnableTraceEx(util.toPointer(ProviderId), util.toPointer(SourceId), util.toPointer(TraceHandle), IsEnabled, Level, MatchAnyKeyword, MatchAllKeyword, EnableProperty, util.toPointer(EnableFilterDesc));
+  return libADVAPI32_dll.EnableTraceEx!(util.toPointer(ProviderId), util.toPointer(SourceId), util.toPointer(TraceHandle), IsEnabled, Level, MatchAnyKeyword, MatchAllKeyword, EnableProperty, util.toPointer(EnableFilterDesc));
 }
 
 export function EnableTraceEx2(
@@ -13271,7 +13351,7 @@ export function EnableTraceEx2(
   Timeout: number /* u32 */,
   EnableParameters: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.EnableTraceEx2(util.toPointer(TraceHandle), util.toPointer(ProviderId), ControlCode, Level, MatchAnyKeyword, MatchAllKeyword, Timeout, util.toPointer(EnableParameters));
+  return libADVAPI32_dll.EnableTraceEx2!(util.toPointer(TraceHandle), util.toPointer(ProviderId), ControlCode, Level, MatchAnyKeyword, MatchAllKeyword, Timeout, util.toPointer(EnableParameters));
 }
 
 export function EnumerateTraceGuidsEx(
@@ -13282,7 +13362,7 @@ export function EnumerateTraceGuidsEx(
   OutBufferSize: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.EnumerateTraceGuidsEx(TraceQueryInfoClass, util.toPointer(InBuffer), InBufferSize, util.toPointer(OutBuffer), OutBufferSize, util.toPointer(ReturnLength));
+  return libADVAPI32_dll.EnumerateTraceGuidsEx!(TraceQueryInfoClass, util.toPointer(InBuffer), InBufferSize, util.toPointer(OutBuffer), OutBufferSize, util.toPointer(ReturnLength));
 }
 
 export function TraceSetInformation(
@@ -13291,7 +13371,7 @@ export function TraceSetInformation(
   TraceInformation: Deno.PointerValue | Uint8Array /* ptr */,
   InformationLength: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.TraceSetInformation(util.toPointer(SessionHandle), InformationClass, util.toPointer(TraceInformation), InformationLength);
+  return libADVAPI32_dll.TraceSetInformation!(util.toPointer(SessionHandle), InformationClass, util.toPointer(TraceInformation), InformationLength);
 }
 
 export function TraceQueryInformation(
@@ -13301,21 +13381,21 @@ export function TraceQueryInformation(
   InformationLength: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.TraceQueryInformation(util.toPointer(SessionHandle), InformationClass, util.toPointer(TraceInformation), InformationLength, util.toPointer(ReturnLength));
+  return libADVAPI32_dll.TraceQueryInformation!(util.toPointer(SessionHandle), InformationClass, util.toPointer(TraceInformation), InformationLength, util.toPointer(ReturnLength));
 }
 
 export function CreateTraceInstanceId(
   RegHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   InstInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.CreateTraceInstanceId(util.toPointer(RegHandle), util.toPointer(InstInfo));
+  return libADVAPI32_dll.CreateTraceInstanceId!(util.toPointer(RegHandle), util.toPointer(InstInfo));
 }
 
 export function TraceEvent(
   TraceHandle: bigint | number /* u64 */,
   EventTrace: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.TraceEvent(TraceHandle, util.toPointer(EventTrace));
+  return libADVAPI32_dll.TraceEvent!(TraceHandle, util.toPointer(EventTrace));
 }
 
 export function TraceEventInstance(
@@ -13324,7 +13404,7 @@ export function TraceEventInstance(
   InstInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ParentInstInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.TraceEventInstance(TraceHandle, util.toPointer(EventTrace), util.toPointer(InstInfo), util.toPointer(ParentInstInfo));
+  return libADVAPI32_dll.TraceEventInstance!(TraceHandle, util.toPointer(EventTrace), util.toPointer(InstInfo), util.toPointer(ParentInstInfo));
 }
 
 export function RegisterTraceGuidsW(
@@ -13337,7 +13417,7 @@ export function RegisterTraceGuidsW(
   MofResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.RegisterTraceGuidsW(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pwstrToFfi(MofImagePath), util.pwstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
+  return libADVAPI32_dll.RegisterTraceGuidsW!(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pwstrToFfi(MofImagePath), util.pwstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
 }
 
 export function RegisterTraceGuidsA(
@@ -13350,7 +13430,7 @@ export function RegisterTraceGuidsA(
   MofResourceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   RegistrationHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.RegisterTraceGuidsA(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pstrToFfi(MofImagePath), util.pstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
+  return libADVAPI32_dll.RegisterTraceGuidsA!(util.toPointer(RequestAddress), util.toPointer(RequestContext), util.toPointer(ControlGuid), GuidCount, util.toPointer(TraceGuidReg), util.pstrToFfi(MofImagePath), util.pstrToFfi(MofResourceName), util.toPointer(RegistrationHandle));
 }
 
 export function EnumerateTraceGuids(
@@ -13358,37 +13438,37 @@ export function EnumerateTraceGuids(
   PropertyArrayCount: number /* u32 */,
   GuidCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.EnumerateTraceGuids(util.toPointer(GuidPropertiesArray), PropertyArrayCount, util.toPointer(GuidCount));
+  return libADVAPI32_dll.EnumerateTraceGuids!(util.toPointer(GuidPropertiesArray), PropertyArrayCount, util.toPointer(GuidCount));
 }
 
 export function UnregisterTraceGuids(
   RegistrationHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.UnregisterTraceGuids(RegistrationHandle);
+  return libADVAPI32_dll.UnregisterTraceGuids!(RegistrationHandle);
 }
 
 export function GetTraceLoggerHandle(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* u64 */ {
-  return libADVAPI32_dll.GetTraceLoggerHandle(util.toPointer(Buffer));
+  return libADVAPI32_dll.GetTraceLoggerHandle!(util.toPointer(Buffer));
 }
 
 export function GetTraceEnableLevel(
   TraceHandle: bigint | number /* u64 */,
 ): number /* u8 */ {
-  return libADVAPI32_dll.GetTraceEnableLevel(TraceHandle);
+  return libADVAPI32_dll.GetTraceEnableLevel!(TraceHandle);
 }
 
 export function GetTraceEnableFlags(
   TraceHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.GetTraceEnableFlags(TraceHandle);
+  return libADVAPI32_dll.GetTraceEnableFlags!(TraceHandle);
 }
 
 export function OpenTraceW(
   Logfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.PROCESSTRACE_HANDLE */ {
-  return libADVAPI32_dll.OpenTraceW(util.toPointer(Logfile));
+  return libADVAPI32_dll.OpenTraceW!(util.toPointer(Logfile));
 }
 
 export function ProcessTrace(
@@ -13397,13 +13477,13 @@ export function ProcessTrace(
   StartTime: Deno.PointerValue | Uint8Array /* ptr */,
   EndTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.ProcessTrace(util.toPointer(HandleArray), HandleCount, util.toPointer(StartTime), util.toPointer(EndTime));
+  return libADVAPI32_dll.ProcessTrace!(util.toPointer(HandleArray), HandleCount, util.toPointer(StartTime), util.toPointer(EndTime));
 }
 
 export function CloseTrace(
   TraceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.PROCESSTRACE_HANDLE */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.CloseTrace(util.toPointer(TraceHandle));
+  return libADVAPI32_dll.CloseTrace!(util.toPointer(TraceHandle));
 }
 
 export function QueryTraceProcessingHandle(
@@ -13415,26 +13495,26 @@ export function QueryTraceProcessingHandle(
   OutBufferSize: number /* u32 */,
   ReturnLength: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.QueryTraceProcessingHandle(util.toPointer(ProcessingHandle), InformationClass, util.toPointer(InBuffer), InBufferSize, util.toPointer(OutBuffer), OutBufferSize, util.toPointer(ReturnLength));
+  return libADVAPI32_dll.QueryTraceProcessingHandle!(util.toPointer(ProcessingHandle), InformationClass, util.toPointer(InBuffer), InBufferSize, util.toPointer(OutBuffer), OutBufferSize, util.toPointer(ReturnLength));
 }
 
 export function OpenTraceA(
   Logfile: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.PROCESSTRACE_HANDLE */ {
-  return libADVAPI32_dll.OpenTraceA(util.toPointer(Logfile));
+  return libADVAPI32_dll.OpenTraceA!(util.toPointer(Logfile));
 }
 
 export function SetTraceCallback(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
   EventCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.PEVENT_CALLBACK */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.SetTraceCallback(util.toPointer(pGuid), util.toPointer(EventCallback));
+  return libADVAPI32_dll.SetTraceCallback!(util.toPointer(pGuid), util.toPointer(EventCallback));
 }
 
 export function RemoveTraceCallback(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RemoveTraceCallback(util.toPointer(pGuid));
+  return libADVAPI32_dll.RemoveTraceCallback!(util.toPointer(pGuid));
 }
 
 export function TraceMessage(
@@ -13443,7 +13523,7 @@ export function TraceMessage(
   MessageGuid: Deno.PointerValue | Uint8Array /* ptr */,
   MessageNumber: number /* u16 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.TraceMessage(LoggerHandle, MessageFlags, util.toPointer(MessageGuid), MessageNumber);
+  return libADVAPI32_dll.TraceMessage!(LoggerHandle, MessageFlags, util.toPointer(MessageGuid), MessageNumber);
 }
 
 export function TraceMessageVa(
@@ -13453,7 +13533,7 @@ export function TraceMessageVa(
   MessageNumber: number /* u16 */,
   MessageArgList: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.TraceMessageVa(LoggerHandle, MessageFlags, util.toPointer(MessageGuid), MessageNumber, util.toPointer(MessageArgList));
+  return libADVAPI32_dll.TraceMessageVa!(LoggerHandle, MessageFlags, util.toPointer(MessageGuid), MessageNumber, util.toPointer(MessageArgList));
 }
 
 export function EventRegister(
@@ -13462,13 +13542,13 @@ export function EventRegister(
   CallbackContext: Deno.PointerValue | Uint8Array /* ptr */,
   RegHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventRegister(util.toPointer(ProviderId), util.toPointer(EnableCallback), util.toPointer(CallbackContext), util.toPointer(RegHandle));
+  return libADVAPI32_dll.EventRegister!(util.toPointer(ProviderId), util.toPointer(EnableCallback), util.toPointer(CallbackContext), util.toPointer(RegHandle));
 }
 
 export function EventUnregister(
   RegHandle: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventUnregister(RegHandle);
+  return libADVAPI32_dll.EventUnregister!(RegHandle);
 }
 
 export function EventSetInformation(
@@ -13477,14 +13557,14 @@ export function EventSetInformation(
   EventInformation: Deno.PointerValue | Uint8Array /* ptr */,
   InformationLength: number /* u32 */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventSetInformation(RegHandle, InformationClass, util.toPointer(EventInformation), InformationLength);
+  return libADVAPI32_dll.EventSetInformation!(RegHandle, InformationClass, util.toPointer(EventInformation), InformationLength);
 }
 
 export function EventEnabled(
   RegHandle: bigint | number /* u64 */,
   EventDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.EventEnabled(RegHandle, util.toPointer(EventDescriptor));
+  return libADVAPI32_dll.EventEnabled!(RegHandle, util.toPointer(EventDescriptor));
 }
 
 export function EventProviderEnabled(
@@ -13492,7 +13572,7 @@ export function EventProviderEnabled(
   Level: number /* u8 */,
   Keyword: bigint | number /* u64 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libADVAPI32_dll.EventProviderEnabled(RegHandle, Level, Keyword);
+  return libADVAPI32_dll.EventProviderEnabled!(RegHandle, Level, Keyword);
 }
 
 export function EventWrite(
@@ -13501,7 +13581,7 @@ export function EventWrite(
   UserDataCount: number /* u32 */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventWrite(RegHandle, util.toPointer(EventDescriptor), UserDataCount, util.toPointer(UserData));
+  return libADVAPI32_dll.EventWrite!(RegHandle, util.toPointer(EventDescriptor), UserDataCount, util.toPointer(UserData));
 }
 
 export function EventWriteTransfer(
@@ -13512,7 +13592,7 @@ export function EventWriteTransfer(
   UserDataCount: number /* u32 */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventWriteTransfer(RegHandle, util.toPointer(EventDescriptor), util.toPointer(ActivityId), util.toPointer(RelatedActivityId), UserDataCount, util.toPointer(UserData));
+  return libADVAPI32_dll.EventWriteTransfer!(RegHandle, util.toPointer(EventDescriptor), util.toPointer(ActivityId), util.toPointer(RelatedActivityId), UserDataCount, util.toPointer(UserData));
 }
 
 export function EventWriteEx(
@@ -13525,7 +13605,7 @@ export function EventWriteEx(
   UserDataCount: number /* u32 */,
   UserData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventWriteEx(RegHandle, util.toPointer(EventDescriptor), Filter, Flags, util.toPointer(ActivityId), util.toPointer(RelatedActivityId), UserDataCount, util.toPointer(UserData));
+  return libADVAPI32_dll.EventWriteEx!(RegHandle, util.toPointer(EventDescriptor), Filter, Flags, util.toPointer(ActivityId), util.toPointer(RelatedActivityId), UserDataCount, util.toPointer(UserData));
 }
 
 export function EventWriteString(
@@ -13534,14 +13614,14 @@ export function EventWriteString(
   Keyword: bigint | number /* u64 */,
   String: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventWriteString(RegHandle, Level, Keyword, util.pwstrToFfi(String));
+  return libADVAPI32_dll.EventWriteString!(RegHandle, Level, Keyword, util.pwstrToFfi(String));
 }
 
 export function EventActivityIdControl(
   ControlCode: number /* u32 */,
   ActivityId: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventActivityIdControl(ControlCode, util.toPointer(ActivityId));
+  return libADVAPI32_dll.EventActivityIdControl!(ControlCode, util.toPointer(ActivityId));
 }
 
 export function EventAccessControl(
@@ -13551,7 +13631,7 @@ export function EventAccessControl(
   Rights: number /* u32 */,
   AllowOrDeny: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventAccessControl(util.toPointer(Guid), Operation, util.toPointer(Sid), Rights, util.toPointer(AllowOrDeny));
+  return libADVAPI32_dll.EventAccessControl!(util.toPointer(Guid), Operation, util.toPointer(Sid), Rights, util.toPointer(AllowOrDeny));
 }
 
 export function EventAccessQuery(
@@ -13559,13 +13639,13 @@ export function EventAccessQuery(
   Buffer: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventAccessQuery(util.toPointer(Guid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libADVAPI32_dll.EventAccessQuery!(util.toPointer(Guid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function EventAccessRemove(
   Guid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.EventAccessRemove(util.toPointer(Guid));
+  return libADVAPI32_dll.EventAccessRemove!(util.toPointer(Guid));
 }
 
 export function TdhCreatePayloadFilter(
@@ -13576,13 +13656,13 @@ export function TdhCreatePayloadFilter(
   PayloadPredicates: Deno.PointerValue | Uint8Array /* ptr */,
   PayloadFilter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhCreatePayloadFilter(util.toPointer(ProviderGuid), util.toPointer(EventDescriptor), util.toPointer(EventMatchANY), PayloadPredicateCount, util.toPointer(PayloadPredicates), util.toPointer(PayloadFilter));
+  return libtdh_dll.TdhCreatePayloadFilter!(util.toPointer(ProviderGuid), util.toPointer(EventDescriptor), util.toPointer(EventMatchANY), PayloadPredicateCount, util.toPointer(PayloadPredicates), util.toPointer(PayloadFilter));
 }
 
 export function TdhDeletePayloadFilter(
   PayloadFilter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhDeletePayloadFilter(util.toPointer(PayloadFilter));
+  return libtdh_dll.TdhDeletePayloadFilter!(util.toPointer(PayloadFilter));
 }
 
 export function TdhAggregatePayloadFilters(
@@ -13591,13 +13671,13 @@ export function TdhAggregatePayloadFilters(
   EventMatchALLFlags: Deno.PointerValue | Uint8Array /* ptr */,
   EventFilterDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhAggregatePayloadFilters(PayloadFilterCount, util.toPointer(PayloadFilterPtrs), util.toPointer(EventMatchALLFlags), util.toPointer(EventFilterDescriptor));
+  return libtdh_dll.TdhAggregatePayloadFilters!(PayloadFilterCount, util.toPointer(PayloadFilterPtrs), util.toPointer(EventMatchALLFlags), util.toPointer(EventFilterDescriptor));
 }
 
 export function TdhCleanupPayloadEventFilterDescriptor(
   EventFilterDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhCleanupPayloadEventFilterDescriptor(util.toPointer(EventFilterDescriptor));
+  return libtdh_dll.TdhCleanupPayloadEventFilterDescriptor!(util.toPointer(EventFilterDescriptor));
 }
 
 export function TdhGetEventInformation(
@@ -13607,7 +13687,7 @@ export function TdhGetEventInformation(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhGetEventInformation(util.toPointer(Event), TdhContextCount, util.toPointer(TdhContext), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libTDH_dll.TdhGetEventInformation!(util.toPointer(Event), TdhContextCount, util.toPointer(TdhContext), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function TdhGetEventMapInformation(
@@ -13616,7 +13696,7 @@ export function TdhGetEventMapInformation(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhGetEventMapInformation(util.toPointer(pEvent), util.pwstrToFfi(pMapName), util.toPointer(pBuffer), util.toPointer(pBufferSize));
+  return libTDH_dll.TdhGetEventMapInformation!(util.toPointer(pEvent), util.pwstrToFfi(pMapName), util.toPointer(pBuffer), util.toPointer(pBufferSize));
 }
 
 export function TdhGetPropertySize(
@@ -13627,7 +13707,7 @@ export function TdhGetPropertySize(
   pPropertyData: Deno.PointerValue | Uint8Array /* ptr */,
   pPropertySize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhGetPropertySize(util.toPointer(pEvent), TdhContextCount, util.toPointer(pTdhContext), PropertyDataCount, util.toPointer(pPropertyData), util.toPointer(pPropertySize));
+  return libTDH_dll.TdhGetPropertySize!(util.toPointer(pEvent), TdhContextCount, util.toPointer(pTdhContext), PropertyDataCount, util.toPointer(pPropertyData), util.toPointer(pPropertySize));
 }
 
 export function TdhGetProperty(
@@ -13639,14 +13719,14 @@ export function TdhGetProperty(
   BufferSize: number /* u32 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhGetProperty(util.toPointer(pEvent), TdhContextCount, util.toPointer(pTdhContext), PropertyDataCount, util.toPointer(pPropertyData), BufferSize, util.toPointer(pBuffer));
+  return libTDH_dll.TdhGetProperty!(util.toPointer(pEvent), TdhContextCount, util.toPointer(pTdhContext), PropertyDataCount, util.toPointer(pPropertyData), BufferSize, util.toPointer(pBuffer));
 }
 
 export function TdhEnumerateProviders(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhEnumerateProviders(util.toPointer(pBuffer), util.toPointer(pBufferSize));
+  return libTDH_dll.TdhEnumerateProviders!(util.toPointer(pBuffer), util.toPointer(pBufferSize));
 }
 
 export function TdhEnumerateProvidersForDecodingSource(
@@ -13655,7 +13735,7 @@ export function TdhEnumerateProvidersForDecodingSource(
   bufferSize: number /* u32 */,
   bufferRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhEnumerateProvidersForDecodingSource(filter, util.toPointer(buffer), bufferSize, util.toPointer(bufferRequired));
+  return libtdh_dll.TdhEnumerateProvidersForDecodingSource!(filter, util.toPointer(buffer), bufferSize, util.toPointer(bufferRequired));
 }
 
 export function TdhQueryProviderFieldInformation(
@@ -13665,7 +13745,7 @@ export function TdhQueryProviderFieldInformation(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhQueryProviderFieldInformation(util.toPointer(pGuid), EventFieldValue, EventFieldType, util.toPointer(pBuffer), util.toPointer(pBufferSize));
+  return libTDH_dll.TdhQueryProviderFieldInformation!(util.toPointer(pGuid), EventFieldValue, EventFieldType, util.toPointer(pBuffer), util.toPointer(pBufferSize));
 }
 
 export function TdhEnumerateProviderFieldInformation(
@@ -13674,7 +13754,7 @@ export function TdhEnumerateProviderFieldInformation(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhEnumerateProviderFieldInformation(util.toPointer(pGuid), EventFieldType, util.toPointer(pBuffer), util.toPointer(pBufferSize));
+  return libTDH_dll.TdhEnumerateProviderFieldInformation!(util.toPointer(pGuid), EventFieldType, util.toPointer(pBuffer), util.toPointer(pBufferSize));
 }
 
 export function TdhEnumerateProviderFilters(
@@ -13685,33 +13765,33 @@ export function TdhEnumerateProviderFilters(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhEnumerateProviderFilters(util.toPointer(Guid), TdhContextCount, util.toPointer(TdhContext), util.toPointer(FilterCount), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libtdh_dll.TdhEnumerateProviderFilters!(util.toPointer(Guid), TdhContextCount, util.toPointer(TdhContext), util.toPointer(FilterCount), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function TdhLoadManifest(
   Manifest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhLoadManifest(util.pwstrToFfi(Manifest));
+  return libTDH_dll.TdhLoadManifest!(util.pwstrToFfi(Manifest));
 }
 
 export function TdhLoadManifestFromMemory(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhLoadManifestFromMemory(util.toPointer(pData), cbData);
+  return libTDH_dll.TdhLoadManifestFromMemory!(util.toPointer(pData), cbData);
 }
 
 export function TdhUnloadManifest(
   Manifest: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhUnloadManifest(util.pwstrToFfi(Manifest));
+  return libTDH_dll.TdhUnloadManifest!(util.pwstrToFfi(Manifest));
 }
 
 export function TdhUnloadManifestFromMemory(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhUnloadManifestFromMemory(util.toPointer(pData), cbData);
+  return libTDH_dll.TdhUnloadManifestFromMemory!(util.toPointer(pData), cbData);
 }
 
 export function TdhFormatProperty(
@@ -13727,27 +13807,27 @@ export function TdhFormatProperty(
   Buffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UserDataConsumed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhFormatProperty(util.toPointer(EventInfo), util.toPointer(MapInfo), PointerSize, PropertyInType, PropertyOutType, PropertyLength, UserDataLength, util.toPointer(UserData), util.toPointer(BufferSize), util.pwstrToFfi(Buffer), util.toPointer(UserDataConsumed));
+  return libTDH_dll.TdhFormatProperty!(util.toPointer(EventInfo), util.toPointer(MapInfo), PointerSize, PropertyInType, PropertyOutType, PropertyLength, UserDataLength, util.toPointer(UserData), util.toPointer(BufferSize), util.pwstrToFfi(Buffer), util.toPointer(UserDataConsumed));
 }
 
 export function TdhOpenDecodingHandle(
   Handle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhOpenDecodingHandle(util.toPointer(Handle));
+  return libtdh_dll.TdhOpenDecodingHandle!(util.toPointer(Handle));
 }
 
 export function TdhSetDecodingParameter(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.TDH_HANDLE */,
   TdhContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhSetDecodingParameter(util.toPointer(Handle), util.toPointer(TdhContext));
+  return libtdh_dll.TdhSetDecodingParameter!(util.toPointer(Handle), util.toPointer(TdhContext));
 }
 
 export function TdhGetDecodingParameter(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.TDH_HANDLE */,
   TdhContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhGetDecodingParameter(util.toPointer(Handle), util.toPointer(TdhContext));
+  return libtdh_dll.TdhGetDecodingParameter!(util.toPointer(Handle), util.toPointer(TdhContext));
 }
 
 export function TdhGetWppProperty(
@@ -13757,7 +13837,7 @@ export function TdhGetWppProperty(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhGetWppProperty(util.toPointer(Handle), util.toPointer(EventRecord), util.pwstrToFfi(PropertyName), util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libtdh_dll.TdhGetWppProperty!(util.toPointer(Handle), util.toPointer(EventRecord), util.pwstrToFfi(PropertyName), util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function TdhGetWppMessage(
@@ -13766,19 +13846,19 @@ export function TdhGetWppMessage(
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhGetWppMessage(util.toPointer(Handle), util.toPointer(EventRecord), util.toPointer(BufferSize), util.toPointer(Buffer));
+  return libtdh_dll.TdhGetWppMessage!(util.toPointer(Handle), util.toPointer(EventRecord), util.toPointer(BufferSize), util.toPointer(Buffer));
 }
 
 export function TdhCloseDecodingHandle(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Diagnostics.Etw.TDH_HANDLE */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhCloseDecodingHandle(util.toPointer(Handle));
+  return libtdh_dll.TdhCloseDecodingHandle!(util.toPointer(Handle));
 }
 
 export function TdhLoadManifestFromBinary(
   BinaryPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libtdh_dll.TdhLoadManifestFromBinary(util.pwstrToFfi(BinaryPath));
+  return libtdh_dll.TdhLoadManifestFromBinary!(util.pwstrToFfi(BinaryPath));
 }
 
 export function TdhEnumerateManifestProviderEvents(
@@ -13786,7 +13866,7 @@ export function TdhEnumerateManifestProviderEvents(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhEnumerateManifestProviderEvents(util.toPointer(ProviderGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libTDH_dll.TdhEnumerateManifestProviderEvents!(util.toPointer(ProviderGuid), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function TdhGetManifestEventInformation(
@@ -13795,13 +13875,13 @@ export function TdhGetManifestEventInformation(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
   BufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTDH_dll.TdhGetManifestEventInformation(util.toPointer(ProviderGuid), util.toPointer(EventDescriptor), util.toPointer(Buffer), util.toPointer(BufferSize));
+  return libTDH_dll.TdhGetManifestEventInformation!(util.toPointer(ProviderGuid), util.toPointer(EventDescriptor), util.toPointer(Buffer), util.toPointer(BufferSize));
 }
 
 export function CveEventWrite(
   CveId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   AdditionalDetails: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libADVAPI32_dll.CveEventWrite(util.pwstrToFfi(CveId), util.pwstrToFfi(AdditionalDetails));
+  return libADVAPI32_dll.CveEventWrite!(util.pwstrToFfi(CveId), util.pwstrToFfi(AdditionalDetails));
 }
 

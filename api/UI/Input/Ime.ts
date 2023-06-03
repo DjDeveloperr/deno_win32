@@ -6772,330 +6772,412 @@ try {
     ImmInstallIMEA: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ImmInstallIMEW: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ImmGetDefaultIMEWnd: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmGetDescriptionA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetDescriptionW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetIMEFileNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetIMEFileNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetProperty: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmIsIME: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSimulateHotKey: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmCreateContext: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     ImmDestroyContext: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetContext: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmReleaseContext: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmAssociateContext: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmAssociateContextEx: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmGetCompositionStringA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmGetCompositionStringW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmSetCompositionStringA: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmSetCompositionStringW: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmGetCandidateListCountA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmGetCandidateListCountW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmGetCandidateListA: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetCandidateListW: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetGuideLineA: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetGuideLineW: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetConversionStatus: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetConversionStatus: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmGetOpenStatus: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetOpenStatus: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ImmGetCompositionFontA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetCompositionFontW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetCompositionFontA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetCompositionFontW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmConfigureIMEA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmConfigureIMEW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmEscapeA: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmEscapeW: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmGetConversionListA: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetConversionListW: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmNotifyIME: {
       parameters: ["pointer", "u32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     ImmGetStatusWindowPos: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetStatusWindowPos: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetCompositionWindow: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetCompositionWindow: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetCandidateWindow: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetCandidateWindow: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmIsUIMessageA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmIsUIMessageW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetVirtualKey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ImmRegisterWordA: {
       parameters: ["pointer", "buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     ImmRegisterWordW: {
       parameters: ["pointer", "buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     ImmUnregisterWordA: {
       parameters: ["pointer", "buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     ImmUnregisterWordW: {
       parameters: ["pointer", "buffer", "u32", "buffer"],
       result: "i32",
+      optional: true,
     },
     ImmGetRegisterWordStyleA: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmGetRegisterWordStyleW: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmEnumRegisterWordA: {
       parameters: ["pointer", "pointer", "buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmEnumRegisterWordW: {
       parameters: ["pointer", "pointer", "buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ImmDisableIME: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     ImmEnumInputContext: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetImeMenuItemsA: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmGetImeMenuItemsW: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ImmDisableTextFrameService: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     ImmDisableLegacyIME: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     ImmGetHotKey: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmSetHotKey: {
       parameters: ["u32", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGenerateMessage: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmRequestMessageA: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmRequestMessageW: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmCreateSoftKeyboard: {
       parameters: ["u32", "pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ImmDestroySoftKeyboard: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmShowSoftKeyboard: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ImmLockIMC: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmUnlockIMC: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetIMCLockCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ImmCreateIMCC: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     ImmDestroyIMCC: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmLockIMCC: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ImmUnlockIMCC: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ImmGetIMCCLockCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ImmReSizeIMCC: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ImmGetIMCCSize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -7106,20 +7188,20 @@ export function ImmInstallIMEA(
   lpszIMEFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpszLayoutText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libIMM32_dll.ImmInstallIMEA(util.pstrToFfi(lpszIMEFileName), util.pstrToFfi(lpszLayoutText));
+  return libIMM32_dll.ImmInstallIMEA!(util.pstrToFfi(lpszIMEFileName), util.pstrToFfi(lpszLayoutText));
 }
 
 export function ImmInstallIMEW(
   lpszIMEFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszLayoutText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libIMM32_dll.ImmInstallIMEW(util.pwstrToFfi(lpszIMEFileName), util.pwstrToFfi(lpszLayoutText));
+  return libIMM32_dll.ImmInstallIMEW!(util.pwstrToFfi(lpszIMEFileName), util.pwstrToFfi(lpszLayoutText));
 }
 
 export function ImmGetDefaultIMEWnd(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libIMM32_dll.ImmGetDefaultIMEWnd((param0)));
+  return (libIMM32_dll.ImmGetDefaultIMEWnd!((param0)));
 }
 
 export function ImmGetDescriptionA(
@@ -7127,7 +7209,7 @@ export function ImmGetDescriptionA(
   lpszDescription: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetDescriptionA(util.toPointer(param0), util.pstrToFfi(lpszDescription), uBufLen);
+  return libIMM32_dll.ImmGetDescriptionA!(util.toPointer(param0), util.pstrToFfi(lpszDescription), uBufLen);
 }
 
 export function ImmGetDescriptionW(
@@ -7135,7 +7217,7 @@ export function ImmGetDescriptionW(
   lpszDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetDescriptionW(util.toPointer(param0), util.pwstrToFfi(lpszDescription), uBufLen);
+  return libIMM32_dll.ImmGetDescriptionW!(util.toPointer(param0), util.pwstrToFfi(lpszDescription), uBufLen);
 }
 
 export function ImmGetIMEFileNameA(
@@ -7143,7 +7225,7 @@ export function ImmGetIMEFileNameA(
   lpszFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetIMEFileNameA(util.toPointer(param0), util.pstrToFfi(lpszFileName), uBufLen);
+  return libIMM32_dll.ImmGetIMEFileNameA!(util.toPointer(param0), util.pstrToFfi(lpszFileName), uBufLen);
 }
 
 export function ImmGetIMEFileNameW(
@@ -7151,57 +7233,57 @@ export function ImmGetIMEFileNameW(
   lpszFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   uBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetIMEFileNameW(util.toPointer(param0), util.pwstrToFfi(lpszFileName), uBufLen);
+  return libIMM32_dll.ImmGetIMEFileNameW!(util.toPointer(param0), util.pwstrToFfi(lpszFileName), uBufLen);
 }
 
 export function ImmGetProperty(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
   param1: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetProperty(util.toPointer(param0), param1);
+  return libIMM32_dll.ImmGetProperty!(util.toPointer(param0), param1);
 }
 
 export function ImmIsIME(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmIsIME(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsIME!(util.toPointer(param0)));
 }
 
 export function ImmSimulateHotKey(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: IME_HOTKEY_IDENTIFIER /* Windows.Win32.UI.Input.Ime.IME_HOTKEY_IDENTIFIER */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSimulateHotKey((param0), param1));
+  return util.boolFromFfi(libIMM32_dll.ImmSimulateHotKey!((param0), param1));
 }
 
 export function ImmCreateContext(): Deno.PointerValue /* Windows.Win32.Globalization.HIMC */ {
-  return libIMM32_dll.ImmCreateContext();
+  return libIMM32_dll.ImmCreateContext!();
 }
 
 export function ImmDestroyContext(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmDestroyContext(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmDestroyContext!(util.toPointer(param0)));
 }
 
 export function ImmGetContext(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Globalization.HIMC */ {
-  return libIMM32_dll.ImmGetContext((param0));
+  return libIMM32_dll.ImmGetContext!((param0));
 }
 
 export function ImmReleaseContext(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmReleaseContext((param0), util.toPointer(param1)));
+  return util.boolFromFfi(libIMM32_dll.ImmReleaseContext!((param0), util.toPointer(param1)));
 }
 
 export function ImmAssociateContext(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): Deno.PointerValue /* Windows.Win32.Globalization.HIMC */ {
-  return libIMM32_dll.ImmAssociateContext((param0), util.toPointer(param1));
+  return libIMM32_dll.ImmAssociateContext!((param0), util.toPointer(param1));
 }
 
 export function ImmAssociateContextEx(
@@ -7209,7 +7291,7 @@ export function ImmAssociateContextEx(
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   param2: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmAssociateContextEx((param0), util.toPointer(param1), param2));
+  return util.boolFromFfi(libIMM32_dll.ImmAssociateContextEx!((param0), util.toPointer(param1), param2));
 }
 
 export function ImmGetCompositionStringA(
@@ -7218,7 +7300,7 @@ export function ImmGetCompositionStringA(
   lpBuf: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* i32 */ {
-  return libIMM32_dll.ImmGetCompositionStringA(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetCompositionStringA!(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
 }
 
 export function ImmGetCompositionStringW(
@@ -7227,7 +7309,7 @@ export function ImmGetCompositionStringW(
   lpBuf: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* i32 */ {
-  return libIMM32_dll.ImmGetCompositionStringW(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetCompositionStringW!(util.toPointer(param0), param1, util.toPointer(lpBuf), dwBufLen);
 }
 
 export function ImmSetCompositionStringA(
@@ -7238,7 +7320,7 @@ export function ImmSetCompositionStringA(
   lpRead: Deno.PointerValue | Uint8Array /* ptr */,
   dwReadLen: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringA(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringA!(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
 }
 
 export function ImmSetCompositionStringW(
@@ -7249,21 +7331,21 @@ export function ImmSetCompositionStringW(
   lpRead: Deno.PointerValue | Uint8Array /* ptr */,
   dwReadLen: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringW(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionStringW!(util.toPointer(param0), dwIndex, util.toPointer(lpComp), dwCompLen, util.toPointer(lpRead), dwReadLen));
 }
 
 export function ImmGetCandidateListCountA(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpdwListCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetCandidateListCountA(util.toPointer(param0), util.toPointer(lpdwListCount));
+  return libIMM32_dll.ImmGetCandidateListCountA!(util.toPointer(param0), util.toPointer(lpdwListCount));
 }
 
 export function ImmGetCandidateListCountW(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpdwListCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetCandidateListCountW(util.toPointer(param0), util.toPointer(lpdwListCount));
+  return libIMM32_dll.ImmGetCandidateListCountW!(util.toPointer(param0), util.toPointer(lpdwListCount));
 }
 
 export function ImmGetCandidateListA(
@@ -7272,7 +7354,7 @@ export function ImmGetCandidateListA(
   lpCandList: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetCandidateListA(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
+  return libIMM32_dll.ImmGetCandidateListA!(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
 }
 
 export function ImmGetCandidateListW(
@@ -7281,7 +7363,7 @@ export function ImmGetCandidateListW(
   lpCandList: Deno.PointerValue | Uint8Array /* ptr */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetCandidateListW(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
+  return libIMM32_dll.ImmGetCandidateListW!(util.toPointer(param0), deIndex, util.toPointer(lpCandList), dwBufLen);
 }
 
 export function ImmGetGuideLineA(
@@ -7290,7 +7372,7 @@ export function ImmGetGuideLineA(
   lpBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetGuideLineA(util.toPointer(param0), dwIndex, util.pstrToFfi(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetGuideLineA!(util.toPointer(param0), dwIndex, util.pstrToFfi(lpBuf), dwBufLen);
 }
 
 export function ImmGetGuideLineW(
@@ -7299,7 +7381,7 @@ export function ImmGetGuideLineW(
   lpBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwBufLen: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetGuideLineW(util.toPointer(param0), dwIndex, util.pwstrToFfi(lpBuf), dwBufLen);
+  return libIMM32_dll.ImmGetGuideLineW!(util.toPointer(param0), dwIndex, util.pwstrToFfi(lpBuf), dwBufLen);
 }
 
 export function ImmGetConversionStatus(
@@ -7307,7 +7389,7 @@ export function ImmGetConversionStatus(
   lpfdwConversion: Deno.PointerValue | Uint8Array /* ptr */,
   lpfdwSentence: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetConversionStatus(util.toPointer(param0), util.toPointer(lpfdwConversion), util.toPointer(lpfdwSentence)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetConversionStatus!(util.toPointer(param0), util.toPointer(lpfdwConversion), util.toPointer(lpfdwSentence)));
 }
 
 export function ImmSetConversionStatus(
@@ -7315,48 +7397,48 @@ export function ImmSetConversionStatus(
   param1: IME_CONVERSION_MODE /* Windows.Win32.UI.Input.Ime.IME_CONVERSION_MODE */,
   param2: IME_SENTENCE_MODE /* Windows.Win32.UI.Input.Ime.IME_SENTENCE_MODE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetConversionStatus(util.toPointer(param0), param1, param2));
+  return util.boolFromFfi(libIMM32_dll.ImmSetConversionStatus!(util.toPointer(param0), param1, param2));
 }
 
 export function ImmGetOpenStatus(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetOpenStatus(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetOpenStatus!(util.toPointer(param0)));
 }
 
 export function ImmSetOpenStatus(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   param1: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetOpenStatus(util.toPointer(param0), util.boolToFfi(param1)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetOpenStatus!(util.toPointer(param0), util.boolToFfi(param1)));
 }
 
 export function ImmGetCompositionFontA(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontA!(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmGetCompositionFontW(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionFontW!(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmSetCompositionFontA(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontA(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontA!(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmSetCompositionFontW(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lplf: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontW(util.toPointer(param0), util.toPointer(lplf)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionFontW!(util.toPointer(param0), util.toPointer(lplf)));
 }
 
 export function ImmConfigureIMEA(
@@ -7365,7 +7447,7 @@ export function ImmConfigureIMEA(
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEA(util.toPointer(param0), (param1), param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEA!(util.toPointer(param0), (param1), param2, util.toPointer(param3)));
 }
 
 export function ImmConfigureIMEW(
@@ -7374,7 +7456,7 @@ export function ImmConfigureIMEW(
   param2: number /* u32 */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEW(util.toPointer(param0), (param1), param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmConfigureIMEW!(util.toPointer(param0), (param1), param2, util.toPointer(param3)));
 }
 
 export function ImmEscapeA(
@@ -7383,7 +7465,7 @@ export function ImmEscapeA(
   param2: IME_ESCAPE /* Windows.Win32.UI.Input.Ime.IME_ESCAPE */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libIMM32_dll.ImmEscapeA(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3));
+  return libIMM32_dll.ImmEscapeA!(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3));
 }
 
 export function ImmEscapeW(
@@ -7392,7 +7474,7 @@ export function ImmEscapeW(
   param2: IME_ESCAPE /* Windows.Win32.UI.Input.Ime.IME_ESCAPE */,
   param3: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libIMM32_dll.ImmEscapeW(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3));
+  return libIMM32_dll.ImmEscapeW!(util.toPointer(param0), util.toPointer(param1), param2, util.toPointer(param3));
 }
 
 export function ImmGetConversionListA(
@@ -7403,7 +7485,7 @@ export function ImmGetConversionListA(
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetConversionListA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
+  return libIMM32_dll.ImmGetConversionListA!(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
 }
 
 export function ImmGetConversionListW(
@@ -7414,7 +7496,7 @@ export function ImmGetConversionListW(
   dwBufLen: number /* u32 */,
   uFlag: GET_CONVERSION_LIST_FLAG /* Windows.Win32.UI.Input.Ime.GET_CONVERSION_LIST_FLAG */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetConversionListW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
+  return libIMM32_dll.ImmGetConversionListW!(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpSrc), util.toPointer(lpDst), dwBufLen, uFlag);
 }
 
 export function ImmNotifyIME(
@@ -7423,35 +7505,35 @@ export function ImmNotifyIME(
   dwIndex: NOTIFY_IME_INDEX /* Windows.Win32.UI.Input.Ime.NOTIFY_IME_INDEX */,
   dwValue: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmNotifyIME(util.toPointer(param0), dwAction, dwIndex, dwValue));
+  return util.boolFromFfi(libIMM32_dll.ImmNotifyIME!(util.toPointer(param0), dwAction, dwIndex, dwValue));
 }
 
 export function ImmGetStatusWindowPos(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpptPos: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetStatusWindowPos!(util.toPointer(param0), util.toPointer(lpptPos)));
 }
 
 export function ImmSetStatusWindowPos(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpptPos: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetStatusWindowPos(util.toPointer(param0), util.toPointer(lpptPos)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetStatusWindowPos!(util.toPointer(param0), util.toPointer(lpptPos)));
 }
 
 export function ImmGetCompositionWindow(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpCompForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCompositionWindow!(util.toPointer(param0), util.toPointer(lpCompForm)));
 }
 
 export function ImmSetCompositionWindow(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpCompForm: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionWindow(util.toPointer(param0), util.toPointer(lpCompForm)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCompositionWindow!(util.toPointer(param0), util.toPointer(lpCompForm)));
 }
 
 export function ImmGetCandidateWindow(
@@ -7459,14 +7541,14 @@ export function ImmGetCandidateWindow(
   param1: number /* u32 */,
   lpCandidate: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetCandidateWindow(util.toPointer(param0), param1, util.toPointer(lpCandidate)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetCandidateWindow!(util.toPointer(param0), param1, util.toPointer(lpCandidate)));
 }
 
 export function ImmSetCandidateWindow(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
   lpCandidate: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetCandidateWindow(util.toPointer(param0), util.toPointer(lpCandidate)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetCandidateWindow!(util.toPointer(param0), util.toPointer(lpCandidate)));
 }
 
 export function ImmIsUIMessageA(
@@ -7475,7 +7557,7 @@ export function ImmIsUIMessageA(
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   param3: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageA((param0), param1, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageA!((param0), param1, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function ImmIsUIMessageW(
@@ -7484,13 +7566,13 @@ export function ImmIsUIMessageW(
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   param3: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageW((param0), param1, util.toPointer(param2), util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmIsUIMessageW!((param0), param1, util.toPointer(param2), util.toPointer(param3)));
 }
 
 export function ImmGetVirtualKey(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetVirtualKey((param0));
+  return libIMM32_dll.ImmGetVirtualKey!((param0));
 }
 
 export function ImmRegisterWordA(
@@ -7499,7 +7581,7 @@ export function ImmRegisterWordA(
   param2: number /* u32 */,
   lpszRegister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszRegister)));
+  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordA!(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszRegister)));
 }
 
 export function ImmRegisterWordW(
@@ -7508,7 +7590,7 @@ export function ImmRegisterWordW(
   param2: number /* u32 */,
   lpszRegister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszRegister)));
+  return util.boolFromFfi(libIMM32_dll.ImmRegisterWordW!(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszRegister)));
 }
 
 export function ImmUnregisterWordA(
@@ -7517,7 +7599,7 @@ export function ImmUnregisterWordA(
   param2: number /* u32 */,
   lpszUnregister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordA(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszUnregister)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordA!(util.toPointer(param0), util.pstrToFfi(lpszReading), param2, util.pstrToFfi(lpszUnregister)));
 }
 
 export function ImmUnregisterWordW(
@@ -7526,7 +7608,7 @@ export function ImmUnregisterWordW(
   param2: number /* u32 */,
   lpszUnregister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordW(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszUnregister)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnregisterWordW!(util.toPointer(param0), util.pwstrToFfi(lpszReading), param2, util.pwstrToFfi(lpszUnregister)));
 }
 
 export function ImmGetRegisterWordStyleA(
@@ -7534,7 +7616,7 @@ export function ImmGetRegisterWordStyleA(
   nItem: number /* u32 */,
   lpStyleBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetRegisterWordStyleA(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
+  return libIMM32_dll.ImmGetRegisterWordStyleA!(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
 }
 
 export function ImmGetRegisterWordStyleW(
@@ -7542,7 +7624,7 @@ export function ImmGetRegisterWordStyleW(
   nItem: number /* u32 */,
   lpStyleBuf: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetRegisterWordStyleW(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
+  return libIMM32_dll.ImmGetRegisterWordStyleW!(util.toPointer(param0), nItem, util.toPointer(lpStyleBuf));
 }
 
 export function ImmEnumRegisterWordA(
@@ -7553,7 +7635,7 @@ export function ImmEnumRegisterWordA(
   lpszRegister: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmEnumRegisterWordA(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpszReading), param3, util.pstrToFfi(lpszRegister), util.toPointer(param5));
+  return libIMM32_dll.ImmEnumRegisterWordA!(util.toPointer(param0), util.toPointer(param1), util.pstrToFfi(lpszReading), param3, util.pstrToFfi(lpszRegister), util.toPointer(param5));
 }
 
 export function ImmEnumRegisterWordW(
@@ -7564,13 +7646,13 @@ export function ImmEnumRegisterWordW(
   lpszRegister: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   param5: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmEnumRegisterWordW(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpszReading), param3, util.pwstrToFfi(lpszRegister), util.toPointer(param5));
+  return libIMM32_dll.ImmEnumRegisterWordW!(util.toPointer(param0), util.toPointer(param1), util.pwstrToFfi(lpszReading), param3, util.pwstrToFfi(lpszRegister), util.toPointer(param5));
 }
 
 export function ImmDisableIME(
   param0: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmDisableIME(param0));
+  return util.boolFromFfi(libIMM32_dll.ImmDisableIME!(param0));
 }
 
 export function ImmEnumInputContext(
@@ -7578,7 +7660,7 @@ export function ImmEnumInputContext(
   lpfn: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.Input.Ime.IMCENUMPROC */,
   lParam: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmEnumInputContext(idThread, util.toPointer(lpfn), util.toPointer(lParam)));
+  return util.boolFromFfi(libIMM32_dll.ImmEnumInputContext!(idThread, util.toPointer(lpfn), util.toPointer(lParam)));
 }
 
 export function ImmGetImeMenuItemsA(
@@ -7589,7 +7671,7 @@ export function ImmGetImeMenuItemsA(
   lpImeMenu: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetImeMenuItemsA(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
+  return libIMM32_dll.ImmGetImeMenuItemsA!(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
 }
 
 export function ImmGetImeMenuItemsW(
@@ -7600,17 +7682,17 @@ export function ImmGetImeMenuItemsW(
   lpImeMenu: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetImeMenuItemsW(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
+  return libIMM32_dll.ImmGetImeMenuItemsW!(util.toPointer(param0), param1, param2, util.toPointer(lpImeParentMenu), util.toPointer(lpImeMenu), dwSize);
 }
 
 export function ImmDisableTextFrameService(
   idThread: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmDisableTextFrameService(idThread));
+  return util.boolFromFfi(libIMM32_dll.ImmDisableTextFrameService!(idThread));
 }
 
 export function ImmDisableLegacyIME(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmDisableLegacyIME());
+  return util.boolFromFfi(libIMM32_dll.ImmDisableLegacyIME!());
 }
 
 export function ImmGetHotKey(
@@ -7619,7 +7701,7 @@ export function ImmGetHotKey(
   lpuVKey: Deno.PointerValue | Uint8Array /* ptr */,
   phKL: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGetHotKey(param0, util.toPointer(lpuModifiers), util.toPointer(lpuVKey), util.toPointer(phKL)));
+  return util.boolFromFfi(libIMM32_dll.ImmGetHotKey!(param0, util.toPointer(lpuModifiers), util.toPointer(lpuVKey), util.toPointer(phKL)));
 }
 
 export function ImmSetHotKey(
@@ -7628,13 +7710,13 @@ export function ImmSetHotKey(
   param2: number /* u32 */,
   param3: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmSetHotKey(param0, param1, param2, util.toPointer(param3)));
+  return util.boolFromFfi(libIMM32_dll.ImmSetHotKey!(param0, param1, param2, util.toPointer(param3)));
 }
 
 export function ImmGenerateMessage(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmGenerateMessage(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmGenerateMessage!(util.toPointer(param0)));
 }
 
 export function ImmRequestMessageA(
@@ -7642,7 +7724,7 @@ export function ImmRequestMessageA(
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libIMM32_dll.ImmRequestMessageA(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libIMM32_dll.ImmRequestMessageA!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function ImmRequestMessageW(
@@ -7650,7 +7732,7 @@ export function ImmRequestMessageW(
   param1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.WPARAM */,
   param2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libIMM32_dll.ImmRequestMessageW(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libIMM32_dll.ImmRequestMessageW!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function ImmCreateSoftKeyboard(
@@ -7659,80 +7741,80 @@ export function ImmCreateSoftKeyboard(
   param2: number /* i32 */,
   param3: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libIMM32_dll.ImmCreateSoftKeyboard(param0, (param1), param2, param3));
+  return (libIMM32_dll.ImmCreateSoftKeyboard!(param0, (param1), param2, param3));
 }
 
 export function ImmDestroySoftKeyboard(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmDestroySoftKeyboard((param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmDestroySoftKeyboard!((param0)));
 }
 
 export function ImmShowSoftKeyboard(
   param0: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   param1: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmShowSoftKeyboard((param0), param1));
+  return util.boolFromFfi(libIMM32_dll.ImmShowSoftKeyboard!((param0), param1));
 }
 
 export function ImmLockIMC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): Deno.PointerValue /* ptr */ {
-  return libIMM32_dll.ImmLockIMC(util.toPointer(param0));
+  return libIMM32_dll.ImmLockIMC!(util.toPointer(param0));
 }
 
 export function ImmUnlockIMC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMC(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMC!(util.toPointer(param0)));
 }
 
 export function ImmGetIMCLockCount(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMC */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetIMCLockCount(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCLockCount!(util.toPointer(param0));
 }
 
 export function ImmCreateIMCC(
   param0: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */ {
-  return libIMM32_dll.ImmCreateIMCC(param0);
+  return libIMM32_dll.ImmCreateIMCC!(param0);
 }
 
 export function ImmDestroyIMCC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
 ): Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */ {
-  return libIMM32_dll.ImmDestroyIMCC(util.toPointer(param0));
+  return libIMM32_dll.ImmDestroyIMCC!(util.toPointer(param0));
 }
 
 export function ImmLockIMCC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
 ): Deno.PointerValue /* ptr */ {
-  return libIMM32_dll.ImmLockIMCC(util.toPointer(param0));
+  return libIMM32_dll.ImmLockIMCC!(util.toPointer(param0));
 }
 
 export function ImmUnlockIMCC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMCC(util.toPointer(param0)));
+  return util.boolFromFfi(libIMM32_dll.ImmUnlockIMCC!(util.toPointer(param0)));
 }
 
 export function ImmGetIMCCLockCount(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetIMCCLockCount(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCCLockCount!(util.toPointer(param0));
 }
 
 export function ImmReSizeIMCC(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
   param1: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */ {
-  return libIMM32_dll.ImmReSizeIMCC(util.toPointer(param0), param1);
+  return libIMM32_dll.ImmReSizeIMCC!(util.toPointer(param0), param1);
 }
 
 export function ImmGetIMCCSize(
   param0: Uint8Array | Deno.PointerValue /* Windows.Win32.Globalization.HIMCC */,
 ): number /* u32 */ {
-  return libIMM32_dll.ImmGetIMCCSize(util.toPointer(param0));
+  return libIMM32_dll.ImmGetIMCCSize!(util.toPointer(param0));
 }
 

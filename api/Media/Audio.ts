@@ -26724,6 +26724,7 @@ try {
     CoRegisterMessageFilter: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -26733,426 +26734,532 @@ try {
     sndPlaySoundA: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     sndPlaySoundW: {
       parameters: ["buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     PlaySoundA: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     PlaySoundW: {
       parameters: ["buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     waveOutGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     waveOutGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetVolume: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutSetVolume: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetErrorTextA: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetErrorTextW: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutOpen: {
       parameters: ["pointer", "u32", "pointer", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutPrepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutUnprepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutWrite: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutPause: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutRestart: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutReset: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutBreakLoop: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutGetPosition: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetPitch: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutSetPitch: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetPlaybackRate: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutSetPlaybackRate: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveOutGetID: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     waveOutMessage: {
       parameters: ["pointer", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     waveInGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     waveInGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInGetErrorTextA: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInGetErrorTextW: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInOpen: {
       parameters: ["pointer", "u32", "pointer", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveInPrepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInUnprepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInAddBuffer: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInStart: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveInStop: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveInReset: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     waveInGetPosition: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     waveInGetID: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     waveInMessage: {
       parameters: ["pointer", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     midiOutGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     midiStreamOpen: {
       parameters: ["pointer", "pointer", "u32", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     midiStreamClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiStreamProperty: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiStreamPosition: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiStreamOut: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiStreamPause: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiStreamRestart: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiStreamStop: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiConnect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     midiDisconnect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     midiOutGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutGetVolume: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     midiOutSetVolume: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutGetErrorTextA: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutGetErrorTextW: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutOpen: {
       parameters: ["pointer", "u32", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiOutPrepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutUnprepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutShortMsg: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutLongMsg: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutReset: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiOutCachePatches: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutCacheDrumPatches: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiOutGetID: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     midiOutMessage: {
       parameters: ["pointer", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     midiInGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     midiInGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInGetErrorTextA: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInGetErrorTextW: {
       parameters: ["u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInOpen: {
       parameters: ["pointer", "u32", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiInPrepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInUnprepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInAddBuffer: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     midiInStart: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiInStop: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiInReset: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     midiInGetID: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     midiInMessage: {
       parameters: ["pointer", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     auxGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     auxGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     auxGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     auxSetVolume: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     auxGetVolume: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     auxOutMessage: {
       parameters: ["u32", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     mixerGetNumDevs: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     mixerGetDevCapsA: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetDevCapsW: {
       parameters: ["usize", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerOpen: {
       parameters: ["pointer", "u32", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     mixerMessage: {
       parameters: ["pointer", "u32", "usize", "usize"],
       result: "u32",
+      optional: true,
     },
     mixerGetLineInfoA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetLineInfoW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetID: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetLineControlsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetLineControlsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetControlDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerGetControlDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     mixerSetControlDetails: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27162,6 +27269,7 @@ try {
     ActivateAudioInterfaceAsync: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27171,34 +27279,42 @@ try {
     CreateRenderAudioStateMonitor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateRenderAudioStateMonitorForCategory: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateRenderAudioStateMonitorForCategoryAndDeviceRole: {
       parameters: ["i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateRenderAudioStateMonitorForCategoryAndDeviceId: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateCaptureAudioStateMonitor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateCaptureAudioStateMonitorForCategory: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateCaptureAudioStateMonitorForCategoryAndDeviceRole: {
       parameters: ["i32", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateCaptureAudioStateMonitorForCategoryAndDeviceId: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27208,170 +27324,212 @@ try {
     acmGetVersion: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     acmMetrics: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     acmDriverEnum: {
       parameters: ["pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverID: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverAddA: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverAddW: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverRemove: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverOpen: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverClose: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverMessage: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     acmDriverPriority: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmDriverDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatTagDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatTagDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatTagEnumA: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatTagEnumW: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatEnumA: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatEnumW: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatSuggest: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFormatChooseA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     acmFormatChooseW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     acmFilterTagDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterTagDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterTagEnumA: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterTagEnumW: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterDetailsA: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterDetailsW: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterEnumA: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterEnumW: {
       parameters: ["pointer", "pointer", "pointer", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmFilterChooseA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     acmFilterChooseW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     acmStreamOpen: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "usize", "usize", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamClose: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamSize: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamReset: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamMessage: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     acmStreamConvert: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamPrepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     acmStreamUnprepareHeader: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -27382,21 +27540,21 @@ export function CoRegisterMessageFilter(
   lpMessageFilter: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.IMessageFilter */,
   lplpMessageFilter: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CoRegisterMessageFilter(util.toPointer(lpMessageFilter), util.toPointer(lplpMessageFilter));
+  return libOLE32_dll.CoRegisterMessageFilter!(util.toPointer(lpMessageFilter), util.toPointer(lplpMessageFilter));
 }
 
 export function sndPlaySoundA(
   pszSound: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   fuSound: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM_dll.sndPlaySoundA(util.pstrToFfi(pszSound), fuSound));
+  return util.boolFromFfi(libWINMM_dll.sndPlaySoundA!(util.pstrToFfi(pszSound), fuSound));
 }
 
 export function sndPlaySoundW(
   pszSound: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fuSound: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM_dll.sndPlaySoundW(util.pwstrToFfi(pszSound), fuSound));
+  return util.boolFromFfi(libWINMM_dll.sndPlaySoundW!(util.pwstrToFfi(pszSound), fuSound));
 }
 
 export function PlaySoundA(
@@ -27404,7 +27562,7 @@ export function PlaySoundA(
   hmod: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   fdwSound: SND_FLAGS /* Windows.Win32.Media.Audio.SND_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM_dll.PlaySoundA(util.pstrToFfi(pszSound), util.toPointer(hmod), fdwSound));
+  return util.boolFromFfi(libWINMM_dll.PlaySoundA!(util.pstrToFfi(pszSound), util.toPointer(hmod), fdwSound));
 }
 
 export function PlaySoundW(
@@ -27412,11 +27570,11 @@ export function PlaySoundW(
   hmod: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   fdwSound: SND_FLAGS /* Windows.Win32.Media.Audio.SND_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINMM_dll.PlaySoundW(util.pwstrToFfi(pszSound), util.toPointer(hmod), fdwSound));
+  return util.boolFromFfi(libWINMM_dll.PlaySoundW!(util.pwstrToFfi(pszSound), util.toPointer(hmod), fdwSound));
 }
 
 export function waveOutGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.waveOutGetNumDevs();
+  return libWINMM_dll.waveOutGetNumDevs!();
 }
 
 export function waveOutGetDevCapsA(
@@ -27424,7 +27582,7 @@ export function waveOutGetDevCapsA(
   pwoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbwoc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetDevCapsA(uDeviceID, util.toPointer(pwoc), cbwoc);
+  return libWINMM_dll.waveOutGetDevCapsA!(uDeviceID, util.toPointer(pwoc), cbwoc);
 }
 
 export function waveOutGetDevCapsW(
@@ -27432,21 +27590,21 @@ export function waveOutGetDevCapsW(
   pwoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbwoc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetDevCapsW(uDeviceID, util.toPointer(pwoc), cbwoc);
+  return libWINMM_dll.waveOutGetDevCapsW!(uDeviceID, util.toPointer(pwoc), cbwoc);
 }
 
 export function waveOutGetVolume(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   pdwVolume: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetVolume(util.toPointer(hwo), util.toPointer(pdwVolume));
+  return libWINMM_dll.waveOutGetVolume!(util.toPointer(hwo), util.toPointer(pdwVolume));
 }
 
 export function waveOutSetVolume(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   dwVolume: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutSetVolume(util.toPointer(hwo), dwVolume);
+  return libWINMM_dll.waveOutSetVolume!(util.toPointer(hwo), dwVolume);
 }
 
 export function waveOutGetErrorTextA(
@@ -27454,7 +27612,7 @@ export function waveOutGetErrorTextA(
   pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
+  return libWINMM_dll.waveOutGetErrorTextA!(mmrError, util.pstrToFfi(pszText), cchText);
 }
 
 export function waveOutGetErrorTextW(
@@ -27462,7 +27620,7 @@ export function waveOutGetErrorTextW(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
+  return libWINMM_dll.waveOutGetErrorTextW!(mmrError, util.pwstrToFfi(pszText), cchText);
 }
 
 export function waveOutOpen(
@@ -27473,13 +27631,13 @@ export function waveOutOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutOpen(util.toPointer(phwo), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.waveOutOpen!(util.toPointer(phwo), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
 }
 
 export function waveOutClose(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutClose(util.toPointer(hwo));
+  return libWINMM_dll.waveOutClose!(util.toPointer(hwo));
 }
 
 export function waveOutPrepareHeader(
@@ -27487,7 +27645,7 @@ export function waveOutPrepareHeader(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutPrepareHeader(util.toPointer(hwo), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveOutPrepareHeader!(util.toPointer(hwo), util.toPointer(pwh), cbwh);
 }
 
 export function waveOutUnprepareHeader(
@@ -27495,7 +27653,7 @@ export function waveOutUnprepareHeader(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutUnprepareHeader(util.toPointer(hwo), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveOutUnprepareHeader!(util.toPointer(hwo), util.toPointer(pwh), cbwh);
 }
 
 export function waveOutWrite(
@@ -27503,31 +27661,31 @@ export function waveOutWrite(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutWrite(util.toPointer(hwo), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveOutWrite!(util.toPointer(hwo), util.toPointer(pwh), cbwh);
 }
 
 export function waveOutPause(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutPause(util.toPointer(hwo));
+  return libWINMM_dll.waveOutPause!(util.toPointer(hwo));
 }
 
 export function waveOutRestart(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutRestart(util.toPointer(hwo));
+  return libWINMM_dll.waveOutRestart!(util.toPointer(hwo));
 }
 
 export function waveOutReset(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutReset(util.toPointer(hwo));
+  return libWINMM_dll.waveOutReset!(util.toPointer(hwo));
 }
 
 export function waveOutBreakLoop(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutBreakLoop(util.toPointer(hwo));
+  return libWINMM_dll.waveOutBreakLoop!(util.toPointer(hwo));
 }
 
 export function waveOutGetPosition(
@@ -27535,42 +27693,42 @@ export function waveOutGetPosition(
   pmmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbmmt: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetPosition(util.toPointer(hwo), util.toPointer(pmmt), cbmmt);
+  return libWINMM_dll.waveOutGetPosition!(util.toPointer(hwo), util.toPointer(pmmt), cbmmt);
 }
 
 export function waveOutGetPitch(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   pdwPitch: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetPitch(util.toPointer(hwo), util.toPointer(pdwPitch));
+  return libWINMM_dll.waveOutGetPitch!(util.toPointer(hwo), util.toPointer(pdwPitch));
 }
 
 export function waveOutSetPitch(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   dwPitch: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutSetPitch(util.toPointer(hwo), dwPitch);
+  return libWINMM_dll.waveOutSetPitch!(util.toPointer(hwo), dwPitch);
 }
 
 export function waveOutGetPlaybackRate(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   pdwRate: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetPlaybackRate(util.toPointer(hwo), util.toPointer(pdwRate));
+  return libWINMM_dll.waveOutGetPlaybackRate!(util.toPointer(hwo), util.toPointer(pdwRate));
 }
 
 export function waveOutSetPlaybackRate(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   dwRate: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutSetPlaybackRate(util.toPointer(hwo), dwRate);
+  return libWINMM_dll.waveOutSetPlaybackRate!(util.toPointer(hwo), dwRate);
 }
 
 export function waveOutGetID(
   hwo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEOUT */,
   puDeviceID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutGetID(util.toPointer(hwo), util.toPointer(puDeviceID));
+  return libWINMM_dll.waveOutGetID!(util.toPointer(hwo), util.toPointer(puDeviceID));
 }
 
 export function waveOutMessage(
@@ -27579,11 +27737,11 @@ export function waveOutMessage(
   dw1: bigint | number /* usize */,
   dw2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveOutMessage(util.toPointer(hwo), uMsg, dw1, dw2);
+  return libWINMM_dll.waveOutMessage!(util.toPointer(hwo), uMsg, dw1, dw2);
 }
 
 export function waveInGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.waveInGetNumDevs();
+  return libWINMM_dll.waveInGetNumDevs!();
 }
 
 export function waveInGetDevCapsA(
@@ -27591,7 +27749,7 @@ export function waveInGetDevCapsA(
   pwic: Deno.PointerValue | Uint8Array /* ptr */,
   cbwic: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetDevCapsA(uDeviceID, util.toPointer(pwic), cbwic);
+  return libWINMM_dll.waveInGetDevCapsA!(uDeviceID, util.toPointer(pwic), cbwic);
 }
 
 export function waveInGetDevCapsW(
@@ -27599,7 +27757,7 @@ export function waveInGetDevCapsW(
   pwic: Deno.PointerValue | Uint8Array /* ptr */,
   cbwic: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetDevCapsW(uDeviceID, util.toPointer(pwic), cbwic);
+  return libWINMM_dll.waveInGetDevCapsW!(uDeviceID, util.toPointer(pwic), cbwic);
 }
 
 export function waveInGetErrorTextA(
@@ -27607,7 +27765,7 @@ export function waveInGetErrorTextA(
   pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
+  return libWINMM_dll.waveInGetErrorTextA!(mmrError, util.pstrToFfi(pszText), cchText);
 }
 
 export function waveInGetErrorTextW(
@@ -27615,7 +27773,7 @@ export function waveInGetErrorTextW(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
+  return libWINMM_dll.waveInGetErrorTextW!(mmrError, util.pwstrToFfi(pszText), cchText);
 }
 
 export function waveInOpen(
@@ -27626,13 +27784,13 @@ export function waveInOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInOpen(util.toPointer(phwi), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.waveInOpen!(util.toPointer(phwi), uDeviceID, util.toPointer(pwfx), dwCallback, dwInstance, fdwOpen);
 }
 
 export function waveInClose(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInClose(util.toPointer(hwi));
+  return libWINMM_dll.waveInClose!(util.toPointer(hwi));
 }
 
 export function waveInPrepareHeader(
@@ -27640,7 +27798,7 @@ export function waveInPrepareHeader(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInPrepareHeader(util.toPointer(hwi), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveInPrepareHeader!(util.toPointer(hwi), util.toPointer(pwh), cbwh);
 }
 
 export function waveInUnprepareHeader(
@@ -27648,7 +27806,7 @@ export function waveInUnprepareHeader(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInUnprepareHeader(util.toPointer(hwi), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveInUnprepareHeader!(util.toPointer(hwi), util.toPointer(pwh), cbwh);
 }
 
 export function waveInAddBuffer(
@@ -27656,25 +27814,25 @@ export function waveInAddBuffer(
   pwh: Deno.PointerValue | Uint8Array /* ptr */,
   cbwh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInAddBuffer(util.toPointer(hwi), util.toPointer(pwh), cbwh);
+  return libWINMM_dll.waveInAddBuffer!(util.toPointer(hwi), util.toPointer(pwh), cbwh);
 }
 
 export function waveInStart(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInStart(util.toPointer(hwi));
+  return libWINMM_dll.waveInStart!(util.toPointer(hwi));
 }
 
 export function waveInStop(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInStop(util.toPointer(hwi));
+  return libWINMM_dll.waveInStop!(util.toPointer(hwi));
 }
 
 export function waveInReset(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInReset(util.toPointer(hwi));
+  return libWINMM_dll.waveInReset!(util.toPointer(hwi));
 }
 
 export function waveInGetPosition(
@@ -27682,14 +27840,14 @@ export function waveInGetPosition(
   pmmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbmmt: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetPosition(util.toPointer(hwi), util.toPointer(pmmt), cbmmt);
+  return libWINMM_dll.waveInGetPosition!(util.toPointer(hwi), util.toPointer(pmmt), cbmmt);
 }
 
 export function waveInGetID(
   hwi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HWAVEIN */,
   puDeviceID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInGetID(util.toPointer(hwi), util.toPointer(puDeviceID));
+  return libWINMM_dll.waveInGetID!(util.toPointer(hwi), util.toPointer(puDeviceID));
 }
 
 export function waveInMessage(
@@ -27698,11 +27856,11 @@ export function waveInMessage(
   dw1: bigint | number /* usize */,
   dw2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.waveInMessage(util.toPointer(hwi), uMsg, dw1, dw2);
+  return libWINMM_dll.waveInMessage!(util.toPointer(hwi), uMsg, dw1, dw2);
 }
 
 export function midiOutGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.midiOutGetNumDevs();
+  return libWINMM_dll.midiOutGetNumDevs!();
 }
 
 export function midiStreamOpen(
@@ -27713,13 +27871,13 @@ export function midiStreamOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamOpen(util.toPointer(phms), util.toPointer(puDeviceID), cMidi, dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.midiStreamOpen!(util.toPointer(phms), util.toPointer(puDeviceID), cMidi, dwCallback, dwInstance, fdwOpen);
 }
 
 export function midiStreamClose(
   hms: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDISTRM */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamClose(util.toPointer(hms));
+  return libWINMM_dll.midiStreamClose!(util.toPointer(hms));
 }
 
 export function midiStreamProperty(
@@ -27727,7 +27885,7 @@ export function midiStreamProperty(
   lppropdata: Deno.PointerValue | Uint8Array /* ptr */,
   dwProperty: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamProperty(util.toPointer(hms), util.toPointer(lppropdata), dwProperty);
+  return libWINMM_dll.midiStreamProperty!(util.toPointer(hms), util.toPointer(lppropdata), dwProperty);
 }
 
 export function midiStreamPosition(
@@ -27735,7 +27893,7 @@ export function midiStreamPosition(
   lpmmt: Deno.PointerValue | Uint8Array /* ptr */,
   cbmmt: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamPosition(util.toPointer(hms), util.toPointer(lpmmt), cbmmt);
+  return libWINMM_dll.midiStreamPosition!(util.toPointer(hms), util.toPointer(lpmmt), cbmmt);
 }
 
 export function midiStreamOut(
@@ -27743,25 +27901,25 @@ export function midiStreamOut(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamOut(util.toPointer(hms), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiStreamOut!(util.toPointer(hms), util.toPointer(pmh), cbmh);
 }
 
 export function midiStreamPause(
   hms: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDISTRM */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamPause(util.toPointer(hms));
+  return libWINMM_dll.midiStreamPause!(util.toPointer(hms));
 }
 
 export function midiStreamRestart(
   hms: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDISTRM */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamRestart(util.toPointer(hms));
+  return libWINMM_dll.midiStreamRestart!(util.toPointer(hms));
 }
 
 export function midiStreamStop(
   hms: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDISTRM */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiStreamStop(util.toPointer(hms));
+  return libWINMM_dll.midiStreamStop!(util.toPointer(hms));
 }
 
 export function midiConnect(
@@ -27769,7 +27927,7 @@ export function midiConnect(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiConnect(util.toPointer(hmi), util.toPointer(hmo), util.toPointer(pReserved));
+  return libWINMM_dll.midiConnect!(util.toPointer(hmi), util.toPointer(hmo), util.toPointer(pReserved));
 }
 
 export function midiDisconnect(
@@ -27777,7 +27935,7 @@ export function midiDisconnect(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiDisconnect(util.toPointer(hmi), util.toPointer(hmo), util.toPointer(pReserved));
+  return libWINMM_dll.midiDisconnect!(util.toPointer(hmi), util.toPointer(hmo), util.toPointer(pReserved));
 }
 
 export function midiOutGetDevCapsA(
@@ -27785,7 +27943,7 @@ export function midiOutGetDevCapsA(
   pmoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbmoc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetDevCapsA(uDeviceID, util.toPointer(pmoc), cbmoc);
+  return libWINMM_dll.midiOutGetDevCapsA!(uDeviceID, util.toPointer(pmoc), cbmoc);
 }
 
 export function midiOutGetDevCapsW(
@@ -27793,21 +27951,21 @@ export function midiOutGetDevCapsW(
   pmoc: Deno.PointerValue | Uint8Array /* ptr */,
   cbmoc: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetDevCapsW(uDeviceID, util.toPointer(pmoc), cbmoc);
+  return libWINMM_dll.midiOutGetDevCapsW!(uDeviceID, util.toPointer(pmoc), cbmoc);
 }
 
 export function midiOutGetVolume(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   pdwVolume: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetVolume(util.toPointer(hmo), util.toPointer(pdwVolume));
+  return libWINMM_dll.midiOutGetVolume!(util.toPointer(hmo), util.toPointer(pdwVolume));
 }
 
 export function midiOutSetVolume(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   dwVolume: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutSetVolume(util.toPointer(hmo), dwVolume);
+  return libWINMM_dll.midiOutSetVolume!(util.toPointer(hmo), dwVolume);
 }
 
 export function midiOutGetErrorTextA(
@@ -27815,7 +27973,7 @@ export function midiOutGetErrorTextA(
   pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
+  return libWINMM_dll.midiOutGetErrorTextA!(mmrError, util.pstrToFfi(pszText), cchText);
 }
 
 export function midiOutGetErrorTextW(
@@ -27823,7 +27981,7 @@ export function midiOutGetErrorTextW(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
+  return libWINMM_dll.midiOutGetErrorTextW!(mmrError, util.pwstrToFfi(pszText), cchText);
 }
 
 export function midiOutOpen(
@@ -27833,13 +27991,13 @@ export function midiOutOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutOpen(util.toPointer(phmo), uDeviceID, dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.midiOutOpen!(util.toPointer(phmo), uDeviceID, dwCallback, dwInstance, fdwOpen);
 }
 
 export function midiOutClose(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutClose(util.toPointer(hmo));
+  return libWINMM_dll.midiOutClose!(util.toPointer(hmo));
 }
 
 export function midiOutPrepareHeader(
@@ -27847,7 +28005,7 @@ export function midiOutPrepareHeader(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutPrepareHeader(util.toPointer(hmo), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiOutPrepareHeader!(util.toPointer(hmo), util.toPointer(pmh), cbmh);
 }
 
 export function midiOutUnprepareHeader(
@@ -27855,14 +28013,14 @@ export function midiOutUnprepareHeader(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutUnprepareHeader(util.toPointer(hmo), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiOutUnprepareHeader!(util.toPointer(hmo), util.toPointer(pmh), cbmh);
 }
 
 export function midiOutShortMsg(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   dwMsg: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutShortMsg(util.toPointer(hmo), dwMsg);
+  return libWINMM_dll.midiOutShortMsg!(util.toPointer(hmo), dwMsg);
 }
 
 export function midiOutLongMsg(
@@ -27870,13 +28028,13 @@ export function midiOutLongMsg(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutLongMsg(util.toPointer(hmo), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiOutLongMsg!(util.toPointer(hmo), util.toPointer(pmh), cbmh);
 }
 
 export function midiOutReset(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutReset(util.toPointer(hmo));
+  return libWINMM_dll.midiOutReset!(util.toPointer(hmo));
 }
 
 export function midiOutCachePatches(
@@ -27885,7 +28043,7 @@ export function midiOutCachePatches(
   pwpa: Deno.PointerValue | Uint8Array /* ptr */,
   fuCache: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutCachePatches(util.toPointer(hmo), uBank, util.toPointer(pwpa), fuCache);
+  return libWINMM_dll.midiOutCachePatches!(util.toPointer(hmo), uBank, util.toPointer(pwpa), fuCache);
 }
 
 export function midiOutCacheDrumPatches(
@@ -27894,14 +28052,14 @@ export function midiOutCacheDrumPatches(
   pwkya: Deno.PointerValue | Uint8Array /* ptr */,
   fuCache: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutCacheDrumPatches(util.toPointer(hmo), uPatch, util.toPointer(pwkya), fuCache);
+  return libWINMM_dll.midiOutCacheDrumPatches!(util.toPointer(hmo), uPatch, util.toPointer(pwkya), fuCache);
 }
 
 export function midiOutGetID(
   hmo: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIOUT */,
   puDeviceID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutGetID(util.toPointer(hmo), util.toPointer(puDeviceID));
+  return libWINMM_dll.midiOutGetID!(util.toPointer(hmo), util.toPointer(puDeviceID));
 }
 
 export function midiOutMessage(
@@ -27910,11 +28068,11 @@ export function midiOutMessage(
   dw1: bigint | number /* usize */,
   dw2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiOutMessage(util.toPointer(hmo), uMsg, dw1, dw2);
+  return libWINMM_dll.midiOutMessage!(util.toPointer(hmo), uMsg, dw1, dw2);
 }
 
 export function midiInGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.midiInGetNumDevs();
+  return libWINMM_dll.midiInGetNumDevs!();
 }
 
 export function midiInGetDevCapsA(
@@ -27922,7 +28080,7 @@ export function midiInGetDevCapsA(
   pmic: Deno.PointerValue | Uint8Array /* ptr */,
   cbmic: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInGetDevCapsA(uDeviceID, util.toPointer(pmic), cbmic);
+  return libWINMM_dll.midiInGetDevCapsA!(uDeviceID, util.toPointer(pmic), cbmic);
 }
 
 export function midiInGetDevCapsW(
@@ -27930,7 +28088,7 @@ export function midiInGetDevCapsW(
   pmic: Deno.PointerValue | Uint8Array /* ptr */,
   cbmic: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInGetDevCapsW(uDeviceID, util.toPointer(pmic), cbmic);
+  return libWINMM_dll.midiInGetDevCapsW!(uDeviceID, util.toPointer(pmic), cbmic);
 }
 
 export function midiInGetErrorTextA(
@@ -27938,7 +28096,7 @@ export function midiInGetErrorTextA(
   pszText: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInGetErrorTextA(mmrError, util.pstrToFfi(pszText), cchText);
+  return libWINMM_dll.midiInGetErrorTextA!(mmrError, util.pstrToFfi(pszText), cchText);
 }
 
 export function midiInGetErrorTextW(
@@ -27946,7 +28104,7 @@ export function midiInGetErrorTextW(
   pszText: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchText: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInGetErrorTextW(mmrError, util.pwstrToFfi(pszText), cchText);
+  return libWINMM_dll.midiInGetErrorTextW!(mmrError, util.pwstrToFfi(pszText), cchText);
 }
 
 export function midiInOpen(
@@ -27956,13 +28114,13 @@ export function midiInOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: MIDI_WAVE_OPEN_TYPE /* Windows.Win32.Media.Audio.MIDI_WAVE_OPEN_TYPE */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInOpen(util.toPointer(phmi), uDeviceID, dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.midiInOpen!(util.toPointer(phmi), uDeviceID, dwCallback, dwInstance, fdwOpen);
 }
 
 export function midiInClose(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInClose(util.toPointer(hmi));
+  return libWINMM_dll.midiInClose!(util.toPointer(hmi));
 }
 
 export function midiInPrepareHeader(
@@ -27970,7 +28128,7 @@ export function midiInPrepareHeader(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInPrepareHeader(util.toPointer(hmi), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiInPrepareHeader!(util.toPointer(hmi), util.toPointer(pmh), cbmh);
 }
 
 export function midiInUnprepareHeader(
@@ -27978,7 +28136,7 @@ export function midiInUnprepareHeader(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInUnprepareHeader(util.toPointer(hmi), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiInUnprepareHeader!(util.toPointer(hmi), util.toPointer(pmh), cbmh);
 }
 
 export function midiInAddBuffer(
@@ -27986,32 +28144,32 @@ export function midiInAddBuffer(
   pmh: Deno.PointerValue | Uint8Array /* ptr */,
   cbmh: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInAddBuffer(util.toPointer(hmi), util.toPointer(pmh), cbmh);
+  return libWINMM_dll.midiInAddBuffer!(util.toPointer(hmi), util.toPointer(pmh), cbmh);
 }
 
 export function midiInStart(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInStart(util.toPointer(hmi));
+  return libWINMM_dll.midiInStart!(util.toPointer(hmi));
 }
 
 export function midiInStop(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInStop(util.toPointer(hmi));
+  return libWINMM_dll.midiInStop!(util.toPointer(hmi));
 }
 
 export function midiInReset(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInReset(util.toPointer(hmi));
+  return libWINMM_dll.midiInReset!(util.toPointer(hmi));
 }
 
 export function midiInGetID(
   hmi: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIDIIN */,
   puDeviceID: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInGetID(util.toPointer(hmi), util.toPointer(puDeviceID));
+  return libWINMM_dll.midiInGetID!(util.toPointer(hmi), util.toPointer(puDeviceID));
 }
 
 export function midiInMessage(
@@ -28020,11 +28178,11 @@ export function midiInMessage(
   dw1: bigint | number /* usize */,
   dw2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.midiInMessage(util.toPointer(hmi), uMsg, dw1, dw2);
+  return libWINMM_dll.midiInMessage!(util.toPointer(hmi), uMsg, dw1, dw2);
 }
 
 export function auxGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.auxGetNumDevs();
+  return libWINMM_dll.auxGetNumDevs!();
 }
 
 export function auxGetDevCapsA(
@@ -28032,7 +28190,7 @@ export function auxGetDevCapsA(
   pac: Deno.PointerValue | Uint8Array /* ptr */,
   cbac: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.auxGetDevCapsA(uDeviceID, util.toPointer(pac), cbac);
+  return libWINMM_dll.auxGetDevCapsA!(uDeviceID, util.toPointer(pac), cbac);
 }
 
 export function auxGetDevCapsW(
@@ -28040,21 +28198,21 @@ export function auxGetDevCapsW(
   pac: Deno.PointerValue | Uint8Array /* ptr */,
   cbac: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.auxGetDevCapsW(uDeviceID, util.toPointer(pac), cbac);
+  return libWINMM_dll.auxGetDevCapsW!(uDeviceID, util.toPointer(pac), cbac);
 }
 
 export function auxSetVolume(
   uDeviceID: number /* u32 */,
   dwVolume: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.auxSetVolume(uDeviceID, dwVolume);
+  return libWINMM_dll.auxSetVolume!(uDeviceID, dwVolume);
 }
 
 export function auxGetVolume(
   uDeviceID: number /* u32 */,
   pdwVolume: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWINMM_dll.auxGetVolume(uDeviceID, util.toPointer(pdwVolume));
+  return libWINMM_dll.auxGetVolume!(uDeviceID, util.toPointer(pdwVolume));
 }
 
 export function auxOutMessage(
@@ -28063,11 +28221,11 @@ export function auxOutMessage(
   dw1: bigint | number /* usize */,
   dw2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.auxOutMessage(uDeviceID, uMsg, dw1, dw2);
+  return libWINMM_dll.auxOutMessage!(uDeviceID, uMsg, dw1, dw2);
 }
 
 export function mixerGetNumDevs(): number /* u32 */ {
-  return libWINMM_dll.mixerGetNumDevs();
+  return libWINMM_dll.mixerGetNumDevs!();
 }
 
 export function mixerGetDevCapsA(
@@ -28075,7 +28233,7 @@ export function mixerGetDevCapsA(
   pmxcaps: Deno.PointerValue | Uint8Array /* ptr */,
   cbmxcaps: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetDevCapsA(uMxId, util.toPointer(pmxcaps), cbmxcaps);
+  return libWINMM_dll.mixerGetDevCapsA!(uMxId, util.toPointer(pmxcaps), cbmxcaps);
 }
 
 export function mixerGetDevCapsW(
@@ -28083,7 +28241,7 @@ export function mixerGetDevCapsW(
   pmxcaps: Deno.PointerValue | Uint8Array /* ptr */,
   cbmxcaps: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetDevCapsW(uMxId, util.toPointer(pmxcaps), cbmxcaps);
+  return libWINMM_dll.mixerGetDevCapsW!(uMxId, util.toPointer(pmxcaps), cbmxcaps);
 }
 
 export function mixerOpen(
@@ -28093,13 +28251,13 @@ export function mixerOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerOpen(util.toPointer(phmx), uMxId, dwCallback, dwInstance, fdwOpen);
+  return libWINMM_dll.mixerOpen!(util.toPointer(phmx), uMxId, dwCallback, dwInstance, fdwOpen);
 }
 
 export function mixerClose(
   hmx: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HMIXER */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerClose(util.toPointer(hmx));
+  return libWINMM_dll.mixerClose!(util.toPointer(hmx));
 }
 
 export function mixerMessage(
@@ -28108,7 +28266,7 @@ export function mixerMessage(
   dwParam1: bigint | number /* usize */,
   dwParam2: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerMessage(util.toPointer(hmx), uMsg, dwParam1, dwParam2);
+  return libWINMM_dll.mixerMessage!(util.toPointer(hmx), uMsg, dwParam1, dwParam2);
 }
 
 export function mixerGetLineInfoA(
@@ -28116,7 +28274,7 @@ export function mixerGetLineInfoA(
   pmxl: Deno.PointerValue | Uint8Array /* ptr */,
   fdwInfo: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetLineInfoA(util.toPointer(hmxobj), util.toPointer(pmxl), fdwInfo);
+  return libWINMM_dll.mixerGetLineInfoA!(util.toPointer(hmxobj), util.toPointer(pmxl), fdwInfo);
 }
 
 export function mixerGetLineInfoW(
@@ -28124,7 +28282,7 @@ export function mixerGetLineInfoW(
   pmxl: Deno.PointerValue | Uint8Array /* ptr */,
   fdwInfo: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetLineInfoW(util.toPointer(hmxobj), util.toPointer(pmxl), fdwInfo);
+  return libWINMM_dll.mixerGetLineInfoW!(util.toPointer(hmxobj), util.toPointer(pmxl), fdwInfo);
 }
 
 export function mixerGetID(
@@ -28132,7 +28290,7 @@ export function mixerGetID(
   puMxId: Deno.PointerValue | Uint8Array /* ptr */,
   fdwId: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetID(util.toPointer(hmxobj), util.toPointer(puMxId), fdwId);
+  return libWINMM_dll.mixerGetID!(util.toPointer(hmxobj), util.toPointer(puMxId), fdwId);
 }
 
 export function mixerGetLineControlsA(
@@ -28140,7 +28298,7 @@ export function mixerGetLineControlsA(
   pmxlc: Deno.PointerValue | Uint8Array /* ptr */,
   fdwControls: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetLineControlsA(util.toPointer(hmxobj), util.toPointer(pmxlc), fdwControls);
+  return libWINMM_dll.mixerGetLineControlsA!(util.toPointer(hmxobj), util.toPointer(pmxlc), fdwControls);
 }
 
 export function mixerGetLineControlsW(
@@ -28148,7 +28306,7 @@ export function mixerGetLineControlsW(
   pmxlc: Deno.PointerValue | Uint8Array /* ptr */,
   fdwControls: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetLineControlsW(util.toPointer(hmxobj), util.toPointer(pmxlc), fdwControls);
+  return libWINMM_dll.mixerGetLineControlsW!(util.toPointer(hmxobj), util.toPointer(pmxlc), fdwControls);
 }
 
 export function mixerGetControlDetailsA(
@@ -28156,7 +28314,7 @@ export function mixerGetControlDetailsA(
   pmxcd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetControlDetailsA(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
+  return libWINMM_dll.mixerGetControlDetailsA!(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
 }
 
 export function mixerGetControlDetailsW(
@@ -28164,7 +28322,7 @@ export function mixerGetControlDetailsW(
   pmxcd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerGetControlDetailsW(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
+  return libWINMM_dll.mixerGetControlDetailsW!(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
 }
 
 export function mixerSetControlDetails(
@@ -28172,7 +28330,7 @@ export function mixerSetControlDetails(
   pmxcd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libWINMM_dll.mixerSetControlDetails(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
+  return libWINMM_dll.mixerSetControlDetails!(util.toPointer(hmxobj), util.toPointer(pmxcd), fdwDetails);
 }
 
 export function ActivateAudioInterfaceAsync(
@@ -28182,20 +28340,20 @@ export function ActivateAudioInterfaceAsync(
   completionHandler: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.IActivateAudioInterfaceCompletionHandler */,
   activationOperation: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMMDevAPI_dll.ActivateAudioInterfaceAsync(util.pwstrToFfi(deviceInterfacePath), util.toPointer(riid), util.toPointer(activationParams), util.toPointer(completionHandler), util.toPointer(activationOperation));
+  return libMMDevAPI_dll.ActivateAudioInterfaceAsync!(util.pwstrToFfi(deviceInterfacePath), util.toPointer(riid), util.toPointer(activationParams), util.toPointer(completionHandler), util.toPointer(activationOperation));
 }
 
 export function CreateRenderAudioStateMonitor(
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitor(util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitor!(util.toPointer(audioStateMonitor));
 }
 
 export function CreateRenderAudioStateMonitorForCategory(
   category: AUDIO_STREAM_CATEGORY /* Windows.Win32.Media.Audio.AUDIO_STREAM_CATEGORY */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategory(category, util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategory!(category, util.toPointer(audioStateMonitor));
 }
 
 export function CreateRenderAudioStateMonitorForCategoryAndDeviceRole(
@@ -28203,7 +28361,7 @@ export function CreateRenderAudioStateMonitorForCategoryAndDeviceRole(
   role: ERole /* Windows.Win32.Media.Audio.ERole */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategoryAndDeviceRole(category, role, util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategoryAndDeviceRole!(category, role, util.toPointer(audioStateMonitor));
 }
 
 export function CreateRenderAudioStateMonitorForCategoryAndDeviceId(
@@ -28211,20 +28369,20 @@ export function CreateRenderAudioStateMonitorForCategoryAndDeviceId(
   deviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategoryAndDeviceId(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateRenderAudioStateMonitorForCategoryAndDeviceId!(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor));
 }
 
 export function CreateCaptureAudioStateMonitor(
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitor(util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitor!(util.toPointer(audioStateMonitor));
 }
 
 export function CreateCaptureAudioStateMonitorForCategory(
   category: AUDIO_STREAM_CATEGORY /* Windows.Win32.Media.Audio.AUDIO_STREAM_CATEGORY */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategory(category, util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategory!(category, util.toPointer(audioStateMonitor));
 }
 
 export function CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(
@@ -28232,7 +28390,7 @@ export function CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(
   role: ERole /* Windows.Win32.Media.Audio.ERole */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategoryAndDeviceRole(category, role, util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategoryAndDeviceRole!(category, role, util.toPointer(audioStateMonitor));
 }
 
 export function CreateCaptureAudioStateMonitorForCategoryAndDeviceId(
@@ -28240,11 +28398,11 @@ export function CreateCaptureAudioStateMonitorForCategoryAndDeviceId(
   deviceId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   audioStateMonitor: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategoryAndDeviceId(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor));
+  return libWindows_Media_MediaControl_dll.CreateCaptureAudioStateMonitorForCategoryAndDeviceId!(category, util.pwstrToFfi(deviceId), util.toPointer(audioStateMonitor));
 }
 
 export function acmGetVersion(): number /* u32 */ {
-  return libMSACM32_dll.acmGetVersion();
+  return libMSACM32_dll.acmGetVersion!();
 }
 
 export function acmMetrics(
@@ -28252,7 +28410,7 @@ export function acmMetrics(
   uMetric: number /* u32 */,
   pMetric: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmMetrics(util.toPointer(hao), uMetric, util.toPointer(pMetric));
+  return libMSACM32_dll.acmMetrics!(util.toPointer(hao), uMetric, util.toPointer(pMetric));
 }
 
 export function acmDriverEnum(
@@ -28260,7 +28418,7 @@ export function acmDriverEnum(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverEnum(util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmDriverEnum!(util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmDriverID(
@@ -28268,7 +28426,7 @@ export function acmDriverID(
   phadid: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDriverID: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverID(util.toPointer(hao), util.toPointer(phadid), fdwDriverID);
+  return libMSACM32_dll.acmDriverID!(util.toPointer(hao), util.toPointer(phadid), fdwDriverID);
 }
 
 export function acmDriverAddA(
@@ -28278,7 +28436,7 @@ export function acmDriverAddA(
   dwPriority: number /* u32 */,
   fdwAdd: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverAddA(util.toPointer(phadid), util.toPointer(hinstModule), util.toPointer(lParam), dwPriority, fdwAdd);
+  return libMSACM32_dll.acmDriverAddA!(util.toPointer(phadid), util.toPointer(hinstModule), util.toPointer(lParam), dwPriority, fdwAdd);
 }
 
 export function acmDriverAddW(
@@ -28288,14 +28446,14 @@ export function acmDriverAddW(
   dwPriority: number /* u32 */,
   fdwAdd: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverAddW(util.toPointer(phadid), util.toPointer(hinstModule), util.toPointer(lParam), dwPriority, fdwAdd);
+  return libMSACM32_dll.acmDriverAddW!(util.toPointer(phadid), util.toPointer(hinstModule), util.toPointer(lParam), dwPriority, fdwAdd);
 }
 
 export function acmDriverRemove(
   hadid: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVERID */,
   fdwRemove: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverRemove(util.toPointer(hadid), fdwRemove);
+  return libMSACM32_dll.acmDriverRemove!(util.toPointer(hadid), fdwRemove);
 }
 
 export function acmDriverOpen(
@@ -28303,14 +28461,14 @@ export function acmDriverOpen(
   hadid: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVERID */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverOpen(util.toPointer(phad), util.toPointer(hadid), fdwOpen);
+  return libMSACM32_dll.acmDriverOpen!(util.toPointer(phad), util.toPointer(hadid), fdwOpen);
 }
 
 export function acmDriverClose(
   had: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMDRIVER */,
   fdwClose: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverClose(util.toPointer(had), fdwClose);
+  return libMSACM32_dll.acmDriverClose!(util.toPointer(had), fdwClose);
 }
 
 export function acmDriverMessage(
@@ -28319,7 +28477,7 @@ export function acmDriverMessage(
   lParam1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.LRESULT */ {
-  return libMSACM32_dll.acmDriverMessage(util.toPointer(had), uMsg, util.toPointer(lParam1), util.toPointer(lParam2));
+  return libMSACM32_dll.acmDriverMessage!(util.toPointer(had), uMsg, util.toPointer(lParam1), util.toPointer(lParam2));
 }
 
 export function acmDriverPriority(
@@ -28327,7 +28485,7 @@ export function acmDriverPriority(
   dwPriority: number /* u32 */,
   fdwPriority: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverPriority(util.toPointer(hadid), dwPriority, fdwPriority);
+  return libMSACM32_dll.acmDriverPriority!(util.toPointer(hadid), dwPriority, fdwPriority);
 }
 
 export function acmDriverDetailsA(
@@ -28335,7 +28493,7 @@ export function acmDriverDetailsA(
   padd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverDetailsA(util.toPointer(hadid), util.toPointer(padd), fdwDetails);
+  return libMSACM32_dll.acmDriverDetailsA!(util.toPointer(hadid), util.toPointer(padd), fdwDetails);
 }
 
 export function acmDriverDetailsW(
@@ -28343,7 +28501,7 @@ export function acmDriverDetailsW(
   padd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmDriverDetailsW(util.toPointer(hadid), util.toPointer(padd), fdwDetails);
+  return libMSACM32_dll.acmDriverDetailsW!(util.toPointer(hadid), util.toPointer(padd), fdwDetails);
 }
 
 export function acmFormatTagDetailsA(
@@ -28351,7 +28509,7 @@ export function acmFormatTagDetailsA(
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatTagDetailsA(util.toPointer(had), util.toPointer(paftd), fdwDetails);
+  return libMSACM32_dll.acmFormatTagDetailsA!(util.toPointer(had), util.toPointer(paftd), fdwDetails);
 }
 
 export function acmFormatTagDetailsW(
@@ -28359,7 +28517,7 @@ export function acmFormatTagDetailsW(
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatTagDetailsW(util.toPointer(had), util.toPointer(paftd), fdwDetails);
+  return libMSACM32_dll.acmFormatTagDetailsW!(util.toPointer(had), util.toPointer(paftd), fdwDetails);
 }
 
 export function acmFormatTagEnumA(
@@ -28369,7 +28527,7 @@ export function acmFormatTagEnumA(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatTagEnumA(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFormatTagEnumA!(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFormatTagEnumW(
@@ -28379,7 +28537,7 @@ export function acmFormatTagEnumW(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatTagEnumW(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFormatTagEnumW!(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFormatDetailsA(
@@ -28387,7 +28545,7 @@ export function acmFormatDetailsA(
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatDetailsA(util.toPointer(had), util.toPointer(pafd), fdwDetails);
+  return libMSACM32_dll.acmFormatDetailsA!(util.toPointer(had), util.toPointer(pafd), fdwDetails);
 }
 
 export function acmFormatDetailsW(
@@ -28395,7 +28553,7 @@ export function acmFormatDetailsW(
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatDetailsW(util.toPointer(had), util.toPointer(pafd), fdwDetails);
+  return libMSACM32_dll.acmFormatDetailsW!(util.toPointer(had), util.toPointer(pafd), fdwDetails);
 }
 
 export function acmFormatEnumA(
@@ -28405,7 +28563,7 @@ export function acmFormatEnumA(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatEnumA(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFormatEnumA!(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFormatEnumW(
@@ -28415,7 +28573,7 @@ export function acmFormatEnumW(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatEnumW(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFormatEnumW!(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFormatSuggest(
@@ -28425,19 +28583,19 @@ export function acmFormatSuggest(
   cbwfxDst: number /* u32 */,
   fdwSuggest: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatSuggest(util.toPointer(had), util.toPointer(pwfxSrc), util.toPointer(pwfxDst), cbwfxDst, fdwSuggest);
+  return libMSACM32_dll.acmFormatSuggest!(util.toPointer(had), util.toPointer(pwfxSrc), util.toPointer(pwfxDst), cbwfxDst, fdwSuggest);
 }
 
 export function acmFormatChooseA(
   pafmtc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatChooseA(util.toPointer(pafmtc));
+  return libMSACM32_dll.acmFormatChooseA!(util.toPointer(pafmtc));
 }
 
 export function acmFormatChooseW(
   pafmtc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFormatChooseW(util.toPointer(pafmtc));
+  return libMSACM32_dll.acmFormatChooseW!(util.toPointer(pafmtc));
 }
 
 export function acmFilterTagDetailsA(
@@ -28445,7 +28603,7 @@ export function acmFilterTagDetailsA(
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterTagDetailsA(util.toPointer(had), util.toPointer(paftd), fdwDetails);
+  return libMSACM32_dll.acmFilterTagDetailsA!(util.toPointer(had), util.toPointer(paftd), fdwDetails);
 }
 
 export function acmFilterTagDetailsW(
@@ -28453,7 +28611,7 @@ export function acmFilterTagDetailsW(
   paftd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterTagDetailsW(util.toPointer(had), util.toPointer(paftd), fdwDetails);
+  return libMSACM32_dll.acmFilterTagDetailsW!(util.toPointer(had), util.toPointer(paftd), fdwDetails);
 }
 
 export function acmFilterTagEnumA(
@@ -28463,7 +28621,7 @@ export function acmFilterTagEnumA(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterTagEnumA(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFilterTagEnumA!(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFilterTagEnumW(
@@ -28473,7 +28631,7 @@ export function acmFilterTagEnumW(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterTagEnumW(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFilterTagEnumW!(util.toPointer(had), util.toPointer(paftd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFilterDetailsA(
@@ -28481,7 +28639,7 @@ export function acmFilterDetailsA(
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterDetailsA(util.toPointer(had), util.toPointer(pafd), fdwDetails);
+  return libMSACM32_dll.acmFilterDetailsA!(util.toPointer(had), util.toPointer(pafd), fdwDetails);
 }
 
 export function acmFilterDetailsW(
@@ -28489,7 +28647,7 @@ export function acmFilterDetailsW(
   pafd: Deno.PointerValue | Uint8Array /* ptr */,
   fdwDetails: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterDetailsW(util.toPointer(had), util.toPointer(pafd), fdwDetails);
+  return libMSACM32_dll.acmFilterDetailsW!(util.toPointer(had), util.toPointer(pafd), fdwDetails);
 }
 
 export function acmFilterEnumA(
@@ -28499,7 +28657,7 @@ export function acmFilterEnumA(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterEnumA(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFilterEnumA!(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFilterEnumW(
@@ -28509,19 +28667,19 @@ export function acmFilterEnumW(
   dwInstance: bigint | number /* usize */,
   fdwEnum: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterEnumW(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
+  return libMSACM32_dll.acmFilterEnumW!(util.toPointer(had), util.toPointer(pafd), util.toPointer(fnCallback), dwInstance, fdwEnum);
 }
 
 export function acmFilterChooseA(
   pafltrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterChooseA(util.toPointer(pafltrc));
+  return libMSACM32_dll.acmFilterChooseA!(util.toPointer(pafltrc));
 }
 
 export function acmFilterChooseW(
   pafltrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmFilterChooseW(util.toPointer(pafltrc));
+  return libMSACM32_dll.acmFilterChooseW!(util.toPointer(pafltrc));
 }
 
 export function acmStreamOpen(
@@ -28534,14 +28692,14 @@ export function acmStreamOpen(
   dwInstance: bigint | number /* usize */,
   fdwOpen: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamOpen(util.toPointer(phas), util.toPointer(had), util.toPointer(pwfxSrc), util.toPointer(pwfxDst), util.toPointer(pwfltr), dwCallback, dwInstance, fdwOpen);
+  return libMSACM32_dll.acmStreamOpen!(util.toPointer(phas), util.toPointer(had), util.toPointer(pwfxSrc), util.toPointer(pwfxDst), util.toPointer(pwfltr), dwCallback, dwInstance, fdwOpen);
 }
 
 export function acmStreamClose(
   has: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMSTREAM */,
   fdwClose: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamClose(util.toPointer(has), fdwClose);
+  return libMSACM32_dll.acmStreamClose!(util.toPointer(has), fdwClose);
 }
 
 export function acmStreamSize(
@@ -28550,14 +28708,14 @@ export function acmStreamSize(
   pdwOutputBytes: Deno.PointerValue | Uint8Array /* ptr */,
   fdwSize: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamSize(util.toPointer(has), cbInput, util.toPointer(pdwOutputBytes), fdwSize);
+  return libMSACM32_dll.acmStreamSize!(util.toPointer(has), cbInput, util.toPointer(pdwOutputBytes), fdwSize);
 }
 
 export function acmStreamReset(
   has: Uint8Array | Deno.PointerValue /* Windows.Win32.Media.Audio.HACMSTREAM */,
   fdwReset: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamReset(util.toPointer(has), fdwReset);
+  return libMSACM32_dll.acmStreamReset!(util.toPointer(has), fdwReset);
 }
 
 export function acmStreamMessage(
@@ -28566,7 +28724,7 @@ export function acmStreamMessage(
   lParam1: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
   lParam2: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.LPARAM */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamMessage(util.toPointer(has), uMsg, util.toPointer(lParam1), util.toPointer(lParam2));
+  return libMSACM32_dll.acmStreamMessage!(util.toPointer(has), uMsg, util.toPointer(lParam1), util.toPointer(lParam2));
 }
 
 export function acmStreamConvert(
@@ -28574,7 +28732,7 @@ export function acmStreamConvert(
   pash: Deno.PointerValue | Uint8Array /* ptr */,
   fdwConvert: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamConvert(util.toPointer(has), util.toPointer(pash), fdwConvert);
+  return libMSACM32_dll.acmStreamConvert!(util.toPointer(has), util.toPointer(pash), fdwConvert);
 }
 
 export function acmStreamPrepareHeader(
@@ -28582,7 +28740,7 @@ export function acmStreamPrepareHeader(
   pash: Deno.PointerValue | Uint8Array /* ptr */,
   fdwPrepare: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamPrepareHeader(util.toPointer(has), util.toPointer(pash), fdwPrepare);
+  return libMSACM32_dll.acmStreamPrepareHeader!(util.toPointer(has), util.toPointer(pash), fdwPrepare);
 }
 
 export function acmStreamUnprepareHeader(
@@ -28590,6 +28748,6 @@ export function acmStreamUnprepareHeader(
   pash: Deno.PointerValue | Uint8Array /* ptr */,
   fdwUnprepare: number /* u32 */,
 ): number /* u32 */ {
-  return libMSACM32_dll.acmStreamUnprepareHeader(util.toPointer(has), util.toPointer(pash), fdwUnprepare);
+  return libMSACM32_dll.acmStreamUnprepareHeader!(util.toPointer(has), util.toPointer(pash), fdwUnprepare);
 }
 

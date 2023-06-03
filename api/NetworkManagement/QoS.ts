@@ -8940,46 +8940,57 @@ try {
     QOSCreateHandle: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSCloseHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     QOSStartTrackingClient: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     QOSStopTrackingClient: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     QOSEnumerateFlows: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSAddSocketToFlow: {
       parameters: ["pointer", "pointer", "pointer", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSRemoveSocketFromFlow: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     QOSSetFlow: {
       parameters: ["pointer", "u32", "i32", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSQueryFlow: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSNotifyFlow: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     QOSCancel: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -8989,82 +9000,102 @@ try {
     TcRegisterClient: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcEnumerateInterfaces: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcOpenInterfaceA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcOpenInterfaceW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcCloseInterface: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TcQueryInterface: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcSetInterface: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcQueryFlowA: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcQueryFlowW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcSetFlowA: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcSetFlowW: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcAddFlow: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcGetFlowNameA: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TcGetFlowNameW: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     TcModifyFlow: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcAddFilter: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     TcDeregisterClient: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TcDeleteFlow: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TcDeleteFilter: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     TcEnumerateFlows: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9075,13 +9106,13 @@ export function QOSCreateHandle(
   Version: Deno.PointerValue | Uint8Array /* ptr */,
   QOSHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSCreateHandle(util.toPointer(Version), util.toPointer(QOSHandle)));
+  return util.boolFromFfi(libqwave_dll.QOSCreateHandle!(util.toPointer(Version), util.toPointer(QOSHandle)));
 }
 
 export function QOSCloseHandle(
   QOSHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSCloseHandle(util.toPointer(QOSHandle)));
+  return util.boolFromFfi(libqwave_dll.QOSCloseHandle!(util.toPointer(QOSHandle)));
 }
 
 export function QOSStartTrackingClient(
@@ -9089,7 +9120,7 @@ export function QOSStartTrackingClient(
   DestAddr: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSStartTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
+  return util.boolFromFfi(libqwave_dll.QOSStartTrackingClient!(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
 }
 
 export function QOSStopTrackingClient(
@@ -9097,7 +9128,7 @@ export function QOSStopTrackingClient(
   DestAddr: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSStopTrackingClient(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
+  return util.boolFromFfi(libqwave_dll.QOSStopTrackingClient!(util.toPointer(QOSHandle), util.toPointer(DestAddr), Flags));
 }
 
 export function QOSEnumerateFlows(
@@ -9105,7 +9136,7 @@ export function QOSEnumerateFlows(
   Size: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSEnumerateFlows(util.toPointer(QOSHandle), util.toPointer(Size), util.toPointer(Buffer)));
+  return util.boolFromFfi(libqwave_dll.QOSEnumerateFlows!(util.toPointer(QOSHandle), util.toPointer(Size), util.toPointer(Buffer)));
 }
 
 export function QOSAddSocketToFlow(
@@ -9116,7 +9147,7 @@ export function QOSAddSocketToFlow(
   Flags: number /* u32 */,
   FlowId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSAddSocketToFlow(util.toPointer(QOSHandle), util.toPointer(Socket), util.toPointer(DestAddr), TrafficType, Flags, util.toPointer(FlowId)));
+  return util.boolFromFfi(libqwave_dll.QOSAddSocketToFlow!(util.toPointer(QOSHandle), util.toPointer(Socket), util.toPointer(DestAddr), TrafficType, Flags, util.toPointer(FlowId)));
 }
 
 export function QOSRemoveSocketFromFlow(
@@ -9125,7 +9156,7 @@ export function QOSRemoveSocketFromFlow(
   FlowId: number /* u32 */,
   Flags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSRemoveSocketFromFlow(util.toPointer(QOSHandle), util.toPointer(Socket), FlowId, Flags));
+  return util.boolFromFfi(libqwave_dll.QOSRemoveSocketFromFlow!(util.toPointer(QOSHandle), util.toPointer(Socket), FlowId, Flags));
 }
 
 export function QOSSetFlow(
@@ -9137,7 +9168,7 @@ export function QOSSetFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSSetFlow(util.toPointer(QOSHandle), FlowId, Operation, Size, util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSSetFlow!(util.toPointer(QOSHandle), FlowId, Operation, Size, util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSQueryFlow(
@@ -9149,7 +9180,7 @@ export function QOSQueryFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSQueryFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSQueryFlow!(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSNotifyFlow(
@@ -9161,14 +9192,14 @@ export function QOSNotifyFlow(
   Flags: number /* u32 */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSNotifyFlow(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSNotifyFlow!(util.toPointer(QOSHandle), FlowId, Operation, util.toPointer(Size), util.toPointer(Buffer), Flags, util.toPointer(Overlapped)));
 }
 
 export function QOSCancel(
   QOSHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Overlapped: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libqwave_dll.QOSCancel(util.toPointer(QOSHandle), util.toPointer(Overlapped)));
+  return util.boolFromFfi(libqwave_dll.QOSCancel!(util.toPointer(QOSHandle), util.toPointer(Overlapped)));
 }
 
 export function TcRegisterClient(
@@ -9177,7 +9208,7 @@ export function TcRegisterClient(
   ClientHandlerList: Deno.PointerValue | Uint8Array /* ptr */,
   pClientHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcRegisterClient(TciVersion, util.toPointer(ClRegCtx), util.toPointer(ClientHandlerList), util.toPointer(pClientHandle));
+  return libTRAFFIC_dll.TcRegisterClient!(TciVersion, util.toPointer(ClRegCtx), util.toPointer(ClientHandlerList), util.toPointer(pClientHandle));
 }
 
 export function TcEnumerateInterfaces(
@@ -9185,7 +9216,7 @@ export function TcEnumerateInterfaces(
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   InterfaceBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcEnumerateInterfaces(util.toPointer(ClientHandle), util.toPointer(pBufferSize), util.toPointer(InterfaceBuffer));
+  return libTRAFFIC_dll.TcEnumerateInterfaces!(util.toPointer(ClientHandle), util.toPointer(pBufferSize), util.toPointer(InterfaceBuffer));
 }
 
 export function TcOpenInterfaceA(
@@ -9194,7 +9225,7 @@ export function TcOpenInterfaceA(
   ClIfcCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcOpenInterfaceA(util.pstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
+  return libTRAFFIC_dll.TcOpenInterfaceA!(util.pstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
 }
 
 export function TcOpenInterfaceW(
@@ -9203,13 +9234,13 @@ export function TcOpenInterfaceW(
   ClIfcCtx: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pIfcHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcOpenInterfaceW(util.pwstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
+  return libTRAFFIC_dll.TcOpenInterfaceW!(util.pwstrToFfi(pInterfaceName), util.toPointer(ClientHandle), util.toPointer(ClIfcCtx), util.toPointer(pIfcHandle));
 }
 
 export function TcCloseInterface(
   IfcHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcCloseInterface(util.toPointer(IfcHandle));
+  return libTRAFFIC_dll.TcCloseInterface!(util.toPointer(IfcHandle));
 }
 
 export function TcQueryInterface(
@@ -9219,7 +9250,7 @@ export function TcQueryInterface(
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcQueryInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), util.toPointer(NotifyChange), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryInterface!(util.toPointer(IfcHandle), util.toPointer(pGuidParam), util.toPointer(NotifyChange), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcSetInterface(
@@ -9228,7 +9259,7 @@ export function TcSetInterface(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcSetInterface(util.toPointer(IfcHandle), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetInterface!(util.toPointer(IfcHandle), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcQueryFlowA(
@@ -9237,7 +9268,7 @@ export function TcQueryFlowA(
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcQueryFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryFlowA!(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcQueryFlowW(
@@ -9246,7 +9277,7 @@ export function TcQueryFlowW(
   pBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcQueryFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcQueryFlowW!(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), util.toPointer(pBufferSize), util.toPointer(Buffer));
 }
 
 export function TcSetFlowA(
@@ -9255,7 +9286,7 @@ export function TcSetFlowA(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcSetFlowA(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetFlowA!(util.pstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcSetFlowW(
@@ -9264,7 +9295,7 @@ export function TcSetFlowW(
   BufferSize: number /* u32 */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcSetFlowW(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcSetFlowW!(util.pwstrToFfi(pFlowName), util.toPointer(pGuidParam), BufferSize, util.toPointer(Buffer));
 }
 
 export function TcAddFlow(
@@ -9274,7 +9305,7 @@ export function TcAddFlow(
   pGenericFlow: Deno.PointerValue | Uint8Array /* ptr */,
   pFlowHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcAddFlow(util.toPointer(IfcHandle), util.toPointer(ClFlowCtx), Flags, util.toPointer(pGenericFlow), util.toPointer(pFlowHandle));
+  return libTRAFFIC_dll.TcAddFlow!(util.toPointer(IfcHandle), util.toPointer(ClFlowCtx), Flags, util.toPointer(pGenericFlow), util.toPointer(pFlowHandle));
 }
 
 export function TcGetFlowNameA(
@@ -9282,7 +9313,7 @@ export function TcGetFlowNameA(
   StrSize: number /* u32 */,
   pFlowName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcGetFlowNameA(util.toPointer(FlowHandle), StrSize, util.pstrToFfi(pFlowName));
+  return libTRAFFIC_dll.TcGetFlowNameA!(util.toPointer(FlowHandle), StrSize, util.pstrToFfi(pFlowName));
 }
 
 export function TcGetFlowNameW(
@@ -9290,14 +9321,14 @@ export function TcGetFlowNameW(
   StrSize: number /* u32 */,
   pFlowName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcGetFlowNameW(util.toPointer(FlowHandle), StrSize, util.pwstrToFfi(pFlowName));
+  return libTRAFFIC_dll.TcGetFlowNameW!(util.toPointer(FlowHandle), StrSize, util.pwstrToFfi(pFlowName));
 }
 
 export function TcModifyFlow(
   FlowHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pGenericFlow: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcModifyFlow(util.toPointer(FlowHandle), util.toPointer(pGenericFlow));
+  return libTRAFFIC_dll.TcModifyFlow!(util.toPointer(FlowHandle), util.toPointer(pGenericFlow));
 }
 
 export function TcAddFilter(
@@ -9305,25 +9336,25 @@ export function TcAddFilter(
   pGenericFilter: Deno.PointerValue | Uint8Array /* ptr */,
   pFilterHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcAddFilter(util.toPointer(FlowHandle), util.toPointer(pGenericFilter), util.toPointer(pFilterHandle));
+  return libTRAFFIC_dll.TcAddFilter!(util.toPointer(FlowHandle), util.toPointer(pGenericFilter), util.toPointer(pFilterHandle));
 }
 
 export function TcDeregisterClient(
   ClientHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcDeregisterClient(util.toPointer(ClientHandle));
+  return libTRAFFIC_dll.TcDeregisterClient!(util.toPointer(ClientHandle));
 }
 
 export function TcDeleteFlow(
   FlowHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcDeleteFlow(util.toPointer(FlowHandle));
+  return libTRAFFIC_dll.TcDeleteFlow!(util.toPointer(FlowHandle));
 }
 
 export function TcDeleteFilter(
   FilterHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcDeleteFilter(util.toPointer(FilterHandle));
+  return libTRAFFIC_dll.TcDeleteFilter!(util.toPointer(FilterHandle));
 }
 
 export function TcEnumerateFlows(
@@ -9333,6 +9364,6 @@ export function TcEnumerateFlows(
   pBufSize: Deno.PointerValue | Uint8Array /* ptr */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libTRAFFIC_dll.TcEnumerateFlows(util.toPointer(IfcHandle), util.toPointer(pEnumHandle), util.toPointer(pFlowCount), util.toPointer(pBufSize), util.toPointer(Buffer));
+  return libTRAFFIC_dll.TcEnumerateFlows!(util.toPointer(IfcHandle), util.toPointer(pEnumHandle), util.toPointer(pFlowCount), util.toPointer(pBufSize), util.toPointer(Buffer));
 }
 

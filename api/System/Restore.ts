@@ -426,10 +426,12 @@ try {
     SRSetRestorePointA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SRSetRestorePointW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -440,13 +442,13 @@ export function SRSetRestorePointA(
   pRestorePtSpec: Deno.PointerValue | Uint8Array /* ptr */,
   pSMgrStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SRSetRestorePointA(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
+  return util.boolFromFfi(libsfc_dll.SRSetRestorePointA!(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
 }
 
 export function SRSetRestorePointW(
   pRestorePtSpec: Deno.PointerValue | Uint8Array /* ptr */,
   pSMgrStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libsfc_dll.SRSetRestorePointW(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
+  return util.boolFromFfi(libsfc_dll.SRSetRestorePointW!(util.toPointer(pRestorePtSpec), util.toPointer(pSMgrStatus)));
 }
 

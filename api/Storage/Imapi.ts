@@ -792,26 +792,32 @@ try {
     OpenIMsgSession: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     CloseIMsgSession: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     OpenIMsgOnIStg: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "u32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetAttribIMsgOnIStg: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SetAttribIMsgOnIStg: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     MapStorageSCode: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -823,13 +829,13 @@ export function OpenIMsgSession(
   ulFlags: number /* u32 */,
   lppMsgSess: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.OpenIMsgSession(util.toPointer(lpMalloc), ulFlags, util.toPointer(lppMsgSess));
+  return libMAPI32_dll.OpenIMsgSession!(util.toPointer(lpMalloc), ulFlags, util.toPointer(lppMsgSess));
 }
 
 export function CloseIMsgSession(
   lpMsgSess: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libMAPI32_dll.CloseIMsgSession(util.toPointer(lpMsgSess));
+  return libMAPI32_dll.CloseIMsgSession!(util.toPointer(lpMsgSess));
 }
 
 export function OpenIMsgOnIStg(
@@ -845,7 +851,7 @@ export function OpenIMsgOnIStg(
   ulFlags: number /* u32 */,
   lppMsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libMAPI32_dll.OpenIMsgOnIStg(util.toPointer(lpMsgSess), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(lpMapiSup), util.toPointer(lpStg), util.toPointer(lpfMsgCallRelease), ulCallerData, ulFlags, util.toPointer(lppMsg));
+  return libMAPI32_dll.OpenIMsgOnIStg!(util.toPointer(lpMsgSess), util.toPointer(lpAllocateBuffer), util.toPointer(lpAllocateMore), util.toPointer(lpFreeBuffer), util.toPointer(lpMalloc), util.toPointer(lpMapiSup), util.toPointer(lpStg), util.toPointer(lpfMsgCallRelease), ulCallerData, ulFlags, util.toPointer(lppMsg));
 }
 
 export function GetAttribIMsgOnIStg(
@@ -853,7 +859,7 @@ export function GetAttribIMsgOnIStg(
   lpPropTagArray: Deno.PointerValue | Uint8Array /* ptr */,
   lppPropAttrArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.GetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray));
+  return libMAPI32_dll.GetAttribIMsgOnIStg!(util.toPointer(lpObject), util.toPointer(lpPropTagArray), util.toPointer(lppPropAttrArray));
 }
 
 export function SetAttribIMsgOnIStg(
@@ -862,12 +868,12 @@ export function SetAttribIMsgOnIStg(
   lpPropAttrs: Deno.PointerValue | Uint8Array /* ptr */,
   lppPropProblems: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libMAPI32_dll.SetAttribIMsgOnIStg(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems));
+  return libMAPI32_dll.SetAttribIMsgOnIStg!(util.toPointer(lpObject), util.toPointer(lpPropTags), util.toPointer(lpPropAttrs), util.toPointer(lppPropProblems));
 }
 
 export function MapStorageSCode(
   StgSCode: number /* i32 */,
 ): number /* i32 */ {
-  return libMAPI32_dll.MapStorageSCode(StgSCode);
+  return libMAPI32_dll.MapStorageSCode!(StgSCode);
 }
 

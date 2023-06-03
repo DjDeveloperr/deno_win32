@@ -4940,330 +4940,412 @@ try {
     RegCloseKey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegOverridePredefKey: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenUserClassesRoot: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenCurrentUser: {
       parameters: ["u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegDisablePredefinedCache: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     RegDisablePredefinedCacheEx: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     RegConnectRegistryA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegConnectRegistryW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegConnectRegistryExA: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RegConnectRegistryExW: {
       parameters: ["buffer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     RegCreateKeyA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCreateKeyW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCreateKeyExA: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCreateKeyExW: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCreateKeyTransactedA: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCreateKeyTransactedW: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyExA: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyExW: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyTransactedA: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyTransactedW: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegDisableReflectionKey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegEnableReflectionKey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryReflectionKey: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteValueA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteValueW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegEnumKeyA: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegEnumKeyW: {
       parameters: ["pointer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegEnumKeyExA: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegEnumKeyExW: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegEnumValueA: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegEnumValueW: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegFlushKey: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RegGetKeySecurity: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegLoadKeyA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegLoadKeyW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegNotifyChangeKeyValue: {
       parameters: ["pointer", "i32", "u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyExA: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyExW: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyTransactedA: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegOpenKeyTransactedW: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryInfoKeyA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryInfoKeyW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryValueA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryValueW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryMultipleValuesA: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryMultipleValuesW: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryValueExA: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegQueryValueExW: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegReplaceKeyA: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegReplaceKeyW: {
       parameters: ["pointer", "buffer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegRestoreKeyA: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     RegRestoreKeyW: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     RegRenameKey: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegSaveKeyA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegSaveKeyW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegSetKeySecurity: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegSetValueA: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSetValueW: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSetValueExA: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSetValueExW: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegUnLoadKeyA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegUnLoadKeyW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyValueA: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteKeyValueW: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegSetKeyValueA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSetKeyValueW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegDeleteTreeA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegDeleteTreeW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegCopyTreeA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegGetValueA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegGetValueW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegCopyTreeW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegLoadMUIStringA: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegLoadMUIStringW: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     RegLoadAppKeyA: {
       parameters: ["buffer", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RegLoadAppKeyW: {
       parameters: ["buffer", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSaveKeyExA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RegSaveKeyExW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5273,6 +5355,7 @@ try {
     GetRegistryValueWithFallbackW: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "buffer", "u32", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -5282,14 +5365,14 @@ try {
 export function RegCloseKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCloseKey(util.toPointer(hKey));
+  return libADVAPI32_dll.RegCloseKey!(util.toPointer(hKey));
 }
 
 export function RegOverridePredefKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   hNewHKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOverridePredefKey(util.toPointer(hKey), util.toPointer(hNewHKey));
+  return libADVAPI32_dll.RegOverridePredefKey!(util.toPointer(hKey), util.toPointer(hNewHKey));
 }
 
 export function RegOpenUserClassesRoot(
@@ -5298,22 +5381,22 @@ export function RegOpenUserClassesRoot(
   samDesired: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenUserClassesRoot(util.toPointer(hToken), dwOptions, samDesired, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenUserClassesRoot!(util.toPointer(hToken), dwOptions, samDesired, util.toPointer(phkResult));
 }
 
 export function RegOpenCurrentUser(
   samDesired: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenCurrentUser(samDesired, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenCurrentUser!(samDesired, util.toPointer(phkResult));
 }
 
 export function RegDisablePredefinedCache(): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDisablePredefinedCache();
+  return libADVAPI32_dll.RegDisablePredefinedCache!();
 }
 
 export function RegDisablePredefinedCacheEx(): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDisablePredefinedCacheEx();
+  return libADVAPI32_dll.RegDisablePredefinedCacheEx!();
 }
 
 export function RegConnectRegistryA(
@@ -5321,7 +5404,7 @@ export function RegConnectRegistryA(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegConnectRegistryA(util.pstrToFfi(lpMachineName), util.toPointer(hKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegConnectRegistryA!(util.pstrToFfi(lpMachineName), util.toPointer(hKey), util.toPointer(phkResult));
 }
 
 export function RegConnectRegistryW(
@@ -5329,7 +5412,7 @@ export function RegConnectRegistryW(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegConnectRegistryW(util.pwstrToFfi(lpMachineName), util.toPointer(hKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegConnectRegistryW!(util.pwstrToFfi(lpMachineName), util.toPointer(hKey), util.toPointer(phkResult));
 }
 
 export function RegConnectRegistryExA(
@@ -5338,7 +5421,7 @@ export function RegConnectRegistryExA(
   Flags: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libADVAPI32_dll.RegConnectRegistryExA(util.pstrToFfi(lpMachineName), util.toPointer(hKey), Flags, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegConnectRegistryExA!(util.pstrToFfi(lpMachineName), util.toPointer(hKey), Flags, util.toPointer(phkResult));
 }
 
 export function RegConnectRegistryExW(
@@ -5347,7 +5430,7 @@ export function RegConnectRegistryExW(
   Flags: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libADVAPI32_dll.RegConnectRegistryExW(util.pwstrToFfi(lpMachineName), util.toPointer(hKey), Flags, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegConnectRegistryExW!(util.pwstrToFfi(lpMachineName), util.toPointer(hKey), Flags, util.toPointer(phkResult));
 }
 
 export function RegCreateKeyA(
@@ -5355,7 +5438,7 @@ export function RegCreateKeyA(
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegCreateKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.toPointer(phkResult));
 }
 
 export function RegCreateKeyW(
@@ -5363,7 +5446,7 @@ export function RegCreateKeyW(
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegCreateKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.toPointer(phkResult));
 }
 
 export function RegCreateKeyExA(
@@ -5377,7 +5460,7 @@ export function RegCreateKeyExA(
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwDisposition: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyExA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), Reserved, util.pstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
+  return libADVAPI32_dll.RegCreateKeyExA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), Reserved, util.pstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
 }
 
 export function RegCreateKeyExW(
@@ -5391,7 +5474,7 @@ export function RegCreateKeyExW(
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwDisposition: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyExW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), Reserved, util.pwstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
+  return libADVAPI32_dll.RegCreateKeyExW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), Reserved, util.pwstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
 }
 
 export function RegCreateKeyTransactedA(
@@ -5407,7 +5490,7 @@ export function RegCreateKeyTransactedA(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParemeter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyTransactedA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), Reserved, util.pstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
+  return libADVAPI32_dll.RegCreateKeyTransactedA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), Reserved, util.pstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
 }
 
 export function RegCreateKeyTransactedW(
@@ -5423,21 +5506,21 @@ export function RegCreateKeyTransactedW(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParemeter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCreateKeyTransactedW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), Reserved, util.pwstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
+  return libADVAPI32_dll.RegCreateKeyTransactedW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), Reserved, util.pwstrToFfi(lpClass), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
 }
 
 export function RegDeleteKeyA(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegDeleteKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
 }
 
 export function RegDeleteKeyW(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegDeleteKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
 }
 
 export function RegDeleteKeyExA(
@@ -5446,7 +5529,7 @@ export function RegDeleteKeyExA(
   samDesired: number /* u32 */,
   Reserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyExA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), samDesired, Reserved);
+  return libADVAPI32_dll.RegDeleteKeyExA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), samDesired, Reserved);
 }
 
 export function RegDeleteKeyExW(
@@ -5455,7 +5538,7 @@ export function RegDeleteKeyExW(
   samDesired: number /* u32 */,
   Reserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyExW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), samDesired, Reserved);
+  return libADVAPI32_dll.RegDeleteKeyExW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), samDesired, Reserved);
 }
 
 export function RegDeleteKeyTransactedA(
@@ -5466,7 +5549,7 @@ export function RegDeleteKeyTransactedA(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyTransactedA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), samDesired, Reserved, util.toPointer(hTransaction), util.toPointer(pExtendedParameter));
+  return libADVAPI32_dll.RegDeleteKeyTransactedA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), samDesired, Reserved, util.toPointer(hTransaction), util.toPointer(pExtendedParameter));
 }
 
 export function RegDeleteKeyTransactedW(
@@ -5477,40 +5560,40 @@ export function RegDeleteKeyTransactedW(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyTransactedW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), samDesired, Reserved, util.toPointer(hTransaction), util.toPointer(pExtendedParameter));
+  return libADVAPI32_dll.RegDeleteKeyTransactedW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), samDesired, Reserved, util.toPointer(hTransaction), util.toPointer(pExtendedParameter));
 }
 
 export function RegDisableReflectionKey(
   hBase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDisableReflectionKey(util.toPointer(hBase));
+  return libADVAPI32_dll.RegDisableReflectionKey!(util.toPointer(hBase));
 }
 
 export function RegEnableReflectionKey(
   hBase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnableReflectionKey(util.toPointer(hBase));
+  return libADVAPI32_dll.RegEnableReflectionKey!(util.toPointer(hBase));
 }
 
 export function RegQueryReflectionKey(
   hBase: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   bIsReflectionDisabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryReflectionKey(util.toPointer(hBase), util.toPointer(bIsReflectionDisabled));
+  return libADVAPI32_dll.RegQueryReflectionKey!(util.toPointer(hBase), util.toPointer(bIsReflectionDisabled));
 }
 
 export function RegDeleteValueA(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteValueA(util.toPointer(hKey), util.pstrToFfi(lpValueName));
+  return libADVAPI32_dll.RegDeleteValueA!(util.toPointer(hKey), util.pstrToFfi(lpValueName));
 }
 
 export function RegDeleteValueW(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteValueW(util.toPointer(hKey), util.pwstrToFfi(lpValueName));
+  return libADVAPI32_dll.RegDeleteValueW!(util.toPointer(hKey), util.pwstrToFfi(lpValueName));
 }
 
 export function RegEnumKeyA(
@@ -5519,7 +5602,7 @@ export function RegEnumKeyA(
   lpName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchName: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumKeyA(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpName), cchName);
+  return libADVAPI32_dll.RegEnumKeyA!(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpName), cchName);
 }
 
 export function RegEnumKeyW(
@@ -5528,7 +5611,7 @@ export function RegEnumKeyW(
   lpName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchName: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumKeyW(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpName), cchName);
+  return libADVAPI32_dll.RegEnumKeyW!(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpName), cchName);
 }
 
 export function RegEnumKeyExA(
@@ -5541,7 +5624,7 @@ export function RegEnumKeyExA(
   lpcchClass: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumKeyExA(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpName), util.toPointer(lpcchName), util.toPointer(lpReserved), util.pstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpftLastWriteTime));
+  return libADVAPI32_dll.RegEnumKeyExA!(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpName), util.toPointer(lpcchName), util.toPointer(lpReserved), util.pstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpftLastWriteTime));
 }
 
 export function RegEnumKeyExW(
@@ -5554,7 +5637,7 @@ export function RegEnumKeyExW(
   lpcchClass: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumKeyExW(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpName), util.toPointer(lpcchName), util.toPointer(lpReserved), util.pwstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpftLastWriteTime));
+  return libADVAPI32_dll.RegEnumKeyExW!(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpName), util.toPointer(lpcchName), util.toPointer(lpReserved), util.pwstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpftLastWriteTime));
 }
 
 export function RegEnumValueA(
@@ -5567,7 +5650,7 @@ export function RegEnumValueA(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumValueA(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpValueName), util.toPointer(lpcchValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegEnumValueA!(util.toPointer(hKey), dwIndex, util.pstrToFfi(lpValueName), util.toPointer(lpcchValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function RegEnumValueW(
@@ -5580,13 +5663,13 @@ export function RegEnumValueW(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegEnumValueW(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpValueName), util.toPointer(lpcchValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegEnumValueW!(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpValueName), util.toPointer(lpcchValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function RegFlushKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegFlushKey(util.toPointer(hKey));
+  return libADVAPI32_dll.RegFlushKey!(util.toPointer(hKey));
 }
 
 export function RegGetKeySecurity(
@@ -5595,7 +5678,7 @@ export function RegGetKeySecurity(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegGetKeySecurity(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libADVAPI32_dll.RegGetKeySecurity!(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function RegLoadKeyA(
@@ -5603,7 +5686,7 @@ export function RegLoadKeyA(
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpFile));
+  return libADVAPI32_dll.RegLoadKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpFile));
 }
 
 export function RegLoadKeyW(
@@ -5611,7 +5694,7 @@ export function RegLoadKeyW(
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpFile));
+  return libADVAPI32_dll.RegLoadKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpFile));
 }
 
 export function RegNotifyChangeKeyValue(
@@ -5621,7 +5704,7 @@ export function RegNotifyChangeKeyValue(
   hEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   fAsynchronous: boolean /* Windows.Win32.Foundation.BOOL */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegNotifyChangeKeyValue(util.toPointer(hKey), util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(hEvent), util.boolToFfi(fAsynchronous));
+  return libADVAPI32_dll.RegNotifyChangeKeyValue!(util.toPointer(hKey), util.boolToFfi(bWatchSubtree), dwNotifyFilter, util.toPointer(hEvent), util.boolToFfi(fAsynchronous));
 }
 
 export function RegOpenKeyA(
@@ -5629,7 +5712,7 @@ export function RegOpenKeyA(
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.toPointer(phkResult));
 }
 
 export function RegOpenKeyW(
@@ -5637,7 +5720,7 @@ export function RegOpenKeyW(
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.toPointer(phkResult));
 }
 
 export function RegOpenKeyExA(
@@ -5647,7 +5730,7 @@ export function RegOpenKeyExA(
   samDesired: REG_SAM_FLAGS /* Windows.Win32.System.Registry.REG_SAM_FLAGS */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyExA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenKeyExA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult));
 }
 
 export function RegOpenKeyExW(
@@ -5657,7 +5740,7 @@ export function RegOpenKeyExW(
   samDesired: REG_SAM_FLAGS /* Windows.Win32.System.Registry.REG_SAM_FLAGS */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyExW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult));
+  return libADVAPI32_dll.RegOpenKeyExW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult));
 }
 
 export function RegOpenKeyTransactedA(
@@ -5669,7 +5752,7 @@ export function RegOpenKeyTransactedA(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParemeter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyTransactedA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
+  return libADVAPI32_dll.RegOpenKeyTransactedA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
 }
 
 export function RegOpenKeyTransactedW(
@@ -5681,7 +5764,7 @@ export function RegOpenKeyTransactedW(
   hTransaction: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pExtendedParemeter: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegOpenKeyTransactedW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
+  return libADVAPI32_dll.RegOpenKeyTransactedW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), ulOptions, samDesired, util.toPointer(phkResult), util.toPointer(hTransaction), util.toPointer(pExtendedParemeter));
 }
 
 export function RegQueryInfoKeyA(
@@ -5698,7 +5781,7 @@ export function RegQueryInfoKeyA(
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryInfoKeyA(util.toPointer(hKey), util.pstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpReserved), util.toPointer(lpcSubKeys), util.toPointer(lpcbMaxSubKeyLen), util.toPointer(lpcbMaxClassLen), util.toPointer(lpcValues), util.toPointer(lpcbMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
+  return libADVAPI32_dll.RegQueryInfoKeyA!(util.toPointer(hKey), util.pstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpReserved), util.toPointer(lpcSubKeys), util.toPointer(lpcbMaxSubKeyLen), util.toPointer(lpcbMaxClassLen), util.toPointer(lpcValues), util.toPointer(lpcbMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
 }
 
 export function RegQueryInfoKeyW(
@@ -5715,7 +5798,7 @@ export function RegQueryInfoKeyW(
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryInfoKeyW(util.toPointer(hKey), util.pwstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpReserved), util.toPointer(lpcSubKeys), util.toPointer(lpcbMaxSubKeyLen), util.toPointer(lpcbMaxClassLen), util.toPointer(lpcValues), util.toPointer(lpcbMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
+  return libADVAPI32_dll.RegQueryInfoKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpClass), util.toPointer(lpcchClass), util.toPointer(lpReserved), util.toPointer(lpcSubKeys), util.toPointer(lpcbMaxSubKeyLen), util.toPointer(lpcbMaxClassLen), util.toPointer(lpcValues), util.toPointer(lpcbMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
 }
 
 export function RegQueryValueA(
@@ -5724,7 +5807,7 @@ export function RegQueryValueA(
   lpData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryValueA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegQueryValueA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpData), util.toPointer(lpcbData));
 }
 
 export function RegQueryValueW(
@@ -5733,7 +5816,7 @@ export function RegQueryValueW(
   lpData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryValueW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegQueryValueW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpData), util.toPointer(lpcbData));
 }
 
 export function RegQueryMultipleValuesA(
@@ -5743,7 +5826,7 @@ export function RegQueryMultipleValuesA(
   lpValueBuf: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ldwTotsize: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryMultipleValuesA(util.toPointer(hKey), util.toPointer(val_list), num_vals, util.pstrToFfi(lpValueBuf), util.toPointer(ldwTotsize));
+  return libADVAPI32_dll.RegQueryMultipleValuesA!(util.toPointer(hKey), util.toPointer(val_list), num_vals, util.pstrToFfi(lpValueBuf), util.toPointer(ldwTotsize));
 }
 
 export function RegQueryMultipleValuesW(
@@ -5753,7 +5836,7 @@ export function RegQueryMultipleValuesW(
   lpValueBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ldwTotsize: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryMultipleValuesW(util.toPointer(hKey), util.toPointer(val_list), num_vals, util.pwstrToFfi(lpValueBuf), util.toPointer(ldwTotsize));
+  return libADVAPI32_dll.RegQueryMultipleValuesW!(util.toPointer(hKey), util.toPointer(val_list), num_vals, util.pwstrToFfi(lpValueBuf), util.toPointer(ldwTotsize));
 }
 
 export function RegQueryValueExA(
@@ -5764,7 +5847,7 @@ export function RegQueryValueExA(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryValueExA(util.toPointer(hKey), util.pstrToFfi(lpValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegQueryValueExA!(util.toPointer(hKey), util.pstrToFfi(lpValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function RegQueryValueExW(
@@ -5775,7 +5858,7 @@ export function RegQueryValueExW(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegQueryValueExW(util.toPointer(hKey), util.pwstrToFfi(lpValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libADVAPI32_dll.RegQueryValueExW!(util.toPointer(hKey), util.pwstrToFfi(lpValueName), util.toPointer(lpReserved), util.toPointer(lpType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function RegReplaceKeyA(
@@ -5784,7 +5867,7 @@ export function RegReplaceKeyA(
   lpNewFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpOldFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegReplaceKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpNewFile), util.pstrToFfi(lpOldFile));
+  return libADVAPI32_dll.RegReplaceKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpNewFile), util.pstrToFfi(lpOldFile));
 }
 
 export function RegReplaceKeyW(
@@ -5793,7 +5876,7 @@ export function RegReplaceKeyW(
   lpNewFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpOldFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegReplaceKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpNewFile), util.pwstrToFfi(lpOldFile));
+  return libADVAPI32_dll.RegReplaceKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpNewFile), util.pwstrToFfi(lpOldFile));
 }
 
 export function RegRestoreKeyA(
@@ -5801,7 +5884,7 @@ export function RegRestoreKeyA(
   lpFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   dwFlags: REG_RESTORE_KEY_FLAGS /* Windows.Win32.System.Registry.REG_RESTORE_KEY_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegRestoreKeyA(util.toPointer(hKey), util.pstrToFfi(lpFile), dwFlags);
+  return libADVAPI32_dll.RegRestoreKeyA!(util.toPointer(hKey), util.pstrToFfi(lpFile), dwFlags);
 }
 
 export function RegRestoreKeyW(
@@ -5809,7 +5892,7 @@ export function RegRestoreKeyW(
   lpFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: REG_RESTORE_KEY_FLAGS /* Windows.Win32.System.Registry.REG_RESTORE_KEY_FLAGS */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegRestoreKeyW(util.toPointer(hKey), util.pwstrToFfi(lpFile), dwFlags);
+  return libADVAPI32_dll.RegRestoreKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpFile), dwFlags);
 }
 
 export function RegRenameKey(
@@ -5817,7 +5900,7 @@ export function RegRenameKey(
   lpSubKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpNewKeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegRenameKey(util.toPointer(hKey), util.pwstrToFfi(lpSubKeyName), util.pwstrToFfi(lpNewKeyName));
+  return libADVAPI32_dll.RegRenameKey!(util.toPointer(hKey), util.pwstrToFfi(lpSubKeyName), util.pwstrToFfi(lpNewKeyName));
 }
 
 export function RegSaveKeyA(
@@ -5825,7 +5908,7 @@ export function RegSaveKeyA(
   lpFile: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSaveKeyA(util.toPointer(hKey), util.pstrToFfi(lpFile), util.toPointer(lpSecurityAttributes));
+  return libADVAPI32_dll.RegSaveKeyA!(util.toPointer(hKey), util.pstrToFfi(lpFile), util.toPointer(lpSecurityAttributes));
 }
 
 export function RegSaveKeyW(
@@ -5833,7 +5916,7 @@ export function RegSaveKeyW(
   lpFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSaveKeyW(util.toPointer(hKey), util.pwstrToFfi(lpFile), util.toPointer(lpSecurityAttributes));
+  return libADVAPI32_dll.RegSaveKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpFile), util.toPointer(lpSecurityAttributes));
 }
 
 export function RegSetKeySecurity(
@@ -5841,7 +5924,7 @@ export function RegSetKeySecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetKeySecurity(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libADVAPI32_dll.RegSetKeySecurity!(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function RegSetValueA(
@@ -5851,7 +5934,7 @@ export function RegSetValueA(
   lpData: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetValueA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), dwType, util.pstrToFfi(lpData), cbData);
+  return libADVAPI32_dll.RegSetValueA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), dwType, util.pstrToFfi(lpData), cbData);
 }
 
 export function RegSetValueW(
@@ -5861,7 +5944,7 @@ export function RegSetValueW(
   lpData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetValueW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), dwType, util.pwstrToFfi(lpData), cbData);
+  return libADVAPI32_dll.RegSetValueW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), dwType, util.pwstrToFfi(lpData), cbData);
 }
 
 export function RegSetValueExA(
@@ -5872,7 +5955,7 @@ export function RegSetValueExA(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetValueExA(util.toPointer(hKey), util.pstrToFfi(lpValueName), Reserved, dwType, util.toPointer(lpData), cbData);
+  return libADVAPI32_dll.RegSetValueExA!(util.toPointer(hKey), util.pstrToFfi(lpValueName), Reserved, dwType, util.toPointer(lpData), cbData);
 }
 
 export function RegSetValueExW(
@@ -5883,21 +5966,21 @@ export function RegSetValueExW(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetValueExW(util.toPointer(hKey), util.pwstrToFfi(lpValueName), Reserved, dwType, util.toPointer(lpData), cbData);
+  return libADVAPI32_dll.RegSetValueExW!(util.toPointer(hKey), util.pwstrToFfi(lpValueName), Reserved, dwType, util.toPointer(lpData), cbData);
 }
 
 export function RegUnLoadKeyA(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegUnLoadKeyA(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegUnLoadKeyA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
 }
 
 export function RegUnLoadKeyW(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegUnLoadKeyW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegUnLoadKeyW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
 }
 
 export function RegDeleteKeyValueA(
@@ -5905,7 +5988,7 @@ export function RegDeleteKeyValueA(
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   lpValueName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyValueA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValueName));
+  return libADVAPI32_dll.RegDeleteKeyValueA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValueName));
 }
 
 export function RegDeleteKeyValueW(
@@ -5913,7 +5996,7 @@ export function RegDeleteKeyValueW(
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteKeyValueW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValueName));
+  return libADVAPI32_dll.RegDeleteKeyValueW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValueName));
 }
 
 export function RegSetKeyValueA(
@@ -5924,7 +6007,7 @@ export function RegSetKeyValueA(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetKeyValueA(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValueName), dwType, util.toPointer(lpData), cbData);
+  return libADVAPI32_dll.RegSetKeyValueA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValueName), dwType, util.toPointer(lpData), cbData);
 }
 
 export function RegSetKeyValueW(
@@ -5935,21 +6018,21 @@ export function RegSetKeyValueW(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSetKeyValueW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValueName), dwType, util.toPointer(lpData), cbData);
+  return libADVAPI32_dll.RegSetKeyValueW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValueName), dwType, util.toPointer(lpData), cbData);
 }
 
 export function RegDeleteTreeA(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteTreeA(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegDeleteTreeA!(util.toPointer(hKey), util.pstrToFfi(lpSubKey));
 }
 
 export function RegDeleteTreeW(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegDeleteTreeW(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
+  return libADVAPI32_dll.RegDeleteTreeW!(util.toPointer(hKey), util.pwstrToFfi(lpSubKey));
 }
 
 export function RegCopyTreeA(
@@ -5957,7 +6040,7 @@ export function RegCopyTreeA(
   lpSubKey: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   hKeyDest: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCopyTreeA(util.toPointer(hKeySrc), util.pstrToFfi(lpSubKey), util.toPointer(hKeyDest));
+  return libADVAPI32_dll.RegCopyTreeA!(util.toPointer(hKeySrc), util.pstrToFfi(lpSubKey), util.toPointer(hKeyDest));
 }
 
 export function RegGetValueA(
@@ -5969,7 +6052,7 @@ export function RegGetValueA(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegGetValueA(util.toPointer(hkey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libADVAPI32_dll.RegGetValueA!(util.toPointer(hkey), util.pstrToFfi(lpSubKey), util.pstrToFfi(lpValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function RegGetValueW(
@@ -5981,7 +6064,7 @@ export function RegGetValueW(
   pvData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegGetValueW(util.toPointer(hkey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
+  return libADVAPI32_dll.RegGetValueW!(util.toPointer(hkey), util.pwstrToFfi(lpSubKey), util.pwstrToFfi(lpValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), util.toPointer(pcbData));
 }
 
 export function RegCopyTreeW(
@@ -5989,7 +6072,7 @@ export function RegCopyTreeW(
   lpSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hKeyDest: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegCopyTreeW(util.toPointer(hKeySrc), util.pwstrToFfi(lpSubKey), util.toPointer(hKeyDest));
+  return libADVAPI32_dll.RegCopyTreeW!(util.toPointer(hKeySrc), util.pwstrToFfi(lpSubKey), util.toPointer(hKeyDest));
 }
 
 export function RegLoadMUIStringA(
@@ -6001,7 +6084,7 @@ export function RegLoadMUIStringA(
   Flags: number /* u32 */,
   pszDirectory: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadMUIStringA(util.toPointer(hKey), util.pstrToFfi(pszValue), util.pstrToFfi(pszOutBuf), cbOutBuf, util.toPointer(pcbData), Flags, util.pstrToFfi(pszDirectory));
+  return libADVAPI32_dll.RegLoadMUIStringA!(util.toPointer(hKey), util.pstrToFfi(pszValue), util.pstrToFfi(pszOutBuf), cbOutBuf, util.toPointer(pcbData), Flags, util.pstrToFfi(pszDirectory));
 }
 
 export function RegLoadMUIStringW(
@@ -6013,7 +6096,7 @@ export function RegLoadMUIStringW(
   Flags: number /* u32 */,
   pszDirectory: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadMUIStringW(util.toPointer(hKey), util.pwstrToFfi(pszValue), util.pwstrToFfi(pszOutBuf), cbOutBuf, util.toPointer(pcbData), Flags, util.pwstrToFfi(pszDirectory));
+  return libADVAPI32_dll.RegLoadMUIStringW!(util.toPointer(hKey), util.pwstrToFfi(pszValue), util.pwstrToFfi(pszOutBuf), cbOutBuf, util.toPointer(pcbData), Flags, util.pwstrToFfi(pszDirectory));
 }
 
 export function RegLoadAppKeyA(
@@ -6023,7 +6106,7 @@ export function RegLoadAppKeyA(
   dwOptions: number /* u32 */,
   Reserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadAppKeyA(util.pstrToFfi(lpFile), util.toPointer(phkResult), samDesired, dwOptions, Reserved);
+  return libADVAPI32_dll.RegLoadAppKeyA!(util.pstrToFfi(lpFile), util.toPointer(phkResult), samDesired, dwOptions, Reserved);
 }
 
 export function RegLoadAppKeyW(
@@ -6033,7 +6116,7 @@ export function RegLoadAppKeyW(
   dwOptions: number /* u32 */,
   Reserved: number /* u32 */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegLoadAppKeyW(util.pwstrToFfi(lpFile), util.toPointer(phkResult), samDesired, dwOptions, Reserved);
+  return libADVAPI32_dll.RegLoadAppKeyW!(util.pwstrToFfi(lpFile), util.toPointer(phkResult), samDesired, dwOptions, Reserved);
 }
 
 export function RegSaveKeyExA(
@@ -6042,7 +6125,7 @@ export function RegSaveKeyExA(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: REG_SAVE_FORMAT /* Windows.Win32.System.Registry.REG_SAVE_FORMAT */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSaveKeyExA(util.toPointer(hKey), util.pstrToFfi(lpFile), util.toPointer(lpSecurityAttributes), Flags);
+  return libADVAPI32_dll.RegSaveKeyExA!(util.toPointer(hKey), util.pstrToFfi(lpFile), util.toPointer(lpSecurityAttributes), Flags);
 }
 
 export function RegSaveKeyExW(
@@ -6051,7 +6134,7 @@ export function RegSaveKeyExW(
   lpSecurityAttributes: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: REG_SAVE_FORMAT /* Windows.Win32.System.Registry.REG_SAVE_FORMAT */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libADVAPI32_dll.RegSaveKeyExW(util.toPointer(hKey), util.pwstrToFfi(lpFile), util.toPointer(lpSecurityAttributes), Flags);
+  return libADVAPI32_dll.RegSaveKeyExW!(util.toPointer(hKey), util.pwstrToFfi(lpFile), util.toPointer(lpSecurityAttributes), Flags);
 }
 
 export function GetRegistryValueWithFallbackW(
@@ -6066,6 +6149,6 @@ export function GetRegistryValueWithFallbackW(
   cbDataIn: number /* u32 */,
   pcbDataOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libapi_ms_win_core_state_helpers_l1_1_0_dll.GetRegistryValueWithFallbackW(util.toPointer(hkeyPrimary), util.pwstrToFfi(pwszPrimarySubKey), util.toPointer(hkeyFallback), util.pwstrToFfi(pwszFallbackSubKey), util.pwstrToFfi(pwszValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), cbDataIn, util.toPointer(pcbDataOut));
+  return libapi_ms_win_core_state_helpers_l1_1_0_dll.GetRegistryValueWithFallbackW!(util.toPointer(hkeyPrimary), util.pwstrToFfi(pwszPrimarySubKey), util.toPointer(hkeyFallback), util.pwstrToFfi(pwszFallbackSubKey), util.pwstrToFfi(pwszValue), dwFlags, util.toPointer(pdwType), util.toPointer(pvData), cbDataIn, util.toPointer(pcbDataOut));
 }
 

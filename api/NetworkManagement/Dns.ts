@@ -9152,242 +9152,302 @@ try {
     DnsQueryConfig: {
       parameters: ["i32", "u32", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsRecordCopyEx: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DnsRecordSetCopyEx: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DnsRecordCompare: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsRecordSetCompare: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsRecordSetDetach: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DnsFree: {
       parameters: ["pointer", "i32"],
       result: "void",
+      optional: true,
     },
     DnsQuery_A: {
       parameters: ["buffer", "u16", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsQuery_UTF8: {
       parameters: ["buffer", "u16", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsQuery_W: {
       parameters: ["buffer", "u16", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsQueryEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsCancelQuery: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DnsFreeCustomServers: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     DnsGetApplicationSettings: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsSetApplicationSettings: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsAcquireContextHandle_W: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsAcquireContextHandle_A: {
       parameters: ["u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsReleaseContextHandle: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsModifyRecordsInSet_W: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsModifyRecordsInSet_A: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsModifyRecordsInSet_UTF8: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsReplaceRecordSetW: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsReplaceRecordSetA: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsReplaceRecordSetUTF8: {
       parameters: ["pointer", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsValidateName_W: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     DnsValidateName_A: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     DnsValidateName_UTF8: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     DnsNameCompare_A: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DnsNameCompare_W: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     DnsWriteQuestionToBuffer_W: {
       parameters: ["pointer", "pointer", "buffer", "u16", "u16", "i32"],
       result: "i32",
+      optional: true,
     },
     DnsWriteQuestionToBuffer_UTF8: {
       parameters: ["pointer", "pointer", "buffer", "u16", "u16", "i32"],
       result: "i32",
+      optional: true,
     },
     DnsExtractRecordsFromMessage_W: {
       parameters: ["pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsExtractRecordsFromMessage_UTF8: {
       parameters: ["pointer", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsGetProxyInformation: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsFreeProxyName: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     DnsConnectionGetProxyInfoForHostUrl: {
       parameters: ["buffer", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionFreeProxyInfoEx: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsConnectionGetProxyInfo: {
       parameters: ["buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionFreeProxyInfo: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsConnectionSetProxyInfo: {
       parameters: ["buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionDeleteProxyInfo: {
       parameters: ["buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionGetProxyList: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionFreeProxyList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsConnectionGetNameList: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionFreeNameList: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsConnectionUpdateIfIndexTable: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionSetPolicyEntries: {
       parameters: ["i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsConnectionDeletePolicyEntries: {
       parameters: ["i32"],
       result: "u32",
+      optional: true,
     },
     DnsServiceConstructInstance: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "u16", "u16", "u16", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DnsServiceCopyInstance: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DnsServiceFreeInstance: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DnsServiceBrowse: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsServiceBrowseCancel: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DnsServiceResolve: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsServiceResolveCancel: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DnsServiceRegister: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsServiceDeRegister: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DnsServiceRegisterCancel: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DnsStartMulticastQuery: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DnsStopMulticastQuery: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -9402,7 +9462,7 @@ export function DnsQueryConfig(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBufLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsQueryConfig(Config, Flag, util.pwstrToFfi(pwsAdapterName), util.toPointer(pReserved), util.toPointer(pBuffer), util.toPointer(pBufLen));
+  return libDNSAPI_dll.DnsQueryConfig!(Config, Flag, util.pwstrToFfi(pwsAdapterName), util.toPointer(pReserved), util.toPointer(pBuffer), util.toPointer(pBufLen));
 }
 
 export function DnsRecordCopyEx(
@@ -9410,7 +9470,7 @@ export function DnsRecordCopyEx(
   CharSetIn: DNS_CHARSET /* Windows.Win32.NetworkManagement.Dns.DNS_CHARSET */,
   CharSetOut: DNS_CHARSET /* Windows.Win32.NetworkManagement.Dns.DNS_CHARSET */,
 ): Deno.PointerValue /* ptr */ {
-  return libDNSAPI_dll.DnsRecordCopyEx(util.toPointer(pRecord), CharSetIn, CharSetOut);
+  return libDNSAPI_dll.DnsRecordCopyEx!(util.toPointer(pRecord), CharSetIn, CharSetOut);
 }
 
 export function DnsRecordSetCopyEx(
@@ -9418,14 +9478,14 @@ export function DnsRecordSetCopyEx(
   CharSetIn: DNS_CHARSET /* Windows.Win32.NetworkManagement.Dns.DNS_CHARSET */,
   CharSetOut: DNS_CHARSET /* Windows.Win32.NetworkManagement.Dns.DNS_CHARSET */,
 ): Deno.PointerValue /* ptr */ {
-  return libDNSAPI_dll.DnsRecordSetCopyEx(util.toPointer(pRecordSet), CharSetIn, CharSetOut);
+  return libDNSAPI_dll.DnsRecordSetCopyEx!(util.toPointer(pRecordSet), CharSetIn, CharSetOut);
 }
 
 export function DnsRecordCompare(
   pRecord1: Deno.PointerValue | Uint8Array /* ptr */,
   pRecord2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsRecordCompare(util.toPointer(pRecord1), util.toPointer(pRecord2)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsRecordCompare!(util.toPointer(pRecord1), util.toPointer(pRecord2)));
 }
 
 export function DnsRecordSetCompare(
@@ -9434,20 +9494,20 @@ export function DnsRecordSetCompare(
   ppDiff1: Deno.PointerValue | Uint8Array /* ptr */,
   ppDiff2: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsRecordSetCompare(util.toPointer(pRR1), util.toPointer(pRR2), util.toPointer(ppDiff1), util.toPointer(ppDiff2)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsRecordSetCompare!(util.toPointer(pRR1), util.toPointer(pRR2), util.toPointer(ppDiff1), util.toPointer(ppDiff2)));
 }
 
 export function DnsRecordSetDetach(
   pRecordList: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libDNSAPI_dll.DnsRecordSetDetach(util.toPointer(pRecordList));
+  return libDNSAPI_dll.DnsRecordSetDetach!(util.toPointer(pRecordList));
 }
 
 export function DnsFree(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   FreeType: DNS_FREE_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_FREE_TYPE */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsFree(util.toPointer(pData), FreeType);
+  return libDNSAPI_dll.DnsFree!(util.toPointer(pData), FreeType);
 }
 
 export function DnsQuery_A(
@@ -9458,7 +9518,7 @@ export function DnsQuery_A(
   ppQueryResults: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsQuery_A(util.pstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsQuery_A!(util.pstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
 }
 
 export function DnsQuery_UTF8(
@@ -9469,7 +9529,7 @@ export function DnsQuery_UTF8(
   ppQueryResults: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsQuery_UTF8(util.pstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsQuery_UTF8!(util.pstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
 }
 
 export function DnsQuery_W(
@@ -9480,7 +9540,7 @@ export function DnsQuery_W(
   ppQueryResults: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsQuery_W(util.pwstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsQuery_W!(util.pwstrToFfi(pszName), wType, Options, util.toPointer(pExtra), util.toPointer(ppQueryResults), util.toPointer(pReserved));
 }
 
 export function DnsQueryEx(
@@ -9488,20 +9548,20 @@ export function DnsQueryEx(
   pQueryResults: Deno.PointerValue | Uint8Array /* ptr */,
   pCancelHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsQueryEx(util.toPointer(pQueryRequest), util.toPointer(pQueryResults), util.toPointer(pCancelHandle));
+  return libDNSAPI_dll.DnsQueryEx!(util.toPointer(pQueryRequest), util.toPointer(pQueryResults), util.toPointer(pCancelHandle));
 }
 
 export function DnsCancelQuery(
   pCancelHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsCancelQuery(util.toPointer(pCancelHandle));
+  return libDNSAPI_dll.DnsCancelQuery!(util.toPointer(pCancelHandle));
 }
 
 export function DnsFreeCustomServers(
   pcServers: Deno.PointerValue | Uint8Array /* ptr */,
   ppServers: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsFreeCustomServers(util.toPointer(pcServers), util.toPointer(ppServers));
+  return libDNSAPI_dll.DnsFreeCustomServers!(util.toPointer(pcServers), util.toPointer(ppServers));
 }
 
 export function DnsGetApplicationSettings(
@@ -9509,7 +9569,7 @@ export function DnsGetApplicationSettings(
   ppDefaultServers: Deno.PointerValue | Uint8Array /* ptr */,
   pSettings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsGetApplicationSettings(util.toPointer(pcServers), util.toPointer(ppDefaultServers), util.toPointer(pSettings));
+  return libDNSAPI_dll.DnsGetApplicationSettings!(util.toPointer(pcServers), util.toPointer(ppDefaultServers), util.toPointer(pSettings));
 }
 
 export function DnsSetApplicationSettings(
@@ -9517,7 +9577,7 @@ export function DnsSetApplicationSettings(
   pServers: Deno.PointerValue | Uint8Array /* ptr */,
   pSettings: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsSetApplicationSettings(cServers, util.toPointer(pServers), util.toPointer(pSettings));
+  return libDNSAPI_dll.DnsSetApplicationSettings!(cServers, util.toPointer(pServers), util.toPointer(pSettings));
 }
 
 export function DnsAcquireContextHandle_W(
@@ -9525,7 +9585,7 @@ export function DnsAcquireContextHandle_W(
   Credentials: Deno.PointerValue | Uint8Array /* ptr */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsAcquireContextHandle_W(CredentialFlags, util.toPointer(Credentials), util.toPointer(pContext));
+  return libDNSAPI_dll.DnsAcquireContextHandle_W!(CredentialFlags, util.toPointer(Credentials), util.toPointer(pContext));
 }
 
 export function DnsAcquireContextHandle_A(
@@ -9533,13 +9593,13 @@ export function DnsAcquireContextHandle_A(
   Credentials: Deno.PointerValue | Uint8Array /* ptr */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsAcquireContextHandle_A(CredentialFlags, util.toPointer(Credentials), util.toPointer(pContext));
+  return libDNSAPI_dll.DnsAcquireContextHandle_A!(CredentialFlags, util.toPointer(Credentials), util.toPointer(pContext));
 }
 
 export function DnsReleaseContextHandle(
   hContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsReleaseContextHandle(util.toPointer(hContext));
+  return libDNSAPI_dll.DnsReleaseContextHandle!(util.toPointer(hContext));
 }
 
 export function DnsModifyRecordsInSet_W(
@@ -9550,7 +9610,7 @@ export function DnsModifyRecordsInSet_W(
   pExtraList: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsModifyRecordsInSet_W(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsModifyRecordsInSet_W!(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
 }
 
 export function DnsModifyRecordsInSet_A(
@@ -9561,7 +9621,7 @@ export function DnsModifyRecordsInSet_A(
   pExtraList: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsModifyRecordsInSet_A(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsModifyRecordsInSet_A!(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
 }
 
 export function DnsModifyRecordsInSet_UTF8(
@@ -9572,7 +9632,7 @@ export function DnsModifyRecordsInSet_UTF8(
   pExtraList: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsModifyRecordsInSet_UTF8(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsModifyRecordsInSet_UTF8!(util.toPointer(pAddRecords), util.toPointer(pDeleteRecords), Options, util.toPointer(hCredentials), util.toPointer(pExtraList), util.toPointer(pReserved));
 }
 
 export function DnsReplaceRecordSetW(
@@ -9582,7 +9642,7 @@ export function DnsReplaceRecordSetW(
   pExtraInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsReplaceRecordSetW(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsReplaceRecordSetW!(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
 }
 
 export function DnsReplaceRecordSetA(
@@ -9592,7 +9652,7 @@ export function DnsReplaceRecordSetA(
   pExtraInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsReplaceRecordSetA(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsReplaceRecordSetA!(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
 }
 
 export function DnsReplaceRecordSetUTF8(
@@ -9602,42 +9662,42 @@ export function DnsReplaceRecordSetUTF8(
   pExtraInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsReplaceRecordSetUTF8(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
+  return libDNSAPI_dll.DnsReplaceRecordSetUTF8!(util.toPointer(pReplaceSet), Options, util.toPointer(hContext), util.toPointer(pExtraInfo), util.toPointer(pReserved));
 }
 
 export function DnsValidateName_W(
   pszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsValidateName_W(util.pwstrToFfi(pszName), Format);
+  return libDNSAPI_dll.DnsValidateName_W!(util.pwstrToFfi(pszName), Format);
 }
 
 export function DnsValidateName_A(
   pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsValidateName_A(util.pstrToFfi(pszName), Format);
+  return libDNSAPI_dll.DnsValidateName_A!(util.pstrToFfi(pszName), Format);
 }
 
 export function DnsValidateName_UTF8(
   pszName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Format: DNS_NAME_FORMAT /* Windows.Win32.NetworkManagement.Dns.DNS_NAME_FORMAT */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsValidateName_UTF8(util.pstrToFfi(pszName), Format);
+  return libDNSAPI_dll.DnsValidateName_UTF8!(util.pstrToFfi(pszName), Format);
 }
 
 export function DnsNameCompare_A(
   pName1: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pName2: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_A(util.pstrToFfi(pName1), util.pstrToFfi(pName2)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_A!(util.pstrToFfi(pName1), util.pstrToFfi(pName2)));
 }
 
 export function DnsNameCompare_W(
   pName1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pName2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_W(util.pwstrToFfi(pName1), util.pwstrToFfi(pName2)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsNameCompare_W!(util.pwstrToFfi(pName1), util.pwstrToFfi(pName2)));
 }
 
 export function DnsWriteQuestionToBuffer_W(
@@ -9648,7 +9708,7 @@ export function DnsWriteQuestionToBuffer_W(
   Xid: number /* u16 */,
   fRecursionDesired: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsWriteQuestionToBuffer_W(util.toPointer(pDnsBuffer), util.toPointer(pdwBufferSize), util.pwstrToFfi(pszName), wType, Xid, util.boolToFfi(fRecursionDesired)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsWriteQuestionToBuffer_W!(util.toPointer(pDnsBuffer), util.toPointer(pdwBufferSize), util.pwstrToFfi(pszName), wType, Xid, util.boolToFfi(fRecursionDesired)));
 }
 
 export function DnsWriteQuestionToBuffer_UTF8(
@@ -9659,7 +9719,7 @@ export function DnsWriteQuestionToBuffer_UTF8(
   Xid: number /* u16 */,
   fRecursionDesired: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDNSAPI_dll.DnsWriteQuestionToBuffer_UTF8(util.toPointer(pDnsBuffer), util.toPointer(pdwBufferSize), util.pstrToFfi(pszName), wType, Xid, util.boolToFfi(fRecursionDesired)));
+  return util.boolFromFfi(libDNSAPI_dll.DnsWriteQuestionToBuffer_UTF8!(util.toPointer(pDnsBuffer), util.toPointer(pdwBufferSize), util.pstrToFfi(pszName), wType, Xid, util.boolToFfi(fRecursionDesired)));
 }
 
 export function DnsExtractRecordsFromMessage_W(
@@ -9667,7 +9727,7 @@ export function DnsExtractRecordsFromMessage_W(
   wMessageLength: number /* u16 */,
   ppRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsExtractRecordsFromMessage_W(util.toPointer(pDnsBuffer), wMessageLength, util.toPointer(ppRecord));
+  return libDNSAPI_dll.DnsExtractRecordsFromMessage_W!(util.toPointer(pDnsBuffer), wMessageLength, util.toPointer(ppRecord));
 }
 
 export function DnsExtractRecordsFromMessage_UTF8(
@@ -9675,7 +9735,7 @@ export function DnsExtractRecordsFromMessage_UTF8(
   wMessageLength: number /* u16 */,
   ppRecord: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsExtractRecordsFromMessage_UTF8(util.toPointer(pDnsBuffer), wMessageLength, util.toPointer(ppRecord));
+  return libDNSAPI_dll.DnsExtractRecordsFromMessage_UTF8!(util.toPointer(pDnsBuffer), wMessageLength, util.toPointer(ppRecord));
 }
 
 export function DnsGetProxyInformation(
@@ -9685,13 +9745,13 @@ export function DnsGetProxyInformation(
   completionRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.Dns.DNS_PROXY_COMPLETION_ROUTINE */,
   completionContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsGetProxyInformation(util.pwstrToFfi(hostName), util.toPointer(proxyInformation), util.toPointer(defaultProxyInformation), util.toPointer(completionRoutine), util.toPointer(completionContext));
+  return libDNSAPI_dll.DnsGetProxyInformation!(util.pwstrToFfi(hostName), util.toPointer(proxyInformation), util.toPointer(defaultProxyInformation), util.toPointer(completionRoutine), util.toPointer(completionContext));
 }
 
 export function DnsFreeProxyName(
   proxyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsFreeProxyName(util.pwstrToFfi(proxyName));
+  return libDNSAPI_dll.DnsFreeProxyName!(util.pwstrToFfi(proxyName));
 }
 
 export function DnsConnectionGetProxyInfoForHostUrl(
@@ -9701,13 +9761,13 @@ export function DnsConnectionGetProxyInfoForHostUrl(
   dwExplicitInterfaceIndex: number /* u32 */,
   pProxyInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionGetProxyInfoForHostUrl(util.pwstrToFfi(pwszHostUrl), util.toPointer(pSelectionContext), dwSelectionContextLength, dwExplicitInterfaceIndex, util.toPointer(pProxyInfoEx));
+  return libDNSAPI_dll.DnsConnectionGetProxyInfoForHostUrl!(util.pwstrToFfi(pwszHostUrl), util.toPointer(pSelectionContext), dwSelectionContextLength, dwExplicitInterfaceIndex, util.toPointer(pProxyInfoEx));
 }
 
 export function DnsConnectionFreeProxyInfoEx(
   pProxyInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsConnectionFreeProxyInfoEx(util.toPointer(pProxyInfoEx));
+  return libDNSAPI_dll.DnsConnectionFreeProxyInfoEx!(util.toPointer(pProxyInfoEx));
 }
 
 export function DnsConnectionGetProxyInfo(
@@ -9715,13 +9775,13 @@ export function DnsConnectionGetProxyInfo(
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
   pProxyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionGetProxyInfo(util.pwstrToFfi(pwszConnectionName), Type, util.toPointer(pProxyInfo));
+  return libDNSAPI_dll.DnsConnectionGetProxyInfo!(util.pwstrToFfi(pwszConnectionName), Type, util.toPointer(pProxyInfo));
 }
 
 export function DnsConnectionFreeProxyInfo(
   pProxyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsConnectionFreeProxyInfo(util.toPointer(pProxyInfo));
+  return libDNSAPI_dll.DnsConnectionFreeProxyInfo!(util.toPointer(pProxyInfo));
 }
 
 export function DnsConnectionSetProxyInfo(
@@ -9729,58 +9789,58 @@ export function DnsConnectionSetProxyInfo(
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
   pProxyInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionSetProxyInfo(util.pwstrToFfi(pwszConnectionName), Type, util.toPointer(pProxyInfo));
+  return libDNSAPI_dll.DnsConnectionSetProxyInfo!(util.pwstrToFfi(pwszConnectionName), Type, util.toPointer(pProxyInfo));
 }
 
 export function DnsConnectionDeleteProxyInfo(
   pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Type: DNS_CONNECTION_PROXY_TYPE /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_PROXY_TYPE */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionDeleteProxyInfo(util.pwstrToFfi(pwszConnectionName), Type);
+  return libDNSAPI_dll.DnsConnectionDeleteProxyInfo!(util.pwstrToFfi(pwszConnectionName), Type);
 }
 
 export function DnsConnectionGetProxyList(
   pwszConnectionName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pProxyList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionGetProxyList(util.pwstrToFfi(pwszConnectionName), util.toPointer(pProxyList));
+  return libDNSAPI_dll.DnsConnectionGetProxyList!(util.pwstrToFfi(pwszConnectionName), util.toPointer(pProxyList));
 }
 
 export function DnsConnectionFreeProxyList(
   pProxyList: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsConnectionFreeProxyList(util.toPointer(pProxyList));
+  return libDNSAPI_dll.DnsConnectionFreeProxyList!(util.toPointer(pProxyList));
 }
 
 export function DnsConnectionGetNameList(
   pNameList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionGetNameList(util.toPointer(pNameList));
+  return libDNSAPI_dll.DnsConnectionGetNameList!(util.toPointer(pNameList));
 }
 
 export function DnsConnectionFreeNameList(
   pNameList: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsConnectionFreeNameList(util.toPointer(pNameList));
+  return libDNSAPI_dll.DnsConnectionFreeNameList!(util.toPointer(pNameList));
 }
 
 export function DnsConnectionUpdateIfIndexTable(
   pConnectionIfIndexEntries: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionUpdateIfIndexTable(util.toPointer(pConnectionIfIndexEntries));
+  return libDNSAPI_dll.DnsConnectionUpdateIfIndexTable!(util.toPointer(pConnectionIfIndexEntries));
 }
 
 export function DnsConnectionSetPolicyEntries(
   PolicyEntryTag: DNS_CONNECTION_POLICY_TAG /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_POLICY_TAG */,
   pPolicyEntryList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionSetPolicyEntries(PolicyEntryTag, util.toPointer(pPolicyEntryList));
+  return libDNSAPI_dll.DnsConnectionSetPolicyEntries!(PolicyEntryTag, util.toPointer(pPolicyEntryList));
 }
 
 export function DnsConnectionDeletePolicyEntries(
   PolicyEntryTag: DNS_CONNECTION_POLICY_TAG /* Windows.Win32.NetworkManagement.Dns.DNS_CONNECTION_POLICY_TAG */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsConnectionDeletePolicyEntries(PolicyEntryTag);
+  return libDNSAPI_dll.DnsConnectionDeletePolicyEntries!(PolicyEntryTag);
 }
 
 export function DnsServiceConstructInstance(
@@ -9795,77 +9855,77 @@ export function DnsServiceConstructInstance(
   keys: Deno.PointerValue | Uint8Array /* ptr */,
   values: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libDNSAPI_dll.DnsServiceConstructInstance(util.pwstrToFfi(pServiceName), util.pwstrToFfi(pHostName), util.toPointer(pIp4), util.toPointer(pIp6), wPort, wPriority, wWeight, dwPropertiesCount, util.toPointer(keys), util.toPointer(values));
+  return libDNSAPI_dll.DnsServiceConstructInstance!(util.pwstrToFfi(pServiceName), util.pwstrToFfi(pHostName), util.toPointer(pIp4), util.toPointer(pIp6), wPort, wPriority, wWeight, dwPropertiesCount, util.toPointer(keys), util.toPointer(values));
 }
 
 export function DnsServiceCopyInstance(
   pOrig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libDNSAPI_dll.DnsServiceCopyInstance(util.toPointer(pOrig));
+  return libDNSAPI_dll.DnsServiceCopyInstance!(util.toPointer(pOrig));
 }
 
 export function DnsServiceFreeInstance(
   pInstance: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libDNSAPI_dll.DnsServiceFreeInstance(util.toPointer(pInstance));
+  return libDNSAPI_dll.DnsServiceFreeInstance!(util.toPointer(pInstance));
 }
 
 export function DnsServiceBrowse(
   pRequest: Deno.PointerValue | Uint8Array /* ptr */,
   pCancel: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsServiceBrowse(util.toPointer(pRequest), util.toPointer(pCancel));
+  return libDNSAPI_dll.DnsServiceBrowse!(util.toPointer(pRequest), util.toPointer(pCancel));
 }
 
 export function DnsServiceBrowseCancel(
   pCancelHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsServiceBrowseCancel(util.toPointer(pCancelHandle));
+  return libDNSAPI_dll.DnsServiceBrowseCancel!(util.toPointer(pCancelHandle));
 }
 
 export function DnsServiceResolve(
   pRequest: Deno.PointerValue | Uint8Array /* ptr */,
   pCancel: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsServiceResolve(util.toPointer(pRequest), util.toPointer(pCancel));
+  return libDNSAPI_dll.DnsServiceResolve!(util.toPointer(pRequest), util.toPointer(pCancel));
 }
 
 export function DnsServiceResolveCancel(
   pCancelHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsServiceResolveCancel(util.toPointer(pCancelHandle));
+  return libDNSAPI_dll.DnsServiceResolveCancel!(util.toPointer(pCancelHandle));
 }
 
 export function DnsServiceRegister(
   pRequest: Deno.PointerValue | Uint8Array /* ptr */,
   pCancel: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsServiceRegister(util.toPointer(pRequest), util.toPointer(pCancel));
+  return libDNSAPI_dll.DnsServiceRegister!(util.toPointer(pRequest), util.toPointer(pCancel));
 }
 
 export function DnsServiceDeRegister(
   pRequest: Deno.PointerValue | Uint8Array /* ptr */,
   pCancel: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsServiceDeRegister(util.toPointer(pRequest), util.toPointer(pCancel));
+  return libDNSAPI_dll.DnsServiceDeRegister!(util.toPointer(pRequest), util.toPointer(pCancel));
 }
 
 export function DnsServiceRegisterCancel(
   pCancelHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDNSAPI_dll.DnsServiceRegisterCancel(util.toPointer(pCancelHandle));
+  return libDNSAPI_dll.DnsServiceRegisterCancel!(util.toPointer(pCancelHandle));
 }
 
 export function DnsStartMulticastQuery(
   pQueryRequest: Deno.PointerValue | Uint8Array /* ptr */,
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsStartMulticastQuery(util.toPointer(pQueryRequest), util.toPointer(pHandle));
+  return libDNSAPI_dll.DnsStartMulticastQuery!(util.toPointer(pQueryRequest), util.toPointer(pHandle));
 }
 
 export function DnsStopMulticastQuery(
   pHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libDNSAPI_dll.DnsStopMulticastQuery(util.toPointer(pHandle));
+  return libDNSAPI_dll.DnsStopMulticastQuery!(util.toPointer(pHandle));
 }
 

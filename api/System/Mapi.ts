@@ -1156,6 +1156,7 @@ try {
     MAPIFreeBuffer: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1165,6 +1166,6 @@ try {
 export function MAPIFreeBuffer(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libMAPI32_dll.MAPIFreeBuffer(util.toPointer(pv));
+  return libMAPI32_dll.MAPIFreeBuffer!(util.toPointer(pv));
 }
 

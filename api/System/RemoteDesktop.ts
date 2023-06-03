@@ -14480,254 +14480,317 @@ try {
     WTSStopRemoteControlSession: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     WTSStartRemoteControlSessionW: {
       parameters: ["buffer", "u32", "u8", "u16"],
       result: "i32",
+      optional: true,
     },
     WTSStartRemoteControlSessionA: {
       parameters: ["buffer", "u32", "u8", "u16"],
       result: "i32",
+      optional: true,
     },
     WTSConnectSessionA: {
       parameters: ["u32", "u32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSConnectSessionW: {
       parameters: ["u32", "u32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateServersW: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateServersA: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSOpenServerW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WTSOpenServerA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WTSOpenServerExW: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WTSOpenServerExA: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WTSCloseServer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WTSEnumerateSessionsW: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateSessionsA: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateSessionsExW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateSessionsExA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateProcessesW: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateProcessesA: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSTerminateProcess: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSQuerySessionInformationW: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQuerySessionInformationA: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQueryUserConfigW: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQueryUserConfigA: {
       parameters: ["buffer", "buffer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSSetUserConfigW: {
       parameters: ["buffer", "buffer", "i32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSSetUserConfigA: {
       parameters: ["buffer", "buffer", "i32", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSSendMessageW: {
       parameters: ["pointer", "u32", "buffer", "u32", "buffer", "u32", "u32", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSSendMessageA: {
       parameters: ["pointer", "u32", "buffer", "u32", "buffer", "u32", "u32", "u32", "pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSDisconnectSession: {
       parameters: ["pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSLogoffSession: {
       parameters: ["pointer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     WTSShutdownSystem: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSWaitSystemEvent: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelOpen: {
       parameters: ["pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WTSVirtualChannelOpenEx: {
       parameters: ["u32", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WTSVirtualChannelClose: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelRead: {
       parameters: ["pointer", "u32", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelWrite: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelPurgeInput: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelPurgeOutput: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSVirtualChannelQuery: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSFreeMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WTSRegisterSessionNotification: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSUnRegisterSessionNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSRegisterSessionNotificationEx: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSUnRegisterSessionNotificationEx: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQueryUserToken: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSFreeMemoryExW: {
       parameters: ["i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSFreeMemoryExA: {
       parameters: ["i32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateProcessesExW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateProcessesExA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateListenersW: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnumerateListenersA: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQueryListenerConfigW: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSQueryListenerConfigA: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSCreateListenerW: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSCreateListenerA: {
       parameters: ["pointer", "pointer", "u32", "buffer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     WTSSetListenerSecurityW: {
       parameters: ["pointer", "pointer", "u32", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSSetListenerSecurityA: {
       parameters: ["pointer", "pointer", "u32", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSGetListenerSecurityW: {
       parameters: ["pointer", "pointer", "u32", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSGetListenerSecurityA: {
       parameters: ["pointer", "pointer", "u32", "buffer", "u32", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSEnableChildSessions: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     WTSIsChildSessionsEnabled: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSGetChildSessionId: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WTSSetRenderHint: {
       parameters: ["pointer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14737,10 +14800,12 @@ try {
     ProcessIdToSessionId: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTSGetActiveConsoleSessionId: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14750,7 +14815,7 @@ try {
 export function WTSStopRemoteControlSession(
   LogonId: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSStopRemoteControlSession(LogonId));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSStopRemoteControlSession!(LogonId));
 }
 
 export function WTSStartRemoteControlSessionW(
@@ -14759,7 +14824,7 @@ export function WTSStartRemoteControlSessionW(
   HotkeyVk: number /* u8 */,
   HotkeyModifiers: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSStartRemoteControlSessionW(util.pwstrToFfi(pTargetServerName), TargetLogonId, HotkeyVk, HotkeyModifiers));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSStartRemoteControlSessionW!(util.pwstrToFfi(pTargetServerName), TargetLogonId, HotkeyVk, HotkeyModifiers));
 }
 
 export function WTSStartRemoteControlSessionA(
@@ -14768,7 +14833,7 @@ export function WTSStartRemoteControlSessionA(
   HotkeyVk: number /* u8 */,
   HotkeyModifiers: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSStartRemoteControlSessionA(util.pstrToFfi(pTargetServerName), TargetLogonId, HotkeyVk, HotkeyModifiers));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSStartRemoteControlSessionA!(util.pstrToFfi(pTargetServerName), TargetLogonId, HotkeyVk, HotkeyModifiers));
 }
 
 export function WTSConnectSessionA(
@@ -14777,7 +14842,7 @@ export function WTSConnectSessionA(
   pPassword: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionA(LogonId, TargetLogonId, util.pstrToFfi(pPassword), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionA!(LogonId, TargetLogonId, util.pstrToFfi(pPassword), util.boolToFfi(bWait)));
 }
 
 export function WTSConnectSessionW(
@@ -14786,7 +14851,7 @@ export function WTSConnectSessionW(
   pPassword: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionW(LogonId, TargetLogonId, util.pwstrToFfi(pPassword), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSConnectSessionW!(LogonId, TargetLogonId, util.pwstrToFfi(pPassword), util.boolToFfi(bWait)));
 }
 
 export function WTSEnumerateServersW(
@@ -14796,7 +14861,7 @@ export function WTSEnumerateServersW(
   ppServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersW(util.pwstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersW!(util.pwstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateServersA(
@@ -14806,37 +14871,37 @@ export function WTSEnumerateServersA(
   ppServerInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersA(util.pstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateServersA!(util.pstrToFfi(pDomainName), Reserved, Version, util.toPointer(ppServerInfo), util.toPointer(pCount)));
 }
 
 export function WTSOpenServerW(
   pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWTSAPI32_dll.WTSOpenServerW(util.pwstrToFfi(pServerName));
+  return libWTSAPI32_dll.WTSOpenServerW!(util.pwstrToFfi(pServerName));
 }
 
 export function WTSOpenServerA(
   pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWTSAPI32_dll.WTSOpenServerA(util.pstrToFfi(pServerName));
+  return libWTSAPI32_dll.WTSOpenServerA!(util.pstrToFfi(pServerName));
 }
 
 export function WTSOpenServerExW(
   pServerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWTSAPI32_dll.WTSOpenServerExW(util.pwstrToFfi(pServerName));
+  return libWTSAPI32_dll.WTSOpenServerExW!(util.pwstrToFfi(pServerName));
 }
 
 export function WTSOpenServerExA(
   pServerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libWTSAPI32_dll.WTSOpenServerExA(util.pstrToFfi(pServerName));
+  return libWTSAPI32_dll.WTSOpenServerExA!(util.pstrToFfi(pServerName));
 }
 
 export function WTSCloseServer(
   hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): void /* void */ {
-  return libWTSAPI32_dll.WTSCloseServer(util.toPointer(hServer));
+  return libWTSAPI32_dll.WTSCloseServer!(util.toPointer(hServer));
 }
 
 export function WTSEnumerateSessionsW(
@@ -14846,7 +14911,7 @@ export function WTSEnumerateSessionsW(
   ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsW(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsW!(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsA(
@@ -14856,7 +14921,7 @@ export function WTSEnumerateSessionsA(
   ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsA(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsA!(util.toPointer(hServer), Reserved, Version, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsExW(
@@ -14866,7 +14931,7 @@ export function WTSEnumerateSessionsExW(
   ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExW(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExW!(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateSessionsExA(
@@ -14876,7 +14941,7 @@ export function WTSEnumerateSessionsExA(
   ppSessionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExA(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateSessionsExA!(util.toPointer(hServer), util.toPointer(pLevel), Filter, util.toPointer(ppSessionInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesW(
@@ -14886,7 +14951,7 @@ export function WTSEnumerateProcessesW(
   ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesW(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesW!(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesA(
@@ -14896,7 +14961,7 @@ export function WTSEnumerateProcessesA(
   ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesA(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesA!(util.toPointer(hServer), Reserved, Version, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSTerminateProcess(
@@ -14904,7 +14969,7 @@ export function WTSTerminateProcess(
   ProcessId: number /* u32 */,
   ExitCode: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSTerminateProcess(util.toPointer(hServer), ProcessId, ExitCode));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSTerminateProcess!(util.toPointer(hServer), ProcessId, ExitCode));
 }
 
 export function WTSQuerySessionInformationW(
@@ -14914,7 +14979,7 @@ export function WTSQuerySessionInformationW(
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationW(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationW!(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSQuerySessionInformationA(
@@ -14924,7 +14989,7 @@ export function WTSQuerySessionInformationA(
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationA(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQuerySessionInformationA!(util.toPointer(hServer), SessionId, WTSInfoClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSQueryUserConfigW(
@@ -14934,7 +14999,7 @@ export function WTSQueryUserConfigW(
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigW(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigW!(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSQueryUserConfigA(
@@ -14944,7 +15009,7 @@ export function WTSQueryUserConfigA(
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigA(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserConfigA!(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSSetUserConfigW(
@@ -14954,7 +15019,7 @@ export function WTSSetUserConfigW(
   pBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DataLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigW(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.pwstrToFfi(pBuffer), DataLength));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigW!(util.pwstrToFfi(pServerName), util.pwstrToFfi(pUserName), WTSConfigClass, util.pwstrToFfi(pBuffer), DataLength));
 }
 
 export function WTSSetUserConfigA(
@@ -14964,7 +15029,7 @@ export function WTSSetUserConfigA(
   pBuffer: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DataLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigA(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.pstrToFfi(pBuffer), DataLength));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSetUserConfigA!(util.pstrToFfi(pServerName), util.pstrToFfi(pUserName), WTSConfigClass, util.pstrToFfi(pBuffer), DataLength));
 }
 
 export function WTSSendMessageW(
@@ -14979,7 +15044,7 @@ export function WTSSendMessageW(
   pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageW(util.toPointer(hServer), SessionId, util.pwstrToFfi(pTitle), TitleLength, util.pwstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageW!(util.toPointer(hServer), SessionId, util.pwstrToFfi(pTitle), TitleLength, util.pwstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
 }
 
 export function WTSSendMessageA(
@@ -14994,7 +15059,7 @@ export function WTSSendMessageA(
   pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageA(util.toPointer(hServer), SessionId, util.pstrToFfi(pTitle), TitleLength, util.pstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSendMessageA!(util.toPointer(hServer), SessionId, util.pstrToFfi(pTitle), TitleLength, util.pstrToFfi(pMessage), MessageLength, Style, Timeout, util.toPointer(pResponse), util.boolToFfi(bWait)));
 }
 
 export function WTSDisconnectSession(
@@ -15002,7 +15067,7 @@ export function WTSDisconnectSession(
   SessionId: number /* u32 */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSDisconnectSession(util.toPointer(hServer), SessionId, util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSDisconnectSession!(util.toPointer(hServer), SessionId, util.boolToFfi(bWait)));
 }
 
 export function WTSLogoffSession(
@@ -15010,14 +15075,14 @@ export function WTSLogoffSession(
   SessionId: number /* u32 */,
   bWait: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSLogoffSession(util.toPointer(hServer), SessionId, util.boolToFfi(bWait)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSLogoffSession!(util.toPointer(hServer), SessionId, util.boolToFfi(bWait)));
 }
 
 export function WTSShutdownSystem(
   hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ShutdownFlag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSShutdownSystem(util.toPointer(hServer), ShutdownFlag));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSShutdownSystem!(util.toPointer(hServer), ShutdownFlag));
 }
 
 export function WTSWaitSystemEvent(
@@ -15025,7 +15090,7 @@ export function WTSWaitSystemEvent(
   EventMask: number /* u32 */,
   pEventFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSWaitSystemEvent(util.toPointer(hServer), EventMask, util.toPointer(pEventFlags)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSWaitSystemEvent!(util.toPointer(hServer), EventMask, util.toPointer(pEventFlags)));
 }
 
 export function WTSVirtualChannelOpen(
@@ -15033,7 +15098,7 @@ export function WTSVirtualChannelOpen(
   SessionId: number /* u32 */,
   pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
-  return libWTSAPI32_dll.WTSVirtualChannelOpen(util.toPointer(hServer), SessionId, util.pstrToFfi(pVirtualName));
+  return libWTSAPI32_dll.WTSVirtualChannelOpen!(util.toPointer(hServer), SessionId, util.pstrToFfi(pVirtualName));
 }
 
 export function WTSVirtualChannelOpenEx(
@@ -15041,13 +15106,13 @@ export function WTSVirtualChannelOpenEx(
   pVirtualName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   flags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.RemoteDesktop.HwtsVirtualChannelHandle */ {
-  return libWTSAPI32_dll.WTSVirtualChannelOpenEx(SessionId, util.pstrToFfi(pVirtualName), flags);
+  return libWTSAPI32_dll.WTSVirtualChannelOpenEx!(SessionId, util.pstrToFfi(pVirtualName), flags);
 }
 
 export function WTSVirtualChannelClose(
   hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelClose(util.toPointer(hChannelHandle)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelClose!(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelRead(
@@ -15057,7 +15122,7 @@ export function WTSVirtualChannelRead(
   BufferSize: number /* u32 */,
   pBytesRead: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelRead(util.toPointer(hChannelHandle), TimeOut, util.pstrToFfi(Buffer), BufferSize, util.toPointer(pBytesRead)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelRead!(util.toPointer(hChannelHandle), TimeOut, util.pstrToFfi(Buffer), BufferSize, util.toPointer(pBytesRead)));
 }
 
 export function WTSVirtualChannelWrite(
@@ -15066,19 +15131,19 @@ export function WTSVirtualChannelWrite(
   Length: number /* u32 */,
   pBytesWritten: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelWrite(util.toPointer(hChannelHandle), util.pstrToFfi(Buffer), Length, util.toPointer(pBytesWritten)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelWrite!(util.toPointer(hChannelHandle), util.pstrToFfi(Buffer), Length, util.toPointer(pBytesWritten)));
 }
 
 export function WTSVirtualChannelPurgeInput(
   hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeInput(util.toPointer(hChannelHandle)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeInput!(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelPurgeOutput(
   hChannelHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeOutput(util.toPointer(hChannelHandle)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelPurgeOutput!(util.toPointer(hChannelHandle)));
 }
 
 export function WTSVirtualChannelQuery(
@@ -15087,26 +15152,26 @@ export function WTSVirtualChannelQuery(
   ppBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelQuery(util.toPointer(hChannelHandle), param1, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSVirtualChannelQuery!(util.toPointer(hChannelHandle), param1, util.toPointer(ppBuffer), util.toPointer(pBytesReturned)));
 }
 
 export function WTSFreeMemory(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWTSAPI32_dll.WTSFreeMemory(util.toPointer(pMemory));
+  return libWTSAPI32_dll.WTSFreeMemory!(util.toPointer(pMemory));
 }
 
 export function WTSRegisterSessionNotification(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotification((hWnd), dwFlags));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotification!((hWnd), dwFlags));
 }
 
 export function WTSUnRegisterSessionNotification(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotification((hWnd)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotification!((hWnd)));
 }
 
 export function WTSRegisterSessionNotificationEx(
@@ -15114,21 +15179,21 @@ export function WTSRegisterSessionNotificationEx(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   dwFlags: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotificationEx(util.toPointer(hServer), (hWnd), dwFlags));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSRegisterSessionNotificationEx!(util.toPointer(hServer), (hWnd), dwFlags));
 }
 
 export function WTSUnRegisterSessionNotificationEx(
   hServer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotificationEx(util.toPointer(hServer), (hWnd)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSUnRegisterSessionNotificationEx!(util.toPointer(hServer), (hWnd)));
 }
 
 export function WTSQueryUserToken(
   SessionId: number /* u32 */,
   phToken: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserToken(SessionId, util.toPointer(phToken)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryUserToken!(SessionId, util.toPointer(phToken)));
 }
 
 export function WTSFreeMemoryExW(
@@ -15136,7 +15201,7 @@ export function WTSFreeMemoryExW(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfEntries: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExW(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExW!(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
 }
 
 export function WTSFreeMemoryExA(
@@ -15144,7 +15209,7 @@ export function WTSFreeMemoryExA(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
   NumberOfEntries: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExA(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSFreeMemoryExA!(WTSTypeClass, util.toPointer(pMemory), NumberOfEntries));
 }
 
 export function WTSEnumerateProcessesExW(
@@ -15154,7 +15219,7 @@ export function WTSEnumerateProcessesExW(
   ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExW(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExW!(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateProcessesExA(
@@ -15164,7 +15229,7 @@ export function WTSEnumerateProcessesExA(
   ppProcessInfo: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExA(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateProcessesExA!(util.toPointer(hServer), util.toPointer(pLevel), SessionId, util.toPointer(ppProcessInfo), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateListenersW(
@@ -15174,7 +15239,7 @@ export function WTSEnumerateListenersW(
   pListeners: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersW!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
 }
 
 export function WTSEnumerateListenersA(
@@ -15184,7 +15249,7 @@ export function WTSEnumerateListenersA(
   pListeners: Deno.PointerValue | Uint8Array /* ptr */,
   pCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnumerateListenersA!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.toPointer(pListeners), util.toPointer(pCount)));
 }
 
 export function WTSQueryListenerConfigW(
@@ -15194,7 +15259,7 @@ export function WTSQueryListenerConfigW(
   pListenerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigW!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer)));
 }
 
 export function WTSQueryListenerConfigA(
@@ -15204,7 +15269,7 @@ export function WTSQueryListenerConfigA(
   pListenerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSQueryListenerConfigA!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer)));
 }
 
 export function WTSCreateListenerW(
@@ -15215,7 +15280,7 @@ export function WTSCreateListenerW(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerW!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
 }
 
 export function WTSCreateListenerA(
@@ -15226,7 +15291,7 @@ export function WTSCreateListenerA(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   flag: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSCreateListenerA!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), util.toPointer(pBuffer), flag));
 }
 
 export function WTSSetListenerSecurityW(
@@ -15237,7 +15302,7 @@ export function WTSSetListenerSecurityW(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityW!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function WTSSetListenerSecurityA(
@@ -15248,7 +15313,7 @@ export function WTSSetListenerSecurityA(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSSetListenerSecurityA!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor)));
 }
 
 export function WTSGetListenerSecurityW(
@@ -15261,7 +15326,7 @@ export function WTSGetListenerSecurityW(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityW(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityW!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pwstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function WTSGetListenerSecurityA(
@@ -15274,25 +15339,25 @@ export function WTSGetListenerSecurityA(
   nLength: number /* u32 */,
   lpnLengthNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityA(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSGetListenerSecurityA!(util.toPointer(hServer), util.toPointer(pReserved), Reserved, util.pstrToFfi(pListenerName), SecurityInformation, util.toPointer(pSecurityDescriptor), nLength, util.toPointer(lpnLengthNeeded)));
 }
 
 export function WTSEnableChildSessions(
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSEnableChildSessions(util.boolToFfi(bEnable)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSEnableChildSessions!(util.boolToFfi(bEnable)));
 }
 
 export function WTSIsChildSessionsEnabled(
   pbEnabled: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSIsChildSessionsEnabled(util.toPointer(pbEnabled)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSIsChildSessionsEnabled!(util.toPointer(pbEnabled)));
 }
 
 export function WTSGetChildSessionId(
   pSessionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWTSAPI32_dll.WTSGetChildSessionId(util.toPointer(pSessionId)));
+  return util.boolFromFfi(libWTSAPI32_dll.WTSGetChildSessionId!(util.toPointer(pSessionId)));
 }
 
 export function WTSSetRenderHint(
@@ -15302,17 +15367,17 @@ export function WTSSetRenderHint(
   cbHintDataLength: number /* u32 */,
   pHintData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWTSAPI32_dll.WTSSetRenderHint(util.toPointer(pRenderHintID), (hwndOwner), renderHintType, cbHintDataLength, util.toPointer(pHintData));
+  return libWTSAPI32_dll.WTSSetRenderHint!(util.toPointer(pRenderHintID), (hwndOwner), renderHintType, cbHintDataLength, util.toPointer(pHintData));
 }
 
 export function ProcessIdToSessionId(
   dwProcessId: number /* u32 */,
   pSessionId: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.ProcessIdToSessionId(dwProcessId, util.toPointer(pSessionId)));
+  return util.boolFromFfi(libKERNEL32_dll.ProcessIdToSessionId!(dwProcessId, util.toPointer(pSessionId)));
 }
 
 export function WTSGetActiveConsoleSessionId(): number /* u32 */ {
-  return libKERNEL32_dll.WTSGetActiveConsoleSessionId();
+  return libKERNEL32_dll.WTSGetActiveConsoleSessionId!();
 }
 

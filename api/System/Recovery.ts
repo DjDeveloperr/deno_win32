@@ -28,34 +28,42 @@ try {
     RegisterApplicationRecoveryCallback: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     UnregisterApplicationRecoveryCallback: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     RegisterApplicationRestart: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     UnregisterApplicationRestart: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetApplicationRecoveryCallback: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetApplicationRestartSettings: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ApplicationRecoveryInProgress: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ApplicationRecoveryFinished: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -68,22 +76,22 @@ export function RegisterApplicationRecoveryCallback(
   dwPingInterval: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.RegisterApplicationRecoveryCallback(util.toPointer(pRecoveyCallback), util.toPointer(pvParameter), dwPingInterval, dwFlags);
+  return libKERNEL32_dll.RegisterApplicationRecoveryCallback!(util.toPointer(pRecoveyCallback), util.toPointer(pvParameter), dwPingInterval, dwFlags);
 }
 
 export function UnregisterApplicationRecoveryCallback(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.UnregisterApplicationRecoveryCallback();
+  return libKERNEL32_dll.UnregisterApplicationRecoveryCallback!();
 }
 
 export function RegisterApplicationRestart(
   pwzCommandline: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: REGISTER_APPLICATION_RESTART_FLAGS /* Windows.Win32.System.Recovery.REGISTER_APPLICATION_RESTART_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.RegisterApplicationRestart(util.pwstrToFfi(pwzCommandline), dwFlags);
+  return libKERNEL32_dll.RegisterApplicationRestart!(util.pwstrToFfi(pwzCommandline), dwFlags);
 }
 
 export function UnregisterApplicationRestart(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.UnregisterApplicationRestart();
+  return libKERNEL32_dll.UnregisterApplicationRestart!();
 }
 
 export function GetApplicationRecoveryCallback(
@@ -93,7 +101,7 @@ export function GetApplicationRecoveryCallback(
   pdwPingInterval: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.GetApplicationRecoveryCallback(util.toPointer(hProcess), util.toPointer(pRecoveryCallback), util.toPointer(ppvParameter), util.toPointer(pdwPingInterval), util.toPointer(pdwFlags));
+  return libKERNEL32_dll.GetApplicationRecoveryCallback!(util.toPointer(hProcess), util.toPointer(pRecoveryCallback), util.toPointer(ppvParameter), util.toPointer(pdwPingInterval), util.toPointer(pdwFlags));
 }
 
 export function GetApplicationRestartSettings(
@@ -102,18 +110,18 @@ export function GetApplicationRestartSettings(
   pcchSize: Deno.PointerValue | Uint8Array /* ptr */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.GetApplicationRestartSettings(util.toPointer(hProcess), util.pwstrToFfi(pwzCommandline), util.toPointer(pcchSize), util.toPointer(pdwFlags));
+  return libKERNEL32_dll.GetApplicationRestartSettings!(util.toPointer(hProcess), util.pwstrToFfi(pwzCommandline), util.toPointer(pcchSize), util.toPointer(pdwFlags));
 }
 
 export function ApplicationRecoveryInProgress(
   pbCancelled: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.ApplicationRecoveryInProgress(util.toPointer(pbCancelled));
+  return libKERNEL32_dll.ApplicationRecoveryInProgress!(util.toPointer(pbCancelled));
 }
 
 export function ApplicationRecoveryFinished(
   bSuccess: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libKERNEL32_dll.ApplicationRecoveryFinished(util.boolToFfi(bSuccess));
+  return libKERNEL32_dll.ApplicationRecoveryFinished!(util.boolToFfi(bSuccess));
 }
 

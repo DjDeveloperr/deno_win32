@@ -996,10 +996,12 @@ try {
     InitializeXamlDiagnostic: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     InitializeXamlDiagnosticsEx: {
       parameters: ["buffer", "u32", "buffer", "buffer", "pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1013,7 +1015,7 @@ export function InitializeXamlDiagnostic(
   wszTAPDllName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   tapClsid: Uint8Array | Deno.PointerValue /* System.Guid */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_UI_Xaml_dll.InitializeXamlDiagnostic(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid));
+  return libWindows_UI_Xaml_dll.InitializeXamlDiagnostic!(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid));
 }
 
 export function InitializeXamlDiagnosticsEx(
@@ -1024,6 +1026,6 @@ export function InitializeXamlDiagnosticsEx(
   tapClsid: Uint8Array | Deno.PointerValue /* System.Guid */,
   wszInitializationData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWindows_UI_Xaml_dll.InitializeXamlDiagnosticsEx(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid), util.pwstrToFfi(wszInitializationData));
+  return libWindows_UI_Xaml_dll.InitializeXamlDiagnosticsEx!(util.pwstrToFfi(endPointName), pid, util.pwstrToFfi(wszDllXamlDiagnostics), util.pwstrToFfi(wszTAPDllName), util.toPointer(tapClsid), util.pwstrToFfi(wszInitializationData));
 }
 

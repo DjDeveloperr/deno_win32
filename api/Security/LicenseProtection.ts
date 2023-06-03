@@ -25,10 +25,12 @@ try {
     RegisterLicenseKeyWithExpiration: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ValidateLicenseKeyProtection: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -40,7 +42,7 @@ export function RegisterLicenseKeyWithExpiration(
   validityInDays: number /* u32 */,
   status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return liblicenseprotection_dll.RegisterLicenseKeyWithExpiration(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status));
+  return liblicenseprotection_dll.RegisterLicenseKeyWithExpiration!(util.pwstrToFfi(licenseKey), validityInDays, util.toPointer(status));
 }
 
 export function ValidateLicenseKeyProtection(
@@ -49,6 +51,6 @@ export function ValidateLicenseKeyProtection(
   notValidAfter: Deno.PointerValue | Uint8Array /* ptr */,
   status: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return liblicenseprotection_dll.ValidateLicenseKeyProtection(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status));
+  return liblicenseprotection_dll.ValidateLicenseKeyProtection!(util.pwstrToFfi(licenseKey), util.toPointer(notValidBefore), util.toPointer(notValidAfter), util.toPointer(status));
 }
 

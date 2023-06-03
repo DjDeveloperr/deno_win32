@@ -14096,90 +14096,112 @@ try {
     ADsGetObject: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsBuildEnumerator: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsFreeEnumerator: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsEnumerateNext: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsBuildVarArrayStr: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsBuildVarArrayInt: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsOpenObject: {
       parameters: ["buffer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsGetLastError: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ADsSetLastError: {
       parameters: ["u32", "buffer", "buffer"],
       result: "void",
+      optional: true,
     },
     AllocADsMem: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     FreeADsMem: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ReallocADsMem: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     AllocADsStr: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     FreeADsStr: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ReallocADsStr: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ADsEncodeBinaryData: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsDecodeBinaryData: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PropVariantToAdsType: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AdsTypeToPropVariant: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AdsFreeAdsValues: {
       parameters: ["pointer", "u32"],
       result: "void",
+      optional: true,
     },
     BinarySDToSecurityDescriptor: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SecurityDescriptorToBinarySD: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14189,18 +14211,22 @@ try {
     DsBrowseForContainerW: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DsBrowseForContainerA: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DsGetIcon: {
       parameters: ["u32", "buffer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     DsGetFriendlyClassName: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14210,30 +14236,37 @@ try {
     ADsPropCreateNotifyObj: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ADsPropGetInitInfo: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ADsPropSetHwndWithTitle: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ADsPropSetHwnd: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ADsPropCheckIfWritable: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ADsPropSendErrorMessage: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ADsPropShowErrorDialog: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14243,78 +14276,97 @@ try {
     DsMakeSpnW: {
       parameters: ["buffer", "buffer", "buffer", "u16", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsMakeSpnA: {
       parameters: ["buffer", "buffer", "buffer", "u16", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsCrackSpnA: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsCrackSpnW: {
       parameters: ["buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsQuoteRdnValueW: {
       parameters: ["u32", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsQuoteRdnValueA: {
       parameters: ["u32", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsUnquoteRdnValueW: {
       parameters: ["u32", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsUnquoteRdnValueA: {
       parameters: ["u32", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsGetRdnW: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsCrackUnquotedMangledRdnW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DsCrackUnquotedMangledRdnA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     DsIsMangledRdnValueW: {
       parameters: ["buffer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     DsIsMangledRdnValueA: {
       parameters: ["buffer", "u32", "i32"],
       result: "i32",
+      optional: true,
     },
     DsIsMangledDnA: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     DsIsMangledDnW: {
       parameters: ["buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     DsCrackSpn2A: {
       parameters: ["buffer", "u32", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsCrackSpn2W: {
       parameters: ["buffer", "u32", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsCrackSpn3W: {
       parameters: ["buffer", "u32", "pointer", "buffer", "pointer", "buffer", "pointer", "pointer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsCrackSpn4W: {
       parameters: ["buffer", "u32", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14324,326 +14376,407 @@ try {
     DsBindW: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindA: {
       parameters: ["buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithCredW: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithCredA: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithSpnW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithSpnA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithSpnExW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindWithSpnExA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindByInstanceW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindByInstanceA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindToISTGW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindToISTGA: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsBindingSetTimeout: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsUnBindW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DsUnBindA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DsMakePasswordCredentialsW: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsMakePasswordCredentialsA: {
       parameters: ["buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreePasswordCredentials: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsCrackNamesW: {
       parameters: ["pointer", "i32", "i32", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsCrackNamesA: {
       parameters: ["pointer", "i32", "i32", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreeNameResultW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsFreeNameResultA: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsGetSpnA: {
       parameters: ["i32", "buffer", "buffer", "u16", "u16", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetSpnW: {
       parameters: ["i32", "buffer", "buffer", "u16", "u16", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreeSpnArrayA: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     DsFreeSpnArrayW: {
       parameters: ["u32", "pointer"],
       result: "void",
+      optional: true,
     },
     DsWriteAccountSpnA: {
       parameters: ["pointer", "i32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsWriteAccountSpnW: {
       parameters: ["pointer", "i32", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsClientMakeSpnForTargetServerW: {
       parameters: ["buffer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsClientMakeSpnForTargetServerA: {
       parameters: ["buffer", "buffer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsServerRegisterSpnA: {
       parameters: ["i32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsServerRegisterSpnW: {
       parameters: ["i32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsReplicaSyncA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaSyncW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaAddA: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaAddW: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaDelA: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaDelW: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaModifyA: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "buffer", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaModifyW: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "buffer", "pointer", "u32", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaUpdateRefsA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaUpdateRefsW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaSyncAllA: {
       parameters: ["pointer", "buffer", "u32", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsReplicaSyncAllW: {
       parameters: ["pointer", "buffer", "u32", "isize", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsRemoveDsServerW: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DsRemoveDsServerA: {
       parameters: ["pointer", "buffer", "buffer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DsRemoveDsDomainW: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsRemoveDsDomainA: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsListSitesA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListSitesW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListServersInSiteA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListServersInSiteW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListDomainsInSiteA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListDomainsInSiteW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListServersForDomainInSiteA: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListServersForDomainInSiteW: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListInfoForServerA: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListInfoForServerW: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListRolesA: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsListRolesW: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsQuerySitesByCostW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsQuerySitesByCostA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsQuerySitesFree: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsMapSchemaGuidsA: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreeSchemaGuidMapA: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsMapSchemaGuidsW: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreeSchemaGuidMapW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsGetDomainControllerInfoA: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDomainControllerInfoW: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsFreeDomainControllerInfoA: {
       parameters: ["u32", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     DsFreeDomainControllerInfoW: {
       parameters: ["u32", "u32", "pointer"],
       result: "void",
+      optional: true,
     },
     DsReplicaConsistencyCheck: {
       parameters: ["pointer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaVerifyObjectsW: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaVerifyObjectsA: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     DsReplicaGetInfoW: {
       parameters: ["pointer", "i32", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsReplicaGetInfo2W: {
       parameters: ["pointer", "i32", "buffer", "pointer", "buffer", "buffer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsReplicaFreeInfo: {
       parameters: ["i32", "pointer"],
       result: "void",
+      optional: true,
     },
     DsAddSidHistoryW: {
       parameters: ["pointer", "u32", "buffer", "buffer", "buffer", "pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsAddSidHistoryA: {
       parameters: ["pointer", "u32", "buffer", "buffer", "buffer", "pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsInheritSecurityIdentityW: {
       parameters: ["pointer", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsInheritSecurityIdentityA: {
       parameters: ["pointer", "u32", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14653,102 +14786,127 @@ try {
     DsRoleGetPrimaryDomainInformation: {
       parameters: ["buffer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsRoleFreeMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     DsGetDcNameA: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcNameW: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetSiteNameA: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetSiteNameW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsValidateSubnetNameW: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     DsValidateSubnetNameA: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     DsAddressToSiteNamesW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsAddressToSiteNamesA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsAddressToSiteNamesExW: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsAddressToSiteNamesExA: {
       parameters: ["buffer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsEnumerateDomainTrustsW: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsEnumerateDomainTrustsA: {
       parameters: ["buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetForestTrustInformationW: {
       parameters: ["buffer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsMergeForestTrustInformationW: {
       parameters: ["buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcSiteCoverageW: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcSiteCoverageA: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsDeregisterDnsHostRecordsW: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsDeregisterDnsHostRecordsA: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcOpenW: {
       parameters: ["buffer", "u32", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcOpenA: {
       parameters: ["buffer", "u32", "buffer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcNextW: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcNextA: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DsGetDcCloseW: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14760,20 +14918,20 @@ export function ADsGetObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsGetObject(util.pwstrToFfi(lpszPathName), util.toPointer(riid), util.toPointer(ppObject));
+  return libACTIVEDS_dll.ADsGetObject!(util.pwstrToFfi(lpszPathName), util.toPointer(riid), util.toPointer(ppObject));
 }
 
 export function ADsBuildEnumerator(
   pADsContainer: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.ActiveDirectory.IADsContainer */,
   ppEnumVariant: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsBuildEnumerator(util.toPointer(pADsContainer), util.toPointer(ppEnumVariant));
+  return libACTIVEDS_dll.ADsBuildEnumerator!(util.toPointer(pADsContainer), util.toPointer(ppEnumVariant));
 }
 
 export function ADsFreeEnumerator(
   pEnumVariant: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IEnumVARIANT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsFreeEnumerator(util.toPointer(pEnumVariant));
+  return libACTIVEDS_dll.ADsFreeEnumerator!(util.toPointer(pEnumVariant));
 }
 
 export function ADsEnumerateNext(
@@ -14782,7 +14940,7 @@ export function ADsEnumerateNext(
   pvar: Deno.PointerValue | Uint8Array /* ptr */,
   pcElementsFetched: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsEnumerateNext(util.toPointer(pEnumVariant), cElements, util.toPointer(pvar), util.toPointer(pcElementsFetched));
+  return libACTIVEDS_dll.ADsEnumerateNext!(util.toPointer(pEnumVariant), cElements, util.toPointer(pvar), util.toPointer(pcElementsFetched));
 }
 
 export function ADsBuildVarArrayStr(
@@ -14790,7 +14948,7 @@ export function ADsBuildVarArrayStr(
   dwPathNames: number /* u32 */,
   pVar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsBuildVarArrayStr(util.toPointer(lppPathNames), dwPathNames, util.toPointer(pVar));
+  return libACTIVEDS_dll.ADsBuildVarArrayStr!(util.toPointer(lppPathNames), dwPathNames, util.toPointer(pVar));
 }
 
 export function ADsBuildVarArrayInt(
@@ -14798,7 +14956,7 @@ export function ADsBuildVarArrayInt(
   dwObjectTypes: number /* u32 */,
   pVar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsBuildVarArrayInt(util.toPointer(lpdwObjectTypes), dwObjectTypes, util.toPointer(pVar));
+  return libACTIVEDS_dll.ADsBuildVarArrayInt!(util.toPointer(lpdwObjectTypes), dwObjectTypes, util.toPointer(pVar));
 }
 
 export function ADsOpenObject(
@@ -14809,7 +14967,7 @@ export function ADsOpenObject(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppObject: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsOpenObject(util.pwstrToFfi(lpszPathName), util.pwstrToFfi(lpszUserName), util.pwstrToFfi(lpszPassword), dwReserved, util.toPointer(riid), util.toPointer(ppObject));
+  return libACTIVEDS_dll.ADsOpenObject!(util.pwstrToFfi(lpszPathName), util.pwstrToFfi(lpszUserName), util.pwstrToFfi(lpszPassword), dwReserved, util.toPointer(riid), util.toPointer(ppObject));
 }
 
 export function ADsGetLastError(
@@ -14819,7 +14977,7 @@ export function ADsGetLastError(
   lpNameBuf: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNameBufLen: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsGetLastError(util.toPointer(lpError), util.pwstrToFfi(lpErrorBuf), dwErrorBufLen, util.pwstrToFfi(lpNameBuf), dwNameBufLen);
+  return libACTIVEDS_dll.ADsGetLastError!(util.toPointer(lpError), util.pwstrToFfi(lpErrorBuf), dwErrorBufLen, util.pwstrToFfi(lpNameBuf), dwNameBufLen);
 }
 
 export function ADsSetLastError(
@@ -14827,19 +14985,19 @@ export function ADsSetLastError(
   pszError: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszProvider: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libACTIVEDS_dll.ADsSetLastError(dwErr, util.pwstrToFfi(pszError), util.pwstrToFfi(pszProvider));
+  return libACTIVEDS_dll.ADsSetLastError!(dwErr, util.pwstrToFfi(pszError), util.pwstrToFfi(pszProvider));
 }
 
 export function AllocADsMem(
   cb: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libACTIVEDS_dll.AllocADsMem(cb);
+  return libACTIVEDS_dll.AllocADsMem!(cb);
 }
 
 export function FreeADsMem(
   pMem: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libACTIVEDS_dll.FreeADsMem(util.toPointer(pMem)));
+  return util.boolFromFfi(libACTIVEDS_dll.FreeADsMem!(util.toPointer(pMem)));
 }
 
 export function ReallocADsMem(
@@ -14847,26 +15005,26 @@ export function ReallocADsMem(
   cbOld: number /* u32 */,
   cbNew: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libACTIVEDS_dll.ReallocADsMem(util.toPointer(pOldMem), cbOld, cbNew);
+  return libACTIVEDS_dll.ReallocADsMem!(util.toPointer(pOldMem), cbOld, cbNew);
 }
 
 export function AllocADsStr(
   pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libACTIVEDS_dll.AllocADsStr(util.pwstrToFfi(pStr)));
+  return util.pwstrFromFfi(libACTIVEDS_dll.AllocADsStr!(util.pwstrToFfi(pStr)));
 }
 
 export function FreeADsStr(
   pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libACTIVEDS_dll.FreeADsStr(util.pwstrToFfi(pStr)));
+  return util.boolFromFfi(libACTIVEDS_dll.FreeADsStr!(util.pwstrToFfi(pStr)));
 }
 
 export function ReallocADsStr(
   ppStr: Deno.PointerValue | Uint8Array /* ptr */,
   pStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libACTIVEDS_dll.ReallocADsStr(util.toPointer(ppStr), util.pwstrToFfi(pStr)));
+  return util.boolFromFfi(libACTIVEDS_dll.ReallocADsStr!(util.toPointer(ppStr), util.pwstrToFfi(pStr)));
 }
 
 export function ADsEncodeBinaryData(
@@ -14874,7 +15032,7 @@ export function ADsEncodeBinaryData(
   dwSrcLen: number /* u32 */,
   ppszDestData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsEncodeBinaryData(util.toPointer(pbSrcData), dwSrcLen, util.toPointer(ppszDestData));
+  return libACTIVEDS_dll.ADsEncodeBinaryData!(util.toPointer(pbSrcData), dwSrcLen, util.toPointer(ppszDestData));
 }
 
 export function ADsDecodeBinaryData(
@@ -14882,7 +15040,7 @@ export function ADsDecodeBinaryData(
   ppbDestData: Deno.PointerValue | Uint8Array /* ptr */,
   pdwDestLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.ADsDecodeBinaryData(util.pwstrToFfi(szSrcData), util.toPointer(ppbDestData), util.toPointer(pdwDestLen));
+  return libACTIVEDS_dll.ADsDecodeBinaryData!(util.pwstrToFfi(szSrcData), util.toPointer(ppbDestData), util.toPointer(pdwDestLen));
 }
 
 export function PropVariantToAdsType(
@@ -14891,7 +15049,7 @@ export function PropVariantToAdsType(
   ppAdsValues: Deno.PointerValue | Uint8Array /* ptr */,
   pdwNumValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.PropVariantToAdsType(util.toPointer(pVariant), dwNumVariant, util.toPointer(ppAdsValues), util.toPointer(pdwNumValues));
+  return libACTIVEDS_dll.PropVariantToAdsType!(util.toPointer(pVariant), dwNumVariant, util.toPointer(ppAdsValues), util.toPointer(pdwNumValues));
 }
 
 export function AdsTypeToPropVariant(
@@ -14899,14 +15057,14 @@ export function AdsTypeToPropVariant(
   dwNumValues: number /* u32 */,
   pVariant: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.AdsTypeToPropVariant(util.toPointer(pAdsValues), dwNumValues, util.toPointer(pVariant));
+  return libACTIVEDS_dll.AdsTypeToPropVariant!(util.toPointer(pAdsValues), dwNumValues, util.toPointer(pVariant));
 }
 
 export function AdsFreeAdsValues(
   pAdsValues: Deno.PointerValue | Uint8Array /* ptr */,
   dwNumValues: number /* u32 */,
 ): void /* void */ {
-  return libACTIVEDS_dll.AdsFreeAdsValues(util.toPointer(pAdsValues), dwNumValues);
+  return libACTIVEDS_dll.AdsFreeAdsValues!(util.toPointer(pAdsValues), dwNumValues);
 }
 
 export function BinarySDToSecurityDescriptor(
@@ -14917,7 +15075,7 @@ export function BinarySDToSecurityDescriptor(
   passWord: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.BinarySDToSecurityDescriptor(util.toPointer(pSecurityDescriptor), util.toPointer(pVarsec), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags);
+  return libACTIVEDS_dll.BinarySDToSecurityDescriptor!(util.toPointer(pSecurityDescriptor), util.toPointer(pVarsec), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags);
 }
 
 export function SecurityDescriptorToBinarySD(
@@ -14929,19 +15087,19 @@ export function SecurityDescriptorToBinarySD(
   passWord: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libACTIVEDS_dll.SecurityDescriptorToBinarySD(util.toPointer(vVarSecDes), util.toPointer(ppSecurityDescriptor), util.toPointer(pdwSDLength), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags);
+  return libACTIVEDS_dll.SecurityDescriptorToBinarySD!(util.toPointer(vVarSecDes), util.toPointer(ppSecurityDescriptor), util.toPointer(pdwSDLength), util.pwstrToFfi(pszServerName), util.pwstrToFfi(userName), util.pwstrToFfi(passWord), dwFlags);
 }
 
 export function DsBrowseForContainerW(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdsuiext_dll.DsBrowseForContainerW(util.toPointer(pInfo));
+  return libdsuiext_dll.DsBrowseForContainerW!(util.toPointer(pInfo));
 }
 
 export function DsBrowseForContainerA(
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libdsuiext_dll.DsBrowseForContainerA(util.toPointer(pInfo));
+  return libdsuiext_dll.DsBrowseForContainerA!(util.toPointer(pInfo));
 }
 
 export function DsGetIcon(
@@ -14950,7 +15108,7 @@ export function DsGetIcon(
   cxImage: number /* i32 */,
   cyImage: number /* i32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */ {
-  return libdsuiext_dll.DsGetIcon(dwFlags, util.pwstrToFfi(pszObjectClass), cxImage, cyImage);
+  return libdsuiext_dll.DsGetIcon!(dwFlags, util.pwstrToFfi(pszObjectClass), cxImage, cyImage);
 }
 
 export function DsGetFriendlyClassName(
@@ -14958,7 +15116,7 @@ export function DsGetFriendlyClassName(
   pszBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBuffer: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdsuiext_dll.DsGetFriendlyClassName(util.pwstrToFfi(pszObjectClass), util.pwstrToFfi(pszBuffer), cchBuffer);
+  return libdsuiext_dll.DsGetFriendlyClassName!(util.pwstrToFfi(pszObjectClass), util.pwstrToFfi(pszBuffer), cchBuffer);
 }
 
 export function ADsPropCreateNotifyObj(
@@ -14966,14 +15124,14 @@ export function ADsPropCreateNotifyObj(
   pwzADsObjName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phNotifyObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libdsprop_dll.ADsPropCreateNotifyObj(util.toPointer(pAppThdDataObj), util.pwstrToFfi(pwzADsObjName), util.toPointer(phNotifyObj));
+  return libdsprop_dll.ADsPropCreateNotifyObj!(util.toPointer(pAppThdDataObj), util.pwstrToFfi(pwzADsObjName), util.toPointer(phNotifyObj));
 }
 
 export function ADsPropGetInitInfo(
   hNotifyObj: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pInitParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropGetInitInfo((hNotifyObj), util.toPointer(pInitParams)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropGetInitInfo!((hNotifyObj), util.toPointer(pInitParams)));
 }
 
 export function ADsPropSetHwndWithTitle(
@@ -14981,35 +15139,35 @@ export function ADsPropSetHwndWithTitle(
   hPage: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   ptzTitle: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropSetHwndWithTitle((hNotifyObj), (hPage), util.toPointer(ptzTitle)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropSetHwndWithTitle!((hNotifyObj), (hPage), util.toPointer(ptzTitle)));
 }
 
 export function ADsPropSetHwnd(
   hNotifyObj: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hPage: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropSetHwnd((hNotifyObj), (hPage)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropSetHwnd!((hNotifyObj), (hPage)));
 }
 
 export function ADsPropCheckIfWritable(
   pwzAttr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pWritableAttrs: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropCheckIfWritable(util.pwstrToFfi(pwzAttr), util.toPointer(pWritableAttrs)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropCheckIfWritable!(util.pwstrToFfi(pwzAttr), util.toPointer(pWritableAttrs)));
 }
 
 export function ADsPropSendErrorMessage(
   hNotifyObj: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pError: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropSendErrorMessage((hNotifyObj), util.toPointer(pError)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropSendErrorMessage!((hNotifyObj), util.toPointer(pError)));
 }
 
 export function ADsPropShowErrorDialog(
   hNotifyObj: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   hPage: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libdsprop_dll.ADsPropShowErrorDialog((hNotifyObj), (hPage)));
+  return util.boolFromFfi(libdsprop_dll.ADsPropShowErrorDialog!((hNotifyObj), (hPage)));
 }
 
 export function DsMakeSpnW(
@@ -15021,7 +15179,7 @@ export function DsMakeSpnW(
   pcSpnLength: Deno.PointerValue | Uint8Array /* ptr */,
   pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsMakeSpnW(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.pwstrToFfi(InstanceName), InstancePort, util.pwstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
+  return libDSPARSE_dll.DsMakeSpnW!(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.pwstrToFfi(InstanceName), InstancePort, util.pwstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
 }
 
 export function DsMakeSpnA(
@@ -15033,7 +15191,7 @@ export function DsMakeSpnA(
   pcSpnLength: Deno.PointerValue | Uint8Array /* ptr */,
   pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsMakeSpnA(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.pstrToFfi(InstanceName), InstancePort, util.pstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
+  return libDSPARSE_dll.DsMakeSpnA!(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.pstrToFfi(InstanceName), InstancePort, util.pstrToFfi(Referrer), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
 }
 
 export function DsCrackSpnA(
@@ -15046,7 +15204,7 @@ export function DsCrackSpnA(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpnA(util.pstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
+  return libDSPARSE_dll.DsCrackSpnA!(util.pstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpnW(
@@ -15059,7 +15217,7 @@ export function DsCrackSpnW(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpnW(util.pwstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
+  return libDSPARSE_dll.DsCrackSpnW!(util.pwstrToFfi(pszSpn), util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsQuoteRdnValueW(
@@ -15068,7 +15226,7 @@ export function DsQuoteRdnValueW(
   pcQuotedRdnValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   psQuotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsQuoteRdnValueW(cUnquotedRdnValueLength, util.pwstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pwstrToFfi(psQuotedRdnValue));
+  return libDSPARSE_dll.DsQuoteRdnValueW!(cUnquotedRdnValueLength, util.pwstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pwstrToFfi(psQuotedRdnValue));
 }
 
 export function DsQuoteRdnValueA(
@@ -15077,7 +15235,7 @@ export function DsQuoteRdnValueA(
   pcQuotedRdnValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   psQuotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsQuoteRdnValueA(cUnquotedRdnValueLength, util.pstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pstrToFfi(psQuotedRdnValue));
+  return libDSPARSE_dll.DsQuoteRdnValueA!(cUnquotedRdnValueLength, util.pstrToFfi(psUnquotedRdnValue), util.toPointer(pcQuotedRdnValueLength), util.pstrToFfi(psQuotedRdnValue));
 }
 
 export function DsUnquoteRdnValueW(
@@ -15086,7 +15244,7 @@ export function DsUnquoteRdnValueW(
   pcUnquotedRdnValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   psUnquotedRdnValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsUnquoteRdnValueW(cQuotedRdnValueLength, util.pwstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pwstrToFfi(psUnquotedRdnValue));
+  return libDSPARSE_dll.DsUnquoteRdnValueW!(cQuotedRdnValueLength, util.pwstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pwstrToFfi(psUnquotedRdnValue));
 }
 
 export function DsUnquoteRdnValueA(
@@ -15095,7 +15253,7 @@ export function DsUnquoteRdnValueA(
   pcUnquotedRdnValueLength: Deno.PointerValue | Uint8Array /* ptr */,
   psUnquotedRdnValue: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsUnquoteRdnValueA(cQuotedRdnValueLength, util.pstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pstrToFfi(psUnquotedRdnValue));
+  return libDSPARSE_dll.DsUnquoteRdnValueA!(cQuotedRdnValueLength, util.pstrToFfi(psQuotedRdnValue), util.toPointer(pcUnquotedRdnValueLength), util.pstrToFfi(psUnquotedRdnValue));
 }
 
 export function DsGetRdnW(
@@ -15106,7 +15264,7 @@ export function DsGetRdnW(
   ppVal: Deno.PointerValue | Uint8Array /* ptr */,
   pcVal: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsGetRdnW(util.toPointer(ppDN), util.toPointer(pcDN), util.toPointer(ppKey), util.toPointer(pcKey), util.toPointer(ppVal), util.toPointer(pcVal));
+  return libDSPARSE_dll.DsGetRdnW!(util.toPointer(ppDN), util.toPointer(pcDN), util.toPointer(ppKey), util.toPointer(pcKey), util.toPointer(ppVal), util.toPointer(pcVal));
 }
 
 export function DsCrackUnquotedMangledRdnW(
@@ -15115,7 +15273,7 @@ export function DsCrackUnquotedMangledRdnW(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
   peDsMangleFor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsCrackUnquotedMangledRdnW(util.pwstrToFfi(pszRDN), cchRDN, util.toPointer(pGuid), util.toPointer(peDsMangleFor)));
+  return util.boolFromFfi(libDSPARSE_dll.DsCrackUnquotedMangledRdnW!(util.pwstrToFfi(pszRDN), cchRDN, util.toPointer(pGuid), util.toPointer(peDsMangleFor)));
 }
 
 export function DsCrackUnquotedMangledRdnA(
@@ -15124,7 +15282,7 @@ export function DsCrackUnquotedMangledRdnA(
   pGuid: Deno.PointerValue | Uint8Array /* ptr */,
   peDsMangleFor: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsCrackUnquotedMangledRdnA(util.pstrToFfi(pszRDN), cchRDN, util.toPointer(pGuid), util.toPointer(peDsMangleFor)));
+  return util.boolFromFfi(libDSPARSE_dll.DsCrackUnquotedMangledRdnA!(util.pstrToFfi(pszRDN), cchRDN, util.toPointer(pGuid), util.toPointer(peDsMangleFor)));
 }
 
 export function DsIsMangledRdnValueW(
@@ -15132,7 +15290,7 @@ export function DsIsMangledRdnValueW(
   cRdn: number /* u32 */,
   eDsMangleForDesired: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledRdnValueW(util.pwstrToFfi(pszRdn), cRdn, eDsMangleForDesired));
+  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledRdnValueW!(util.pwstrToFfi(pszRdn), cRdn, eDsMangleForDesired));
 }
 
 export function DsIsMangledRdnValueA(
@@ -15140,21 +15298,21 @@ export function DsIsMangledRdnValueA(
   cRdn: number /* u32 */,
   eDsMangleForDesired: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledRdnValueA(util.pstrToFfi(pszRdn), cRdn, eDsMangleForDesired));
+  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledRdnValueA!(util.pstrToFfi(pszRdn), cRdn, eDsMangleForDesired));
 }
 
 export function DsIsMangledDnA(
   pszDn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   eDsMangleFor: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnA(util.pstrToFfi(pszDn), eDsMangleFor));
+  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnA!(util.pstrToFfi(pszDn), eDsMangleFor));
 }
 
 export function DsIsMangledDnW(
   pszDn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   eDsMangleFor: DS_MANGLE_FOR /* Windows.Win32.Networking.ActiveDirectory.DS_MANGLE_FOR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnW(util.pwstrToFfi(pszDn), eDsMangleFor));
+  return util.boolFromFfi(libDSPARSE_dll.DsIsMangledDnW!(util.pwstrToFfi(pszDn), eDsMangleFor));
 }
 
 export function DsCrackSpn2A(
@@ -15168,7 +15326,7 @@ export function DsCrackSpn2A(
   InstanceName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpn2A(util.pstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
+  return libDSPARSE_dll.DsCrackSpn2A!(util.pstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpn2W(
@@ -15182,7 +15340,7 @@ export function DsCrackSpn2W(
   InstanceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pInstancePort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpn2W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
+  return libDSPARSE_dll.DsCrackSpn2W!(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcServiceClass), util.pwstrToFfi(ServiceClass), util.toPointer(pcServiceName), util.pwstrToFfi(ServiceName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pInstancePort));
 }
 
 export function DsCrackSpn3W(
@@ -15198,7 +15356,7 @@ export function DsCrackSpn3W(
   pcRealmName: Deno.PointerValue | Uint8Array /* ptr */,
   RealmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpn3W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pPortNumber), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
+  return libDSPARSE_dll.DsCrackSpn3W!(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pPortNumber), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
 }
 
 export function DsCrackSpn4W(
@@ -15215,7 +15373,7 @@ export function DsCrackSpn4W(
   pcRealmName: Deno.PointerValue | Uint8Array /* ptr */,
   RealmName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libDSPARSE_dll.DsCrackSpn4W(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pcPortName), util.pwstrToFfi(PortName), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
+  return libDSPARSE_dll.DsCrackSpn4W!(util.pwstrToFfi(pszSpn), cSpn, util.toPointer(pcHostName), util.pwstrToFfi(HostName), util.toPointer(pcInstanceName), util.pwstrToFfi(InstanceName), util.toPointer(pcPortName), util.pwstrToFfi(PortName), util.toPointer(pcDomainName), util.pwstrToFfi(DomainName), util.toPointer(pcRealmName), util.pwstrToFfi(RealmName));
 }
 
 export function DsBindW(
@@ -15223,7 +15381,7 @@ export function DsBindW(
   DnsDomainName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindW!(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(phDS));
 }
 
 export function DsBindA(
@@ -15231,7 +15389,7 @@ export function DsBindA(
   DnsDomainName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindA!(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(phDS));
 }
 
 export function DsBindWithCredW(
@@ -15240,7 +15398,7 @@ export function DsBindWithCredW(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithCredW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithCredW!(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.toPointer(phDS));
 }
 
 export function DsBindWithCredA(
@@ -15249,7 +15407,7 @@ export function DsBindWithCredA(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithCredA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithCredA!(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.toPointer(phDS));
 }
 
 export function DsBindWithSpnW(
@@ -15259,7 +15417,7 @@ export function DsBindWithSpnW(
   ServicePrincipalName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithSpnW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithSpnW!(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), util.toPointer(phDS));
 }
 
 export function DsBindWithSpnA(
@@ -15269,7 +15427,7 @@ export function DsBindWithSpnA(
   ServicePrincipalName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithSpnA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithSpnA!(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), util.toPointer(phDS));
 }
 
 export function DsBindWithSpnExW(
@@ -15280,7 +15438,7 @@ export function DsBindWithSpnExW(
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithSpnExW(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithSpnExW!(util.pwstrToFfi(DomainControllerName), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
 }
 
 export function DsBindWithSpnExA(
@@ -15291,7 +15449,7 @@ export function DsBindWithSpnExA(
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindWithSpnExA(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindWithSpnExA!(util.pstrToFfi(DomainControllerName), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
 }
 
 export function DsBindByInstanceW(
@@ -15304,7 +15462,7 @@ export function DsBindByInstanceW(
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindByInstanceW(util.pwstrToFfi(ServerName), util.pwstrToFfi(Annotation), util.toPointer(InstanceGuid), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindByInstanceW!(util.pwstrToFfi(ServerName), util.pwstrToFfi(Annotation), util.toPointer(InstanceGuid), util.pwstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pwstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
 }
 
 export function DsBindByInstanceA(
@@ -15317,40 +15475,40 @@ export function DsBindByInstanceA(
   BindFlags: number /* u32 */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindByInstanceA(util.pstrToFfi(ServerName), util.pstrToFfi(Annotation), util.toPointer(InstanceGuid), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindByInstanceA!(util.pstrToFfi(ServerName), util.pstrToFfi(Annotation), util.toPointer(InstanceGuid), util.pstrToFfi(DnsDomainName), util.toPointer(AuthIdentity), util.pstrToFfi(ServicePrincipalName), BindFlags, util.toPointer(phDS));
 }
 
 export function DsBindToISTGW(
   SiteName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindToISTGW(util.pwstrToFfi(SiteName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindToISTGW!(util.pwstrToFfi(SiteName), util.toPointer(phDS));
 }
 
 export function DsBindToISTGA(
   SiteName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindToISTGA(util.pstrToFfi(SiteName), util.toPointer(phDS));
+  return libNTDSAPI_dll.DsBindToISTGA!(util.pstrToFfi(SiteName), util.toPointer(phDS));
 }
 
 export function DsBindingSetTimeout(
   hDS: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   cTimeoutSecs: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsBindingSetTimeout(util.toPointer(hDS), cTimeoutSecs);
+  return libNTDSAPI_dll.DsBindingSetTimeout!(util.toPointer(hDS), cTimeoutSecs);
 }
 
 export function DsUnBindW(
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsUnBindW(util.toPointer(phDS));
+  return libNTDSAPI_dll.DsUnBindW!(util.toPointer(phDS));
 }
 
 export function DsUnBindA(
   phDS: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsUnBindA(util.toPointer(phDS));
+  return libNTDSAPI_dll.DsUnBindA!(util.toPointer(phDS));
 }
 
 export function DsMakePasswordCredentialsW(
@@ -15359,7 +15517,7 @@ export function DsMakePasswordCredentialsW(
   Password: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsMakePasswordCredentialsW(util.pwstrToFfi(User), util.pwstrToFfi(Domain), util.pwstrToFfi(Password), util.toPointer(pAuthIdentity));
+  return libNTDSAPI_dll.DsMakePasswordCredentialsW!(util.pwstrToFfi(User), util.pwstrToFfi(Domain), util.pwstrToFfi(Password), util.toPointer(pAuthIdentity));
 }
 
 export function DsMakePasswordCredentialsA(
@@ -15368,13 +15526,13 @@ export function DsMakePasswordCredentialsA(
   Password: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   pAuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsMakePasswordCredentialsA(util.pstrToFfi(User), util.pstrToFfi(Domain), util.pstrToFfi(Password), util.toPointer(pAuthIdentity));
+  return libNTDSAPI_dll.DsMakePasswordCredentialsA!(util.pstrToFfi(User), util.pstrToFfi(Domain), util.pstrToFfi(Password), util.toPointer(pAuthIdentity));
 }
 
 export function DsFreePasswordCredentials(
   AuthIdentity: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreePasswordCredentials(util.toPointer(AuthIdentity));
+  return libNTDSAPI_dll.DsFreePasswordCredentials!(util.toPointer(AuthIdentity));
 }
 
 export function DsCrackNamesW(
@@ -15386,7 +15544,7 @@ export function DsCrackNamesW(
   rpNames: Deno.PointerValue | Uint8Array /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsCrackNamesW(util.toPointer(hDS), flags, formatOffered, formatDesired, cNames, util.toPointer(rpNames), util.toPointer(ppResult));
+  return libNTDSAPI_dll.DsCrackNamesW!(util.toPointer(hDS), flags, formatOffered, formatDesired, cNames, util.toPointer(rpNames), util.toPointer(ppResult));
 }
 
 export function DsCrackNamesA(
@@ -15398,19 +15556,19 @@ export function DsCrackNamesA(
   rpNames: Deno.PointerValue | Uint8Array /* ptr */,
   ppResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsCrackNamesA(util.toPointer(hDS), flags, formatOffered, formatDesired, cNames, util.toPointer(rpNames), util.toPointer(ppResult));
+  return libNTDSAPI_dll.DsCrackNamesA!(util.toPointer(hDS), flags, formatOffered, formatDesired, cNames, util.toPointer(rpNames), util.toPointer(ppResult));
 }
 
 export function DsFreeNameResultW(
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeNameResultW(util.toPointer(pResult));
+  return libNTDSAPI_dll.DsFreeNameResultW!(util.toPointer(pResult));
 }
 
 export function DsFreeNameResultA(
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeNameResultA(util.toPointer(pResult));
+  return libNTDSAPI_dll.DsFreeNameResultA!(util.toPointer(pResult));
 }
 
 export function DsGetSpnA(
@@ -15424,7 +15582,7 @@ export function DsGetSpnA(
   pcSpn: Deno.PointerValue | Uint8Array /* ptr */,
   prpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsGetSpnA(ServiceType, util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), InstancePort, cInstanceNames, util.toPointer(pInstanceNames), util.toPointer(pInstancePorts), util.toPointer(pcSpn), util.toPointer(prpszSpn));
+  return libNTDSAPI_dll.DsGetSpnA!(ServiceType, util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), InstancePort, cInstanceNames, util.toPointer(pInstanceNames), util.toPointer(pInstancePorts), util.toPointer(pcSpn), util.toPointer(prpszSpn));
 }
 
 export function DsGetSpnW(
@@ -15438,21 +15596,21 @@ export function DsGetSpnW(
   pcSpn: Deno.PointerValue | Uint8Array /* ptr */,
   prpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsGetSpnW(ServiceType, util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), InstancePort, cInstanceNames, util.toPointer(pInstanceNames), util.toPointer(pInstancePorts), util.toPointer(pcSpn), util.toPointer(prpszSpn));
+  return libNTDSAPI_dll.DsGetSpnW!(ServiceType, util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), InstancePort, cInstanceNames, util.toPointer(pInstanceNames), util.toPointer(pInstancePorts), util.toPointer(pcSpn), util.toPointer(prpszSpn));
 }
 
 export function DsFreeSpnArrayA(
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeSpnArrayA(cSpn, util.toPointer(rpszSpn));
+  return libNTDSAPI_dll.DsFreeSpnArrayA!(cSpn, util.toPointer(rpszSpn));
 }
 
 export function DsFreeSpnArrayW(
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeSpnArrayW(cSpn, util.toPointer(rpszSpn));
+  return libNTDSAPI_dll.DsFreeSpnArrayW!(cSpn, util.toPointer(rpszSpn));
 }
 
 export function DsWriteAccountSpnA(
@@ -15462,7 +15620,7 @@ export function DsWriteAccountSpnA(
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsWriteAccountSpnA(util.toPointer(hDS), Operation, util.pstrToFfi(pszAccount), cSpn, util.toPointer(rpszSpn));
+  return libNTDSAPI_dll.DsWriteAccountSpnA!(util.toPointer(hDS), Operation, util.pstrToFfi(pszAccount), cSpn, util.toPointer(rpszSpn));
 }
 
 export function DsWriteAccountSpnW(
@@ -15472,7 +15630,7 @@ export function DsWriteAccountSpnW(
   cSpn: number /* u32 */,
   rpszSpn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsWriteAccountSpnW(util.toPointer(hDS), Operation, util.pwstrToFfi(pszAccount), cSpn, util.toPointer(rpszSpn));
+  return libNTDSAPI_dll.DsWriteAccountSpnW!(util.toPointer(hDS), Operation, util.pwstrToFfi(pszAccount), cSpn, util.toPointer(rpszSpn));
 }
 
 export function DsClientMakeSpnForTargetServerW(
@@ -15481,7 +15639,7 @@ export function DsClientMakeSpnForTargetServerW(
   pcSpnLength: Deno.PointerValue | Uint8Array /* ptr */,
   pszSpn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsClientMakeSpnForTargetServerW(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
+  return libNTDSAPI_dll.DsClientMakeSpnForTargetServerW!(util.pwstrToFfi(ServiceClass), util.pwstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pwstrToFfi(pszSpn));
 }
 
 export function DsClientMakeSpnForTargetServerA(
@@ -15490,7 +15648,7 @@ export function DsClientMakeSpnForTargetServerA(
   pcSpnLength: Deno.PointerValue | Uint8Array /* ptr */,
   pszSpn: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsClientMakeSpnForTargetServerA(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
+  return libNTDSAPI_dll.DsClientMakeSpnForTargetServerA!(util.pstrToFfi(ServiceClass), util.pstrToFfi(ServiceName), util.toPointer(pcSpnLength), util.pstrToFfi(pszSpn));
 }
 
 export function DsServerRegisterSpnA(
@@ -15498,7 +15656,7 @@ export function DsServerRegisterSpnA(
   ServiceClass: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   UserObjectDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsServerRegisterSpnA(Operation, util.pstrToFfi(ServiceClass), util.pstrToFfi(UserObjectDN));
+  return libNTDSAPI_dll.DsServerRegisterSpnA!(Operation, util.pstrToFfi(ServiceClass), util.pstrToFfi(UserObjectDN));
 }
 
 export function DsServerRegisterSpnW(
@@ -15506,7 +15664,7 @@ export function DsServerRegisterSpnW(
   ServiceClass: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   UserObjectDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsServerRegisterSpnW(Operation, util.pwstrToFfi(ServiceClass), util.pwstrToFfi(UserObjectDN));
+  return libNTDSAPI_dll.DsServerRegisterSpnW!(Operation, util.pwstrToFfi(ServiceClass), util.pwstrToFfi(UserObjectDN));
 }
 
 export function DsReplicaSyncA(
@@ -15515,7 +15673,7 @@ export function DsReplicaSyncA(
   pUuidDsaSrc: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaSyncA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), Options);
+  return libNTDSAPI_dll.DsReplicaSyncA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), Options);
 }
 
 export function DsReplicaSyncW(
@@ -15524,7 +15682,7 @@ export function DsReplicaSyncW(
   pUuidDsaSrc: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaSyncW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), Options);
+  return libNTDSAPI_dll.DsReplicaSyncW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), Options);
 }
 
 export function DsReplicaAddA(
@@ -15536,7 +15694,7 @@ export function DsReplicaAddA(
   pSchedule: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaAddA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(SourceDsaDn), util.pstrToFfi(TransportDn), util.pstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), Options);
+  return libNTDSAPI_dll.DsReplicaAddA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(SourceDsaDn), util.pstrToFfi(TransportDn), util.pstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), Options);
 }
 
 export function DsReplicaAddW(
@@ -15548,7 +15706,7 @@ export function DsReplicaAddW(
   pSchedule: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaAddW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(SourceDsaDn), util.pwstrToFfi(TransportDn), util.pwstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), Options);
+  return libNTDSAPI_dll.DsReplicaAddW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(SourceDsaDn), util.pwstrToFfi(TransportDn), util.pwstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), Options);
 }
 
 export function DsReplicaDelA(
@@ -15557,7 +15715,7 @@ export function DsReplicaDelA(
   DsaSrc: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaDelA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(DsaSrc), Options);
+  return libNTDSAPI_dll.DsReplicaDelA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(DsaSrc), Options);
 }
 
 export function DsReplicaDelW(
@@ -15566,7 +15724,7 @@ export function DsReplicaDelW(
   DsaSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaDelW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(DsaSrc), Options);
+  return libNTDSAPI_dll.DsReplicaDelW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(DsaSrc), Options);
 }
 
 export function DsReplicaModifyA(
@@ -15580,7 +15738,7 @@ export function DsReplicaModifyA(
   ModifyFields: number /* u32 */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaModifyA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidSourceDsa), util.pstrToFfi(TransportDn), util.pstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), ReplicaFlags, ModifyFields, Options);
+  return libNTDSAPI_dll.DsReplicaModifyA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidSourceDsa), util.pstrToFfi(TransportDn), util.pstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), ReplicaFlags, ModifyFields, Options);
 }
 
 export function DsReplicaModifyW(
@@ -15594,7 +15752,7 @@ export function DsReplicaModifyW(
   ModifyFields: number /* u32 */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaModifyW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidSourceDsa), util.pwstrToFfi(TransportDn), util.pwstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), ReplicaFlags, ModifyFields, Options);
+  return libNTDSAPI_dll.DsReplicaModifyW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidSourceDsa), util.pwstrToFfi(TransportDn), util.pwstrToFfi(SourceDsaAddress), util.toPointer(pSchedule), ReplicaFlags, ModifyFields, Options);
 }
 
 export function DsReplicaUpdateRefsA(
@@ -15604,7 +15762,7 @@ export function DsReplicaUpdateRefsA(
   pUuidDsaDest: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaUpdateRefsA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(DsaDest), util.toPointer(pUuidDsaDest), Options);
+  return libNTDSAPI_dll.DsReplicaUpdateRefsA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.pstrToFfi(DsaDest), util.toPointer(pUuidDsaDest), Options);
 }
 
 export function DsReplicaUpdateRefsW(
@@ -15614,7 +15772,7 @@ export function DsReplicaUpdateRefsW(
   pUuidDsaDest: Deno.PointerValue | Uint8Array /* ptr */,
   Options: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaUpdateRefsW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(DsaDest), util.toPointer(pUuidDsaDest), Options);
+  return libNTDSAPI_dll.DsReplicaUpdateRefsW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.pwstrToFfi(DsaDest), util.toPointer(pUuidDsaDest), Options);
 }
 
 export function DsReplicaSyncAllA(
@@ -15625,7 +15783,7 @@ export function DsReplicaSyncAllA(
   pCallbackData: Deno.PointerValue | Uint8Array /* ptr */,
   pErrors: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaSyncAllA(util.toPointer(hDS), util.pstrToFfi(pszNameContext), ulFlags, pFnCallBack, util.toPointer(pCallbackData), util.toPointer(pErrors));
+  return libNTDSAPI_dll.DsReplicaSyncAllA!(util.toPointer(hDS), util.pstrToFfi(pszNameContext), ulFlags, pFnCallBack, util.toPointer(pCallbackData), util.toPointer(pErrors));
 }
 
 export function DsReplicaSyncAllW(
@@ -15636,7 +15794,7 @@ export function DsReplicaSyncAllW(
   pCallbackData: Deno.PointerValue | Uint8Array /* ptr */,
   pErrors: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaSyncAllW(util.toPointer(hDS), util.pwstrToFfi(pszNameContext), ulFlags, pFnCallBack, util.toPointer(pCallbackData), util.toPointer(pErrors));
+  return libNTDSAPI_dll.DsReplicaSyncAllW!(util.toPointer(hDS), util.pwstrToFfi(pszNameContext), ulFlags, pFnCallBack, util.toPointer(pCallbackData), util.toPointer(pErrors));
 }
 
 export function DsRemoveDsServerW(
@@ -15646,7 +15804,7 @@ export function DsRemoveDsServerW(
   fLastDcInDomain: Deno.PointerValue | Uint8Array /* ptr */,
   fCommit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsRemoveDsServerW(util.toPointer(hDs), util.pwstrToFfi(ServerDN), util.pwstrToFfi(DomainDN), util.toPointer(fLastDcInDomain), util.boolToFfi(fCommit));
+  return libNTDSAPI_dll.DsRemoveDsServerW!(util.toPointer(hDs), util.pwstrToFfi(ServerDN), util.pwstrToFfi(DomainDN), util.toPointer(fLastDcInDomain), util.boolToFfi(fCommit));
 }
 
 export function DsRemoveDsServerA(
@@ -15656,35 +15814,35 @@ export function DsRemoveDsServerA(
   fLastDcInDomain: Deno.PointerValue | Uint8Array /* ptr */,
   fCommit: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsRemoveDsServerA(util.toPointer(hDs), util.pstrToFfi(ServerDN), util.pstrToFfi(DomainDN), util.toPointer(fLastDcInDomain), util.boolToFfi(fCommit));
+  return libNTDSAPI_dll.DsRemoveDsServerA!(util.toPointer(hDs), util.pstrToFfi(ServerDN), util.pstrToFfi(DomainDN), util.toPointer(fLastDcInDomain), util.boolToFfi(fCommit));
 }
 
 export function DsRemoveDsDomainW(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   DomainDN: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsRemoveDsDomainW(util.toPointer(hDs), util.pwstrToFfi(DomainDN));
+  return libNTDSAPI_dll.DsRemoveDsDomainW!(util.toPointer(hDs), util.pwstrToFfi(DomainDN));
 }
 
 export function DsRemoveDsDomainA(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   DomainDN: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsRemoveDsDomainA(util.toPointer(hDs), util.pstrToFfi(DomainDN));
+  return libNTDSAPI_dll.DsRemoveDsDomainA!(util.toPointer(hDs), util.pstrToFfi(DomainDN));
 }
 
 export function DsListSitesA(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppSites: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListSitesA(util.toPointer(hDs), util.toPointer(ppSites));
+  return libNTDSAPI_dll.DsListSitesA!(util.toPointer(hDs), util.toPointer(ppSites));
 }
 
 export function DsListSitesW(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppSites: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListSitesW(util.toPointer(hDs), util.toPointer(ppSites));
+  return libNTDSAPI_dll.DsListSitesW!(util.toPointer(hDs), util.toPointer(ppSites));
 }
 
 export function DsListServersInSiteA(
@@ -15692,7 +15850,7 @@ export function DsListServersInSiteA(
   site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppServers: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListServersInSiteA(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppServers));
+  return libNTDSAPI_dll.DsListServersInSiteA!(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppServers));
 }
 
 export function DsListServersInSiteW(
@@ -15700,7 +15858,7 @@ export function DsListServersInSiteW(
   site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppServers: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListServersInSiteW(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppServers));
+  return libNTDSAPI_dll.DsListServersInSiteW!(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppServers));
 }
 
 export function DsListDomainsInSiteA(
@@ -15708,7 +15866,7 @@ export function DsListDomainsInSiteA(
   site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppDomains: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListDomainsInSiteA(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppDomains));
+  return libNTDSAPI_dll.DsListDomainsInSiteA!(util.toPointer(hDs), util.pstrToFfi(site), util.toPointer(ppDomains));
 }
 
 export function DsListDomainsInSiteW(
@@ -15716,7 +15874,7 @@ export function DsListDomainsInSiteW(
   site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppDomains: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListDomainsInSiteW(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppDomains));
+  return libNTDSAPI_dll.DsListDomainsInSiteW!(util.toPointer(hDs), util.pwstrToFfi(site), util.toPointer(ppDomains));
 }
 
 export function DsListServersForDomainInSiteA(
@@ -15725,7 +15883,7 @@ export function DsListServersForDomainInSiteA(
   site: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppServers: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListServersForDomainInSiteA(util.toPointer(hDs), util.pstrToFfi(domain), util.pstrToFfi(site), util.toPointer(ppServers));
+  return libNTDSAPI_dll.DsListServersForDomainInSiteA!(util.toPointer(hDs), util.pstrToFfi(domain), util.pstrToFfi(site), util.toPointer(ppServers));
 }
 
 export function DsListServersForDomainInSiteW(
@@ -15734,7 +15892,7 @@ export function DsListServersForDomainInSiteW(
   site: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppServers: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListServersForDomainInSiteW(util.toPointer(hDs), util.pwstrToFfi(domain), util.pwstrToFfi(site), util.toPointer(ppServers));
+  return libNTDSAPI_dll.DsListServersForDomainInSiteW!(util.toPointer(hDs), util.pwstrToFfi(domain), util.pwstrToFfi(site), util.toPointer(ppServers));
 }
 
 export function DsListInfoForServerA(
@@ -15742,7 +15900,7 @@ export function DsListInfoForServerA(
   server: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListInfoForServerA(util.toPointer(hDs), util.pstrToFfi(server), util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsListInfoForServerA!(util.toPointer(hDs), util.pstrToFfi(server), util.toPointer(ppInfo));
 }
 
 export function DsListInfoForServerW(
@@ -15750,21 +15908,21 @@ export function DsListInfoForServerW(
   server: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListInfoForServerW(util.toPointer(hDs), util.pwstrToFfi(server), util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsListInfoForServerW!(util.toPointer(hDs), util.pwstrToFfi(server), util.toPointer(ppInfo));
 }
 
 export function DsListRolesA(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppRoles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListRolesA(util.toPointer(hDs), util.toPointer(ppRoles));
+  return libNTDSAPI_dll.DsListRolesA!(util.toPointer(hDs), util.toPointer(ppRoles));
 }
 
 export function DsListRolesW(
   hDs: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppRoles: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsListRolesW(util.toPointer(hDs), util.toPointer(ppRoles));
+  return libNTDSAPI_dll.DsListRolesW!(util.toPointer(hDs), util.toPointer(ppRoles));
 }
 
 export function DsQuerySitesByCostW(
@@ -15775,7 +15933,7 @@ export function DsQuerySitesByCostW(
   dwFlags: number /* u32 */,
   prgSiteInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsQuerySitesByCostW(util.toPointer(hDS), util.pwstrToFfi(pwszFromSite), util.toPointer(rgwszToSites), cToSites, dwFlags, util.toPointer(prgSiteInfo));
+  return libNTDSAPI_dll.DsQuerySitesByCostW!(util.toPointer(hDS), util.pwstrToFfi(pwszFromSite), util.toPointer(rgwszToSites), cToSites, dwFlags, util.toPointer(prgSiteInfo));
 }
 
 export function DsQuerySitesByCostA(
@@ -15786,13 +15944,13 @@ export function DsQuerySitesByCostA(
   dwFlags: number /* u32 */,
   prgSiteInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsQuerySitesByCostA(util.toPointer(hDS), util.pstrToFfi(pszFromSite), util.toPointer(rgszToSites), cToSites, dwFlags, util.toPointer(prgSiteInfo));
+  return libNTDSAPI_dll.DsQuerySitesByCostA!(util.toPointer(hDS), util.pstrToFfi(pszFromSite), util.toPointer(rgszToSites), cToSites, dwFlags, util.toPointer(prgSiteInfo));
 }
 
 export function DsQuerySitesFree(
   rgSiteInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsQuerySitesFree(util.toPointer(rgSiteInfo));
+  return libNTDSAPI_dll.DsQuerySitesFree!(util.toPointer(rgSiteInfo));
 }
 
 export function DsMapSchemaGuidsA(
@@ -15801,13 +15959,13 @@ export function DsMapSchemaGuidsA(
   rGuids: Deno.PointerValue | Uint8Array /* ptr */,
   ppGuidMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsMapSchemaGuidsA(util.toPointer(hDs), cGuids, util.toPointer(rGuids), util.toPointer(ppGuidMap));
+  return libNTDSAPI_dll.DsMapSchemaGuidsA!(util.toPointer(hDs), cGuids, util.toPointer(rGuids), util.toPointer(ppGuidMap));
 }
 
 export function DsFreeSchemaGuidMapA(
   pGuidMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeSchemaGuidMapA(util.toPointer(pGuidMap));
+  return libNTDSAPI_dll.DsFreeSchemaGuidMapA!(util.toPointer(pGuidMap));
 }
 
 export function DsMapSchemaGuidsW(
@@ -15816,13 +15974,13 @@ export function DsMapSchemaGuidsW(
   rGuids: Deno.PointerValue | Uint8Array /* ptr */,
   ppGuidMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsMapSchemaGuidsW(util.toPointer(hDs), cGuids, util.toPointer(rGuids), util.toPointer(ppGuidMap));
+  return libNTDSAPI_dll.DsMapSchemaGuidsW!(util.toPointer(hDs), cGuids, util.toPointer(rGuids), util.toPointer(ppGuidMap));
 }
 
 export function DsFreeSchemaGuidMapW(
   pGuidMap: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeSchemaGuidMapW(util.toPointer(pGuidMap));
+  return libNTDSAPI_dll.DsFreeSchemaGuidMapW!(util.toPointer(pGuidMap));
 }
 
 export function DsGetDomainControllerInfoA(
@@ -15832,7 +15990,7 @@ export function DsGetDomainControllerInfoA(
   pcOut: Deno.PointerValue | Uint8Array /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsGetDomainControllerInfoA(util.toPointer(hDs), util.pstrToFfi(DomainName), InfoLevel, util.toPointer(pcOut), util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsGetDomainControllerInfoA!(util.toPointer(hDs), util.pstrToFfi(DomainName), InfoLevel, util.toPointer(pcOut), util.toPointer(ppInfo));
 }
 
 export function DsGetDomainControllerInfoW(
@@ -15842,7 +16000,7 @@ export function DsGetDomainControllerInfoW(
   pcOut: Deno.PointerValue | Uint8Array /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsGetDomainControllerInfoW(util.toPointer(hDs), util.pwstrToFfi(DomainName), InfoLevel, util.toPointer(pcOut), util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsGetDomainControllerInfoW!(util.toPointer(hDs), util.pwstrToFfi(DomainName), InfoLevel, util.toPointer(pcOut), util.toPointer(ppInfo));
 }
 
 export function DsFreeDomainControllerInfoA(
@@ -15850,7 +16008,7 @@ export function DsFreeDomainControllerInfoA(
   cInfo: number /* u32 */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeDomainControllerInfoA(InfoLevel, cInfo, util.toPointer(pInfo));
+  return libNTDSAPI_dll.DsFreeDomainControllerInfoA!(InfoLevel, cInfo, util.toPointer(pInfo));
 }
 
 export function DsFreeDomainControllerInfoW(
@@ -15858,7 +16016,7 @@ export function DsFreeDomainControllerInfoW(
   cInfo: number /* u32 */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsFreeDomainControllerInfoW(InfoLevel, cInfo, util.toPointer(pInfo));
+  return libNTDSAPI_dll.DsFreeDomainControllerInfoW!(InfoLevel, cInfo, util.toPointer(pInfo));
 }
 
 export function DsReplicaConsistencyCheck(
@@ -15866,7 +16024,7 @@ export function DsReplicaConsistencyCheck(
   TaskID: DS_KCC_TASKID /* Windows.Win32.Networking.ActiveDirectory.DS_KCC_TASKID */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaConsistencyCheck(util.toPointer(hDS), TaskID, dwFlags);
+  return libNTDSAPI_dll.DsReplicaConsistencyCheck!(util.toPointer(hDS), TaskID, dwFlags);
 }
 
 export function DsReplicaVerifyObjectsW(
@@ -15875,7 +16033,7 @@ export function DsReplicaVerifyObjectsW(
   pUuidDsaSrc: Deno.PointerValue | Uint8Array /* ptr */,
   ulOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaVerifyObjectsW(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), ulOptions);
+  return libNTDSAPI_dll.DsReplicaVerifyObjectsW!(util.toPointer(hDS), util.pwstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), ulOptions);
 }
 
 export function DsReplicaVerifyObjectsA(
@@ -15884,7 +16042,7 @@ export function DsReplicaVerifyObjectsA(
   pUuidDsaSrc: Deno.PointerValue | Uint8Array /* ptr */,
   ulOptions: number /* u32 */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaVerifyObjectsA(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), ulOptions);
+  return libNTDSAPI_dll.DsReplicaVerifyObjectsA!(util.toPointer(hDS), util.pstrToFfi(NameContext), util.toPointer(pUuidDsaSrc), ulOptions);
 }
 
 export function DsReplicaGetInfoW(
@@ -15894,7 +16052,7 @@ export function DsReplicaGetInfoW(
   puuidForSourceDsaObjGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaGetInfoW(util.toPointer(hDS), InfoType, util.pwstrToFfi(pszObject), util.toPointer(puuidForSourceDsaObjGuid), util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsReplicaGetInfoW!(util.toPointer(hDS), InfoType, util.pwstrToFfi(pszObject), util.toPointer(puuidForSourceDsaObjGuid), util.toPointer(ppInfo));
 }
 
 export function DsReplicaGetInfo2W(
@@ -15908,14 +16066,14 @@ export function DsReplicaGetInfo2W(
   dwEnumerationContext: number /* u32 */,
   ppInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsReplicaGetInfo2W(util.toPointer(hDS), InfoType, util.pwstrToFfi(pszObject), util.toPointer(puuidForSourceDsaObjGuid), util.pwstrToFfi(pszAttributeName), util.pwstrToFfi(pszValue), dwFlags, dwEnumerationContext, util.toPointer(ppInfo));
+  return libNTDSAPI_dll.DsReplicaGetInfo2W!(util.toPointer(hDS), InfoType, util.pwstrToFfi(pszObject), util.toPointer(puuidForSourceDsaObjGuid), util.pwstrToFfi(pszAttributeName), util.pwstrToFfi(pszValue), dwFlags, dwEnumerationContext, util.toPointer(ppInfo));
 }
 
 export function DsReplicaFreeInfo(
   InfoType: DS_REPL_INFO_TYPE /* Windows.Win32.Networking.ActiveDirectory.DS_REPL_INFO_TYPE */,
   pInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNTDSAPI_dll.DsReplicaFreeInfo(InfoType, util.toPointer(pInfo));
+  return libNTDSAPI_dll.DsReplicaFreeInfo!(InfoType, util.toPointer(pInfo));
 }
 
 export function DsAddSidHistoryW(
@@ -15928,7 +16086,7 @@ export function DsAddSidHistoryW(
   DstDomain: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DstPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsAddSidHistoryW(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcDomain), util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pwstrToFfi(DstDomain), util.pwstrToFfi(DstPrincipal));
+  return libNTDSAPI_dll.DsAddSidHistoryW!(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcDomain), util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pwstrToFfi(DstDomain), util.pwstrToFfi(DstPrincipal));
 }
 
 export function DsAddSidHistoryA(
@@ -15941,7 +16099,7 @@ export function DsAddSidHistoryA(
   DstDomain: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DstPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsAddSidHistoryA(util.toPointer(hDS), Flags, util.pstrToFfi(SrcDomain), util.pstrToFfi(SrcPrincipal), util.pstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pstrToFfi(DstDomain), util.pstrToFfi(DstPrincipal));
+  return libNTDSAPI_dll.DsAddSidHistoryA!(util.toPointer(hDS), Flags, util.pstrToFfi(SrcDomain), util.pstrToFfi(SrcPrincipal), util.pstrToFfi(SrcDomainController), util.toPointer(SrcDomainCreds), util.pstrToFfi(DstDomain), util.pstrToFfi(DstPrincipal));
 }
 
 export function DsInheritSecurityIdentityW(
@@ -15950,7 +16108,7 @@ export function DsInheritSecurityIdentityW(
   SrcPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   DstPrincipal: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsInheritSecurityIdentityW(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(DstPrincipal));
+  return libNTDSAPI_dll.DsInheritSecurityIdentityW!(util.toPointer(hDS), Flags, util.pwstrToFfi(SrcPrincipal), util.pwstrToFfi(DstPrincipal));
 }
 
 export function DsInheritSecurityIdentityA(
@@ -15959,7 +16117,7 @@ export function DsInheritSecurityIdentityA(
   SrcPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   DstPrincipal: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNTDSAPI_dll.DsInheritSecurityIdentityA(util.toPointer(hDS), Flags, util.pstrToFfi(SrcPrincipal), util.pstrToFfi(DstPrincipal));
+  return libNTDSAPI_dll.DsInheritSecurityIdentityA!(util.toPointer(hDS), Flags, util.pstrToFfi(SrcPrincipal), util.pstrToFfi(DstPrincipal));
 }
 
 export function DsRoleGetPrimaryDomainInformation(
@@ -15967,13 +16125,13 @@ export function DsRoleGetPrimaryDomainInformation(
   InfoLevel: DSROLE_PRIMARY_DOMAIN_INFO_LEVEL /* Windows.Win32.Networking.ActiveDirectory.DSROLE_PRIMARY_DOMAIN_INFO_LEVEL */,
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsRoleGetPrimaryDomainInformation(util.pwstrToFfi(lpServer), InfoLevel, util.toPointer(Buffer));
+  return libNETAPI32_dll.DsRoleGetPrimaryDomainInformation!(util.pwstrToFfi(lpServer), InfoLevel, util.toPointer(Buffer));
 }
 
 export function DsRoleFreeMemory(
   Buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libNETAPI32_dll.DsRoleFreeMemory(util.toPointer(Buffer));
+  return libNETAPI32_dll.DsRoleFreeMemory!(util.toPointer(Buffer));
 }
 
 export function DsGetDcNameA(
@@ -15984,7 +16142,7 @@ export function DsGetDcNameA(
   Flags: number /* u32 */,
   DomainControllerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcNameA(util.pstrToFfi(ComputerName), util.pstrToFfi(DomainName), util.toPointer(DomainGuid), util.pstrToFfi(SiteName), Flags, util.toPointer(DomainControllerInfo));
+  return libNETAPI32_dll.DsGetDcNameA!(util.pstrToFfi(ComputerName), util.pstrToFfi(DomainName), util.toPointer(DomainGuid), util.pstrToFfi(SiteName), Flags, util.toPointer(DomainControllerInfo));
 }
 
 export function DsGetDcNameW(
@@ -15995,33 +16153,33 @@ export function DsGetDcNameW(
   Flags: number /* u32 */,
   DomainControllerInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcNameW(util.pwstrToFfi(ComputerName), util.pwstrToFfi(DomainName), util.toPointer(DomainGuid), util.pwstrToFfi(SiteName), Flags, util.toPointer(DomainControllerInfo));
+  return libNETAPI32_dll.DsGetDcNameW!(util.pwstrToFfi(ComputerName), util.pwstrToFfi(DomainName), util.toPointer(DomainGuid), util.pwstrToFfi(SiteName), Flags, util.toPointer(DomainControllerInfo));
 }
 
 export function DsGetSiteNameA(
   ComputerName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   SiteName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetSiteNameA(util.pstrToFfi(ComputerName), util.toPointer(SiteName));
+  return libNETAPI32_dll.DsGetSiteNameA!(util.pstrToFfi(ComputerName), util.toPointer(SiteName));
 }
 
 export function DsGetSiteNameW(
   ComputerName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   SiteName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetSiteNameW(util.pwstrToFfi(ComputerName), util.toPointer(SiteName));
+  return libNETAPI32_dll.DsGetSiteNameW!(util.pwstrToFfi(ComputerName), util.toPointer(SiteName));
 }
 
 export function DsValidateSubnetNameW(
   SubnetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsValidateSubnetNameW(util.pwstrToFfi(SubnetName));
+  return libNETAPI32_dll.DsValidateSubnetNameW!(util.pwstrToFfi(SubnetName));
 }
 
 export function DsValidateSubnetNameA(
   SubnetName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsValidateSubnetNameA(util.pstrToFfi(SubnetName));
+  return libNETAPI32_dll.DsValidateSubnetNameA!(util.pstrToFfi(SubnetName));
 }
 
 export function DsAddressToSiteNamesW(
@@ -16030,7 +16188,7 @@ export function DsAddressToSiteNamesW(
   SocketAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsAddressToSiteNamesW(util.pwstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames));
+  return libNETAPI32_dll.DsAddressToSiteNamesW!(util.pwstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames));
 }
 
 export function DsAddressToSiteNamesA(
@@ -16039,7 +16197,7 @@ export function DsAddressToSiteNamesA(
   SocketAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsAddressToSiteNamesA(util.pstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames));
+  return libNETAPI32_dll.DsAddressToSiteNamesA!(util.pstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames));
 }
 
 export function DsAddressToSiteNamesExW(
@@ -16049,7 +16207,7 @@ export function DsAddressToSiteNamesExW(
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
   SubnetNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsAddressToSiteNamesExW(util.pwstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames), util.toPointer(SubnetNames));
+  return libNETAPI32_dll.DsAddressToSiteNamesExW!(util.pwstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames), util.toPointer(SubnetNames));
 }
 
 export function DsAddressToSiteNamesExA(
@@ -16059,7 +16217,7 @@ export function DsAddressToSiteNamesExA(
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
   SubnetNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsAddressToSiteNamesExA(util.pstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames), util.toPointer(SubnetNames));
+  return libNETAPI32_dll.DsAddressToSiteNamesExA!(util.pstrToFfi(ComputerName), EntryCount, util.toPointer(SocketAddresses), util.toPointer(SiteNames), util.toPointer(SubnetNames));
 }
 
 export function DsEnumerateDomainTrustsW(
@@ -16068,7 +16226,7 @@ export function DsEnumerateDomainTrustsW(
   Domains: Deno.PointerValue | Uint8Array /* ptr */,
   DomainCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsEnumerateDomainTrustsW(util.pwstrToFfi(ServerName), Flags, util.toPointer(Domains), util.toPointer(DomainCount));
+  return libNETAPI32_dll.DsEnumerateDomainTrustsW!(util.pwstrToFfi(ServerName), Flags, util.toPointer(Domains), util.toPointer(DomainCount));
 }
 
 export function DsEnumerateDomainTrustsA(
@@ -16077,7 +16235,7 @@ export function DsEnumerateDomainTrustsA(
   Domains: Deno.PointerValue | Uint8Array /* ptr */,
   DomainCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsEnumerateDomainTrustsA(util.pstrToFfi(ServerName), Flags, util.toPointer(Domains), util.toPointer(DomainCount));
+  return libNETAPI32_dll.DsEnumerateDomainTrustsA!(util.pstrToFfi(ServerName), Flags, util.toPointer(Domains), util.toPointer(DomainCount));
 }
 
 export function DsGetForestTrustInformationW(
@@ -16086,7 +16244,7 @@ export function DsGetForestTrustInformationW(
   Flags: number /* u32 */,
   ForestTrustInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetForestTrustInformationW(util.pwstrToFfi(ServerName), util.pwstrToFfi(TrustedDomainName), Flags, util.toPointer(ForestTrustInfo));
+  return libNETAPI32_dll.DsGetForestTrustInformationW!(util.pwstrToFfi(ServerName), util.pwstrToFfi(TrustedDomainName), Flags, util.toPointer(ForestTrustInfo));
 }
 
 export function DsMergeForestTrustInformationW(
@@ -16095,7 +16253,7 @@ export function DsMergeForestTrustInformationW(
   OldForestTrustInfo: Deno.PointerValue | Uint8Array /* ptr */,
   MergedForestTrustInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsMergeForestTrustInformationW(util.pwstrToFfi(DomainName), util.toPointer(NewForestTrustInfo), util.toPointer(OldForestTrustInfo), util.toPointer(MergedForestTrustInfo));
+  return libNETAPI32_dll.DsMergeForestTrustInformationW!(util.pwstrToFfi(DomainName), util.toPointer(NewForestTrustInfo), util.toPointer(OldForestTrustInfo), util.toPointer(MergedForestTrustInfo));
 }
 
 export function DsGetDcSiteCoverageW(
@@ -16103,7 +16261,7 @@ export function DsGetDcSiteCoverageW(
   EntryCount: Deno.PointerValue | Uint8Array /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcSiteCoverageW(util.pwstrToFfi(ServerName), util.toPointer(EntryCount), util.toPointer(SiteNames));
+  return libNETAPI32_dll.DsGetDcSiteCoverageW!(util.pwstrToFfi(ServerName), util.toPointer(EntryCount), util.toPointer(SiteNames));
 }
 
 export function DsGetDcSiteCoverageA(
@@ -16111,7 +16269,7 @@ export function DsGetDcSiteCoverageA(
   EntryCount: Deno.PointerValue | Uint8Array /* ptr */,
   SiteNames: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcSiteCoverageA(util.pstrToFfi(ServerName), util.toPointer(EntryCount), util.toPointer(SiteNames));
+  return libNETAPI32_dll.DsGetDcSiteCoverageA!(util.pstrToFfi(ServerName), util.toPointer(EntryCount), util.toPointer(SiteNames));
 }
 
 export function DsDeregisterDnsHostRecordsW(
@@ -16121,7 +16279,7 @@ export function DsDeregisterDnsHostRecordsW(
   DsaGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DnsHostName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsDeregisterDnsHostRecordsW(util.pwstrToFfi(ServerName), util.pwstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pwstrToFfi(DnsHostName));
+  return libNETAPI32_dll.DsDeregisterDnsHostRecordsW!(util.pwstrToFfi(ServerName), util.pwstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pwstrToFfi(DnsHostName));
 }
 
 export function DsDeregisterDnsHostRecordsA(
@@ -16131,7 +16289,7 @@ export function DsDeregisterDnsHostRecordsA(
   DsaGuid: Deno.PointerValue | Uint8Array /* ptr */,
   DnsHostName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsDeregisterDnsHostRecordsA(util.pstrToFfi(ServerName), util.pstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pstrToFfi(DnsHostName));
+  return libNETAPI32_dll.DsDeregisterDnsHostRecordsA!(util.pstrToFfi(ServerName), util.pstrToFfi(DnsDomainName), util.toPointer(DomainGuid), util.toPointer(DsaGuid), util.pstrToFfi(DnsHostName));
 }
 
 export function DsGetDcOpenW(
@@ -16143,7 +16301,7 @@ export function DsGetDcOpenW(
   DcFlags: number /* u32 */,
   RetGetDcContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcOpenW(util.pwstrToFfi(DnsName), OptionFlags, util.pwstrToFfi(SiteName), util.toPointer(DomainGuid), util.pwstrToFfi(DnsForestName), DcFlags, util.toPointer(RetGetDcContext));
+  return libNETAPI32_dll.DsGetDcOpenW!(util.pwstrToFfi(DnsName), OptionFlags, util.pwstrToFfi(SiteName), util.toPointer(DomainGuid), util.pwstrToFfi(DnsForestName), DcFlags, util.toPointer(RetGetDcContext));
 }
 
 export function DsGetDcOpenA(
@@ -16155,7 +16313,7 @@ export function DsGetDcOpenA(
   DcFlags: number /* u32 */,
   RetGetDcContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcOpenA(util.pstrToFfi(DnsName), OptionFlags, util.pstrToFfi(SiteName), util.toPointer(DomainGuid), util.pstrToFfi(DnsForestName), DcFlags, util.toPointer(RetGetDcContext));
+  return libNETAPI32_dll.DsGetDcOpenA!(util.pstrToFfi(DnsName), OptionFlags, util.pstrToFfi(SiteName), util.toPointer(DomainGuid), util.pstrToFfi(DnsForestName), DcFlags, util.toPointer(RetGetDcContext));
 }
 
 export function DsGetDcNextW(
@@ -16164,7 +16322,7 @@ export function DsGetDcNextW(
   SockAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   DnsHostName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcNextW(util.toPointer(GetDcContextHandle), util.toPointer(SockAddressCount), util.toPointer(SockAddresses), util.toPointer(DnsHostName));
+  return libNETAPI32_dll.DsGetDcNextW!(util.toPointer(GetDcContextHandle), util.toPointer(SockAddressCount), util.toPointer(SockAddresses), util.toPointer(DnsHostName));
 }
 
 export function DsGetDcNextA(
@@ -16173,12 +16331,12 @@ export function DsGetDcNextA(
   SockAddresses: Deno.PointerValue | Uint8Array /* ptr */,
   DnsHostName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNETAPI32_dll.DsGetDcNextA(util.toPointer(GetDcContextHandle), util.toPointer(SockAddressCount), util.toPointer(SockAddresses), util.toPointer(DnsHostName));
+  return libNETAPI32_dll.DsGetDcNextA!(util.toPointer(GetDcContextHandle), util.toPointer(SockAddressCount), util.toPointer(SockAddresses), util.toPointer(DnsHostName));
 }
 
 export function DsGetDcCloseW(
   GetDcContextHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.ActiveDirectory.GetDcContextHandle */,
 ): void /* void */ {
-  return libNETAPI32_dll.DsGetDcCloseW(util.toPointer(GetDcContextHandle));
+  return libNETAPI32_dll.DsGetDcCloseW!(util.toPointer(GetDcContextHandle));
 }
 

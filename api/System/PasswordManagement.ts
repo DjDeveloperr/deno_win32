@@ -175,10 +175,12 @@ try {
     MSChapSrvChangePassword: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MSChapSrvChangePassword2: {
       parameters: ["buffer", "buffer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -194,7 +196,7 @@ export function MSChapSrvChangePassword(
   NtOldOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
   NtNewOwfPassword: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.MSChapSrvChangePassword(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(LmOldPresent), util.toPointer(LmOldOwfPassword), util.toPointer(LmNewOwfPassword), util.toPointer(NtOldOwfPassword), util.toPointer(NtNewOwfPassword));
+  return libADVAPI32_dll.MSChapSrvChangePassword!(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(LmOldPresent), util.toPointer(LmOldOwfPassword), util.toPointer(LmNewOwfPassword), util.toPointer(NtOldOwfPassword), util.toPointer(NtNewOwfPassword));
 }
 
 export function MSChapSrvChangePassword2(
@@ -206,6 +208,6 @@ export function MSChapSrvChangePassword2(
   NewPasswordEncryptedWithOldLm: Deno.PointerValue | Uint8Array /* ptr */,
   OldLmOwfPasswordEncryptedWithNewLmOrNt: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libADVAPI32_dll.MSChapSrvChangePassword2(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(NewPasswordEncryptedWithOldNt), util.toPointer(OldNtOwfPasswordEncryptedWithNewNt), util.toPointer(LmPresent), util.toPointer(NewPasswordEncryptedWithOldLm), util.toPointer(OldLmOwfPasswordEncryptedWithNewLmOrNt));
+  return libADVAPI32_dll.MSChapSrvChangePassword2!(util.pwstrToFfi(ServerName), util.pwstrToFfi(UserName), util.toPointer(NewPasswordEncryptedWithOldNt), util.toPointer(OldNtOwfPasswordEncryptedWithNewNt), util.toPointer(LmPresent), util.toPointer(NewPasswordEncryptedWithOldLm), util.toPointer(OldLmOwfPasswordEncryptedWithNewLmOrNt));
 }
 

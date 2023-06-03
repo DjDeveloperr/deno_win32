@@ -3097,18 +3097,22 @@ try {
     CreateFX: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     XAudio2CreateWithVersionInfo: {
       parameters: ["pointer", "u32", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateAudioVolumeMeter: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateAudioReverb: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3118,6 +3122,7 @@ try {
     CreateHrtfApo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3130,7 +3135,7 @@ export function CreateFX(
   pInitDat: Deno.PointerValue | Uint8Array /* ptr */,
   InitDataByteSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXAudio2_8_dll.CreateFX(util.toPointer(clsid), util.toPointer(pEffect), util.toPointer(pInitDat), InitDataByteSize);
+  return libXAudio2_8_dll.CreateFX!(util.toPointer(clsid), util.toPointer(pEffect), util.toPointer(pInitDat), InitDataByteSize);
 }
 
 export function XAudio2CreateWithVersionInfo(
@@ -3139,25 +3144,25 @@ export function XAudio2CreateWithVersionInfo(
   XAudio2Processor: number /* u32 */,
   ntddiVersion: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXAudio2_8_dll.XAudio2CreateWithVersionInfo(util.toPointer(ppXAudio2), Flags, XAudio2Processor, ntddiVersion);
+  return libXAudio2_8_dll.XAudio2CreateWithVersionInfo!(util.toPointer(ppXAudio2), Flags, XAudio2Processor, ntddiVersion);
 }
 
 export function CreateAudioVolumeMeter(
   ppApo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXAudio2_8_dll.CreateAudioVolumeMeter(util.toPointer(ppApo));
+  return libXAudio2_8_dll.CreateAudioVolumeMeter!(util.toPointer(ppApo));
 }
 
 export function CreateAudioReverb(
   ppApo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXAudio2_8_dll.CreateAudioReverb(util.toPointer(ppApo));
+  return libXAudio2_8_dll.CreateAudioReverb!(util.toPointer(ppApo));
 }
 
 export function CreateHrtfApo(
   init: Deno.PointerValue | Uint8Array /* ptr */,
   xApo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libHrtfApo_dll.CreateHrtfApo(util.toPointer(init), util.toPointer(xApo));
+  return libHrtfApo_dll.CreateHrtfApo!(util.toPointer(init), util.toPointer(xApo));
 }
 

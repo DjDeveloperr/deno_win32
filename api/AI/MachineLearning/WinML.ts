@@ -2251,6 +2251,7 @@ try {
     WinMLCreateRuntime: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2260,6 +2261,7 @@ try {
     MLCreateOperatorRegistry: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2269,12 +2271,12 @@ try {
 export function WinMLCreateRuntime(
   runtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwinml_dll.WinMLCreateRuntime(util.toPointer(runtime));
+  return libwinml_dll.WinMLCreateRuntime!(util.toPointer(runtime));
 }
 
 export function MLCreateOperatorRegistry(
   registry: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwindows_ai_machinelearning_dll.MLCreateOperatorRegistry(util.toPointer(registry));
+  return libwindows_ai_machinelearning_dll.MLCreateOperatorRegistry!(util.toPointer(registry));
 }
 

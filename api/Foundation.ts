@@ -11358,42 +11358,52 @@ try {
     SysAllocString: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     SysReAllocString: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     SysAllocStringLen: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     SysReAllocStringLen: {
       parameters: ["pointer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     SysAddRefString: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SysReleaseString: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SysFreeString: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SysStringLen: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SysStringByteLen: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SysAllocStringByteLen: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11403,26 +11413,32 @@ try {
     CloseHandle: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DuplicateHandle: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetHandleInformation: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetHandleInformation: {
       parameters: ["pointer", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     GetLastError: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetLastError: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11432,6 +11448,7 @@ try {
     CompareObjectHandles: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11441,6 +11458,7 @@ try {
     SetLastErrorEx: {
       parameters: ["u32", "u32"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11450,6 +11468,7 @@ try {
     RtlNtStatusToDosError: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -11459,21 +11478,21 @@ try {
 export function SysAllocString(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BSTR */ {
-  return libOLEAUT32_dll.SysAllocString(util.pwstrToFfi(psz));
+  return libOLEAUT32_dll.SysAllocString!(util.pwstrToFfi(psz));
 }
 
 export function SysReAllocString(
   pbstr: Deno.PointerValue | Uint8Array /* ptr */,
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.SysReAllocString(util.toPointer(pbstr), util.pwstrToFfi(psz));
+  return libOLEAUT32_dll.SysReAllocString!(util.toPointer(pbstr), util.pwstrToFfi(psz));
 }
 
 export function SysAllocStringLen(
   strIn: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ui: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BSTR */ {
-  return libOLEAUT32_dll.SysAllocStringLen(util.pwstrToFfi(strIn), ui);
+  return libOLEAUT32_dll.SysAllocStringLen!(util.pwstrToFfi(strIn), ui);
 }
 
 export function SysReAllocStringLen(
@@ -11481,50 +11500,50 @@ export function SysReAllocStringLen(
   psz: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   len: number /* u32 */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.SysReAllocStringLen(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
+  return libOLEAUT32_dll.SysReAllocStringLen!(util.toPointer(pbstr), util.pwstrToFfi(psz), len);
 }
 
 export function SysAddRefString(
   bstrString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SysAddRefString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysAddRefString!(util.toPointer(bstrString));
 }
 
 export function SysReleaseString(
   bstrString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32_dll.SysReleaseString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysReleaseString!(util.toPointer(bstrString));
 }
 
 export function SysFreeString(
   bstrString: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): void /* void */ {
-  return libOLEAUT32_dll.SysFreeString(util.toPointer(bstrString));
+  return libOLEAUT32_dll.SysFreeString!(util.toPointer(bstrString));
 }
 
 export function SysStringLen(
   pbstr: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.SysStringLen(util.toPointer(pbstr));
+  return libOLEAUT32_dll.SysStringLen!(util.toPointer(pbstr));
 }
 
 export function SysStringByteLen(
   bstr: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.SysStringByteLen(util.toPointer(bstr));
+  return libOLEAUT32_dll.SysStringByteLen!(util.toPointer(bstr));
 }
 
 export function SysAllocStringByteLen(
   psz: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   len: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BSTR */ {
-  return libOLEAUT32_dll.SysAllocStringByteLen(util.pstrToFfi(psz), len);
+  return libOLEAUT32_dll.SysAllocStringByteLen!(util.pstrToFfi(psz), len);
 }
 
 export function CloseHandle(
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.CloseHandle(util.toPointer(hObject)));
+  return util.boolFromFfi(libKERNEL32_dll.CloseHandle!(util.toPointer(hObject)));
 }
 
 export function DuplicateHandle(
@@ -11536,21 +11555,21 @@ export function DuplicateHandle(
   bInheritHandle: boolean /* Windows.Win32.Foundation.BOOL */,
   dwOptions: DUPLICATE_HANDLE_OPTIONS /* Windows.Win32.Foundation.DUPLICATE_HANDLE_OPTIONS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.DuplicateHandle(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
+  return util.boolFromFfi(libKERNEL32_dll.DuplicateHandle!(util.toPointer(hSourceProcessHandle), util.toPointer(hSourceHandle), util.toPointer(hTargetProcessHandle), util.toPointer(lpTargetHandle), dwDesiredAccess, util.boolToFfi(bInheritHandle), dwOptions));
 }
 
 export function CompareObjectHandles(
   hFirstObjectHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   hSecondObjectHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0_dll.CompareObjectHandles(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
+  return util.boolFromFfi(libapi_ms_win_core_handle_l1_1_0_dll.CompareObjectHandles!(util.toPointer(hFirstObjectHandle), util.toPointer(hSecondObjectHandle)));
 }
 
 export function GetHandleInformation(
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.GetHandleInformation(util.toPointer(hObject), util.toPointer(lpdwFlags)));
+  return util.boolFromFfi(libKERNEL32_dll.GetHandleInformation!(util.toPointer(hObject), util.toPointer(lpdwFlags)));
 }
 
 export function SetHandleInformation(
@@ -11558,29 +11577,29 @@ export function SetHandleInformation(
   dwMask: number /* u32 */,
   dwFlags: HANDLE_FLAGS /* Windows.Win32.Foundation.HANDLE_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.SetHandleInformation(util.toPointer(hObject), dwMask, dwFlags));
+  return util.boolFromFfi(libKERNEL32_dll.SetHandleInformation!(util.toPointer(hObject), dwMask, dwFlags));
 }
 
 export function GetLastError(): WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */ {
-  return libKERNEL32_dll.GetLastError();
+  return libKERNEL32_dll.GetLastError!();
 }
 
 export function SetLastError(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
 ): void /* void */ {
-  return libKERNEL32_dll.SetLastError(dwErrCode);
+  return libKERNEL32_dll.SetLastError!(dwErrCode);
 }
 
 export function SetLastErrorEx(
   dwErrCode: WIN32_ERROR /* Windows.Win32.Foundation.WIN32_ERROR */,
   dwType: number /* u32 */,
 ): void /* void */ {
-  return libUSER32_dll.SetLastErrorEx(dwErrCode, dwType);
+  return libUSER32_dll.SetLastErrorEx!(dwErrCode, dwType);
 }
 
 export function RtlNtStatusToDosError(
   Status: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.NTSTATUS */,
 ): number /* u32 */ {
-  return libntdll_dll.RtlNtStatusToDosError(util.toPointer(Status));
+  return libntdll_dll.RtlNtStatusToDosError!(util.toPointer(Status));
 }
 

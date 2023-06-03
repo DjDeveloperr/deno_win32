@@ -261,10 +261,12 @@ try {
     StartXpsPrintJob: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     StartXpsPrintJob1: {
       parameters: ["buffer", "buffer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -283,7 +285,7 @@ export function StartXpsPrintJob(
   documentStream: Deno.PointerValue | Uint8Array /* ptr */,
   printTicketStream: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXPSPRINT_dll.StartXpsPrintJob(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(printablePagesOn), printablePagesOnCount, util.toPointer(xpsPrintJob), util.toPointer(documentStream), util.toPointer(printTicketStream));
+  return libXPSPRINT_dll.StartXpsPrintJob!(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(printablePagesOn), printablePagesOnCount, util.toPointer(xpsPrintJob), util.toPointer(documentStream), util.toPointer(printTicketStream));
 }
 
 export function StartXpsPrintJob1(
@@ -295,6 +297,6 @@ export function StartXpsPrintJob1(
   xpsPrintJob: Deno.PointerValue | Uint8Array /* ptr */,
   printContentReceiver: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libXPSPRINT_dll.StartXpsPrintJob1(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(xpsPrintJob), util.toPointer(printContentReceiver));
+  return libXPSPRINT_dll.StartXpsPrintJob1!(util.pwstrToFfi(printerName), util.pwstrToFfi(jobName), util.pwstrToFfi(outputFileName), util.toPointer(progressEvent), util.toPointer(completionEvent), util.toPointer(xpsPrintJob), util.toPointer(printContentReceiver));
 }
 

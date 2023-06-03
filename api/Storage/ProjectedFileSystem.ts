@@ -1692,78 +1692,97 @@ try {
     PrjStartVirtualizing: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjStopVirtualizing: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     PrjClearNegativePathCache: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjGetVirtualizationInstanceInfo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjMarkDirectoryAsPlaceholder: {
       parameters: ["buffer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjWritePlaceholderInfo: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PrjWritePlaceholderInfo2: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjUpdateFileIfNeeded: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjDeleteFile: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjWriteFileData: {
       parameters: ["pointer", "pointer", "pointer", "u64", "u32"],
       result: "pointer",
+      optional: true,
     },
     PrjGetOnDiskFileState: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjAllocateAlignedBuffer: {
       parameters: ["pointer", "usize"],
       result: "pointer",
+      optional: true,
     },
     PrjFreeAlignedBuffer: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     PrjCompleteCommand: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjFillDirEntryBuffer: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjFillDirEntryBuffer2: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PrjFileNameMatch: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     PrjFileNameCompare: {
       parameters: ["buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     PrjDoesNameContainWildCards: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1777,27 +1796,27 @@ export function PrjStartVirtualizing(
   options: Deno.PointerValue | Uint8Array /* ptr */,
   namespaceVirtualizationContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjStartVirtualizing(util.pwstrToFfi(virtualizationRootPath), util.toPointer(callbacks), util.toPointer(instanceContext), util.toPointer(options), util.toPointer(namespaceVirtualizationContext));
+  return libPROJECTEDFSLIB_dll.PrjStartVirtualizing!(util.pwstrToFfi(virtualizationRootPath), util.toPointer(callbacks), util.toPointer(instanceContext), util.toPointer(options), util.toPointer(namespaceVirtualizationContext));
 }
 
 export function PrjStopVirtualizing(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
 ): void /* void */ {
-  return libPROJECTEDFSLIB_dll.PrjStopVirtualizing(util.toPointer(namespaceVirtualizationContext));
+  return libPROJECTEDFSLIB_dll.PrjStopVirtualizing!(util.toPointer(namespaceVirtualizationContext));
 }
 
 export function PrjClearNegativePathCache(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
   totalEntryNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjClearNegativePathCache(util.toPointer(namespaceVirtualizationContext), util.toPointer(totalEntryNumber));
+  return libPROJECTEDFSLIB_dll.PrjClearNegativePathCache!(util.toPointer(namespaceVirtualizationContext), util.toPointer(totalEntryNumber));
 }
 
 export function PrjGetVirtualizationInstanceInfo(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
   virtualizationInstanceInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjGetVirtualizationInstanceInfo(util.toPointer(namespaceVirtualizationContext), util.toPointer(virtualizationInstanceInfo));
+  return libPROJECTEDFSLIB_dll.PrjGetVirtualizationInstanceInfo!(util.toPointer(namespaceVirtualizationContext), util.toPointer(virtualizationInstanceInfo));
 }
 
 export function PrjMarkDirectoryAsPlaceholder(
@@ -1806,7 +1825,7 @@ export function PrjMarkDirectoryAsPlaceholder(
   versionInfo: Deno.PointerValue | Uint8Array /* ptr */,
   virtualizationInstanceID: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjMarkDirectoryAsPlaceholder(util.pwstrToFfi(rootPathName), util.pwstrToFfi(targetPathName), util.toPointer(versionInfo), util.toPointer(virtualizationInstanceID));
+  return libPROJECTEDFSLIB_dll.PrjMarkDirectoryAsPlaceholder!(util.pwstrToFfi(rootPathName), util.pwstrToFfi(targetPathName), util.toPointer(versionInfo), util.toPointer(virtualizationInstanceID));
 }
 
 export function PrjWritePlaceholderInfo(
@@ -1815,7 +1834,7 @@ export function PrjWritePlaceholderInfo(
   placeholderInfo: Deno.PointerValue | Uint8Array /* ptr */,
   placeholderInfoSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjWritePlaceholderInfo(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize);
+  return libPROJECTEDFSLIB_dll.PrjWritePlaceholderInfo!(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize);
 }
 
 export function PrjWritePlaceholderInfo2(
@@ -1825,7 +1844,7 @@ export function PrjWritePlaceholderInfo2(
   placeholderInfoSize: number /* u32 */,
   ExtendedInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjWritePlaceholderInfo2(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize, util.toPointer(ExtendedInfo));
+  return libPROJECTEDFSLIB_dll.PrjWritePlaceholderInfo2!(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize, util.toPointer(ExtendedInfo));
 }
 
 export function PrjUpdateFileIfNeeded(
@@ -1836,7 +1855,7 @@ export function PrjUpdateFileIfNeeded(
   updateFlags: PRJ_UPDATE_TYPES /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_UPDATE_TYPES */,
   failureReason: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjUpdateFileIfNeeded(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize, updateFlags, util.toPointer(failureReason));
+  return libPROJECTEDFSLIB_dll.PrjUpdateFileIfNeeded!(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), util.toPointer(placeholderInfo), placeholderInfoSize, updateFlags, util.toPointer(failureReason));
 }
 
 export function PrjDeleteFile(
@@ -1845,7 +1864,7 @@ export function PrjDeleteFile(
   updateFlags: PRJ_UPDATE_TYPES /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_UPDATE_TYPES */,
   failureReason: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjDeleteFile(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), updateFlags, util.toPointer(failureReason));
+  return libPROJECTEDFSLIB_dll.PrjDeleteFile!(util.toPointer(namespaceVirtualizationContext), util.pwstrToFfi(destinationFileName), updateFlags, util.toPointer(failureReason));
 }
 
 export function PrjWriteFileData(
@@ -1855,27 +1874,27 @@ export function PrjWriteFileData(
   byteOffset: bigint | number /* u64 */,
   length: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjWriteFileData(util.toPointer(namespaceVirtualizationContext), util.toPointer(dataStreamId), util.toPointer(buffer), byteOffset, length);
+  return libPROJECTEDFSLIB_dll.PrjWriteFileData!(util.toPointer(namespaceVirtualizationContext), util.toPointer(dataStreamId), util.toPointer(buffer), byteOffset, length);
 }
 
 export function PrjGetOnDiskFileState(
   destinationFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fileState: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjGetOnDiskFileState(util.pwstrToFfi(destinationFileName), util.toPointer(fileState));
+  return libPROJECTEDFSLIB_dll.PrjGetOnDiskFileState!(util.pwstrToFfi(destinationFileName), util.toPointer(fileState));
 }
 
 export function PrjAllocateAlignedBuffer(
   namespaceVirtualizationContext: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_NAMESPACE_VIRTUALIZATION_CONTEXT */,
   size: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libPROJECTEDFSLIB_dll.PrjAllocateAlignedBuffer(util.toPointer(namespaceVirtualizationContext), size);
+  return libPROJECTEDFSLIB_dll.PrjAllocateAlignedBuffer!(util.toPointer(namespaceVirtualizationContext), size);
 }
 
 export function PrjFreeAlignedBuffer(
   buffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libPROJECTEDFSLIB_dll.PrjFreeAlignedBuffer(util.toPointer(buffer));
+  return libPROJECTEDFSLIB_dll.PrjFreeAlignedBuffer!(util.toPointer(buffer));
 }
 
 export function PrjCompleteCommand(
@@ -1884,7 +1903,7 @@ export function PrjCompleteCommand(
   completionResult: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
   extendedParameters: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjCompleteCommand(util.toPointer(namespaceVirtualizationContext), commandId, util.toPointer(completionResult), util.toPointer(extendedParameters));
+  return libPROJECTEDFSLIB_dll.PrjCompleteCommand!(util.toPointer(namespaceVirtualizationContext), commandId, util.toPointer(completionResult), util.toPointer(extendedParameters));
 }
 
 export function PrjFillDirEntryBuffer(
@@ -1892,7 +1911,7 @@ export function PrjFillDirEntryBuffer(
   fileBasicInfo: Deno.PointerValue | Uint8Array /* ptr */,
   dirEntryBufferHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Storage.ProjectedFileSystem.PRJ_DIR_ENTRY_BUFFER_HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjFillDirEntryBuffer(util.pwstrToFfi(fileName), util.toPointer(fileBasicInfo), util.toPointer(dirEntryBufferHandle));
+  return libPROJECTEDFSLIB_dll.PrjFillDirEntryBuffer!(util.pwstrToFfi(fileName), util.toPointer(fileBasicInfo), util.toPointer(dirEntryBufferHandle));
 }
 
 export function PrjFillDirEntryBuffer2(
@@ -1901,26 +1920,26 @@ export function PrjFillDirEntryBuffer2(
   fileBasicInfo: Deno.PointerValue | Uint8Array /* ptr */,
   extendedInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libPROJECTEDFSLIB_dll.PrjFillDirEntryBuffer2(util.toPointer(dirEntryBufferHandle), util.pwstrToFfi(fileName), util.toPointer(fileBasicInfo), util.toPointer(extendedInfo));
+  return libPROJECTEDFSLIB_dll.PrjFillDirEntryBuffer2!(util.toPointer(dirEntryBufferHandle), util.pwstrToFfi(fileName), util.toPointer(fileBasicInfo), util.toPointer(extendedInfo));
 }
 
 export function PrjFileNameMatch(
   fileNameToCheck: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pattern: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPROJECTEDFSLIB_dll.PrjFileNameMatch(util.pwstrToFfi(fileNameToCheck), util.pwstrToFfi(pattern));
+  return libPROJECTEDFSLIB_dll.PrjFileNameMatch!(util.pwstrToFfi(fileNameToCheck), util.pwstrToFfi(pattern));
 }
 
 export function PrjFileNameCompare(
   fileName1: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fileName2: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libPROJECTEDFSLIB_dll.PrjFileNameCompare(util.pwstrToFfi(fileName1), util.pwstrToFfi(fileName2));
+  return libPROJECTEDFSLIB_dll.PrjFileNameCompare!(util.pwstrToFfi(fileName1), util.pwstrToFfi(fileName2));
 }
 
 export function PrjDoesNameContainWildCards(
   fileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.BOOLEAN */ {
-  return libPROJECTEDFSLIB_dll.PrjDoesNameContainWildCards(util.pwstrToFfi(fileName));
+  return libPROJECTEDFSLIB_dll.PrjDoesNameContainWildCards!(util.pwstrToFfi(fileName));
 }
 

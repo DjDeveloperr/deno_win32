@@ -94,6 +94,7 @@ try {
     D3D11On12CreateDevice: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -112,6 +113,6 @@ export function D3D11On12CreateDevice(
   ppImmediateContext: Deno.PointerValue | Uint8Array /* ptr */,
   pChosenFeatureLevel: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3d11_dll.D3D11On12CreateDevice(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel));
+  return libd3d11_dll.D3D11On12CreateDevice!(util.toPointer(pDevice), Flags, util.toPointer(pFeatureLevels), FeatureLevels, util.toPointer(ppCommandQueues), NumQueues, NodeMask, util.toPointer(ppDevice), util.toPointer(ppImmediateContext), util.toPointer(pChosenFeatureLevel));
 }
 

@@ -6481,74 +6481,92 @@ try {
     WinVerifyTrust: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WinVerifyTrustEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustGetRegPolicyFlags: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WintrustSetRegPolicyFlags: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     WintrustAddActionID: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustRemoveActionID: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustLoadFunctionPointers: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustAddDefaultForUsage: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustGetDefaultForUsage: {
       parameters: ["u32", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTHelperGetProvSignerFromChain: {
       parameters: ["pointer", "u32", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WTHelperGetProvCertFromChain: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WTHelperProvDataFromStateData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WTHelperGetProvPrivateDataFromChain: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WTHelperCertIsSelfSigned: {
       parameters: ["u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     WTHelperCertCheckValidSignature: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OpenPersonalTrustDBDialogEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OpenPersonalTrustDBDialog: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     WintrustSetDefaultIncludePEPageHashes: {
       parameters: ["i32"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -6560,7 +6578,7 @@ export function WinVerifyTrust(
   pgActionID: Deno.PointerValue | Uint8Array /* ptr */,
   pWVTData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libWINTRUST_dll.WinVerifyTrust((hwnd), util.toPointer(pgActionID), util.toPointer(pWVTData));
+  return libWINTRUST_dll.WinVerifyTrust!((hwnd), util.toPointer(pgActionID), util.toPointer(pWVTData));
 }
 
 export function WinVerifyTrustEx(
@@ -6568,19 +6586,19 @@ export function WinVerifyTrustEx(
   pgActionID: Deno.PointerValue | Uint8Array /* ptr */,
   pWinTrustData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libWINTRUST_dll.WinVerifyTrustEx((hwnd), util.toPointer(pgActionID), util.toPointer(pWinTrustData));
+  return libWINTRUST_dll.WinVerifyTrustEx!((hwnd), util.toPointer(pgActionID), util.toPointer(pWinTrustData));
 }
 
 export function WintrustGetRegPolicyFlags(
   pdwPolicyFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libWINTRUST_dll.WintrustGetRegPolicyFlags(util.toPointer(pdwPolicyFlags));
+  return libWINTRUST_dll.WintrustGetRegPolicyFlags!(util.toPointer(pdwPolicyFlags));
 }
 
 export function WintrustSetRegPolicyFlags(
   dwPolicyFlags: WINTRUST_POLICY_FLAGS /* Windows.Win32.Security.WinTrust.WINTRUST_POLICY_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustSetRegPolicyFlags(dwPolicyFlags));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustSetRegPolicyFlags!(dwPolicyFlags));
 }
 
 export function WintrustAddActionID(
@@ -6588,27 +6606,27 @@ export function WintrustAddActionID(
   fdwFlags: number /* u32 */,
   psProvInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustAddActionID(util.toPointer(pgActionID), fdwFlags, util.toPointer(psProvInfo)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustAddActionID!(util.toPointer(pgActionID), fdwFlags, util.toPointer(psProvInfo)));
 }
 
 export function WintrustRemoveActionID(
   pgActionID: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustRemoveActionID(util.toPointer(pgActionID)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustRemoveActionID!(util.toPointer(pgActionID)));
 }
 
 export function WintrustLoadFunctionPointers(
   pgActionID: Deno.PointerValue | Uint8Array /* ptr */,
   pPfns: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustLoadFunctionPointers(util.toPointer(pgActionID), util.toPointer(pPfns)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustLoadFunctionPointers!(util.toPointer(pgActionID), util.toPointer(pPfns)));
 }
 
 export function WintrustAddDefaultForUsage(
   pszUsageOID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   psDefUsage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustAddDefaultForUsage(util.pstrToFfi(pszUsageOID), util.toPointer(psDefUsage)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustAddDefaultForUsage!(util.pstrToFfi(pszUsageOID), util.toPointer(psDefUsage)));
 }
 
 export function WintrustGetDefaultForUsage(
@@ -6616,7 +6634,7 @@ export function WintrustGetDefaultForUsage(
   pszUsageOID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   psUsage: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WintrustGetDefaultForUsage(dwAction, util.pstrToFfi(pszUsageOID), util.toPointer(psUsage)));
+  return util.boolFromFfi(libWINTRUST_dll.WintrustGetDefaultForUsage!(dwAction, util.pstrToFfi(pszUsageOID), util.toPointer(psUsage)));
 }
 
 export function WTHelperGetProvSignerFromChain(
@@ -6625,40 +6643,40 @@ export function WTHelperGetProvSignerFromChain(
   fCounterSigner: boolean /* Windows.Win32.Foundation.BOOL */,
   idxCounterSigner: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINTRUST_dll.WTHelperGetProvSignerFromChain(util.toPointer(pProvData), idxSigner, util.boolToFfi(fCounterSigner), idxCounterSigner);
+  return libWINTRUST_dll.WTHelperGetProvSignerFromChain!(util.toPointer(pProvData), idxSigner, util.boolToFfi(fCounterSigner), idxCounterSigner);
 }
 
 export function WTHelperGetProvCertFromChain(
   pSgnr: Deno.PointerValue | Uint8Array /* ptr */,
   idxCert: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINTRUST_dll.WTHelperGetProvCertFromChain(util.toPointer(pSgnr), idxCert);
+  return libWINTRUST_dll.WTHelperGetProvCertFromChain!(util.toPointer(pSgnr), idxCert);
 }
 
 export function WTHelperProvDataFromStateData(
   hStateData: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINTRUST_dll.WTHelperProvDataFromStateData(util.toPointer(hStateData));
+  return libWINTRUST_dll.WTHelperProvDataFromStateData!(util.toPointer(hStateData));
 }
 
 export function WTHelperGetProvPrivateDataFromChain(
   pProvData: Deno.PointerValue | Uint8Array /* ptr */,
   pgProviderID: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libWINTRUST_dll.WTHelperGetProvPrivateDataFromChain(util.toPointer(pProvData), util.toPointer(pgProviderID));
+  return libWINTRUST_dll.WTHelperGetProvPrivateDataFromChain!(util.toPointer(pProvData), util.toPointer(pgProviderID));
 }
 
 export function WTHelperCertIsSelfSigned(
   dwEncoding: number /* u32 */,
   pCert: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.WTHelperCertIsSelfSigned(dwEncoding, util.toPointer(pCert)));
+  return util.boolFromFfi(libWINTRUST_dll.WTHelperCertIsSelfSigned!(dwEncoding, util.toPointer(pCert)));
 }
 
 export function WTHelperCertCheckValidSignature(
   pProvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWINTRUST_dll.WTHelperCertCheckValidSignature(util.toPointer(pProvData));
+  return libWINTRUST_dll.WTHelperCertCheckValidSignature!(util.toPointer(pProvData));
 }
 
 export function OpenPersonalTrustDBDialogEx(
@@ -6666,18 +6684,18 @@ export function OpenPersonalTrustDBDialogEx(
   dwFlags: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialogEx((hwndParent), dwFlags, util.toPointer(pvReserved)));
+  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialogEx!((hwndParent), dwFlags, util.toPointer(pvReserved)));
 }
 
 export function OpenPersonalTrustDBDialog(
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialog((hwndParent)));
+  return util.boolFromFfi(libWINTRUST_dll.OpenPersonalTrustDBDialog!((hwndParent)));
 }
 
 export function WintrustSetDefaultIncludePEPageHashes(
   fIncludePEPageHashes: boolean /* Windows.Win32.Foundation.BOOL */,
 ): void /* void */ {
-  return libWINTRUST_dll.WintrustSetDefaultIncludePEPageHashes(util.boolToFfi(fIncludePEPageHashes));
+  return libWINTRUST_dll.WintrustSetDefaultIncludePEPageHashes!(util.boolToFfi(fIncludePEPageHashes));
 }
 

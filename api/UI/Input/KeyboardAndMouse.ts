@@ -3498,6 +3498,7 @@ try {
     _TrackMouseEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3507,206 +3508,257 @@ try {
     LoadKeyboardLayoutA: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     LoadKeyboardLayoutW: {
       parameters: ["buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ActivateKeyboardLayout: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ToUnicodeEx: {
       parameters: ["u32", "u32", "pointer", "buffer", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     UnloadKeyboardLayout: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetKeyboardLayoutNameA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     GetKeyboardLayoutNameW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     GetKeyboardLayoutList: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     GetKeyboardLayout: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     GetMouseMovePointsEx: {
       parameters: ["u32", "pointer", "pointer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     TrackMouseEvent: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     RegisterHotKey: {
       parameters: ["pointer", "i32", "u32", "u32"],
       result: "i32",
+      optional: true,
     },
     UnregisterHotKey: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     SwapMouseButton: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     GetDoubleClickTime: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetDoubleClickTime: {
       parameters: ["u32"],
       result: "i32",
+      optional: true,
     },
     SetFocus: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetActiveWindow: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetFocus: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     GetKBCodePage: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     GetKeyState: {
       parameters: ["i32"],
       result: "i16",
+      optional: true,
     },
     GetAsyncKeyState: {
       parameters: ["i32"],
       result: "i16",
+      optional: true,
     },
     GetKeyboardState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetKeyboardState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetKeyNameTextA: {
       parameters: ["i32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetKeyNameTextW: {
       parameters: ["i32", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     GetKeyboardType: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
     ToAscii: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ToAsciiEx: {
       parameters: ["u32", "u32", "pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ToUnicode: {
       parameters: ["u32", "u32", "pointer", "buffer", "i32", "u32"],
       result: "i32",
+      optional: true,
     },
     OemKeyScan: {
       parameters: ["u16"],
       result: "u32",
+      optional: true,
     },
     VkKeyScanA: {
       parameters: ["u8"],
       result: "i16",
+      optional: true,
     },
     VkKeyScanW: {
       parameters: ["pointer"],
       result: "i16",
+      optional: true,
     },
     VkKeyScanExA: {
       parameters: ["u8", "pointer"],
       result: "i16",
+      optional: true,
     },
     VkKeyScanExW: {
       parameters: ["pointer", "pointer"],
       result: "i16",
+      optional: true,
     },
     keybd_event: {
       parameters: ["u8", "u8", "u32", "usize"],
       result: "void",
+      optional: true,
     },
     mouse_event: {
       parameters: ["u32", "i32", "i32", "u32", "usize"],
       result: "void",
+      optional: true,
     },
     SendInput: {
       parameters: ["u32", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     GetLastInputInfo: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     MapVirtualKeyA: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MapVirtualKeyW: {
       parameters: ["u32", "u32"],
       result: "u32",
+      optional: true,
     },
     MapVirtualKeyExA: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     MapVirtualKeyExW: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetCapture: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     SetCapture: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ReleaseCapture: {
       parameters: [],
       result: "i32",
+      optional: true,
     },
     EnableWindow: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     IsWindowEnabled: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DragDetect: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetActiveWindow: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     BlockInput: {
       parameters: ["i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3716,28 +3768,28 @@ try {
 export function _TrackMouseEvent(
   lpEventTrack: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCOMCTL32_dll._TrackMouseEvent(util.toPointer(lpEventTrack)));
+  return util.boolFromFfi(libCOMCTL32_dll._TrackMouseEvent!(util.toPointer(lpEventTrack)));
 }
 
 export function LoadKeyboardLayoutA(
   pwszKLID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   Flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.ACTIVATE_KEYBOARD_LAYOUT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libUSER32_dll.LoadKeyboardLayoutA(util.pstrToFfi(pwszKLID), Flags);
+  return libUSER32_dll.LoadKeyboardLayoutA!(util.pstrToFfi(pwszKLID), Flags);
 }
 
 export function LoadKeyboardLayoutW(
   pwszKLID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.ACTIVATE_KEYBOARD_LAYOUT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libUSER32_dll.LoadKeyboardLayoutW(util.pwstrToFfi(pwszKLID), Flags);
+  return libUSER32_dll.LoadKeyboardLayoutW!(util.pwstrToFfi(pwszKLID), Flags);
 }
 
 export function ActivateKeyboardLayout(
   hkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
   Flags: ACTIVATE_KEYBOARD_LAYOUT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.ACTIVATE_KEYBOARD_LAYOUT_FLAGS */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libUSER32_dll.ActivateKeyboardLayout(util.toPointer(hkl), Flags);
+  return libUSER32_dll.ActivateKeyboardLayout!(util.toPointer(hkl), Flags);
 }
 
 export function ToUnicodeEx(
@@ -3749,38 +3801,38 @@ export function ToUnicodeEx(
   wFlags: number /* u32 */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* i32 */ {
-  return libUSER32_dll.ToUnicodeEx(wVirtKey, wScanCode, util.toPointer(lpKeyState), util.pwstrToFfi(pwszBuff), cchBuff, wFlags, util.toPointer(dwhkl));
+  return libUSER32_dll.ToUnicodeEx!(wVirtKey, wScanCode, util.toPointer(lpKeyState), util.pwstrToFfi(pwszBuff), cchBuff, wFlags, util.toPointer(dwhkl));
 }
 
 export function UnloadKeyboardLayout(
   hkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnloadKeyboardLayout(util.toPointer(hkl)));
+  return util.boolFromFfi(libUSER32_dll.UnloadKeyboardLayout!(util.toPointer(hkl)));
 }
 
 export function GetKeyboardLayoutNameA(
   pwszKLID: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameA(util.pstrToFfi(pwszKLID)));
+  return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameA!(util.pstrToFfi(pwszKLID)));
 }
 
 export function GetKeyboardLayoutNameW(
   pwszKLID: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameW(util.pwstrToFfi(pwszKLID)));
+  return util.boolFromFfi(libUSER32_dll.GetKeyboardLayoutNameW!(util.pwstrToFfi(pwszKLID)));
 }
 
 export function GetKeyboardLayoutList(
   nBuff: number /* i32 */,
   lpList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetKeyboardLayoutList(nBuff, util.toPointer(lpList));
+  return libUSER32_dll.GetKeyboardLayoutList!(nBuff, util.toPointer(lpList));
 }
 
 export function GetKeyboardLayout(
   idThread: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */ {
-  return libUSER32_dll.GetKeyboardLayout(idThread);
+  return libUSER32_dll.GetKeyboardLayout!(idThread);
 }
 
 export function GetMouseMovePointsEx(
@@ -3790,13 +3842,13 @@ export function GetMouseMovePointsEx(
   nBufPoints: number /* i32 */,
   resolution: GET_MOUSE_MOVE_POINTS_EX_RESOLUTION /* Windows.Win32.UI.Input.KeyboardAndMouse.GET_MOUSE_MOVE_POINTS_EX_RESOLUTION */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetMouseMovePointsEx(cbSize, util.toPointer(lppt), util.toPointer(lpptBuf), nBufPoints, resolution);
+  return libUSER32_dll.GetMouseMovePointsEx!(cbSize, util.toPointer(lppt), util.toPointer(lpptBuf), nBufPoints, resolution);
 }
 
 export function TrackMouseEvent(
   lpEventTrack: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.TrackMouseEvent(util.toPointer(lpEventTrack)));
+  return util.boolFromFfi(libUSER32_dll.TrackMouseEvent!(util.toPointer(lpEventTrack)));
 }
 
 export function RegisterHotKey(
@@ -3805,72 +3857,72 @@ export function RegisterHotKey(
   fsModifiers: HOT_KEY_MODIFIERS /* Windows.Win32.UI.Input.KeyboardAndMouse.HOT_KEY_MODIFIERS */,
   vk: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.RegisterHotKey((hWnd), id, fsModifiers, vk));
+  return util.boolFromFfi(libUSER32_dll.RegisterHotKey!((hWnd), id, fsModifiers, vk));
 }
 
 export function UnregisterHotKey(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   id: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.UnregisterHotKey((hWnd), id));
+  return util.boolFromFfi(libUSER32_dll.UnregisterHotKey!((hWnd), id));
 }
 
 export function SwapMouseButton(
   fSwap: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SwapMouseButton(util.boolToFfi(fSwap)));
+  return util.boolFromFfi(libUSER32_dll.SwapMouseButton!(util.boolToFfi(fSwap)));
 }
 
 export function GetDoubleClickTime(): number /* u32 */ {
-  return libUSER32_dll.GetDoubleClickTime();
+  return libUSER32_dll.GetDoubleClickTime!();
 }
 
 export function SetDoubleClickTime(
   param0: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetDoubleClickTime(param0));
+  return util.boolFromFfi(libUSER32_dll.SetDoubleClickTime!(param0));
 }
 
 export function SetFocus(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.SetFocus((hWnd)));
+  return (libUSER32_dll.SetFocus!((hWnd)));
 }
 
 export function GetActiveWindow(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetActiveWindow());
+  return (libUSER32_dll.GetActiveWindow!());
 }
 
 export function GetFocus(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetFocus());
+  return (libUSER32_dll.GetFocus!());
 }
 
 export function GetKBCodePage(): number /* u32 */ {
-  return libUSER32_dll.GetKBCodePage();
+  return libUSER32_dll.GetKBCodePage!();
 }
 
 export function GetKeyState(
   nVirtKey: number /* i32 */,
 ): number /* i16 */ {
-  return libUSER32_dll.GetKeyState(nVirtKey);
+  return libUSER32_dll.GetKeyState!(nVirtKey);
 }
 
 export function GetAsyncKeyState(
   vKey: number /* i32 */,
 ): number /* i16 */ {
-  return libUSER32_dll.GetAsyncKeyState(vKey);
+  return libUSER32_dll.GetAsyncKeyState!(vKey);
 }
 
 export function GetKeyboardState(
   lpKeyState: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetKeyboardState(util.toPointer(lpKeyState)));
+  return util.boolFromFfi(libUSER32_dll.GetKeyboardState!(util.toPointer(lpKeyState)));
 }
 
 export function SetKeyboardState(
   lpKeyState: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.SetKeyboardState(util.toPointer(lpKeyState)));
+  return util.boolFromFfi(libUSER32_dll.SetKeyboardState!(util.toPointer(lpKeyState)));
 }
 
 export function GetKeyNameTextA(
@@ -3878,7 +3930,7 @@ export function GetKeyNameTextA(
   lpString: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cchSize: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetKeyNameTextA(lParam, util.pstrToFfi(lpString), cchSize);
+  return libUSER32_dll.GetKeyNameTextA!(lParam, util.pstrToFfi(lpString), cchSize);
 }
 
 export function GetKeyNameTextW(
@@ -3886,13 +3938,13 @@ export function GetKeyNameTextW(
   lpString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchSize: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetKeyNameTextW(lParam, util.pwstrToFfi(lpString), cchSize);
+  return libUSER32_dll.GetKeyNameTextW!(lParam, util.pwstrToFfi(lpString), cchSize);
 }
 
 export function GetKeyboardType(
   nTypeFlag: number /* i32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.GetKeyboardType(nTypeFlag);
+  return libUSER32_dll.GetKeyboardType!(nTypeFlag);
 }
 
 export function ToAscii(
@@ -3902,7 +3954,7 @@ export function ToAscii(
   lpChar: Deno.PointerValue | Uint8Array /* ptr */,
   uFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.ToAscii(uVirtKey, uScanCode, util.toPointer(lpKeyState), util.toPointer(lpChar), uFlags);
+  return libUSER32_dll.ToAscii!(uVirtKey, uScanCode, util.toPointer(lpKeyState), util.toPointer(lpChar), uFlags);
 }
 
 export function ToAsciiEx(
@@ -3913,7 +3965,7 @@ export function ToAsciiEx(
   uFlags: number /* u32 */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* i32 */ {
-  return libUSER32_dll.ToAsciiEx(uVirtKey, uScanCode, util.toPointer(lpKeyState), util.toPointer(lpChar), uFlags, util.toPointer(dwhkl));
+  return libUSER32_dll.ToAsciiEx!(uVirtKey, uScanCode, util.toPointer(lpKeyState), util.toPointer(lpChar), uFlags, util.toPointer(dwhkl));
 }
 
 export function ToUnicode(
@@ -3924,39 +3976,39 @@ export function ToUnicode(
   cchBuff: number /* i32 */,
   wFlags: number /* u32 */,
 ): number /* i32 */ {
-  return libUSER32_dll.ToUnicode(wVirtKey, wScanCode, util.toPointer(lpKeyState), util.pwstrToFfi(pwszBuff), cchBuff, wFlags);
+  return libUSER32_dll.ToUnicode!(wVirtKey, wScanCode, util.toPointer(lpKeyState), util.pwstrToFfi(pwszBuff), cchBuff, wFlags);
 }
 
 export function OemKeyScan(
   wOemChar: number /* u16 */,
 ): number /* u32 */ {
-  return libUSER32_dll.OemKeyScan(wOemChar);
+  return libUSER32_dll.OemKeyScan!(wOemChar);
 }
 
 export function VkKeyScanA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanA(util.charToFfi(ch));
+  return libUSER32_dll.VkKeyScanA!(util.charToFfi(ch));
 }
 
 export function VkKeyScanW(
   ch: Uint8Array | Deno.PointerValue /* char */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanW(util.toPointer(ch));
+  return libUSER32_dll.VkKeyScanW!(util.toPointer(ch));
 }
 
 export function VkKeyScanExA(
   ch: string | number /* Windows.Win32.Foundation.CHAR */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanExA(util.charToFfi(ch), util.toPointer(dwhkl));
+  return libUSER32_dll.VkKeyScanExA!(util.charToFfi(ch), util.toPointer(dwhkl));
 }
 
 export function VkKeyScanExW(
   ch: Uint8Array | Deno.PointerValue /* char */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* i16 */ {
-  return libUSER32_dll.VkKeyScanExW(util.toPointer(ch), util.toPointer(dwhkl));
+  return libUSER32_dll.VkKeyScanExW!(util.toPointer(ch), util.toPointer(dwhkl));
 }
 
 export function keybd_event(
@@ -3965,7 +4017,7 @@ export function keybd_event(
   dwFlags: KEYBD_EVENT_FLAGS /* Windows.Win32.UI.Input.KeyboardAndMouse.KEYBD_EVENT_FLAGS */,
   dwExtraInfo: bigint | number /* usize */,
 ): void /* void */ {
-  return libUSER32_dll.keybd_event(bVk, bScan, dwFlags, dwExtraInfo);
+  return libUSER32_dll.keybd_event!(bVk, bScan, dwFlags, dwExtraInfo);
 }
 
 export function mouse_event(
@@ -3975,7 +4027,7 @@ export function mouse_event(
   dwData: number /* u32 */,
   dwExtraInfo: bigint | number /* usize */,
 ): void /* void */ {
-  return libUSER32_dll.mouse_event(dwFlags, dx, dy, dwData, dwExtraInfo);
+  return libUSER32_dll.mouse_event!(dwFlags, dx, dy, dwData, dwExtraInfo);
 }
 
 export function SendInput(
@@ -3983,27 +4035,27 @@ export function SendInput(
   pInputs: Deno.PointerValue | Uint8Array /* ptr */,
   cbSize: number /* i32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.SendInput(cInputs, util.toPointer(pInputs), cbSize);
+  return libUSER32_dll.SendInput!(cInputs, util.toPointer(pInputs), cbSize);
 }
 
 export function GetLastInputInfo(
   plii: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.GetLastInputInfo(util.toPointer(plii)));
+  return util.boolFromFfi(libUSER32_dll.GetLastInputInfo!(util.toPointer(plii)));
 }
 
 export function MapVirtualKeyA(
   uCode: number /* u32 */,
   uMapType: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.MapVirtualKeyA(uCode, uMapType);
+  return libUSER32_dll.MapVirtualKeyA!(uCode, uMapType);
 }
 
 export function MapVirtualKeyW(
   uCode: number /* u32 */,
   uMapType: number /* u32 */,
 ): number /* u32 */ {
-  return libUSER32_dll.MapVirtualKeyW(uCode, uMapType);
+  return libUSER32_dll.MapVirtualKeyW!(uCode, uMapType);
 }
 
 export function MapVirtualKeyExA(
@@ -4011,7 +4063,7 @@ export function MapVirtualKeyExA(
   uMapType: number /* u32 */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* u32 */ {
-  return libUSER32_dll.MapVirtualKeyExA(uCode, uMapType, util.toPointer(dwhkl));
+  return libUSER32_dll.MapVirtualKeyExA!(uCode, uMapType, util.toPointer(dwhkl));
 }
 
 export function MapVirtualKeyExW(
@@ -4019,52 +4071,52 @@ export function MapVirtualKeyExW(
   uMapType: number /* u32 */,
   dwhkl: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.TextServices.HKL */,
 ): number /* u32 */ {
-  return libUSER32_dll.MapVirtualKeyExW(uCode, uMapType, util.toPointer(dwhkl));
+  return libUSER32_dll.MapVirtualKeyExW!(uCode, uMapType, util.toPointer(dwhkl));
 }
 
 export function GetCapture(): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.GetCapture());
+  return (libUSER32_dll.GetCapture!());
 }
 
 export function SetCapture(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.SetCapture((hWnd)));
+  return (libUSER32_dll.SetCapture!((hWnd)));
 }
 
 export function ReleaseCapture(): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.ReleaseCapture());
+  return util.boolFromFfi(libUSER32_dll.ReleaseCapture!());
 }
 
 export function EnableWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   bEnable: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.EnableWindow((hWnd), util.boolToFfi(bEnable)));
+  return util.boolFromFfi(libUSER32_dll.EnableWindow!((hWnd), util.boolToFfi(bEnable)));
 }
 
 export function IsWindowEnabled(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.IsWindowEnabled((hWnd)));
+  return util.boolFromFfi(libUSER32_dll.IsWindowEnabled!((hWnd)));
 }
 
 export function DragDetect(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pt: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.POINT */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.DragDetect((hwnd), util.toPointer(pt)));
+  return util.boolFromFfi(libUSER32_dll.DragDetect!((hwnd), util.toPointer(pt)));
 }
 
 export function SetActiveWindow(
   hWnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HWND */ {
-  return (libUSER32_dll.SetActiveWindow((hWnd)));
+  return (libUSER32_dll.SetActiveWindow!((hWnd)));
 }
 
 export function BlockInput(
   fBlockIt: boolean /* Windows.Win32.Foundation.BOOL */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libUSER32_dll.BlockInput(util.boolToFfi(fBlockIt)));
+  return util.boolFromFfi(libUSER32_dll.BlockInput!(util.boolToFfi(fBlockIt)));
 }
 

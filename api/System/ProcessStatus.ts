@@ -1223,110 +1223,137 @@ try {
     K32EnumProcesses: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32EnumProcessModules: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32EnumProcessModulesEx: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32GetModuleBaseNameA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetModuleBaseNameW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetModuleFileNameExA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetModuleFileNameExW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetModuleInformation: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32EmptyWorkingSet: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     K32InitializeProcessForWsWatch: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     K32GetWsChanges: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32GetWsChangesEx: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32GetMappedFileNameW: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetMappedFileNameA: {
       parameters: ["pointer", "pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32EnumDeviceDrivers: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32GetDeviceDriverBaseNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetDeviceDriverBaseNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetDeviceDriverFileNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetDeviceDriverFileNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32QueryWorkingSet: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32QueryWorkingSetEx: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32GetProcessMemoryInfo: {
       parameters: ["pointer", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32GetPerformanceInfo: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     K32EnumPageFilesW: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32EnumPageFilesA: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     K32GetProcessImageFileNameA: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     K32GetProcessImageFileNameW: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -1338,7 +1365,7 @@ export function K32EnumProcesses(
   cb: number /* u32 */,
   lpcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcesses(util.toPointer(lpidProcess), cb, util.toPointer(lpcbNeeded)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcesses!(util.toPointer(lpidProcess), cb, util.toPointer(lpcbNeeded)));
 }
 
 export function K32EnumProcessModules(
@@ -1347,7 +1374,7 @@ export function K32EnumProcessModules(
   cb: number /* u32 */,
   lpcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcessModules(util.toPointer(hProcess), util.toPointer(lphModule), cb, util.toPointer(lpcbNeeded)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcessModules!(util.toPointer(hProcess), util.toPointer(lphModule), cb, util.toPointer(lpcbNeeded)));
 }
 
 export function K32EnumProcessModulesEx(
@@ -1357,7 +1384,7 @@ export function K32EnumProcessModulesEx(
   lpcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
   dwFilterFlag: ENUM_PROCESS_MODULES_EX_FLAGS /* Windows.Win32.System.ProcessStatus.ENUM_PROCESS_MODULES_EX_FLAGS */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcessModulesEx(util.toPointer(hProcess), util.toPointer(lphModule), cb, util.toPointer(lpcbNeeded), dwFilterFlag));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumProcessModulesEx!(util.toPointer(hProcess), util.toPointer(lphModule), cb, util.toPointer(lpcbNeeded), dwFilterFlag));
 }
 
 export function K32GetModuleBaseNameA(
@@ -1366,7 +1393,7 @@ export function K32GetModuleBaseNameA(
   lpBaseName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetModuleBaseNameA(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpBaseName), nSize);
+  return libKERNEL32_dll.K32GetModuleBaseNameA!(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpBaseName), nSize);
 }
 
 export function K32GetModuleBaseNameW(
@@ -1375,7 +1402,7 @@ export function K32GetModuleBaseNameW(
   lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetModuleBaseNameW(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpBaseName), nSize);
+  return libKERNEL32_dll.K32GetModuleBaseNameW!(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpBaseName), nSize);
 }
 
 export function K32GetModuleFileNameExA(
@@ -1384,7 +1411,7 @@ export function K32GetModuleFileNameExA(
   lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetModuleFileNameExA(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetModuleFileNameExA!(util.toPointer(hProcess), util.toPointer(hModule), util.pstrToFfi(lpFilename), nSize);
 }
 
 export function K32GetModuleFileNameExW(
@@ -1393,7 +1420,7 @@ export function K32GetModuleFileNameExW(
   lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetModuleFileNameExW(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetModuleFileNameExW!(util.toPointer(hProcess), util.toPointer(hModule), util.pwstrToFfi(lpFilename), nSize);
 }
 
 export function K32GetModuleInformation(
@@ -1402,19 +1429,19 @@ export function K32GetModuleInformation(
   lpmodinfo: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32GetModuleInformation(util.toPointer(hProcess), util.toPointer(hModule), util.toPointer(lpmodinfo), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32GetModuleInformation!(util.toPointer(hProcess), util.toPointer(hModule), util.toPointer(lpmodinfo), cb));
 }
 
 export function K32EmptyWorkingSet(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EmptyWorkingSet(util.toPointer(hProcess)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EmptyWorkingSet!(util.toPointer(hProcess)));
 }
 
 export function K32InitializeProcessForWsWatch(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32InitializeProcessForWsWatch(util.toPointer(hProcess)));
+  return util.boolFromFfi(libKERNEL32_dll.K32InitializeProcessForWsWatch!(util.toPointer(hProcess)));
 }
 
 export function K32GetWsChanges(
@@ -1422,7 +1449,7 @@ export function K32GetWsChanges(
   lpWatchInfo: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32GetWsChanges(util.toPointer(hProcess), util.toPointer(lpWatchInfo), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32GetWsChanges!(util.toPointer(hProcess), util.toPointer(lpWatchInfo), cb));
 }
 
 export function K32GetWsChangesEx(
@@ -1430,7 +1457,7 @@ export function K32GetWsChangesEx(
   lpWatchInfoEx: Deno.PointerValue | Uint8Array /* ptr */,
   cb: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32GetWsChangesEx(util.toPointer(hProcess), util.toPointer(lpWatchInfoEx), util.toPointer(cb)));
+  return util.boolFromFfi(libKERNEL32_dll.K32GetWsChangesEx!(util.toPointer(hProcess), util.toPointer(lpWatchInfoEx), util.toPointer(cb)));
 }
 
 export function K32GetMappedFileNameW(
@@ -1439,7 +1466,7 @@ export function K32GetMappedFileNameW(
   lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetMappedFileNameW(util.toPointer(hProcess), util.toPointer(lpv), util.pwstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetMappedFileNameW!(util.toPointer(hProcess), util.toPointer(lpv), util.pwstrToFfi(lpFilename), nSize);
 }
 
 export function K32GetMappedFileNameA(
@@ -1448,7 +1475,7 @@ export function K32GetMappedFileNameA(
   lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetMappedFileNameA(util.toPointer(hProcess), util.toPointer(lpv), util.pstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetMappedFileNameA!(util.toPointer(hProcess), util.toPointer(lpv), util.pstrToFfi(lpFilename), nSize);
 }
 
 export function K32EnumDeviceDrivers(
@@ -1456,7 +1483,7 @@ export function K32EnumDeviceDrivers(
   cb: number /* u32 */,
   lpcbNeeded: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumDeviceDrivers(util.toPointer(lpImageBase), cb, util.toPointer(lpcbNeeded)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumDeviceDrivers!(util.toPointer(lpImageBase), cb, util.toPointer(lpcbNeeded)));
 }
 
 export function K32GetDeviceDriverBaseNameA(
@@ -1464,7 +1491,7 @@ export function K32GetDeviceDriverBaseNameA(
   lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetDeviceDriverBaseNameA(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetDeviceDriverBaseNameA!(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
 }
 
 export function K32GetDeviceDriverBaseNameW(
@@ -1472,7 +1499,7 @@ export function K32GetDeviceDriverBaseNameW(
   lpBaseName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetDeviceDriverBaseNameW(util.toPointer(ImageBase), util.pwstrToFfi(lpBaseName), nSize);
+  return libKERNEL32_dll.K32GetDeviceDriverBaseNameW!(util.toPointer(ImageBase), util.pwstrToFfi(lpBaseName), nSize);
 }
 
 export function K32GetDeviceDriverFileNameA(
@@ -1480,7 +1507,7 @@ export function K32GetDeviceDriverFileNameA(
   lpFilename: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetDeviceDriverFileNameA(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetDeviceDriverFileNameA!(util.toPointer(ImageBase), util.pstrToFfi(lpFilename), nSize);
 }
 
 export function K32GetDeviceDriverFileNameW(
@@ -1488,7 +1515,7 @@ export function K32GetDeviceDriverFileNameW(
   lpFilename: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetDeviceDriverFileNameW(util.toPointer(ImageBase), util.pwstrToFfi(lpFilename), nSize);
+  return libKERNEL32_dll.K32GetDeviceDriverFileNameW!(util.toPointer(ImageBase), util.pwstrToFfi(lpFilename), nSize);
 }
 
 export function K32QueryWorkingSet(
@@ -1496,7 +1523,7 @@ export function K32QueryWorkingSet(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32QueryWorkingSet(util.toPointer(hProcess), util.toPointer(pv), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32QueryWorkingSet!(util.toPointer(hProcess), util.toPointer(pv), cb));
 }
 
 export function K32QueryWorkingSetEx(
@@ -1504,7 +1531,7 @@ export function K32QueryWorkingSetEx(
   pv: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32QueryWorkingSetEx(util.toPointer(hProcess), util.toPointer(pv), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32QueryWorkingSetEx!(util.toPointer(hProcess), util.toPointer(pv), cb));
 }
 
 export function K32GetProcessMemoryInfo(
@@ -1512,28 +1539,28 @@ export function K32GetProcessMemoryInfo(
   ppsmemCounters: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32GetProcessMemoryInfo(util.toPointer(Process), util.toPointer(ppsmemCounters), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32GetProcessMemoryInfo!(util.toPointer(Process), util.toPointer(ppsmemCounters), cb));
 }
 
 export function K32GetPerformanceInfo(
   pPerformanceInformation: Deno.PointerValue | Uint8Array /* ptr */,
   cb: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32GetPerformanceInfo(util.toPointer(pPerformanceInformation), cb));
+  return util.boolFromFfi(libKERNEL32_dll.K32GetPerformanceInfo!(util.toPointer(pPerformanceInformation), cb));
 }
 
 export function K32EnumPageFilesW(
   pCallBackRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ProcessStatus.PENUM_PAGE_FILE_CALLBACKW */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumPageFilesW(util.toPointer(pCallBackRoutine), util.toPointer(pContext)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumPageFilesW!(util.toPointer(pCallBackRoutine), util.toPointer(pContext)));
 }
 
 export function K32EnumPageFilesA(
   pCallBackRoutine: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ProcessStatus.PENUM_PAGE_FILE_CALLBACKA */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libKERNEL32_dll.K32EnumPageFilesA(util.toPointer(pCallBackRoutine), util.toPointer(pContext)));
+  return util.boolFromFfi(libKERNEL32_dll.K32EnumPageFilesA!(util.toPointer(pCallBackRoutine), util.toPointer(pContext)));
 }
 
 export function K32GetProcessImageFileNameA(
@@ -1541,7 +1568,7 @@ export function K32GetProcessImageFileNameA(
   lpImageFileName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetProcessImageFileNameA(util.toPointer(hProcess), util.pstrToFfi(lpImageFileName), nSize);
+  return libKERNEL32_dll.K32GetProcessImageFileNameA!(util.toPointer(hProcess), util.pstrToFfi(lpImageFileName), nSize);
 }
 
 export function K32GetProcessImageFileNameW(
@@ -1549,6 +1576,6 @@ export function K32GetProcessImageFileNameW(
   lpImageFileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: number /* u32 */,
 ): number /* u32 */ {
-  return libKERNEL32_dll.K32GetProcessImageFileNameW(util.toPointer(hProcess), util.pwstrToFfi(lpImageFileName), nSize);
+  return libKERNEL32_dll.K32GetProcessImageFileNameW!(util.toPointer(hProcess), util.pwstrToFfi(lpImageFileName), nSize);
 }
 

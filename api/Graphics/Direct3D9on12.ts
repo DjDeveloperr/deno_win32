@@ -120,10 +120,12 @@ try {
     Direct3DCreate9On12Ex: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     Direct3DCreate9On12: {
       parameters: ["u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -136,7 +138,7 @@ export function Direct3DCreate9On12Ex(
   NumOverrideEntries: number /* u32 */,
   ppOutputInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libd3d9_dll.Direct3DCreate9On12Ex(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface));
+  return libd3d9_dll.Direct3DCreate9On12Ex!(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries, util.toPointer(ppOutputInterface));
 }
 
 export function Direct3DCreate9On12(
@@ -144,6 +146,6 @@ export function Direct3DCreate9On12(
   pOverrideList: Deno.PointerValue | Uint8Array /* ptr */,
   NumOverrideEntries: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Graphics.Direct3D9.IDirect3D9 */ {
-  return libd3d9_dll.Direct3DCreate9On12(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries);
+  return libd3d9_dll.Direct3DCreate9On12!(SDKVersion, util.toPointer(pOverrideList), NumOverrideEntries);
 }
 

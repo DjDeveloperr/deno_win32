@@ -12783,906 +12783,1132 @@ try {
     GetNodeClusterState: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenCluster: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterEx: {
       parameters: ["buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CloseCluster: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetClusterName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetClusterInformation: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterQuorumResource: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetClusterQuorumResource: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     BackupClusterDatabase: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RestoreClusterDatabase: {
       parameters: ["buffer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     SetClusterNetworkPriorityOrder: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetClusterServiceAccountPassword: {
       parameters: ["buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterUpgradeFunctionalLevel: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CreateClusterNotifyPortV2: {
       parameters: ["pointer", "pointer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     RegisterClusterNotifyV2: {
       parameters: ["pointer", "pointer", "pointer", "usize"],
       result: "u32",
+      optional: true,
     },
     GetNotifyEventHandle: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterNotifyV2: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateClusterNotifyPort: {
       parameters: ["pointer", "pointer", "u32", "usize"],
       result: "pointer",
+      optional: true,
     },
     RegisterClusterNotify: {
       parameters: ["pointer", "u32", "pointer", "usize"],
       result: "u32",
+      optional: true,
     },
     GetClusterNotify: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CloseClusterNotifyPort: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterOpenEnum: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterOpenEnumEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterGetEnumCountEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterEnumEx: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterCloseEnumEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreateClusterGroupSet: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterGroupSet: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     CloseClusterGroupSet: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     DeleteClusterGroupSet: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterAddGroupToGroupSet: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterAddGroupToGroupSetWithDomains: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     ClusterRemoveGroupFromGroupSet: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupSetControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddClusterGroupDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetGroupDependencyExpression: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterGroupDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddClusterGroupSetDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetClusterGroupSetDependencyExpression: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterGroupSetDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddClusterGroupToGroupSetDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterGroupToGroupSetDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupSetOpenEnum: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterGroupSetGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupSetEnum: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupSetCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     AddCrossClusterGroupSetDependency: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     RemoveCrossClusterGroupSetDependency: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     CreateClusterAvailabilitySet: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterNodeReplacement: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ClusterCreateAffinityRule: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     ClusterRemoveAffinityRule: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ClusterAddGroupToAffinityRule: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterRemoveGroupFromAffinityRule: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterAffinityRuleControl: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenClusterNode: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterNodeEx: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterNodeById: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CloseClusterNode: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterNodeState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterNodeId: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterFromNode: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     PauseClusterNode: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResumeClusterNode: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     EvictClusterNode: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNetInterfaceOpenEnum: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ClusterNetInterfaceEnum: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNetInterfaceCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeOpenEnum: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterNodeOpenEnumEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterNodeGetEnumCountEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeEnumEx: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeCloseEnumEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     EvictClusterNodeEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterResourceTypeKey: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     CreateClusterGroup: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterGroup: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterGroupEx: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     PauseClusterNodeEx: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResumeClusterNodeEx: {
       parameters: ["pointer", "i32", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateClusterGroupEx: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterGroupOpenEnumEx: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterGroupGetEnumCountEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupEnumEx: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupCloseEnumEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceOpenEnumEx: {
       parameters: ["pointer", "buffer", "u32", "buffer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterResourceGetEnumCountEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceEnumEx: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceCloseEnumEx: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OnlineClusterGroupEx: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     OfflineClusterGroupEx: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     OnlineClusterResourceEx: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     OfflineClusterResourceEx: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     MoveClusterGroupEx: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CancelClusterGroupOperation: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     RestartClusterResource: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     CloseClusterGroup: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterFromGroup: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetClusterGroupState: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetClusterGroupName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     SetClusterGroupNodeList: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     OnlineClusterGroup: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     MoveClusterGroup: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     OfflineClusterGroup: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DeleteClusterGroup: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     DestroyClusterGroup: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupOpenEnum: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterGroupGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreateClusterResource: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterResource: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterResourceEx: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CloseClusterResource: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterFromResource: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DeleteClusterResource: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterResourceState: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SetClusterResourceName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     FailClusterResource: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OnlineClusterResource: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OfflineClusterResource: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ChangeClusterResourceGroup: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ChangeClusterResourceGroupEx: {
       parameters: ["pointer", "pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     AddClusterResourceNode: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterResourceNode: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddClusterResourceDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterResourceDependency: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     SetClusterResourceDependencyExpression: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetClusterResourceDependencyExpression: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     AddResourceToClusterSharedVolumes: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveResourceFromClusterSharedVolumes: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     IsFileOnClusterSharedVolume: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterSharedVolumeSetSnapshotState: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     CanResourceBeDependent: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterResourceControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceControlAsUser: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceTypeControl: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceTypeControlAsUser: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterGroupControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNodeControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterResourceNetworkName: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterResourceOpenEnum: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterResourceGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     CreateClusterResourceType: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DeleteClusterResourceType: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceTypeOpenEnum: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterResourceTypeGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceTypeEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterResourceTypeCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OpenClusterNetwork: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterNetworkEx: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CloseClusterNetwork: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterFromNetwork: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ClusterNetworkOpenEnum: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterNetworkGetEnumCount: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNetworkEnum: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNetworkCloseEnum: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterNetworkState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     SetClusterNetworkName: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     GetClusterNetworkId: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterNetworkControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     OpenClusterNetInterface: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterNetInterfaceEx: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetClusterNetInterface: {
       parameters: ["pointer", "buffer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     CloseClusterNetInterface: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     GetClusterFromNetInterface: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetClusterNetInterfaceState: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterNetInterfaceControl: {
       parameters: ["pointer", "pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetClusterKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetClusterGroupKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetClusterResourceKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetClusterNodeKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetClusterNetworkKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     GetClusterNetInterfaceKey: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ClusterRegCreateKey: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegOpenKey: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegDeleteKey: {
       parameters: ["pointer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseKey: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegEnumKey: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegSetValue: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ClusterRegDeleteValue: {
       parameters: ["pointer", "buffer"],
       result: "u32",
+      optional: true,
     },
     ClusterRegQueryValue: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegEnumValue: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterRegQueryInfoKey: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegGetKeySecurity: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegSetKeySecurity: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegSyncDatabase: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCreateBatch: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegBatchAddCommand: {
       parameters: ["pointer", "i32", "buffer", "u32", "pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseBatch: {
       parameters: ["pointer", "i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseBatchEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegBatchReadCommand: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegBatchCloseNotification: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCreateBatchNotifyPort: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseBatchNotifyPort: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegGetBatchNotification: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCreateReadBatch: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegReadBatchAddCommand: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseReadBatch: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseReadBatchEx: {
       parameters: ["pointer", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegReadBatchReplyNextCommand: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterRegCloseReadBatchReply: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusterSetAccountAccess: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     CreateCluster: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateClusterNameAccount: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RemoveClusterNameAccount: {
       parameters: ["pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     DetermineCNOResTypeFromNodelist: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DetermineCNOResTypeFromCluster: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DetermineClusterCloudTypeFromNodelist: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     DetermineClusterCloudTypeFromCluster: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     GetNodeCloudTypeDW: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     RegisterClusterResourceTypeNotifyV2: {
       parameters: ["pointer", "pointer", "i64", "buffer", "usize"],
       result: "u32",
+      optional: true,
     },
     AddClusterNode: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     AddClusterStorageNode: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "buffer", "buffer"],
       result: "u32",
+      optional: true,
     },
     AddClusterNodeEx: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RemoveClusterStorageNode: {
       parameters: ["pointer", "buffer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     DestroyCluster: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -13692,482 +13918,602 @@ try {
     InitializeClusterHealthFault: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     InitializeClusterHealthFaultArray: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FreeClusterHealthFault: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     FreeClusterHealthFaultArray: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusGetClusterHealthFaults: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ClusRemoveClusterHealthFault: {
       parameters: ["pointer", "buffer", "u32"],
       result: "u32",
+      optional: true,
     },
     ClusAddClusterHealthFault: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilStartResourceService: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilVerifyResourceService: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ResUtilStopResourceService: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ResUtilVerifyService: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilStopService: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilCreateDirectoryTree: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ResUtilIsPathValid: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ResUtilEnumProperties: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilEnumPrivateProperties: {
       parameters: ["pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetProperties: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetAllProperties: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetPrivateProperties: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetPropertySize: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetProperty: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilVerifyPropertyTable: {
       parameters: ["pointer", "pointer", "i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetPropertyTable: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetPropertyTableEx: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetPropertyParameterBlock: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetPropertyParameterBlockEx: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetUnknownProperties: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetPropertiesToParameterBlock: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilPropertyListFromParameterBlock: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilDupParameterBlock: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFreeParameterBlock: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "void",
+      optional: true,
     },
     ResUtilAddUnknownProperties: {
       parameters: ["pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetPrivatePropertyList: {
       parameters: ["pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilVerifyPrivatePropertyList: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilDupString: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     ResUtilGetBinaryValue: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetSzValue: {
       parameters: ["pointer", "buffer"],
       result: "buffer",
+      optional: true,
     },
     ResUtilGetDwordValue: {
       parameters: ["pointer", "buffer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetQwordValue: {
       parameters: ["pointer", "buffer", "pointer", "u64"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetBinaryValue: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetSzValue: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetExpandSzValue: {
       parameters: ["pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetMultiSzValue: {
       parameters: ["pointer", "buffer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetDwordValue: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetQwordValue: {
       parameters: ["pointer", "buffer", "u64", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetValueEx: {
       parameters: ["pointer", "buffer", "u32", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetBinaryProperty: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetSzProperty: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetMultiSzProperty: {
       parameters: ["pointer", "pointer", "pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetDwordProperty: {
       parameters: ["pointer", "pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetLongProperty: {
       parameters: ["pointer", "pointer", "i32", "i32", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetFileTimeProperty: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetEnvironmentWithNetName: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ResUtilFreeEnvironment: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilExpandEnvironmentStrings: {
       parameters: ["buffer"],
       result: "buffer",
+      optional: true,
     },
     ResUtilSetResourceServiceEnvironment: {
       parameters: ["buffer", "pointer", "pointer", "isize"],
       result: "u32",
+      optional: true,
     },
     ResUtilRemoveResourceServiceEnvironment: {
       parameters: ["buffer", "pointer", "isize"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetResourceServiceStartParameters: {
       parameters: ["buffer", "pointer", "pointer", "pointer", "isize"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindSzProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindExpandSzProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindExpandedSzProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindDwordProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindBinaryProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindMultiSzProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindLongProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindULargeIntegerProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindFileTimeProperty: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusWorkerCreate: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusWorkerCheckTerminate: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     ClusWorkerTerminate: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     ClusWorkerTerminateEx: {
       parameters: ["pointer", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     ClusWorkersTerminate: {
       parameters: ["pointer", "usize", "u32", "i32"],
       result: "u32",
+      optional: true,
     },
     ResUtilResourcesEqual: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResUtilResourceTypesEqual: {
       parameters: ["buffer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResUtilIsResourceClassEqual: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResUtilEnumResources: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilEnumResourcesEx: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetResourceDependency: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceDependencyByName: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceDependencyByClass: {
       parameters: ["pointer", "pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceNameDependency: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceDependentIPAddressProps: {
       parameters: ["pointer", "buffer", "pointer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilFindDependentDiskResourceDriveLetter: {
       parameters: ["pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilTerminateServiceProcessFromResDll: {
       parameters: ["u32", "i32", "pointer", "pointer", "isize"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetPropertyFormats: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetCoreClusterResources: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetResourceName: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetClusterRoleState: {
       parameters: ["pointer", "i32"],
       result: "i32",
+      optional: true,
     },
     ClusterIsPathOnSharedVolume: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     ClusterGetVolumePathName: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ClusterGetVolumeNameForVolumeMountPoint: {
       parameters: ["buffer", "buffer", "u32"],
       result: "i32",
+      optional: true,
     },
     ClusterPrepareSharedVolumeForBackup: {
       parameters: ["buffer", "buffer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterClearBackupStateForSharedVolume: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     ResUtilSetResourceServiceStartParametersEx: {
       parameters: ["buffer", "pointer", "pointer", "u32", "pointer", "isize"],
       result: "u32",
+      optional: true,
     },
     ResUtilEnumResourcesEx2: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetResourceDependencyEx: {
       parameters: ["pointer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceDependencyByNameEx: {
       parameters: ["pointer", "pointer", "buffer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceDependencyByClassEx: {
       parameters: ["pointer", "pointer", "pointer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetResourceNameDependencyEx: {
       parameters: ["buffer", "buffer", "u32"],
       result: "pointer",
+      optional: true,
     },
     ResUtilGetCoreClusterResourcesEx: {
       parameters: ["pointer", "pointer", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     OpenClusterCryptProvider: {
       parameters: ["buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     OpenClusterCryptProviderEx: {
       parameters: ["buffer", "buffer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     CloseClusterCryptProvider: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterEncrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ClusterDecrypt: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     FreeClusterCrypt: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilVerifyShutdownSafe: {
       parameters: ["u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilPaxosComparer: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResUtilLeftPaxosIsLessThanRight: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     ResUtilsDeleteKeyTree: {
       parameters: ["pointer", "buffer", "i32"],
       result: "u32",
+      optional: true,
     },
     ResUtilGroupsEqual: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilEnumGroups: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilEnumGroupsEx: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilDupGroup: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetClusterGroupType: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetCoreGroup: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     ResUtilResourceDepEnum: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilDupResource: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilGetClusterId: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResUtilNodeEnum: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14177,22 +14523,27 @@ try {
     RegisterAppInstance: {
       parameters: ["pointer", "pointer", "i32"],
       result: "u32",
+      optional: true,
     },
     RegisterAppInstanceVersion: {
       parameters: ["pointer", "u64", "u64"],
       result: "u32",
+      optional: true,
     },
     QueryAppInstanceVersion: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     ResetAllAppInstanceVersions: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     SetAppInstanceCsvFlags: {
       parameters: ["pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -14203,13 +14554,13 @@ export function GetNodeClusterState(
   lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwClusterState: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetNodeClusterState(util.pwstrToFfi(lpszNodeName), util.toPointer(pdwClusterState));
+  return libCLUSAPI_dll.GetNodeClusterState!(util.pwstrToFfi(lpszNodeName), util.toPointer(pdwClusterState));
 }
 
 export function OpenCluster(
   lpszClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenCluster(util.pwstrToFfi(lpszClusterName));
+  return libCLUSAPI_dll.OpenCluster!(util.pwstrToFfi(lpszClusterName));
 }
 
 export function OpenClusterEx(
@@ -14217,20 +14568,20 @@ export function OpenClusterEx(
   DesiredAccess: number /* u32 */,
   GrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterEx(util.pwstrToFfi(lpszClusterName), DesiredAccess, util.toPointer(GrantedAccess));
+  return libCLUSAPI_dll.OpenClusterEx!(util.pwstrToFfi(lpszClusterName), DesiredAccess, util.toPointer(GrantedAccess));
 }
 
 export function CloseCluster(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseCluster(util.toPointer(hCluster)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseCluster!(util.toPointer(hCluster)));
 }
 
 export function SetClusterName(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszNewClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterName(util.toPointer(hCluster), util.pwstrToFfi(lpszNewClusterName));
+  return libCLUSAPI_dll.SetClusterName!(util.toPointer(hCluster), util.pwstrToFfi(lpszNewClusterName));
 }
 
 export function GetClusterInformation(
@@ -14239,7 +14590,7 @@ export function GetClusterInformation(
   lpcchClusterName: Deno.PointerValue | Uint8Array /* ptr */,
   lpClusterInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterInformation(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterName), util.toPointer(lpcchClusterName), util.toPointer(lpClusterInfo));
+  return libCLUSAPI_dll.GetClusterInformation!(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterName), util.toPointer(lpcchClusterName), util.toPointer(lpClusterInfo));
 }
 
 export function GetClusterQuorumResource(
@@ -14250,7 +14601,7 @@ export function GetClusterQuorumResource(
   lpcchDeviceName: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwMaxQuorumLogSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterQuorumResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchResourceName), util.pwstrToFfi(lpszDeviceName), util.toPointer(lpcchDeviceName), util.toPointer(lpdwMaxQuorumLogSize));
+  return libCLUSAPI_dll.GetClusterQuorumResource!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchResourceName), util.pwstrToFfi(lpszDeviceName), util.toPointer(lpcchDeviceName), util.toPointer(lpdwMaxQuorumLogSize));
 }
 
 export function SetClusterQuorumResource(
@@ -14258,14 +14609,14 @@ export function SetClusterQuorumResource(
   lpszDeviceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwMaxQuoLogSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterQuorumResource(util.toPointer(hResource), util.pwstrToFfi(lpszDeviceName), dwMaxQuoLogSize);
+  return libCLUSAPI_dll.SetClusterQuorumResource!(util.toPointer(hResource), util.pwstrToFfi(lpszDeviceName), dwMaxQuoLogSize);
 }
 
 export function BackupClusterDatabase(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.BackupClusterDatabase(util.toPointer(hCluster), util.pwstrToFfi(lpszPathName));
+  return libCLUSAPI_dll.BackupClusterDatabase!(util.toPointer(hCluster), util.pwstrToFfi(lpszPathName));
 }
 
 export function RestoreClusterDatabase(
@@ -14273,7 +14624,7 @@ export function RestoreClusterDatabase(
   bForce: boolean /* Windows.Win32.Foundation.BOOL */,
   lpszQuorumDriveLetter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RestoreClusterDatabase(util.pwstrToFfi(lpszPathName), util.boolToFfi(bForce), util.pwstrToFfi(lpszQuorumDriveLetter));
+  return libCLUSAPI_dll.RestoreClusterDatabase!(util.pwstrToFfi(lpszPathName), util.boolToFfi(bForce), util.pwstrToFfi(lpszQuorumDriveLetter));
 }
 
 export function SetClusterNetworkPriorityOrder(
@@ -14281,7 +14632,7 @@ export function SetClusterNetworkPriorityOrder(
   NetworkCount: number /* u32 */,
   NetworkList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterNetworkPriorityOrder(util.toPointer(hCluster), NetworkCount, util.toPointer(NetworkList));
+  return libCLUSAPI_dll.SetClusterNetworkPriorityOrder!(util.toPointer(hCluster), NetworkCount, util.toPointer(NetworkList));
 }
 
 export function SetClusterServiceAccountPassword(
@@ -14291,7 +14642,7 @@ export function SetClusterServiceAccountPassword(
   lpReturnStatusBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbReturnStatusBufferSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterServiceAccountPassword(util.pwstrToFfi(lpszClusterName), util.pwstrToFfi(lpszNewPassword), dwFlags, util.toPointer(lpReturnStatusBuffer), util.toPointer(lpcbReturnStatusBufferSize));
+  return libCLUSAPI_dll.SetClusterServiceAccountPassword!(util.pwstrToFfi(lpszClusterName), util.pwstrToFfi(lpszNewPassword), dwFlags, util.toPointer(lpReturnStatusBuffer), util.toPointer(lpcbReturnStatusBufferSize));
 }
 
 export function ClusterControl(
@@ -14304,7 +14655,7 @@ export function ClusterControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterControl(util.toPointer(hCluster), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterControl!(util.toPointer(hCluster), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterUpgradeFunctionalLevel(
@@ -14313,7 +14664,7 @@ export function ClusterUpgradeFunctionalLevel(
   pfnProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PCLUSTER_UPGRADE_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterUpgradeFunctionalLevel(util.toPointer(hCluster), util.boolToFfi(perform), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.ClusterUpgradeFunctionalLevel!(util.toPointer(hCluster), util.boolToFfi(perform), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function CreateClusterNotifyPortV2(
@@ -14323,7 +14674,7 @@ export function CreateClusterNotifyPortV2(
   dwFilterCount: number /* u32 */,
   dwNotifyKey: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterNotifyPortV2(util.toPointer(hChange), util.toPointer(hCluster), util.toPointer(Filters), dwFilterCount, dwNotifyKey);
+  return libCLUSAPI_dll.CreateClusterNotifyPortV2!(util.toPointer(hChange), util.toPointer(hCluster), util.toPointer(Filters), dwFilterCount, dwNotifyKey);
 }
 
 export function RegisterClusterNotifyV2(
@@ -14332,14 +14683,14 @@ export function RegisterClusterNotifyV2(
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RegisterClusterNotifyV2(util.toPointer(hChange), util.toPointer(Filter), util.toPointer(hObject), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterNotifyV2!(util.toPointer(hChange), util.toPointer(Filter), util.toPointer(hObject), dwNotifyKey);
 }
 
 export function GetNotifyEventHandle(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
   lphTargetEvent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetNotifyEventHandle(util.toPointer(hChange), util.toPointer(lphTargetEvent));
+  return libCLUSAPI_dll.GetNotifyEventHandle!(util.toPointer(hChange), util.toPointer(lphTargetEvent));
 }
 
 export function GetClusterNotifyV2(
@@ -14358,7 +14709,7 @@ export function GetClusterNotifyV2(
   lpcchType: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterNotifyV2(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(pFilterAndType), util.toPointer(buffer), util.toPointer(lpbBufferSize), util.pwstrToFfi(lpszObjectId), util.toPointer(lpcchObjectId), util.pwstrToFfi(lpszParentId), util.toPointer(lpcchParentId), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.pwstrToFfi(lpszType), util.toPointer(lpcchType), dwMilliseconds);
+  return libCLUSAPI_dll.GetClusterNotifyV2!(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(pFilterAndType), util.toPointer(buffer), util.toPointer(lpbBufferSize), util.pwstrToFfi(lpszObjectId), util.toPointer(lpcchObjectId), util.pwstrToFfi(lpszParentId), util.toPointer(lpcchParentId), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.pwstrToFfi(lpszType), util.toPointer(lpcchType), dwMilliseconds);
 }
 
 export function CreateClusterNotifyPort(
@@ -14367,7 +14718,7 @@ export function CreateClusterNotifyPort(
   dwFilter: number /* u32 */,
   dwNotifyKey: bigint | number /* usize */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterNotifyPort(util.toPointer(hChange), util.toPointer(hCluster), dwFilter, dwNotifyKey);
+  return libCLUSAPI_dll.CreateClusterNotifyPort!(util.toPointer(hChange), util.toPointer(hCluster), dwFilter, dwNotifyKey);
 }
 
 export function RegisterClusterNotify(
@@ -14376,7 +14727,7 @@ export function RegisterClusterNotify(
   hObject: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RegisterClusterNotify(util.toPointer(hChange), dwFilterType, util.toPointer(hObject), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterNotify!(util.toPointer(hChange), dwFilterType, util.toPointer(hObject), dwNotifyKey);
 }
 
 export function GetClusterNotify(
@@ -14387,26 +14738,26 @@ export function GetClusterNotify(
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
   dwMilliseconds: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterNotify(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(lpdwFilterType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), dwMilliseconds);
+  return libCLUSAPI_dll.GetClusterNotify!(util.toPointer(hChange), util.toPointer(lpdwNotifyKey), util.toPointer(lpdwFilterType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName), dwMilliseconds);
 }
 
 export function CloseClusterNotifyPort(
   hChange: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNotifyPort(util.toPointer(hChange)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNotifyPort!(util.toPointer(hChange)));
 }
 
 export function ClusterOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterOpenEnum(util.toPointer(hCluster), dwType);
+  return libCLUSAPI_dll.ClusterOpenEnum!(util.toPointer(hCluster), dwType);
 }
 
 export function ClusterGetEnumCount(
   hEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGetEnumCount(util.toPointer(hEnum));
+  return libCLUSAPI_dll.ClusterGetEnumCount!(util.toPointer(hEnum));
 }
 
 export function ClusterEnum(
@@ -14416,13 +14767,13 @@ export function ClusterEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterEnum(util.toPointer(hEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterEnum!(util.toPointer(hEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterCloseEnum(
   hEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterCloseEnum(util.toPointer(hEnum));
+  return libCLUSAPI_dll.ClusterCloseEnum!(util.toPointer(hEnum));
 }
 
 export function ClusterOpenEnumEx(
@@ -14430,13 +14781,13 @@ export function ClusterOpenEnumEx(
   dwType: number /* u32 */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterOpenEnumEx(util.toPointer(hCluster), dwType, util.toPointer(pOptions));
+  return libCLUSAPI_dll.ClusterOpenEnumEx!(util.toPointer(hCluster), dwType, util.toPointer(pOptions));
 }
 
 export function ClusterGetEnumCountEx(
   hClusterEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGetEnumCountEx(util.toPointer(hClusterEnum));
+  return libCLUSAPI_dll.ClusterGetEnumCountEx!(util.toPointer(hClusterEnum));
 }
 
 export function ClusterEnumEx(
@@ -14445,46 +14796,46 @@ export function ClusterEnumEx(
   pItem: Deno.PointerValue | Uint8Array /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterEnumEx(util.toPointer(hClusterEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterEnumEx!(util.toPointer(hClusterEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterCloseEnumEx(
   hClusterEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterCloseEnumEx(util.toPointer(hClusterEnum));
+  return libCLUSAPI_dll.ClusterCloseEnumEx!(util.toPointer(hClusterEnum));
 }
 
 export function CreateClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   groupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(groupSetName));
+  return libCLUSAPI_dll.CreateClusterGroupSet!(util.toPointer(hCluster), util.pwstrToFfi(groupSetName));
 }
 
 export function OpenClusterGroupSet(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterGroupSet(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupSetName));
+  return libCLUSAPI_dll.OpenClusterGroupSet!(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupSetName));
 }
 
 export function CloseClusterGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroupSet(util.toPointer(hGroupSet)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroupSet!(util.toPointer(hGroupSet)));
 }
 
 export function DeleteClusterGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DeleteClusterGroupSet(util.toPointer(hGroupSet));
+  return libCLUSAPI_dll.DeleteClusterGroupSet!(util.toPointer(hGroupSet));
 }
 
 export function ClusterAddGroupToGroupSet(
   hGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterAddGroupToGroupSet(util.toPointer(hGroupSet), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterAddGroupToGroupSet!(util.toPointer(hGroupSet), util.toPointer(hGroup));
 }
 
 export function ClusterAddGroupToGroupSetWithDomains(
@@ -14493,13 +14844,13 @@ export function ClusterAddGroupToGroupSetWithDomains(
   faultDomain: number /* u32 */,
   updateDomain: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterAddGroupToGroupSetWithDomains(util.toPointer(hGroupSet), util.toPointer(hGroup), faultDomain, updateDomain);
+  return libCLUSAPI_dll.ClusterAddGroupToGroupSetWithDomains!(util.toPointer(hGroupSet), util.toPointer(hGroup), faultDomain, updateDomain);
 }
 
 export function ClusterRemoveGroupFromGroupSet(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRemoveGroupFromGroupSet(util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterRemoveGroupFromGroupSet!(util.toPointer(hGroup));
 }
 
 export function ClusterGroupSetControl(
@@ -14512,75 +14863,75 @@ export function ClusterGroupSetControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupSetControl(util.toPointer(hGroupSet), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterGroupSetControl!(util.toPointer(hGroupSet), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function AddClusterGroupDependency(
   hDependentGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hProviderGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterGroupDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroup));
+  return libCLUSAPI_dll.AddClusterGroupDependency!(util.toPointer(hDependentGroup), util.toPointer(hProviderGroup));
 }
 
 export function SetGroupDependencyExpression(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetGroupDependencyExpression(util.toPointer(hGroup), util.pwstrToFfi(lpszDependencyExpression));
+  return libCLUSAPI_dll.SetGroupDependencyExpression!(util.toPointer(hGroup), util.pwstrToFfi(lpszDependencyExpression));
 }
 
 export function RemoveClusterGroupDependency(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterGroupDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupDependency!(util.toPointer(hGroup), util.toPointer(hDependsOn));
 }
 
 export function AddClusterGroupSetDependency(
   hDependentGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
   hProviderGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.toPointer(hProviderGroupSet));
+  return libCLUSAPI_dll.AddClusterGroupSetDependency!(util.toPointer(hDependentGroupSet), util.toPointer(hProviderGroupSet));
 }
 
 export function SetClusterGroupSetDependencyExpression(
   hGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDependencyExprssion: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterGroupSetDependencyExpression(util.toPointer(hGroupSet), util.pwstrToFfi(lpszDependencyExprssion));
+  return libCLUSAPI_dll.SetClusterGroupSetDependencyExpression!(util.toPointer(hGroupSet), util.pwstrToFfi(lpszDependencyExprssion));
 }
 
 export function RemoveClusterGroupSetDependency(
   hGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterGroupSetDependency(util.toPointer(hGroupSet), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupSetDependency!(util.toPointer(hGroupSet), util.toPointer(hDependsOn));
 }
 
 export function AddClusterGroupToGroupSetDependency(
   hDependentGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hProviderGroupSet: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterGroupToGroupSetDependency(util.toPointer(hDependentGroup), util.toPointer(hProviderGroupSet));
+  return libCLUSAPI_dll.AddClusterGroupToGroupSetDependency!(util.toPointer(hDependentGroup), util.toPointer(hProviderGroupSet));
 }
 
 export function RemoveClusterGroupToGroupSetDependency(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterGroupToGroupSetDependency(util.toPointer(hGroup), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterGroupToGroupSetDependency!(util.toPointer(hGroup), util.toPointer(hDependsOn));
 }
 
 export function ClusterGroupSetOpenEnum(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterGroupSetOpenEnum(util.toPointer(hCluster));
+  return libCLUSAPI_dll.ClusterGroupSetOpenEnum!(util.toPointer(hCluster));
 }
 
 export function ClusterGroupSetGetEnumCount(
   hGroupSetEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupSetGetEnumCount(util.toPointer(hGroupSetEnum));
+  return libCLUSAPI_dll.ClusterGroupSetGetEnumCount!(util.toPointer(hGroupSetEnum));
 }
 
 export function ClusterGroupSetEnum(
@@ -14589,13 +14940,13 @@ export function ClusterGroupSetEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupSetEnum(util.toPointer(hGroupSetEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterGroupSetEnum!(util.toPointer(hGroupSetEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterGroupSetCloseEnum(
   hGroupSetEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupSetCloseEnum(util.toPointer(hGroupSetEnum));
+  return libCLUSAPI_dll.ClusterGroupSetCloseEnum!(util.toPointer(hGroupSetEnum));
 }
 
 export function AddCrossClusterGroupSetDependency(
@@ -14603,7 +14954,7 @@ export function AddCrossClusterGroupSetDependency(
   lpRemoteClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
+  return libCLUSAPI_dll.AddCrossClusterGroupSetDependency!(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function RemoveCrossClusterGroupSetDependency(
@@ -14611,7 +14962,7 @@ export function RemoveCrossClusterGroupSetDependency(
   lpRemoteClusterName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpRemoteGroupSetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveCrossClusterGroupSetDependency(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
+  return libCLUSAPI_dll.RemoveCrossClusterGroupSetDependency!(util.toPointer(hDependentGroupSet), util.pwstrToFfi(lpRemoteClusterName), util.pwstrToFfi(lpRemoteGroupSetName));
 }
 
 export function CreateClusterAvailabilitySet(
@@ -14619,7 +14970,7 @@ export function CreateClusterAvailabilitySet(
   lpAvailabilitySetName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pAvailabilitySetConfig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterAvailabilitySet(util.toPointer(hCluster), util.pwstrToFfi(lpAvailabilitySetName), util.toPointer(pAvailabilitySetConfig));
+  return libCLUSAPI_dll.CreateClusterAvailabilitySet!(util.toPointer(hCluster), util.pwstrToFfi(lpAvailabilitySetName), util.toPointer(pAvailabilitySetConfig));
 }
 
 export function ClusterNodeReplacement(
@@ -14627,7 +14978,7 @@ export function ClusterNodeReplacement(
   lpszNodeNameCurrent: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszNodeNameNew: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeReplacement(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeNameCurrent), util.pwstrToFfi(lpszNodeNameNew));
+  return libCLUSAPI_dll.ClusterNodeReplacement!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeNameCurrent), util.pwstrToFfi(lpszNodeNameNew));
 }
 
 export function ClusterCreateAffinityRule(
@@ -14635,14 +14986,14 @@ export function ClusterCreateAffinityRule(
   ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ruleType: CLUS_AFFINITY_RULE_TYPE /* Windows.Win32.Networking.Clustering.CLUS_AFFINITY_RULE_TYPE */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterCreateAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), ruleType);
+  return libCLUSAPI_dll.ClusterCreateAffinityRule!(util.toPointer(hCluster), util.pwstrToFfi(ruleName), ruleType);
 }
 
 export function ClusterRemoveAffinityRule(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRemoveAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName));
+  return libCLUSAPI_dll.ClusterRemoveAffinityRule!(util.toPointer(hCluster), util.pwstrToFfi(ruleName));
 }
 
 export function ClusterAddGroupToAffinityRule(
@@ -14650,7 +15001,7 @@ export function ClusterAddGroupToAffinityRule(
   ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterAddGroupToAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterAddGroupToAffinityRule!(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
 }
 
 export function ClusterRemoveGroupFromAffinityRule(
@@ -14658,7 +15009,7 @@ export function ClusterRemoveGroupFromAffinityRule(
   ruleName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRemoveGroupFromAffinityRule(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ClusterRemoveGroupFromAffinityRule!(util.toPointer(hCluster), util.pwstrToFfi(ruleName), util.toPointer(hGroup));
 }
 
 export function ClusterAffinityRuleControl(
@@ -14672,14 +15023,14 @@ export function ClusterAffinityRuleControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterAffinityRuleControl(util.toPointer(hCluster), util.pwstrToFfi(affinityRuleName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterAffinityRuleControl!(util.toPointer(hCluster), util.pwstrToFfi(affinityRuleName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function OpenClusterNode(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName));
+  return libCLUSAPI_dll.OpenClusterNode!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName));
 }
 
 export function OpenClusterNodeEx(
@@ -14688,26 +15039,26 @@ export function OpenClusterNodeEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
+  return libCLUSAPI_dll.OpenClusterNodeEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
 }
 
 export function OpenClusterNodeById(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   nodeId: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNodeById(util.toPointer(hCluster), nodeId);
+  return libCLUSAPI_dll.OpenClusterNodeById!(util.toPointer(hCluster), nodeId);
 }
 
 export function CloseClusterNode(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNode(util.toPointer(hNode)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNode!(util.toPointer(hNode)));
 }
 
 export function GetClusterNodeState(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): CLUSTER_NODE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NODE_STATE */ {
-  return libCLUSAPI_dll.GetClusterNodeState(util.toPointer(hNode));
+  return libCLUSAPI_dll.GetClusterNodeState!(util.toPointer(hNode));
 }
 
 export function GetClusterNodeId(
@@ -14715,31 +15066,31 @@ export function GetClusterNodeId(
   lpszNodeId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterNodeId(util.toPointer(hNode), util.pwstrToFfi(lpszNodeId), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.GetClusterNodeId!(util.toPointer(hNode), util.pwstrToFfi(lpszNodeId), util.toPointer(lpcchName));
 }
 
 export function GetClusterFromNode(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.GetClusterFromNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.GetClusterFromNode!(util.toPointer(hNode));
 }
 
 export function PauseClusterNode(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.PauseClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.PauseClusterNode!(util.toPointer(hNode));
 }
 
 export function ResumeClusterNode(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ResumeClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.ResumeClusterNode!(util.toPointer(hNode));
 }
 
 export function EvictClusterNode(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.EvictClusterNode(util.toPointer(hNode));
+  return libCLUSAPI_dll.EvictClusterNode!(util.toPointer(hNode));
 }
 
 export function ClusterNetInterfaceOpenEnum(
@@ -14747,7 +15098,7 @@ export function ClusterNetInterfaceOpenEnum(
   lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterNetInterfaceOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName));
+  return libCLUSAPI_dll.ClusterNetInterfaceOpenEnum!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName));
 }
 
 export function ClusterNetInterfaceEnum(
@@ -14756,20 +15107,20 @@ export function ClusterNetInterfaceEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetInterfaceEnum(util.toPointer(hNetInterfaceEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNetInterfaceEnum!(util.toPointer(hNetInterfaceEnum), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterNetInterfaceCloseEnum(
   hNetInterfaceEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetInterfaceCloseEnum(util.toPointer(hNetInterfaceEnum));
+  return libCLUSAPI_dll.ClusterNetInterfaceCloseEnum!(util.toPointer(hNetInterfaceEnum));
 }
 
 export function ClusterNodeOpenEnum(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterNodeOpenEnum(util.toPointer(hNode), dwType);
+  return libCLUSAPI_dll.ClusterNodeOpenEnum!(util.toPointer(hNode), dwType);
 }
 
 export function ClusterNodeOpenEnumEx(
@@ -14777,13 +15128,13 @@ export function ClusterNodeOpenEnumEx(
   dwType: number /* u32 */,
   pOptions: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterNodeOpenEnumEx(util.toPointer(hNode), dwType, util.toPointer(pOptions));
+  return libCLUSAPI_dll.ClusterNodeOpenEnumEx!(util.toPointer(hNode), dwType, util.toPointer(pOptions));
 }
 
 export function ClusterNodeGetEnumCountEx(
   hNodeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeGetEnumCountEx(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeGetEnumCountEx!(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeEnumEx(
@@ -14792,25 +15143,25 @@ export function ClusterNodeEnumEx(
   pItem: Deno.PointerValue | Uint8Array /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeEnumEx(util.toPointer(hNodeEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterNodeEnumEx!(util.toPointer(hNodeEnum), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterNodeCloseEnumEx(
   hNodeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeCloseEnumEx(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeCloseEnumEx!(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeGetEnumCount(
   hNodeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeGetEnumCount(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeGetEnumCount!(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeCloseEnum(
   hNodeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeCloseEnum(util.toPointer(hNodeEnum));
+  return libCLUSAPI_dll.ClusterNodeCloseEnum!(util.toPointer(hNodeEnum));
 }
 
 export function ClusterNodeEnum(
@@ -14820,7 +15171,7 @@ export function ClusterNodeEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeEnum(util.toPointer(hNodeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNodeEnum!(util.toPointer(hNodeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function EvictClusterNodeEx(
@@ -14828,7 +15179,7 @@ export function EvictClusterNodeEx(
   dwTimeOut: number /* u32 */,
   phrCleanupStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.EvictClusterNodeEx(util.toPointer(hNode), dwTimeOut, util.toPointer(phrCleanupStatus));
+  return libCLUSAPI_dll.EvictClusterNodeEx!(util.toPointer(hNode), dwTimeOut, util.toPointer(phrCleanupStatus));
 }
 
 export function GetClusterResourceTypeKey(
@@ -14836,21 +15187,21 @@ export function GetClusterResourceTypeKey(
   lpszTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterResourceTypeKey(util.toPointer(hCluster), util.pwstrToFfi(lpszTypeName), samDesired);
+  return libCLUSAPI_dll.GetClusterResourceTypeKey!(util.toPointer(hCluster), util.pwstrToFfi(lpszTypeName), samDesired);
 }
 
 export function CreateClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName));
+  return libCLUSAPI_dll.CreateClusterGroup!(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName));
 }
 
 export function OpenClusterGroup(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterGroup(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName));
+  return libCLUSAPI_dll.OpenClusterGroup!(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName));
 }
 
 export function OpenClusterGroupEx(
@@ -14859,7 +15210,7 @@ export function OpenClusterGroupEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
+  return libCLUSAPI_dll.OpenClusterGroupEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
 }
 
 export function PauseClusterNodeEx(
@@ -14868,7 +15219,7 @@ export function PauseClusterNodeEx(
   dwPauseFlags: number /* u32 */,
   hNodeDrainTarget: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.PauseClusterNodeEx(util.toPointer(hNode), util.boolToFfi(bDrainNode), dwPauseFlags, util.toPointer(hNodeDrainTarget));
+  return libCLUSAPI_dll.PauseClusterNodeEx!(util.toPointer(hNode), util.boolToFfi(bDrainNode), dwPauseFlags, util.toPointer(hNodeDrainTarget));
 }
 
 export function ResumeClusterNodeEx(
@@ -14876,7 +15227,7 @@ export function ResumeClusterNodeEx(
   eResumeFailbackType: CLUSTER_NODE_RESUME_FAILBACK_TYPE /* Windows.Win32.Networking.Clustering.CLUSTER_NODE_RESUME_FAILBACK_TYPE */,
   dwResumeFlagsReserved: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ResumeClusterNodeEx(util.toPointer(hNode), eResumeFailbackType, dwResumeFlagsReserved);
+  return libCLUSAPI_dll.ResumeClusterNodeEx!(util.toPointer(hNode), eResumeFailbackType, dwResumeFlagsReserved);
 }
 
 export function CreateClusterGroupEx(
@@ -14884,7 +15235,7 @@ export function CreateClusterGroupEx(
   lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pGroupInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterGroupEx(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), util.toPointer(pGroupInfo));
+  return libCLUSAPI_dll.CreateClusterGroupEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszGroupName), util.toPointer(pGroupInfo));
 }
 
 export function ClusterGroupOpenEnumEx(
@@ -14895,13 +15246,13 @@ export function ClusterGroupOpenEnumEx(
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterGroupOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags);
+  return libCLUSAPI_dll.ClusterGroupOpenEnumEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags);
 }
 
 export function ClusterGroupGetEnumCountEx(
   hGroupEnumEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupGetEnumCountEx(util.toPointer(hGroupEnumEx));
+  return libCLUSAPI_dll.ClusterGroupGetEnumCountEx!(util.toPointer(hGroupEnumEx));
 }
 
 export function ClusterGroupEnumEx(
@@ -14910,13 +15261,13 @@ export function ClusterGroupEnumEx(
   pItem: Deno.PointerValue | Uint8Array /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupEnumEx(util.toPointer(hGroupEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterGroupEnumEx!(util.toPointer(hGroupEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterGroupCloseEnumEx(
   hGroupEnumEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupCloseEnumEx(util.toPointer(hGroupEnumEx));
+  return libCLUSAPI_dll.ClusterGroupCloseEnumEx!(util.toPointer(hGroupEnumEx));
 }
 
 export function ClusterResourceOpenEnumEx(
@@ -14927,13 +15278,13 @@ export function ClusterResourceOpenEnumEx(
   cbRoProperties: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterResourceOpenEnumEx(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags);
+  return libCLUSAPI_dll.ClusterResourceOpenEnumEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszProperties), cbProperties, util.pwstrToFfi(lpszRoProperties), cbRoProperties, dwFlags);
 }
 
 export function ClusterResourceGetEnumCountEx(
   hResourceEnumEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceGetEnumCountEx(util.toPointer(hResourceEnumEx));
+  return libCLUSAPI_dll.ClusterResourceGetEnumCountEx!(util.toPointer(hResourceEnumEx));
 }
 
 export function ClusterResourceEnumEx(
@@ -14942,13 +15293,13 @@ export function ClusterResourceEnumEx(
   pItem: Deno.PointerValue | Uint8Array /* ptr */,
   cbItem: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceEnumEx(util.toPointer(hResourceEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
+  return libCLUSAPI_dll.ClusterResourceEnumEx!(util.toPointer(hResourceEnumEx), dwIndex, util.toPointer(pItem), util.toPointer(cbItem));
 }
 
 export function ClusterResourceCloseEnumEx(
   hResourceEnumEx: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceCloseEnumEx(util.toPointer(hResourceEnumEx));
+  return libCLUSAPI_dll.ClusterResourceCloseEnumEx!(util.toPointer(hResourceEnumEx));
 }
 
 export function OnlineClusterGroupEx(
@@ -14958,7 +15309,7 @@ export function OnlineClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OnlineClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OnlineClusterGroupEx!(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OfflineClusterGroupEx(
@@ -14967,7 +15318,7 @@ export function OfflineClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OfflineClusterGroupEx(util.toPointer(hGroup), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OfflineClusterGroupEx!(util.toPointer(hGroup), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OnlineClusterResourceEx(
@@ -14976,7 +15327,7 @@ export function OnlineClusterResourceEx(
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OnlineClusterResourceEx(util.toPointer(hResource), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OnlineClusterResourceEx!(util.toPointer(hResource), dwOnlineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function OfflineClusterResourceEx(
@@ -14985,7 +15336,7 @@ export function OfflineClusterResourceEx(
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OfflineClusterResourceEx(util.toPointer(hResource), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.OfflineClusterResourceEx!(util.toPointer(hResource), dwOfflineFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function MoveClusterGroupEx(
@@ -14995,33 +15346,33 @@ export function MoveClusterGroupEx(
   lpInBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   cbInBufferSize: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.MoveClusterGroupEx(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwMoveFlags, util.toPointer(lpInBuffer), cbInBufferSize);
+  return libCLUSAPI_dll.MoveClusterGroupEx!(util.toPointer(hGroup), util.toPointer(hDestinationNode), dwMoveFlags, util.toPointer(lpInBuffer), cbInBufferSize);
 }
 
 export function CancelClusterGroupOperation(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   dwCancelFlags_RESERVED: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.CancelClusterGroupOperation(util.toPointer(hGroup), dwCancelFlags_RESERVED);
+  return libCLUSAPI_dll.CancelClusterGroupOperation!(util.toPointer(hGroup), dwCancelFlags_RESERVED);
 }
 
 export function RestartClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RestartClusterResource(util.toPointer(hResource), dwFlags);
+  return libCLUSAPI_dll.RestartClusterResource!(util.toPointer(hResource), dwFlags);
 }
 
 export function CloseClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroup(util.toPointer(hGroup)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterGroup!(util.toPointer(hGroup)));
 }
 
 export function GetClusterFromGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.GetClusterFromGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.GetClusterFromGroup!(util.toPointer(hGroup));
 }
 
 export function GetClusterGroupState(
@@ -15029,14 +15380,14 @@ export function GetClusterGroupState(
   lpszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchNodeName: Deno.PointerValue | Uint8Array /* ptr */,
 ): CLUSTER_GROUP_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_GROUP_STATE */ {
-  return libCLUSAPI_dll.GetClusterGroupState(util.toPointer(hGroup), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName));
+  return libCLUSAPI_dll.GetClusterGroupState!(util.toPointer(hGroup), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName));
 }
 
 export function SetClusterGroupName(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterGroupName(util.toPointer(hGroup), util.pwstrToFfi(lpszGroupName));
+  return libCLUSAPI_dll.SetClusterGroupName!(util.toPointer(hGroup), util.pwstrToFfi(lpszGroupName));
 }
 
 export function SetClusterGroupNodeList(
@@ -15044,52 +15395,52 @@ export function SetClusterGroupNodeList(
   NodeCount: number /* u32 */,
   NodeList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterGroupNodeList(util.toPointer(hGroup), NodeCount, util.toPointer(NodeList));
+  return libCLUSAPI_dll.SetClusterGroupNodeList!(util.toPointer(hGroup), NodeCount, util.toPointer(NodeList));
 }
 
 export function OnlineClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hDestinationNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OnlineClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
+  return libCLUSAPI_dll.OnlineClusterGroup!(util.toPointer(hGroup), util.toPointer(hDestinationNode));
 }
 
 export function MoveClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   hDestinationNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.MoveClusterGroup(util.toPointer(hGroup), util.toPointer(hDestinationNode));
+  return libCLUSAPI_dll.MoveClusterGroup!(util.toPointer(hGroup), util.toPointer(hDestinationNode));
 }
 
 export function OfflineClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OfflineClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.OfflineClusterGroup!(util.toPointer(hGroup));
 }
 
 export function DeleteClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DeleteClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.DeleteClusterGroup!(util.toPointer(hGroup));
 }
 
 export function DestroyClusterGroup(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DestroyClusterGroup(util.toPointer(hGroup));
+  return libCLUSAPI_dll.DestroyClusterGroup!(util.toPointer(hGroup));
 }
 
 export function ClusterGroupOpenEnum(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterGroupOpenEnum(util.toPointer(hGroup), dwType);
+  return libCLUSAPI_dll.ClusterGroupOpenEnum!(util.toPointer(hGroup), dwType);
 }
 
 export function ClusterGroupGetEnumCount(
   hGroupEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupGetEnumCount(util.toPointer(hGroupEnum));
+  return libCLUSAPI_dll.ClusterGroupGetEnumCount!(util.toPointer(hGroupEnum));
 }
 
 export function ClusterGroupEnum(
@@ -15099,13 +15450,13 @@ export function ClusterGroupEnum(
   lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupEnum(util.toPointer(hGroupEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterGroupEnum!(util.toPointer(hGroupEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszResourceName), util.toPointer(lpcchName));
 }
 
 export function ClusterGroupCloseEnum(
   hGroupEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupCloseEnum(util.toPointer(hGroupEnum));
+  return libCLUSAPI_dll.ClusterGroupCloseEnum!(util.toPointer(hGroupEnum));
 }
 
 export function CreateClusterResource(
@@ -15114,14 +15465,14 @@ export function CreateClusterResource(
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateClusterResource(util.toPointer(hGroup), util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwFlags);
+  return libCLUSAPI_dll.CreateClusterResource!(util.toPointer(hGroup), util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwFlags);
 }
 
 export function OpenClusterResource(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterResource(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName));
+  return libCLUSAPI_dll.OpenClusterResource!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName));
 }
 
 export function OpenClusterResourceEx(
@@ -15130,25 +15481,25 @@ export function OpenClusterResourceEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterResourceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
+  return libCLUSAPI_dll.OpenClusterResourceEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
 }
 
 export function CloseClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterResource(util.toPointer(hResource)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterResource!(util.toPointer(hResource)));
 }
 
 export function GetClusterFromResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.GetClusterFromResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.GetClusterFromResource!(util.toPointer(hResource));
 }
 
 export function DeleteClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DeleteClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.DeleteClusterResource!(util.toPointer(hResource));
 }
 
 export function GetClusterResourceState(
@@ -15158,39 +15509,39 @@ export function GetClusterResourceState(
   lpszGroupName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchGroupName: Deno.PointerValue | Uint8Array /* ptr */,
 ): CLUSTER_RESOURCE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_RESOURCE_STATE */ {
-  return libCLUSAPI_dll.GetClusterResourceState(util.toPointer(hResource), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName), util.pwstrToFfi(lpszGroupName), util.toPointer(lpcchGroupName));
+  return libCLUSAPI_dll.GetClusterResourceState!(util.toPointer(hResource), util.pwstrToFfi(lpszNodeName), util.toPointer(lpcchNodeName), util.pwstrToFfi(lpszGroupName), util.toPointer(lpcchGroupName));
 }
 
 export function SetClusterResourceName(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterResourceName(util.toPointer(hResource), util.pwstrToFfi(lpszResourceName));
+  return libCLUSAPI_dll.SetClusterResourceName!(util.toPointer(hResource), util.pwstrToFfi(lpszResourceName));
 }
 
 export function FailClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.FailClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.FailClusterResource!(util.toPointer(hResource));
 }
 
 export function OnlineClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OnlineClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.OnlineClusterResource!(util.toPointer(hResource));
 }
 
 export function OfflineClusterResource(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.OfflineClusterResource(util.toPointer(hResource));
+  return libCLUSAPI_dll.OfflineClusterResource!(util.toPointer(hResource));
 }
 
 export function ChangeClusterResourceGroup(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ChangeClusterResourceGroup(util.toPointer(hResource), util.toPointer(hGroup));
+  return libCLUSAPI_dll.ChangeClusterResourceGroup!(util.toPointer(hResource), util.toPointer(hGroup));
 }
 
 export function ChangeClusterResourceGroupEx(
@@ -15198,42 +15549,42 @@ export function ChangeClusterResourceGroupEx(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   Flags: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ChangeClusterResourceGroupEx(util.toPointer(hResource), util.toPointer(hGroup), Flags);
+  return libCLUSAPI_dll.ChangeClusterResourceGroupEx!(util.toPointer(hResource), util.toPointer(hGroup), Flags);
 }
 
 export function AddClusterResourceNode(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
+  return libCLUSAPI_dll.AddClusterResourceNode!(util.toPointer(hResource), util.toPointer(hNode));
 }
 
 export function RemoveClusterResourceNode(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterResourceNode(util.toPointer(hResource), util.toPointer(hNode));
+  return libCLUSAPI_dll.RemoveClusterResourceNode!(util.toPointer(hResource), util.toPointer(hNode));
 }
 
 export function AddClusterResourceDependency(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.AddClusterResourceDependency!(util.toPointer(hResource), util.toPointer(hDependsOn));
 }
 
 export function RemoveClusterResourceDependency(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hDependsOn: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterResourceDependency(util.toPointer(hResource), util.toPointer(hDependsOn));
+  return libCLUSAPI_dll.RemoveClusterResourceDependency!(util.toPointer(hResource), util.toPointer(hDependsOn));
 }
 
 export function SetClusterResourceDependencyExpression(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression));
+  return libCLUSAPI_dll.SetClusterResourceDependencyExpression!(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression));
 }
 
 export function GetClusterResourceDependencyExpression(
@@ -15241,26 +15592,26 @@ export function GetClusterResourceDependencyExpression(
   lpszDependencyExpression: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchDependencyExpression: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterResourceDependencyExpression(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression), util.toPointer(lpcchDependencyExpression));
+  return libCLUSAPI_dll.GetClusterResourceDependencyExpression!(util.toPointer(hResource), util.pwstrToFfi(lpszDependencyExpression), util.toPointer(lpcchDependencyExpression));
 }
 
 export function AddResourceToClusterSharedVolumes(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddResourceToClusterSharedVolumes(util.toPointer(hResource));
+  return libCLUSAPI_dll.AddResourceToClusterSharedVolumes!(util.toPointer(hResource));
 }
 
 export function RemoveResourceFromClusterSharedVolumes(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveResourceFromClusterSharedVolumes(util.toPointer(hResource));
+  return libCLUSAPI_dll.RemoveResourceFromClusterSharedVolumes!(util.toPointer(hResource));
 }
 
 export function IsFileOnClusterSharedVolume(
   lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pbFileIsOnSharedVolume: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.IsFileOnClusterSharedVolume(util.pwstrToFfi(lpszPathName), util.toPointer(pbFileIsOnSharedVolume));
+  return libCLUSAPI_dll.IsFileOnClusterSharedVolume!(util.pwstrToFfi(lpszPathName), util.toPointer(pbFileIsOnSharedVolume));
 }
 
 export function ClusterSharedVolumeSetSnapshotState(
@@ -15268,14 +15619,14 @@ export function ClusterSharedVolumeSetSnapshotState(
   lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   state: CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_SHARED_VOLUME_SNAPSHOT_STATE */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterSharedVolumeSetSnapshotState(util.toPointer(guidSnapshotSet), util.pwstrToFfi(lpszVolumeName), state);
+  return libCLUSAPI_dll.ClusterSharedVolumeSetSnapshotState!(util.toPointer(guidSnapshotSet), util.pwstrToFfi(lpszVolumeName), state);
 }
 
 export function CanResourceBeDependent(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   hResourceDependent: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CanResourceBeDependent(util.toPointer(hResource), util.toPointer(hResourceDependent)));
+  return util.boolFromFfi(libCLUSAPI_dll.CanResourceBeDependent!(util.toPointer(hResource), util.toPointer(hResourceDependent)));
 }
 
 export function ClusterResourceControl(
@@ -15288,7 +15639,7 @@ export function ClusterResourceControl(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceControl(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceControl!(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceControlAsUser(
@@ -15301,7 +15652,7 @@ export function ClusterResourceControlAsUser(
   cbOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceControlAsUser(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceControlAsUser!(util.toPointer(hResource), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), cbInBufferSize, util.toPointer(lpOutBuffer), cbOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceTypeControl(
@@ -15315,7 +15666,7 @@ export function ClusterResourceTypeControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceTypeControl(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceTypeControl!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterResourceTypeControlAsUser(
@@ -15329,7 +15680,7 @@ export function ClusterResourceTypeControlAsUser(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceTypeControlAsUser(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterResourceTypeControlAsUser!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterGroupControl(
@@ -15342,7 +15693,7 @@ export function ClusterGroupControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterGroupControl(util.toPointer(hGroup), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterGroupControl!(util.toPointer(hGroup), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function ClusterNodeControl(
@@ -15355,7 +15706,7 @@ export function ClusterNodeControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNodeControl(util.toPointer(hNode), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNodeControl!(util.toPointer(hNode), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function GetClusterResourceNetworkName(
@@ -15363,20 +15714,20 @@ export function GetClusterResourceNetworkName(
   lpBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   nSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.GetClusterResourceNetworkName(util.toPointer(hResource), util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
+  return util.boolFromFfi(libCLUSAPI_dll.GetClusterResourceNetworkName!(util.toPointer(hResource), util.pwstrToFfi(lpBuffer), util.toPointer(nSize)));
 }
 
 export function ClusterResourceOpenEnum(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterResourceOpenEnum(util.toPointer(hResource), dwType);
+  return libCLUSAPI_dll.ClusterResourceOpenEnum!(util.toPointer(hResource), dwType);
 }
 
 export function ClusterResourceGetEnumCount(
   hResEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceGetEnumCount(util.toPointer(hResEnum));
+  return libCLUSAPI_dll.ClusterResourceGetEnumCount!(util.toPointer(hResEnum));
 }
 
 export function ClusterResourceEnum(
@@ -15386,13 +15737,13 @@ export function ClusterResourceEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceEnum(util.toPointer(hResEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterResourceEnum!(util.toPointer(hResEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterResourceCloseEnum(
   hResEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceCloseEnum(util.toPointer(hResEnum));
+  return libCLUSAPI_dll.ClusterResourceCloseEnum!(util.toPointer(hResEnum));
 }
 
 export function CreateClusterResourceType(
@@ -15403,14 +15754,14 @@ export function CreateClusterResourceType(
   dwLooksAlivePollInterval: number /* u32 */,
   dwIsAlivePollInterval: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.CreateClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.pwstrToFfi(lpszDisplayName), util.pwstrToFfi(lpszResourceTypeDll), dwLooksAlivePollInterval, dwIsAlivePollInterval);
+  return libCLUSAPI_dll.CreateClusterResourceType!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), util.pwstrToFfi(lpszDisplayName), util.pwstrToFfi(lpszResourceTypeDll), dwLooksAlivePollInterval, dwIsAlivePollInterval);
 }
 
 export function DeleteClusterResourceType(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DeleteClusterResourceType(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName));
+  return libCLUSAPI_dll.DeleteClusterResourceType!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName));
 }
 
 export function ClusterResourceTypeOpenEnum(
@@ -15418,13 +15769,13 @@ export function ClusterResourceTypeOpenEnum(
   lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterResourceTypeOpenEnum(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), dwType);
+  return libCLUSAPI_dll.ClusterResourceTypeOpenEnum!(util.toPointer(hCluster), util.pwstrToFfi(lpszResourceTypeName), dwType);
 }
 
 export function ClusterResourceTypeGetEnumCount(
   hResTypeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceTypeGetEnumCount(util.toPointer(hResTypeEnum));
+  return libCLUSAPI_dll.ClusterResourceTypeGetEnumCount!(util.toPointer(hResTypeEnum));
 }
 
 export function ClusterResourceTypeEnum(
@@ -15434,20 +15785,20 @@ export function ClusterResourceTypeEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceTypeEnum(util.toPointer(hResTypeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterResourceTypeEnum!(util.toPointer(hResTypeEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterResourceTypeCloseEnum(
   hResTypeEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterResourceTypeCloseEnum(util.toPointer(hResTypeEnum));
+  return libCLUSAPI_dll.ClusterResourceTypeCloseEnum!(util.toPointer(hResTypeEnum));
 }
 
 export function OpenClusterNetwork(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszNetworkName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNetwork(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName));
+  return libCLUSAPI_dll.OpenClusterNetwork!(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName));
 }
 
 export function OpenClusterNetworkEx(
@@ -15456,32 +15807,32 @@ export function OpenClusterNetworkEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNetworkEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
+  return libCLUSAPI_dll.OpenClusterNetworkEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszNetworkName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
 }
 
 export function CloseClusterNetwork(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetwork(util.toPointer(hNetwork)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetwork!(util.toPointer(hNetwork)));
 }
 
 export function GetClusterFromNetwork(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.GetClusterFromNetwork(util.toPointer(hNetwork));
+  return libCLUSAPI_dll.GetClusterFromNetwork!(util.toPointer(hNetwork));
 }
 
 export function ClusterNetworkOpenEnum(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
   dwType: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.ClusterNetworkOpenEnum(util.toPointer(hNetwork), dwType);
+  return libCLUSAPI_dll.ClusterNetworkOpenEnum!(util.toPointer(hNetwork), dwType);
 }
 
 export function ClusterNetworkGetEnumCount(
   hNetworkEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetworkGetEnumCount(util.toPointer(hNetworkEnum));
+  return libCLUSAPI_dll.ClusterNetworkGetEnumCount!(util.toPointer(hNetworkEnum));
 }
 
 export function ClusterNetworkEnum(
@@ -15491,26 +15842,26 @@ export function ClusterNetworkEnum(
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetworkEnum(util.toPointer(hNetworkEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.ClusterNetworkEnum!(util.toPointer(hNetworkEnum), dwIndex, util.toPointer(lpdwType), util.pwstrToFfi(lpszName), util.toPointer(lpcchName));
 }
 
 export function ClusterNetworkCloseEnum(
   hNetworkEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetworkCloseEnum(util.toPointer(hNetworkEnum));
+  return libCLUSAPI_dll.ClusterNetworkCloseEnum!(util.toPointer(hNetworkEnum));
 }
 
 export function GetClusterNetworkState(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
 ): CLUSTER_NETWORK_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NETWORK_STATE */ {
-  return libCLUSAPI_dll.GetClusterNetworkState(util.toPointer(hNetwork));
+  return libCLUSAPI_dll.GetClusterNetworkState!(util.toPointer(hNetwork));
 }
 
 export function SetClusterNetworkName(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
   lpszName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.SetClusterNetworkName(util.toPointer(hNetwork), util.pwstrToFfi(lpszName));
+  return libCLUSAPI_dll.SetClusterNetworkName!(util.toPointer(hNetwork), util.pwstrToFfi(lpszName));
 }
 
 export function GetClusterNetworkId(
@@ -15518,7 +15869,7 @@ export function GetClusterNetworkId(
   lpszNetworkId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterNetworkId(util.toPointer(hNetwork), util.pwstrToFfi(lpszNetworkId), util.toPointer(lpcchName));
+  return libCLUSAPI_dll.GetClusterNetworkId!(util.toPointer(hNetwork), util.pwstrToFfi(lpszNetworkId), util.toPointer(lpcchName));
 }
 
 export function ClusterNetworkControl(
@@ -15531,14 +15882,14 @@ export function ClusterNetworkControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetworkControl(util.toPointer(hNetwork), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNetworkControl!(util.toPointer(hNetwork), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function OpenClusterNetInterface(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   lpszInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName));
+  return libCLUSAPI_dll.OpenClusterNetInterface!(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName));
 }
 
 export function OpenClusterNetInterfaceEx(
@@ -15547,7 +15898,7 @@ export function OpenClusterNetInterfaceEx(
   dwDesiredAccess: number /* u32 */,
   lpdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.OpenClusterNetInterfaceEx(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
+  return libCLUSAPI_dll.OpenClusterNetInterfaceEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszInterfaceName), dwDesiredAccess, util.toPointer(lpdwGrantedAccess));
 }
 
 export function GetClusterNetInterface(
@@ -15557,25 +15908,25 @@ export function GetClusterNetInterface(
   lpszInterfaceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchInterfaceName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetClusterNetInterface(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName), util.pwstrToFfi(lpszInterfaceName), util.toPointer(lpcchInterfaceName));
+  return libCLUSAPI_dll.GetClusterNetInterface!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.pwstrToFfi(lpszNetworkName), util.pwstrToFfi(lpszInterfaceName), util.toPointer(lpcchInterfaceName));
 }
 
 export function CloseClusterNetInterface(
   hNetInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetInterface(util.toPointer(hNetInterface)));
+  return util.boolFromFfi(libCLUSAPI_dll.CloseClusterNetInterface!(util.toPointer(hNetInterface)));
 }
 
 export function GetClusterFromNetInterface(
   hNetInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.GetClusterFromNetInterface(util.toPointer(hNetInterface));
+  return libCLUSAPI_dll.GetClusterFromNetInterface!(util.toPointer(hNetInterface));
 }
 
 export function GetClusterNetInterfaceState(
   hNetInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): CLUSTER_NETINTERFACE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_NETINTERFACE_STATE */ {
-  return libCLUSAPI_dll.GetClusterNetInterfaceState(util.toPointer(hNetInterface));
+  return libCLUSAPI_dll.GetClusterNetInterfaceState!(util.toPointer(hNetInterface));
 }
 
 export function ClusterNetInterfaceControl(
@@ -15588,49 +15939,49 @@ export function ClusterNetInterfaceControl(
   nOutBufferSize: number /* u32 */,
   lpBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterNetInterfaceControl(util.toPointer(hNetInterface), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
+  return libCLUSAPI_dll.ClusterNetInterfaceControl!(util.toPointer(hNetInterface), util.toPointer(hHostNode), dwControlCode, util.toPointer(lpInBuffer), nInBufferSize, util.toPointer(lpOutBuffer), nOutBufferSize, util.toPointer(lpBytesReturned));
 }
 
 export function GetClusterKey(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterKey(util.toPointer(hCluster), samDesired);
+  return libCLUSAPI_dll.GetClusterKey!(util.toPointer(hCluster), samDesired);
 }
 
 export function GetClusterGroupKey(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterGroupKey(util.toPointer(hGroup), samDesired);
+  return libCLUSAPI_dll.GetClusterGroupKey!(util.toPointer(hGroup), samDesired);
 }
 
 export function GetClusterResourceKey(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterResourceKey(util.toPointer(hResource), samDesired);
+  return libCLUSAPI_dll.GetClusterResourceKey!(util.toPointer(hResource), samDesired);
 }
 
 export function GetClusterNodeKey(
   hNode: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterNodeKey(util.toPointer(hNode), samDesired);
+  return libCLUSAPI_dll.GetClusterNodeKey!(util.toPointer(hNode), samDesired);
 }
 
 export function GetClusterNetworkKey(
   hNetwork: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterNetworkKey(util.toPointer(hNetwork), samDesired);
+  return libCLUSAPI_dll.GetClusterNetworkKey!(util.toPointer(hNetwork), samDesired);
 }
 
 export function GetClusterNetInterfaceKey(
   hNetInterface: Deno.PointerValue | Uint8Array /* ptr */,
   samDesired: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */ {
-  return libCLUSAPI_dll.GetClusterNetInterfaceKey(util.toPointer(hNetInterface), samDesired);
+  return libCLUSAPI_dll.GetClusterNetInterfaceKey!(util.toPointer(hNetInterface), samDesired);
 }
 
 export function ClusterRegCreateKey(
@@ -15642,7 +15993,7 @@ export function ClusterRegCreateKey(
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
   lpdwDisposition: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCreateKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
+  return libCLUSAPI_dll.ClusterRegCreateKey!(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), dwOptions, samDesired, util.toPointer(lpSecurityAttributes), util.toPointer(phkResult), util.toPointer(lpdwDisposition));
 }
 
 export function ClusterRegOpenKey(
@@ -15651,20 +16002,20 @@ export function ClusterRegOpenKey(
   samDesired: number /* u32 */,
   phkResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegOpenKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), samDesired, util.toPointer(phkResult));
+  return libCLUSAPI_dll.ClusterRegOpenKey!(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey), samDesired, util.toPointer(phkResult));
 }
 
 export function ClusterRegDeleteKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpszSubKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegDeleteKey(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey));
+  return libCLUSAPI_dll.ClusterRegDeleteKey!(util.toPointer(hKey), util.pwstrToFfi(lpszSubKey));
 }
 
 export function ClusterRegCloseKey(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseKey(util.toPointer(hKey));
+  return libCLUSAPI_dll.ClusterRegCloseKey!(util.toPointer(hKey));
 }
 
 export function ClusterRegEnumKey(
@@ -15674,7 +16025,7 @@ export function ClusterRegEnumKey(
   lpcchName: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegEnumKey(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.toPointer(lpftLastWriteTime));
+  return libCLUSAPI_dll.ClusterRegEnumKey!(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszName), util.toPointer(lpcchName), util.toPointer(lpftLastWriteTime));
 }
 
 export function ClusterRegSetValue(
@@ -15684,14 +16035,14 @@ export function ClusterRegSetValue(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRegSetValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), dwType, util.toPointer(lpData), cbData);
+  return libCLUSAPI_dll.ClusterRegSetValue!(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), dwType, util.toPointer(lpData), cbData);
 }
 
 export function ClusterRegDeleteValue(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   lpszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRegDeleteValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName));
+  return libCLUSAPI_dll.ClusterRegDeleteValue!(util.toPointer(hKey), util.pwstrToFfi(lpszValueName));
 }
 
 export function ClusterRegQueryValue(
@@ -15701,7 +16052,7 @@ export function ClusterRegQueryValue(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegQueryValue(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), util.toPointer(lpdwValueType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libCLUSAPI_dll.ClusterRegQueryValue!(util.toPointer(hKey), util.pwstrToFfi(lpszValueName), util.toPointer(lpdwValueType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function ClusterRegEnumValue(
@@ -15713,7 +16064,7 @@ export function ClusterRegEnumValue(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   lpcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterRegEnumValue(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszValueName), util.toPointer(lpcchValueName), util.toPointer(lpdwType), util.toPointer(lpData), util.toPointer(lpcbData));
+  return libCLUSAPI_dll.ClusterRegEnumValue!(util.toPointer(hKey), dwIndex, util.pwstrToFfi(lpszValueName), util.toPointer(lpcchValueName), util.toPointer(lpdwType), util.toPointer(lpData), util.toPointer(lpcbData));
 }
 
 export function ClusterRegQueryInfoKey(
@@ -15726,7 +16077,7 @@ export function ClusterRegQueryInfoKey(
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
   lpftLastWriteTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegQueryInfoKey(util.toPointer(hKey), util.toPointer(lpcSubKeys), util.toPointer(lpcchMaxSubKeyLen), util.toPointer(lpcValues), util.toPointer(lpcchMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
+  return libCLUSAPI_dll.ClusterRegQueryInfoKey!(util.toPointer(hKey), util.toPointer(lpcSubKeys), util.toPointer(lpcchMaxSubKeyLen), util.toPointer(lpcValues), util.toPointer(lpcchMaxValueNameLen), util.toPointer(lpcbMaxValueLen), util.toPointer(lpcbSecurityDescriptor), util.toPointer(lpftLastWriteTime));
 }
 
 export function ClusterRegGetKeySecurity(
@@ -15735,7 +16086,7 @@ export function ClusterRegGetKeySecurity(
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
   lpcbSecurityDescriptor: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegGetKeySecurity(util.toPointer(hKey), RequestedInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
+  return libCLUSAPI_dll.ClusterRegGetKeySecurity!(util.toPointer(hKey), RequestedInformation, util.toPointer(pSecurityDescriptor), util.toPointer(lpcbSecurityDescriptor));
 }
 
 export function ClusterRegSetKeySecurity(
@@ -15743,21 +16094,21 @@ export function ClusterRegSetKeySecurity(
   SecurityInformation: number /* u32 */,
   pSecurityDescriptor: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.PSECURITY_DESCRIPTOR */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegSetKeySecurity(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
+  return libCLUSAPI_dll.ClusterRegSetKeySecurity!(util.toPointer(hKey), SecurityInformation, util.toPointer(pSecurityDescriptor));
 }
 
 export function ClusterRegSyncDatabase(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegSyncDatabase(util.toPointer(hCluster), flags);
+  return libCLUSAPI_dll.ClusterRegSyncDatabase!(util.toPointer(hCluster), flags);
 }
 
 export function ClusterRegCreateBatch(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pHREGBATCH: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCreateBatch(util.toPointer(hKey), util.toPointer(pHREGBATCH));
+  return libCLUSAPI_dll.ClusterRegCreateBatch!(util.toPointer(hKey), util.toPointer(pHREGBATCH));
 }
 
 export function ClusterRegBatchAddCommand(
@@ -15768,7 +16119,7 @@ export function ClusterRegBatchAddCommand(
   lpData: Deno.PointerValue | Uint8Array /* ptr */,
   cbData: number /* u32 */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegBatchAddCommand(util.toPointer(hRegBatch), dwCommand, util.pwstrToFfi(wzName), dwOptions, util.toPointer(lpData), cbData);
+  return libCLUSAPI_dll.ClusterRegBatchAddCommand!(util.toPointer(hRegBatch), dwCommand, util.pwstrToFfi(wzName), dwOptions, util.toPointer(lpData), cbData);
 }
 
 export function ClusterRegCloseBatch(
@@ -15776,7 +16127,7 @@ export function ClusterRegCloseBatch(
   bCommit: boolean /* Windows.Win32.Foundation.BOOL */,
   failedCommandNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseBatch(util.toPointer(hRegBatch), util.boolToFfi(bCommit), util.toPointer(failedCommandNumber));
+  return libCLUSAPI_dll.ClusterRegCloseBatch!(util.toPointer(hRegBatch), util.boolToFfi(bCommit), util.toPointer(failedCommandNumber));
 }
 
 export function ClusterRegCloseBatchEx(
@@ -15784,47 +16135,47 @@ export function ClusterRegCloseBatchEx(
   flags: number /* u32 */,
   failedCommandNumber: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseBatchEx(util.toPointer(hRegBatch), flags, util.toPointer(failedCommandNumber));
+  return libCLUSAPI_dll.ClusterRegCloseBatchEx!(util.toPointer(hRegBatch), flags, util.toPointer(failedCommandNumber));
 }
 
 export function ClusterRegBatchReadCommand(
   hBatchNotification: Deno.PointerValue | Uint8Array /* ptr */,
   pBatchCommand: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegBatchReadCommand(util.toPointer(hBatchNotification), util.toPointer(pBatchCommand));
+  return libCLUSAPI_dll.ClusterRegBatchReadCommand!(util.toPointer(hBatchNotification), util.toPointer(pBatchCommand));
 }
 
 export function ClusterRegBatchCloseNotification(
   hBatchNotification: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegBatchCloseNotification(util.toPointer(hBatchNotification));
+  return libCLUSAPI_dll.ClusterRegBatchCloseNotification!(util.toPointer(hBatchNotification));
 }
 
 export function ClusterRegCreateBatchNotifyPort(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   phBatchNotifyPort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCreateBatchNotifyPort(util.toPointer(hKey), util.toPointer(phBatchNotifyPort));
+  return libCLUSAPI_dll.ClusterRegCreateBatchNotifyPort!(util.toPointer(hKey), util.toPointer(phBatchNotifyPort));
 }
 
 export function ClusterRegCloseBatchNotifyPort(
   hBatchNotifyPort: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseBatchNotifyPort(util.toPointer(hBatchNotifyPort));
+  return libCLUSAPI_dll.ClusterRegCloseBatchNotifyPort!(util.toPointer(hBatchNotifyPort));
 }
 
 export function ClusterRegGetBatchNotification(
   hBatchNotify: Deno.PointerValue | Uint8Array /* ptr */,
   phBatchNotification: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegGetBatchNotification(util.toPointer(hBatchNotify), util.toPointer(phBatchNotification));
+  return libCLUSAPI_dll.ClusterRegGetBatchNotification!(util.toPointer(hBatchNotify), util.toPointer(phBatchNotification));
 }
 
 export function ClusterRegCreateReadBatch(
   hKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   phRegReadBatch: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCreateReadBatch(util.toPointer(hKey), util.toPointer(phRegReadBatch));
+  return libCLUSAPI_dll.ClusterRegCreateReadBatch!(util.toPointer(hKey), util.toPointer(phRegReadBatch));
 }
 
 export function ClusterRegReadBatchAddCommand(
@@ -15832,14 +16183,14 @@ export function ClusterRegReadBatchAddCommand(
   wzSubkeyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   wzValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegReadBatchAddCommand(util.toPointer(hRegReadBatch), util.pwstrToFfi(wzSubkeyName), util.pwstrToFfi(wzValueName));
+  return libCLUSAPI_dll.ClusterRegReadBatchAddCommand!(util.toPointer(hRegReadBatch), util.pwstrToFfi(wzSubkeyName), util.pwstrToFfi(wzValueName));
 }
 
 export function ClusterRegCloseReadBatch(
   hRegReadBatch: Deno.PointerValue | Uint8Array /* ptr */,
   phRegReadBatchReply: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseReadBatch(util.toPointer(hRegReadBatch), util.toPointer(phRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatch!(util.toPointer(hRegReadBatch), util.toPointer(phRegReadBatchReply));
 }
 
 export function ClusterRegCloseReadBatchEx(
@@ -15847,20 +16198,20 @@ export function ClusterRegCloseReadBatchEx(
   flags: number /* u32 */,
   phRegReadBatchReply: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseReadBatchEx(util.toPointer(hRegReadBatch), flags, util.toPointer(phRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatchEx!(util.toPointer(hRegReadBatch), flags, util.toPointer(phRegReadBatchReply));
 }
 
 export function ClusterRegReadBatchReplyNextCommand(
   hRegReadBatchReply: Deno.PointerValue | Uint8Array /* ptr */,
   pBatchCommand: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegReadBatchReplyNextCommand(util.toPointer(hRegReadBatchReply), util.toPointer(pBatchCommand));
+  return libCLUSAPI_dll.ClusterRegReadBatchReplyNextCommand!(util.toPointer(hRegReadBatchReply), util.toPointer(pBatchCommand));
 }
 
 export function ClusterRegCloseReadBatchReply(
   hRegReadBatchReply: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libCLUSAPI_dll.ClusterRegCloseReadBatchReply(util.toPointer(hRegReadBatchReply));
+  return libCLUSAPI_dll.ClusterRegCloseReadBatchReply!(util.toPointer(hRegReadBatchReply));
 }
 
 export function ClusterSetAccountAccess(
@@ -15869,7 +16220,7 @@ export function ClusterSetAccountAccess(
   dwAccess: number /* u32 */,
   dwControlType: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.ClusterSetAccountAccess(util.toPointer(hCluster), util.pwstrToFfi(szAccountSID), dwAccess, dwControlType);
+  return libCLUSAPI_dll.ClusterSetAccountAccess!(util.toPointer(hCluster), util.pwstrToFfi(szAccountSID), dwAccess, dwControlType);
 }
 
 export function CreateCluster(
@@ -15877,7 +16228,7 @@ export function CreateCluster(
   pfnProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.CreateCluster(util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.CreateCluster!(util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function CreateClusterNameAccount(
@@ -15886,14 +16237,14 @@ export function CreateClusterNameAccount(
   pfnProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.CreateClusterNameAccount(util.toPointer(hCluster), util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.CreateClusterNameAccount!(util.toPointer(hCluster), util.toPointer(pConfig), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function RemoveClusterNameAccount(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   bDeleteComputerObjects: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterNameAccount(util.toPointer(hCluster), util.boolToFfi(bDeleteComputerObjects));
+  return libCLUSAPI_dll.RemoveClusterNameAccount!(util.toPointer(hCluster), util.boolToFfi(bDeleteComputerObjects));
 }
 
 export function DetermineCNOResTypeFromNodelist(
@@ -15901,14 +16252,14 @@ export function DetermineCNOResTypeFromNodelist(
   ppszNodeNames: Deno.PointerValue | Uint8Array /* ptr */,
   pCNOResType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DetermineCNOResTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCNOResType));
+  return libCLUSAPI_dll.DetermineCNOResTypeFromNodelist!(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCNOResType));
 }
 
 export function DetermineCNOResTypeFromCluster(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   pCNOResType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DetermineCNOResTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCNOResType));
+  return libCLUSAPI_dll.DetermineCNOResTypeFromCluster!(util.toPointer(hCluster), util.toPointer(pCNOResType));
 }
 
 export function DetermineClusterCloudTypeFromNodelist(
@@ -15916,21 +16267,21 @@ export function DetermineClusterCloudTypeFromNodelist(
   ppszNodeNames: Deno.PointerValue | Uint8Array /* ptr */,
   pCloudType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DetermineClusterCloudTypeFromNodelist(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCloudType));
+  return libCLUSAPI_dll.DetermineClusterCloudTypeFromNodelist!(cNodes, util.toPointer(ppszNodeNames), util.toPointer(pCloudType));
 }
 
 export function DetermineClusterCloudTypeFromCluster(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   pCloudType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DetermineClusterCloudTypeFromCluster(util.toPointer(hCluster), util.toPointer(pCloudType));
+  return libCLUSAPI_dll.DetermineClusterCloudTypeFromCluster!(util.toPointer(hCluster), util.toPointer(pCloudType));
 }
 
 export function GetNodeCloudTypeDW(
   ppszNodeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   NodeCloudType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.GetNodeCloudTypeDW(util.pwstrToFfi(ppszNodeName), util.toPointer(NodeCloudType));
+  return libCLUSAPI_dll.GetNodeCloudTypeDW!(util.pwstrToFfi(ppszNodeName), util.toPointer(NodeCloudType));
 }
 
 export function RegisterClusterResourceTypeNotifyV2(
@@ -15940,7 +16291,7 @@ export function RegisterClusterResourceTypeNotifyV2(
   resTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwNotifyKey: bigint | number /* usize */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RegisterClusterResourceTypeNotifyV2(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
+  return libCLUSAPI_dll.RegisterClusterResourceTypeNotifyV2!(util.toPointer(hChange), util.toPointer(hCluster), Flags, util.pwstrToFfi(resTypeName), dwNotifyKey);
 }
 
 export function AddClusterNode(
@@ -15949,7 +16300,7 @@ export function AddClusterNode(
   pfnProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.AddClusterNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.AddClusterNode!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function AddClusterStorageNode(
@@ -15960,7 +16311,7 @@ export function AddClusterStorageNode(
   lpszClusterStorageNodeDescription: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszClusterStorageNodeLocation: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.AddClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.pwstrToFfi(lpszClusterStorageNodeDescription), util.pwstrToFfi(lpszClusterStorageNodeLocation));
+  return libCLUSAPI_dll.AddClusterStorageNode!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.pwstrToFfi(lpszClusterStorageNodeDescription), util.pwstrToFfi(lpszClusterStorageNodeLocation));
 }
 
 export function AddClusterNodeEx(
@@ -15970,7 +16321,7 @@ export function AddClusterNodeEx(
   pfnProgressCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PCLUSTER_SETUP_PROGRESS_CALLBACK */,
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libCLUSAPI_dll.AddClusterNodeEx(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwFlags, util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
+  return libCLUSAPI_dll.AddClusterNodeEx!(util.toPointer(hCluster), util.pwstrToFfi(lpszNodeName), dwFlags, util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg));
 }
 
 export function RemoveClusterStorageNode(
@@ -15979,7 +16330,7 @@ export function RemoveClusterStorageNode(
   dwTimeout: number /* u32 */,
   dwFlags: number /* u32 */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.RemoveClusterStorageNode(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterStorageEnclosureName), dwTimeout, dwFlags);
+  return libCLUSAPI_dll.RemoveClusterStorageNode!(util.toPointer(hCluster), util.pwstrToFfi(lpszClusterStorageEnclosureName), dwTimeout, dwFlags);
 }
 
 export function DestroyCluster(
@@ -15988,31 +16339,31 @@ export function DestroyCluster(
   pvCallbackArg: Deno.PointerValue | Uint8Array /* ptr */,
   fdeleteVirtualComputerObjects: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libCLUSAPI_dll.DestroyCluster(util.toPointer(hCluster), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.boolToFfi(fdeleteVirtualComputerObjects));
+  return libCLUSAPI_dll.DestroyCluster!(util.toPointer(hCluster), util.toPointer(pfnProgressCallback), util.toPointer(pvCallbackArg), util.boolToFfi(fdeleteVirtualComputerObjects));
 }
 
 export function InitializeClusterHealthFault(
   clusterHealthFault: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.InitializeClusterHealthFault(util.toPointer(clusterHealthFault));
+  return libRESUTILS_dll.InitializeClusterHealthFault!(util.toPointer(clusterHealthFault));
 }
 
 export function InitializeClusterHealthFaultArray(
   clusterHealthFaultArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.InitializeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
+  return libRESUTILS_dll.InitializeClusterHealthFaultArray!(util.toPointer(clusterHealthFaultArray));
 }
 
 export function FreeClusterHealthFault(
   clusterHealthFault: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.FreeClusterHealthFault(util.toPointer(clusterHealthFault));
+  return libRESUTILS_dll.FreeClusterHealthFault!(util.toPointer(clusterHealthFault));
 }
 
 export function FreeClusterHealthFaultArray(
   clusterHealthFaultArray: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.FreeClusterHealthFaultArray(util.toPointer(clusterHealthFaultArray));
+  return libRESUTILS_dll.FreeClusterHealthFaultArray!(util.toPointer(clusterHealthFaultArray));
 }
 
 export function ClusGetClusterHealthFaults(
@@ -16020,7 +16371,7 @@ export function ClusGetClusterHealthFaults(
   objects: Deno.PointerValue | Uint8Array /* ptr */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusGetClusterHealthFaults(util.toPointer(hCluster), util.toPointer(objects), flags);
+  return libRESUTILS_dll.ClusGetClusterHealthFaults!(util.toPointer(hCluster), util.toPointer(objects), flags);
 }
 
 export function ClusRemoveClusterHealthFault(
@@ -16028,7 +16379,7 @@ export function ClusRemoveClusterHealthFault(
   id: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusRemoveClusterHealthFault(util.toPointer(hCluster), util.pwstrToFfi(id), flags);
+  return libRESUTILS_dll.ClusRemoveClusterHealthFault!(util.toPointer(hCluster), util.pwstrToFfi(id), flags);
 }
 
 export function ClusAddClusterHealthFault(
@@ -16036,50 +16387,50 @@ export function ClusAddClusterHealthFault(
   failure: Deno.PointerValue | Uint8Array /* ptr */,
   param2: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusAddClusterHealthFault(util.toPointer(hCluster), util.toPointer(failure), param2);
+  return libRESUTILS_dll.ClusAddClusterHealthFault!(util.toPointer(hCluster), util.toPointer(failure), param2);
 }
 
 export function ResUtilStartResourceService(
   pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   phServiceHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilStartResourceService(util.pwstrToFfi(pszServiceName), util.toPointer(phServiceHandle));
+  return libRESUTILS_dll.ResUtilStartResourceService!(util.pwstrToFfi(pszServiceName), util.toPointer(phServiceHandle));
 }
 
 export function ResUtilVerifyResourceService(
   pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilVerifyResourceService(util.pwstrToFfi(pszServiceName));
+  return libRESUTILS_dll.ResUtilVerifyResourceService!(util.pwstrToFfi(pszServiceName));
 }
 
 export function ResUtilStopResourceService(
   pszServiceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilStopResourceService(util.pwstrToFfi(pszServiceName));
+  return libRESUTILS_dll.ResUtilStopResourceService!(util.pwstrToFfi(pszServiceName));
 }
 
 export function ResUtilVerifyService(
   hServiceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilVerifyService(util.toPointer(hServiceHandle));
+  return libRESUTILS_dll.ResUtilVerifyService!(util.toPointer(hServiceHandle));
 }
 
 export function ResUtilStopService(
   hServiceHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Security.SC_HANDLE */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilStopService(util.toPointer(hServiceHandle));
+  return libRESUTILS_dll.ResUtilStopService!(util.toPointer(hServiceHandle));
 }
 
 export function ResUtilCreateDirectoryTree(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilCreateDirectoryTree(util.pwstrToFfi(pszPath));
+  return libRESUTILS_dll.ResUtilCreateDirectoryTree!(util.pwstrToFfi(pszPath));
 }
 
 export function ResUtilIsPathValid(
   pszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsPathValid(util.pwstrToFfi(pszPath)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsPathValid!(util.pwstrToFfi(pszPath)));
 }
 
 export function ResUtilEnumProperties(
@@ -16089,7 +16440,7 @@ export function ResUtilEnumProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumProperties(util.toPointer(pPropertyTable), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilEnumProperties!(util.toPointer(pPropertyTable), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilEnumPrivateProperties(
@@ -16099,7 +16450,7 @@ export function ResUtilEnumPrivateProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumPrivateProperties(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilEnumPrivateProperties!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszOutProperties), cbOutPropertiesSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetProperties(
@@ -16110,7 +16461,7 @@ export function ResUtilGetProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetProperties!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetAllProperties(
@@ -16121,7 +16472,7 @@ export function ResUtilGetAllProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetAllProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetAllProperties!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetPrivateProperties(
@@ -16131,7 +16482,7 @@ export function ResUtilGetPrivateProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetPrivateProperties(util.toPointer(hkeyClusterKey), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetPrivateProperties!(util.toPointer(hkeyClusterKey), util.toPointer(pOutPropertyList), cbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetPropertySize(
@@ -16140,7 +16491,7 @@ export function ResUtilGetPropertySize(
   pcbOutPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
   pnPropertyCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetPropertySize(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pcbOutPropertyListSize), util.toPointer(pnPropertyCount));
+  return libRESUTILS_dll.ResUtilGetPropertySize!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pcbOutPropertyListSize), util.toPointer(pnPropertyCount));
 }
 
 export function ResUtilGetProperty(
@@ -16149,7 +16500,7 @@ export function ResUtilGetProperty(
   pOutPropertyItem: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutPropertyItemSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetProperty(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pOutPropertyItem), util.toPointer(pcbOutPropertyItemSize));
+  return libRESUTILS_dll.ResUtilGetProperty!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTableItem), util.toPointer(pOutPropertyItem), util.toPointer(pcbOutPropertyItemSize));
 }
 
 export function ResUtilVerifyPropertyTable(
@@ -16160,7 +16511,7 @@ export function ResUtilVerifyPropertyTable(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilVerifyPropertyTable(util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilVerifyPropertyTable!(util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyTable(
@@ -16172,7 +16523,7 @@ export function ResUtilSetPropertyTable(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetPropertyTable(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyTable!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyTableEx(
@@ -16185,7 +16536,7 @@ export function ResUtilSetPropertyTableEx(
   bForceWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pOutParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetPropertyTableEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyTableEx!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.boolToFfi(bAllowUnknownProperties), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyParameterBlock(
@@ -16197,7 +16548,7 @@ export function ResUtilSetPropertyParameterBlock(
   cbInPropertyListSize: number /* u32 */,
   pOutParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetPropertyParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyParameterBlock!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.toPointer(pOutParams));
 }
 
 export function ResUtilSetPropertyParameterBlockEx(
@@ -16210,7 +16561,7 @@ export function ResUtilSetPropertyParameterBlockEx(
   bForceWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pOutParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetPropertyParameterBlockEx(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
+  return libRESUTILS_dll.ResUtilSetPropertyParameterBlockEx!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(Reserved), util.toPointer(pInParams), util.toPointer(pInPropertyList), cbInPropertyListSize, util.boolToFfi(bForceWrite), util.toPointer(pOutParams));
 }
 
 export function ResUtilSetUnknownProperties(
@@ -16219,7 +16570,7 @@ export function ResUtilSetUnknownProperties(
   pInPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilSetUnknownProperties!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilGetPropertiesToParameterBlock(
@@ -16229,7 +16580,7 @@ export function ResUtilGetPropertiesToParameterBlock(
   bCheckForRequiredProperties: boolean /* Windows.Win32.Foundation.BOOL */,
   pszNameOfPropInError: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetPropertiesToParameterBlock(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutParams), util.boolToFfi(bCheckForRequiredProperties), util.toPointer(pszNameOfPropInError));
+  return libRESUTILS_dll.ResUtilGetPropertiesToParameterBlock!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutParams), util.boolToFfi(bCheckForRequiredProperties), util.toPointer(pszNameOfPropInError));
 }
 
 export function ResUtilPropertyListFromParameterBlock(
@@ -16240,7 +16591,7 @@ export function ResUtilPropertyListFromParameterBlock(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilPropertyListFromParameterBlock(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), util.toPointer(pcbOutPropertyListSize), util.toPointer(pInParams), util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilPropertyListFromParameterBlock!(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), util.toPointer(pcbOutPropertyListSize), util.toPointer(pInParams), util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilDupParameterBlock(
@@ -16248,7 +16599,7 @@ export function ResUtilDupParameterBlock(
   pInParams: Deno.PointerValue | Uint8Array /* ptr */,
   pPropertyTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilDupParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
+  return libRESUTILS_dll.ResUtilDupParameterBlock!(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
 }
 
 export function ResUtilFreeParameterBlock(
@@ -16256,7 +16607,7 @@ export function ResUtilFreeParameterBlock(
   pInParams: Deno.PointerValue | Uint8Array /* ptr */,
   pPropertyTable: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRESUTILS_dll.ResUtilFreeParameterBlock(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
+  return libRESUTILS_dll.ResUtilFreeParameterBlock!(util.toPointer(pOutParams), util.toPointer(pInParams), util.toPointer(pPropertyTable));
 }
 
 export function ResUtilAddUnknownProperties(
@@ -16267,7 +16618,7 @@ export function ResUtilAddUnknownProperties(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilAddUnknownProperties(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), pcbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilAddUnknownProperties!(util.toPointer(hkeyClusterKey), util.toPointer(pPropertyTable), util.toPointer(pOutPropertyList), pcbOutPropertyListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilSetPrivatePropertyList(
@@ -16275,20 +16626,20 @@ export function ResUtilSetPrivatePropertyList(
   pInPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetPrivatePropertyList(util.toPointer(hkeyClusterKey), util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilSetPrivatePropertyList!(util.toPointer(hkeyClusterKey), util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilVerifyPrivatePropertyList(
   pInPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   cbInPropertyListSize: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilVerifyPrivatePropertyList(util.toPointer(pInPropertyList), cbInPropertyListSize);
+  return libRESUTILS_dll.ResUtilVerifyPrivatePropertyList!(util.toPointer(pInPropertyList), cbInPropertyListSize);
 }
 
 export function ResUtilDupString(
   pszInString: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilDupString(util.pwstrToFfi(pszInString)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilDupString!(util.pwstrToFfi(pszInString)));
 }
 
 export function ResUtilGetBinaryValue(
@@ -16297,14 +16648,14 @@ export function ResUtilGetBinaryValue(
   ppbOutValue: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilGetBinaryValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilGetSzValue(
   hkeyClusterKey: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Registry.HKEY */,
   pszValueName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilGetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilGetSzValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName)));
 }
 
 export function ResUtilGetDwordValue(
@@ -16313,7 +16664,7 @@ export function ResUtilGetDwordValue(
   pdwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
   dwDefaultValue: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pdwOutValue), dwDefaultValue);
+  return libRESUTILS_dll.ResUtilGetDwordValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pdwOutValue), dwDefaultValue);
 }
 
 export function ResUtilGetQwordValue(
@@ -16322,7 +16673,7 @@ export function ResUtilGetQwordValue(
   pqwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
   qwDefaultValue: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pqwOutValue), qwDefaultValue);
+  return libRESUTILS_dll.ResUtilGetQwordValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pqwOutValue), qwDefaultValue);
 }
 
 export function ResUtilSetBinaryValue(
@@ -16333,7 +16684,7 @@ export function ResUtilSetBinaryValue(
   ppbOutValue: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetBinaryValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pbNewValue), cbNewValueSize, util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilSetBinaryValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.toPointer(pbNewValue), cbNewValueSize, util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilSetSzValue(
@@ -16342,7 +16693,7 @@ export function ResUtilSetSzValue(
   pszNewValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
+  return libRESUTILS_dll.ResUtilSetSzValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
 }
 
 export function ResUtilSetExpandSzValue(
@@ -16351,7 +16702,7 @@ export function ResUtilSetExpandSzValue(
   pszNewValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppszOutString: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetExpandSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
+  return libRESUTILS_dll.ResUtilSetExpandSzValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), util.toPointer(ppszOutString));
 }
 
 export function ResUtilSetMultiSzValue(
@@ -16362,7 +16713,7 @@ export function ResUtilSetMultiSzValue(
   ppszOutValue: Deno.PointerValue | Uint8Array /* ptr */,
   pcbOutValueSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetMultiSzValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), cbNewValueSize, util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize));
+  return libRESUTILS_dll.ResUtilSetMultiSzValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), util.pwstrToFfi(pszNewValue), cbNewValueSize, util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize));
 }
 
 export function ResUtilSetDwordValue(
@@ -16371,7 +16722,7 @@ export function ResUtilSetDwordValue(
   dwNewValue: number /* u32 */,
   pdwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetDwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), dwNewValue, util.toPointer(pdwOutValue));
+  return libRESUTILS_dll.ResUtilSetDwordValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), dwNewValue, util.toPointer(pdwOutValue));
 }
 
 export function ResUtilSetQwordValue(
@@ -16380,7 +16731,7 @@ export function ResUtilSetQwordValue(
   qwNewValue: bigint | number /* u64 */,
   pqwOutValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetQwordValue(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), qwNewValue, util.toPointer(pqwOutValue));
+  return libRESUTILS_dll.ResUtilSetQwordValue!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(pszValueName), qwNewValue, util.toPointer(pqwOutValue));
 }
 
 export function ResUtilSetValueEx(
@@ -16391,7 +16742,7 @@ export function ResUtilSetValueEx(
   valueSize: number /* u32 */,
   flags: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetValueEx(util.toPointer(hkeyClusterKey), util.pwstrToFfi(valueName), valueType, util.toPointer(valueData), valueSize, flags);
+  return libRESUTILS_dll.ResUtilSetValueEx!(util.toPointer(hkeyClusterKey), util.pwstrToFfi(valueName), valueType, util.toPointer(valueData), valueSize, flags);
 }
 
 export function ResUtilGetBinaryProperty(
@@ -16403,7 +16754,7 @@ export function ResUtilGetBinaryProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetBinaryProperty(util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.toPointer(pbOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetBinaryProperty!(util.toPointer(ppbOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.toPointer(pbOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetSzProperty(
@@ -16413,7 +16764,7 @@ export function ResUtilGetSzProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetSzProperty(util.toPointer(ppszOutValue), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetSzProperty!(util.toPointer(ppszOutValue), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetMultiSzProperty(
@@ -16425,7 +16776,7 @@ export function ResUtilGetMultiSzProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetMultiSzProperty(util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetMultiSzProperty!(util.toPointer(ppszOutValue), util.toPointer(pcbOutValueSize), util.toPointer(pValueStruct), util.pwstrToFfi(pszOldValue), cbOldValueSize, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetDwordProperty(
@@ -16437,7 +16788,7 @@ export function ResUtilGetDwordProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetDwordProperty(util.toPointer(pdwOutValue), util.toPointer(pValueStruct), dwOldValue, dwMinimum, dwMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetDwordProperty!(util.toPointer(pdwOutValue), util.toPointer(pValueStruct), dwOldValue, dwMinimum, dwMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetLongProperty(
@@ -16449,7 +16800,7 @@ export function ResUtilGetLongProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetLongProperty(util.toPointer(plOutValue), util.toPointer(pValueStruct), lOldValue, lMinimum, lMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetLongProperty!(util.toPointer(plOutValue), util.toPointer(pValueStruct), lOldValue, lMinimum, lMaximum, util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetFileTimeProperty(
@@ -16461,25 +16812,25 @@ export function ResUtilGetFileTimeProperty(
   ppPropertyList: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyListSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetFileTimeProperty(util.toPointer(pftOutValue), util.toPointer(pValueStruct), util.toPointer(ftOldValue), util.toPointer(ftMinimum), util.toPointer(ftMaximum), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
+  return libRESUTILS_dll.ResUtilGetFileTimeProperty!(util.toPointer(pftOutValue), util.toPointer(pValueStruct), util.toPointer(ftOldValue), util.toPointer(ftMinimum), util.toPointer(ftMaximum), util.toPointer(ppPropertyList), util.toPointer(pcbPropertyListSize));
 }
 
 export function ResUtilGetEnvironmentWithNetName(
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetEnvironmentWithNetName(util.toPointer(hResource));
+  return libRESUTILS_dll.ResUtilGetEnvironmentWithNetName!(util.toPointer(hResource));
 }
 
 export function ResUtilFreeEnvironment(
   lpEnvironment: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFreeEnvironment(util.toPointer(lpEnvironment));
+  return libRESUTILS_dll.ResUtilFreeEnvironment!(util.toPointer(lpEnvironment));
 }
 
 export function ResUtilExpandEnvironmentStrings(
   pszSrc: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): string | null /* Windows.Win32.Foundation.PWSTR */ {
-  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilExpandEnvironmentStrings(util.pwstrToFfi(pszSrc)));
+  return util.pwstrFromFfi(libRESUTILS_dll.ResUtilExpandEnvironmentStrings!(util.pwstrToFfi(pszSrc)));
 }
 
 export function ResUtilSetResourceServiceEnvironment(
@@ -16488,7 +16839,7 @@ export function ResUtilSetResourceServiceEnvironment(
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(hResource), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceEnvironment!(util.pwstrToFfi(pszServiceName), util.toPointer(hResource), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilRemoveResourceServiceEnvironment(
@@ -16496,7 +16847,7 @@ export function ResUtilRemoveResourceServiceEnvironment(
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilRemoveResourceServiceEnvironment(util.pwstrToFfi(pszServiceName), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilRemoveResourceServiceEnvironment!(util.pwstrToFfi(pszServiceName), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilSetResourceServiceStartParameters(
@@ -16506,7 +16857,7 @@ export function ResUtilSetResourceServiceStartParameters(
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetResourceServiceStartParameters(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceStartParameters!(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilFindSzProperty(
@@ -16515,7 +16866,7 @@ export function ResUtilFindSzProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindSzProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindExpandSzProperty(
@@ -16524,7 +16875,7 @@ export function ResUtilFindExpandSzProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindExpandSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindExpandSzProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindExpandedSzProperty(
@@ -16533,7 +16884,7 @@ export function ResUtilFindExpandedSzProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pszPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindExpandedSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
+  return libRESUTILS_dll.ResUtilFindExpandedSzProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue));
 }
 
 export function ResUtilFindDwordProperty(
@@ -16542,7 +16893,7 @@ export function ResUtilFindDwordProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pdwPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindDwordProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pdwPropertyValue));
+  return libRESUTILS_dll.ResUtilFindDwordProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pdwPropertyValue));
 }
 
 export function ResUtilFindBinaryProperty(
@@ -16552,7 +16903,7 @@ export function ResUtilFindBinaryProperty(
   pbPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindBinaryProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pbPropertyValue), util.toPointer(pcbPropertyValueSize));
+  return libRESUTILS_dll.ResUtilFindBinaryProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pbPropertyValue), util.toPointer(pcbPropertyValueSize));
 }
 
 export function ResUtilFindMultiSzProperty(
@@ -16562,7 +16913,7 @@ export function ResUtilFindMultiSzProperty(
   pszPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
   pcbPropertyValueSize: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindMultiSzProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue), util.toPointer(pcbPropertyValueSize));
+  return libRESUTILS_dll.ResUtilFindMultiSzProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pszPropertyValue), util.toPointer(pcbPropertyValueSize));
 }
 
 export function ResUtilFindLongProperty(
@@ -16571,7 +16922,7 @@ export function ResUtilFindLongProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindLongProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
+  return libRESUTILS_dll.ResUtilFindLongProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
 }
 
 export function ResUtilFindULargeIntegerProperty(
@@ -16580,7 +16931,7 @@ export function ResUtilFindULargeIntegerProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   plPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindULargeIntegerProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
+  return libRESUTILS_dll.ResUtilFindULargeIntegerProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(plPropertyValue));
 }
 
 export function ResUtilFindFileTimeProperty(
@@ -16589,7 +16940,7 @@ export function ResUtilFindFileTimeProperty(
   pszPropertyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pftPropertyValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindFileTimeProperty(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pftPropertyValue));
+  return libRESUTILS_dll.ResUtilFindFileTimeProperty!(util.toPointer(pPropertyList), cbPropertyListSize, util.pwstrToFfi(pszPropertyName), util.toPointer(pftPropertyValue));
 }
 
 export function ClusWorkerCreate(
@@ -16597,19 +16948,19 @@ export function ClusWorkerCreate(
   lpStartAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PWORKER_START_ROUTINE */,
   lpParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusWorkerCreate(util.toPointer(lpWorker), util.toPointer(lpStartAddress), util.toPointer(lpParameter));
+  return libRESUTILS_dll.ClusWorkerCreate!(util.toPointer(lpWorker), util.toPointer(lpStartAddress), util.toPointer(lpParameter));
 }
 
 export function ClusWorkerCheckTerminate(
   lpWorker: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ClusWorkerCheckTerminate(util.toPointer(lpWorker)));
+  return util.boolFromFfi(libRESUTILS_dll.ClusWorkerCheckTerminate!(util.toPointer(lpWorker)));
 }
 
 export function ClusWorkerTerminate(
   lpWorker: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libRESUTILS_dll.ClusWorkerTerminate(util.toPointer(lpWorker));
+  return libRESUTILS_dll.ClusWorkerTerminate!(util.toPointer(lpWorker));
 }
 
 export function ClusWorkerTerminateEx(
@@ -16617,7 +16968,7 @@ export function ClusWorkerTerminateEx(
   TimeoutInMilliseconds: number /* u32 */,
   WaitOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusWorkerTerminateEx(util.toPointer(ClusWorker), TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
+  return libRESUTILS_dll.ClusWorkerTerminateEx!(util.toPointer(ClusWorker), TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
 }
 
 export function ClusWorkersTerminate(
@@ -16626,28 +16977,28 @@ export function ClusWorkersTerminate(
   TimeoutInMilliseconds: number /* u32 */,
   WaitOnly: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusWorkersTerminate(util.toPointer(ClusWorkers), ClusWorkersCount, TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
+  return libRESUTILS_dll.ClusWorkersTerminate!(util.toPointer(ClusWorkers), ClusWorkersCount, TimeoutInMilliseconds, util.boolToFfi(WaitOnly));
 }
 
 export function ResUtilResourcesEqual(
   hSelf: Deno.PointerValue | Uint8Array /* ptr */,
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourcesEqual(util.toPointer(hSelf), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourcesEqual!(util.toPointer(hSelf), util.toPointer(hResource)));
 }
 
 export function ResUtilResourceTypesEqual(
   lpszResourceTypeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourceTypesEqual(util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilResourceTypesEqual!(util.pwstrToFfi(lpszResourceTypeName), util.toPointer(hResource)));
 }
 
 export function ResUtilIsResourceClassEqual(
   prci: Deno.PointerValue | Uint8Array /* ptr */,
   hResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsResourceClassEqual(util.toPointer(prci), util.toPointer(hResource)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilIsResourceClassEqual!(util.toPointer(prci), util.toPointer(hResource)));
 }
 
 export function ResUtilEnumResources(
@@ -16656,7 +17007,7 @@ export function ResUtilEnumResources(
   pResCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumResources(util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumResources!(util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilEnumResourcesEx(
@@ -16666,14 +17017,14 @@ export function ResUtilEnumResourcesEx(
   pResCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumResourcesEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumResourcesEx!(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilGetResourceDependency(
   hSelf: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependency(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType));
+  return libRESUTILS_dll.ResUtilGetResourceDependency!(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType));
 }
 
 export function ResUtilGetResourceDependencyByName(
@@ -16682,7 +17033,7 @@ export function ResUtilGetResourceDependencyByName(
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependencyByName(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse));
+  return libRESUTILS_dll.ResUtilGetResourceDependencyByName!(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse));
 }
 
 export function ResUtilGetResourceDependencyByClass(
@@ -16691,14 +17042,14 @@ export function ResUtilGetResourceDependencyByClass(
   prci: Deno.PointerValue | Uint8Array /* ptr */,
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependencyByClass(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse));
+  return libRESUTILS_dll.ResUtilGetResourceDependencyByClass!(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse));
 }
 
 export function ResUtilGetResourceNameDependency(
   lpszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceNameDependency(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType));
+  return libRESUTILS_dll.ResUtilGetResourceNameDependency!(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType));
 }
 
 export function ResUtilGetResourceDependentIPAddressProps(
@@ -16710,7 +17061,7 @@ export function ResUtilGetResourceDependentIPAddressProps(
   pszNetwork: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchNetwork: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependentIPAddressProps(util.toPointer(hResource), util.pwstrToFfi(pszAddress), util.toPointer(pcchAddress), util.pwstrToFfi(pszSubnetMask), util.toPointer(pcchSubnetMask), util.pwstrToFfi(pszNetwork), util.toPointer(pcchNetwork));
+  return libRESUTILS_dll.ResUtilGetResourceDependentIPAddressProps!(util.toPointer(hResource), util.pwstrToFfi(pszAddress), util.toPointer(pcchAddress), util.pwstrToFfi(pszSubnetMask), util.toPointer(pcchSubnetMask), util.pwstrToFfi(pszNetwork), util.toPointer(pcchNetwork));
 }
 
 export function ResUtilFindDependentDiskResourceDriveLetter(
@@ -16719,7 +17070,7 @@ export function ResUtilFindDependentDiskResourceDriveLetter(
   pszDriveLetter: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchDriveLetter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilFindDependentDiskResourceDriveLetter(util.toPointer(hCluster), util.toPointer(hResource), util.pwstrToFfi(pszDriveLetter), util.toPointer(pcchDriveLetter));
+  return libRESUTILS_dll.ResUtilFindDependentDiskResourceDriveLetter!(util.toPointer(hCluster), util.toPointer(hResource), util.pwstrToFfi(pszDriveLetter), util.toPointer(pcchDriveLetter));
 }
 
 export function ResUtilTerminateServiceProcessFromResDll(
@@ -16729,7 +17080,7 @@ export function ResUtilTerminateServiceProcessFromResDll(
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilTerminateServiceProcessFromResDll(dwServicePid, util.boolToFfi(bOffline), util.toPointer(pdwResourceState), util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilTerminateServiceProcessFromResDll!(dwServicePid, util.boolToFfi(bOffline), util.toPointer(pdwResourceState), util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilGetPropertyFormats(
@@ -16739,7 +17090,7 @@ export function ResUtilGetPropertyFormats(
   pcbBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
   pcbRequired: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetPropertyFormats(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyFormatList), cbPropertyFormatListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
+  return libRESUTILS_dll.ResUtilGetPropertyFormats!(util.toPointer(pPropertyTable), util.toPointer(pOutPropertyFormatList), cbPropertyFormatListSize, util.toPointer(pcbBytesReturned), util.toPointer(pcbRequired));
 }
 
 export function ResUtilGetCoreClusterResources(
@@ -16748,7 +17099,7 @@ export function ResUtilGetCoreClusterResources(
   phClusterIPAddressResource: Deno.PointerValue | Uint8Array /* ptr */,
   phClusterQuorumResource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetCoreClusterResources(util.toPointer(hCluster), util.toPointer(phClusterNameResource), util.toPointer(phClusterIPAddressResource), util.toPointer(phClusterQuorumResource));
+  return libRESUTILS_dll.ResUtilGetCoreClusterResources!(util.toPointer(hCluster), util.toPointer(phClusterNameResource), util.toPointer(phClusterIPAddressResource), util.toPointer(phClusterQuorumResource));
 }
 
 export function ResUtilGetResourceName(
@@ -16756,20 +17107,20 @@ export function ResUtilGetResourceName(
   pszResourceName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pcchResourceNameInOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetResourceName(util.toPointer(hResource), util.pwstrToFfi(pszResourceName), util.toPointer(pcchResourceNameInOut));
+  return libRESUTILS_dll.ResUtilGetResourceName!(util.toPointer(hResource), util.pwstrToFfi(pszResourceName), util.toPointer(pcchResourceNameInOut));
 }
 
 export function ResUtilGetClusterRoleState(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   eClusterRole: CLUSTER_ROLE /* Windows.Win32.Networking.Clustering.CLUSTER_ROLE */,
 ): CLUSTER_ROLE_STATE /* Windows.Win32.Networking.Clustering.CLUSTER_ROLE_STATE */ {
-  return libRESUTILS_dll.ResUtilGetClusterRoleState(util.toPointer(hCluster), eClusterRole);
+  return libRESUTILS_dll.ResUtilGetClusterRoleState!(util.toPointer(hCluster), eClusterRole);
 }
 
 export function ClusterIsPathOnSharedVolume(
   lpszPathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ClusterIsPathOnSharedVolume(util.pwstrToFfi(lpszPathName)));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterIsPathOnSharedVolume!(util.pwstrToFfi(lpszPathName)));
 }
 
 export function ClusterGetVolumePathName(
@@ -16777,7 +17128,7 @@ export function ClusterGetVolumePathName(
   lpszVolumePathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumePathName(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumePathName!(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), cchBufferLength));
 }
 
 export function ClusterGetVolumeNameForVolumeMountPoint(
@@ -16785,7 +17136,7 @@ export function ClusterGetVolumeNameForVolumeMountPoint(
   lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cchBufferLength: number /* u32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumeNameForVolumeMountPoint(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
+  return util.boolFromFfi(libRESUTILS_dll.ClusterGetVolumeNameForVolumeMountPoint!(util.pwstrToFfi(lpszVolumeMountPoint), util.pwstrToFfi(lpszVolumeName), cchBufferLength));
 }
 
 export function ClusterPrepareSharedVolumeForBackup(
@@ -16795,13 +17146,13 @@ export function ClusterPrepareSharedVolumeForBackup(
   lpszVolumeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   lpcchVolumeName: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusterPrepareSharedVolumeForBackup(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), util.toPointer(lpcchVolumePathName), util.pwstrToFfi(lpszVolumeName), util.toPointer(lpcchVolumeName));
+  return libRESUTILS_dll.ClusterPrepareSharedVolumeForBackup!(util.pwstrToFfi(lpszFileName), util.pwstrToFfi(lpszVolumePathName), util.toPointer(lpcchVolumePathName), util.pwstrToFfi(lpszVolumeName), util.toPointer(lpcchVolumeName));
 }
 
 export function ClusterClearBackupStateForSharedVolume(
   lpszVolumePathName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusterClearBackupStateForSharedVolume(util.pwstrToFfi(lpszVolumePathName));
+  return libRESUTILS_dll.ClusterClearBackupStateForSharedVolume!(util.pwstrToFfi(lpszVolumePathName));
 }
 
 export function ResUtilSetResourceServiceStartParametersEx(
@@ -16812,7 +17163,7 @@ export function ResUtilSetResourceServiceStartParametersEx(
   pfnLogEvent: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.PLOG_EVENT_ROUTINE */,
   hResourceHandle: bigint | number /* isize */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilSetResourceServiceStartParametersEx(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), dwDesiredAccess, util.toPointer(pfnLogEvent), hResourceHandle);
+  return libRESUTILS_dll.ResUtilSetResourceServiceStartParametersEx!(util.pwstrToFfi(pszServiceName), util.toPointer(schSCMHandle), util.toPointer(phService), dwDesiredAccess, util.toPointer(pfnLogEvent), hResourceHandle);
 }
 
 export function ResUtilEnumResourcesEx2(
@@ -16823,7 +17174,7 @@ export function ResUtilEnumResourcesEx2(
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesiredAccess: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumResourcesEx2(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilEnumResourcesEx2!(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResTypeName), util.toPointer(pResCallBack), util.toPointer(pParameter), dwDesiredAccess);
 }
 
 export function ResUtilGetResourceDependencyEx(
@@ -16831,7 +17182,7 @@ export function ResUtilGetResourceDependencyEx(
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependencyEx(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetResourceDependencyEx!(util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), dwDesiredAccess);
 }
 
 export function ResUtilGetResourceDependencyByNameEx(
@@ -16841,7 +17192,7 @@ export function ResUtilGetResourceDependencyByNameEx(
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependencyByNameEx(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetResourceDependencyByNameEx!(util.toPointer(hCluster), util.toPointer(hSelf), util.pwstrToFfi(lpszResourceType), util.boolToFfi(bRecurse), dwDesiredAccess);
 }
 
 export function ResUtilGetResourceDependencyByClassEx(
@@ -16851,7 +17202,7 @@ export function ResUtilGetResourceDependencyByClassEx(
   bRecurse: boolean /* Windows.Win32.Foundation.BOOL */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceDependencyByClassEx(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetResourceDependencyByClassEx!(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(prci), util.boolToFfi(bRecurse), dwDesiredAccess);
 }
 
 export function ResUtilGetResourceNameDependencyEx(
@@ -16859,7 +17210,7 @@ export function ResUtilGetResourceNameDependencyEx(
   lpszResourceType: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   dwDesiredAccess: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetResourceNameDependencyEx(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetResourceNameDependencyEx!(util.pwstrToFfi(lpszResourceName), util.pwstrToFfi(lpszResourceType), dwDesiredAccess);
 }
 
 export function ResUtilGetCoreClusterResourcesEx(
@@ -16868,7 +17219,7 @@ export function ResUtilGetCoreClusterResourcesEx(
   phClusterQuorumResourceOut: Deno.PointerValue | Uint8Array /* ptr */,
   dwDesiredAccess: number /* u32 */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetCoreClusterResourcesEx(util.toPointer(hClusterIn), util.toPointer(phClusterNameResourceOut), util.toPointer(phClusterQuorumResourceOut), dwDesiredAccess);
+  return libRESUTILS_dll.ResUtilGetCoreClusterResourcesEx!(util.toPointer(hClusterIn), util.toPointer(phClusterNameResourceOut), util.toPointer(phClusterQuorumResourceOut), dwDesiredAccess);
 }
 
 export function OpenClusterCryptProvider(
@@ -16877,7 +17228,7 @@ export function OpenClusterCryptProvider(
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.OpenClusterCryptProvider(util.pwstrToFfi(lpszResource), util.toPointer(lpszProvider), dwType, dwFlags);
+  return libRESUTILS_dll.OpenClusterCryptProvider!(util.pwstrToFfi(lpszResource), util.toPointer(lpszProvider), dwType, dwFlags);
 }
 
 export function OpenClusterCryptProviderEx(
@@ -16887,13 +17238,13 @@ export function OpenClusterCryptProviderEx(
   dwType: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.OpenClusterCryptProviderEx(util.pwstrToFfi(lpszResource), util.pwstrToFfi(lpszKeyname), util.toPointer(lpszProvider), dwType, dwFlags);
+  return libRESUTILS_dll.OpenClusterCryptProviderEx!(util.pwstrToFfi(lpszResource), util.pwstrToFfi(lpszKeyname), util.toPointer(lpszProvider), dwType, dwFlags);
 }
 
 export function CloseClusterCryptProvider(
   hClusCryptProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.CloseClusterCryptProvider(util.toPointer(hClusCryptProvider));
+  return libRESUTILS_dll.CloseClusterCryptProvider!(util.toPointer(hClusCryptProvider));
 }
 
 export function ClusterEncrypt(
@@ -16903,7 +17254,7 @@ export function ClusterEncrypt(
   ppData: Deno.PointerValue | Uint8Array /* ptr */,
   pcbData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusterEncrypt(util.toPointer(hClusCryptProvider), util.toPointer(pData), cbData, util.toPointer(ppData), util.toPointer(pcbData));
+  return libRESUTILS_dll.ClusterEncrypt!(util.toPointer(hClusCryptProvider), util.toPointer(pData), cbData, util.toPointer(ppData), util.toPointer(pcbData));
 }
 
 export function ClusterDecrypt(
@@ -16913,13 +17264,13 @@ export function ClusterDecrypt(
   ppCryptOutput: Deno.PointerValue | Uint8Array /* ptr */,
   pcbCryptOutput: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ClusterDecrypt(util.toPointer(hClusCryptProvider), util.toPointer(pCryptInput), cbCryptInput, util.toPointer(ppCryptOutput), util.toPointer(pcbCryptOutput));
+  return libRESUTILS_dll.ClusterDecrypt!(util.toPointer(hClusCryptProvider), util.toPointer(pCryptInput), cbCryptInput, util.toPointer(ppCryptOutput), util.toPointer(pcbCryptOutput));
 }
 
 export function FreeClusterCrypt(
   pCryptInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.FreeClusterCrypt(util.toPointer(pCryptInfo));
+  return libRESUTILS_dll.FreeClusterCrypt!(util.toPointer(pCryptInfo));
 }
 
 export function ResUtilVerifyShutdownSafe(
@@ -16927,21 +17278,21 @@ export function ResUtilVerifyShutdownSafe(
   reason: number /* u32 */,
   pResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilVerifyShutdownSafe(flags, reason, util.toPointer(pResult));
+  return libRESUTILS_dll.ResUtilVerifyShutdownSafe!(flags, reason, util.toPointer(pResult));
 }
 
 export function ResUtilPaxosComparer(
   left: Deno.PointerValue | Uint8Array /* ptr */,
   right: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilPaxosComparer(util.toPointer(left), util.toPointer(right)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilPaxosComparer!(util.toPointer(left), util.toPointer(right)));
 }
 
 export function ResUtilLeftPaxosIsLessThanRight(
   left: Deno.PointerValue | Uint8Array /* ptr */,
   right: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libRESUTILS_dll.ResUtilLeftPaxosIsLessThanRight(util.toPointer(left), util.toPointer(right)));
+  return util.boolFromFfi(libRESUTILS_dll.ResUtilLeftPaxosIsLessThanRight!(util.toPointer(left), util.toPointer(right)));
 }
 
 export function ResUtilsDeleteKeyTree(
@@ -16949,7 +17300,7 @@ export function ResUtilsDeleteKeyTree(
   keyName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   treatNoKeyAsError: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilsDeleteKeyTree(util.toPointer(key), util.pwstrToFfi(keyName), util.boolToFfi(treatNoKeyAsError));
+  return libRESUTILS_dll.ResUtilsDeleteKeyTree!(util.toPointer(key), util.pwstrToFfi(keyName), util.boolToFfi(treatNoKeyAsError));
 }
 
 export function ResUtilGroupsEqual(
@@ -16957,7 +17308,7 @@ export function ResUtilGroupsEqual(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   pEqual: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGroupsEqual(util.toPointer(hSelf), util.toPointer(hGroup), util.toPointer(pEqual));
+  return libRESUTILS_dll.ResUtilGroupsEqual!(util.toPointer(hSelf), util.toPointer(hGroup), util.toPointer(pEqual));
 }
 
 export function ResUtilEnumGroups(
@@ -16966,7 +17317,7 @@ export function ResUtilEnumGroups(
   pResCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPGROUP_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumGroups(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumGroups!(util.toPointer(hCluster), util.toPointer(hSelf), util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilEnumGroupsEx(
@@ -16976,27 +17327,27 @@ export function ResUtilEnumGroupsEx(
   pResCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPGROUP_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilEnumGroupsEx(util.toPointer(hCluster), util.toPointer(hSelf), groupType, util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilEnumGroupsEx!(util.toPointer(hCluster), util.toPointer(hSelf), groupType, util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilDupGroup(
   group: Deno.PointerValue | Uint8Array /* ptr */,
   copy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilDupGroup(util.toPointer(group), util.toPointer(copy));
+  return libRESUTILS_dll.ResUtilDupGroup!(util.toPointer(group), util.toPointer(copy));
 }
 
 export function ResUtilGetClusterGroupType(
   hGroup: Deno.PointerValue | Uint8Array /* ptr */,
   groupType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetClusterGroupType(util.toPointer(hGroup), util.toPointer(groupType));
+  return libRESUTILS_dll.ResUtilGetClusterGroupType!(util.toPointer(hGroup), util.toPointer(groupType));
 }
 
 export function ResUtilGetCoreGroup(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libRESUTILS_dll.ResUtilGetCoreGroup(util.toPointer(hCluster));
+  return libRESUTILS_dll.ResUtilGetCoreGroup!(util.toPointer(hCluster));
 }
 
 export function ResUtilResourceDepEnum(
@@ -17005,21 +17356,21 @@ export function ResUtilResourceDepEnum(
   pResCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPRESOURCE_CALLBACK_EX */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilResourceDepEnum(util.toPointer(hSelf), enumType, util.toPointer(pResCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilResourceDepEnum!(util.toPointer(hSelf), enumType, util.toPointer(pResCallBack), util.toPointer(pParameter));
 }
 
 export function ResUtilDupResource(
   group: Deno.PointerValue | Uint8Array /* ptr */,
   copy: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilDupResource(util.toPointer(group), util.toPointer(copy));
+  return libRESUTILS_dll.ResUtilDupResource!(util.toPointer(group), util.toPointer(copy));
 }
 
 export function ResUtilGetClusterId(
   hCluster: Deno.PointerValue | Uint8Array /* ptr */,
   guid: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilGetClusterId(util.toPointer(hCluster), util.toPointer(guid));
+  return libRESUTILS_dll.ResUtilGetClusterId!(util.toPointer(hCluster), util.toPointer(guid));
 }
 
 export function ResUtilNodeEnum(
@@ -17027,7 +17378,7 @@ export function ResUtilNodeEnum(
   pNodeCallBack: Uint8Array | Deno.PointerValue /* Windows.Win32.Networking.Clustering.LPNODE_CALLBACK */,
   pParameter: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libRESUTILS_dll.ResUtilNodeEnum(util.toPointer(hCluster), util.toPointer(pNodeCallBack), util.toPointer(pParameter));
+  return libRESUTILS_dll.ResUtilNodeEnum!(util.toPointer(hCluster), util.toPointer(pNodeCallBack), util.toPointer(pParameter));
 }
 
 export function RegisterAppInstance(
@@ -17035,7 +17386,7 @@ export function RegisterAppInstance(
   AppInstanceId: Deno.PointerValue | Uint8Array /* ptr */,
   ChildrenInheritAppInstance: boolean /* Windows.Win32.Foundation.BOOL */,
 ): number /* u32 */ {
-  return libNTLANMAN_dll.RegisterAppInstance(util.toPointer(ProcessHandle), util.toPointer(AppInstanceId), util.boolToFfi(ChildrenInheritAppInstance));
+  return libNTLANMAN_dll.RegisterAppInstance!(util.toPointer(ProcessHandle), util.toPointer(AppInstanceId), util.boolToFfi(ChildrenInheritAppInstance));
 }
 
 export function RegisterAppInstanceVersion(
@@ -17043,7 +17394,7 @@ export function RegisterAppInstanceVersion(
   InstanceVersionHigh: bigint | number /* u64 */,
   InstanceVersionLow: bigint | number /* u64 */,
 ): number /* u32 */ {
-  return libNTLANMAN_dll.RegisterAppInstanceVersion(util.toPointer(AppInstanceId), InstanceVersionHigh, InstanceVersionLow);
+  return libNTLANMAN_dll.RegisterAppInstanceVersion!(util.toPointer(AppInstanceId), InstanceVersionHigh, InstanceVersionLow);
 }
 
 export function QueryAppInstanceVersion(
@@ -17052,11 +17403,11 @@ export function QueryAppInstanceVersion(
   InstanceVersionLow: Deno.PointerValue | Uint8Array /* ptr */,
   VersionStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libNTLANMAN_dll.QueryAppInstanceVersion(util.toPointer(AppInstanceId), util.toPointer(InstanceVersionHigh), util.toPointer(InstanceVersionLow), util.toPointer(VersionStatus));
+  return libNTLANMAN_dll.QueryAppInstanceVersion!(util.toPointer(AppInstanceId), util.toPointer(InstanceVersionHigh), util.toPointer(InstanceVersionLow), util.toPointer(VersionStatus));
 }
 
 export function ResetAllAppInstanceVersions(): number /* u32 */ {
-  return libNTLANMAN_dll.ResetAllAppInstanceVersions();
+  return libNTLANMAN_dll.ResetAllAppInstanceVersions!();
 }
 
 export function SetAppInstanceCsvFlags(
@@ -17064,6 +17415,6 @@ export function SetAppInstanceCsvFlags(
   Mask: number /* u32 */,
   Flags: number /* u32 */,
 ): number /* u32 */ {
-  return libNTLANMAN_dll.SetAppInstanceCsvFlags(util.toPointer(ProcessHandle), Mask, Flags);
+  return libNTLANMAN_dll.SetAppInstanceCsvFlags!(util.toPointer(ProcessHandle), Mask, Flags);
 }
 

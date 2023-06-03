@@ -3002,86 +3002,107 @@ try {
     WerReportCreate: {
       parameters: ["buffer", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerReportSetParameter: {
       parameters: ["pointer", "u32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WerReportAddFile: {
       parameters: ["pointer", "buffer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerReportSetUIOption: {
       parameters: ["pointer", "i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WerReportSubmit: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerReportAddDump: {
       parameters: ["pointer", "pointer", "pointer", "i32", "pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerReportCloseHandle: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WerAddExcludedApplication: {
       parameters: ["buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     WerRemoveExcludedApplication: {
       parameters: ["buffer", "i32"],
       result: "pointer",
+      optional: true,
     },
     WerStoreOpen: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreClose: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WerStoreGetFirstReportKey: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreGetNextReportKey: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreQueryReportMetadataV2: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreQueryReportMetadataV3: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerFreeString: {
       parameters: ["buffer"],
       result: "void",
+      optional: true,
     },
     WerStorePurge: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     WerStoreGetReportCount: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreGetSizeOnDisk: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreQueryReportMetadataV1: {
       parameters: ["pointer", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerStoreUploadReport: {
       parameters: ["pointer", "buffer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3091,66 +3112,82 @@ try {
     WerRegisterFile: {
       parameters: ["buffer", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterFile: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterMemoryBlock: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterMemoryBlock: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterExcludedMemoryBlock: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterExcludedMemoryBlock: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterCustomMetadata: {
       parameters: ["buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterCustomMetadata: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterAdditionalProcess: {
       parameters: ["u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterAdditionalProcess: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterAppLocalDump: {
       parameters: ["buffer"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterAppLocalDump: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     WerSetFlags: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     WerGetFlags: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerRegisterRuntimeExceptionModule: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WerUnregisterRuntimeExceptionModule: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3160,18 +3197,22 @@ try {
     ReportFault: {
       parameters: ["pointer", "u32"],
       result: "i32",
+      optional: true,
     },
     AddERExcludedApplicationA: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     AddERExcludedApplicationW: {
       parameters: ["buffer"],
       result: "i32",
+      optional: true,
     },
     WerReportHang: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -3184,7 +3225,7 @@ export function WerReportCreate(
   pReportInformation: Deno.PointerValue | Uint8Array /* ptr */,
   phReportHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportCreate(util.pwstrToFfi(pwzEventType), repType, util.toPointer(pReportInformation), util.toPointer(phReportHandle));
+  return libwer_dll.WerReportCreate!(util.pwstrToFfi(pwzEventType), repType, util.toPointer(pReportInformation), util.toPointer(phReportHandle));
 }
 
 export function WerReportSetParameter(
@@ -3193,7 +3234,7 @@ export function WerReportSetParameter(
   pwzName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwzValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportSetParameter(util.toPointer(hReportHandle), dwparamID, util.pwstrToFfi(pwzName), util.pwstrToFfi(pwzValue));
+  return libwer_dll.WerReportSetParameter!(util.toPointer(hReportHandle), dwparamID, util.pwstrToFfi(pwzName), util.pwstrToFfi(pwzValue));
 }
 
 export function WerReportAddFile(
@@ -3202,7 +3243,7 @@ export function WerReportAddFile(
   repFileType: WER_FILE_TYPE /* Windows.Win32.System.ErrorReporting.WER_FILE_TYPE */,
   dwFileFlags: WER_FILE /* Windows.Win32.System.ErrorReporting.WER_FILE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportAddFile(util.toPointer(hReportHandle), util.pwstrToFfi(pwzPath), repFileType, dwFileFlags);
+  return libwer_dll.WerReportAddFile!(util.toPointer(hReportHandle), util.pwstrToFfi(pwzPath), repFileType, dwFileFlags);
 }
 
 export function WerReportSetUIOption(
@@ -3210,7 +3251,7 @@ export function WerReportSetUIOption(
   repUITypeID: WER_REPORT_UI /* Windows.Win32.System.ErrorReporting.WER_REPORT_UI */,
   pwzValue: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportSetUIOption(util.toPointer(hReportHandle), repUITypeID, util.pwstrToFfi(pwzValue));
+  return libwer_dll.WerReportSetUIOption!(util.toPointer(hReportHandle), repUITypeID, util.pwstrToFfi(pwzValue));
 }
 
 export function WerReportSubmit(
@@ -3219,7 +3260,7 @@ export function WerReportSubmit(
   dwFlags: WER_SUBMIT_FLAGS /* Windows.Win32.System.ErrorReporting.WER_SUBMIT_FLAGS */,
   pSubmitResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportSubmit(util.toPointer(hReportHandle), consent, dwFlags, util.toPointer(pSubmitResult));
+  return libwer_dll.WerReportSubmit!(util.toPointer(hReportHandle), consent, dwFlags, util.toPointer(pSubmitResult));
 }
 
 export function WerReportAddDump(
@@ -3231,13 +3272,13 @@ export function WerReportAddDump(
   pDumpCustomOptions: Deno.PointerValue | Uint8Array /* ptr */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportAddDump(util.toPointer(hReportHandle), util.toPointer(hProcess), util.toPointer(hThread), dumpType, util.toPointer(pExceptionParam), util.toPointer(pDumpCustomOptions), dwFlags);
+  return libwer_dll.WerReportAddDump!(util.toPointer(hReportHandle), util.toPointer(hProcess), util.toPointer(hThread), dumpType, util.toPointer(pExceptionParam), util.toPointer(pDumpCustomOptions), dwFlags);
 }
 
 export function WerReportCloseHandle(
   hReportHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerReportCloseHandle(util.toPointer(hReportHandle));
+  return libwer_dll.WerReportCloseHandle!(util.toPointer(hReportHandle));
 }
 
 export function WerRegisterFile(
@@ -3245,143 +3286,143 @@ export function WerRegisterFile(
   regFileType: WER_REGISTER_FILE_TYPE /* Windows.Win32.System.ErrorReporting.WER_REGISTER_FILE_TYPE */,
   dwFlags: WER_FILE /* Windows.Win32.System.ErrorReporting.WER_FILE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterFile(util.pwstrToFfi(pwzFile), regFileType, dwFlags);
+  return libKERNEL32_dll.WerRegisterFile!(util.pwstrToFfi(pwzFile), regFileType, dwFlags);
 }
 
 export function WerUnregisterFile(
   pwzFilePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterFile(util.pwstrToFfi(pwzFilePath));
+  return libKERNEL32_dll.WerUnregisterFile!(util.pwstrToFfi(pwzFilePath));
 }
 
 export function WerRegisterMemoryBlock(
   pvAddress: Deno.PointerValue | Uint8Array /* ptr */,
   dwSize: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterMemoryBlock(util.toPointer(pvAddress), dwSize);
+  return libKERNEL32_dll.WerRegisterMemoryBlock!(util.toPointer(pvAddress), dwSize);
 }
 
 export function WerUnregisterMemoryBlock(
   pvAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterMemoryBlock(util.toPointer(pvAddress));
+  return libKERNEL32_dll.WerUnregisterMemoryBlock!(util.toPointer(pvAddress));
 }
 
 export function WerRegisterExcludedMemoryBlock(
   address: Deno.PointerValue | Uint8Array /* ptr */,
   size: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterExcludedMemoryBlock(util.toPointer(address), size);
+  return libKERNEL32_dll.WerRegisterExcludedMemoryBlock!(util.toPointer(address), size);
 }
 
 export function WerUnregisterExcludedMemoryBlock(
   address: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterExcludedMemoryBlock(util.toPointer(address));
+  return libKERNEL32_dll.WerUnregisterExcludedMemoryBlock!(util.toPointer(address));
 }
 
 export function WerRegisterCustomMetadata(
   key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   value: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterCustomMetadata(util.pwstrToFfi(key), util.pwstrToFfi(value));
+  return libKERNEL32_dll.WerRegisterCustomMetadata!(util.pwstrToFfi(key), util.pwstrToFfi(value));
 }
 
 export function WerUnregisterCustomMetadata(
   key: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterCustomMetadata(util.pwstrToFfi(key));
+  return libKERNEL32_dll.WerUnregisterCustomMetadata!(util.pwstrToFfi(key));
 }
 
 export function WerRegisterAdditionalProcess(
   processId: number /* u32 */,
   captureExtraInfoForThreadId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterAdditionalProcess(processId, captureExtraInfoForThreadId);
+  return libKERNEL32_dll.WerRegisterAdditionalProcess!(processId, captureExtraInfoForThreadId);
 }
 
 export function WerUnregisterAdditionalProcess(
   processId: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterAdditionalProcess(processId);
+  return libKERNEL32_dll.WerUnregisterAdditionalProcess!(processId);
 }
 
 export function WerRegisterAppLocalDump(
   localAppDataRelativePath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterAppLocalDump(util.pwstrToFfi(localAppDataRelativePath));
+  return libKERNEL32_dll.WerRegisterAppLocalDump!(util.pwstrToFfi(localAppDataRelativePath));
 }
 
 export function WerUnregisterAppLocalDump(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterAppLocalDump();
+  return libKERNEL32_dll.WerUnregisterAppLocalDump!();
 }
 
 export function WerSetFlags(
   dwFlags: WER_FAULT_REPORTING /* Windows.Win32.System.ErrorReporting.WER_FAULT_REPORTING */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerSetFlags(dwFlags);
+  return libKERNEL32_dll.WerSetFlags!(dwFlags);
 }
 
 export function WerGetFlags(
   hProcess: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerGetFlags(util.toPointer(hProcess), util.toPointer(pdwFlags));
+  return libKERNEL32_dll.WerGetFlags!(util.toPointer(hProcess), util.toPointer(pdwFlags));
 }
 
 export function WerAddExcludedApplication(
   pwzExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bAllUsers: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerAddExcludedApplication(util.pwstrToFfi(pwzExeName), util.boolToFfi(bAllUsers));
+  return libwer_dll.WerAddExcludedApplication!(util.pwstrToFfi(pwzExeName), util.boolToFfi(bAllUsers));
 }
 
 export function WerRemoveExcludedApplication(
   pwzExeName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   bAllUsers: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerRemoveExcludedApplication(util.pwstrToFfi(pwzExeName), util.boolToFfi(bAllUsers));
+  return libwer_dll.WerRemoveExcludedApplication!(util.pwstrToFfi(pwzExeName), util.boolToFfi(bAllUsers));
 }
 
 export function WerRegisterRuntimeExceptionModule(
   pwszOutOfProcessCallbackDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerRegisterRuntimeExceptionModule(util.pwstrToFfi(pwszOutOfProcessCallbackDll), util.toPointer(pContext));
+  return libKERNEL32_dll.WerRegisterRuntimeExceptionModule!(util.pwstrToFfi(pwszOutOfProcessCallbackDll), util.toPointer(pContext));
 }
 
 export function WerUnregisterRuntimeExceptionModule(
   pwszOutOfProcessCallbackDll: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libKERNEL32_dll.WerUnregisterRuntimeExceptionModule(util.pwstrToFfi(pwszOutOfProcessCallbackDll), util.toPointer(pContext));
+  return libKERNEL32_dll.WerUnregisterRuntimeExceptionModule!(util.pwstrToFfi(pwszOutOfProcessCallbackDll), util.toPointer(pContext));
 }
 
 export function WerStoreOpen(
   repStoreType: REPORT_STORE_TYPES /* Windows.Win32.System.ErrorReporting.REPORT_STORE_TYPES */,
   phReportStore: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreOpen(repStoreType, util.toPointer(phReportStore));
+  return libwer_dll.WerStoreOpen!(repStoreType, util.toPointer(phReportStore));
 }
 
 export function WerStoreClose(
   hReportStore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORTSTORE */,
 ): void /* void */ {
-  return libwer_dll.WerStoreClose(util.toPointer(hReportStore));
+  return libwer_dll.WerStoreClose!(util.toPointer(hReportStore));
 }
 
 export function WerStoreGetFirstReportKey(
   hReportStore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORTSTORE */,
   ppszReportKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreGetFirstReportKey(util.toPointer(hReportStore), util.toPointer(ppszReportKey));
+  return libwer_dll.WerStoreGetFirstReportKey!(util.toPointer(hReportStore), util.toPointer(ppszReportKey));
 }
 
 export function WerStoreGetNextReportKey(
   hReportStore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORTSTORE */,
   ppszReportKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreGetNextReportKey(util.toPointer(hReportStore), util.toPointer(ppszReportKey));
+  return libwer_dll.WerStoreGetNextReportKey!(util.toPointer(hReportStore), util.toPointer(ppszReportKey));
 }
 
 export function WerStoreQueryReportMetadataV2(
@@ -3389,7 +3430,7 @@ export function WerStoreQueryReportMetadataV2(
   pszReportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReportMetadata: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreQueryReportMetadataV2(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
+  return libwer_dll.WerStoreQueryReportMetadataV2!(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
 }
 
 export function WerStoreQueryReportMetadataV3(
@@ -3397,31 +3438,31 @@ export function WerStoreQueryReportMetadataV3(
   pszReportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReportMetadata: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreQueryReportMetadataV3(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
+  return libwer_dll.WerStoreQueryReportMetadataV3!(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
 }
 
 export function WerFreeString(
   pwszStr: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): void /* void */ {
-  return libwer_dll.WerFreeString(util.pwstrToFfi(pwszStr));
+  return libwer_dll.WerFreeString!(util.pwstrToFfi(pwszStr));
 }
 
 export function WerStorePurge(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStorePurge();
+  return libwer_dll.WerStorePurge!();
 }
 
 export function WerStoreGetReportCount(
   hReportStore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORTSTORE */,
   pdwReportCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreGetReportCount(util.toPointer(hReportStore), util.toPointer(pdwReportCount));
+  return libwer_dll.WerStoreGetReportCount!(util.toPointer(hReportStore), util.toPointer(pdwReportCount));
 }
 
 export function WerStoreGetSizeOnDisk(
   hReportStore: Uint8Array | Deno.PointerValue /* Windows.Win32.System.ErrorReporting.HREPORTSTORE */,
   pqwSizeInBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreGetSizeOnDisk(util.toPointer(hReportStore), util.toPointer(pqwSizeInBytes));
+  return libwer_dll.WerStoreGetSizeOnDisk!(util.toPointer(hReportStore), util.toPointer(pqwSizeInBytes));
 }
 
 export function WerStoreQueryReportMetadataV1(
@@ -3429,7 +3470,7 @@ export function WerStoreQueryReportMetadataV1(
   pszReportKey: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReportMetadata: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreQueryReportMetadataV1(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
+  return libwer_dll.WerStoreQueryReportMetadataV1!(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), util.toPointer(pReportMetadata));
 }
 
 export function WerStoreUploadReport(
@@ -3438,32 +3479,32 @@ export function WerStoreUploadReport(
   dwFlags: number /* u32 */,
   pSubmitResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libwer_dll.WerStoreUploadReport(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), dwFlags, util.toPointer(pSubmitResult));
+  return libwer_dll.WerStoreUploadReport!(util.toPointer(hReportStore), util.pwstrToFfi(pszReportKey), dwFlags, util.toPointer(pSubmitResult));
 }
 
 export function ReportFault(
   pep: Deno.PointerValue | Uint8Array /* ptr */,
   dwOpt: number /* u32 */,
 ): EFaultRepRetVal /* Windows.Win32.System.ErrorReporting.EFaultRepRetVal */ {
-  return libfaultrep_dll.ReportFault(util.toPointer(pep), dwOpt);
+  return libfaultrep_dll.ReportFault!(util.toPointer(pep), dwOpt);
 }
 
 export function AddERExcludedApplicationA(
   szApplication: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libfaultrep_dll.AddERExcludedApplicationA(util.pstrToFfi(szApplication)));
+  return util.boolFromFfi(libfaultrep_dll.AddERExcludedApplicationA!(util.pstrToFfi(szApplication)));
 }
 
 export function AddERExcludedApplicationW(
   wszApplication: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libfaultrep_dll.AddERExcludedApplicationW(util.pwstrToFfi(wszApplication)));
+  return util.boolFromFfi(libfaultrep_dll.AddERExcludedApplicationW!(util.pwstrToFfi(wszApplication)));
 }
 
 export function WerReportHang(
   hwndHungApp: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pwzHungApplicationName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libfaultrep_dll.WerReportHang((hwndHungApp), util.pwstrToFfi(pwzHungApplicationName));
+  return libfaultrep_dll.WerReportHang!((hwndHungApp), util.pwstrToFfi(pwzHungApplicationName));
 }
 

@@ -10841,1478 +10841,1847 @@ try {
     DosDateTimeToVariantTime: {
       parameters: ["u16", "u16", "pointer"],
       result: "i32",
+      optional: true,
     },
     VariantTimeToDosDateTime: {
       parameters: ["f64", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     SystemTimeToVariantTime: {
       parameters: ["pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     VariantTimeToSystemTime: {
       parameters: ["f64", "pointer"],
       result: "i32",
+      optional: true,
     },
     SafeArrayAllocDescriptor: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayAllocDescriptorEx: {
       parameters: ["u16", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayAllocData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCreate: {
       parameters: ["u16", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCreateEx: {
       parameters: ["u16", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCopyData: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayReleaseDescriptor: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SafeArrayDestroyDescriptor: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayReleaseData: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     SafeArrayDestroyData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayAddRef: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayDestroy: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayRedim: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetDim: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SafeArrayGetElemsize: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     SafeArrayGetUBound: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetLBound: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayLock: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayUnlock: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayAccessData: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayUnaccessData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetElement: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayPutElement: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCopy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayPtrOfIndex: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArraySetRecordInfo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetRecordInfo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArraySetIID: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetIID: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayGetVartype: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCreateVector: {
       parameters: ["u16", "i32", "u32"],
       result: "pointer",
+      optional: true,
     },
     SafeArrayCreateVectorEx: {
       parameters: ["u16", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VariantInit: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     VariantClear: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     VariantCopy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VariantCopyInd: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VariantChangeType: {
       parameters: ["pointer", "pointer", "u16", "u16"],
       result: "pointer",
+      optional: true,
     },
     VariantChangeTypeEx: {
       parameters: ["pointer", "pointer", "u32", "u16", "u16"],
       result: "pointer",
+      optional: true,
     },
     VectorFromBstr: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     BstrFromVector: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI1FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI2FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI4FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI8FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR8FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromUI1: {
       parameters: ["u8", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromI2: {
       parameters: ["i16", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromI4: {
       parameters: ["i32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromI8: {
       parameters: ["i64", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromR4: {
       parameters: ["f32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromR8: {
       parameters: ["f64", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromCy: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromDate: {
       parameters: ["f64", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromDisp: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromBool: {
       parameters: ["i16", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromI1: {
       parameters: ["u8", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromUI2: {
       parameters: ["u16", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromUI4: {
       parameters: ["u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromUI8: {
       parameters: ["u64", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrFromDec: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBoolFromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromUI1: {
       parameters: ["u8", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromI2: {
       parameters: ["i16", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromI4: {
       parameters: ["i32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromI8: {
       parameters: ["i64", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromR4: {
       parameters: ["f32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromR8: {
       parameters: ["f64", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromDate: {
       parameters: ["f64", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromCy: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromStr: {
       parameters: ["buffer", "u32", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromDisp: {
       parameters: ["pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromBool: {
       parameters: ["i16", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromUI2: {
       parameters: ["u16", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromUI4: {
       parameters: ["u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromUI8: {
       parameters: ["u64", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarI1FromDec: {
       parameters: ["pointer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI2FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI4FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUI8FromDec: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromUI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromI2: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromI4: {
       parameters: ["i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromI8: {
       parameters: ["i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromR4: {
       parameters: ["f32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromR8: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromDate: {
       parameters: ["f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromCy: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromStr: {
       parameters: ["buffer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromDisp: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromBool: {
       parameters: ["i16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromI1: {
       parameters: ["u8", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromUI2: {
       parameters: ["u16", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromUI4: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFromUI8: {
       parameters: ["u64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarParseNumFromStr: {
       parameters: ["buffer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarNumFromParseNum: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarAdd: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarAnd: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCat: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDiv: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarEqv: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarIdiv: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarImp: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarMod: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarMul: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarOr: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarPow: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarSub: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarXor: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarAbs: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFix: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarInt: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarNeg: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarNot: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarRound: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCmp: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "u32",
+      optional: true,
     },
     VarDecAdd: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecDiv: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecMul: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecSub: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecAbs: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecFix: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecInt: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecNeg: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecRound: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDecCmp: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     VarDecCmpR8: {
       parameters: ["pointer", "f64"],
       result: "u32",
+      optional: true,
     },
     VarCyAdd: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyMul: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyMulI4: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyMulI8: {
       parameters: ["pointer", "i64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCySub: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyAbs: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyFix: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyInt: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyNeg: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyRound: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarCyCmp: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     VarCyCmpR8: {
       parameters: ["pointer", "f64"],
       result: "u32",
+      optional: true,
     },
     VarBstrCat: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarBstrCmp: {
       parameters: ["pointer", "pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     VarR8Pow: {
       parameters: ["f64", "f64", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarR4CmpR8: {
       parameters: ["f32", "f64"],
       result: "u32",
+      optional: true,
     },
     VarR8Round: {
       parameters: ["f64", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUdate: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarDateFromUdateEx: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarUdateFromDate: {
       parameters: ["f64", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetAltMonthNames: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormat: {
       parameters: ["pointer", "buffer", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormatDateTime: {
       parameters: ["pointer", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormatNumber: {
       parameters: ["pointer", "i32", "i32", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormatPercent: {
       parameters: ["pointer", "i32", "i32", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormatCurrency: {
       parameters: ["pointer", "i32", "i32", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarWeekdayName: {
       parameters: ["i32", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarMonthName: {
       parameters: ["i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     VarFormatFromTokens: {
       parameters: ["pointer", "buffer", "pointer", "u32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     VarTokenizeFormatString: {
       parameters: ["buffer", "pointer", "i32", "i32", "i32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LHashValOfNameSysA: {
       parameters: ["i32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     LHashValOfNameSys: {
       parameters: ["i32", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     LoadTypeLib: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadTypeLibEx: {
       parameters: ["buffer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     LoadRegTypeLib: {
       parameters: ["pointer", "u16", "u16", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     QueryPathOfRegTypeLib: {
       parameters: ["pointer", "u16", "u16", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterTypeLib: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     UnRegisterTypeLib: {
       parameters: ["pointer", "u16", "u16", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     RegisterTypeLibForUser: {
       parameters: ["pointer", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     UnRegisterTypeLibForUser: {
       parameters: ["pointer", "u16", "u16", "u32", "i32"],
       result: "pointer",
+      optional: true,
     },
     CreateTypeLib: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateTypeLib2: {
       parameters: ["i32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DispGetParam: {
       parameters: ["pointer", "u32", "u16", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DispGetIDsOfNames: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DispInvoke: {
       parameters: ["pointer", "pointer", "i32", "u16", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateDispTypeInfo: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateStdDispatch: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     DispCallFunc: {
       parameters: ["pointer", "usize", "i32", "u16", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RegisterActiveObject: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RevokeActiveObject: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetActiveObject: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     CreateErrorInfo: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     GetRecordInfoFromTypeInfo: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     GetRecordInfoFromGuids: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OaBuildVersion: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     ClearCustData: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     OaEnablePerUserTLibRegistration: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     OleCreatePropertyFrame: {
       parameters: ["pointer", "u32", "u32", "buffer", "u32", "pointer", "u32", "pointer", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreatePropertyFrameIndirect: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleTranslateColor: {
       parameters: ["u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateFontIndirect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreatePictureIndirect: {
       parameters: ["pointer", "pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoadPicture: {
       parameters: ["pointer", "i32", "i32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoadPictureEx: {
       parameters: ["pointer", "i32", "i32", "pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoadPicturePath: {
       parameters: ["buffer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoadPictureFile: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoadPictureFileEx: {
       parameters: ["pointer", "u32", "u32", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSavePictureFile: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleIconToCursor: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12322,66 +12691,82 @@ try {
     OleBuildVersion: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     OleCreateEx: {
       parameters: ["pointer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateFromDataEx: {
       parameters: ["pointer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLinkFromDataEx: {
       parameters: ["pointer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLink: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLinkEx: {
       parameters: ["pointer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLinkToFileEx: {
       parameters: ["buffer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateFromFileEx: {
       parameters: ["pointer", "buffer", "pointer", "u32", "i32", "u32", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleNoteObjectVisible: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     OleGetClipboardWithEnterpriseInfo: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateDefaultHandler: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleGetIconOfFile: {
       parameters: ["buffer", "i32"],
       result: "isize",
+      optional: true,
     },
     OleMetafilePictFromIconAndLabel: {
       parameters: ["pointer", "buffer", "buffer", "u32"],
       result: "isize",
+      optional: true,
     },
     OleRegEnumFormatEtc: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleDoAutoConvert: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSetAutoConvert: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12391,178 +12776,222 @@ try {
     OleInitialize: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleUninitialize: {
       parameters: [],
       result: "void",
+      optional: true,
     },
     OleQueryLinkFromData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleQueryCreateFromData: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreate: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateFromData: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLinkFromData: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateStaticFromData: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateLinkToFile: {
       parameters: ["buffer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateFromFile: {
       parameters: ["pointer", "buffer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleLoad: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSave: {
       parameters: ["pointer", "pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     OleLoadFromStream: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSaveToStream: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSetContainedObject: {
       parameters: ["pointer", "i32"],
       result: "pointer",
+      optional: true,
     },
     RegisterDragDrop: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     RevokeDragDrop: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     DoDragDrop: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleSetClipboard: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleGetClipboard: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleFlushClipboard: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     OleIsCurrentClipboard: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateMenuDescriptor: {
       parameters: ["pointer", "pointer"],
       result: "isize",
+      optional: true,
     },
     OleSetMenuDescriptor: {
       parameters: ["isize", "pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleDestroyMenuDescriptor: {
       parameters: ["isize"],
       result: "pointer",
+      optional: true,
     },
     OleTranslateAccelerator: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleDuplicateData: {
       parameters: ["pointer", "u16", "u32"],
       result: "pointer",
+      optional: true,
     },
     OleDraw: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleRun: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleIsRunning: {
       parameters: ["pointer"],
       result: "i32",
+      optional: true,
     },
     OleLockRunning: {
       parameters: ["pointer", "i32", "i32"],
       result: "pointer",
+      optional: true,
     },
     ReleaseStgMedium: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     CreateOleAdviseHolder: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     OleCreateEmbeddingHelper: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     IsAccelerator: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "i32",
+      optional: true,
     },
     OleGetIconOfClass: {
       parameters: ["pointer", "buffer", "i32"],
       result: "isize",
+      optional: true,
     },
     OleRegGetUserType: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleRegGetMiscStatus: {
       parameters: ["pointer", "u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleRegEnumVerbs: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     OleGetAutoConvert: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HRGN_UserSize: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HRGN_UserMarshal: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HRGN_UserUnmarshal: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HRGN_UserFree: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12572,18 +13001,22 @@ try {
     HRGN_UserSize64: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     HRGN_UserMarshal64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HRGN_UserUnmarshal64: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     HRGN_UserFree64: {
       parameters: ["pointer", "pointer"],
       result: "void",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12593,94 +13026,117 @@ try {
     OleUIAddVerbMenuW: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32", "u32", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OleUIAddVerbMenuA: {
       parameters: ["pointer", "buffer", "pointer", "u32", "u32", "u32", "i32", "u32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OleUIInsertObjectW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIInsertObjectA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIPasteSpecialW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIPasteSpecialA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIEditLinksW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIEditLinksA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIChangeIconW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIChangeIconA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIConvertW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIConvertA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUICanConvertOrActivateAs: {
       parameters: ["pointer", "i32", "u16"],
       result: "i32",
+      optional: true,
     },
     OleUIBusyW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIBusyA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIChangeSourceW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIChangeSourceA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIObjectPropertiesW: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIObjectPropertiesA: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     OleUIPromptUserW: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OleUIPromptUserA: {
       parameters: ["i32", "pointer"],
       result: "i32",
+      optional: true,
     },
     OleUIUpdateLinksW: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
     OleUIUpdateLinksA: {
       parameters: ["pointer", "pointer", "buffer", "i32"],
       result: "i32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -12692,7 +13148,7 @@ export function DosDateTimeToVariantTime(
   wDosTime: number /* u16 */,
   pvtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.DosDateTimeToVariantTime(wDosDate, wDosTime, util.toPointer(pvtime));
+  return libOLEAUT32_dll.DosDateTimeToVariantTime!(wDosDate, wDosTime, util.toPointer(pvtime));
 }
 
 export function VariantTimeToDosDateTime(
@@ -12700,28 +13156,28 @@ export function VariantTimeToDosDateTime(
   pwDosDate: Deno.PointerValue | Uint8Array /* ptr */,
   pwDosTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.VariantTimeToDosDateTime(vtime, util.toPointer(pwDosDate), util.toPointer(pwDosTime));
+  return libOLEAUT32_dll.VariantTimeToDosDateTime!(vtime, util.toPointer(pwDosDate), util.toPointer(pwDosTime));
 }
 
 export function SystemTimeToVariantTime(
   lpSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
   pvtime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.SystemTimeToVariantTime(util.toPointer(lpSystemTime), util.toPointer(pvtime));
+  return libOLEAUT32_dll.SystemTimeToVariantTime!(util.toPointer(lpSystemTime), util.toPointer(pvtime));
 }
 
 export function VariantTimeToSystemTime(
   vtime: number /* f64 */,
   lpSystemTime: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* i32 */ {
-  return libOLEAUT32_dll.VariantTimeToSystemTime(vtime, util.toPointer(lpSystemTime));
+  return libOLEAUT32_dll.VariantTimeToSystemTime!(vtime, util.toPointer(lpSystemTime));
 }
 
 export function SafeArrayAllocDescriptor(
   cDims: number /* u32 */,
   ppsaOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayAllocDescriptor(cDims, util.toPointer(ppsaOut));
+  return libOLEAUT32_dll.SafeArrayAllocDescriptor!(cDims, util.toPointer(ppsaOut));
 }
 
 export function SafeArrayAllocDescriptorEx(
@@ -12729,13 +13185,13 @@ export function SafeArrayAllocDescriptorEx(
   cDims: number /* u32 */,
   ppsaOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayAllocDescriptorEx(vt, cDims, util.toPointer(ppsaOut));
+  return libOLEAUT32_dll.SafeArrayAllocDescriptorEx!(vt, cDims, util.toPointer(ppsaOut));
 }
 
 export function SafeArrayAllocData(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayAllocData(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayAllocData!(util.toPointer(psa));
 }
 
 export function SafeArrayCreate(
@@ -12743,7 +13199,7 @@ export function SafeArrayCreate(
   cDims: number /* u32 */,
   rgsabound: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLEAUT32_dll.SafeArrayCreate(vt, cDims, util.toPointer(rgsabound));
+  return libOLEAUT32_dll.SafeArrayCreate!(vt, cDims, util.toPointer(rgsabound));
 }
 
 export function SafeArrayCreateEx(
@@ -12752,70 +13208,70 @@ export function SafeArrayCreateEx(
   rgsabound: Deno.PointerValue | Uint8Array /* ptr */,
   pvExtra: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLEAUT32_dll.SafeArrayCreateEx(vt, cDims, util.toPointer(rgsabound), util.toPointer(pvExtra));
+  return libOLEAUT32_dll.SafeArrayCreateEx!(vt, cDims, util.toPointer(rgsabound), util.toPointer(pvExtra));
 }
 
 export function SafeArrayCopyData(
   psaSource: Deno.PointerValue | Uint8Array /* ptr */,
   psaTarget: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayCopyData(util.toPointer(psaSource), util.toPointer(psaTarget));
+  return libOLEAUT32_dll.SafeArrayCopyData!(util.toPointer(psaSource), util.toPointer(psaTarget));
 }
 
 export function SafeArrayReleaseDescriptor(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLEAUT32_dll.SafeArrayReleaseDescriptor(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayReleaseDescriptor!(util.toPointer(psa));
 }
 
 export function SafeArrayDestroyDescriptor(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayDestroyDescriptor(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayDestroyDescriptor!(util.toPointer(psa));
 }
 
 export function SafeArrayReleaseData(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLEAUT32_dll.SafeArrayReleaseData(util.toPointer(pData));
+  return libOLEAUT32_dll.SafeArrayReleaseData!(util.toPointer(pData));
 }
 
 export function SafeArrayDestroyData(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayDestroyData(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayDestroyData!(util.toPointer(psa));
 }
 
 export function SafeArrayAddRef(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   ppDataToRelease: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayAddRef(util.toPointer(psa), util.toPointer(ppDataToRelease));
+  return libOLEAUT32_dll.SafeArrayAddRef!(util.toPointer(psa), util.toPointer(ppDataToRelease));
 }
 
 export function SafeArrayDestroy(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayDestroy(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayDestroy!(util.toPointer(psa));
 }
 
 export function SafeArrayRedim(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   psaboundNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayRedim(util.toPointer(psa), util.toPointer(psaboundNew));
+  return libOLEAUT32_dll.SafeArrayRedim!(util.toPointer(psa), util.toPointer(psaboundNew));
 }
 
 export function SafeArrayGetDim(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.SafeArrayGetDim(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayGetDim!(util.toPointer(psa));
 }
 
 export function SafeArrayGetElemsize(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.SafeArrayGetElemsize(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayGetElemsize!(util.toPointer(psa));
 }
 
 export function SafeArrayGetUBound(
@@ -12823,7 +13279,7 @@ export function SafeArrayGetUBound(
   nDim: number /* u32 */,
   plUbound: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetUBound(util.toPointer(psa), nDim, util.toPointer(plUbound));
+  return libOLEAUT32_dll.SafeArrayGetUBound!(util.toPointer(psa), nDim, util.toPointer(plUbound));
 }
 
 export function SafeArrayGetLBound(
@@ -12831,32 +13287,32 @@ export function SafeArrayGetLBound(
   nDim: number /* u32 */,
   plLbound: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetLBound(util.toPointer(psa), nDim, util.toPointer(plLbound));
+  return libOLEAUT32_dll.SafeArrayGetLBound!(util.toPointer(psa), nDim, util.toPointer(plLbound));
 }
 
 export function SafeArrayLock(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayLock(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayLock!(util.toPointer(psa));
 }
 
 export function SafeArrayUnlock(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayUnlock(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayUnlock!(util.toPointer(psa));
 }
 
 export function SafeArrayAccessData(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   ppvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayAccessData(util.toPointer(psa), util.toPointer(ppvData));
+  return libOLEAUT32_dll.SafeArrayAccessData!(util.toPointer(psa), util.toPointer(ppvData));
 }
 
 export function SafeArrayUnaccessData(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayUnaccessData(util.toPointer(psa));
+  return libOLEAUT32_dll.SafeArrayUnaccessData!(util.toPointer(psa));
 }
 
 export function SafeArrayGetElement(
@@ -12864,7 +13320,7 @@ export function SafeArrayGetElement(
   rgIndices: Deno.PointerValue | Uint8Array /* ptr */,
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetElement(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(pv));
+  return libOLEAUT32_dll.SafeArrayGetElement!(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(pv));
 }
 
 export function SafeArrayPutElement(
@@ -12872,14 +13328,14 @@ export function SafeArrayPutElement(
   rgIndices: Deno.PointerValue | Uint8Array /* ptr */,
   pv: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayPutElement(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(pv));
+  return libOLEAUT32_dll.SafeArrayPutElement!(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(pv));
 }
 
 export function SafeArrayCopy(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   ppsaOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayCopy(util.toPointer(psa), util.toPointer(ppsaOut));
+  return libOLEAUT32_dll.SafeArrayCopy!(util.toPointer(psa), util.toPointer(ppsaOut));
 }
 
 export function SafeArrayPtrOfIndex(
@@ -12887,42 +13343,42 @@ export function SafeArrayPtrOfIndex(
   rgIndices: Deno.PointerValue | Uint8Array /* ptr */,
   ppvData: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayPtrOfIndex(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(ppvData));
+  return libOLEAUT32_dll.SafeArrayPtrOfIndex!(util.toPointer(psa), util.toPointer(rgIndices), util.toPointer(ppvData));
 }
 
 export function SafeArraySetRecordInfo(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   prinfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IRecordInfo */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArraySetRecordInfo(util.toPointer(psa), util.toPointer(prinfo));
+  return libOLEAUT32_dll.SafeArraySetRecordInfo!(util.toPointer(psa), util.toPointer(prinfo));
 }
 
 export function SafeArrayGetRecordInfo(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   prinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetRecordInfo(util.toPointer(psa), util.toPointer(prinfo));
+  return libOLEAUT32_dll.SafeArrayGetRecordInfo!(util.toPointer(psa), util.toPointer(prinfo));
 }
 
 export function SafeArraySetIID(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   guid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArraySetIID(util.toPointer(psa), util.toPointer(guid));
+  return libOLEAUT32_dll.SafeArraySetIID!(util.toPointer(psa), util.toPointer(guid));
 }
 
 export function SafeArrayGetIID(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   pguid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetIID(util.toPointer(psa), util.toPointer(pguid));
+  return libOLEAUT32_dll.SafeArrayGetIID!(util.toPointer(psa), util.toPointer(pguid));
 }
 
 export function SafeArrayGetVartype(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   pvt: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.SafeArrayGetVartype(util.toPointer(psa), util.toPointer(pvt));
+  return libOLEAUT32_dll.SafeArrayGetVartype!(util.toPointer(psa), util.toPointer(pvt));
 }
 
 export function SafeArrayCreateVector(
@@ -12930,7 +13386,7 @@ export function SafeArrayCreateVector(
   lLbound: number /* i32 */,
   cElements: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLEAUT32_dll.SafeArrayCreateVector(vt, lLbound, cElements);
+  return libOLEAUT32_dll.SafeArrayCreateVector!(vt, lLbound, cElements);
 }
 
 export function SafeArrayCreateVectorEx(
@@ -12939,33 +13395,33 @@ export function SafeArrayCreateVectorEx(
   cElements: number /* u32 */,
   pvExtra: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLEAUT32_dll.SafeArrayCreateVectorEx(vt, lLbound, cElements, util.toPointer(pvExtra));
+  return libOLEAUT32_dll.SafeArrayCreateVectorEx!(vt, lLbound, cElements, util.toPointer(pvExtra));
 }
 
 export function VariantInit(
   pvarg: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLEAUT32_dll.VariantInit(util.toPointer(pvarg));
+  return libOLEAUT32_dll.VariantInit!(util.toPointer(pvarg));
 }
 
 export function VariantClear(
   pvarg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VariantClear(util.toPointer(pvarg));
+  return libOLEAUT32_dll.VariantClear!(util.toPointer(pvarg));
 }
 
 export function VariantCopy(
   pvargDest: Deno.PointerValue | Uint8Array /* ptr */,
   pvargSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VariantCopy(util.toPointer(pvargDest), util.toPointer(pvargSrc));
+  return libOLEAUT32_dll.VariantCopy!(util.toPointer(pvargDest), util.toPointer(pvargSrc));
 }
 
 export function VariantCopyInd(
   pvarDest: Deno.PointerValue | Uint8Array /* ptr */,
   pvargSrc: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VariantCopyInd(util.toPointer(pvarDest), util.toPointer(pvargSrc));
+  return libOLEAUT32_dll.VariantCopyInd!(util.toPointer(pvarDest), util.toPointer(pvargSrc));
 }
 
 export function VariantChangeType(
@@ -12974,7 +13430,7 @@ export function VariantChangeType(
   wFlags: number /* u16 */,
   vt: VARENUM /* Windows.Win32.System.Com.VARENUM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VariantChangeType(util.toPointer(pvargDest), util.toPointer(pvarSrc), wFlags, vt);
+  return libOLEAUT32_dll.VariantChangeType!(util.toPointer(pvargDest), util.toPointer(pvarSrc), wFlags, vt);
 }
 
 export function VariantChangeTypeEx(
@@ -12984,70 +13440,70 @@ export function VariantChangeTypeEx(
   wFlags: number /* u16 */,
   vt: VARENUM /* Windows.Win32.System.Com.VARENUM */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VariantChangeTypeEx(util.toPointer(pvargDest), util.toPointer(pvarSrc), lcid, wFlags, vt);
+  return libOLEAUT32_dll.VariantChangeTypeEx!(util.toPointer(pvargDest), util.toPointer(pvarSrc), lcid, wFlags, vt);
 }
 
 export function VectorFromBstr(
   bstr: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
   ppsa: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VectorFromBstr(util.toPointer(bstr), util.toPointer(ppsa));
+  return libOLEAUT32_dll.VectorFromBstr!(util.toPointer(bstr), util.toPointer(ppsa));
 }
 
 export function BstrFromVector(
   psa: Deno.PointerValue | Uint8Array /* ptr */,
   pbstr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.BstrFromVector(util.toPointer(psa), util.toPointer(pbstr));
+  return libOLEAUT32_dll.BstrFromVector!(util.toPointer(psa), util.toPointer(pbstr));
 }
 
 export function VarUI1FromI2(
   sIn: number /* i16 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromI2(sIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromI2!(sIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromI4(
   lIn: number /* i32 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromI4(lIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromI4!(lIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromI8(
   i64In: bigint | number /* i64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromI8(i64In, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromI8!(i64In, util.toPointer(pbOut));
 }
 
 export function VarUI1FromR4(
   fltIn: number /* f32 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromR4(fltIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromR4!(fltIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromR8(
   dblIn: number /* f64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromR8(dblIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromR8!(dblIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromCy(util.toPointer(cyIn), util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromCy!(util.toPointer(cyIn), util.toPointer(pbOut));
 }
 
 export function VarUI1FromDate(
   dateIn: number /* f64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromDate(dateIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromDate!(dateIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromStr(
@@ -13056,7 +13512,7 @@ export function VarUI1FromStr(
   dwFlags: number /* u32 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pbOut));
 }
 
 export function VarUI1FromDisp(
@@ -13064,98 +13520,98 @@ export function VarUI1FromDisp(
   lcid: number /* u32 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pbOut));
 }
 
 export function VarUI1FromBool(
   boolIn: number /* i16 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromBool(boolIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromBool!(boolIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromI1(util.charToFfi(cIn), util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromI1!(util.charToFfi(cIn), util.toPointer(pbOut));
 }
 
 export function VarUI1FromUI2(
   uiIn: number /* u16 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromUI2(uiIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromUI2!(uiIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromUI4(
   ulIn: number /* u32 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromUI4(ulIn, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromUI4!(ulIn, util.toPointer(pbOut));
 }
 
 export function VarUI1FromUI8(
   ui64In: bigint | number /* u64 */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromUI8(ui64In, util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromUI8!(ui64In, util.toPointer(pbOut));
 }
 
 export function VarUI1FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pbOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI1FromDec(util.toPointer(pdecIn), util.toPointer(pbOut));
+  return libOLEAUT32_dll.VarUI1FromDec!(util.toPointer(pdecIn), util.toPointer(pbOut));
 }
 
 export function VarI2FromUI1(
   bIn: number /* u8 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromUI1(bIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromUI1!(bIn, util.toPointer(psOut));
 }
 
 export function VarI2FromI4(
   lIn: number /* i32 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromI4(lIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromI4!(lIn, util.toPointer(psOut));
 }
 
 export function VarI2FromI8(
   i64In: bigint | number /* i64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromI8(i64In, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromI8!(i64In, util.toPointer(psOut));
 }
 
 export function VarI2FromR4(
   fltIn: number /* f32 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromR4(fltIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromR4!(fltIn, util.toPointer(psOut));
 }
 
 export function VarI2FromR8(
   dblIn: number /* f64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromR8(dblIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromR8!(dblIn, util.toPointer(psOut));
 }
 
 export function VarI2FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromCy(util.toPointer(cyIn), util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromCy!(util.toPointer(cyIn), util.toPointer(psOut));
 }
 
 export function VarI2FromDate(
   dateIn: number /* f64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromDate(dateIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromDate!(dateIn, util.toPointer(psOut));
 }
 
 export function VarI2FromStr(
@@ -13164,7 +13620,7 @@ export function VarI2FromStr(
   dwFlags: number /* u32 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(psOut));
 }
 
 export function VarI2FromDisp(
@@ -13172,98 +13628,98 @@ export function VarI2FromDisp(
   lcid: number /* u32 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(psOut));
 }
 
 export function VarI2FromBool(
   boolIn: number /* i16 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromBool(boolIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromBool!(boolIn, util.toPointer(psOut));
 }
 
 export function VarI2FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromI1(util.charToFfi(cIn), util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromI1!(util.charToFfi(cIn), util.toPointer(psOut));
 }
 
 export function VarI2FromUI2(
   uiIn: number /* u16 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromUI2(uiIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromUI2!(uiIn, util.toPointer(psOut));
 }
 
 export function VarI2FromUI4(
   ulIn: number /* u32 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromUI4(ulIn, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromUI4!(ulIn, util.toPointer(psOut));
 }
 
 export function VarI2FromUI8(
   ui64In: bigint | number /* u64 */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromUI8(ui64In, util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromUI8!(ui64In, util.toPointer(psOut));
 }
 
 export function VarI2FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   psOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI2FromDec(util.toPointer(pdecIn), util.toPointer(psOut));
+  return libOLEAUT32_dll.VarI2FromDec!(util.toPointer(pdecIn), util.toPointer(psOut));
 }
 
 export function VarI4FromUI1(
   bIn: number /* u8 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromUI1(bIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromUI1!(bIn, util.toPointer(plOut));
 }
 
 export function VarI4FromI2(
   sIn: number /* i16 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromI2(sIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromI2!(sIn, util.toPointer(plOut));
 }
 
 export function VarI4FromI8(
   i64In: bigint | number /* i64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromI8(i64In, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromI8!(i64In, util.toPointer(plOut));
 }
 
 export function VarI4FromR4(
   fltIn: number /* f32 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromR4(fltIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromR4!(fltIn, util.toPointer(plOut));
 }
 
 export function VarI4FromR8(
   dblIn: number /* f64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromR8(dblIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromR8!(dblIn, util.toPointer(plOut));
 }
 
 export function VarI4FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromCy(util.toPointer(cyIn), util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromCy!(util.toPointer(cyIn), util.toPointer(plOut));
 }
 
 export function VarI4FromDate(
   dateIn: number /* f64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromDate(dateIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromDate!(dateIn, util.toPointer(plOut));
 }
 
 export function VarI4FromStr(
@@ -13272,7 +13728,7 @@ export function VarI4FromStr(
   dwFlags: number /* u32 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(plOut));
 }
 
 export function VarI4FromDisp(
@@ -13280,91 +13736,91 @@ export function VarI4FromDisp(
   lcid: number /* u32 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(plOut));
 }
 
 export function VarI4FromBool(
   boolIn: number /* i16 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromBool(boolIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromBool!(boolIn, util.toPointer(plOut));
 }
 
 export function VarI4FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromI1(util.charToFfi(cIn), util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromI1!(util.charToFfi(cIn), util.toPointer(plOut));
 }
 
 export function VarI4FromUI2(
   uiIn: number /* u16 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromUI2(uiIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromUI2!(uiIn, util.toPointer(plOut));
 }
 
 export function VarI4FromUI4(
   ulIn: number /* u32 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromUI4(ulIn, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromUI4!(ulIn, util.toPointer(plOut));
 }
 
 export function VarI4FromUI8(
   ui64In: bigint | number /* u64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromUI8(ui64In, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromUI8!(ui64In, util.toPointer(plOut));
 }
 
 export function VarI4FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI4FromDec(util.toPointer(pdecIn), util.toPointer(plOut));
+  return libOLEAUT32_dll.VarI4FromDec!(util.toPointer(pdecIn), util.toPointer(plOut));
 }
 
 export function VarI8FromUI1(
   bIn: number /* u8 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromUI1(bIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromUI1!(bIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromI2(
   sIn: number /* i16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromI2(sIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromI2!(sIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromR4(
   fltIn: number /* f32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromR4(fltIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromR4!(fltIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromR8(
   dblIn: number /* f64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromR8(dblIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromR8!(dblIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromCy(util.toPointer(cyIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromCy!(util.toPointer(cyIn), util.toPointer(pi64Out));
 }
 
 export function VarI8FromDate(
   dateIn: number /* f64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromDate(dateIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromDate!(dateIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromStr(
@@ -13373,7 +13829,7 @@ export function VarI8FromStr(
   dwFlags: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pi64Out));
 }
 
 export function VarI8FromDisp(
@@ -13381,98 +13837,98 @@ export function VarI8FromDisp(
   lcid: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pi64Out));
 }
 
 export function VarI8FromBool(
   boolIn: number /* i16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromBool(boolIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromBool!(boolIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromI1(util.charToFfi(cIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromI1!(util.charToFfi(cIn), util.toPointer(pi64Out));
 }
 
 export function VarI8FromUI2(
   uiIn: number /* u16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromUI2(uiIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromUI2!(uiIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromUI4(
   ulIn: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromUI4(ulIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromUI4!(ulIn, util.toPointer(pi64Out));
 }
 
 export function VarI8FromUI8(
   ui64In: bigint | number /* u64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromUI8(ui64In, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromUI8!(ui64In, util.toPointer(pi64Out));
 }
 
 export function VarI8FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI8FromDec(util.toPointer(pdecIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarI8FromDec!(util.toPointer(pdecIn), util.toPointer(pi64Out));
 }
 
 export function VarR4FromUI1(
   bIn: number /* u8 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromUI1(bIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromUI1!(bIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromI2(
   sIn: number /* i16 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromI2(sIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromI2!(sIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromI4(
   lIn: number /* i32 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromI4(lIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromI4!(lIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromI8(
   i64In: bigint | number /* i64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromI8(i64In, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromI8!(i64In, util.toPointer(pfltOut));
 }
 
 export function VarR4FromR8(
   dblIn: number /* f64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromR8(dblIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromR8!(dblIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromCy(util.toPointer(cyIn), util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromCy!(util.toPointer(cyIn), util.toPointer(pfltOut));
 }
 
 export function VarR4FromDate(
   dateIn: number /* f64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromDate(dateIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromDate!(dateIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromStr(
@@ -13481,7 +13937,7 @@ export function VarR4FromStr(
   dwFlags: number /* u32 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pfltOut));
 }
 
 export function VarR4FromDisp(
@@ -13489,98 +13945,98 @@ export function VarR4FromDisp(
   lcid: number /* u32 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pfltOut));
 }
 
 export function VarR4FromBool(
   boolIn: number /* i16 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromBool(boolIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromBool!(boolIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromI1(util.charToFfi(cIn), util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromI1!(util.charToFfi(cIn), util.toPointer(pfltOut));
 }
 
 export function VarR4FromUI2(
   uiIn: number /* u16 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromUI2(uiIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromUI2!(uiIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromUI4(
   ulIn: number /* u32 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromUI4(ulIn, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromUI4!(ulIn, util.toPointer(pfltOut));
 }
 
 export function VarR4FromUI8(
   ui64In: bigint | number /* u64 */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromUI8(ui64In, util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromUI8!(ui64In, util.toPointer(pfltOut));
 }
 
 export function VarR4FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pfltOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR4FromDec(util.toPointer(pdecIn), util.toPointer(pfltOut));
+  return libOLEAUT32_dll.VarR4FromDec!(util.toPointer(pdecIn), util.toPointer(pfltOut));
 }
 
 export function VarR8FromUI1(
   bIn: number /* u8 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromUI1(bIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromUI1!(bIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromI2(
   sIn: number /* i16 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromI2(sIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromI2!(sIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromI4(
   lIn: number /* i32 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromI4(lIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromI4!(lIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromI8(
   i64In: bigint | number /* i64 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromI8(i64In, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromI8!(i64In, util.toPointer(pdblOut));
 }
 
 export function VarR8FromR4(
   fltIn: number /* f32 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromR4(fltIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromR4!(fltIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromCy(util.toPointer(cyIn), util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromCy!(util.toPointer(cyIn), util.toPointer(pdblOut));
 }
 
 export function VarR8FromDate(
   dateIn: number /* f64 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromDate(dateIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromDate!(dateIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromStr(
@@ -13589,7 +14045,7 @@ export function VarR8FromStr(
   dwFlags: number /* u32 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdblOut));
 }
 
 export function VarR8FromDisp(
@@ -13597,98 +14053,98 @@ export function VarR8FromDisp(
   lcid: number /* u32 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pdblOut));
 }
 
 export function VarR8FromBool(
   boolIn: number /* i16 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromBool(boolIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromBool!(boolIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromI1(util.charToFfi(cIn), util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromI1!(util.charToFfi(cIn), util.toPointer(pdblOut));
 }
 
 export function VarR8FromUI2(
   uiIn: number /* u16 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromUI2(uiIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromUI2!(uiIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromUI4(
   ulIn: number /* u32 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromUI4(ulIn, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromUI4!(ulIn, util.toPointer(pdblOut));
 }
 
 export function VarR8FromUI8(
   ui64In: bigint | number /* u64 */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromUI8(ui64In, util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromUI8!(ui64In, util.toPointer(pdblOut));
 }
 
 export function VarR8FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdblOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8FromDec(util.toPointer(pdecIn), util.toPointer(pdblOut));
+  return libOLEAUT32_dll.VarR8FromDec!(util.toPointer(pdecIn), util.toPointer(pdblOut));
 }
 
 export function VarDateFromUI1(
   bIn: number /* u8 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUI1(bIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUI1!(bIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromI2(
   sIn: number /* i16 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromI2(sIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromI2!(sIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromI4(
   lIn: number /* i32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromI4(lIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromI4!(lIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromI8(
   i64In: bigint | number /* i64 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromI8(i64In, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromI8!(i64In, util.toPointer(pdateOut));
 }
 
 export function VarDateFromR4(
   fltIn: number /* f32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromR4(fltIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromR4!(fltIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromR8(
   dblIn: number /* f64 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromR8(dblIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromR8!(dblIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromCy(util.toPointer(cyIn), util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromCy!(util.toPointer(cyIn), util.toPointer(pdateOut));
 }
 
 export function VarDateFromStr(
@@ -13697,7 +14153,7 @@ export function VarDateFromStr(
   dwFlags: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdateOut));
 }
 
 export function VarDateFromDisp(
@@ -13705,98 +14161,98 @@ export function VarDateFromDisp(
   lcid: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pdateOut));
 }
 
 export function VarDateFromBool(
   boolIn: number /* i16 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromBool(boolIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromBool!(boolIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromI1(util.charToFfi(cIn), util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromI1!(util.charToFfi(cIn), util.toPointer(pdateOut));
 }
 
 export function VarDateFromUI2(
   uiIn: number /* u16 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUI2(uiIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUI2!(uiIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromUI4(
   ulIn: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUI4(ulIn, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUI4!(ulIn, util.toPointer(pdateOut));
 }
 
 export function VarDateFromUI8(
   ui64In: bigint | number /* u64 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUI8(ui64In, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUI8!(ui64In, util.toPointer(pdateOut));
 }
 
 export function VarDateFromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromDec(util.toPointer(pdecIn), util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromDec!(util.toPointer(pdecIn), util.toPointer(pdateOut));
 }
 
 export function VarCyFromUI1(
   bIn: number /* u8 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromUI1(bIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromUI1!(bIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromI2(
   sIn: number /* i16 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromI2(sIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromI2!(sIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromI4(
   lIn: number /* i32 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromI4(lIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromI4!(lIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromI8(
   i64In: bigint | number /* i64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromI8(i64In, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromI8!(i64In, util.toPointer(pcyOut));
 }
 
 export function VarCyFromR4(
   fltIn: number /* f32 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromR4(fltIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromR4!(fltIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromR8(
   dblIn: number /* f64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromR8(dblIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromR8!(dblIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromDate(
   dateIn: number /* f64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromDate(dateIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromDate!(dateIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromStr(
@@ -13805,7 +14261,7 @@ export function VarCyFromStr(
   dwFlags: number /* u32 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pcyOut));
 }
 
 export function VarCyFromDisp(
@@ -13813,49 +14269,49 @@ export function VarCyFromDisp(
   lcid: number /* u32 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pcyOut));
 }
 
 export function VarCyFromBool(
   boolIn: number /* i16 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromBool(boolIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromBool!(boolIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromI1(util.charToFfi(cIn), util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromI1!(util.charToFfi(cIn), util.toPointer(pcyOut));
 }
 
 export function VarCyFromUI2(
   uiIn: number /* u16 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromUI2(uiIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromUI2!(uiIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromUI4(
   ulIn: number /* u32 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromUI4(ulIn, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromUI4!(ulIn, util.toPointer(pcyOut));
 }
 
 export function VarCyFromUI8(
   ui64In: bigint | number /* u64 */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromUI8(ui64In, util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromUI8!(ui64In, util.toPointer(pcyOut));
 }
 
 export function VarCyFromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pcyOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFromDec(util.toPointer(pdecIn), util.toPointer(pcyOut));
+  return libOLEAUT32_dll.VarCyFromDec!(util.toPointer(pdecIn), util.toPointer(pcyOut));
 }
 
 export function VarBstrFromUI1(
@@ -13864,7 +14320,7 @@ export function VarBstrFromUI1(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromUI1(bVal, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromUI1!(bVal, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromI2(
@@ -13873,7 +14329,7 @@ export function VarBstrFromI2(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromI2(iVal, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromI2!(iVal, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromI4(
@@ -13882,7 +14338,7 @@ export function VarBstrFromI4(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromI4(lIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromI4!(lIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromI8(
@@ -13891,7 +14347,7 @@ export function VarBstrFromI8(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromI8(i64In, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromI8!(i64In, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromR4(
@@ -13900,7 +14356,7 @@ export function VarBstrFromR4(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromR4(fltIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromR4!(fltIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromR8(
@@ -13909,7 +14365,7 @@ export function VarBstrFromR8(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromR8(dblIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromR8!(dblIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromCy(
@@ -13918,7 +14374,7 @@ export function VarBstrFromCy(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromCy(util.toPointer(cyIn), lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromCy!(util.toPointer(cyIn), lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromDate(
@@ -13927,7 +14383,7 @@ export function VarBstrFromDate(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromDate(dateIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromDate!(dateIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromDisp(
@@ -13936,7 +14392,7 @@ export function VarBstrFromDisp(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromDisp(util.toPointer(pdispIn), lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromDisp!(util.toPointer(pdispIn), lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromBool(
@@ -13945,7 +14401,7 @@ export function VarBstrFromBool(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromBool(boolIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromBool!(boolIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromI1(
@@ -13954,7 +14410,7 @@ export function VarBstrFromI1(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromI1(util.charToFfi(cIn), lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromI1!(util.charToFfi(cIn), lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromUI2(
@@ -13963,7 +14419,7 @@ export function VarBstrFromUI2(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromUI2(uiIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromUI2!(uiIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromUI4(
@@ -13972,7 +14428,7 @@ export function VarBstrFromUI4(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromUI4(ulIn, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromUI4!(ulIn, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromUI8(
@@ -13981,7 +14437,7 @@ export function VarBstrFromUI8(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromUI8(ui64In, lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromUI8!(ui64In, lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBstrFromDec(
@@ -13990,63 +14446,63 @@ export function VarBstrFromDec(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrFromDec(util.toPointer(pdecIn), lcid, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarBstrFromDec!(util.toPointer(pdecIn), lcid, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarBoolFromUI1(
   bIn: number /* u8 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromUI1(bIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromUI1!(bIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromI2(
   sIn: number /* i16 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromI2(sIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromI2!(sIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromI4(
   lIn: number /* i32 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromI4(lIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromI4!(lIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromI8(
   i64In: bigint | number /* i64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromI8(i64In, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromI8!(i64In, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromR4(
   fltIn: number /* f32 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromR4(fltIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromR4!(fltIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromR8(
   dblIn: number /* f64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromR8(dblIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromR8!(dblIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromDate(
   dateIn: number /* f64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromDate(dateIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromDate!(dateIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromCy(util.toPointer(cyIn), util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromCy!(util.toPointer(cyIn), util.toPointer(pboolOut));
 }
 
 export function VarBoolFromStr(
@@ -14055,7 +14511,7 @@ export function VarBoolFromStr(
   dwFlags: number /* u32 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromDisp(
@@ -14063,98 +14519,98 @@ export function VarBoolFromDisp(
   lcid: number /* u32 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromI1(util.charToFfi(cIn), util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromI1!(util.charToFfi(cIn), util.toPointer(pboolOut));
 }
 
 export function VarBoolFromUI2(
   uiIn: number /* u16 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromUI2(uiIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromUI2!(uiIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromUI4(
   ulIn: number /* u32 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromUI4(ulIn, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromUI4!(ulIn, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromUI8(
   i64In: bigint | number /* u64 */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromUI8(i64In, util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromUI8!(i64In, util.toPointer(pboolOut));
 }
 
 export function VarBoolFromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pboolOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBoolFromDec(util.toPointer(pdecIn), util.toPointer(pboolOut));
+  return libOLEAUT32_dll.VarBoolFromDec!(util.toPointer(pdecIn), util.toPointer(pboolOut));
 }
 
 export function VarI1FromUI1(
   bIn: number /* u8 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromUI1(bIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromUI1!(bIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromI2(
   uiIn: number /* i16 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromI2(uiIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromI2!(uiIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromI4(
   lIn: number /* i32 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromI4(lIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromI4!(lIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromI8(
   i64In: bigint | number /* i64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromI8(i64In, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromI8!(i64In, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromR4(
   fltIn: number /* f32 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromR4(fltIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromR4!(fltIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromR8(
   dblIn: number /* f64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromR8(dblIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromR8!(dblIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromDate(
   dateIn: number /* f64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromDate(dateIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromDate!(dateIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromCy(util.toPointer(cyIn), util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromCy!(util.toPointer(cyIn), util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromStr(
@@ -14163,7 +14619,7 @@ export function VarI1FromStr(
   dwFlags: number /* u32 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromDisp(
@@ -14171,98 +14627,98 @@ export function VarI1FromDisp(
   lcid: number /* u32 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromDisp(util.toPointer(pdispIn), lcid, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromDisp!(util.toPointer(pdispIn), lcid, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromBool(
   boolIn: number /* i16 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromBool(boolIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromBool!(boolIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromUI2(
   uiIn: number /* u16 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromUI2(uiIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromUI2!(uiIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromUI4(
   ulIn: number /* u32 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromUI4(ulIn, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromUI4!(ulIn, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromUI8(
   i64In: bigint | number /* u64 */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromUI8(i64In, util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromUI8!(i64In, util.pstrToFfi(pcOut));
 }
 
 export function VarI1FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pcOut: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarI1FromDec(util.toPointer(pdecIn), util.pstrToFfi(pcOut));
+  return libOLEAUT32_dll.VarI1FromDec!(util.toPointer(pdecIn), util.pstrToFfi(pcOut));
 }
 
 export function VarUI2FromUI1(
   bIn: number /* u8 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromUI1(bIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromUI1!(bIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromI2(
   uiIn: number /* i16 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromI2(uiIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromI2!(uiIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromI4(
   lIn: number /* i32 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromI4(lIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromI4!(lIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromI8(
   i64In: bigint | number /* i64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromI8(i64In, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromI8!(i64In, util.toPointer(puiOut));
 }
 
 export function VarUI2FromR4(
   fltIn: number /* f32 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromR4(fltIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromR4!(fltIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromR8(
   dblIn: number /* f64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromR8(dblIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromR8!(dblIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromDate(
   dateIn: number /* f64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromDate(dateIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromDate!(dateIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromCy(util.toPointer(cyIn), util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromCy!(util.toPointer(cyIn), util.toPointer(puiOut));
 }
 
 export function VarUI2FromStr(
@@ -14271,7 +14727,7 @@ export function VarUI2FromStr(
   dwFlags: number /* u32 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(puiOut));
 }
 
 export function VarUI2FromDisp(
@@ -14279,98 +14735,98 @@ export function VarUI2FromDisp(
   lcid: number /* u32 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(puiOut));
 }
 
 export function VarUI2FromBool(
   boolIn: number /* i16 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromBool(boolIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromBool!(boolIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromI1(util.charToFfi(cIn), util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromI1!(util.charToFfi(cIn), util.toPointer(puiOut));
 }
 
 export function VarUI2FromUI4(
   ulIn: number /* u32 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromUI4(ulIn, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromUI4!(ulIn, util.toPointer(puiOut));
 }
 
 export function VarUI2FromUI8(
   i64In: bigint | number /* u64 */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromUI8(i64In, util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromUI8!(i64In, util.toPointer(puiOut));
 }
 
 export function VarUI2FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   puiOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI2FromDec(util.toPointer(pdecIn), util.toPointer(puiOut));
+  return libOLEAUT32_dll.VarUI2FromDec!(util.toPointer(pdecIn), util.toPointer(puiOut));
 }
 
 export function VarUI4FromUI1(
   bIn: number /* u8 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromUI1(bIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromUI1!(bIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromI2(
   uiIn: number /* i16 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromI2(uiIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromI2!(uiIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromI4(
   lIn: number /* i32 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromI4(lIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromI4!(lIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromI8(
   i64In: bigint | number /* i64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromI8(i64In, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarUI4FromI8!(i64In, util.toPointer(plOut));
 }
 
 export function VarUI4FromR4(
   fltIn: number /* f32 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromR4(fltIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromR4!(fltIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromR8(
   dblIn: number /* f64 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromR8(dblIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromR8!(dblIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromDate(
   dateIn: number /* f64 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromDate(dateIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromDate!(dateIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromCy(util.toPointer(cyIn), util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromCy!(util.toPointer(cyIn), util.toPointer(pulOut));
 }
 
 export function VarUI4FromStr(
@@ -14379,7 +14835,7 @@ export function VarUI4FromStr(
   dwFlags: number /* u32 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pulOut));
 }
 
 export function VarUI4FromDisp(
@@ -14387,91 +14843,91 @@ export function VarUI4FromDisp(
   lcid: number /* u32 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pulOut));
 }
 
 export function VarUI4FromBool(
   boolIn: number /* i16 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromBool(boolIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromBool!(boolIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromI1(util.charToFfi(cIn), util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromI1!(util.charToFfi(cIn), util.toPointer(pulOut));
 }
 
 export function VarUI4FromUI2(
   uiIn: number /* u16 */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromUI2(uiIn, util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromUI2!(uiIn, util.toPointer(pulOut));
 }
 
 export function VarUI4FromUI8(
   ui64In: bigint | number /* u64 */,
   plOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromUI8(ui64In, util.toPointer(plOut));
+  return libOLEAUT32_dll.VarUI4FromUI8!(ui64In, util.toPointer(plOut));
 }
 
 export function VarUI4FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pulOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI4FromDec(util.toPointer(pdecIn), util.toPointer(pulOut));
+  return libOLEAUT32_dll.VarUI4FromDec!(util.toPointer(pdecIn), util.toPointer(pulOut));
 }
 
 export function VarUI8FromUI1(
   bIn: number /* u8 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromUI1(bIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromUI1!(bIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromI2(
   sIn: number /* i16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromI2(sIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromI2!(sIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromI8(
   ui64In: bigint | number /* i64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromI8(ui64In, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromI8!(ui64In, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromR4(
   fltIn: number /* f32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromR4(fltIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromR4!(fltIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromR8(
   dblIn: number /* f64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromR8(dblIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromR8!(dblIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromCy(util.toPointer(cyIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromCy!(util.toPointer(cyIn), util.toPointer(pi64Out));
 }
 
 export function VarUI8FromDate(
   dateIn: number /* f64 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromDate(dateIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromDate!(dateIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromStr(
@@ -14480,7 +14936,7 @@ export function VarUI8FromStr(
   dwFlags: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromDisp(
@@ -14488,98 +14944,98 @@ export function VarUI8FromDisp(
   lcid: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromBool(
   boolIn: number /* i16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromBool(boolIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromBool!(boolIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromI1(util.charToFfi(cIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromI1!(util.charToFfi(cIn), util.toPointer(pi64Out));
 }
 
 export function VarUI8FromUI2(
   uiIn: number /* u16 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromUI2(uiIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromUI2!(uiIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromUI4(
   ulIn: number /* u32 */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromUI4(ulIn, util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromUI4!(ulIn, util.toPointer(pi64Out));
 }
 
 export function VarUI8FromDec(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pi64Out: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUI8FromDec(util.toPointer(pdecIn), util.toPointer(pi64Out));
+  return libOLEAUT32_dll.VarUI8FromDec!(util.toPointer(pdecIn), util.toPointer(pi64Out));
 }
 
 export function VarDecFromUI1(
   bIn: number /* u8 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromUI1(bIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromUI1!(bIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromI2(
   uiIn: number /* i16 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromI2(uiIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromI2!(uiIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromI4(
   lIn: number /* i32 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromI4(lIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromI4!(lIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromI8(
   i64In: bigint | number /* i64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromI8(i64In, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromI8!(i64In, util.toPointer(pdecOut));
 }
 
 export function VarDecFromR4(
   fltIn: number /* f32 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromR4(fltIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromR4!(fltIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromR8(
   dblIn: number /* f64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromR8(dblIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromR8!(dblIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromDate(
   dateIn: number /* f64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromDate(dateIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromDate!(dateIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromCy(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromCy(util.toPointer(cyIn), util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromCy!(util.toPointer(cyIn), util.toPointer(pdecOut));
 }
 
 export function VarDecFromStr(
@@ -14588,7 +15044,7 @@ export function VarDecFromStr(
   dwFlags: number /* u32 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pdecOut));
 }
 
 export function VarDecFromDisp(
@@ -14596,42 +15052,42 @@ export function VarDecFromDisp(
   lcid: number /* u32 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromDisp(util.toPointer(pdispIn), lcid, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromDisp!(util.toPointer(pdispIn), lcid, util.toPointer(pdecOut));
 }
 
 export function VarDecFromBool(
   boolIn: number /* i16 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromBool(boolIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromBool!(boolIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromI1(
   cIn: string | number /* Windows.Win32.Foundation.CHAR */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromI1(util.charToFfi(cIn), util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromI1!(util.charToFfi(cIn), util.toPointer(pdecOut));
 }
 
 export function VarDecFromUI2(
   uiIn: number /* u16 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromUI2(uiIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromUI2!(uiIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromUI4(
   ulIn: number /* u32 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromUI4(ulIn, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromUI4!(ulIn, util.toPointer(pdecOut));
 }
 
 export function VarDecFromUI8(
   ui64In: bigint | number /* u64 */,
   pdecOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFromUI8(ui64In, util.toPointer(pdecOut));
+  return libOLEAUT32_dll.VarDecFromUI8!(ui64In, util.toPointer(pdecOut));
 }
 
 export function VarParseNumFromStr(
@@ -14641,7 +15097,7 @@ export function VarParseNumFromStr(
   pnumprs: Deno.PointerValue | Uint8Array /* ptr */,
   rgbDig: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarParseNumFromStr(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pnumprs), util.toPointer(rgbDig));
+  return libOLEAUT32_dll.VarParseNumFromStr!(util.pwstrToFfi(strIn), lcid, dwFlags, util.toPointer(pnumprs), util.toPointer(rgbDig));
 }
 
 export function VarNumFromParseNum(
@@ -14650,7 +15106,7 @@ export function VarNumFromParseNum(
   dwVtBits: number /* u32 */,
   pvar: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarNumFromParseNum(util.toPointer(pnumprs), util.toPointer(rgbDig), dwVtBits, util.toPointer(pvar));
+  return libOLEAUT32_dll.VarNumFromParseNum!(util.toPointer(pnumprs), util.toPointer(rgbDig), dwVtBits, util.toPointer(pvar));
 }
 
 export function VarAdd(
@@ -14658,7 +15114,7 @@ export function VarAdd(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarAdd(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarAdd!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarAnd(
@@ -14666,7 +15122,7 @@ export function VarAnd(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarAnd(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarAnd!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarCat(
@@ -14674,7 +15130,7 @@ export function VarCat(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCat(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarCat!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarDiv(
@@ -14682,7 +15138,7 @@ export function VarDiv(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDiv(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarDiv!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarEqv(
@@ -14690,7 +15146,7 @@ export function VarEqv(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarEqv(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarEqv!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarIdiv(
@@ -14698,7 +15154,7 @@ export function VarIdiv(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarIdiv(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarIdiv!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarImp(
@@ -14706,7 +15162,7 @@ export function VarImp(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarImp(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarImp!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarMod(
@@ -14714,7 +15170,7 @@ export function VarMod(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarMod(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarMod!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarMul(
@@ -14722,7 +15178,7 @@ export function VarMul(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarMul(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarMul!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarOr(
@@ -14730,7 +15186,7 @@ export function VarOr(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarOr(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarOr!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarPow(
@@ -14738,7 +15194,7 @@ export function VarPow(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarPow(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarPow!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarSub(
@@ -14746,7 +15202,7 @@ export function VarSub(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarSub(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarSub!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarXor(
@@ -14754,42 +15210,42 @@ export function VarXor(
   pvarRight: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarXor(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarXor!(util.toPointer(pvarLeft), util.toPointer(pvarRight), util.toPointer(pvarResult));
 }
 
 export function VarAbs(
   pvarIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarAbs(util.toPointer(pvarIn), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarAbs!(util.toPointer(pvarIn), util.toPointer(pvarResult));
 }
 
 export function VarFix(
   pvarIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFix(util.toPointer(pvarIn), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarFix!(util.toPointer(pvarIn), util.toPointer(pvarResult));
 }
 
 export function VarInt(
   pvarIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarInt(util.toPointer(pvarIn), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarInt!(util.toPointer(pvarIn), util.toPointer(pvarResult));
 }
 
 export function VarNeg(
   pvarIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarNeg(util.toPointer(pvarIn), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarNeg!(util.toPointer(pvarIn), util.toPointer(pvarResult));
 }
 
 export function VarNot(
   pvarIn: Deno.PointerValue | Uint8Array /* ptr */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarNot(util.toPointer(pvarIn), util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarNot!(util.toPointer(pvarIn), util.toPointer(pvarResult));
 }
 
 export function VarRound(
@@ -14797,7 +15253,7 @@ export function VarRound(
   cDecimals: number /* i32 */,
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarRound(util.toPointer(pvarIn), cDecimals, util.toPointer(pvarResult));
+  return libOLEAUT32_dll.VarRound!(util.toPointer(pvarIn), cDecimals, util.toPointer(pvarResult));
 }
 
 export function VarCmp(
@@ -14806,7 +15262,7 @@ export function VarCmp(
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarCmp(util.toPointer(pvarLeft), util.toPointer(pvarRight), lcid, dwFlags);
+  return libOLEAUT32_dll.VarCmp!(util.toPointer(pvarLeft), util.toPointer(pvarRight), lcid, dwFlags);
 }
 
 export function VarDecAdd(
@@ -14814,7 +15270,7 @@ export function VarDecAdd(
   pdecRight: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecAdd(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecAdd!(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
 }
 
 export function VarDecDiv(
@@ -14822,7 +15278,7 @@ export function VarDecDiv(
   pdecRight: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecDiv(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecDiv!(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
 }
 
 export function VarDecMul(
@@ -14830,7 +15286,7 @@ export function VarDecMul(
   pdecRight: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecMul(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecMul!(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
 }
 
 export function VarDecSub(
@@ -14838,35 +15294,35 @@ export function VarDecSub(
   pdecRight: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecSub(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecSub!(util.toPointer(pdecLeft), util.toPointer(pdecRight), util.toPointer(pdecResult));
 }
 
 export function VarDecAbs(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecAbs(util.toPointer(pdecIn), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecAbs!(util.toPointer(pdecIn), util.toPointer(pdecResult));
 }
 
 export function VarDecFix(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecFix(util.toPointer(pdecIn), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecFix!(util.toPointer(pdecIn), util.toPointer(pdecResult));
 }
 
 export function VarDecInt(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecInt(util.toPointer(pdecIn), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecInt!(util.toPointer(pdecIn), util.toPointer(pdecResult));
 }
 
 export function VarDecNeg(
   pdecIn: Deno.PointerValue | Uint8Array /* ptr */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecNeg(util.toPointer(pdecIn), util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecNeg!(util.toPointer(pdecIn), util.toPointer(pdecResult));
 }
 
 export function VarDecRound(
@@ -14874,21 +15330,21 @@ export function VarDecRound(
   cDecimals: number /* i32 */,
   pdecResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDecRound(util.toPointer(pdecIn), cDecimals, util.toPointer(pdecResult));
+  return libOLEAUT32_dll.VarDecRound!(util.toPointer(pdecIn), cDecimals, util.toPointer(pdecResult));
 }
 
 export function VarDecCmp(
   pdecLeft: Deno.PointerValue | Uint8Array /* ptr */,
   pdecRight: Deno.PointerValue | Uint8Array /* ptr */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarDecCmp(util.toPointer(pdecLeft), util.toPointer(pdecRight));
+  return libOLEAUT32_dll.VarDecCmp!(util.toPointer(pdecLeft), util.toPointer(pdecRight));
 }
 
 export function VarDecCmpR8(
   pdecLeft: Deno.PointerValue | Uint8Array /* ptr */,
   dblRight: number /* f64 */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarDecCmpR8(util.toPointer(pdecLeft), dblRight);
+  return libOLEAUT32_dll.VarDecCmpR8!(util.toPointer(pdecLeft), dblRight);
 }
 
 export function VarCyAdd(
@@ -14896,7 +15352,7 @@ export function VarCyAdd(
   cyRight: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyAdd(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyAdd!(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
 }
 
 export function VarCyMul(
@@ -14904,7 +15360,7 @@ export function VarCyMul(
   cyRight: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyMul(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyMul!(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
 }
 
 export function VarCyMulI4(
@@ -14912,7 +15368,7 @@ export function VarCyMulI4(
   lRight: number /* i32 */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyMulI4(util.toPointer(cyLeft), lRight, util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyMulI4!(util.toPointer(cyLeft), lRight, util.toPointer(pcyResult));
 }
 
 export function VarCyMulI8(
@@ -14920,7 +15376,7 @@ export function VarCyMulI8(
   lRight: bigint | number /* i64 */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyMulI8(util.toPointer(cyLeft), lRight, util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyMulI8!(util.toPointer(cyLeft), lRight, util.toPointer(pcyResult));
 }
 
 export function VarCySub(
@@ -14928,35 +15384,35 @@ export function VarCySub(
   cyRight: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCySub(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCySub!(util.toPointer(cyLeft), util.toPointer(cyRight), util.toPointer(pcyResult));
 }
 
 export function VarCyAbs(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyAbs(util.toPointer(cyIn), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyAbs!(util.toPointer(cyIn), util.toPointer(pcyResult));
 }
 
 export function VarCyFix(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyFix(util.toPointer(cyIn), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyFix!(util.toPointer(cyIn), util.toPointer(pcyResult));
 }
 
 export function VarCyInt(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyInt(util.toPointer(cyIn), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyInt!(util.toPointer(cyIn), util.toPointer(pcyResult));
 }
 
 export function VarCyNeg(
   cyIn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyNeg(util.toPointer(cyIn), util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyNeg!(util.toPointer(cyIn), util.toPointer(pcyResult));
 }
 
 export function VarCyRound(
@@ -14964,21 +15420,21 @@ export function VarCyRound(
   cDecimals: number /* i32 */,
   pcyResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarCyRound(util.toPointer(cyIn), cDecimals, util.toPointer(pcyResult));
+  return libOLEAUT32_dll.VarCyRound!(util.toPointer(cyIn), cDecimals, util.toPointer(pcyResult));
 }
 
 export function VarCyCmp(
   cyLeft: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   cyRight: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarCyCmp(util.toPointer(cyLeft), util.toPointer(cyRight));
+  return libOLEAUT32_dll.VarCyCmp!(util.toPointer(cyLeft), util.toPointer(cyRight));
 }
 
 export function VarCyCmpR8(
   cyLeft: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.CY */,
   dblRight: number /* f64 */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarCyCmpR8(util.toPointer(cyLeft), dblRight);
+  return libOLEAUT32_dll.VarCyCmpR8!(util.toPointer(cyLeft), dblRight);
 }
 
 export function VarBstrCat(
@@ -14986,7 +15442,7 @@ export function VarBstrCat(
   bstrRight: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
   pbstrResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrCat(util.toPointer(bstrLeft), util.toPointer(bstrRight), util.toPointer(pbstrResult));
+  return libOLEAUT32_dll.VarBstrCat!(util.toPointer(bstrLeft), util.toPointer(bstrRight), util.toPointer(pbstrResult));
 }
 
 export function VarBstrCmp(
@@ -14995,7 +15451,7 @@ export function VarBstrCmp(
   lcid: number /* u32 */,
   dwFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarBstrCmp(util.toPointer(bstrLeft), util.toPointer(bstrRight), lcid, dwFlags);
+  return libOLEAUT32_dll.VarBstrCmp!(util.toPointer(bstrLeft), util.toPointer(bstrRight), lcid, dwFlags);
 }
 
 export function VarR8Pow(
@@ -15003,14 +15459,14 @@ export function VarR8Pow(
   dblRight: number /* f64 */,
   pdblResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8Pow(dblLeft, dblRight, util.toPointer(pdblResult));
+  return libOLEAUT32_dll.VarR8Pow!(dblLeft, dblRight, util.toPointer(pdblResult));
 }
 
 export function VarR4CmpR8(
   fltLeft: number /* f32 */,
   dblRight: number /* f64 */,
 ): VARCMP /* Windows.Win32.System.Ole.VARCMP */ {
-  return libOLEAUT32_dll.VarR4CmpR8(fltLeft, dblRight);
+  return libOLEAUT32_dll.VarR4CmpR8!(fltLeft, dblRight);
 }
 
 export function VarR8Round(
@@ -15018,7 +15474,7 @@ export function VarR8Round(
   cDecimals: number /* i32 */,
   pdblResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarR8Round(dblIn, cDecimals, util.toPointer(pdblResult));
+  return libOLEAUT32_dll.VarR8Round!(dblIn, cDecimals, util.toPointer(pdblResult));
 }
 
 export function VarDateFromUdate(
@@ -15026,7 +15482,7 @@ export function VarDateFromUdate(
   dwFlags: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUdate(util.toPointer(pudateIn), dwFlags, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUdate!(util.toPointer(pudateIn), dwFlags, util.toPointer(pdateOut));
 }
 
 export function VarDateFromUdateEx(
@@ -15035,7 +15491,7 @@ export function VarDateFromUdateEx(
   dwFlags: number /* u32 */,
   pdateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarDateFromUdateEx(util.toPointer(pudateIn), lcid, dwFlags, util.toPointer(pdateOut));
+  return libOLEAUT32_dll.VarDateFromUdateEx!(util.toPointer(pudateIn), lcid, dwFlags, util.toPointer(pdateOut));
 }
 
 export function VarUdateFromDate(
@@ -15043,14 +15499,14 @@ export function VarUdateFromDate(
   dwFlags: number /* u32 */,
   pudateOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarUdateFromDate(dateIn, dwFlags, util.toPointer(pudateOut));
+  return libOLEAUT32_dll.VarUdateFromDate!(dateIn, dwFlags, util.toPointer(pudateOut));
 }
 
 export function GetAltMonthNames(
   lcid: number /* u32 */,
   prgp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.GetAltMonthNames(lcid, util.toPointer(prgp));
+  return libOLEAUT32_dll.GetAltMonthNames!(lcid, util.toPointer(prgp));
 }
 
 export function VarFormat(
@@ -15061,7 +15517,7 @@ export function VarFormat(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormat(util.toPointer(pvarIn), util.pwstrToFfi(pstrFormat), iFirstDay, iFirstWeek, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarFormat!(util.toPointer(pvarIn), util.pwstrToFfi(pstrFormat), iFirstDay, iFirstWeek, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarFormatDateTime(
@@ -15070,7 +15526,7 @@ export function VarFormatDateTime(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormatDateTime(util.toPointer(pvarIn), iNamedFormat, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarFormatDateTime!(util.toPointer(pvarIn), iNamedFormat, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarFormatNumber(
@@ -15082,7 +15538,7 @@ export function VarFormatNumber(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormatNumber(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarFormatNumber!(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarFormatPercent(
@@ -15094,7 +15550,7 @@ export function VarFormatPercent(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormatPercent(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarFormatPercent!(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarFormatCurrency(
@@ -15106,7 +15562,7 @@ export function VarFormatCurrency(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormatCurrency(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarFormatCurrency!(util.toPointer(pvarIn), iNumDig, iIncLead, iUseParens, iGroup, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarWeekdayName(
@@ -15116,7 +15572,7 @@ export function VarWeekdayName(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarWeekdayName(iWeekday, fAbbrev, iFirstDay, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarWeekdayName!(iWeekday, fAbbrev, iFirstDay, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarMonthName(
@@ -15125,7 +15581,7 @@ export function VarMonthName(
   dwFlags: number /* u32 */,
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarMonthName(iMonth, fAbbrev, dwFlags, util.toPointer(pbstrOut));
+  return libOLEAUT32_dll.VarMonthName!(iMonth, fAbbrev, dwFlags, util.toPointer(pbstrOut));
 }
 
 export function VarFormatFromTokens(
@@ -15136,7 +15592,7 @@ export function VarFormatFromTokens(
   pbstrOut: Deno.PointerValue | Uint8Array /* ptr */,
   lcid: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarFormatFromTokens(util.toPointer(pvarIn), util.pwstrToFfi(pstrFormat), util.toPointer(pbTokCur), dwFlags, util.toPointer(pbstrOut), lcid);
+  return libOLEAUT32_dll.VarFormatFromTokens!(util.toPointer(pvarIn), util.pwstrToFfi(pstrFormat), util.toPointer(pbTokCur), dwFlags, util.toPointer(pbstrOut), lcid);
 }
 
 export function VarTokenizeFormatString(
@@ -15148,7 +15604,7 @@ export function VarTokenizeFormatString(
   lcid: number /* u32 */,
   pcbActual: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.VarTokenizeFormatString(util.pwstrToFfi(pstrFormat), util.toPointer(rgbTok), cbTok, iFirstDay, iFirstWeek, lcid, util.toPointer(pcbActual));
+  return libOLEAUT32_dll.VarTokenizeFormatString!(util.pwstrToFfi(pstrFormat), util.toPointer(rgbTok), cbTok, iFirstDay, iFirstWeek, lcid, util.toPointer(pcbActual));
 }
 
 export function LHashValOfNameSysA(
@@ -15156,7 +15612,7 @@ export function LHashValOfNameSysA(
   lcid: number /* u32 */,
   szName: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.LHashValOfNameSysA(syskind, lcid, util.pstrToFfi(szName));
+  return libOLEAUT32_dll.LHashValOfNameSysA!(syskind, lcid, util.pstrToFfi(szName));
 }
 
 export function LHashValOfNameSys(
@@ -15164,14 +15620,14 @@ export function LHashValOfNameSys(
   lcid: number /* u32 */,
   szName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libOLEAUT32_dll.LHashValOfNameSys(syskind, lcid, util.pwstrToFfi(szName));
+  return libOLEAUT32_dll.LHashValOfNameSys!(syskind, lcid, util.pwstrToFfi(szName));
 }
 
 export function LoadTypeLib(
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pptlib: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.LoadTypeLib(util.pwstrToFfi(szFile), util.toPointer(pptlib));
+  return libOLEAUT32_dll.LoadTypeLib!(util.pwstrToFfi(szFile), util.toPointer(pptlib));
 }
 
 export function LoadTypeLibEx(
@@ -15179,7 +15635,7 @@ export function LoadTypeLibEx(
   regkind: REGKIND /* Windows.Win32.System.Ole.REGKIND */,
   pptlib: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.LoadTypeLibEx(util.pwstrToFfi(szFile), regkind, util.toPointer(pptlib));
+  return libOLEAUT32_dll.LoadTypeLibEx!(util.pwstrToFfi(szFile), regkind, util.toPointer(pptlib));
 }
 
 export function LoadRegTypeLib(
@@ -15189,7 +15645,7 @@ export function LoadRegTypeLib(
   lcid: number /* u32 */,
   pptlib: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.LoadRegTypeLib(util.toPointer(rguid), wVerMajor, wVerMinor, lcid, util.toPointer(pptlib));
+  return libOLEAUT32_dll.LoadRegTypeLib!(util.toPointer(rguid), wVerMajor, wVerMinor, lcid, util.toPointer(pptlib));
 }
 
 export function QueryPathOfRegTypeLib(
@@ -15199,7 +15655,7 @@ export function QueryPathOfRegTypeLib(
   lcid: number /* u32 */,
   lpbstrPathName: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.QueryPathOfRegTypeLib(util.toPointer(guid), wMaj, wMin, lcid, util.toPointer(lpbstrPathName));
+  return libOLEAUT32_dll.QueryPathOfRegTypeLib!(util.toPointer(guid), wMaj, wMin, lcid, util.toPointer(lpbstrPathName));
 }
 
 export function RegisterTypeLib(
@@ -15207,7 +15663,7 @@ export function RegisterTypeLib(
   szFullPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szHelpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.RegisterTypeLib(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir));
+  return libOLEAUT32_dll.RegisterTypeLib!(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir));
 }
 
 export function UnRegisterTypeLib(
@@ -15217,7 +15673,7 @@ export function UnRegisterTypeLib(
   lcid: number /* u32 */,
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.UnRegisterTypeLib(util.toPointer(libID), wVerMajor, wVerMinor, lcid, syskind);
+  return libOLEAUT32_dll.UnRegisterTypeLib!(util.toPointer(libID), wVerMajor, wVerMinor, lcid, syskind);
 }
 
 export function RegisterTypeLibForUser(
@@ -15225,7 +15681,7 @@ export function RegisterTypeLibForUser(
   szFullPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   szHelpDir: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.RegisterTypeLibForUser(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir));
+  return libOLEAUT32_dll.RegisterTypeLibForUser!(util.toPointer(ptlib), util.pwstrToFfi(szFullPath), util.pwstrToFfi(szHelpDir));
 }
 
 export function UnRegisterTypeLibForUser(
@@ -15235,7 +15691,7 @@ export function UnRegisterTypeLibForUser(
   lcid: number /* u32 */,
   syskind: SYSKIND /* Windows.Win32.System.Com.SYSKIND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.UnRegisterTypeLibForUser(util.toPointer(libID), wMajorVerNum, wMinorVerNum, lcid, syskind);
+  return libOLEAUT32_dll.UnRegisterTypeLibForUser!(util.toPointer(libID), wMajorVerNum, wMinorVerNum, lcid, syskind);
 }
 
 export function CreateTypeLib(
@@ -15243,7 +15699,7 @@ export function CreateTypeLib(
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppctlib: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.CreateTypeLib(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib));
+  return libOLEAUT32_dll.CreateTypeLib!(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib));
 }
 
 export function CreateTypeLib2(
@@ -15251,7 +15707,7 @@ export function CreateTypeLib2(
   szFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppctlib: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.CreateTypeLib2(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib));
+  return libOLEAUT32_dll.CreateTypeLib2!(syskind, util.pwstrToFfi(szFile), util.toPointer(ppctlib));
 }
 
 export function DispGetParam(
@@ -15261,7 +15717,7 @@ export function DispGetParam(
   pvarResult: Deno.PointerValue | Uint8Array /* ptr */,
   puArgErr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.DispGetParam(util.toPointer(pdispparams), position, vtTarg, util.toPointer(pvarResult), util.toPointer(puArgErr));
+  return libOLEAUT32_dll.DispGetParam!(util.toPointer(pdispparams), position, vtTarg, util.toPointer(pvarResult), util.toPointer(puArgErr));
 }
 
 export function DispGetIDsOfNames(
@@ -15270,7 +15726,7 @@ export function DispGetIDsOfNames(
   cNames: number /* u32 */,
   rgdispid: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.DispGetIDsOfNames(util.toPointer(ptinfo), util.toPointer(rgszNames), cNames, util.toPointer(rgdispid));
+  return libOLEAUT32_dll.DispGetIDsOfNames!(util.toPointer(ptinfo), util.toPointer(rgszNames), cNames, util.toPointer(rgdispid));
 }
 
 export function DispInvoke(
@@ -15283,7 +15739,7 @@ export function DispInvoke(
   pexcepinfo: Deno.PointerValue | Uint8Array /* ptr */,
   puArgErr: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.DispInvoke(util.toPointer(_this), util.toPointer(ptinfo), dispidMember, wFlags, util.toPointer(pparams), util.toPointer(pvarResult), util.toPointer(pexcepinfo), util.toPointer(puArgErr));
+  return libOLEAUT32_dll.DispInvoke!(util.toPointer(_this), util.toPointer(ptinfo), dispidMember, wFlags, util.toPointer(pparams), util.toPointer(pvarResult), util.toPointer(pexcepinfo), util.toPointer(puArgErr));
 }
 
 export function CreateDispTypeInfo(
@@ -15291,7 +15747,7 @@ export function CreateDispTypeInfo(
   lcid: number /* u32 */,
   pptinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.CreateDispTypeInfo(util.toPointer(pidata), lcid, util.toPointer(pptinfo));
+  return libOLEAUT32_dll.CreateDispTypeInfo!(util.toPointer(pidata), lcid, util.toPointer(pptinfo));
 }
 
 export function CreateStdDispatch(
@@ -15300,7 +15756,7 @@ export function CreateStdDispatch(
   ptinfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.ITypeInfo */,
   ppunkStdDisp: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.CreateStdDispatch(util.toPointer(punkOuter), util.toPointer(pvThis), util.toPointer(ptinfo), util.toPointer(ppunkStdDisp));
+  return libOLEAUT32_dll.CreateStdDispatch!(util.toPointer(punkOuter), util.toPointer(pvThis), util.toPointer(ptinfo), util.toPointer(ppunkStdDisp));
 }
 
 export function DispCallFunc(
@@ -15313,7 +15769,7 @@ export function DispCallFunc(
   prgpvarg: Deno.PointerValue | Uint8Array /* ptr */,
   pvargResult: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.DispCallFunc(util.toPointer(pvInstance), oVft, cc, vtReturn, cActuals, util.toPointer(prgvt), util.toPointer(prgpvarg), util.toPointer(pvargResult));
+  return libOLEAUT32_dll.DispCallFunc!(util.toPointer(pvInstance), oVft, cc, vtReturn, cActuals, util.toPointer(prgvt), util.toPointer(prgpvarg), util.toPointer(pvargResult));
 }
 
 export function RegisterActiveObject(
@@ -15322,14 +15778,14 @@ export function RegisterActiveObject(
   dwFlags: ACTIVEOBJECT_FLAGS /* Windows.Win32.System.Ole.ACTIVEOBJECT_FLAGS */,
   pdwRegister: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.RegisterActiveObject(util.toPointer(punk), util.toPointer(rclsid), dwFlags, util.toPointer(pdwRegister));
+  return libOLEAUT32_dll.RegisterActiveObject!(util.toPointer(punk), util.toPointer(rclsid), dwFlags, util.toPointer(pdwRegister));
 }
 
 export function RevokeActiveObject(
   dwRegister: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.RevokeActiveObject(dwRegister, util.toPointer(pvReserved));
+  return libOLEAUT32_dll.RevokeActiveObject!(dwRegister, util.toPointer(pvReserved));
 }
 
 export function GetActiveObject(
@@ -15337,20 +15793,20 @@ export function GetActiveObject(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppunk: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.GetActiveObject(util.toPointer(rclsid), util.toPointer(pvReserved), util.toPointer(ppunk));
+  return libOLEAUT32_dll.GetActiveObject!(util.toPointer(rclsid), util.toPointer(pvReserved), util.toPointer(ppunk));
 }
 
 export function CreateErrorInfo(
   pperrinfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.CreateErrorInfo(util.toPointer(pperrinfo));
+  return libOLEAUT32_dll.CreateErrorInfo!(util.toPointer(pperrinfo));
 }
 
 export function GetRecordInfoFromTypeInfo(
   pTypeInfo: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.ITypeInfo */,
   ppRecInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.GetRecordInfoFromTypeInfo(util.toPointer(pTypeInfo), util.toPointer(ppRecInfo));
+  return libOLEAUT32_dll.GetRecordInfoFromTypeInfo!(util.toPointer(pTypeInfo), util.toPointer(ppRecInfo));
 }
 
 export function GetRecordInfoFromGuids(
@@ -15361,47 +15817,47 @@ export function GetRecordInfoFromGuids(
   rGuidTypeInfo: Deno.PointerValue | Uint8Array /* ptr */,
   ppRecInfo: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.GetRecordInfoFromGuids(util.toPointer(rGuidTypeLib), uVerMajor, uVerMinor, lcid, util.toPointer(rGuidTypeInfo), util.toPointer(ppRecInfo));
+  return libOLEAUT32_dll.GetRecordInfoFromGuids!(util.toPointer(rGuidTypeLib), uVerMajor, uVerMinor, lcid, util.toPointer(rGuidTypeInfo), util.toPointer(ppRecInfo));
 }
 
 export function OaBuildVersion(): number /* u32 */ {
-  return libOLEAUT32_dll.OaBuildVersion();
+  return libOLEAUT32_dll.OaBuildVersion!();
 }
 
 export function ClearCustData(
   pCustData: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLEAUT32_dll.ClearCustData(util.toPointer(pCustData));
+  return libOLEAUT32_dll.ClearCustData!(util.toPointer(pCustData));
 }
 
 export function OaEnablePerUserTLibRegistration(): void /* void */ {
-  return libOLEAUT32_dll.OaEnablePerUserTLibRegistration();
+  return libOLEAUT32_dll.OaEnablePerUserTLibRegistration!();
 }
 
 export function OleBuildVersion(): number /* u32 */ {
-  return libole32_dll.OleBuildVersion();
+  return libole32_dll.OleBuildVersion!();
 }
 
 export function OleInitialize(
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleInitialize(util.toPointer(pvReserved));
+  return libOLE32_dll.OleInitialize!(util.toPointer(pvReserved));
 }
 
 export function OleUninitialize(): void /* void */ {
-  return libOLE32_dll.OleUninitialize();
+  return libOLE32_dll.OleUninitialize!();
 }
 
 export function OleQueryLinkFromData(
   pSrcDataObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleQueryLinkFromData(util.toPointer(pSrcDataObject));
+  return libOLE32_dll.OleQueryLinkFromData!(util.toPointer(pSrcDataObject));
 }
 
 export function OleQueryCreateFromData(
   pSrcDataObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleQueryCreateFromData(util.toPointer(pSrcDataObject));
+  return libOLE32_dll.OleQueryCreateFromData!(util.toPointer(pSrcDataObject));
 }
 
 export function OleCreate(
@@ -15413,7 +15869,7 @@ export function OleCreate(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreate(util.toPointer(rclsid), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreate!(util.toPointer(rclsid), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateEx(
@@ -15430,7 +15886,7 @@ export function OleCreateEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateEx(util.toPointer(rclsid), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateEx!(util.toPointer(rclsid), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateFromData(
@@ -15442,7 +15898,7 @@ export function OleCreateFromData(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateFromData(util.toPointer(pSrcDataObj), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreateFromData!(util.toPointer(pSrcDataObj), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateFromDataEx(
@@ -15459,7 +15915,7 @@ export function OleCreateFromDataEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateFromDataEx(util.toPointer(pSrcDataObj), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateFromDataEx!(util.toPointer(pSrcDataObj), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLinkFromData(
@@ -15471,7 +15927,7 @@ export function OleCreateLinkFromData(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateLinkFromData(util.toPointer(pSrcDataObj), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreateLinkFromData!(util.toPointer(pSrcDataObj), util.toPointer(riid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLinkFromDataEx(
@@ -15488,7 +15944,7 @@ export function OleCreateLinkFromDataEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateLinkFromDataEx(util.toPointer(pSrcDataObj), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateLinkFromDataEx!(util.toPointer(pSrcDataObj), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateStaticFromData(
@@ -15500,7 +15956,7 @@ export function OleCreateStaticFromData(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateStaticFromData(util.toPointer(pSrcDataObj), util.toPointer(iid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreateStaticFromData!(util.toPointer(pSrcDataObj), util.toPointer(iid), renderopt, util.toPointer(pFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLink(
@@ -15512,7 +15968,7 @@ export function OleCreateLink(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateLink(util.toPointer(pmkLinkSrc), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateLink!(util.toPointer(pmkLinkSrc), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLinkEx(
@@ -15529,7 +15985,7 @@ export function OleCreateLinkEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateLinkEx(util.toPointer(pmkLinkSrc), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateLinkEx!(util.toPointer(pmkLinkSrc), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLinkToFile(
@@ -15541,7 +15997,7 @@ export function OleCreateLinkToFile(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateLinkToFile(util.pwstrToFfi(lpszFileName), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreateLinkToFile!(util.pwstrToFfi(lpszFileName), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateLinkToFileEx(
@@ -15558,7 +16014,7 @@ export function OleCreateLinkToFileEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateLinkToFileEx(util.pwstrToFfi(lpszFileName), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateLinkToFileEx!(util.pwstrToFfi(lpszFileName), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateFromFile(
@@ -15571,7 +16027,7 @@ export function OleCreateFromFile(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateFromFile(util.toPointer(rclsid), util.pwstrToFfi(lpszFileName), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libOLE32_dll.OleCreateFromFile!(util.toPointer(rclsid), util.pwstrToFfi(lpszFileName), util.toPointer(riid), renderopt, util.toPointer(lpFormatEtc), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleCreateFromFileEx(
@@ -15589,7 +16045,7 @@ export function OleCreateFromFileEx(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateFromFileEx(util.toPointer(rclsid), util.pwstrToFfi(lpszFileName), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
+  return libole32_dll.OleCreateFromFileEx!(util.toPointer(rclsid), util.pwstrToFfi(lpszFileName), util.toPointer(riid), dwFlags, renderopt, cFormats, util.toPointer(rgAdvf), util.toPointer(rgFormatEtc), util.toPointer(lpAdviseSink), util.toPointer(rgdwConnection), util.toPointer(pClientSite), util.toPointer(pStg), util.toPointer(ppvObj));
 }
 
 export function OleLoad(
@@ -15598,7 +16054,7 @@ export function OleLoad(
   pClientSite: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IOleClientSite */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleLoad(util.toPointer(pStg), util.toPointer(riid), util.toPointer(pClientSite), util.toPointer(ppvObj));
+  return libOLE32_dll.OleLoad!(util.toPointer(pStg), util.toPointer(riid), util.toPointer(pClientSite), util.toPointer(ppvObj));
 }
 
 export function OleSave(
@@ -15606,7 +16062,7 @@ export function OleSave(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   fSameAsLoad: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleSave(util.toPointer(pPS), util.toPointer(pStg), util.boolToFfi(fSameAsLoad));
+  return libOLE32_dll.OleSave!(util.toPointer(pPS), util.toPointer(pStg), util.boolToFfi(fSameAsLoad));
 }
 
 export function OleLoadFromStream(
@@ -15614,41 +16070,41 @@ export function OleLoadFromStream(
   iidInterface: Deno.PointerValue | Uint8Array /* ptr */,
   ppvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleLoadFromStream(util.toPointer(pStm), util.toPointer(iidInterface), util.toPointer(ppvObj));
+  return libOLE32_dll.OleLoadFromStream!(util.toPointer(pStm), util.toPointer(iidInterface), util.toPointer(ppvObj));
 }
 
 export function OleSaveToStream(
   pPStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IPersistStream */,
   pStm: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IStream */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleSaveToStream(util.toPointer(pPStm), util.toPointer(pStm));
+  return libOLE32_dll.OleSaveToStream!(util.toPointer(pPStm), util.toPointer(pStm));
 }
 
 export function OleSetContainedObject(
   pUnknown: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   fContained: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleSetContainedObject(util.toPointer(pUnknown), util.boolToFfi(fContained));
+  return libOLE32_dll.OleSetContainedObject!(util.toPointer(pUnknown), util.boolToFfi(fContained));
 }
 
 export function OleNoteObjectVisible(
   pUnknown: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
   fVisible: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleNoteObjectVisible(util.toPointer(pUnknown), util.boolToFfi(fVisible));
+  return libole32_dll.OleNoteObjectVisible!(util.toPointer(pUnknown), util.boolToFfi(fVisible));
 }
 
 export function RegisterDragDrop(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
   pDropTarget: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IDropTarget */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.RegisterDragDrop((hwnd), util.toPointer(pDropTarget));
+  return libOLE32_dll.RegisterDragDrop!((hwnd), util.toPointer(pDropTarget));
 }
 
 export function RevokeDragDrop(
   hwnd: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.RevokeDragDrop((hwnd));
+  return libOLE32_dll.RevokeDragDrop!((hwnd));
 }
 
 export function DoDragDrop(
@@ -15657,19 +16113,19 @@ export function DoDragDrop(
   dwOKEffects: DROPEFFECT /* Windows.Win32.System.Ole.DROPEFFECT */,
   pdwEffect: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.DoDragDrop(util.toPointer(pDataObj), util.toPointer(pDropSource), dwOKEffects, util.toPointer(pdwEffect));
+  return libOLE32_dll.DoDragDrop!(util.toPointer(pDataObj), util.toPointer(pDropSource), dwOKEffects, util.toPointer(pdwEffect));
 }
 
 export function OleSetClipboard(
   pDataObj: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleSetClipboard(util.toPointer(pDataObj));
+  return libOLE32_dll.OleSetClipboard!(util.toPointer(pDataObj));
 }
 
 export function OleGetClipboard(
   ppDataObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleGetClipboard(util.toPointer(ppDataObj));
+  return libOLE32_dll.OleGetClipboard!(util.toPointer(ppDataObj));
 }
 
 export function OleGetClipboardWithEnterpriseInfo(
@@ -15679,24 +16135,24 @@ export function OleGetClipboardWithEnterpriseInfo(
   targetDescription: Deno.PointerValue | Uint8Array /* ptr */,
   dataDescription: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleGetClipboardWithEnterpriseInfo(util.toPointer(dataObject), util.toPointer(dataEnterpriseId), util.toPointer(sourceDescription), util.toPointer(targetDescription), util.toPointer(dataDescription));
+  return libole32_dll.OleGetClipboardWithEnterpriseInfo!(util.toPointer(dataObject), util.toPointer(dataEnterpriseId), util.toPointer(sourceDescription), util.toPointer(targetDescription), util.toPointer(dataDescription));
 }
 
 export function OleFlushClipboard(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleFlushClipboard();
+  return libOLE32_dll.OleFlushClipboard!();
 }
 
 export function OleIsCurrentClipboard(
   pDataObj: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDataObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleIsCurrentClipboard(util.toPointer(pDataObj));
+  return libOLE32_dll.OleIsCurrentClipboard!(util.toPointer(pDataObj));
 }
 
 export function OleCreateMenuDescriptor(
   hmenuCombined: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HMENU */,
   lpMenuWidths: Deno.PointerValue | Uint8Array /* ptr */,
 ): bigint | number /* isize */ {
-  return libOLE32_dll.OleCreateMenuDescriptor(util.toPointer(hmenuCombined), util.toPointer(lpMenuWidths));
+  return libOLE32_dll.OleCreateMenuDescriptor!(util.toPointer(hmenuCombined), util.toPointer(lpMenuWidths));
 }
 
 export function OleSetMenuDescriptor(
@@ -15706,13 +16162,13 @@ export function OleSetMenuDescriptor(
   lpFrame: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IOleInPlaceFrame */,
   lpActiveObj: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IOleInPlaceActiveObject */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleSetMenuDescriptor(holemenu, (hwndFrame), (hwndActiveObject), util.toPointer(lpFrame), util.toPointer(lpActiveObj));
+  return libOLE32_dll.OleSetMenuDescriptor!(holemenu, (hwndFrame), (hwndActiveObject), util.toPointer(lpFrame), util.toPointer(lpActiveObj));
 }
 
 export function OleDestroyMenuDescriptor(
   holemenu: bigint | number /* isize */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleDestroyMenuDescriptor(holemenu);
+  return libOLE32_dll.OleDestroyMenuDescriptor!(holemenu);
 }
 
 export function OleTranslateAccelerator(
@@ -15720,7 +16176,7 @@ export function OleTranslateAccelerator(
   lpFrameInfo: Deno.PointerValue | Uint8Array /* ptr */,
   lpmsg: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleTranslateAccelerator(util.toPointer(lpFrame), util.toPointer(lpFrameInfo), util.toPointer(lpmsg));
+  return libOLE32_dll.OleTranslateAccelerator!(util.toPointer(lpFrame), util.toPointer(lpFrameInfo), util.toPointer(lpmsg));
 }
 
 export function OleDuplicateData(
@@ -15728,7 +16184,7 @@ export function OleDuplicateData(
   cfFormat: number /* u16 */,
   uiFlags: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */ {
-  return libOLE32_dll.OleDuplicateData(util.toPointer(hSrc), cfFormat, uiFlags);
+  return libOLE32_dll.OleDuplicateData!(util.toPointer(hSrc), cfFormat, uiFlags);
 }
 
 export function OleDraw(
@@ -15737,19 +16193,19 @@ export function OleDraw(
   hdcDraw: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HDC */,
   lprcBounds: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleDraw(util.toPointer(pUnknown), dwAspect, util.toPointer(hdcDraw), util.toPointer(lprcBounds));
+  return libOLE32_dll.OleDraw!(util.toPointer(pUnknown), dwAspect, util.toPointer(hdcDraw), util.toPointer(lprcBounds));
 }
 
 export function OleRun(
   pUnknown: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IUnknown */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleRun(util.toPointer(pUnknown));
+  return libOLE32_dll.OleRun!(util.toPointer(pUnknown));
 }
 
 export function OleIsRunning(
   pObject: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Ole.IOleObject */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOLE32_dll.OleIsRunning(util.toPointer(pObject)));
+  return util.boolFromFfi(libOLE32_dll.OleIsRunning!(util.toPointer(pObject)));
 }
 
 export function OleLockRunning(
@@ -15757,19 +16213,19 @@ export function OleLockRunning(
   fLock: boolean /* Windows.Win32.Foundation.BOOL */,
   fLastUnlockCloses: boolean /* Windows.Win32.Foundation.BOOL */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleLockRunning(util.toPointer(pUnknown), util.boolToFfi(fLock), util.boolToFfi(fLastUnlockCloses));
+  return libOLE32_dll.OleLockRunning!(util.toPointer(pUnknown), util.boolToFfi(fLock), util.boolToFfi(fLastUnlockCloses));
 }
 
 export function ReleaseStgMedium(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLE32_dll.ReleaseStgMedium(util.toPointer(param0));
+  return libOLE32_dll.ReleaseStgMedium!(util.toPointer(param0));
 }
 
 export function CreateOleAdviseHolder(
   ppOAHolder: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.CreateOleAdviseHolder(util.toPointer(ppOAHolder));
+  return libOLE32_dll.CreateOleAdviseHolder!(util.toPointer(ppOAHolder));
 }
 
 export function OleCreateDefaultHandler(
@@ -15778,7 +16234,7 @@ export function OleCreateDefaultHandler(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   lplpObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleCreateDefaultHandler(util.toPointer(clsid), util.toPointer(pUnkOuter), util.toPointer(riid), util.toPointer(lplpObj));
+  return libole32_dll.OleCreateDefaultHandler!(util.toPointer(clsid), util.toPointer(pUnkOuter), util.toPointer(riid), util.toPointer(lplpObj));
 }
 
 export function OleCreateEmbeddingHelper(
@@ -15789,7 +16245,7 @@ export function OleCreateEmbeddingHelper(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   lplpObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleCreateEmbeddingHelper(util.toPointer(clsid), util.toPointer(pUnkOuter), flags, util.toPointer(pCF), util.toPointer(riid), util.toPointer(lplpObj));
+  return libOLE32_dll.OleCreateEmbeddingHelper!(util.toPointer(clsid), util.toPointer(pUnkOuter), flags, util.toPointer(pCF), util.toPointer(riid), util.toPointer(lplpObj));
 }
 
 export function IsAccelerator(
@@ -15798,14 +16254,14 @@ export function IsAccelerator(
   lpMsg: Deno.PointerValue | Uint8Array /* ptr */,
   lpwCmd: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(libOLE32_dll.IsAccelerator(util.toPointer(hAccel), cAccelEntries, util.toPointer(lpMsg), util.toPointer(lpwCmd)));
+  return util.boolFromFfi(libOLE32_dll.IsAccelerator!(util.toPointer(hAccel), cAccelEntries, util.toPointer(lpMsg), util.toPointer(lpwCmd)));
 }
 
 export function OleGetIconOfFile(
   lpszPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseFileAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
 ): bigint | number /* isize */ {
-  return libole32_dll.OleGetIconOfFile(util.pwstrToFfi(lpszPath), util.boolToFfi(fUseFileAsLabel));
+  return libole32_dll.OleGetIconOfFile!(util.pwstrToFfi(lpszPath), util.boolToFfi(fUseFileAsLabel));
 }
 
 export function OleGetIconOfClass(
@@ -15813,7 +16269,7 @@ export function OleGetIconOfClass(
   lpszLabel: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   fUseTypeAsLabel: boolean /* Windows.Win32.Foundation.BOOL */,
 ): bigint | number /* isize */ {
-  return libOLE32_dll.OleGetIconOfClass(util.toPointer(rclsid), util.pwstrToFfi(lpszLabel), util.boolToFfi(fUseTypeAsLabel));
+  return libOLE32_dll.OleGetIconOfClass!(util.toPointer(rclsid), util.pwstrToFfi(lpszLabel), util.boolToFfi(fUseTypeAsLabel));
 }
 
 export function OleMetafilePictFromIconAndLabel(
@@ -15822,7 +16278,7 @@ export function OleMetafilePictFromIconAndLabel(
   lpszSourceFile: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   iIconIndex: number /* u32 */,
 ): bigint | number /* isize */ {
-  return libole32_dll.OleMetafilePictFromIconAndLabel(util.toPointer(hIcon), util.pwstrToFfi(lpszLabel), util.pwstrToFfi(lpszSourceFile), iIconIndex);
+  return libole32_dll.OleMetafilePictFromIconAndLabel!(util.toPointer(hIcon), util.pwstrToFfi(lpszLabel), util.pwstrToFfi(lpszSourceFile), iIconIndex);
 }
 
 export function OleRegGetUserType(
@@ -15830,7 +16286,7 @@ export function OleRegGetUserType(
   dwFormOfType: USERCLASSTYPE /* Windows.Win32.System.Ole.USERCLASSTYPE */,
   pszUserType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleRegGetUserType(util.toPointer(clsid), dwFormOfType, util.toPointer(pszUserType));
+  return libOLE32_dll.OleRegGetUserType!(util.toPointer(clsid), dwFormOfType, util.toPointer(pszUserType));
 }
 
 export function OleRegGetMiscStatus(
@@ -15838,7 +16294,7 @@ export function OleRegGetMiscStatus(
   dwAspect: number /* u32 */,
   pdwStatus: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleRegGetMiscStatus(util.toPointer(clsid), dwAspect, util.toPointer(pdwStatus));
+  return libOLE32_dll.OleRegGetMiscStatus!(util.toPointer(clsid), dwAspect, util.toPointer(pdwStatus));
 }
 
 export function OleRegEnumFormatEtc(
@@ -15846,35 +16302,35 @@ export function OleRegEnumFormatEtc(
   dwDirection: number /* u32 */,
   ppenum: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleRegEnumFormatEtc(util.toPointer(clsid), dwDirection, util.toPointer(ppenum));
+  return libole32_dll.OleRegEnumFormatEtc!(util.toPointer(clsid), dwDirection, util.toPointer(ppenum));
 }
 
 export function OleRegEnumVerbs(
   clsid: Deno.PointerValue | Uint8Array /* ptr */,
   ppenum: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleRegEnumVerbs(util.toPointer(clsid), util.toPointer(ppenum));
+  return libOLE32_dll.OleRegEnumVerbs!(util.toPointer(clsid), util.toPointer(ppenum));
 }
 
 export function OleDoAutoConvert(
   pStg: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.StructuredStorage.IStorage */,
   pClsidNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleDoAutoConvert(util.toPointer(pStg), util.toPointer(pClsidNew));
+  return libole32_dll.OleDoAutoConvert!(util.toPointer(pStg), util.toPointer(pClsidNew));
 }
 
 export function OleGetAutoConvert(
   clsidOld: Deno.PointerValue | Uint8Array /* ptr */,
   pClsidNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLE32_dll.OleGetAutoConvert(util.toPointer(clsidOld), util.toPointer(pClsidNew));
+  return libOLE32_dll.OleGetAutoConvert!(util.toPointer(clsidOld), util.toPointer(pClsidNew));
 }
 
 export function OleSetAutoConvert(
   clsidOld: Deno.PointerValue | Uint8Array /* ptr */,
   clsidNew: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libole32_dll.OleSetAutoConvert(util.toPointer(clsidOld), util.toPointer(clsidNew));
+  return libole32_dll.OleSetAutoConvert!(util.toPointer(clsidOld), util.toPointer(clsidNew));
 }
 
 export function HRGN_UserSize(
@@ -15882,7 +16338,7 @@ export function HRGN_UserSize(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libOLE32_dll.HRGN_UserSize(util.toPointer(param0), param1, util.toPointer(param2));
+  return libOLE32_dll.HRGN_UserSize!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HRGN_UserMarshal(
@@ -15890,7 +16346,7 @@ export function HRGN_UserMarshal(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HRGN_UserMarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HRGN_UserMarshal!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HRGN_UserUnmarshal(
@@ -15898,14 +16354,14 @@ export function HRGN_UserUnmarshal(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libOLE32_dll.HRGN_UserUnmarshal(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libOLE32_dll.HRGN_UserUnmarshal!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HRGN_UserFree(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libOLE32_dll.HRGN_UserFree(util.toPointer(param0), util.toPointer(param1));
+  return libOLE32_dll.HRGN_UserFree!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function HRGN_UserSize64(
@@ -15913,7 +16369,7 @@ export function HRGN_UserSize64(
   param1: number /* u32 */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserSize64(util.toPointer(param0), param1, util.toPointer(param2));
+  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserSize64!(util.toPointer(param0), param1, util.toPointer(param2));
 }
 
 export function HRGN_UserMarshal64(
@@ -15921,7 +16377,7 @@ export function HRGN_UserMarshal64(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserMarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserMarshal64!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HRGN_UserUnmarshal64(
@@ -15929,14 +16385,14 @@ export function HRGN_UserUnmarshal64(
   param1: Deno.PointerValue | Uint8Array /* ptr */,
   param2: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* ptr */ {
-  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserUnmarshal64(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
+  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserUnmarshal64!(util.toPointer(param0), util.toPointer(param1), util.toPointer(param2));
 }
 
 export function HRGN_UserFree64(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
   param1: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserFree64(util.toPointer(param0), util.toPointer(param1));
+  return libapi_ms_win_core_marshal_l1_1_0_dll.HRGN_UserFree64!(util.toPointer(param0), util.toPointer(param1));
 }
 
 export function OleCreatePropertyFrame(
@@ -15952,13 +16408,13 @@ export function OleCreatePropertyFrame(
   dwReserved: number /* u32 */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleCreatePropertyFrame((hwndOwner), x, y, util.pwstrToFfi(lpszCaption), cObjects, util.toPointer(ppUnk), cPages, util.toPointer(pPageClsID), lcid, dwReserved, util.toPointer(pvReserved));
+  return libOLEAUT32_dll.OleCreatePropertyFrame!((hwndOwner), x, y, util.pwstrToFfi(lpszCaption), cObjects, util.toPointer(ppUnk), cPages, util.toPointer(pPageClsID), lcid, dwReserved, util.toPointer(pvReserved));
 }
 
 export function OleCreatePropertyFrameIndirect(
   lpParams: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleCreatePropertyFrameIndirect(util.toPointer(lpParams));
+  return libOLEAUT32_dll.OleCreatePropertyFrameIndirect!(util.toPointer(lpParams));
 }
 
 export function OleTranslateColor(
@@ -15966,7 +16422,7 @@ export function OleTranslateColor(
   hpal: Uint8Array | Deno.PointerValue /* Windows.Win32.Graphics.Gdi.HPALETTE */,
   lpcolorref: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleTranslateColor(clr, util.toPointer(hpal), util.toPointer(lpcolorref));
+  return libOLEAUT32_dll.OleTranslateColor!(clr, util.toPointer(hpal), util.toPointer(lpcolorref));
 }
 
 export function OleCreateFontIndirect(
@@ -15974,7 +16430,7 @@ export function OleCreateFontIndirect(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   lplpvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleCreateFontIndirect(util.toPointer(lpFontDesc), util.toPointer(riid), util.toPointer(lplpvObj));
+  return libOLEAUT32_dll.OleCreateFontIndirect!(util.toPointer(lpFontDesc), util.toPointer(riid), util.toPointer(lplpvObj));
 }
 
 export function OleCreatePictureIndirect(
@@ -15983,7 +16439,7 @@ export function OleCreatePictureIndirect(
   fOwn: boolean /* Windows.Win32.Foundation.BOOL */,
   lplpvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleCreatePictureIndirect(util.toPointer(lpPictDesc), util.toPointer(riid), util.boolToFfi(fOwn), util.toPointer(lplpvObj));
+  return libOLEAUT32_dll.OleCreatePictureIndirect!(util.toPointer(lpPictDesc), util.toPointer(riid), util.boolToFfi(fOwn), util.toPointer(lplpvObj));
 }
 
 export function OleLoadPicture(
@@ -15993,7 +16449,7 @@ export function OleLoadPicture(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   lplpvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleLoadPicture(util.toPointer(lpstream), lSize, util.boolToFfi(fRunmode), util.toPointer(riid), util.toPointer(lplpvObj));
+  return libOLEAUT32_dll.OleLoadPicture!(util.toPointer(lpstream), lSize, util.boolToFfi(fRunmode), util.toPointer(riid), util.toPointer(lplpvObj));
 }
 
 export function OleLoadPictureEx(
@@ -16006,7 +16462,7 @@ export function OleLoadPictureEx(
   dwFlags: LOAD_PICTURE_FLAGS /* Windows.Win32.System.Ole.LOAD_PICTURE_FLAGS */,
   lplpvObj: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleLoadPictureEx(util.toPointer(lpstream), lSize, util.boolToFfi(fRunmode), util.toPointer(riid), xSizeDesired, ySizeDesired, dwFlags, util.toPointer(lplpvObj));
+  return libOLEAUT32_dll.OleLoadPictureEx!(util.toPointer(lpstream), lSize, util.boolToFfi(fRunmode), util.toPointer(riid), xSizeDesired, ySizeDesired, dwFlags, util.toPointer(lplpvObj));
 }
 
 export function OleLoadPicturePath(
@@ -16017,14 +16473,14 @@ export function OleLoadPicturePath(
   riid: Deno.PointerValue | Uint8Array /* ptr */,
   ppvRet: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleLoadPicturePath(util.pwstrToFfi(szURLorPath), util.toPointer(punkCaller), dwReserved, clrReserved, util.toPointer(riid), util.toPointer(ppvRet));
+  return libOLEAUT32_dll.OleLoadPicturePath!(util.pwstrToFfi(szURLorPath), util.toPointer(punkCaller), dwReserved, clrReserved, util.toPointer(riid), util.toPointer(ppvRet));
 }
 
 export function OleLoadPictureFile(
   varFileName: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.VARIANT */,
   lplpdispPicture: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleLoadPictureFile(util.toPointer(varFileName), util.toPointer(lplpdispPicture));
+  return libOLEAUT32_dll.OleLoadPictureFile!(util.toPointer(varFileName), util.toPointer(lplpdispPicture));
 }
 
 export function OleLoadPictureFileEx(
@@ -16034,21 +16490,21 @@ export function OleLoadPictureFileEx(
   dwFlags: LOAD_PICTURE_FLAGS /* Windows.Win32.System.Ole.LOAD_PICTURE_FLAGS */,
   lplpdispPicture: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleLoadPictureFileEx(util.toPointer(varFileName), xSizeDesired, ySizeDesired, dwFlags, util.toPointer(lplpdispPicture));
+  return libOLEAUT32_dll.OleLoadPictureFileEx!(util.toPointer(varFileName), xSizeDesired, ySizeDesired, dwFlags, util.toPointer(lplpdispPicture));
 }
 
 export function OleSavePictureFile(
   lpdispPicture: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Com.IDispatch */,
   bstrFileName: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.BSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libOLEAUT32_dll.OleSavePictureFile(util.toPointer(lpdispPicture), util.toPointer(bstrFileName));
+  return libOLEAUT32_dll.OleSavePictureFile!(util.toPointer(lpdispPicture), util.toPointer(bstrFileName));
 }
 
 export function OleIconToCursor(
   hinstExe: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HINSTANCE */,
   hIcon: Uint8Array | Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HICON */,
 ): Deno.PointerValue /* Windows.Win32.UI.WindowsAndMessaging.HCURSOR */ {
-  return libOLEAUT32_dll.OleIconToCursor(util.toPointer(hinstExe), util.toPointer(hIcon));
+  return libOLEAUT32_dll.OleIconToCursor!(util.toPointer(hinstExe), util.toPointer(hIcon));
 }
 
 export function OleUIAddVerbMenuW(
@@ -16062,7 +16518,7 @@ export function OleUIAddVerbMenuW(
   idConvert: number /* u32 */,
   lphMenu: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liboledlg_dll.OleUIAddVerbMenuW(util.toPointer(lpOleObj), util.pwstrToFfi(lpszShortType), util.toPointer(hMenu), uPos, uIDVerbMin, uIDVerbMax, util.boolToFfi(bAddConvert), idConvert, util.toPointer(lphMenu)));
+  return util.boolFromFfi(liboledlg_dll.OleUIAddVerbMenuW!(util.toPointer(lpOleObj), util.pwstrToFfi(lpszShortType), util.toPointer(hMenu), uPos, uIDVerbMin, uIDVerbMax, util.boolToFfi(bAddConvert), idConvert, util.toPointer(lphMenu)));
 }
 
 export function OleUIAddVerbMenuA(
@@ -16076,67 +16532,67 @@ export function OleUIAddVerbMenuA(
   idConvert: number /* u32 */,
   lphMenu: Deno.PointerValue | Uint8Array /* ptr */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liboledlg_dll.OleUIAddVerbMenuA(util.toPointer(lpOleObj), util.pstrToFfi(lpszShortType), util.toPointer(hMenu), uPos, uIDVerbMin, uIDVerbMax, util.boolToFfi(bAddConvert), idConvert, util.toPointer(lphMenu)));
+  return util.boolFromFfi(liboledlg_dll.OleUIAddVerbMenuA!(util.toPointer(lpOleObj), util.pstrToFfi(lpszShortType), util.toPointer(hMenu), uPos, uIDVerbMin, uIDVerbMax, util.boolToFfi(bAddConvert), idConvert, util.toPointer(lphMenu)));
 }
 
 export function OleUIInsertObjectW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIInsertObjectW(util.toPointer(param0));
+  return liboledlg_dll.OleUIInsertObjectW!(util.toPointer(param0));
 }
 
 export function OleUIInsertObjectA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIInsertObjectA(util.toPointer(param0));
+  return liboledlg_dll.OleUIInsertObjectA!(util.toPointer(param0));
 }
 
 export function OleUIPasteSpecialW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIPasteSpecialW(util.toPointer(param0));
+  return liboledlg_dll.OleUIPasteSpecialW!(util.toPointer(param0));
 }
 
 export function OleUIPasteSpecialA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIPasteSpecialA(util.toPointer(param0));
+  return liboledlg_dll.OleUIPasteSpecialA!(util.toPointer(param0));
 }
 
 export function OleUIEditLinksW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIEditLinksW(util.toPointer(param0));
+  return liboledlg_dll.OleUIEditLinksW!(util.toPointer(param0));
 }
 
 export function OleUIEditLinksA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIEditLinksA(util.toPointer(param0));
+  return liboledlg_dll.OleUIEditLinksA!(util.toPointer(param0));
 }
 
 export function OleUIChangeIconW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIChangeIconW(util.toPointer(param0));
+  return liboledlg_dll.OleUIChangeIconW!(util.toPointer(param0));
 }
 
 export function OleUIChangeIconA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIChangeIconA(util.toPointer(param0));
+  return liboledlg_dll.OleUIChangeIconA!(util.toPointer(param0));
 }
 
 export function OleUIConvertW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIConvertW(util.toPointer(param0));
+  return liboledlg_dll.OleUIConvertW!(util.toPointer(param0));
 }
 
 export function OleUIConvertA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIConvertA(util.toPointer(param0));
+  return liboledlg_dll.OleUIConvertA!(util.toPointer(param0));
 }
 
 export function OleUICanConvertOrActivateAs(
@@ -16144,57 +16600,57 @@ export function OleUICanConvertOrActivateAs(
   fIsLinkedObject: boolean /* Windows.Win32.Foundation.BOOL */,
   wFormat: number /* u16 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liboledlg_dll.OleUICanConvertOrActivateAs(util.toPointer(rClsid), util.boolToFfi(fIsLinkedObject), wFormat));
+  return util.boolFromFfi(liboledlg_dll.OleUICanConvertOrActivateAs!(util.toPointer(rClsid), util.boolToFfi(fIsLinkedObject), wFormat));
 }
 
 export function OleUIBusyW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIBusyW(util.toPointer(param0));
+  return liboledlg_dll.OleUIBusyW!(util.toPointer(param0));
 }
 
 export function OleUIBusyA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIBusyA(util.toPointer(param0));
+  return liboledlg_dll.OleUIBusyA!(util.toPointer(param0));
 }
 
 export function OleUIChangeSourceW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIChangeSourceW(util.toPointer(param0));
+  return liboledlg_dll.OleUIChangeSourceW!(util.toPointer(param0));
 }
 
 export function OleUIChangeSourceA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIChangeSourceA(util.toPointer(param0));
+  return liboledlg_dll.OleUIChangeSourceA!(util.toPointer(param0));
 }
 
 export function OleUIObjectPropertiesW(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIObjectPropertiesW(util.toPointer(param0));
+  return liboledlg_dll.OleUIObjectPropertiesW!(util.toPointer(param0));
 }
 
 export function OleUIObjectPropertiesA(
   param0: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return liboledlg_dll.OleUIObjectPropertiesA(util.toPointer(param0));
+  return liboledlg_dll.OleUIObjectPropertiesA!(util.toPointer(param0));
 }
 
 export function OleUIPromptUserW(
   nTemplate: number /* i32 */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return liboledlg_dll.OleUIPromptUserW(nTemplate, (hwndParent));
+  return liboledlg_dll.OleUIPromptUserW!(nTemplate, (hwndParent));
 }
 
 export function OleUIPromptUserA(
   nTemplate: number /* i32 */,
   hwndParent: Deno.PointerValue /* Windows.Win32.Foundation.HWND */,
 ): number /* i32 */ {
-  return liboledlg_dll.OleUIPromptUserA(nTemplate, (hwndParent));
+  return liboledlg_dll.OleUIPromptUserA!(nTemplate, (hwndParent));
 }
 
 export function OleUIUpdateLinksW(
@@ -16203,7 +16659,7 @@ export function OleUIUpdateLinksW(
   lpszTitle: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   cLinks: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksW(util.toPointer(lpOleUILinkCntr), (hwndParent), util.pwstrToFfi(lpszTitle), cLinks));
+  return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksW!(util.toPointer(lpOleUILinkCntr), (hwndParent), util.pwstrToFfi(lpszTitle), cLinks));
 }
 
 export function OleUIUpdateLinksA(
@@ -16212,6 +16668,6 @@ export function OleUIUpdateLinksA(
   lpszTitle: string | null | Uint8Array /* Windows.Win32.Foundation.PSTR */,
   cLinks: number /* i32 */,
 ): boolean /* Windows.Win32.Foundation.BOOL */ {
-  return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksA(util.toPointer(lpOleUILinkCntr), (hwndParent), util.pstrToFfi(lpszTitle), cLinks));
+  return util.boolFromFfi(liboledlg_dll.OleUIUpdateLinksA!(util.toPointer(lpOleUILinkCntr), (hwndParent), util.pstrToFfi(lpszTitle), cLinks));
 }
 

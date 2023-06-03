@@ -2123,150 +2123,187 @@ try {
     WdsCliClose: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliRegisterTrace: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliFreeStringArray: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WdsCliFindFirstImage: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliFindNextImage: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetEnumerationFlags: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageHandleFromFindHandle: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageHandleFromTransferHandle: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliCreateSession: {
       parameters: ["buffer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliAuthorizeSession: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliInitializeLog: {
       parameters: ["pointer", "u32", "buffer", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliLog: {
       parameters: ["pointer", "u32", "u32"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageName: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageDescription: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageType: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageFiles: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageLanguage: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageLanguages: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageVersion: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImagePath: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageIndex: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageArchitecture: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageLastModifiedTime: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageSize: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageHalName: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageGroup: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageNamespace: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetImageParameter: {
       parameters: ["pointer", "i32", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetTransferSize: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliSetTransferBufferSize: {
       parameters: ["u32"],
       result: "void",
+      optional: true,
     },
     WdsCliTransferImage: {
       parameters: ["pointer", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliTransferFile: {
       parameters: ["buffer", "buffer", "buffer", "buffer", "u32", "u32", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliCancelTransfer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliWaitForTransfer: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliObtainDriverPackages: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliObtainDriverPackagesEx: {
       parameters: ["pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsCliGetDriverQueryXml: {
       parameters: ["buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2276,126 +2313,157 @@ try {
     PxeProviderRegister: {
       parameters: ["buffer", "buffer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderUnRegister: {
       parameters: ["buffer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderQueryIndex: {
       parameters: ["buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderEnumFirst: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderEnumNext: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderEnumClose: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderFreeInfo: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     PxeRegisterCallback: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeSendReply: {
       parameters: ["pointer", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeAsyncRecvDone: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PxeTrace: {
       parameters: ["pointer", "u32", "buffer"],
       result: "u32",
+      optional: true,
     },
     PxeTraceV: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxePacketAllocate: {
       parameters: ["pointer", "pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     PxePacketFree: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeProviderSetAttribute: {
       parameters: ["pointer", "u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpInitialize: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6Initialize: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpAppendOption: {
       parameters: ["pointer", "u32", "pointer", "u8", "u8", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6AppendOption: {
       parameters: ["pointer", "u32", "pointer", "u16", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpAppendOptionRaw: {
       parameters: ["pointer", "u32", "pointer", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6AppendOptionRaw: {
       parameters: ["pointer", "u32", "pointer", "u16", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpIsValid: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6IsValid: {
       parameters: ["pointer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpGetOptionValue: {
       parameters: ["pointer", "u32", "u32", "u8", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6GetOptionValue: {
       parameters: ["pointer", "u32", "u32", "u16", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpGetVendorOptionValue: {
       parameters: ["pointer", "u32", "u8", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6GetVendorOptionValue: {
       parameters: ["pointer", "u32", "u32", "u16", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6ParseRelayForw: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeDhcpv6CreateRelayRepl: {
       parameters: ["pointer", "u32", "pointer", "u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     PxeGetServerInfo: {
       parameters: ["u32", "pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     PxeGetServerInfoEx: {
       parameters: ["u32", "pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2405,26 +2473,32 @@ try {
     WdsTransportServerRegisterCallback: {
       parameters: ["pointer", "i32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsTransportServerCompleteRead: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsTransportServerTrace: {
       parameters: ["pointer", "u32", "buffer"],
       result: "pointer",
+      optional: true,
     },
     WdsTransportServerTraceV: {
       parameters: ["pointer", "u32", "buffer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WdsTransportServerAllocateBuffer: {
       parameters: ["pointer", "u32"],
       result: "pointer",
+      optional: true,
     },
     WdsTransportServerFreeBuffer: {
       parameters: ["pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2434,54 +2508,67 @@ try {
     WdsTransportClientInitialize: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientInitializeSession: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientRegisterCallback: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientStartSession: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientCompleteReceive: {
       parameters: ["pointer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientCancelSession: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientCancelSessionEx: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientWaitForCompletion: {
       parameters: ["pointer", "u32"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientQueryStatus: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientCloseSession: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientAddRefBuffer: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientReleaseBuffer: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsTransportClientShutdown: {
       parameters: [],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2491,30 +2578,37 @@ try {
     WdsBpParseInitialize: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpParseInitializev6: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpInitialize: {
       parameters: ["u8", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpCloseHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpQueryOption: {
       parameters: ["pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpAddOption: {
       parameters: ["pointer", "u32", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WdsBpGetOptionBuffer: {
       parameters: ["pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -2524,54 +2618,54 @@ try {
 export function WdsCliClose(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliClose(util.toPointer(Handle));
+  return libWDSCLIENTAPI_dll.WdsCliClose!(util.toPointer(Handle));
 }
 
 export function WdsCliRegisterTrace(
   pfn: Uint8Array | Deno.PointerValue /* Windows.Win32.System.DeploymentServices.PFN_WdsCliTraceFunction */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliRegisterTrace(util.toPointer(pfn));
+  return libWDSCLIENTAPI_dll.WdsCliRegisterTrace!(util.toPointer(pfn));
 }
 
 export function WdsCliFreeStringArray(
   ppwszArray: Deno.PointerValue | Uint8Array /* ptr */,
   ulCount: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliFreeStringArray(util.toPointer(ppwszArray), ulCount);
+  return libWDSCLIENTAPI_dll.WdsCliFreeStringArray!(util.toPointer(ppwszArray), ulCount);
 }
 
 export function WdsCliFindFirstImage(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   phFindHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliFindFirstImage(util.toPointer(hSession), util.toPointer(phFindHandle));
+  return libWDSCLIENTAPI_dll.WdsCliFindFirstImage!(util.toPointer(hSession), util.toPointer(phFindHandle));
 }
 
 export function WdsCliFindNextImage(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliFindNextImage(util.toPointer(Handle));
+  return libWDSCLIENTAPI_dll.WdsCliFindNextImage!(util.toPointer(Handle));
 }
 
 export function WdsCliGetEnumerationFlags(
   Handle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetEnumerationFlags(util.toPointer(Handle), util.toPointer(pdwFlags));
+  return libWDSCLIENTAPI_dll.WdsCliGetEnumerationFlags!(util.toPointer(Handle), util.toPointer(pdwFlags));
 }
 
 export function WdsCliGetImageHandleFromFindHandle(
   FindHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   phImageHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromFindHandle(util.toPointer(FindHandle), util.toPointer(phImageHandle));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromFindHandle!(util.toPointer(FindHandle), util.toPointer(phImageHandle));
 }
 
 export function WdsCliGetImageHandleFromTransferHandle(
   hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   phImageHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromTransferHandle(util.toPointer(hTransfer), util.toPointer(phImageHandle));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHandleFromTransferHandle!(util.toPointer(hTransfer), util.toPointer(phImageHandle));
 }
 
 export function WdsCliCreateSession(
@@ -2579,14 +2673,14 @@ export function WdsCliCreateSession(
   pCred: Deno.PointerValue | Uint8Array /* ptr */,
   phSession: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliCreateSession(util.pwstrToFfi(pwszServer), util.toPointer(pCred), util.toPointer(phSession));
+  return libWDSCLIENTAPI_dll.WdsCliCreateSession!(util.pwstrToFfi(pwszServer), util.toPointer(pCred), util.toPointer(phSession));
 }
 
 export function WdsCliAuthorizeSession(
   hSession: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pCred: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliAuthorizeSession(util.toPointer(hSession), util.toPointer(pCred));
+  return libWDSCLIENTAPI_dll.WdsCliAuthorizeSession!(util.toPointer(hSession), util.toPointer(pCred));
 }
 
 export function WdsCliInitializeLog(
@@ -2595,7 +2689,7 @@ export function WdsCliInitializeLog(
   pwszClientId: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pwszClientAddress: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliInitializeLog(util.toPointer(hSession), ulClientArchitecture, util.pwstrToFfi(pwszClientId), util.pwstrToFfi(pwszClientAddress));
+  return libWDSCLIENTAPI_dll.WdsCliInitializeLog!(util.toPointer(hSession), ulClientArchitecture, util.pwstrToFfi(pwszClientId), util.pwstrToFfi(pwszClientAddress));
 }
 
 export function WdsCliLog(
@@ -2603,28 +2697,28 @@ export function WdsCliLog(
   ulLogLevel: number /* u32 */,
   ulMessageCode: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliLog(util.toPointer(hSession), ulLogLevel, ulMessageCode);
+  return libWDSCLIENTAPI_dll.WdsCliLog!(util.toPointer(hSession), ulLogLevel, ulMessageCode);
 }
 
 export function WdsCliGetImageName(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageName(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageName!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageDescription(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageDescription(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageDescription!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageType(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pImageType: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageType(util.toPointer(hIfh), util.toPointer(pImageType));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageType!(util.toPointer(hIfh), util.toPointer(pImageType));
 }
 
 export function WdsCliGetImageFiles(
@@ -2632,14 +2726,14 @@ export function WdsCliGetImageFiles(
   pppwszFiles: Deno.PointerValue | Uint8Array /* ptr */,
   pdwCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageFiles(util.toPointer(hIfh), util.toPointer(pppwszFiles), util.toPointer(pdwCount));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageFiles!(util.toPointer(hIfh), util.toPointer(pppwszFiles), util.toPointer(pdwCount));
 }
 
 export function WdsCliGetImageLanguage(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguage(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguage!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageLanguages(
@@ -2647,70 +2741,70 @@ export function WdsCliGetImageLanguages(
   pppszValues: Deno.PointerValue | Uint8Array /* ptr */,
   pdwNumValues: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguages(util.toPointer(hIfh), util.toPointer(pppszValues), util.toPointer(pdwNumValues));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLanguages!(util.toPointer(hIfh), util.toPointer(pppszValues), util.toPointer(pdwNumValues));
 }
 
 export function WdsCliGetImageVersion(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageVersion(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageVersion!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImagePath(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImagePath(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImagePath!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageIndex(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageIndex(util.toPointer(hIfh), util.toPointer(pdwValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageIndex!(util.toPointer(hIfh), util.toPointer(pdwValue));
 }
 
 export function WdsCliGetImageArchitecture(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pdwValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageArchitecture(util.toPointer(hIfh), util.toPointer(pdwValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageArchitecture!(util.toPointer(hIfh), util.toPointer(pdwValue));
 }
 
 export function WdsCliGetImageLastModifiedTime(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppSysTimeValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageLastModifiedTime(util.toPointer(hIfh), util.toPointer(ppSysTimeValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageLastModifiedTime!(util.toPointer(hIfh), util.toPointer(ppSysTimeValue));
 }
 
 export function WdsCliGetImageSize(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pullValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageSize(util.toPointer(hIfh), util.toPointer(pullValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageSize!(util.toPointer(hIfh), util.toPointer(pullValue));
 }
 
 export function WdsCliGetImageHalName(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageHalName(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageHalName!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageGroup(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageGroup(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageGroup!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageNamespace(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppwszValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageNamespace(util.toPointer(hIfh), util.toPointer(ppwszValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetImageNamespace!(util.toPointer(hIfh), util.toPointer(ppwszValue));
 }
 
 export function WdsCliGetImageParameter(
@@ -2719,20 +2813,20 @@ export function WdsCliGetImageParameter(
   pResponse: Deno.PointerValue | Uint8Array /* ptr */,
   uResponseLen: number /* u32 */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetImageParameter(util.toPointer(hIfh), ParamType, util.toPointer(pResponse), uResponseLen);
+  return libWDSCLIENTAPI_dll.WdsCliGetImageParameter!(util.toPointer(hIfh), ParamType, util.toPointer(pResponse), uResponseLen);
 }
 
 export function WdsCliGetTransferSize(
   hIfh: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pullValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetTransferSize(util.toPointer(hIfh), util.toPointer(pullValue));
+  return libWDSCLIENTAPI_dll.WdsCliGetTransferSize!(util.toPointer(hIfh), util.toPointer(pullValue));
 }
 
 export function WdsCliSetTransferBufferSize(
   ulSizeInBytes: number /* u32 */,
 ): void /* void */ {
-  return libWDSCLIENTAPI_dll.WdsCliSetTransferBufferSize(ulSizeInBytes);
+  return libWDSCLIENTAPI_dll.WdsCliSetTransferBufferSize!(ulSizeInBytes);
 }
 
 export function WdsCliTransferImage(
@@ -2744,7 +2838,7 @@ export function WdsCliTransferImage(
   pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
   phTransfer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliTransferImage(util.toPointer(hImage), util.pwstrToFfi(pwszLocalPath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
+  return libWDSCLIENTAPI_dll.WdsCliTransferImage!(util.toPointer(hImage), util.pwstrToFfi(pwszLocalPath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
 }
 
 export function WdsCliTransferFile(
@@ -2758,19 +2852,19 @@ export function WdsCliTransferFile(
   pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
   phTransfer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliTransferFile(util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszNamespace), util.pwstrToFfi(pwszRemoteFilePath), util.pwstrToFfi(pwszLocalFilePath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
+  return libWDSCLIENTAPI_dll.WdsCliTransferFile!(util.pwstrToFfi(pwszServer), util.pwstrToFfi(pwszNamespace), util.pwstrToFfi(pwszRemoteFilePath), util.pwstrToFfi(pwszLocalFilePath), dwFlags, dwReserved, util.toPointer(pfnWdsCliCallback), util.toPointer(pvUserData), util.toPointer(phTransfer));
 }
 
 export function WdsCliCancelTransfer(
   hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliCancelTransfer(util.toPointer(hTransfer));
+  return libWDSCLIENTAPI_dll.WdsCliCancelTransfer!(util.toPointer(hTransfer));
 }
 
 export function WdsCliWaitForTransfer(
   hTransfer: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliWaitForTransfer(util.toPointer(hTransfer));
+  return libWDSCLIENTAPI_dll.WdsCliWaitForTransfer!(util.toPointer(hTransfer));
 }
 
 export function WdsCliObtainDriverPackages(
@@ -2779,7 +2873,7 @@ export function WdsCliObtainDriverPackages(
   pppwszDriverPackages: Deno.PointerValue | Uint8Array /* ptr */,
   pulCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackages(util.toPointer(hImage), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
+  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackages!(util.toPointer(hImage), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
 }
 
 export function WdsCliObtainDriverPackagesEx(
@@ -2789,14 +2883,14 @@ export function WdsCliObtainDriverPackagesEx(
   pppwszDriverPackages: Deno.PointerValue | Uint8Array /* ptr */,
   pulCount: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackagesEx(util.toPointer(hSession), util.pwstrToFfi(pwszMachineInfo), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
+  return libWDSCLIENTAPI_dll.WdsCliObtainDriverPackagesEx!(util.toPointer(hSession), util.pwstrToFfi(pwszMachineInfo), util.toPointer(ppwszServerName), util.toPointer(pppwszDriverPackages), util.toPointer(pulCount));
 }
 
 export function WdsCliGetDriverQueryXml(
   pwszWinDirPath: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   ppwszDriverQuery: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSCLIENTAPI_dll.WdsCliGetDriverQueryXml(util.pwstrToFfi(pwszWinDirPath), util.toPointer(ppwszDriverQuery));
+  return libWDSCLIENTAPI_dll.WdsCliGetDriverQueryXml!(util.pwstrToFfi(pwszWinDirPath), util.toPointer(ppwszDriverQuery));
 }
 
 export function PxeProviderRegister(
@@ -2806,45 +2900,45 @@ export function PxeProviderRegister(
   bIsCritical: boolean /* Windows.Win32.Foundation.BOOL */,
   phProviderKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderRegister(util.pwstrToFfi(pszProviderName), util.pwstrToFfi(pszModulePath), Index, util.boolToFfi(bIsCritical), util.toPointer(phProviderKey));
+  return libWDSPXE_dll.PxeProviderRegister!(util.pwstrToFfi(pszProviderName), util.pwstrToFfi(pszModulePath), Index, util.boolToFfi(bIsCritical), util.toPointer(phProviderKey));
 }
 
 export function PxeProviderUnRegister(
   pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderUnRegister(util.pwstrToFfi(pszProviderName));
+  return libWDSPXE_dll.PxeProviderUnRegister!(util.pwstrToFfi(pszProviderName));
 }
 
 export function PxeProviderQueryIndex(
   pszProviderName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   puIndex: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderQueryIndex(util.pwstrToFfi(pszProviderName), util.toPointer(puIndex));
+  return libWDSPXE_dll.PxeProviderQueryIndex!(util.pwstrToFfi(pszProviderName), util.toPointer(puIndex));
 }
 
 export function PxeProviderEnumFirst(
   phEnum: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderEnumFirst(util.toPointer(phEnum));
+  return libWDSPXE_dll.PxeProviderEnumFirst!(util.toPointer(phEnum));
 }
 
 export function PxeProviderEnumNext(
   hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ppProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderEnumNext(util.toPointer(hEnum), util.toPointer(ppProvider));
+  return libWDSPXE_dll.PxeProviderEnumNext!(util.toPointer(hEnum), util.toPointer(ppProvider));
 }
 
 export function PxeProviderEnumClose(
   hEnum: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderEnumClose(util.toPointer(hEnum));
+  return libWDSPXE_dll.PxeProviderEnumClose!(util.toPointer(hEnum));
 }
 
 export function PxeProviderFreeInfo(
   pProvider: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderFreeInfo(util.toPointer(pProvider));
+  return libWDSPXE_dll.PxeProviderFreeInfo!(util.toPointer(pProvider));
 }
 
 export function PxeRegisterCallback(
@@ -2853,7 +2947,7 @@ export function PxeRegisterCallback(
   pCallbackFunction: Deno.PointerValue | Uint8Array /* ptr */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeRegisterCallback(util.toPointer(hProvider), CallbackType, util.toPointer(pCallbackFunction), util.toPointer(pContext));
+  return libWDSPXE_dll.PxeRegisterCallback!(util.toPointer(hProvider), CallbackType, util.toPointer(pCallbackFunction), util.toPointer(pContext));
 }
 
 export function PxeSendReply(
@@ -2862,14 +2956,14 @@ export function PxeSendReply(
   uPacketLen: number /* u32 */,
   pAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeSendReply(util.toPointer(hClientRequest), util.toPointer(pPacket), uPacketLen, util.toPointer(pAddress));
+  return libWDSPXE_dll.PxeSendReply!(util.toPointer(hClientRequest), util.toPointer(pPacket), uPacketLen, util.toPointer(pAddress));
 }
 
 export function PxeAsyncRecvDone(
   hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   Action: number /* u32 */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeAsyncRecvDone(util.toPointer(hClientRequest), Action);
+  return libWDSPXE_dll.PxeAsyncRecvDone!(util.toPointer(hClientRequest), Action);
 }
 
 export function PxeTrace(
@@ -2877,7 +2971,7 @@ export function PxeTrace(
   Severity: number /* u32 */,
   pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat));
+  return libWDSPXE_dll.PxeTrace!(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat));
 }
 
 export function PxeTraceV(
@@ -2886,7 +2980,7 @@ export function PxeTraceV(
   pszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat), util.toPointer(Params));
+  return libWDSPXE_dll.PxeTraceV!(util.toPointer(hProvider), Severity, util.pwstrToFfi(pszFormat), util.toPointer(Params));
 }
 
 export function PxePacketAllocate(
@@ -2894,7 +2988,7 @@ export function PxePacketAllocate(
   hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uSize: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWDSPXE_dll.PxePacketAllocate(util.toPointer(hProvider), util.toPointer(hClientRequest), uSize);
+  return libWDSPXE_dll.PxePacketAllocate!(util.toPointer(hProvider), util.toPointer(hClientRequest), uSize);
 }
 
 export function PxePacketFree(
@@ -2902,7 +2996,7 @@ export function PxePacketFree(
   hClientRequest: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxePacketFree(util.toPointer(hProvider), util.toPointer(hClientRequest), util.toPointer(pPacket));
+  return libWDSPXE_dll.PxePacketFree!(util.toPointer(hProvider), util.toPointer(hClientRequest), util.toPointer(pPacket));
 }
 
 export function PxeProviderSetAttribute(
@@ -2911,7 +3005,7 @@ export function PxeProviderSetAttribute(
   pParameterBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uParamLen: number /* u32 */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeProviderSetAttribute(util.toPointer(hProvider), Attribute, util.toPointer(pParameterBuffer), uParamLen);
+  return libWDSPXE_dll.PxeProviderSetAttribute!(util.toPointer(hProvider), Attribute, util.toPointer(pParameterBuffer), uParamLen);
 }
 
 export function PxeDhcpInitialize(
@@ -2921,7 +3015,7 @@ export function PxeDhcpInitialize(
   uMaxReplyPacketLen: number /* u32 */,
   puReplyPacketLen: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpInitialize(util.toPointer(pRecvPacket), uRecvPacketLen, util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen));
+  return libWDSPXE_dll.PxeDhcpInitialize!(util.toPointer(pRecvPacket), uRecvPacketLen, util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen));
 }
 
 export function PxeDhcpv6Initialize(
@@ -2931,7 +3025,7 @@ export function PxeDhcpv6Initialize(
   cbReply: number /* u32 */,
   pcbReplyUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6Initialize(util.toPointer(pRequest), cbRequest, util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed));
+  return libWDSPXE_dll.PxeDhcpv6Initialize!(util.toPointer(pRequest), cbRequest, util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed));
 }
 
 export function PxeDhcpAppendOption(
@@ -2942,7 +3036,7 @@ export function PxeDhcpAppendOption(
   bOptionLen: number /* u8 */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpAppendOption(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), bOption, bOptionLen, util.toPointer(pValue));
+  return libWDSPXE_dll.PxeDhcpAppendOption!(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), bOption, bOptionLen, util.toPointer(pValue));
 }
 
 export function PxeDhcpv6AppendOption(
@@ -2953,7 +3047,7 @@ export function PxeDhcpv6AppendOption(
   cbOption: number /* u16 */,
   pOption: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6AppendOption(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), wOptionType, cbOption, util.toPointer(pOption));
+  return libWDSPXE_dll.PxeDhcpv6AppendOption!(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), wOptionType, cbOption, util.toPointer(pOption));
 }
 
 export function PxeDhcpAppendOptionRaw(
@@ -2963,7 +3057,7 @@ export function PxeDhcpAppendOptionRaw(
   uBufferLen: number /* u16 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpAppendOptionRaw(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), uBufferLen, util.toPointer(pBuffer));
+  return libWDSPXE_dll.PxeDhcpAppendOptionRaw!(util.toPointer(pReplyPacket), uMaxReplyPacketLen, util.toPointer(puReplyPacketLen), uBufferLen, util.toPointer(pBuffer));
 }
 
 export function PxeDhcpv6AppendOptionRaw(
@@ -2973,7 +3067,7 @@ export function PxeDhcpv6AppendOptionRaw(
   cbBuffer: number /* u16 */,
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6AppendOptionRaw(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), cbBuffer, util.toPointer(pBuffer));
+  return libWDSPXE_dll.PxeDhcpv6AppendOptionRaw!(util.toPointer(pReply), cbReply, util.toPointer(pcbReplyUsed), cbBuffer, util.toPointer(pBuffer));
 }
 
 export function PxeDhcpIsValid(
@@ -2982,7 +3076,7 @@ export function PxeDhcpIsValid(
   bRequestPacket: boolean /* Windows.Win32.Foundation.BOOL */,
   pbPxeOptionPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpIsValid(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
+  return libWDSPXE_dll.PxeDhcpIsValid!(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
 }
 
 export function PxeDhcpv6IsValid(
@@ -2991,7 +3085,7 @@ export function PxeDhcpv6IsValid(
   bRequestPacket: boolean /* Windows.Win32.Foundation.BOOL */,
   pbPxeOptionPresent: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6IsValid(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
+  return libWDSPXE_dll.PxeDhcpv6IsValid!(util.toPointer(pPacket), uPacketLen, util.boolToFfi(bRequestPacket), util.toPointer(pbPxeOptionPresent));
 }
 
 export function PxeDhcpGetOptionValue(
@@ -3002,7 +3096,7 @@ export function PxeDhcpGetOptionValue(
   pbOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
   ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpGetOptionValue(util.toPointer(pPacket), uPacketLen, uInstance, bOption, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
+  return libWDSPXE_dll.PxeDhcpGetOptionValue!(util.toPointer(pPacket), uPacketLen, uInstance, bOption, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6GetOptionValue(
@@ -3013,7 +3107,7 @@ export function PxeDhcpv6GetOptionValue(
   pwOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
   ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6GetOptionValue(util.toPointer(pPacket), uPacketLen, uInstance, wOption, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
+  return libWDSPXE_dll.PxeDhcpv6GetOptionValue!(util.toPointer(pPacket), uPacketLen, uInstance, wOption, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpGetVendorOptionValue(
@@ -3024,7 +3118,7 @@ export function PxeDhcpGetVendorOptionValue(
   pbOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
   ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpGetVendorOptionValue(util.toPointer(pPacket), uPacketLen, bOption, uInstance, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
+  return libWDSPXE_dll.PxeDhcpGetVendorOptionValue!(util.toPointer(pPacket), uPacketLen, bOption, uInstance, util.toPointer(pbOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6GetVendorOptionValue(
@@ -3036,7 +3130,7 @@ export function PxeDhcpv6GetVendorOptionValue(
   pwOptionLen: Deno.PointerValue | Uint8Array /* ptr */,
   ppOptionValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6GetVendorOptionValue(util.toPointer(pPacket), uPacketLen, dwEnterpriseNumber, wOption, uInstance, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
+  return libWDSPXE_dll.PxeDhcpv6GetVendorOptionValue!(util.toPointer(pPacket), uPacketLen, dwEnterpriseNumber, wOption, uInstance, util.toPointer(pwOptionLen), util.toPointer(ppOptionValue));
 }
 
 export function PxeDhcpv6ParseRelayForw(
@@ -3048,7 +3142,7 @@ export function PxeDhcpv6ParseRelayForw(
   ppInnerPacket: Deno.PointerValue | Uint8Array /* ptr */,
   pcbInnerPacket: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6ParseRelayForw(util.toPointer(pRelayForwPacket), uRelayForwPacketLen, util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pnRelayMessages), util.toPointer(ppInnerPacket), util.toPointer(pcbInnerPacket));
+  return libWDSPXE_dll.PxeDhcpv6ParseRelayForw!(util.toPointer(pRelayForwPacket), uRelayForwPacketLen, util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pnRelayMessages), util.toPointer(ppInnerPacket), util.toPointer(pcbInnerPacket));
 }
 
 export function PxeDhcpv6CreateRelayRepl(
@@ -3060,7 +3154,7 @@ export function PxeDhcpv6CreateRelayRepl(
   cbReplyBuffer: number /* u32 */,
   pcbReplyBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeDhcpv6CreateRelayRepl(util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pInnerPacket), cbInnerPacket, util.toPointer(pReplyBuffer), cbReplyBuffer, util.toPointer(pcbReplyBuffer));
+  return libWDSPXE_dll.PxeDhcpv6CreateRelayRepl!(util.toPointer(pRelayMessages), nRelayMessages, util.toPointer(pInnerPacket), cbInnerPacket, util.toPointer(pReplyBuffer), cbReplyBuffer, util.toPointer(pcbReplyBuffer));
 }
 
 export function PxeGetServerInfo(
@@ -3068,7 +3162,7 @@ export function PxeGetServerInfo(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   uBufferLen: number /* u32 */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeGetServerInfo(uInfoType, util.toPointer(pBuffer), uBufferLen);
+  return libWDSPXE_dll.PxeGetServerInfo!(uInfoType, util.toPointer(pBuffer), uBufferLen);
 }
 
 export function PxeGetServerInfoEx(
@@ -3077,7 +3171,7 @@ export function PxeGetServerInfoEx(
   uBufferLen: number /* u32 */,
   puBufferUsed: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSPXE_dll.PxeGetServerInfoEx(uInfoType, util.toPointer(pBuffer), uBufferLen, util.toPointer(puBufferUsed));
+  return libWDSPXE_dll.PxeGetServerInfoEx!(uInfoType, util.toPointer(pBuffer), uBufferLen, util.toPointer(puBufferUsed));
 }
 
 export function WdsTransportServerRegisterCallback(
@@ -3085,7 +3179,7 @@ export function WdsTransportServerRegisterCallback(
   CallbackId: TRANSPORTPROVIDER_CALLBACK_ID /* Windows.Win32.System.DeploymentServices.TRANSPORTPROVIDER_CALLBACK_ID */,
   pfnCallback: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSMC_dll.WdsTransportServerRegisterCallback(util.toPointer(hProvider), CallbackId, util.toPointer(pfnCallback));
+  return libWDSMC_dll.WdsTransportServerRegisterCallback!(util.toPointer(hProvider), CallbackId, util.toPointer(pfnCallback));
 }
 
 export function WdsTransportServerCompleteRead(
@@ -3094,7 +3188,7 @@ export function WdsTransportServerCompleteRead(
   pvUserData: Deno.PointerValue | Uint8Array /* ptr */,
   hReadResult: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSMC_dll.WdsTransportServerCompleteRead(util.toPointer(hProvider), ulBytesRead, util.toPointer(pvUserData), util.toPointer(hReadResult));
+  return libWDSMC_dll.WdsTransportServerCompleteRead!(util.toPointer(hProvider), ulBytesRead, util.toPointer(pvUserData), util.toPointer(hReadResult));
 }
 
 export function WdsTransportServerTrace(
@@ -3102,7 +3196,7 @@ export function WdsTransportServerTrace(
   Severity: number /* u32 */,
   pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSMC_dll.WdsTransportServerTrace(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat));
+  return libWDSMC_dll.WdsTransportServerTrace!(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat));
 }
 
 export function WdsTransportServerTraceV(
@@ -3111,25 +3205,25 @@ export function WdsTransportServerTraceV(
   pwszFormat: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   Params: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSMC_dll.WdsTransportServerTraceV(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat), util.toPointer(Params));
+  return libWDSMC_dll.WdsTransportServerTraceV!(util.toPointer(hProvider), Severity, util.pwstrToFfi(pwszFormat), util.toPointer(Params));
 }
 
 export function WdsTransportServerAllocateBuffer(
   hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   ulBufferSize: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libWDSMC_dll.WdsTransportServerAllocateBuffer(util.toPointer(hProvider), ulBufferSize);
+  return libWDSMC_dll.WdsTransportServerAllocateBuffer!(util.toPointer(hProvider), ulBufferSize);
 }
 
 export function WdsTransportServerFreeBuffer(
   hProvider: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWDSMC_dll.WdsTransportServerFreeBuffer(util.toPointer(hProvider), util.toPointer(pvBuffer));
+  return libWDSMC_dll.WdsTransportServerFreeBuffer!(util.toPointer(hProvider), util.toPointer(pvBuffer));
 }
 
 export function WdsTransportClientInitialize(): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientInitialize();
+  return libWDSTPTC_dll.WdsTransportClientInitialize!();
 }
 
 export function WdsTransportClientInitializeSession(
@@ -3137,7 +3231,7 @@ export function WdsTransportClientInitializeSession(
   pCallerData: Deno.PointerValue | Uint8Array /* ptr */,
   hSessionKey: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientInitializeSession(util.toPointer(pSessionRequest), util.toPointer(pCallerData), util.toPointer(hSessionKey));
+  return libWDSTPTC_dll.WdsTransportClientInitializeSession!(util.toPointer(pSessionRequest), util.toPointer(pCallerData), util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientRegisterCallback(
@@ -3145,13 +3239,13 @@ export function WdsTransportClientRegisterCallback(
   CallbackId: TRANSPORTCLIENT_CALLBACK_ID /* Windows.Win32.System.DeploymentServices.TRANSPORTCLIENT_CALLBACK_ID */,
   pfnCallback: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientRegisterCallback(util.toPointer(hSessionKey), CallbackId, util.toPointer(pfnCallback));
+  return libWDSTPTC_dll.WdsTransportClientRegisterCallback!(util.toPointer(hSessionKey), CallbackId, util.toPointer(pfnCallback));
 }
 
 export function WdsTransportClientStartSession(
   hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientStartSession(util.toPointer(hSessionKey));
+  return libWDSTPTC_dll.WdsTransportClientStartSession!(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientCompleteReceive(
@@ -3159,27 +3253,27 @@ export function WdsTransportClientCompleteReceive(
   ulSize: number /* u32 */,
   pullOffset: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientCompleteReceive(util.toPointer(hSessionKey), ulSize, util.toPointer(pullOffset));
+  return libWDSTPTC_dll.WdsTransportClientCompleteReceive!(util.toPointer(hSessionKey), ulSize, util.toPointer(pullOffset));
 }
 
 export function WdsTransportClientCancelSession(
   hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientCancelSession(util.toPointer(hSessionKey));
+  return libWDSTPTC_dll.WdsTransportClientCancelSession!(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientCancelSessionEx(
   hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   dwErrorCode: number /* u32 */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientCancelSessionEx(util.toPointer(hSessionKey), dwErrorCode);
+  return libWDSTPTC_dll.WdsTransportClientCancelSessionEx!(util.toPointer(hSessionKey), dwErrorCode);
 }
 
 export function WdsTransportClientWaitForCompletion(
   hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   uTimeout: number /* u32 */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientWaitForCompletion(util.toPointer(hSessionKey), uTimeout);
+  return libWDSTPTC_dll.WdsTransportClientWaitForCompletion!(util.toPointer(hSessionKey), uTimeout);
 }
 
 export function WdsTransportClientQueryStatus(
@@ -3187,29 +3281,29 @@ export function WdsTransportClientQueryStatus(
   puStatus: Deno.PointerValue | Uint8Array /* ptr */,
   puErrorCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientQueryStatus(util.toPointer(hSessionKey), util.toPointer(puStatus), util.toPointer(puErrorCode));
+  return libWDSTPTC_dll.WdsTransportClientQueryStatus!(util.toPointer(hSessionKey), util.toPointer(puStatus), util.toPointer(puErrorCode));
 }
 
 export function WdsTransportClientCloseSession(
   hSessionKey: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientCloseSession(util.toPointer(hSessionKey));
+  return libWDSTPTC_dll.WdsTransportClientCloseSession!(util.toPointer(hSessionKey));
 }
 
 export function WdsTransportClientAddRefBuffer(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientAddRefBuffer(util.toPointer(pvBuffer));
+  return libWDSTPTC_dll.WdsTransportClientAddRefBuffer!(util.toPointer(pvBuffer));
 }
 
 export function WdsTransportClientReleaseBuffer(
   pvBuffer: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientReleaseBuffer(util.toPointer(pvBuffer));
+  return libWDSTPTC_dll.WdsTransportClientReleaseBuffer!(util.toPointer(pvBuffer));
 }
 
 export function WdsTransportClientShutdown(): number /* u32 */ {
-  return libWDSTPTC_dll.WdsTransportClientShutdown();
+  return libWDSTPTC_dll.WdsTransportClientShutdown!();
 }
 
 export function WdsBpParseInitialize(
@@ -3218,7 +3312,7 @@ export function WdsBpParseInitialize(
   pbPacketType: Deno.PointerValue | Uint8Array /* ptr */,
   phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpParseInitialize(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
+  return libWDSBP_dll.WdsBpParseInitialize!(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
 }
 
 export function WdsBpParseInitializev6(
@@ -3227,20 +3321,20 @@ export function WdsBpParseInitializev6(
   pbPacketType: Deno.PointerValue | Uint8Array /* ptr */,
   phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpParseInitializev6(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
+  return libWDSBP_dll.WdsBpParseInitializev6!(util.toPointer(pPacket), uPacketLen, util.toPointer(pbPacketType), util.toPointer(phHandle));
 }
 
 export function WdsBpInitialize(
   bPacketType: number /* u8 */,
   phHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpInitialize(bPacketType, util.toPointer(phHandle));
+  return libWDSBP_dll.WdsBpInitialize!(bPacketType, util.toPointer(phHandle));
 }
 
 export function WdsBpCloseHandle(
   hHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpCloseHandle(util.toPointer(hHandle));
+  return libWDSBP_dll.WdsBpCloseHandle!(util.toPointer(hHandle));
 }
 
 export function WdsBpQueryOption(
@@ -3250,7 +3344,7 @@ export function WdsBpQueryOption(
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
   puBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpQueryOption(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue), util.toPointer(puBytes));
+  return libWDSBP_dll.WdsBpQueryOption!(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue), util.toPointer(puBytes));
 }
 
 export function WdsBpAddOption(
@@ -3259,7 +3353,7 @@ export function WdsBpAddOption(
   uValueLen: number /* u32 */,
   pValue: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpAddOption(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue));
+  return libWDSBP_dll.WdsBpAddOption!(util.toPointer(hHandle), uOption, uValueLen, util.toPointer(pValue));
 }
 
 export function WdsBpGetOptionBuffer(
@@ -3268,6 +3362,6 @@ export function WdsBpGetOptionBuffer(
   pBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   puBytes: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libWDSBP_dll.WdsBpGetOptionBuffer(util.toPointer(hHandle), uBufferLen, util.toPointer(pBuffer), util.toPointer(puBytes));
+  return libWDSBP_dll.WdsBpGetOptionBuffer!(util.toPointer(hHandle), uBufferLen, util.toPointer(pBuffer), util.toPointer(puBytes));
 }
 

@@ -31247,242 +31247,302 @@ try {
     WlanOpenHandle: {
       parameters: ["u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanCloseHandle: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanEnumInterfaces: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetAutoConfigParameter: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanQueryAutoConfigParameter: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetInterfaceCapability: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetInterface: {
       parameters: ["pointer", "pointer", "i32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanQueryInterface: {
       parameters: ["pointer", "pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanIhvControl: {
       parameters: ["pointer", "pointer", "i32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanScan: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetAvailableNetworkList: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetAvailableNetworkList2: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetNetworkBssList: {
       parameters: ["pointer", "pointer", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanConnect: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanConnect2: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanDisconnect: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanRegisterNotification: {
       parameters: ["pointer", "u32", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetProfile: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfileEapUserData: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "u32", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfileEapXmlUserData: {
       parameters: ["pointer", "pointer", "buffer", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfile: {
       parameters: ["pointer", "pointer", "u32", "buffer", "buffer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanDeleteProfile: {
       parameters: ["pointer", "pointer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanRenameProfile: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetProfileList: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfileList: {
       parameters: ["pointer", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfilePosition: {
       parameters: ["pointer", "pointer", "buffer", "u32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetProfileCustomUserData: {
       parameters: ["pointer", "pointer", "buffer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetProfileCustomUserData: {
       parameters: ["pointer", "pointer", "buffer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetFilterList: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetFilterList: {
       parameters: ["pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSetPsdIEDataList: {
       parameters: ["pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanSaveTemporaryProfile: {
       parameters: ["pointer", "pointer", "buffer", "buffer", "u32", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanDeviceServiceCommand: {
       parameters: ["pointer", "pointer", "pointer", "u32", "u32", "pointer", "u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanGetSupportedDeviceServices: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanRegisterDeviceServiceNotification: {
       parameters: ["pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanExtractPsdIEDataList: {
       parameters: ["pointer", "u32", "pointer", "buffer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanReasonCodeToString: {
       parameters: ["u32", "u32", "buffer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanAllocateMemory: {
       parameters: ["u32"],
       result: "pointer",
+      optional: true,
     },
     WlanFreeMemory: {
       parameters: ["pointer"],
       result: "void",
+      optional: true,
     },
     WlanSetSecuritySettings: {
       parameters: ["pointer", "i32", "buffer"],
       result: "u32",
+      optional: true,
     },
     WlanGetSecuritySettings: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkStartUsing: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkStopUsing: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkForceStart: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkForceStop: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkQueryProperty: {
       parameters: ["pointer", "i32", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkSetProperty: {
       parameters: ["pointer", "i32", "u32", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkInitSettings: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkRefreshSecuritySettings: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkQueryStatus: {
       parameters: ["pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkSetSecondaryKey: {
       parameters: ["pointer", "u32", "pointer", "i32", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanHostedNetworkQuerySecondaryKey: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WlanRegisterVirtualStationNotification: {
       parameters: ["pointer", "i32", "pointer"],
       result: "u32",
+      optional: true,
     },
     WFDOpenHandle: {
       parameters: ["u32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WFDCloseHandle: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WFDStartOpenSession: {
       parameters: ["pointer", "pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WFDCancelOpenSession: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WFDOpenLegacySession: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
     WFDCloseSession: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
     WFDUpdateDeviceVisibility: {
       parameters: ["pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -31492,6 +31552,7 @@ try {
     WlanUIEditProfile: {
       parameters: ["u32", "buffer", "pointer", "pointer", "i32", "pointer", "pointer"],
       result: "u32",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -31504,14 +31565,14 @@ export function WlanOpenHandle(
   pdwNegotiatedVersion: Deno.PointerValue | Uint8Array /* ptr */,
   phClientHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanOpenHandle(dwClientVersion, util.toPointer(pReserved), util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
+  return libwlanapi_dll.WlanOpenHandle!(dwClientVersion, util.toPointer(pReserved), util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
 }
 
 export function WlanCloseHandle(
   hClientHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanCloseHandle(util.toPointer(hClientHandle), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanCloseHandle!(util.toPointer(hClientHandle), util.toPointer(pReserved));
 }
 
 export function WlanEnumInterfaces(
@@ -31519,7 +31580,7 @@ export function WlanEnumInterfaces(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppInterfaceList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanEnumInterfaces(util.toPointer(hClientHandle), util.toPointer(pReserved), util.toPointer(ppInterfaceList));
+  return libwlanapi_dll.WlanEnumInterfaces!(util.toPointer(hClientHandle), util.toPointer(pReserved), util.toPointer(ppInterfaceList));
 }
 
 export function WlanSetAutoConfigParameter(
@@ -31529,7 +31590,7 @@ export function WlanSetAutoConfigParameter(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetAutoConfigParameter(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetAutoConfigParameter!(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanQueryAutoConfigParameter(
@@ -31540,7 +31601,7 @@ export function WlanQueryAutoConfigParameter(
   ppData: Deno.PointerValue | Uint8Array /* ptr */,
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanQueryAutoConfigParameter(util.toPointer(hClientHandle), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
+  return libwlanapi_dll.WlanQueryAutoConfigParameter!(util.toPointer(hClientHandle), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
 }
 
 export function WlanGetInterfaceCapability(
@@ -31549,7 +31610,7 @@ export function WlanGetInterfaceCapability(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppCapability: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetInterfaceCapability(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppCapability));
+  return libwlanapi_dll.WlanGetInterfaceCapability!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppCapability));
 }
 
 export function WlanSetInterface(
@@ -31560,7 +31621,7 @@ export function WlanSetInterface(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetInterface!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanQueryInterface(
@@ -31572,7 +31633,7 @@ export function WlanQueryInterface(
   ppData: Deno.PointerValue | Uint8Array /* ptr */,
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanQueryInterface(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
+  return libwlanapi_dll.WlanQueryInterface!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), OpCode, util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData), util.toPointer(pWlanOpcodeValueType));
 }
 
 export function WlanIhvControl(
@@ -31585,7 +31646,7 @@ export function WlanIhvControl(
   pOutBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanIhvControl(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), Type, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
+  return libwlanapi_dll.WlanIhvControl!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), Type, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
 }
 
 export function WlanScan(
@@ -31595,7 +31656,7 @@ export function WlanScan(
   pIeData: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanScan(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), util.toPointer(pIeData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanScan!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), util.toPointer(pIeData), util.toPointer(pReserved));
 }
 
 export function WlanGetAvailableNetworkList(
@@ -31605,7 +31666,7 @@ export function WlanGetAvailableNetworkList(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppAvailableNetworkList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetAvailableNetworkList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
+  return libwlanapi_dll.WlanGetAvailableNetworkList!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
 }
 
 export function WlanGetAvailableNetworkList2(
@@ -31615,7 +31676,7 @@ export function WlanGetAvailableNetworkList2(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppAvailableNetworkList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetAvailableNetworkList2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
+  return libwlanapi_dll.WlanGetAvailableNetworkList2!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.toPointer(pReserved), util.toPointer(ppAvailableNetworkList));
 }
 
 export function WlanGetNetworkBssList(
@@ -31627,7 +31688,7 @@ export function WlanGetNetworkBssList(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppWlanBssList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetNetworkBssList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), dot11BssType, util.boolToFfi(bSecurityEnabled), util.toPointer(pReserved), util.toPointer(ppWlanBssList));
+  return libwlanapi_dll.WlanGetNetworkBssList!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDot11Ssid), dot11BssType, util.boolToFfi(bSecurityEnabled), util.toPointer(pReserved), util.toPointer(ppWlanBssList));
 }
 
 export function WlanConnect(
@@ -31636,7 +31697,7 @@ export function WlanConnect(
   pConnectionParameters: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanConnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanConnect!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
 }
 
 export function WlanConnect2(
@@ -31645,7 +31706,7 @@ export function WlanConnect2(
   pConnectionParameters: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanConnect2(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanConnect2!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pConnectionParameters), util.toPointer(pReserved));
 }
 
 export function WlanDisconnect(
@@ -31653,7 +31714,7 @@ export function WlanDisconnect(
   pInterfaceGuid: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanDisconnect(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanDisconnect!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved));
 }
 
 export function WlanRegisterNotification(
@@ -31665,7 +31726,7 @@ export function WlanRegisterNotification(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   pdwPrevNotifSource: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanRegisterNotification(util.toPointer(hClientHandle), dwNotifSource, util.boolToFfi(bIgnoreDuplicate), util.toPointer(funcCallback), util.toPointer(pCallbackContext), util.toPointer(pReserved), util.toPointer(pdwPrevNotifSource));
+  return libwlanapi_dll.WlanRegisterNotification!(util.toPointer(hClientHandle), dwNotifSource, util.boolToFfi(bIgnoreDuplicate), util.toPointer(funcCallback), util.toPointer(pCallbackContext), util.toPointer(pReserved), util.toPointer(pdwPrevNotifSource));
 }
 
 export function WlanGetProfile(
@@ -31677,7 +31738,7 @@ export function WlanGetProfile(
   pdwFlags: Deno.PointerValue | Uint8Array /* ptr */,
   pdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pstrProfileXml), util.toPointer(pdwFlags), util.toPointer(pdwGrantedAccess));
+  return libwlanapi_dll.WlanGetProfile!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pstrProfileXml), util.toPointer(pdwFlags), util.toPointer(pdwGrantedAccess));
 }
 
 export function WlanSetProfileEapUserData(
@@ -31690,7 +31751,7 @@ export function WlanSetProfileEapUserData(
   pbEapUserData: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfileEapUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(eapType), dwFlags, dwEapUserDataSize, util.toPointer(pbEapUserData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileEapUserData!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(eapType), dwFlags, dwEapUserDataSize, util.toPointer(pbEapUserData), util.toPointer(pReserved));
 }
 
 export function WlanSetProfileEapXmlUserData(
@@ -31701,7 +31762,7 @@ export function WlanSetProfileEapXmlUserData(
   strEapXmlUserData: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfileEapXmlUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwFlags, util.pwstrToFfi(strEapXmlUserData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileEapXmlUserData!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwFlags, util.pwstrToFfi(strEapXmlUserData), util.toPointer(pReserved));
 }
 
 export function WlanSetProfile(
@@ -31714,7 +31775,7 @@ export function WlanSetProfile(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   pdwReasonCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.pwstrToFfi(strProfileXml), util.pwstrToFfi(strAllUserProfileSecurity), util.boolToFfi(bOverwrite), util.toPointer(pReserved), util.toPointer(pdwReasonCode));
+  return libwlanapi_dll.WlanSetProfile!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwFlags, util.pwstrToFfi(strProfileXml), util.pwstrToFfi(strAllUserProfileSecurity), util.boolToFfi(bOverwrite), util.toPointer(pReserved), util.toPointer(pdwReasonCode));
 }
 
 export function WlanDeleteProfile(
@@ -31723,7 +31784,7 @@ export function WlanDeleteProfile(
   strProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanDeleteProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanDeleteProfile!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved));
 }
 
 export function WlanRenameProfile(
@@ -31733,7 +31794,7 @@ export function WlanRenameProfile(
   strNewProfileName: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanRenameProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strOldProfileName), util.pwstrToFfi(strNewProfileName), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanRenameProfile!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strOldProfileName), util.pwstrToFfi(strNewProfileName), util.toPointer(pReserved));
 }
 
 export function WlanGetProfileList(
@@ -31742,7 +31803,7 @@ export function WlanGetProfileList(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppProfileList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppProfileList));
+  return libwlanapi_dll.WlanGetProfileList!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pReserved), util.toPointer(ppProfileList));
 }
 
 export function WlanSetProfileList(
@@ -31752,7 +31813,7 @@ export function WlanSetProfileList(
   strProfileNames: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfileList(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwItems, util.toPointer(strProfileNames), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileList!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), dwItems, util.toPointer(strProfileNames), util.toPointer(pReserved));
 }
 
 export function WlanSetProfilePosition(
@@ -31762,7 +31823,7 @@ export function WlanSetProfilePosition(
   dwPosition: number /* u32 */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfilePosition(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwPosition, util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfilePosition!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwPosition, util.toPointer(pReserved));
 }
 
 export function WlanSetProfileCustomUserData(
@@ -31773,7 +31834,7 @@ export function WlanSetProfileCustomUserData(
   pData: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetProfileCustomUserData!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), dwDataSize, util.toPointer(pData), util.toPointer(pReserved));
 }
 
 export function WlanGetProfileCustomUserData(
@@ -31784,7 +31845,7 @@ export function WlanGetProfileCustomUserData(
   pdwDataSize: Deno.PointerValue | Uint8Array /* ptr */,
   ppData: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetProfileCustomUserData(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
+  return libwlanapi_dll.WlanGetProfileCustomUserData!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.toPointer(pReserved), util.toPointer(pdwDataSize), util.toPointer(ppData));
 }
 
 export function WlanSetFilterList(
@@ -31793,7 +31854,7 @@ export function WlanSetFilterList(
   pNetworkList: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pNetworkList), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetFilterList!(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pNetworkList), util.toPointer(pReserved));
 }
 
 export function WlanGetFilterList(
@@ -31802,7 +31863,7 @@ export function WlanGetFilterList(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppNetworkList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetFilterList(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pReserved), util.toPointer(ppNetworkList));
+  return libwlanapi_dll.WlanGetFilterList!(util.toPointer(hClientHandle), wlanFilterListType, util.toPointer(pReserved), util.toPointer(ppNetworkList));
 }
 
 export function WlanSetPsdIEDataList(
@@ -31811,7 +31872,7 @@ export function WlanSetPsdIEDataList(
   pPsdIEDataList: Deno.PointerValue | Uint8Array /* ptr */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetPsdIEDataList(util.toPointer(hClientHandle), util.pwstrToFfi(strFormat), util.toPointer(pPsdIEDataList), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSetPsdIEDataList!(util.toPointer(hClientHandle), util.pwstrToFfi(strFormat), util.toPointer(pPsdIEDataList), util.toPointer(pReserved));
 }
 
 export function WlanSaveTemporaryProfile(
@@ -31823,7 +31884,7 @@ export function WlanSaveTemporaryProfile(
   bOverWrite: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSaveTemporaryProfile(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.pwstrToFfi(strAllUserProfileSecurity), dwFlags, util.boolToFfi(bOverWrite), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanSaveTemporaryProfile!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.pwstrToFfi(strProfileName), util.pwstrToFfi(strAllUserProfileSecurity), dwFlags, util.boolToFfi(bOverWrite), util.toPointer(pReserved));
 }
 
 export function WlanDeviceServiceCommand(
@@ -31837,7 +31898,7 @@ export function WlanDeviceServiceCommand(
   pOutBuffer: Deno.PointerValue | Uint8Array /* ptr */,
   pdwBytesReturned: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanDeviceServiceCommand(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDeviceServiceGuid), dwOpCode, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
+  return libwlanapi_dll.WlanDeviceServiceCommand!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(pDeviceServiceGuid), dwOpCode, dwInBufferSize, util.toPointer(pInBuffer), dwOutBufferSize, util.toPointer(pOutBuffer), util.toPointer(pdwBytesReturned));
 }
 
 export function WlanGetSupportedDeviceServices(
@@ -31845,14 +31906,14 @@ export function WlanGetSupportedDeviceServices(
   pInterfaceGuid: Deno.PointerValue | Uint8Array /* ptr */,
   ppDevSvcGuidList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetSupportedDeviceServices(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(ppDevSvcGuidList));
+  return libwlanapi_dll.WlanGetSupportedDeviceServices!(util.toPointer(hClientHandle), util.toPointer(pInterfaceGuid), util.toPointer(ppDevSvcGuidList));
 }
 
 export function WlanRegisterDeviceServiceNotification(
   hClientHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
   pDevSvcGuidList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanRegisterDeviceServiceNotification(util.toPointer(hClientHandle), util.toPointer(pDevSvcGuidList));
+  return libwlanapi_dll.WlanRegisterDeviceServiceNotification!(util.toPointer(hClientHandle), util.toPointer(pDevSvcGuidList));
 }
 
 export function WlanExtractPsdIEDataList(
@@ -31863,7 +31924,7 @@ export function WlanExtractPsdIEDataList(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   ppPsdIEDataList: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanExtractPsdIEDataList(util.toPointer(hClientHandle), dwIeDataSize, util.toPointer(pRawIeData), util.pwstrToFfi(strFormat), util.toPointer(pReserved), util.toPointer(ppPsdIEDataList));
+  return libwlanapi_dll.WlanExtractPsdIEDataList!(util.toPointer(hClientHandle), dwIeDataSize, util.toPointer(pRawIeData), util.pwstrToFfi(strFormat), util.toPointer(pReserved), util.toPointer(ppPsdIEDataList));
 }
 
 export function WlanReasonCodeToString(
@@ -31872,19 +31933,19 @@ export function WlanReasonCodeToString(
   pStringBuffer: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanReasonCodeToString(dwReasonCode, dwBufferSize, util.pwstrToFfi(pStringBuffer), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanReasonCodeToString!(dwReasonCode, dwBufferSize, util.pwstrToFfi(pStringBuffer), util.toPointer(pReserved));
 }
 
 export function WlanAllocateMemory(
   dwMemorySize: number /* u32 */,
 ): Deno.PointerValue /* ptr */ {
-  return libwlanapi_dll.WlanAllocateMemory(dwMemorySize);
+  return libwlanapi_dll.WlanAllocateMemory!(dwMemorySize);
 }
 
 export function WlanFreeMemory(
   pMemory: Deno.PointerValue | Uint8Array /* ptr */,
 ): void /* void */ {
-  return libwlanapi_dll.WlanFreeMemory(util.toPointer(pMemory));
+  return libwlanapi_dll.WlanFreeMemory!(util.toPointer(pMemory));
 }
 
 export function WlanSetSecuritySettings(
@@ -31892,7 +31953,7 @@ export function WlanSetSecuritySettings(
   SecurableObject: WLAN_SECURABLE_OBJECT /* Windows.Win32.NetworkManagement.WiFi.WLAN_SECURABLE_OBJECT */,
   strModifiedSDDL: string | null | Uint8Array | Uint16Array /* Windows.Win32.Foundation.PWSTR */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanSetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.pwstrToFfi(strModifiedSDDL));
+  return libwlanapi_dll.WlanSetSecuritySettings!(util.toPointer(hClientHandle), SecurableObject, util.pwstrToFfi(strModifiedSDDL));
 }
 
 export function WlanGetSecuritySettings(
@@ -31902,7 +31963,7 @@ export function WlanGetSecuritySettings(
   pstrCurrentSDDL: Deno.PointerValue | Uint8Array /* ptr */,
   pdwGrantedAccess: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanGetSecuritySettings(util.toPointer(hClientHandle), SecurableObject, util.toPointer(pValueType), util.toPointer(pstrCurrentSDDL), util.toPointer(pdwGrantedAccess));
+  return libwlanapi_dll.WlanGetSecuritySettings!(util.toPointer(hClientHandle), SecurableObject, util.toPointer(pValueType), util.toPointer(pstrCurrentSDDL), util.toPointer(pdwGrantedAccess));
 }
 
 export function WlanUIEditProfile(
@@ -31914,7 +31975,7 @@ export function WlanUIEditProfile(
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
   pWlanReasonCode: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanui_dll.WlanUIEditProfile(dwClientVersion, util.pwstrToFfi(wstrProfileName), util.toPointer(pInterfaceGuid), (hWnd), wlStartPage, util.toPointer(pReserved), util.toPointer(pWlanReasonCode));
+  return libwlanui_dll.WlanUIEditProfile!(dwClientVersion, util.pwstrToFfi(wstrProfileName), util.toPointer(pInterfaceGuid), (hWnd), wlStartPage, util.toPointer(pReserved), util.toPointer(pWlanReasonCode));
 }
 
 export function WlanHostedNetworkStartUsing(
@@ -31922,7 +31983,7 @@ export function WlanHostedNetworkStartUsing(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkStartUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkStartUsing!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkStopUsing(
@@ -31930,7 +31991,7 @@ export function WlanHostedNetworkStopUsing(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkStopUsing(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkStopUsing!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkForceStart(
@@ -31938,7 +31999,7 @@ export function WlanHostedNetworkForceStart(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkForceStart(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkForceStart!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkForceStop(
@@ -31946,7 +32007,7 @@ export function WlanHostedNetworkForceStop(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkForceStop(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkForceStop!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQueryProperty(
@@ -31957,7 +32018,7 @@ export function WlanHostedNetworkQueryProperty(
   pWlanOpcodeValueType: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkQueryProperty(util.toPointer(hClientHandle), OpCode, util.toPointer(pdwDataSize), util.toPointer(ppvData), util.toPointer(pWlanOpcodeValueType), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQueryProperty!(util.toPointer(hClientHandle), OpCode, util.toPointer(pdwDataSize), util.toPointer(ppvData), util.toPointer(pWlanOpcodeValueType), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkSetProperty(
@@ -31968,7 +32029,7 @@ export function WlanHostedNetworkSetProperty(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkSetProperty(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pvData), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkSetProperty!(util.toPointer(hClientHandle), OpCode, dwDataSize, util.toPointer(pvData), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkInitSettings(
@@ -31976,7 +32037,7 @@ export function WlanHostedNetworkInitSettings(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkInitSettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkInitSettings!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkRefreshSecuritySettings(
@@ -31984,7 +32045,7 @@ export function WlanHostedNetworkRefreshSecuritySettings(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkRefreshSecuritySettings(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkRefreshSecuritySettings!(util.toPointer(hClientHandle), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQueryStatus(
@@ -31992,7 +32053,7 @@ export function WlanHostedNetworkQueryStatus(
   ppWlanHostedNetworkStatus: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkQueryStatus(util.toPointer(hClientHandle), util.toPointer(ppWlanHostedNetworkStatus), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQueryStatus!(util.toPointer(hClientHandle), util.toPointer(ppWlanHostedNetworkStatus), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkSetSecondaryKey(
@@ -32004,7 +32065,7 @@ export function WlanHostedNetworkSetSecondaryKey(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkSetSecondaryKey(util.toPointer(hClientHandle), dwKeyLength, util.toPointer(pucKeyData), util.boolToFfi(bIsPassPhrase), util.boolToFfi(bPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkSetSecondaryKey!(util.toPointer(hClientHandle), dwKeyLength, util.toPointer(pucKeyData), util.boolToFfi(bIsPassPhrase), util.boolToFfi(bPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanHostedNetworkQuerySecondaryKey(
@@ -32016,7 +32077,7 @@ export function WlanHostedNetworkQuerySecondaryKey(
   pFailReason: Deno.PointerValue | Uint8Array /* ptr */,
   pvReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanHostedNetworkQuerySecondaryKey(util.toPointer(hClientHandle), util.toPointer(pdwKeyLength), util.toPointer(ppucKeyData), util.toPointer(pbIsPassPhrase), util.toPointer(pbPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
+  return libwlanapi_dll.WlanHostedNetworkQuerySecondaryKey!(util.toPointer(hClientHandle), util.toPointer(pdwKeyLength), util.toPointer(ppucKeyData), util.toPointer(pbIsPassPhrase), util.toPointer(pbPersistent), util.toPointer(pFailReason), util.toPointer(pvReserved));
 }
 
 export function WlanRegisterVirtualStationNotification(
@@ -32024,7 +32085,7 @@ export function WlanRegisterVirtualStationNotification(
   bRegister: boolean /* Windows.Win32.Foundation.BOOL */,
   pReserved: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WlanRegisterVirtualStationNotification(util.toPointer(hClientHandle), util.boolToFfi(bRegister), util.toPointer(pReserved));
+  return libwlanapi_dll.WlanRegisterVirtualStationNotification!(util.toPointer(hClientHandle), util.boolToFfi(bRegister), util.toPointer(pReserved));
 }
 
 export function WFDOpenHandle(
@@ -32032,13 +32093,13 @@ export function WFDOpenHandle(
   pdwNegotiatedVersion: Deno.PointerValue | Uint8Array /* ptr */,
   phClientHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDOpenHandle(dwClientVersion, util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
+  return libwlanapi_dll.WFDOpenHandle!(dwClientVersion, util.toPointer(pdwNegotiatedVersion), util.toPointer(phClientHandle));
 }
 
 export function WFDCloseHandle(
   hClientHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDCloseHandle(util.toPointer(hClientHandle));
+  return libwlanapi_dll.WFDCloseHandle!(util.toPointer(hClientHandle));
 }
 
 export function WFDStartOpenSession(
@@ -32048,13 +32109,13 @@ export function WFDStartOpenSession(
   pfnCallback: Uint8Array | Deno.PointerValue /* Windows.Win32.NetworkManagement.WiFi.WFD_OPEN_SESSION_COMPLETE_CALLBACK */,
   phSessionHandle: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDStartOpenSession(util.toPointer(hClientHandle), util.toPointer(pDeviceAddress), util.toPointer(pvContext), util.toPointer(pfnCallback), util.toPointer(phSessionHandle));
+  return libwlanapi_dll.WFDStartOpenSession!(util.toPointer(hClientHandle), util.toPointer(pDeviceAddress), util.toPointer(pvContext), util.toPointer(pfnCallback), util.toPointer(phSessionHandle));
 }
 
 export function WFDCancelOpenSession(
   hSessionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDCancelOpenSession(util.toPointer(hSessionHandle));
+  return libwlanapi_dll.WFDCancelOpenSession!(util.toPointer(hSessionHandle));
 }
 
 export function WFDOpenLegacySession(
@@ -32063,18 +32124,18 @@ export function WFDOpenLegacySession(
   phSessionHandle: Deno.PointerValue | Uint8Array /* ptr */,
   pGuidSessionInterface: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDOpenLegacySession(util.toPointer(hClientHandle), util.toPointer(pLegacyMacAddress), util.toPointer(phSessionHandle), util.toPointer(pGuidSessionInterface));
+  return libwlanapi_dll.WFDOpenLegacySession!(util.toPointer(hClientHandle), util.toPointer(pLegacyMacAddress), util.toPointer(phSessionHandle), util.toPointer(pGuidSessionInterface));
 }
 
 export function WFDCloseSession(
   hSessionHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDCloseSession(util.toPointer(hSessionHandle));
+  return libwlanapi_dll.WFDCloseSession!(util.toPointer(hSessionHandle));
 }
 
 export function WFDUpdateDeviceVisibility(
   pDeviceAddress: Deno.PointerValue | Uint8Array /* ptr */,
 ): number /* u32 */ {
-  return libwlanapi_dll.WFDUpdateDeviceVisibility(util.toPointer(pDeviceAddress));
+  return libwlanapi_dll.WFDUpdateDeviceVisibility!(util.toPointer(pDeviceAddress));
 }
 

@@ -51,26 +51,32 @@ try {
     WscRegisterForChanges: {
       parameters: ["pointer", "pointer", "pointer", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WscUnRegisterChanges: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
     WscRegisterForUserNotifications: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     WscGetSecurityProviderHealth: {
       parameters: ["u32", "pointer"],
       result: "pointer",
+      optional: true,
     },
     WscQueryAntiMalwareUri: {
       parameters: [],
       result: "pointer",
+      optional: true,
     },
     WscGetAntiMalwareUri: {
       parameters: ["pointer"],
       result: "pointer",
+      optional: true,
     },
   }).symbols;
 } catch(e) { /* ignore */ }
@@ -83,33 +89,33 @@ export function WscRegisterForChanges(
   lpCallbackAddress: Uint8Array | Deno.PointerValue /* Windows.Win32.System.Threading.LPTHREAD_START_ROUTINE */,
   pContext: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscRegisterForChanges(util.toPointer(Reserved), util.toPointer(phCallbackRegistration), util.toPointer(lpCallbackAddress), util.toPointer(pContext));
+  return libWSCAPI_dll.WscRegisterForChanges!(util.toPointer(Reserved), util.toPointer(phCallbackRegistration), util.toPointer(lpCallbackAddress), util.toPointer(pContext));
 }
 
 export function WscUnRegisterChanges(
   hRegistrationHandle: Uint8Array | Deno.PointerValue /* Windows.Win32.Foundation.HANDLE */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscUnRegisterChanges(util.toPointer(hRegistrationHandle));
+  return libWSCAPI_dll.WscUnRegisterChanges!(util.toPointer(hRegistrationHandle));
 }
 
 export function WscRegisterForUserNotifications(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscRegisterForUserNotifications();
+  return libWSCAPI_dll.WscRegisterForUserNotifications!();
 }
 
 export function WscGetSecurityProviderHealth(
   Providers: number /* u32 */,
   pHealth: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscGetSecurityProviderHealth(Providers, util.toPointer(pHealth));
+  return libWSCAPI_dll.WscGetSecurityProviderHealth!(Providers, util.toPointer(pHealth));
 }
 
 export function WscQueryAntiMalwareUri(): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscQueryAntiMalwareUri();
+  return libWSCAPI_dll.WscQueryAntiMalwareUri!();
 }
 
 export function WscGetAntiMalwareUri(
   ppszUri: Deno.PointerValue | Uint8Array /* ptr */,
 ): Deno.PointerValue /* Windows.Win32.Foundation.HRESULT */ {
-  return libWSCAPI_dll.WscGetAntiMalwareUri(util.toPointer(ppszUri));
+  return libWSCAPI_dll.WscGetAntiMalwareUri!(util.toPointer(ppszUri));
 }
 
